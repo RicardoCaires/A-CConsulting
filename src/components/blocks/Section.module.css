@@ -1,0 +1,8 @@
+/* Abschnittsrahmen. Flaeche und Abstand kommen aus globals.css und den
+   Tokens; hier steht nur, was der Rahmen selbst regelt. */
+
+/* Lesebereich: begrenzt den ganzen Abschnitt auf eine angenehme Zeilenlaenge,
+   nicht nur einzelne Absaetze darin. */
+.measure > * {
+  max-width: var(--ac-content-measure);
+}

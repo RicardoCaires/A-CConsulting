@@ -1,0 +1,249 @@
+/* Hauptnavigation.
+   Zwei Darstellungen, immer nur eine sichtbar: offene Reihe ab 64rem,
+   darunter ein Menue mit sichtbarer Hierarchie. */
+
+.wide {
+  display: none;
+}
+
+.narrow {
+  display: flex;
+}
+
+/* ---- Eintraege der obersten Ebene --------------------------------------- */
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-3xs);
+  min-height: 2.75rem;
+  padding: var(--ac-space-2xs) var(--ac-space-sm);
+  color: var(--ac-color-primary-navy);
+  text-decoration: none;
+  border-radius: var(--ac-radius-sm);
+  list-style: none;
+  cursor: pointer;
+}
+
+.item::-webkit-details-marker {
+  display: none;
+}
+
+.item:hover {
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-surface-soft);
+}
+
+.item[aria-current='page'] {
+  box-shadow: inset var(--ac-border-marker) 0 0 var(--ac-color-accent-green);
+  font-weight: 600;
+}
+
+.chevron {
+  transition: transform var(--ac-motion-fast) var(--ac-motion-easing);
+}
+
+.dropdown[open] .chevron {
+  transform: rotate(180deg);
+}
+
+/* ---- Unterpunkte -------------------------------------------------------- */
+
+.childItem,
+.childPending {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  min-height: 2.5rem;
+  padding: var(--ac-space-3xs) var(--ac-space-sm);
+  font-size: var(--ac-small-size);
+  border-radius: var(--ac-radius-sm);
+  text-decoration: none;
+}
+
+.childItem {
+  color: var(--ac-color-text-secondary);
+}
+
+.childItem:hover {
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-surface-soft);
+}
+
+.childItem[aria-current='page'] {
+  color: var(--ac-color-primary-navy);
+  font-weight: 600;
+}
+
+/* Unterpunkt, den es noch nicht gibt. */
+.childPending {
+  color: var(--ac-color-text-muted);
+  cursor: default;
+}
+
+.badge {
+  font-size: 0.6875rem;
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-surface-blue);
+  border-radius: var(--ac-radius-sm);
+  padding: 0.1em 0.4em;
+  white-space: nowrap;
+}
+
+/* ---- Schmale Fenster ---------------------------------------------------- */
+
+.menu {
+  position: relative;
+}
+
+.summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  min-height: 2.75rem;
+  padding: var(--ac-space-2xs) var(--ac-space-xs);
+  margin-inline-end: calc(var(--ac-space-xs) * -1);
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
+  cursor: pointer;
+  border-radius: var(--ac-radius-sm);
+  list-style: none;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Hamburger aus drei Strichen. */
+.summaryIcon {
+  position: relative;
+  width: 1.15rem;
+  height: 0.75rem;
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+
+.summaryIcon::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: calc(50% - 1px);
+  border-top: 2px solid currentColor;
+}
+
+.menu[open] .summaryIcon {
+  border-color: transparent;
+}
+
+.narrowPanel {
+  position: absolute;
+  inset-inline-end: calc(var(--ac-space-xs) * -1);
+  top: calc(100% + var(--ac-space-2xs));
+  z-index: 20;
+  width: max-content;
+  min-width: 16rem;
+  max-height: calc(100dvh - 6rem);
+  overflow-y: auto;
+  padding: var(--ac-space-2xs);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-lg);
+}
+
+.narrowList,
+.narrowChildren {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Unterpunkte sichtbar eingerueckt, mit Linie als Zugehoerigkeit. */
+.narrowChildren {
+  margin: var(--ac-space-3xs) 0 var(--ac-space-2xs) var(--ac-space-sm);
+  padding-left: var(--ac-space-sm);
+  border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+/* ---- Breite Fenster ----------------------------------------------------- */
+
+@media (min-width: 64rem) {
+  .wide {
+    display: flex;
+  }
+
+  .narrow {
+    display: none;
+  }
+
+  .wideList {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .wideList .item {
+    padding-inline: var(--ac-space-2xs);
+    font-size: var(--ac-small-size);
+    font-weight: 500;
+    color: var(--ac-color-text-secondary);
+    white-space: nowrap;
+    background: none;
+  }
+
+  .wideList .item:hover {
+    color: var(--ac-color-primary-navy);
+    background: none;
+  }
+
+  .wideList .item[aria-current='page'] {
+    color: var(--ac-color-primary-navy);
+    box-shadow: inset 0 -2px 0 var(--ac-color-accent-green);
+    background: none;
+  }
+
+  .hasChildren {
+    position: relative;
+  }
+
+  .panel {
+    position: absolute;
+    inset-inline-start: 0;
+    top: calc(100% + var(--ac-space-3xs));
+    z-index: 25;
+    min-width: 15rem;
+    padding: var(--ac-space-2xs);
+    background-color: var(--ac-color-white);
+    border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+    border-radius: var(--ac-radius-lg);
+  }
+
+  .childList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Der erste Eintrag ist der Bereich selbst — danach eine feine Linie. */
+  .childList li:first-child {
+    padding-bottom: var(--ac-space-3xs);
+    margin-bottom: var(--ac-space-3xs);
+    border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  }
+
+  .childList li:first-child .childItem {
+    color: var(--ac-color-primary-navy);
+    font-weight: 600;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chevron {
+    transition: none;
+  }
+}

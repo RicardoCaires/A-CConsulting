@@ -1,0 +1,89 @@
+/* Vorlage B — Leistungsseite.
+
+   Nur was die Vorlage selbst regelt: der Seitenkopf und die Stichworte.
+   Alles andere kommt aus den Bausteinen. */
+
+/* ---- 1 Seitenkopf -------------------------------------------------------- */
+
+.kopf {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+  align-items: center;
+}
+
+.kopfText {
+  max-width: 34rem;
+}
+
+.titel {
+  max-width: 18ch;
+}
+
+.nutzen {
+  margin-top: var(--ac-space-sm);
+  max-width: 44ch;
+}
+
+.kopfAktion {
+  margin-top: var(--ac-space-md);
+}
+
+.kopfBild {
+  aspect-ratio: 16 / 10;
+}
+
+/* ---- 2 Stichworte unter einer Leistung ---------------------------------- */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ac-space-3xs);
+}
+
+.chip {
+  padding: 0.15rem var(--ac-space-2xs);
+  background-color: var(--ac-color-white);
+  border-radius: var(--ac-radius-sm);
+}
+
+/* Auf weisser Flaeche braucht das Stichwort einen eigenen Grund. */
+:global(.ac-section:not(.ac-section--tint):not(.ac-section--navy)) .chip {
+  background-color: var(--ac-surface-soft);
+}
+
+:global(.on-navy) .chip {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 var(--ac-border-hairline) var(--ac-on-navy-muted);
+}
+
+/* ---- 4 Vertiefung -------------------------------------------------------- */
+
+.vertiefung {
+  margin-top: var(--ac-space-md);
+}
+
+.vertiefung p + p {
+  margin-top: var(--ac-space-sm);
+}
+
+/* ---- Ab Desktop ---------------------------------------------------------- */
+
+@media (min-width: 64rem) {
+  .kopf {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  }
+
+  .kopfBild {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* Aufzaehlung im vertiefenden Abschnitt. */
+.liste {
+  margin-top: var(--ac-space-sm);
+  padding-left: var(--ac-space-md);
+}
+
+.liste li + li {
+  margin-top: var(--ac-space-3xs);
+}

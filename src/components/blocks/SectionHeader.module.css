@@ -1,0 +1,15 @@
+/* Abschnittskopf. Eine Breite fuer alle: Ueberschriften brechen frueh,
+   Einleitungen bleiben auf Lesebreite. */
+
+.header {
+  max-width: var(--ac-content-measure);
+}
+
+.heading {
+  max-width: 24ch;
+}
+
+.lead {
+  margin-top: var(--ac-space-sm);
+  max-width: 46ch;
+}

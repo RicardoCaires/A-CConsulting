@@ -1,0 +1,61 @@
+/* Kreisflaeche hinter einem Icon.
+
+   Vier Toene, kein fuenfter. Farbe steht nur hier, damit sie nicht je Seite
+   neu entschieden wird. */
+
+.circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  border-radius: 50%;
+}
+
+/* ---- Groessen ----------------------------------------------------------- */
+
+.sm {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.md {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.lg {
+  width: 3.25rem;
+  height: 3.25rem;
+}
+
+/* ---- Toene -------------------------------------------------------------- */
+
+/* Normalfall auf hellen Flaechen. */
+.tint {
+  background-color: var(--ac-surface-blue);
+  color: var(--ac-color-primary-navy);
+}
+
+/* Auf dunklem Grund traegt die Flaeche eine helle Kontur statt Fuellung. */
+.outline {
+  background-color: transparent;
+  color: var(--ac-color-accent-green-light);
+  box-shadow: inset 0 0 0 var(--ac-border-hairline) var(--ac-color-brand-grey);
+}
+
+/* Ohne Flaeche — wo das Icon unmittelbar im Text steht. */
+.plain {
+  background-color: transparent;
+  color: var(--ac-color-primary-navy);
+}
+
+/* Zustand, nicht Rangordnung: aktiv, erledigt, ausgewaehlt. */
+.solid {
+  background-color: var(--ac-color-primary-navy);
+  color: var(--ac-color-white);
+}
+
+/* Auf blaugrauer Flaeche wuerde der Normalton verschwinden — dort Weiss. */
+:global(.ac-section--blue) .tint {
+  background-color: var(--ac-color-white);
+}

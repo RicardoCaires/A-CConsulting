@@ -1,0 +1,54 @@
+.wrapper {
+  display: flex;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item,
+.unavailable {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  min-height: 2.75rem;
+  font-size: var(--ac-small-size);
+  font-weight: 500;
+  border-radius: var(--ac-radius-sm);
+}
+
+.item {
+  color: var(--ac-color-text-secondary);
+  text-decoration: none;
+}
+
+.item:hover {
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-light);
+}
+
+.item[aria-current='true'] {
+  color: var(--ac-color-primary-navy);
+  font-weight: 650;
+  box-shadow: inset 0 -2px 0 var(--ac-color-accent-green);
+}
+
+/* Sprache sichtbar, aber noch nicht vorhanden. */
+.unavailable {
+  color: var(--ac-color-text-muted);
+  cursor: default;
+}
+
+/* Trennpunkte zwischen den Kuerzeln — ruhiger als Rahmen um jedes. */
+.list li + li::before {
+  content: '';
+  align-self: center;
+  width: var(--ac-border-hairline);
+  height: 0.9rem;
+  background-color: var(--ac-color-border-light);
+}

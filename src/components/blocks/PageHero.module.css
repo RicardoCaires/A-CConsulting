@@ -1,0 +1,83 @@
+.hero {
+  padding-block: clamp(2.25rem, 5vw, 3.5rem) clamp(2rem, 5vw, 3rem);
+}
+
+.heading {
+  max-width: 22ch;
+  margin-bottom: var(--ac-space-sm);
+}
+
+.lead {
+  max-width: var(--ac-content-measure);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ac-space-2xs) var(--ac-space-sm);
+  margin-top: var(--ac-space-md);
+}
+
+.phoneLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.875rem;
+  padding-inline: var(--ac-space-3xs);
+  font-size: var(--ac-body-size);
+  font-variant-numeric: tabular-nums;
+  color: var(--ac-color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--ac-radius-sm);
+}
+
+.phoneLink:hover {
+  color: var(--ac-link-hover);
+  text-decoration: underline;
+}
+
+.actionPending {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  min-height: 2.875rem;
+  padding: 0 var(--ac-space-md);
+  color: var(--ac-color-text-secondary);
+  border: var(--ac-border-hairline) dashed var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+  font-weight: 600;
+  cursor: default;
+}
+
+.comingBadge {
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-background-tint);
+  border-radius: var(--ac-radius-sm);
+  padding: 0.1em 0.45em;
+  white-space: nowrap;
+}
+
+/* Seitenkopf mit Bildflaeche daneben. */
+.grid {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.visual {
+  aspect-ratio: 16 / 9;
+}
+
+@media (min-width: 64rem) {
+  .grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
+
+  .visual {
+    aspect-ratio: 4 / 3;
+  }
+}

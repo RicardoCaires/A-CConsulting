@@ -1,0 +1,115 @@
+/* Fragen und Antworten.
+
+   Feine Trennlinien statt Kaesten. Die ganze Zeile ist Trefferflaeche, auch
+   auf dem Smartphone — mindestens 44 px hoch. */
+
+.accordion {
+  margin-top: var(--ac-space-md);
+  max-width: var(--ac-content-measure);
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.item {
+  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ac-space-sm);
+  min-height: 3.25rem;
+  padding-block: var(--ac-space-2xs);
+  cursor: pointer;
+  list-style: none;
+}
+
+/* Das eigene Dreieck des Browsers weicht dem Chevron. */
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary::marker {
+  content: '';
+}
+
+.question {
+  font-size: var(--ac-body-size);
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--ac-color-primary-navy);
+  text-wrap: pretty;
+}
+
+.summary:hover .question {
+  color: var(--ac-link-hover);
+}
+
+.marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  color: var(--ac-color-accent-green);
+  border-radius: 50%;
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.item[open] .marker {
+  transform: rotate(180deg);
+}
+
+.summary:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: -2px;
+  border-radius: var(--ac-radius-sm);
+}
+
+.answer {
+  padding-bottom: var(--ac-space-sm);
+  color: var(--ac-color-text-secondary);
+  max-width: 62ch;
+}
+
+/* ---- Dunkle Flaeche ------------------------------------------------------ */
+
+:global(.on-navy) .accordion,
+:global(.on-navy) .item {
+  border-color: var(--ac-on-navy-muted);
+}
+
+:global(.on-navy) .question {
+  color: var(--ac-color-white);
+}
+
+:global(.on-navy) .marker {
+  color: var(--ac-color-accent-green-light);
+}
+
+:global(.on-navy) .answer {
+  color: var(--ac-on-navy-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marker {
+    transition: none;
+  }
+}
+
+/* Auf Papier gibt es kein Aufklappen. */
+@media print {
+  .item {
+    display: block;
+  }
+
+  .item > .answer {
+    display: block;
+  }
+
+  .marker {
+    display: none;
+  }
+}

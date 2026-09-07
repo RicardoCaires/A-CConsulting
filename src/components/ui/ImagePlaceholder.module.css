@@ -1,0 +1,64 @@
+/* Platzhalterflaeche fuer ein Bild, das noch nicht vorliegt.
+
+   Eine ruhige, gefuellte Flaeche — kein duenn umrandetes Kaestchen. Sie soll
+   im Layout schon dieselbe Wirkung haben wie das spaetere Foto, damit beim
+   Einsetzen nichts kippt. */
+
+.frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ac-space-3xs);
+  padding: var(--ac-space-md);
+  text-align: center;
+  overflow: hidden;
+
+  background-color: var(--ac-surface-blue);
+  border-radius: var(--ac-radius-xl);
+
+  /* Ohne Vorgabe von aussen ein ruhiges Querformat. */
+  aspect-ratio: 4 / 3;
+}
+
+/* Feiner Schimmer, damit die Flaeche nicht tot wirkt — eine Nuance, kein
+   Verlauf ueber die ganze Flaeche. */
+.frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 90% at 78% 12%,
+    var(--ac-color-white) 0%,
+    transparent 62%
+  );
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.label,
+.note {
+  position: relative;
+}
+
+.label {
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-primary-navy);
+}
+
+.note {
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-color-text-secondary);
+  max-width: 30ch;
+}
+
+@media print {
+  .frame {
+    display: none;
+  }
+}

@@ -1,0 +1,6 @@
+.icon {
+  display: block;
+  flex: none;
+  /* Optische Korrektur: Konturicons wirken neben Text minim zu hoch. */
+  transform: translateY(0.03em);
+}

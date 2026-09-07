@@ -1,0 +1,35 @@
+# Abhaengigkeiten
+node_modules/
+.pnp
+.pnp.*
+
+# Next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Erzeugte Design-Tokens (Quelle: design/ac-corporate-design.tokens.json)
+/src/styles/tokens.generated.css
+/src/lib/tokens.generated.ts
+
+# Vercel
+.vercel
+
+# Umgebung — nie ins Repository
+.env
+.env.*
+!.env.example
+
+# Betriebssystem / Editor
+.DS_Store
+Thumbs.db
+*.swp
+
+# Protokolle
+npm-debug.log*
+yarn-error.log*
+
+# Interne Geschaeftsvorlagen - gehoeren nicht ins Website-Repository
+# (verschoben nach 00_Shared/Vorlagen/, 07.09.2026)
+References/

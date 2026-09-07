@@ -1,0 +1,34 @@
+/* Offene Angabe. Absichtlich auffaellig — sie soll bei der Durchsicht
+   ins Auge springen und darf nie unbemerkt live gehen. */
+
+.pending {
+  display: inline;
+  background-color: var(--ac-color-signal-warn-bg);
+  color: var(--ac-color-text-primary);
+  box-shadow: inset 0 -1px 0 var(--ac-color-border-light);
+  /* Der Innenabstand wird nach aussen ausgeglichen, sonst steht ein direkt
+     folgendes Satzzeichen sichtbar abgesetzt: „… vereinbart wird ." */
+  padding: 0.08em 0.3em;
+  margin-inline: -0.08em;
+  border-radius: var(--ac-radius-sm);
+  font-size: 0.94em;
+}
+
+.label {
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: var(--ac-color-text-secondary);
+}
+
+.label:not(:last-child)::after {
+  content: ' · ';
+  color: var(--ac-color-border-light);
+}
+
+@media print {
+  .pending {
+    border: 1px solid var(--ac-color-text-secondary);
+  }
+}

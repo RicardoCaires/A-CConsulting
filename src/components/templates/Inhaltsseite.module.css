@@ -1,0 +1,20 @@
+/* Vorlage C — Inhaltsseite. */
+
+.einleitung {
+  margin-top: var(--ac-space-sm);
+  max-width: 46ch;
+}
+
+.text {
+  margin-top: var(--ac-space-md);
+}
+
+.text p + p {
+  margin-top: var(--ac-space-sm);
+}
+
+.bild {
+  margin-top: var(--ac-space-md);
+  aspect-ratio: 16 / 9;
+  max-width: 46rem;
+}

@@ -1,0 +1,16 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  /* Schutzraum ringsum, entsprechend der Hoehe des gruenen Dreiecks. */
+  padding: var(--ac-space-3xs);
+  margin: calc(var(--ac-space-3xs) * -1);
+  border-radius: var(--ac-radius-sm);
+}
+
+/* Klein und ruhig. Im Kopfbereich rund 8.5 rem breit, also gut ein Drittel
+   der frueheren Groesse. */
+.image {
+  width: clamp(7.5rem, 5rem + 5vw, 9.25rem);
+  height: auto;
+}

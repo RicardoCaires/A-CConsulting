@@ -1,0 +1,148 @@
+{
+  "$schema": "ac-website-tokens/1.0",
+  "beschreibung": "Website-spezifische Tokens. Farben stammen AUSSCHLIESSLICH aus ac-corporate-design.tokens.json; hier stehen nur Ableitungen (Interaktionszustaende) und Groessen, die es im Dokumentstandard nicht gibt (Raster, Radien, Web-Typoskala).",
+  "quelle_farben": "design/ac-corporate-design.tokens.json (Standard 1.1)",
+  "stand": "2026-09-07",
+  "color_derived": {
+    "link": {
+      "ref": "accent_green",
+      "verwendung": "Links im Fliesstext"
+    },
+    "link_hover": {
+      "hex": "#1A6127",
+      "verwendung": "abgeleitet aus accent_green, ca. 15 % abgedunkelt. Kontrast auf Weiss 7.4:1"
+    },
+    "surface_header": {
+      "ref": "white",
+      "verwendung": "Kopfbereich"
+    },
+    "surface_footer": {
+      "ref": "navy_deep",
+      "verwendung": "Fussbereich"
+    },
+    "focus_ring": {
+      "ref": "accent_green",
+      "verwendung": "Fokusrahmen Tastaturbedienung"
+    },
+    "on_navy": {
+      "ref": "white",
+      "verwendung": "Text auf navy-Flaechen"
+    },
+    "on_navy_muted": {
+      "ref": "deckblatt_subtitle",
+      "verwendung": "Sekundaertext auf navy-Flaechen"
+    },
+    "surface_soft": {
+      "ref": "background_light",
+      "verwendung": "Off-White-Flaeche, ruhiger Wechsel zu Weiss"
+    },
+    "surface_blue": {
+      "ref": "background_tint",
+      "verwendung": "sehr heller Navy-Tint, zweite Abstufung"
+    },
+    "surface_dominant": {
+      "ref": "navy_deep",
+      "verwendung": "die eine dominante Flaeche je Seite - Standard 1.1, flaechen_website.dominant"
+    },
+    "surface_recurring": {
+      "ref": "primary_navy",
+      "verwendung": "Flaeche wiederkehrender Elemente: Servicekarten, Abschluss - flaechen_website.wiederkehrend"
+    }
+  },
+  "space_rem": {
+    "3xs": 0.25,
+    "2xs": 0.5,
+    "xs": 0.75,
+    "sm": 1,
+    "md": 1.5,
+    "lg": 2,
+    "xl": 3,
+    "2xl": 4,
+    "3xl": 6
+  },
+  "layout": {
+    "content_max_ch": "60ch",
+    "container_max_px": 1160,
+    "container_narrow_px": 760,
+    "gutter": "clamp(1.25rem, 4vw, 2rem)",
+    "section_y": "clamp(3.75rem, 7vw, 7.5rem)",
+    "hinweis_section_y": "Ein einziger Abstand zwischen Abschnitten. Bewusst gross: Die Ruhe kommt aus wenigen hohen Bloecken, nicht aus vielen schwachen Toenungen."
+  },
+  "radius_px": {
+    "sm": 4,
+    "md": 8,
+    "lg": 14,
+    "xl": 20
+  },
+  "border_width_px": {
+    "hairline": 1,
+    "marker": 3,
+    "rule": 2
+  },
+  "font_web": {
+    "sans": "var(--ac-font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+    "display": "var(--ac-font-source-serif), Georgia, 'Times New Roman', serif",
+    "hinweis_display": "Source Serif 4, SIL OFL 1.1. Nur h1 bis h3. Standard 1.1, font.website_display."
+  },
+  "type_scale_web": {
+    "display": {
+      "size": "clamp(1.95rem, 1.1rem + 3.1vw, 3.5rem)",
+      "line": 1.08,
+      "weight": 600,
+      "tracking": "-0.018em"
+    },
+    "h1": {
+      "size": "clamp(2rem, 1.4rem + 2.6vw, 3rem)",
+      "line": 1.12,
+      "weight": 600,
+      "tracking": "-0.014em"
+    },
+    "h2": {
+      "size": "clamp(1.55rem, 1.2rem + 1.5vw, 2.35rem)",
+      "line": 1.16,
+      "weight": 600,
+      "tracking": "-0.012em"
+    },
+    "h3": {
+      "size": "clamp(1.075rem, 1.02rem + 0.28vw, 1.25rem)",
+      "line": 1.32,
+      "weight": 600,
+      "tracking": "-0.004em"
+    },
+    "lead": {
+      "size": "clamp(1.1rem, 1.03rem + 0.35vw, 1.32rem)",
+      "line": 1.62,
+      "weight": 400,
+      "tracking": "0"
+    },
+    "body": {
+      "size": "1.0625rem",
+      "line": 1.7,
+      "weight": 400,
+      "tracking": "0"
+    },
+    "small": {
+      "size": "0.9375rem",
+      "line": 1.62,
+      "weight": 400,
+      "tracking": "0"
+    },
+    "eyebrow": {
+      "size": "0.75rem",
+      "line": 1.4,
+      "weight": 620,
+      "tracking": "0.11em"
+    },
+    "stat": {
+      "size": "clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem)",
+      "line": 1,
+      "weight": 640,
+      "tracking": "-0.02em"
+    }
+  },
+  "motion": {
+    "fast": "120ms",
+    "base": "180ms",
+    "easing": "cubic-bezier(0.2, 0, 0.2, 1)"
+  }
+}

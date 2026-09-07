@@ -1,0 +1,78 @@
+/* Personenkarte. Kein Kasten — das Portraet traegt, der Text steht darunter. */
+
+.person {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Festes Hochformat. Bleibt beim Einsetzen der echten Aufnahme gleich. */
+.portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.body {
+  margin-top: var(--ac-space-sm);
+}
+
+.name {
+  font-size: var(--ac-h3-size);
+  line-height: var(--ac-h3-line);
+  font-weight: var(--ac-h3-weight);
+  letter-spacing: var(--ac-h3-tracking);
+  color: var(--ac-color-primary-navy);
+}
+
+.role {
+  margin-top: 0.1rem;
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Zustaendigkeit und Sprachen ---------------------------------------- */
+
+.detail {
+  margin-top: var(--ac-space-2xs);
+}
+
+.detailRow + .detailRow {
+  margin-top: var(--ac-space-3xs);
+}
+
+.detailValue {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-3xs);
+  margin: 0;
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-color-text-secondary);
+}
+
+.detailIcon {
+  flex: none;
+  color: var(--ac-color-accent-green);
+}
+
+/* ---- Kontakt ------------------------------------------------------------ */
+
+.contact {
+  margin-top: var(--ac-space-2xs);
+  font-size: var(--ac-small-size);
+}
+
+.contact a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+/* ---- Zwei nebeneinander ------------------------------------------------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ac-space-md);
+  margin-top: var(--ac-space-lg);
+  max-width: 52rem;
+}

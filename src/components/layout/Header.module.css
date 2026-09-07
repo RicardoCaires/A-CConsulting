@@ -1,0 +1,67 @@
+.header {
+  background-color: var(--ac-surface-header);
+  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  /* Bleibt beim Scrollen sichtbar — auf langen Seiten waere die Navigation
+     sonst nur ganz oben erreichbar. */
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ac-space-2xs);
+  min-height: 3.75rem;
+  padding-block: var(--ac-space-3xs);
+}
+
+/* Die Navigation sitzt zwischen Logo und Aktionen und nimmt den freien Platz. */
+.center {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  flex: none;
+}
+
+/* Der Kontakt-Knopf erscheint erst, wenn die offene Navigationsreihe da ist —
+   auf schmalen Geraeten steht Kontakt im Menue. */
+.cta {
+  display: none;
+}
+
+@media (min-width: 64rem) {
+  .inner {
+    gap: var(--ac-space-md);
+    min-height: 4rem;
+  }
+
+  .center {
+    justify-content: center;
+  }
+
+  .actions {
+    gap: var(--ac-space-sm);
+  }
+
+  .cta {
+    display: inline-flex;
+    min-height: 2.5rem;
+    padding-inline: var(--ac-space-md);
+    font-size: var(--ac-small-size);
+  }
+}
+
+@media print {
+  .header {
+    position: static;
+  }
+}

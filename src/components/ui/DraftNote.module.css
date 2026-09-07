@@ -1,0 +1,49 @@
+/* Redaktionsmarke. Absichtlich auffaellig — sie soll bei der Durchsicht ins
+   Auge springen und darf nie unbemerkt live gehen. */
+
+.note {
+  background-color: var(--ac-color-signal-warn-bg);
+  color: var(--ac-color-text-primary);
+  border-radius: var(--ac-radius-sm);
+}
+
+.inline {
+  display: inline;
+  box-shadow: inset 0 -1px 0 var(--ac-color-border-light);
+  /* Der Innenabstand wird nach aussen ausgeglichen, sonst steht ein direkt
+     folgendes Satzzeichen sichtbar abgesetzt: „… vereinbart wird ." */
+  padding: 0.08em 0.3em;
+  margin-inline: -0.08em;
+  font-size: 0.94em;
+}
+
+.block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--ac-space-3xs) var(--ac-space-2xs);
+  padding: var(--ac-space-2xs) var(--ac-space-sm);
+  margin-block: var(--ac-space-2xs);
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  border-inline-start: var(--ac-border-marker) solid var(--ac-color-signal-negative);
+}
+
+.label {
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: var(--ac-color-text-secondary);
+}
+
+.inline .label:not(:last-child)::after {
+  content: ' · ';
+  color: var(--ac-color-border-light);
+}
+
+@media print {
+  .note {
+    border: 1px solid var(--ac-color-text-secondary);
+  }
+}

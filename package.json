@@ -1,0 +1,41 @@
+{
+  "name": "ac-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Oeffentliche Firmenwebsite der A&C Consulting GmbH (ac-co.ch)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RicardoCaires/ac-website.git"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "tokens": "node scripts/generate-tokens.mjs",
+    "predev": "npm run tokens",
+    "prebuild": "npm run tokens",
+    "dev": "node ./node_modules/next/dist/bin/next dev -p 4321",
+    "build": "node ./node_modules/next/dist/bin/next build",
+    "start": "node ./node_modules/next/dist/bin/next start -p 4321",
+    "lint": "node ./node_modules/eslint/bin/eslint.js .",
+    "typecheck": "node ./node_modules/typescript/bin/tsc --noEmit",
+    "check": "npm run tokens && npm run check:colors && npm run check:source && npm run check:pending && npm run typecheck && npm run lint",
+    "check:colors": "node scripts/check-no-hex.mjs",
+    "check:pending": "node scripts/check-pending.mjs",
+    "check:source": "node scripts/check-source.mjs"
+  },
+  "dependencies": {
+    "next": "15.5.4",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "3.2.0",
+    "@types/node": "22.10.2",
+    "@types/react": "19.0.2",
+    "@types/react-dom": "19.0.2",
+    "eslint": "9.17.0",
+    "eslint-config-next": "15.5.4",
+    "typescript": "5.7.2"
+  }
+}

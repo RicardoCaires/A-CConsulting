@@ -1,0 +1,308 @@
+/**
+ * Bedienoberflaeche — Beschriftungen, die auf jeder Seite vorkommen.
+ *
+ * Hier stehen nur kurze, wiederkehrende Begriffe (Navigation, Sprachwahl,
+ * Fussbereich). Seiteninhalte gehoeren nach `src/content/`.
+ *
+ * Alle drei Sprachen sind hier vollstaendig — das erzwingt der Typ.
+ * FR ist Schweizer Franzoesisch, PT europaeisches Portugiesisch.
+ */
+
+import type { Locale } from '../config'
+import type { NavSectionKey, PageKey } from '../routes'
+
+type UiMessages = {
+  /** Sprungmarke fuer Tastatur- und Screenreader-Bedienung. */
+  skipToContent: string
+  /** Beschriftung des Logo-Links. */
+  toHomepage: string
+  nav: {
+    label: string
+    menu: string
+    close: string
+  }
+  language: {
+    label: string
+    choose: string
+    /** Hinweis, in welchen Sprachen beraten wird. */
+    spokenNote: string
+    /** Fuer Sprachen, deren Uebersetzung noch aussteht. */
+    notAvailable: string
+  }
+  /** Beschriftung der Seiteneinordnung auf Unterseiten. */
+  breadcrumbLabel: string
+  footer: {
+    contactHeading: string
+    legalHeading: string
+    servicesHeading: string
+    /** Spaltentitel „Unternehmen" im Fussbereich. */
+    companyHeading: string
+    phone: string
+    email: string
+    uid: string
+    finma: string
+    /** Kurze Rollenangabe im Fussbereich. */
+    roleNote: string
+  }
+  /** Beschriftung der Seiten in Navigation und Fussbereich. */
+  page: Record<PageKey, string>
+  /**
+   * Beschriftung der Unterpunkte, die auf einen Abschnitt fuehren.
+   * Sie sind Navigationsbezeichnungen, keine Seitentitel.
+   */
+  navSection: Record<NavSectionKey, string>
+  /** Beschriftung der Adresszeile im Direktkontakt. */
+  contactAddressLabel: string
+  /**
+   * Beschriftungen in der Personenkarte. Sie stehen nicht sichtbar auf der
+   * Seite, sondern ordnen die Angaben fuer Hilfstechnik zu.
+   */
+  person: {
+    responsibility: string
+    languages: string
+  }
+  /** Beschriftung der Sprungmarken innerhalb einer Seite. */
+  sectionsNavLabel: string
+  /** Hinweis am Formular, solange der Endpunkt fehlt. */
+  formPending: string
+  /** Verweis auf eine Seite, die es noch nicht gibt. */
+  pageComing: {
+    /** Kurzer sichtbarer Vermerk neben der Beschriftung. */
+    badge: string
+    /** Ausfuehrlicher Hinweis, nur fuer Screenreader. */
+    hint: string
+  }
+  notFound: {
+    title: string
+    body: string
+    action: string
+  }
+}
+
+export const ui: Record<Locale, UiMessages> = {
+  de: {
+    skipToContent: 'Zum Inhalt springen',
+    toHomepage: 'A&C Consulting — zur Startseite',
+    nav: {
+      label: 'Hauptnavigation',
+      menu: 'Menü',
+      close: 'Schliessen',
+    },
+    language: {
+      label: 'Sprache',
+      choose: 'Sprache wählen',
+      spokenNote: 'Beratung auf Deutsch, Französisch und Portugiesisch.',
+      notAvailable: 'Diese Sprachfassung wird noch erstellt.',
+    },
+    breadcrumbLabel: 'Sie sind hier',
+    footer: {
+      contactHeading: 'Kontakt',
+      legalHeading: 'Rechtliches',
+      servicesHeading: 'Leistungen',
+      companyHeading: 'Unternehmen',
+      phone: 'Telefon',
+      email: 'E-Mail',
+      uid: 'UID',
+      finma: 'FINMA-Register',
+      roleNote: 'Versicherungsbroker · Treuhand · Steuern',
+    },
+    page: {
+      home: 'Startseite',
+      versicherungen: 'Versicherungen',
+      treuhand: 'Treuhand',
+      buchhaltung: 'Buchhaltung',
+      lohnbuchhaltung: 'Lohnbuchhaltung',
+      mehrwertsteuer: 'Mehrwertsteuer',
+      jahresabschluss: 'Jahresabschluss',
+      treuhaenderWechseln: 'Treuhänder wechseln',
+      steuern: 'Steuern',
+      firmengruendung: 'Firmengründung',
+      ueberUns: 'Über uns',
+      transparenz: 'Transparenz',
+      schadenfall: 'Schadenfall',
+      kontakt: 'Kontakt',
+      impressum: 'Impressum',
+      datenschutz: 'Datenschutz',
+    },
+    contactAddressLabel: 'Adresse',
+    person: {
+      responsibility: 'Zuständigkeit',
+      languages: 'Sprachen',
+    },
+    sectionsNavLabel: 'Abschnitte dieser Seite',
+    formPending:
+      'Das Formular wird aufgeschaltet, sobald der serverseitige Endpunkt eingerichtet ist. Bis dahin erreichen Sie uns telefonisch oder per E-Mail.',
+    pageComing: {
+      badge: 'folgt',
+      hint: 'Diese Seite ist noch nicht verfügbar.',
+    },
+    navSection: {
+      privatkunden: 'Privatkunden',
+      unternehmen: 'Unternehmen',
+      vertragspruefung: 'Vertragsprüfung',
+      schadenfall: 'Schadenfall',
+      team: 'Team',
+      arbeitsweise: 'Arbeitsweise',
+      erstgespraech: 'Erstgespräch',
+      rueckruf: 'Rückruf',
+      standort: 'Standort',
+    },
+    notFound: {
+      title: 'Seite nicht gefunden',
+      body: 'Die aufgerufene Adresse gibt es nicht oder nicht mehr.',
+      action: 'Zur Startseite',
+    },
+  },
+
+  fr: {
+    skipToContent: 'Aller au contenu',
+    toHomepage: 'A&C Consulting — page d’accueil',
+    nav: {
+      label: 'Navigation principale',
+      menu: 'Menu',
+      close: 'Fermer',
+    },
+    language: {
+      label: 'Langue',
+      choose: 'Choisir la langue',
+      spokenNote: 'Conseil en allemand, français et portugais.',
+      notAvailable: 'Cette version linguistique est en préparation.',
+    },
+    breadcrumbLabel: 'Vous êtes ici',
+    footer: {
+      contactHeading: 'Contact',
+      legalHeading: 'Mentions légales',
+      servicesHeading: 'Prestations',
+      companyHeading: 'Entreprise',
+      phone: 'Téléphone',
+      email: 'Courriel',
+      uid: 'IDE',
+      finma: 'Registre FINMA',
+      roleNote: 'Courtier en assurances · Fiduciaire · Impôts',
+    },
+    page: {
+      home: 'Accueil',
+      versicherungen: 'Assurances',
+      treuhand: 'Fiduciaire',
+      buchhaltung: 'Comptabilité',
+      lohnbuchhaltung: 'Salaires',
+      mehrwertsteuer: 'TVA',
+      jahresabschluss: 'Clôture annuelle',
+      treuhaenderWechseln: 'Changer de fiduciaire',
+      steuern: 'Impôts',
+      firmengruendung: 'Création d’entreprise',
+      ueberUns: 'À propos',
+      transparenz: 'Transparence',
+      schadenfall: 'Sinistre',
+      kontakt: 'Contact',
+      impressum: 'Mentions légales',
+      datenschutz: 'Protection des données',
+    },
+    contactAddressLabel: 'Adresse',
+    person: {
+      responsibility: 'Domaine de responsabilité',
+      languages: 'Langues',
+    },
+    sectionsNavLabel: 'Sections de cette page',
+    formPending:
+      'Le formulaire sera activé dès que le point de réception côté serveur sera en place. D’ici là, vous pouvez nous joindre par téléphone ou par courriel.',
+    pageComing: {
+      badge: 'à venir',
+      hint: 'Cette page n’est pas encore disponible.',
+    },
+    navSection: {
+      privatkunden: 'Particuliers',
+      unternehmen: 'Entreprises',
+      vertragspruefung: 'Analyse des contrats',
+      schadenfall: 'Sinistre',
+      team: 'Équipe',
+      arbeitsweise: 'Méthode de travail',
+      erstgespraech: 'Premier entretien',
+      rueckruf: 'Rappel',
+      standort: 'Adresse',
+    },
+    notFound: {
+      title: 'Page introuvable',
+      body: 'L’adresse demandée n’existe pas ou n’existe plus.',
+      action: 'Retour à l’accueil',
+    },
+  },
+
+  pt: {
+    skipToContent: 'Ir para o conteúdo',
+    toHomepage: 'A&C Consulting — página inicial',
+    nav: {
+      label: 'Navegação principal',
+      menu: 'Menu',
+      close: 'Fechar',
+    },
+    language: {
+      label: 'Idioma',
+      choose: 'Escolher idioma',
+      spokenNote: 'Aconselhamento em alemão, francês e português.',
+      notAvailable: 'Esta versão linguística está em preparação.',
+    },
+    breadcrumbLabel: 'Encontra-se aqui',
+    footer: {
+      contactHeading: 'Contacto',
+      legalHeading: 'Informação legal',
+      servicesHeading: 'Serviços',
+      companyHeading: 'Empresa',
+      phone: 'Telefone',
+      email: 'E-mail',
+      uid: 'IDE',
+      finma: 'Registo FINMA',
+      roleNote: 'Corretor de seguros · Fiduciária · Impostos',
+    },
+    page: {
+      home: 'Início',
+      versicherungen: 'Seguros',
+      treuhand: 'Fiduciária',
+      buchhaltung: 'Contabilidade',
+      lohnbuchhaltung: 'Salários',
+      mehrwertsteuer: 'IVA',
+      jahresabschluss: 'Encerramento anual',
+      treuhaenderWechseln: 'Mudar de fiduciária',
+      steuern: 'Impostos',
+      firmengruendung: 'Constituição de empresa',
+      ueberUns: 'Sobre nós',
+      transparenz: 'Transparência',
+      schadenfall: 'Sinistro',
+      kontakt: 'Contacto',
+      impressum: 'Informação legal',
+      datenschutz: 'Proteção de dados',
+    },
+    contactAddressLabel: 'Morada',
+    person: {
+      responsibility: 'Área de responsabilidade',
+      languages: 'Línguas',
+    },
+    sectionsNavLabel: 'Secções desta página',
+    formPending:
+      'O formulário será activado assim que o ponto de recepção no servidor estiver disponível. Até lá, contacte-nos por telefone ou por e-mail.',
+    pageComing: {
+      badge: 'em breve',
+      hint: 'Esta página ainda não está disponível.',
+    },
+    navSection: {
+      privatkunden: 'Particulares',
+      unternehmen: 'Empresas',
+      vertragspruefung: 'Análise de contratos',
+      schadenfall: 'Sinistro',
+      team: 'Equipa',
+      arbeitsweise: 'Forma de trabalhar',
+      erstgespraech: 'Primeira conversa',
+      rueckruf: 'Chamada de volta',
+      standort: 'Localização',
+    },
+    notFound: {
+      title: 'Página não encontrada',
+      body: 'O endereço indicado não existe ou já não está disponível.',
+      action: 'Voltar ao início',
+    },
+  },
+}
+
+export function getUi(locale: Locale): UiMessages {
+  return ui[locale]
+}

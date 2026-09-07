@@ -1,0 +1,80 @@
+/* Abschlussblock. */
+
+.section {
+  /* Der Abschluss steht dem Fussbereich naeher als dem Text darueber. */
+  padding-block-end: var(--ac-section-y);
+}
+
+/* Gruene Oberkante — der zweite und letzte Ort, an dem Gruen Flaeche ist. */
+.tintEdge {
+  border-top: var(--ac-border-marker) solid var(--ac-color-accent-green);
+}
+
+.inner {
+  max-width: 42rem;
+}
+
+.heading {
+  font-size: var(--ac-h2-size);
+  line-height: var(--ac-h2-line);
+  font-weight: var(--ac-h2-weight);
+  letter-spacing: var(--ac-h2-tracking);
+  max-width: 20ch;
+}
+
+.lead {
+  margin-top: var(--ac-space-sm);
+  max-width: 46ch;
+  font-size: var(--ac-lead-size);
+  line-height: var(--ac-lead-line);
+  color: var(--ac-color-text-secondary);
+}
+
+:global(.on-navy) .lead {
+  color: var(--ac-on-navy-muted);
+}
+
+/* ---- Direktkontakt ------------------------------------------------------ */
+
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ac-space-2xs) var(--ac-space-lg);
+  margin: var(--ac-space-md) 0 0;
+  padding: 0;
+}
+
+.contact {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  min-height: 2.875rem;
+  font-size: var(--ac-lead-size);
+  font-variant-numeric: tabular-nums;
+  color: var(--ac-color-primary-navy);
+  text-decoration: none;
+}
+
+.contact:hover {
+  color: var(--ac-link-hover);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+:global(.on-navy) .contact {
+  color: var(--ac-color-white);
+  text-decoration: none;
+}
+
+:global(.on-navy) .contact:hover {
+  text-decoration: underline;
+}
+
+/* ---- Knoepfe ------------------------------------------------------------ */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ac-space-2xs);
+  margin-top: var(--ac-space-md);
+}

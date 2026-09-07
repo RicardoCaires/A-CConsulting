@@ -1,0 +1,128 @@
+/* Karte fuer einen Leistungsbereich.
+
+   Gefuellte Flaeche statt Rahmen. Die Karte hebt sich beim Zeigen leicht an —
+   das ist die einzige Bewegung, und sie faellt bei reduzierter Bewegung weg. */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ac-space-2xs);
+  height: 100%;
+  padding: var(--ac-space-md) var(--ac-space-md) var(--ac-space-lg);
+  background-color: var(--ac-color-white);
+  border-radius: var(--ac-radius-xl);
+  transition:
+    transform var(--ac-motion-base) var(--ac-motion-easing),
+    box-shadow var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+/* Auf weisser Flaeche braucht die Karte einen eigenen Grund. */
+:global(.ac-section:not(.ac-section--tint):not(.ac-section--blue)) .card {
+  background-color: var(--ac-surface-soft);
+}
+
+.heading {
+  margin-top: var(--ac-space-2xs);
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.45rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+/* Der Link traegt den Namen, die Flaeche daruebergespannt macht die ganze
+   Karte anklickbar. */
+.link {
+  color: var(--ac-color-primary-navy);
+  text-decoration: none;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.card:hover .link {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+/* Fokus liegt am Link, sichtbar werden muss die Karte. */
+.card:has(.link:focus-visible) {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ---- Stichworte --------------------------------------------------------- */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ac-space-3xs);
+  margin: var(--ac-space-3xs) 0 0;
+  padding: 0;
+}
+
+.chip {
+  padding: 0.2rem var(--ac-space-2xs);
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-white);
+  border-radius: var(--ac-radius-sm);
+}
+
+:global(.ac-section:not(.ac-section--tint):not(.ac-section--blue)) .chip {
+  background-color: var(--ac-color-white);
+}
+
+:global(.ac-section--tint) .chip,
+:global(.ac-section--blue) .chip {
+  background-color: var(--ac-color-background-tint);
+}
+
+/* ---- Weiterfuehrung ----------------------------------------------------- */
+
+.arrow {
+  margin-top: auto;
+  padding-top: var(--ac-space-sm);
+  color: var(--ac-color-accent-green);
+}
+
+/* ---- Seite gibt es noch nicht ------------------------------------------- */
+
+.cardPending {
+  opacity: 0.72;
+}
+
+.pendingHeading {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--ac-space-3xs);
+  color: var(--ac-color-text-secondary);
+}
+
+.badge {
+  padding: 0.1rem var(--ac-space-3xs);
+  font-size: var(--ac-small-size);
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-background-tint);
+  border-radius: var(--ac-radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card:hover {
+    transform: none;
+    transition: none;
+  }
+}

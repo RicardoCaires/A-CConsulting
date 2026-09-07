@@ -1,0 +1,66 @@
+/* Band ueber einer Vorlagenvorschau. Bewusst technisch, damit es sich klar von
+   der Vorlage darunter absetzt. */
+
+.band {
+  padding-block: var(--ac-space-md);
+  background-color: var(--ac-color-navy-deep);
+  color: var(--ac-on-navy);
+}
+
+.warnung {
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-accent-green-light);
+}
+
+.name {
+  margin-top: var(--ac-space-3xs);
+  font-size: var(--ac-h3-size);
+  line-height: var(--ac-h3-line);
+  font-family: ui-monospace, 'SFMono-Regular', 'Consolas', monospace;
+  color: var(--ac-color-white);
+}
+
+.angaben {
+  margin-top: var(--ac-space-sm);
+  display: grid;
+  gap: var(--ac-space-2xs);
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+}
+
+.angaben dt {
+  color: var(--ac-on-navy-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--ac-eyebrow-tracking);
+  font-size: 0.8em;
+}
+
+.angaben dd {
+  margin: 0.1rem 0 0;
+  color: var(--ac-color-white);
+}
+
+.zurueck {
+  margin-top: var(--ac-space-sm);
+  font-size: var(--ac-small-size);
+}
+
+.zurueck a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--ac-color-white);
+  text-decoration: underline;
+  text-decoration-color: var(--ac-color-brand-grey);
+  text-underline-offset: 0.2em;
+}
+
+@media (min-width: 48rem) {
+  .angaben {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--ac-space-md);
+  }
+}

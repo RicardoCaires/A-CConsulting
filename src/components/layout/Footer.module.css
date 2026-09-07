@@ -1,0 +1,165 @@
+.footer {
+  background-color: var(--ac-surface-footer);
+  color: var(--ac-on-navy);
+  /* Gruene Akzentlinie oben — der Marker aus dem Corporate Design.
+     Kein zusaetzlicher Aussenabstand: den bringt die letzte Sektion mit. */
+  border-top: var(--ac-border-marker) solid var(--ac-color-accent-green);
+}
+
+.inner {
+  display: grid;
+  gap: var(--ac-space-lg);
+  padding-block: var(--ac-space-lg) var(--ac-space-md);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ac-space-2xs);
+}
+
+.role {
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ac-on-navy);
+}
+
+.languages,
+.columnTitle,
+.address,
+.registry,
+.linkList {
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+}
+
+.languages {
+  color: var(--ac-on-navy-muted);
+  max-width: var(--ac-content-measure);
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  margin-top: var(--ac-space-2xs);
+  color: var(--ac-on-navy-muted);
+}
+
+.address span {
+  padding-block: 0.08rem;
+}
+
+.companyName {
+  color: var(--ac-on-navy);
+  font-weight: 600;
+}
+
+.columns {
+  display: grid;
+  gap: var(--ac-space-md) var(--ac-space-lg);
+}
+
+.columnTitle {
+  font-size: var(--ac-eyebrow-size);
+  line-height: var(--ac-eyebrow-line);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-on-navy-muted);
+  margin-bottom: var(--ac-space-2xs);
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.registry {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--ac-space-2xs);
+  row-gap: 0.15rem;
+  margin: var(--ac-space-sm) 0 0;
+  color: var(--ac-on-navy-muted);
+}
+
+.registry dt {
+  color: var(--ac-on-navy-muted);
+}
+
+.registry dd {
+  margin: 0;
+  color: var(--ac-on-navy);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Im Fussbereich wird auf dem Smartphone tatsaechlich getippt — die Links
+   brauchen mehr als die Hoehe ihrer Textzeile. */
+.linkList a,
+.address a,
+.columnTitle a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+}
+
+/* Links auf dunklem Grund: das Markengruen traegt hier nicht genug Kontrast,
+   darum weiss mit Unterstreichung. */
+.footer a {
+  color: var(--ac-on-navy);
+  text-decoration: underline;
+  text-decoration-color: var(--ac-color-brand-grey);
+  text-underline-offset: 0.2em;
+}
+
+.footer a:hover {
+  color: var(--ac-color-white);
+  text-decoration-color: var(--ac-color-accent-green-light);
+}
+
+.columnTitle a {
+  color: var(--ac-on-navy-muted);
+  text-decoration: none;
+}
+
+.columnTitle a:hover {
+  color: var(--ac-color-white);
+  text-decoration: underline;
+}
+
+/* Unterpunkt, den es noch nicht gibt. */
+.pending {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  color: var(--ac-color-brand-grey);
+}
+
+@media (min-width: 40rem) {
+  .columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 56rem) {
+  .columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 72rem) {
+  .inner {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 2.6fr);
+    gap: var(--ac-space-xl);
+  }
+
+  .columns {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--ac-space-md) var(--ac-space-sm);
+  }
+}

@@ -1,0 +1,190 @@
+/* Styleguide. Arbeitsmittel — bewusst nuechtern, damit die Bausteine und
+   nicht die Seite drumherum beurteilt werden. */
+
+.seite {
+  padding-bottom: var(--ac-space-3xl);
+}
+
+.kopf {
+  border-bottom: var(--ac-border-marker) solid var(--ac-color-accent-green);
+}
+
+/* ---- Ein Baustein ------------------------------------------------------- */
+
+.probe {
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.probeKopf {
+  padding-block: var(--ac-space-md) var(--ac-space-2xs);
+}
+
+.probeTitel {
+  font-size: var(--ac-h3-size);
+  line-height: var(--ac-h3-line);
+  font-weight: var(--ac-h3-weight);
+  font-family: ui-monospace, 'SFMono-Regular', 'Consolas', monospace;
+  color: var(--ac-color-accent-green);
+}
+
+.probeHinweis {
+  margin-top: var(--ac-space-3xs);
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-color-text-secondary);
+  max-width: var(--ac-content-measure);
+}
+
+.buehne {
+  padding-block: var(--ac-space-lg);
+}
+
+/* ---- Icons -------------------------------------------------------------- */
+
+.iconRaster {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  gap: var(--ac-space-2xs);
+  margin: 0;
+  padding: 0;
+}
+
+.iconFeld {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ac-space-3xs);
+  padding: var(--ac-space-sm) var(--ac-space-3xs);
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-surface-soft);
+  border-radius: var(--ac-radius-md);
+}
+
+.iconFeld code,
+.toneFeld code {
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+  text-align: center;
+}
+
+/* ---- Toene -------------------------------------------------------------- */
+
+.toneRaster {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--ac-space-2xs);
+  margin: 0;
+  padding: 0;
+}
+
+.toneFeld {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  padding: var(--ac-space-md) var(--ac-space-2xs);
+  background-color: var(--ac-surface-soft);
+  border-radius: var(--ac-radius-md);
+}
+
+.toneDunkel {
+  background-color: var(--ac-color-navy-deep);
+}
+
+.toneDunkel code {
+  color: var(--ac-on-navy-muted);
+}
+
+/* ---- Karten ------------------------------------------------------------- */
+
+.kartenRaster {
+  display: grid;
+  gap: var(--ac-space-sm);
+  margin: 0;
+  padding: 0;
+}
+
+.kartenRaster > li {
+  display: flex;
+}
+
+.kartenRaster > li > * {
+  width: 100%;
+}
+
+/* ---- Bilder ------------------------------------------------------------- */
+
+.bildRaster {
+  display: grid;
+  gap: var(--ac-space-sm);
+  max-width: 46rem;
+}
+
+.hoch {
+  aspect-ratio: 3 / 4;
+  max-width: 18rem;
+}
+
+@media (min-width: 48rem) {
+  .kartenRaster {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .bildRaster {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+/* ---- Die drei Vorlagen --------------------------------------------------- */
+
+.vorlagen {
+  display: grid;
+  gap: var(--ac-space-sm);
+  margin: 0;
+  padding: 0;
+}
+
+.vorlage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ac-space-3xs);
+  height: 100%;
+  padding: var(--ac-space-md);
+  background-color: var(--ac-color-white);
+  border-radius: var(--ac-radius-xl);
+  text-decoration: none;
+}
+
+.vorlage:hover .vorlageZweck {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.vorlageName {
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-accent-green);
+}
+
+.vorlageZweck {
+  font-size: var(--ac-h3-size);
+  line-height: var(--ac-h3-line);
+  font-weight: var(--ac-h3-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.vorlageAbfolge {
+  margin-top: var(--ac-space-3xs);
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-color-text-secondary);
+}
+
+@media (min-width: 48rem) {
+  .vorlagen {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

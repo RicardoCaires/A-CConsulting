@@ -1,0 +1,27 @@
+/* Verweis auf eine Seite, die es noch nicht gibt: sichtbar, aber nicht
+   klickbar — und als solcher erkennbar. Keine Unterstreichung, die einen Link
+   vortaeuscht. */
+
+.pending {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--ac-space-2xs);
+  color: var(--ac-color-text-secondary);
+  cursor: default;
+}
+
+.badge {
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-background-tint);
+  border-radius: var(--ac-radius-sm);
+  padding: 0.1em 0.45em;
+  white-space: nowrap;
+}
+
+.label {
+  min-width: 0;
+}

@@ -1,0 +1,69 @@
+/* Angaben als Paare. Eine feine Trennlinie zwischen den Zeilen, sonst nichts. */
+
+.facts {
+  margin: var(--ac-space-md) 0 0;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ac-space-sm);
+  padding-block: var(--ac-space-2xs);
+}
+
+.rows .row + .row {
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+:global(.on-navy) .rows .row + .row {
+  border-top-color: var(--ac-on-navy-muted);
+}
+
+.icon {
+  margin-top: 0.1rem;
+}
+
+.pair {
+  min-width: 0;
+}
+
+.label {
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  letter-spacing: var(--ac-small-tracking);
+  color: var(--ac-color-text-secondary);
+}
+
+:global(.on-navy) .label {
+  color: var(--ac-on-navy-muted);
+}
+
+.value {
+  margin: 0.1rem 0 0;
+  font-weight: 550;
+  color: var(--ac-color-primary-navy);
+  /* Nummern gleich breit, damit Zeiten und Registernummern untereinander
+     stehen statt zu flimmern. */
+  font-variant-numeric: tabular-nums;
+}
+
+:global(.on-navy) .value {
+  color: var(--ac-color-white);
+}
+
+.value a {
+  color: inherit;
+}
+
+/* ---- Zweispaltig -------------------------------------------------------- */
+
+.grid {
+  display: grid;
+  gap: var(--ac-space-2xs) var(--ac-space-lg);
+}
+
+@media (min-width: 40rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

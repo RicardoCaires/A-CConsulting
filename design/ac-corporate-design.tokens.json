@@ -1,0 +1,389 @@
+{
+  "$schema": "ac-corporate-design/1.0",
+  "marke": "A&C Consulting GmbH",
+  "version": "1.1",
+  "stand": "2026-09-07",
+  "quelle": "Firmenlogo (Pixelanalyse) + 40 bestehende A&C-Office-Dokumente + Website-Hausordnung",
+  "color": {
+    "primary_navy": {
+      "hex": "#1A3A5C",
+      "rgb": [
+        26,
+        58,
+        92
+      ],
+      "twips_word": "1A3A5C",
+      "verwendung": "Wortmarke, Ueberschriften, Kopfzeilenlinie, Tabellenkopf, Diagrammserie 1; Website: Flaeche wiederkehrender Elemente (Servicekarten, Abschluss)"
+    },
+    "navy_deep": {
+      "hex": "#08234E",
+      "rgb": [
+        8,
+        35,
+        78
+      ],
+      "twips_word": "08234E",
+      "verwendung": "grosse Flaechen: Titelband, Deckblatt, Abschnittsfolie; Website: die eine dominante Flaeche je Seite und der Fussbereich"
+    },
+    "accent_green": {
+      "hex": "#207730",
+      "rgb": [
+        32,
+        119,
+        48
+      ],
+      "twips_word": "207730",
+      "verwendung": "nur Akzent: Marker, Haekchen, Infobox-Balken, Diagrammserie 2"
+    },
+    "accent_green_light": {
+      "hex": "#3E9E4E",
+      "rgb": [
+        62,
+        158,
+        78
+      ],
+      "twips_word": "3E9E4E",
+      "verwendung": "aufgehelltes Markengruen NUR auf navy_deep - Negativlogo, Titelfolie, Deckblattband"
+    },
+    "brand_grey": {
+      "hex": "#6E7480",
+      "rgb": [
+        110,
+        116,
+        128
+      ],
+      "twips_word": "6E7480",
+      "verwendung": "Logo-Sekundaerton, Diagrammserie 3"
+    },
+    "text_primary": {
+      "hex": "#222222",
+      "rgb": [
+        34,
+        34,
+        34
+      ],
+      "twips_word": "222222",
+      "verwendung": "Fliesstext"
+    },
+    "text_secondary": {
+      "hex": "#555555",
+      "rgb": [
+        85,
+        85,
+        85
+      ],
+      "twips_word": "555555",
+      "verwendung": "Feldbeschriftung, Erlaeuterung, Achsentext"
+    },
+    "text_muted": {
+      "hex": "#888888",
+      "rgb": [
+        136,
+        136,
+        136
+      ],
+      "twips_word": "888888",
+      "verwendung": "nur Fusszeile, Seitenzahl, Meta"
+    },
+    "border_light": {
+      "hex": "#CCCCCC",
+      "rgb": [
+        204,
+        204,
+        204
+      ],
+      "twips_word": "CCCCCC",
+      "verwendung": "Trennlinien, Tabellenlinien, Formularlinien"
+    },
+    "border_tint": {
+      "hex": "#B0C4DE",
+      "rgb": [
+        176,
+        196,
+        222
+      ],
+      "twips_word": "B0C4DE",
+      "verwendung": "leichte Tabellenrahmen in Vertraegen"
+    },
+    "background_light": {
+      "hex": "#F2F4F6",
+      "rgb": [
+        242,
+        244,
+        246
+      ],
+      "twips_word": "F2F4F6",
+      "verwendung": "Zeilenbaenderung, Infobox, KPI-Karte"
+    },
+    "background_tint": {
+      "hex": "#E2E8EF",
+      "rgb": [
+        226,
+        232,
+        239
+      ],
+      "twips_word": "E2E8EF",
+      "verwendung": "zweite Baenderungsstufe, Diagramm-Gitterlinien"
+    },
+    "signal_negative": {
+      "hex": "#C0392B",
+      "rgb": [
+        192,
+        57,
+        43
+      ],
+      "twips_word": "C0392B",
+      "verwendung": "negative Betraege, Fristenwarnung"
+    },
+    "signal_positive_bg": {
+      "hex": "#E8F5E9",
+      "rgb": [
+        232,
+        245,
+        233
+      ],
+      "twips_word": "E8F5E9",
+      "verwendung": "Bestaetigungsfeld"
+    },
+    "signal_warn_bg": {
+      "hex": "#FFF9C4",
+      "rgb": [
+        255,
+        249,
+        196
+      ],
+      "twips_word": "FFF9C4",
+      "verwendung": "Eingabefeld durch Kunde"
+    },
+    "white": {
+      "hex": "#FFFFFF",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "twips_word": "FFFFFF",
+      "verwendung": "Grundflaeche"
+    },
+    "deckblatt_subtitle": {
+      "hex": "#C3CCDB",
+      "rgb": [
+        195,
+        204,
+        219
+      ],
+      "twips_word": "C3CCDB",
+      "verwendung": "Untertitel auf navy_deep"
+    }
+  },
+  "verboten_color": [
+    "#2E74B5",
+    "#4472C4",
+    "#0563C1",
+    "#1F4D78",
+    "#0E2841",
+    "#156082",
+    "#E97132",
+    "#196B24",
+    "#0F9ED5",
+    "#A02B93",
+    "#4EA72E",
+    "#000000"
+  ],
+  "font": {
+    "dokument": "Arial",
+    "fallback": [
+      "Helvetica",
+      "sans-serif"
+    ],
+    "website": "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif",
+    "symbol": "Segoe UI Symbol",
+    "verboten": [
+      "Calibri",
+      "Cambria",
+      "Times New Roman",
+      "Aptos",
+      "Aptos Narrow",
+      "SF Pro",
+      "Courier New"
+    ],
+    "website_display": "Source Serif 4, Georgia, serif",
+    "website_display_rolle": "Display, nur digital, nur h1 bis h3",
+    "website_display_lizenz": "SIL Open Font License 1.1",
+    "website_display_quelle": "Adobe, github.com/adobe-fonts/source-serif, Fassung Source Serif 4 (2021)",
+    "website_display_geprueft": "2026-09-07",
+    "website_display_begruendung": "Als Begleiterin einer neutralen Groteske entworfen; sachlich statt zierend. Subsets latin und latin-ext decken DE, FR und PT vollstaendig ab. Selbst hostbar - die Website laedt keine Schrift von einem fremden Server."
+  },
+  "type_scale_pt": {
+    "deckblatt_titel": {
+      "size": 28,
+      "bold": true,
+      "color": "primary_navy"
+    },
+    "h1": {
+      "size": 18,
+      "bold": true,
+      "color": "primary_navy",
+      "space_before": 0,
+      "space_after": 12
+    },
+    "h2": {
+      "size": 13,
+      "bold": true,
+      "color": "primary_navy",
+      "space_before": 18,
+      "space_after": 6
+    },
+    "h3": {
+      "size": 11,
+      "bold": true,
+      "color": "text_primary",
+      "space_before": 12,
+      "space_after": 4
+    },
+    "body": {
+      "size": 10.5,
+      "bold": false,
+      "color": "text_primary",
+      "space_after": 6,
+      "line": 1.15
+    },
+    "body_dense": {
+      "size": 10,
+      "bold": false,
+      "color": "text_primary",
+      "space_after": 4,
+      "line": 1.1
+    },
+    "table_cell": {
+      "size": 9.5,
+      "bold": false,
+      "color": "text_primary",
+      "line": 1.05
+    },
+    "table_head": {
+      "size": 9,
+      "bold": true,
+      "color": "white"
+    },
+    "field_label": {
+      "size": 9,
+      "bold": false,
+      "color": "text_secondary"
+    },
+    "small": {
+      "size": 8,
+      "bold": false,
+      "color": "text_secondary"
+    },
+    "header_doctype": {
+      "size": 9.5,
+      "bold": true,
+      "color": "primary_navy"
+    },
+    "header_subtitle": {
+      "size": 8.5,
+      "bold": false,
+      "color": "text_muted"
+    },
+    "footer": {
+      "size": 8,
+      "bold": false,
+      "color": "text_muted"
+    }
+  },
+  "page": {
+    "format": "A4",
+    "breite_cm": 21.0,
+    "hoehe_cm": 29.7,
+    "rand_cm": {
+      "oben": 2.3,
+      "unten": 2.3,
+      "links": 2.3,
+      "rechts": 2.3
+    },
+    "rand_twips": 1300,
+    "kopf_fuss_abstand_cm": 1.25,
+    "kopf_fuss_abstand_twips": 708,
+    "satzspiegel_breite_cm": 16.4
+  },
+  "logo": {
+    "datei": "assets/ac-logo.png",
+    "datei_negativ": "assets/ac-logo-negativ.png",
+    "datei_mono_weiss": "assets/ac-logo-weiss-mono.png",
+    "pixel": [
+      1064,
+      234
+    ],
+    "seitenverhaeltnis": 4.55,
+    "hinweis_hoehe": "Hoehe nie fest setzen - immer aus der Breite ableiten. Bestand Treuhandmandat_DE.dotx verzerrt das Logo (5.37 x 1.38 statt 5.37 x 1.18 cm).",
+    "breite_kopfzeile_cm": 5.4,
+    "hoehe_kopfzeile_cm": 1.19,
+    "breite_deckblatt_cm": 7.0,
+    "mindestbreite_cm": 3.2,
+    "schutzraum_cm": 0.5,
+    "farben": {
+      "berg_navy": "#08234E",
+      "berg_grau": "#6E7480",
+      "spitze_gruen": "#207730",
+      "trennlinie": "#AAAAAA",
+      "wortmarke": "#1A3A5C",
+      "gmbh": "#737C85"
+    }
+  },
+  "linien_pt": {
+    "hairline": 0.25,
+    "formularfeld": 0.5,
+    "summenzeile": 0.75,
+    "infobox_balken": 3.0
+  },
+  "diagramm_serien": [
+    "#1A3A5C",
+    "#207730",
+    "#6E7480",
+    "#B0C4DE",
+    "#08234E"
+  ],
+  "zahlenformate": {
+    "chf": "#'##0.00;[Red](#'##0.00);\\-",
+    "chf_ohne_rappen": "#'##0;[Red](#'##0);\\-",
+    "datum": "dd.mm.yyyy",
+    "prozent": "0.0%;(0.0%);\\-",
+    "beispiel_betrag": "CHF 1'234.55",
+    "beispiel_datum": "31.12.2026"
+  },
+  "firma": {
+    "name": "A&C Consulting GmbH",
+    "strasse": "Bielstrasse 22",
+    "plz_ort": "3250 Lyss",
+    "kanton": "Kanton Bern",
+    "email": "info@ac-co.ch",
+    "telefon": "078 625 53 85",
+    "web": "ac-co.ch",
+    "finma_unternehmen": "F01568855",
+    "uid": "CHE-332.960.986",
+    "handelsregister": "CHE-332.960.986",
+    "uid_quelle": "BFS-Schreiben vom 23.02.2026, bestaetigt durch GVB-Vertriebspartnerformular und Vaudoise-Vermittlervertrag",
+    "gruendung": "03.02.2026",
+    "geschaeftsfuehrung": "Ricardo Caires",
+    "mitinhaber": "Octavio Andrade",
+    "fusszeile": "A&C Consulting GmbH · Bielstrasse 22 · 3250 Lyss · info@ac-co.ch · 078 625 53 85"
+  },
+  "aenderungen": [
+    {
+      "version": "1.1",
+      "datum": "2026-09-07",
+      "was": "Flaechenrolle der beiden Navy-Toene fuer die Website; Display-Schrift Source Serif 4",
+      "freigabe": "Ricardo, 07.09.2026"
+    }
+  ],
+  "flaechen_website": {
+    "dominant": "navy_deep",
+    "wiederkehrend": "primary_navy",
+    "akzent": "accent_green",
+    "regel": "Eine dominante navy_deep-Flaeche je Seite, dazu der Fussbereich. primary_navy beliebig oft fuer wiederkehrende Elemente. Gruen bleibt Akzent und wird nie Flaeche.",
+    "begruendung": "Ein Bildschirm ist kein Blatt: Dort traegt die wiederholte Flaeche die Orientierung, die im Dokument die Kopfzeile leistet. Zwei Navy-Toene statt einer neuen Markenfarbe - beide stammen aus dem Logo.",
+    "kontrast_weiss_auf_primary_navy": "11.6:1",
+    "kontrast_weiss_auf_navy_deep": "15.4:1"
+  }
+}

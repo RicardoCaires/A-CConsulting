@@ -1,0 +1,309 @@
+/* Abschnitte der Inhaltsseiten.
+   Dieselbe Gestaltung wie auf der Startseite: ruhig, viel Weissraum, keine
+   Verlaeufe, keine Schatten. Gruen nur als Marker — auf einer Inhaltsseite
+   sind das der Strich im Seitenkopf, die Oberkante des Abschlussblocks und
+   die Linie ueber dem Fussbereich. */
+
+/* ---- Fliesstext --------------------------------------------------------- */
+
+.paragraph {
+  margin-top: var(--ac-space-sm);
+  color: var(--ac-color-text-secondary);
+}
+
+.bullets {
+  margin: var(--ac-space-sm) 0 0;
+  padding-left: var(--ac-space-sm);
+  color: var(--ac-color-text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ac-space-3xs);
+}
+
+.bullets li::marker {
+  color: var(--ac-color-brand-grey);
+}
+
+/* ---- Verweiszeile ------------------------------------------------------- */
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ac-space-2xs) var(--ac-space-md);
+  margin: var(--ac-space-sm) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--ac-small-size);
+}
+
+/* Auf dem Smartphone wird hier getippt: die Verweise brauchen mehr als die
+   Hoehe ihrer Textzeile. */
+.links > li > * {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+/* ---- Handlungsknoepfe --------------------------------------------------- */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ac-space-2xs) var(--ac-space-sm);
+  margin-top: var(--ac-space-md);
+}
+
+.phoneLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.875rem;
+  padding-inline: var(--ac-space-3xs);
+  font-size: var(--ac-body-size);
+  font-variant-numeric: tabular-nums;
+  color: var(--ac-color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--ac-radius-sm);
+}
+
+.phoneLink:hover {
+  color: var(--ac-link-hover);
+  text-decoration: underline;
+}
+
+.actionPending,
+.downloadPending {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  min-height: 2.875rem;
+  padding: 0 var(--ac-space-md);
+  color: var(--ac-color-text-secondary);
+  border: var(--ac-border-hairline) dashed var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+  font-weight: 600;
+  cursor: default;
+}
+
+.downloadPending {
+  margin-top: var(--ac-space-md);
+  font-size: var(--ac-small-size);
+}
+
+.comingBadge {
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-background-tint);
+  border-radius: var(--ac-radius-sm);
+  padding: 0.1em 0.45em;
+  white-space: nowrap;
+}
+
+/* ---- Unterabschnitte ---------------------------------------------------- */
+
+.subsections {
+  display: grid;
+  gap: var(--ac-space-md) var(--ac-space-lg);
+  margin: var(--ac-space-lg) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.subsection {
+  max-width: var(--ac-content-measure);
+  padding-left: var(--ac-space-sm);
+  border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.subsectionHeading {
+  margin-bottom: var(--ac-space-3xs);
+}
+
+.subsectionBody,
+.stepBody {
+  color: var(--ac-color-text-secondary);
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+}
+
+.subsectionBody + .subsectionBody {
+  margin-top: var(--ac-space-2xs);
+}
+
+/* ---- Sprungmarken ------------------------------------------------------- */
+
+.anchorBand {
+  padding-block: var(--ac-space-sm);
+  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  background-color: var(--ac-color-white);
+}
+
+.anchorNav {
+  display: flex;
+}
+
+.anchorList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ac-space-2xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.anchorLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: var(--ac-space-sm);
+  font-size: var(--ac-small-size);
+  font-weight: 500;
+  color: var(--ac-color-primary-navy);
+  text-decoration: none;
+  background-color: var(--ac-color-background-light);
+  border-radius: var(--ac-radius-md);
+}
+
+.anchorLink:hover {
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-tint);
+}
+
+/* ---- Direktkontakt ------------------------------------------------------ */
+
+.contactList {
+  display: grid;
+  gap: var(--ac-space-2xs);
+  margin: 0;
+}
+
+h2 + .contactList {
+  margin-top: var(--ac-space-lg);
+}
+
+.contactRow:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.contactRow {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: var(--ac-space-2xs);
+  align-items: baseline;
+  padding-block: var(--ac-space-2xs);
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.contactRow dt {
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+.contactRow dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Telefon und E-Mail sind auf dieser Seite die wichtigsten Ziele ueberhaupt —
+   sie brauchen eine Trefferflaeche, die sich mit dem Daumen treffen laesst. */
+.contactRow dd a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: var(--ac-space-3xs);
+  margin-inline-start: calc(var(--ac-space-3xs) * -1);
+  border-radius: var(--ac-radius-sm);
+}
+
+.address {
+  font-style: normal;
+}
+
+/* ---- Abschlussblock ----------------------------------------------------- */
+
+.ctaLead {
+  margin-top: var(--ac-space-sm);
+}
+
+/* ---- Formular, noch ohne Endpunkt --------------------------------------- */
+
+/* Technischer Hinweis, kein offener Punkt aus Schritt 4 — darum ruhig und
+   klar unterscheidbar von den gelb markierten Platzhaltern. */
+.formNote {
+  margin-top: var(--ac-space-sm);
+  padding-left: var(--ac-space-sm);
+  border-left: var(--ac-border-marker) solid var(--ac-color-border-light);
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Breitere Ansichten -------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  .subsections {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---- Navigation in die Unterkategorien ---------------------------------- */
+
+.serviceNav {
+  display: grid;
+  gap: var(--ac-space-2xs);
+  margin: var(--ac-space-md) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.serviceNavItem {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  width: 100%;
+  min-height: 3.25rem;
+  padding: var(--ac-space-2xs) var(--ac-space-sm);
+  font-size: var(--ac-small-size);
+  font-weight: 550;
+  color: var(--ac-color-primary-navy);
+  text-decoration: none;
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+  transition: border-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+a.serviceNavItem:hover {
+  color: var(--ac-color-primary-navy);
+  border-color: var(--ac-color-primary-navy);
+}
+
+/* Unterkategorie, die es noch nicht gibt. */
+.serviceNavPending {
+  color: var(--ac-color-text-secondary);
+  background-color: transparent;
+  border-style: dashed;
+  cursor: default;
+}
+
+@media (min-width: 40rem) {
+  .serviceNav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .serviceNav {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .serviceNavItem {
+    transition: none;
+  }
+}
