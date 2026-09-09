@@ -20,7 +20,7 @@ export const versicherungen: PageContent = {
   hero: {
     heading: 'Versicherungen für Privatpersonen und Unternehmen',
     lead: 'Wir prüfen Ihre bestehenden Verträge, vergleichen passende Lösungen aus den uns zugänglichen Angeboten und Gesellschaften und bleiben Ihr Ansprechpartner, auch wenn ein Schaden eintritt.',
-    actions: [{ kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' }],
+    actions: [{ kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' }],
   },
 
   blocks: [
@@ -196,7 +196,7 @@ export const versicherungen: PageContent = {
         'Ein erstes Gespräch verpflichtet Sie zu nichts. Bringen Sie mit, was Sie haben, und wir sagen Ihnen, was uns auffällt.',
       ],
       actions: [
-        { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
+        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
         { kind: 'phone' },
       ],
     },

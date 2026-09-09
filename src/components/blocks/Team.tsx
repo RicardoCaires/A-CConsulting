@@ -23,8 +23,14 @@ export type Mitglied = {
   name: string
   /** Funktion im Unternehmen. Belegt, nicht geraten. */
   funktion: string
-  /** Zwei bis drei kurze Saetze. */
-  saetze: readonly Rich[]
+  /**
+   * Zwei bis drei kurze Saetze — nur wo sie hingehoeren.
+   *
+   * Auf der Startseite bleiben sie weg: Dort genuegen Name und Zustaendigkeit,
+   * alles Weitere waere ein Lebenslauf an der falschen Stelle. Auf „Ueber uns"
+   * stehen sie.
+   */
+  saetze?: readonly Rich[]
   bild: { label: string; note?: string }
 }
 
@@ -45,7 +51,7 @@ export function Team({ mitglieder }: Props) {
             <h3 className={styles.name}>{person.name}</h3>
             <p className={styles.funktion}>{person.funktion}</p>
 
-            {person.saetze.filter(hatSichtbarenInhalt).map((satz, index) => (
+            {(person.saetze ?? []).filter(hatSichtbarenInhalt).map((satz, index) => (
               <p key={index} className={styles.satz}>
                 <RichText value={satz} />
               </p>

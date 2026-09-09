@@ -107,7 +107,7 @@ export const ui: Record<Locale, UiMessages> = {
       email: 'E-Mail',
       uid: 'UID',
       finma: 'FINMA-Register',
-      roleNote: 'Versicherungen · Treuhand · Personal Finance',
+      roleNote: 'Versicherungen · Treuhand · Finanzplanung',
     },
     page: {
       home: 'Startseite',
@@ -120,7 +120,7 @@ export const ui: Record<Locale, UiMessages> = {
       treuhaenderWechseln: 'Treuhänder wechseln',
       steuern: 'Steuern',
       firmengruendung: 'Firmengründung',
-      personalFinance: 'Personal Finance',
+      personalFinance: 'Finanzplanung',
       wissen: 'Wissen',
       ueberUns: 'Über uns',
       transparenz: 'Transparenz',
@@ -141,7 +141,7 @@ export const ui: Record<Locale, UiMessages> = {
       badge: 'folgt',
       hint: 'Diese Seite ist noch nicht verfügbar.',
     },
-    cta: 'Erstgespräch vereinbaren',
+    cta: 'Erstgespräch anfragen',
     notFound: {
       title: 'Seite nicht gefunden',
       body: 'Die aufgerufene Adresse gibt es nicht oder nicht mehr.',

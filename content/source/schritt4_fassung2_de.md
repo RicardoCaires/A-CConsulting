@@ -24,7 +24,7 @@
 
 A&C Consulting betreut Privatpersonen, Selbständige und KMU im Seeland und im Kanton Bern. Sie erreichen uns in Lyss, auf Deutsch, Französisch und Portugiesisch.
 
-**Handlungsknopf:** Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch anfragen
 
 **Daneben:** 078 625 53 85
 
@@ -130,7 +130,7 @@ Bielstrasse 22, 3250 Lyss. Wir betreuen Kundinnen und Kunden im Seeland und im K
 
 Rufen Sie an oder schreiben Sie uns. Im Erstgespräch klären wir, was Sie brauchen und wie wir Sie unterstützen können. Sie gehen damit keine Verpflichtung ein.
 
-**Handlungsknopf:** Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch anfragen
 
 **Daneben:** 078 625 53 85 · info@ac-co.ch
 
@@ -148,7 +148,7 @@ Rufen Sie an oder schreiben Sie uns. Im Erstgespräch klären wir, was Sie brauc
 
 Wir prüfen Ihre bestehenden Verträge, vergleichen passende Lösungen aus den uns zugänglichen Angeboten und Gesellschaften und bleiben Ihr Ansprechpartner, auch wenn ein Schaden eintritt.
 
-**Handlungsknopf:** Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch anfragen
 
 ### 02 Zwei Wege
 
@@ -247,7 +247,7 @@ A: Auf Deutsch, Französisch oder Portugiesisch. Sagen Sie uns einfach, was Ihne
 
 Ein erstes Gespräch verpflichtet Sie zu nichts. Bringen Sie mit, was Sie haben, und wir sagen Ihnen, was uns auffällt.
 
-**Handlungsknopf:** Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch anfragen
 
 **Daneben:** 078 625 53 85 · info@ac-co.ch
 
@@ -265,7 +265,7 @@ Ein erstes Gespräch verpflichtet Sie zu nichts. Bringen Sie mit, was Sie haben,
 
 Sie liefern die Unterlagen, wir führen die Buchhaltung laufend. Sie haben einen festen Ansprechpartner und wissen jederzeit, was als Nächstes ansteht.
 
-**Handlungsknopf:** Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch anfragen
 
 ### 02 Leistungen im Überblick
 
@@ -410,7 +410,7 @@ A: Ihre Daten werden in der Schweiz verarbeitet und vertraulich behandelt.
 
 Im Erstgespräch schauen wir an, was heute bei Ihnen liegt und was davon zu uns kann. Danach wissen Sie, was eine Zusammenarbeit für Sie bedeuten würde.
 
-**Handlungsknopf:** Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch anfragen
 
 **Daneben:** 078 625 53 85 · info@ac-co.ch
 
@@ -428,7 +428,7 @@ Im Erstgespräch schauen wir an, was heute bei Ihnen liegt und was davon zu uns 
 
 Sie bringen die Unterlagen, wir erstellen die Steuererklärung, reichen sie ein und prüfen später die Veranlagung.
 
-**Handlungsknopf:** Erstgespräch vereinbaren · Checkliste herunterladen
+**Handlungsknopf:** Erstgespräch anfragen · Checkliste herunterladen
 
 ### 02 Für Privatpersonen
 
@@ -524,7 +524,7 @@ A: Nicht zwingend. Sie können uns die Unterlagen per E-Mail, per Post oder pers
 
 Melden Sie sich, dann vereinbaren wir einen Termin. Die Checkliste können Sie vorab herunterladen.
 
-**Handlungsknopf:** Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch anfragen
 
 **Daneben:** 078 625 53 85 · info@ac-co.ch
 
@@ -542,7 +542,7 @@ Melden Sie sich, dann vereinbaren wir einen Termin. Die Checkliste können Sie v
 
 Wir begleiten Sie von der Wahl der Rechtsform bis zur ersten Buchhaltung und sagen Ihnen vorher, was auf Sie zukommt.
 
-**Handlungsknopf:** Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch anfragen
 
 **Daneben:** 078 625 53 85
 
@@ -679,7 +679,7 @@ A: Wenn Sie möchten. Die Unterlagen aus der Gründung liegen dann bereits vor. 
 
 Im Gründungsgespräch klären wir die Rechtsform, den Ablauf und die Kosten für Ihren Fall. Danach wissen Sie, was zu tun ist, auch wenn Sie sich für einen anderen Weg entscheiden.
 
-**Handlungsknopf:** Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch anfragen
 
 **Daneben:** 078 625 53 85 · info@ac-co.ch
 
@@ -697,7 +697,7 @@ Im Gründungsgespräch klären wir die Rechtsform, den Ablauf und die Kosten fü
 
 Wir begleiten den Wechsel strukturiert und diskret. Zuerst klären wir mit Ihnen die bestehende Situation, den geeigneten Zeitpunkt und die Unterlagen, die für die Übernahme nötig sind.
 
-**Handlungsknopf:** Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch anfragen
 
 **Daneben:** 078 625 53 85
 
@@ -811,7 +811,7 @@ A: Die Kündigung beim bisherigen Treuhänder bereiten wir für Sie vor.
 
 Erzählen Sie uns, wie Ihre Buchhaltung heute läuft. Danach wissen Sie, ob und wann ein Wechsel für Sie sinnvoll ist. Ein Gespräch verpflichtet Sie zu nichts.
 
-**Handlungsknopf:** Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch anfragen
 
 **Daneben:** 078 625 53 85 · info@ac-co.ch
 
@@ -900,7 +900,7 @@ Beraten wird auf Deutsch, Französisch und Portugiesisch. Das gilt für das Gesp
 
 Für ein erstes Gespräch rufen Sie an oder schreiben Sie uns.
 
-**Handlungsknopf:** Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch anfragen
 
 **Daneben:** 078 625 53 85 · info@ac-co.ch
 

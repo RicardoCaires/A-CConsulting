@@ -18,15 +18,27 @@ import type { Leistungsseite } from '@/content/schema'
 
 export const beispielStartseite: StartseiteInhalt = {
   einstieg: {
-    eyebrow: 'Beispiel-Vorzeile',
     titel: 'Beispielüberschrift für den Einstieg',
     satz: 'Beispielsatz, der in einer Zeile sagt, für wen die Seite gemacht ist.',
     knopf: { text: 'Beispielknopf', ziel: 'kontakt' },
     weiter: { text: 'Beispiel-Textlink', ziel: 'ueberUns' },
     bild: { label: 'BEISPIELBILD EINSTIEG', note: 'Beispielhinweis zum Motiv' },
   },
-  bereiche: {
-    titel: 'Beispielüberschrift der Bereiche',
+  vertrauen: ['Erste Angabe', 'Zweite Angabe', 'Dritte Angabe', 'Vierte Angabe'],
+  situationen: {
+    titel: 'Beispielüberschrift der Situationen',
+    einleitung: 'Beispielsatz über die sechs Ausgangslagen.',
+    eintraege: [
+      { text: 'Erster Beispielfall', ziel: 'firmengruendung' },
+      { text: 'Zweiter Beispielfall', ziel: 'treuhand' },
+      { text: 'Dritter Beispielfall', ziel: 'buchhaltung' },
+      { text: 'Vierter Beispielfall', ziel: 'treuhaenderWechseln' },
+      { text: 'Fünfter Beispielfall', ziel: 'versicherungen' },
+      { text: 'Sechster Beispielfall', ziel: 'versicherungen' },
+    ],
+  },
+  leistungen: {
+    titel: 'Beispielüberschrift der Leistungen',
     leit: {
       titel: 'Erster Bereich',
       text: 'Beispieltext zum führenden Bereich. Zwei Sätze, nicht mehr.',
@@ -52,59 +64,46 @@ export const beispielStartseite: StartseiteInhalt = {
       },
     ],
   },
-  faelle: {
-    titel: 'Beispielüberschrift der Geschäftsfälle',
-    einleitung: 'Beispielsatz über die sechs Ausgangslagen.',
-    eintraege: [
-      { text: 'Erster Beispielfall', ziel: 'firmengruendung' },
-      { text: 'Zweiter Beispielfall', ziel: 'treuhand' },
-      { text: 'Dritter Beispielfall', ziel: 'buchhaltung' },
-      { text: 'Vierter Beispielfall', ziel: 'treuhaenderWechseln' },
-      { text: 'Fünfter Beispielfall', ziel: 'versicherungen' },
-      { text: 'Sechster Beispielfall', ziel: 'steuern' },
-    ],
+  eineStelle: {
+    titel: 'Beispielüberschrift zur Bündelung',
+    kette: ['Erstes Glied', 'Zweites Glied', 'Drittes Glied', 'Viertes Glied'],
+    text: 'Beispielsatz darüber, weshalb die Themen zusammenhängen.',
+    nachsatz: 'Beispielnachsatz mit einem zweiten Gedanken.',
   },
-  gruende: {
-    titel: 'Beispielüberschrift der Gründe',
-    punkte: [
-      { titel: 'Erster Beispielgrund', satz: 'Beispielsatz zum ersten Grund.' },
-      { titel: 'Zweiter Beispielgrund', satz: 'Beispielsatz zum zweiten Grund.' },
-      { titel: 'Dritter Beispielgrund', satz: 'Beispielsatz zum dritten Grund.' },
-      { titel: 'Vierter Beispielgrund', satz: 'Beispielsatz zum vierten Grund.' },
-    ],
+  digital: {
+    titel: 'Beispielüberschrift zur Arbeitsweise',
+    text: 'Beispielsatz darüber, wo Software hilft und wo die Verantwortung bleibt.',
+    nachsatz: 'Beispielnachsatz mit dem Nutzen für die Kundschaft.',
   },
   personen: {
     titel: 'Beispielüberschrift der Ansprechpartner',
     einleitung: 'Beispielsatz über die beiden Personen.',
     leute: [
       {
-        name: 'Beispielname eins',
+        name: 'Erste Beispielperson',
         funktion: 'Beispielfunktion',
-        saetze: ['Erster Beispielsatz zur Person.', 'Zweiter Beispielsatz zur Person.'],
         bild: { label: 'BEISPIELPORTRÄT EINS' },
       },
       {
-        name: 'Beispielname zwei',
+        name: 'Zweite Beispielperson',
         funktion: 'Beispielfunktion',
-        saetze: ['Erster Beispielsatz zur Person.', 'Zweiter Beispielsatz zur Person.'],
         bild: { label: 'BEISPIELPORTRÄT ZWEI' },
       },
     ],
   },
-  wissen: {
-    titel: 'Beispielüberschrift des Wissensbereichs',
-    einleitung: 'Beispielsatz über die Beiträge.',
-    beitraege: [
-      { datum: '1. Januar 2026', titel: 'Erster Beispielbeitrag', anriss: 'Beispielanriss.' },
-      { datum: '1. Februar 2026', titel: 'Zweiter Beispielbeitrag', anriss: 'Beispielanriss.' },
-      { datum: '1. März 2026', titel: 'Dritter Beispielbeitrag', anriss: 'Beispielanriss.' },
+  ablauf: {
+    titel: 'Beispielüberschrift des Ablaufs',
+    schritte: [
+      { titel: 'Erster Schritt', satz: 'Beispielsatz zum ersten Schritt.' },
+      { titel: 'Zweiter Schritt', satz: 'Beispielsatz zum zweiten Schritt.' },
+      { titel: 'Dritter Schritt', satz: 'Beispielsatz zum dritten Schritt.' },
+      { titel: 'Vierter Schritt', satz: 'Beispielsatz zum vierten Schritt.' },
     ],
-    weiterlesen: 'Weiterlesen',
-    alle: 'Beispielverweis auf die Übersicht',
+    nachsatz: 'Beispielnachsatz unter den Schritten.',
   },
   abschluss: {
     titel: 'Beispielüberschrift des Abschlusses',
-    satz: 'Beispielsatz, der zur Kontaktaufnahme auffordert.',
+    satz: 'Beispielsatz, der zur Kontaktaufnahme führt.',
     knopf: { text: 'Beispielknopf', ziel: 'kontakt' },
   },
 }

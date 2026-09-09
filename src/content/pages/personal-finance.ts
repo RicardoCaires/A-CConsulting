@@ -25,7 +25,7 @@ export const personalFinance: PageContent = {
   key: 'personalFinance',
 
   meta: {
-    title: 'Budget und Vorsorge — Personal Finance',
+    title: 'Budget und Vorsorge — Finanzplanung',
     description:
       'Übersicht über Einnahmen und Ausgaben, und eine Vorsorge, die zu Ihrer Situation passt. A&C Consulting in Lyss.',
   },
@@ -34,7 +34,7 @@ export const personalFinance: PageContent = {
   hero: {
     heading: 'Zwei Fragen, die im Alltag untergehen',
     lead: 'Wohin fliesst Ihr Geld, und was bleibt für später. Wir gehen beides mit Ihnen durch — in Ruhe und ohne dass Sie etwas abschliessen müssen.',
-    actions: [{ kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' }],
+    actions: [{ kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' }],
   },
 
   blocks: [
@@ -120,7 +120,7 @@ export const personalFinance: PageContent = {
       heading: 'Sprechen wir über Ihre Situation',
       paragraphs: ['Ein Erstgespräch kostet nichts und verpflichtet zu nichts.'],
       actions: [
-        { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
+        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
         { kind: 'phone' },
       ],
     },

@@ -38,7 +38,7 @@ Ihrer Situation passt. A&C Consulting in Lyss.
 Wohin fliesst Ihr Geld, und was bleibt für später. Wir gehen beides mit Ihnen
 durch — in Ruhe und ohne dass Sie etwas abschliessen müssen.
 
-Knopf: Erstgespräch vereinbaren
+Knopf: Erstgespräch anfragen
 
 ---
 
@@ -109,4 +109,4 @@ passen, und mit dem, was sie kosten. Entscheiden tun Sie.
 
 Ein Erstgespräch kostet nichts und verpflichtet zu nichts.
 
-Knopf: Erstgespräch vereinbaren
+Knopf: Erstgespräch anfragen

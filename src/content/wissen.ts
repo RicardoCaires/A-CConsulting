@@ -103,7 +103,7 @@ const de: WissenContent = {
   abschluss: {
     heading: 'Sprechen wir über Ihre Situation',
     satz: 'Sie haben eine Frage, die hier nicht steht? Fragen Sie uns direkt.',
-    knopf: 'Erstgespräch vereinbaren',
+    knopf: 'Erstgespräch anfragen',
   },
 }
 

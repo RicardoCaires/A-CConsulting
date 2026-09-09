@@ -1,18 +1,135 @@
 /* Vorlage A — Startseite.
 
    Fast nichts: Jeder Abschnitt bringt seine Gestaltung selbst mit
-   (StartHero, Bereiche, Faelle, Vorteile, Team, Beitraege, CTASection).
+   (StartHero, Faelle, Bereiche, StepList, Team, CTASection).
    Was hier steht, gehoert der Vorlage und keinem Baustein. */
 
-/* Verweis auf die Beitragsuebersicht, unter den drei Beitraegen. */
-.alleBeitraege {
+/* ---- 2 Vertrauenszeile --------------------------------------------------- */
+
+/* Ein schmales Band, kein Abschnitt: Es traegt keine Ueberschrift, keinen
+   Abstand nach Art der Sektionen und keine eigene Flaeche. Vier Angaben,
+   getrennt durch einen Mittelpunkt — dieselbe Schreibweise wie im Fussbereich
+   der Dokumente. Keine Abzeichen: Was hier steht, ist nachpruefbar, und
+   Nachpruefbares braucht keine Farbe. */
+.vertrauensband {
+  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  background-color: var(--ac-color-white);
+}
+
+.vertrauen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ac-space-2xs) var(--ac-space-md);
+  margin: 0;
+  padding-block: var(--ac-space-sm);
+  list-style: none;
+
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  letter-spacing: 0.02em;
+  color: var(--ac-color-text-secondary);
+}
+
+/* Der Mittelpunkt sitzt zwischen den Angaben, nicht am Anfang. Er ist
+   Dekoration und wird Hilfstechnik nicht vorgelesen. */
+.vertrauen li + li::before {
+  content: '·';
+  margin-inline-end: var(--ac-space-md);
+  color: var(--ac-color-border-light);
+}
+
+/* ---- 5 Eine Stelle für Ihre Administration ------------------------------- */
+
+/* Die Kette. Eine geordnete Liste, weil die Reihenfolge etwas bedeutet: So
+   laeuft ein Betrieb durch das Jahr. Auf schmalen Geraeten untereinander,
+   sonst nebeneinander — der Pfeil dreht sich entsprechend mit. */
+.kette {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ac-space-xs);
+  /* Abstand nach oben, sonst steht die Kette auf der Grundlinie der
+     Ueberschrift. */
+  margin: var(--ac-space-lg) 0;
+  padding: 0;
+  list-style: none;
+
+  font-family: var(--ac-font-display);
+  font-size: var(--ac-h3-size);
+  line-height: var(--ac-h3-line);
+  font-weight: var(--ac-h3-weight);
+  color: var(--ac-color-white);
+}
+
+.kette li {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-xs);
+}
+
+.kette li + li::before {
+  content: '↓';
+  font-family: var(--ac-font-sans);
+  font-size: 0.8em;
+  color: var(--ac-color-accent-green-light);
+}
+
+.stelleText {
+  max-width: var(--ac-content-measure);
+}
+
+.stelleText p + p {
+  margin-top: var(--ac-space-sm);
+  color: var(--ac-on-navy-muted);
+}
+
+/* ---- 6 Digital ------------------------------------------------------------ */
+
+.fliesstext {
+  max-width: var(--ac-content-measure);
+  margin-top: var(--ac-space-sm);
+}
+
+.fliesstext p + p {
+  margin-top: var(--ac-space-sm);
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- 7 Ansprechpartner ---------------------------------------------------- */
+
+.personenLink {
   margin-top: clamp(1.5rem, 4vw, 2rem);
   font-weight: 600;
 }
 
-.alleBeitraege > * {
+.personenLink > * {
   display: inline-flex;
   align-items: center;
-  /* Trefferflaeche 44 px, auch wenn es nur zwei Woerter sind. */
+  /* Trefferflaeche 44 px, auch wenn es nur drei Woerter sind. */
   min-height: 2.75rem;
+}
+
+/* ---- 8 Ablauf -------------------------------------------------------------- */
+
+.ablaufNachsatz {
+  margin-top: clamp(1.5rem, 4vw, 2rem);
+  max-width: var(--ac-content-measure);
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Ab Desktop ------------------------------------------------------------ */
+
+@media (min-width: 48rem) {
+  /* Die Kette laeuft in einer Zeile, der Pfeil zeigt nach rechts. */
+  .kette {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--ac-space-sm);
+  }
+
+  .kette li + li::before {
+    content: '→';
+  }
 }

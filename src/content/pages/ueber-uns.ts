@@ -116,7 +116,7 @@ export const ueberUns: PageContent = {
       heading: 'Lernen Sie uns kennen',
       paragraphs: ['Für ein erstes Gespräch rufen Sie an oder schreiben Sie uns.'],
       actions: [
-        { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
+        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
         { kind: 'phone' },
       ],
     },

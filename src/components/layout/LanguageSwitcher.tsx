@@ -2,18 +2,29 @@
 
 import { usePathname } from 'next/navigation'
 
-import { locales, localeName, localeShort, isLocale, type Locale } from '@/i18n/config'
-import { isPublished, pageKeyFromSlug, switchLocalePath } from '@/i18n/routes'
+import { localeName, localeShort, isLocale, type Locale } from '@/i18n/config'
+import {
+  isPublished,
+  localesWithPages,
+  pageKeyFromSlug,
+  switchLocalePath,
+} from '@/i18n/routes'
 import { getUi } from '@/i18n/messages/ui'
 
 import styles from './LanguageSwitcher.module.css'
 
 /**
- * Sprachwahl DE / FR / PT.
+ * Sprachwahl.
  *
- * Alle drei Sprachen stehen immer sichtbar da — die Mehrsprachigkeit ist ein
- * Merkmal des Hauses und soll erkennbar sein. Sprachen, deren Uebersetzung noch
- * aussteht, sind sichtbar, aber nicht anklickbar und als solche angesagt.
+ * Gezeigt werden **nur Sprachen, die es gibt**. Bis zum 09.09.2026 standen alle
+ * drei da, die unfertigen ausgegraut — die Mehrsprachigkeit sollte erkennbar
+ * sein. Auf einer Seite, die kurz vor dem Livegang steht, liest sich das
+ * anders: als zwei Versprechen, die nicht eingeloest sind.
+ *
+ * Solange nur Deutsch vorliegt, entfaellt die Sprachwahl darum ganz. Eine
+ * Auswahl mit einem einzigen Eintrag ist keine Auswahl. Sobald FR oder PT
+ * veroeffentlicht sind, erscheint sie von selbst wieder — es braucht keine
+ * Aenderung an dieser Datei, nur `published` in `routes.ts`.
  *
  * Der Wechsel fuehrt auf dieselbe Seite in der Zielsprache. Gibt es sie dort
  * noch nicht, fuehrt er auf deren Startseite.
@@ -33,10 +44,14 @@ export function LanguageSwitcher({ locale }: Props) {
   const currentLocale = first && isLocale(first) ? first : locale
   const activePage = pageKeyFromSlug(currentLocale, rest) ?? 'home'
 
+  // Eine Sprachwahl mit einem Eintrag waere ein Bedienelement ohne Aufgabe.
+  const sprachen = localesWithPages()
+  if (sprachen.length < 2) return null
+
   return (
     <nav className={styles.wrapper} aria-label={ui.language.choose}>
       <ul className={styles.list} role="list">
-        {locales.map((candidate) => {
+        {sprachen.map((candidate) => {
           const current = candidate === locale
           // Verfuegbar ist eine Sprache, sobald es diese Seite dort gibt —
           // nicht erst, wenn die ganze Sprachfassung steht.

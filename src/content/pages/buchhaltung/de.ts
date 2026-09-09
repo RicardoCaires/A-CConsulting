@@ -116,6 +116,6 @@ export const buchhaltungDe: Leistungsseite = {
   cta: {
     titel: 'Reden wir über Ihre Administration',
     text: 'Im Erstgespräch schauen wir an, was heute bei Ihnen liegt und was davon zu uns kann. Danach wissen Sie, was eine Zusammenarbeit für Sie bedeuten würde.',
-    knopf: 'Erstgespräch vereinbaren',
+    knopf: 'Erstgespräch anfragen',
   },
 }

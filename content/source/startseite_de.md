@@ -1,185 +1,160 @@
 # Startseite — Wortlaut
 
-Entwurf vom 07.09.2026. **Noch nicht von Ricardo abgenommen.**
+Fassung vom 09.09.2026. Von Ricardo im Revisionsauftrag vorgegeben.
 
-Diese Datei löst für die Startseite die Fassung aus Schritt 4 ab: Dort standen
-neun Abschnitte, hier stehen sieben. Der Wortlaut von Schritt 4, Fassung 2
-bleibt unverändert stehen und gilt weiter für alle Leistungsseiten.
+Sie ersetzt die Fassung vom 07.09.2026. Geändert haben sich der Einstieg, die
+Reihenfolge der Abschnitte und drei neue Abschnitte: Vertrauenszeile,
+„Eine Stelle für Ihre Administration" und „Persönlich beraten. Digital
+effizient.". Der Wissensbereich ist von der Startseite genommen, solange es
+keine Beiträge gibt.
 
-Jeder Satz, der auf der Startseite erscheint, steht hier. `npm run check:source`
-prüft das bei jedem Lauf. Offene Angaben stehen als `[ZU BESTÄTIGEN: …]` und
-werden nie erfunden.
+Neun Abschnitte in dieser Reihenfolge:
+
+1 Einstieg · 2 Vertrauenszeile · 3 Situationen · 4 Leistungen ·
+5 Eine Stelle · 6 Digital · 7 Ansprechpartner · 8 Ablauf · 9 Abschluss
 
 ---
 
 ## Suchmaschinen
 
-Titel: Versicherungen, Treuhand und Personal Finance in Lyss
+Titel: Treuhand und Versicherungen in Lyss
 
-Beschreibung: Versicherungsbroking, Treuhand und persönliche Finanzplanung bei
-denselben zwei Ansprechpartnern. A&C Consulting GmbH in Lyss, Kanton Bern.
+Beschreibung: Buchhaltung, Versicherungen und Finanzplanung für Selbständige, KMU und Privatpersonen. Feste Ansprechpartner in Lyss, Kanton Bern.
+
+---
 
 ## Handlungsknopf
 
-Er steht im Kopfbereich, am Ende der Seite und im Menü — immer gleich:
-
-Erstgespräch vereinbaren
+Erstgespräch anfragen
 
 ---
 
-## 1 Einstieg
+## 01 Einstieg
 
-Vorzeile: Versicherungen · Treuhand · Personal Finance
+Überschrift: Treuhand und Versicherungen. Persönlich aus einer Hand.
 
-Überschrift: Zwei Ansprechpartner statt drei Adressen
+Untertitel: Wir unterstützen Selbständige, KMU und Privatpersonen bei Buchhaltung, Versicherungen und Finanzfragen – mit festen Ansprechpartnern in Lyss.
 
-Versicherungsbroking, Treuhand und persönliche Finanzplanung aus einem Büro in
-Lyss. Beratung auf Deutsch, Portugiesisch und Englisch.
-
-Zweiter Weg: Wie wir arbeiten
-
-Bildfläche: BÜRO LYSS / TEAM — Aufnahme 1 der Shootingliste
+Zweiter Verweis: Unsere Leistungen
 
 ---
 
-## 2 Was wir für Sie übernehmen
+## 02 Vertrauenszeile
+
+Treuhand · Versicherungsbroker · FINMA registriert · Lyss
+
+---
+
+## 03 Situationen
+
+Überschrift: Wobei können wir Sie unterstützen?
+
+Einleitung: Sechs Ausgangslagen, die bei uns am häufigsten am Anfang stehen.
+
+- Ich gründe ein Unternehmen
+- Ich stelle Mitarbeitende ein
+- Ich möchte meine Buchhaltung abgeben
+- Ich möchte meinen Treuhänder wechseln
+- Ich möchte meine Versicherungen prüfen
+- Ich habe einen Schadenfall
+
+---
+
+## 04 Leistungen
+
+Überschrift: Was wir für Sie übernehmen
 
 ### Versicherungen
 
-Wir vertreten Sie, nicht die Versicherung. Wir prüfen Ihre Verträge, holen
-Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.
+Wir vertreten Sie, nicht die Versicherung. Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.
 
-- Krankenversicherung und Zusatzversicherung
-- Hausrat, Haftpflicht und Motorfahrzeug
-- Leben und Säule 3a
-- BVG, UVG und Krankentaggeld
-- Betriebshaftpflicht und Sachversicherung
+Stichworte: Krankenversicherung und Zusatzversicherung · Hausrat, Haftpflicht und Motorfahrzeug · Leben und Säule 3a · BVG, UVG und Krankentaggeld · Betriebshaftpflicht und Sachversicherung
 
 Verweis: Zu den Versicherungen
 
-Bildfläche: BERATUNGSGESPRÄCH — Aufnahme 3 der Shootingliste
-
 ### Treuhand
 
-Buchhaltung, Löhne und Abschluss für Selbständige und kleine Betriebe. Auch
-dann, wenn Sie mitten im Jahr wechseln.
+Buchhaltung, Löhne und Abschluss für Selbständige und kleine Betriebe. Auch dann, wenn Sie mitten im Jahr wechseln.
 
-- Buchhaltung
-- Lohnadministration und Sozialversicherungen
-- Mehrwertsteuer und Jahresabschluss
-- Firmengründung
-- Treuhänderwechsel
+Stichworte: Buchhaltung · Lohnadministration und Sozialversicherungen · Mehrwertsteuer und Jahresabschluss · Firmengründung · Treuhänderwechsel
 
 Verweis: Zur Treuhand
 
-### Personal Finance
+### Finanzplanung
 
-Zwei Fragen, die im Alltag untergehen: Wohin fliesst Ihr Geld, und was bleibt
-für später.
+Zwei Fragen, die im Alltag untergehen: Wohin fliesst Ihr Geld, und was bleibt für später.
 
-- Budget
-- Vorsorge
+Stichworte: Budget · Vorsorge
 
-Verweis: Zu Personal Finance
+Verweis: Zur Finanzplanung
 
 ---
 
-## 3 Womit Menschen zu uns kommen
+## 05 Eine Stelle für Ihre Administration
 
-Sechs Ausgangslagen, die bei uns am häufigsten am Anfang stehen.
+Überschrift: Eine Stelle für Ihre Administration
 
-1. Ich gründe ein Unternehmen
-2. Ich stelle Mitarbeitende ein
-3. Ich möchte meine Buchhaltung abgeben
-4. Ich möchte meinen Treuhänder wechseln
-5. Ich möchte meine Versicherungen prüfen
-6. Ich habe einen Schadenfall
+Kette: Gründung · Buchhaltung · Lohn · Versicherungen · Steuern
 
----
+Text: Viele dieser Themen hängen zusammen. Deshalb betrachten wir sie nicht isoliert.
 
-## 4 Weshalb Kundinnen und Kunden mit uns arbeiten
-
-### Persönliche Ansprechpartner
-
-Sie haben einen Namen und eine Direktnummer. Wer Ihr Dossier führt, geht auch
-ans Telefon.
-
-### Versicherungen und Treuhand aus einer Hand
-
-Zwei Bereiche, dieselben Ansprechpartner. Ihre Ausgangslage müssen Sie nur
-einmal erklären.
-
-### Direkte Kommunikation
-
-Wir sagen, was geht und was nicht — auch dann, wenn daraus kein Auftrag wird.
-
-### Sorgfältige Beratung
-
-Wir sehen uns Ihre Situation an, bevor wir etwas empfehlen. Nicht umgekehrt.
+Nachsatz: Statt mehrere Stellen zu koordinieren, haben Sie bei uns feste Ansprechpartner.
 
 ---
 
-## 5 Zwei Ansprechpartner
+## 06 Digital
 
-Bei A&C sprechen Sie mit einem von zwei Menschen — und zwar mit dem, der Ihr
-Dossier führt.
+Überschrift: Persönlich beraten. Digital effizient.
 
-### Ricardo Caires Cerqueira
+Text: Wir nutzen moderne Software dort, wo sie Administration reduziert, Abläufe vereinfacht und Fehler vermeidet. Die fachliche Prüfung, die Beratung und die Verantwortung bleiben bei uns.
 
-Funktion: Geschäftsführung
-
-Geschäftsführer und Mitinhaber. Zuständig für Treuhand, Steuern und Versicherungen.
-
-Abschlüsse: Sachbearbeiter Rechnungswesen VSK am Feusi Bildungszentrum Bern und
-Versicherungsvermittler VBV.
-
-> Beide Sätze stammen wörtlich aus Schritt 4, Fassung 2, Abschnitt „Über uns" —
-> dort von Ricardo freigegeben. Auf der Startseite steht die Kurzfassung, der
-> vollständige Werdegang bleibt auf /ueber-uns.
-
-Bildfläche: PORTRÄT RICARDO — Aufnahme 4 der Shootingliste
-
-### Octavio Andrade
-
-Funktion: Mitinhaber
-
-Geschäftsführer und Mitinhaber. Zuständig für Versicherungen.
-
-Beruflicher Weg: Kundenberater und Verkaufsleiter bei der Allianz Suisse in
-Biel, danach Hauptagent der Zurich Versicherungen in Biel, seither
-selbstständiger Versicherungsbroker.
-
-> Beide Sätze stammen wörtlich aus Schritt 4, Fassung 2, Abschnitt „Über uns".
-
-Bildfläche: PORTRÄT OCTAVIO — Aufnahme 5 der Shootingliste
+Nachsatz: Sie merken davon vor allem eines: weniger Papier und kürzere Wege.
 
 ---
 
-## 6 Wissen
+## 07 Ansprechpartner
 
-Kurze Beiträge zu Fragen, die im Erstgespräch immer wieder kommen.
+Überschrift: Zwei Ansprechpartner
 
-Es gibt noch keinen einzigen Beitrag. Die drei Titel unten sind die geplanten
-Themen — ein Plan, kein Versprechen. Datum und Anriss bleiben offen, bis der
-Beitrag geschrieben ist.
+Einleitung: Keine Hotline. Ihr Dossier wird von einem von uns beiden geführt — und der geht auch ans Telefon.
 
-1. Was ein Maklermandat ist — und was es kostet
-2. Treuhänder wechseln: worauf es beim Zeitpunkt ankommt
-3. Budget führen, ohne jeden Kaffee aufzuschreiben
+Ricardo Caires Cerqueira — Treuhand · Steuern · Versicherungen
 
-[ZU BESTÄTIGEN: Datum, sobald der Beitrag geschrieben ist]
+Octavio Andrade — Versicherungen
 
-[ZU BESTÄTIGEN: Anriss, zwei Zeilen]
-
-Verweis je Beitrag: Weiterlesen
-
-Verweis auf die Übersicht: Alle Beiträge
+Verweis: Mehr über uns
 
 ---
 
-## 7 Sprechen wir über Ihre Situation
+## 08 Ablauf
 
-Ein Erstgespräch kostet nichts und verpflichtet zu nichts. Danach wissen Sie,
-ob wir zu Ihnen passen.
+Überschrift: So beginnt die Zusammenarbeit
 
-Knopf: Erstgespräch vereinbaren
+1. Kennenlernen. Sie schildern Ihre Situation, wir sagen Ihnen, was wir davon übernehmen können.
+2. Situation prüfen. Wir sehen uns Unterlagen und Verträge an, bevor wir etwas empfehlen.
+3. Vorschlag erhalten. Sie bekommen schriftlich, welche Aufgaben zu uns kommen und was das kostet.
+4. Wir übernehmen. Ab dem vereinbarten Zeitpunkt läuft es über uns.
+
+Nachsatz: Wir erklären Optionen, Kosten und die nächsten Schritte verständlich. Auch dann, wenn daraus kein Auftrag wird.
+
+---
+
+## 09 Abschluss
+
+Überschrift: Erzählen Sie uns, wobei wir Sie entlasten können.
+
+Text: Schildern Sie uns kurz Ihr Anliegen. Wir melden uns persönlich bei Ihnen.
+
+---
+
+## Bildplätze
+
+Hinweise an uns, keine Website-Texte. Sie verschwinden, sobald die Aufnahme
+vorliegt, und stehen hier, damit die Shootingliste und die Seite dasselbe sagen.
+
+| Platz | Beschriftung | Aufnahme |
+|---|---|---|
+| Einstieg | BÜRO LYSS / TEAM | Aufnahme 1 der Shootingliste |
+| Leistungen, Versicherungen | BERATUNGSGESPRÄCH | Aufnahme 3 der Shootingliste |
+| Ansprechpartner, Ricardo | PORTRÄT RICARDO | Aufnahme 4 der Shootingliste |
+| Ansprechpartner, Octavio | PORTRÄT OCTAVIO | Aufnahme 5 der Shootingliste |

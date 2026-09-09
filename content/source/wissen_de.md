@@ -74,4 +74,4 @@ Verweis je Beitrag: Weiterlesen
 
 Sie haben eine Frage, die hier nicht steht? Fragen Sie uns direkt.
 
-Knopf: Erstgespräch vereinbaren
+Knopf: Erstgespräch anfragen

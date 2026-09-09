@@ -21,7 +21,7 @@ export const steuern: PageContent = {
     heading: 'Steuererklärung für Privatpersonen, Selbständige und Firmen',
     lead: 'Sie bringen die Unterlagen, wir erstellen die Steuererklärung, reichen sie ein und prüfen später die Veranlagung.',
     actions: [
-      { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
+      { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
     ],
   },
 
@@ -183,7 +183,7 @@ export const steuern: PageContent = {
         'Melden Sie sich, dann vereinbaren wir einen Termin. Die Checkliste können Sie vorab herunterladen.',
       ],
       actions: [
-        { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
+        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
         { kind: 'phone' },
       ],
     },

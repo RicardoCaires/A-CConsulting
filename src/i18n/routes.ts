@@ -171,7 +171,7 @@ export const pages: Record<PageKey, PageDefinition> = {
    */
   personalFinance: {
     slug: {
-      de: 'personal-finance',
+      de: 'finanzplanung',
       fr: 'finances-personnelles',
       pt: 'financas-pessoais',
     },
@@ -183,7 +183,9 @@ export const pages: Record<PageKey, PageDefinition> = {
   /** Wissen — Ratgeberbeitraege. Loest den frueher vertagten Blogbereich ab. */
   wissen: {
     slug: { de: 'wissen', fr: 'savoir', pt: 'conhecimento' },
-    published: { de: true, fr: false, pt: false },
+    // Kein einziger Beitrag. Eine Wissensseite, die nur ankuendigt, ist kein
+    // Wissensbereich — sie kommt zurueck, sobald drei Beitraege stehen.
+    published: { de: false, fr: false, pt: false },
     inMainNav: true,
     inLegalNav: false,
     sitemapPriority: 0.6,
@@ -254,26 +256,14 @@ export const mainNavOrder: readonly PageKey[] = [
   'versicherungen',
   'treuhand',
   'personalFinance',
-  'wissen',
   'ueberUns',
 ]
-
-/**
- * Seiten, die es zwar gibt, deren Inhalt aber noch entsteht.
- *
- * Unterschied zu einer fehlenden Seite: Der Punkt ist anklickbar und führt auf
- * etwas Lesbares. Er sagt nur dazu, dass dort noch nicht alles steht — sonst
- * erwartet man Beiträge und findet drei Ankündigungen.
- */
-const IN_VORBEREITUNG: readonly PageKey[] = ['wissen']
 
 /** Ein Punkt der Hauptnavigation. Ohne Ziel, solange es die Seite nicht gibt. */
 export type NavItem = {
   page: PageKey
   /** Adresse — oder `null`, wenn die Seite in dieser Sprache fehlt. */
   href: string | null
-  /** Seite vorhanden, Inhalt noch im Aufbau. */
-  inVorbereitung: boolean
 }
 
 /**
@@ -293,7 +283,6 @@ export function mainNavItems(locale: Locale): NavItem[] {
   return mainNavOrder.map((page) => ({
     page,
     href: isPublished(page, locale) ? path(page, locale) : null,
-    inVorbereitung: IN_VORBEREITUNG.includes(page),
   }))
 }
 

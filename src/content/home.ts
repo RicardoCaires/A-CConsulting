@@ -130,7 +130,7 @@ const de: HomeContent = {
       'A&C Consulting betreut Privatpersonen, Selbständige und KMU im Seeland und im Kanton Bern. Sie erreichen uns in Lyss, auf Deutsch, Französisch und Portugiesisch.',
   },
 
-  primaryCta: 'Erstgespräch vereinbaren',
+  primaryCta: 'Erstgespräch anfragen',
 
   // ---- 1 Einstieg -------------------------------------------------------
   hero: {

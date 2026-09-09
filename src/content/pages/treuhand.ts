@@ -20,7 +20,7 @@ export const treuhand: PageContent = {
   hero: {
     heading: 'Buchhaltung, Löhne und Abschluss für Selbständige und KMU',
     lead: 'Sie liefern die Unterlagen, wir führen die Buchhaltung laufend. Sie haben einen festen Ansprechpartner und wissen jederzeit, was als Nächstes ansteht.',
-    actions: [{ kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' }],
+    actions: [{ kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' }],
   },
 
   blocks: [
@@ -129,8 +129,8 @@ export const treuhand: PageContent = {
     {
       kind: 'list',
       id: 'kosten',
-      heading: 'Was es kostet',
-      intro: ['Wir rechnen nach Aufwand ab. Wie hoch dieser ausfällt, hängt vor allem von diesen Punkten ab:'],
+      heading: 'Klare Kosten vor Beginn',
+      intro: ['Was die Betreuung kostet, hängt vor allem von diesen Punkten ab:'],
       items: [
         'Anzahl Belege und Buchungen',
         'Anzahl Mitarbeitende',
@@ -139,8 +139,8 @@ export const treuhand: PageContent = {
         'Form, in der Sie die Unterlagen liefern',
       ],
       outro: [
-        'Nach dem Erstgespräch erhalten Sie eine Offerte mit dem vereinbarten Leistungsumfang. Ändert sich der Umfang, sprechen wir vorher darüber.',
-        'Wir vereinbaren eine Pauschale. Die besprochenen Leistungen sind darin enthalten.',
+        'Nach dem Erstgespräch erhalten Sie eine transparente Offerte. Je nach Mandat arbeiten wir mit einer monatlichen Pauschale oder einem klar vereinbarten Aufwandrahmen.',
+        'Ändert sich der Umfang, sprechen wir vorher darüber.',
       ],
     },
 
@@ -228,7 +228,7 @@ export const treuhand: PageContent = {
         'Im Erstgespräch schauen wir an, was heute bei Ihnen liegt und was davon zu uns kann. Danach wissen Sie, was eine Zusammenarbeit für Sie bedeuten würde.',
       ],
       actions: [
-        { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
+        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
         { kind: 'phone' },
       ],
     },

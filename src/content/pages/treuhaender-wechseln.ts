@@ -25,7 +25,7 @@ export const treuhaenderWechseln: PageContent = {
     heading: 'Den Treuhänder wechseln',
     lead: 'Wir begleiten den Wechsel strukturiert und diskret. Zuerst klären wir mit Ihnen die bestehende Situation, den geeigneten Zeitpunkt und die Unterlagen, die für die Übernahme nötig sind.',
     actions: [
-      { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
+      { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
       { kind: 'phone' },
     ],
   },
@@ -206,7 +206,7 @@ export const treuhaenderWechseln: PageContent = {
         'Erzählen Sie uns, wie Ihre Buchhaltung heute läuft. Danach wissen Sie, ob und wann ein Wechsel für Sie sinnvoll ist. Ein Gespräch verpflichtet Sie zu nichts.',
       ],
       actions: [
-        { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
+        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
         { kind: 'phone' },
       ],
     },

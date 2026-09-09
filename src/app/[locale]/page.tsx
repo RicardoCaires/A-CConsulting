@@ -12,7 +12,7 @@ import { company } from '@/lib/company'
  * Startseite.
  *
  * Diese Datei enthaelt keine Gestaltung. Sie ordnet den Inhalt aus
- * `src/content/startseite.ts` den sieben Abschnitten der Vorlage zu; wie die
+ * `src/content/startseite.ts` den neun Abschnitten der Vorlage zu; wie die
  * aussehen, steht in `components/templates/Startseite.tsx`.
  *
  * Nichts wird hier umformuliert. Kommt ein Text auf der Seite kuerzer vor als
@@ -58,7 +58,6 @@ export default async function HomePage({ params }: PageProps) {
   const inhalt: StartseiteInhalt = {
     // 1 — Einstieg. Eine Aussage, ein Satz, ein Knopf, ein Textlink.
     einstieg: {
-      eyebrow: content.einstieg.eyebrow,
       titel: content.einstieg.titel,
       satz: content.einstieg.satz,
       knopf: { text: content.cta, ziel: 'kontakt' },
@@ -66,44 +65,61 @@ export default async function HomePage({ params }: PageProps) {
       bild: content.einstieg.bild,
     },
 
-    // 2 — Die drei Bereiche. Versicherungsbroking fuehrt.
-    bereiche: {
-      titel: content.bereiche.titel,
-      leit: content.bereiche.leit,
-      weitere: content.bereiche.weitere,
+    // 2 — Vertrauenszeile. Vier nachpruefbare Angaben.
+    vertrauen: content.vertrauen,
+
+    // 3 — Situationen. Stehen vor den Leistungen: Wer herkommt, denkt in
+    //     seinem Problem, nicht in unseren Bereichen.
+    situationen: {
+      titel: content.situationen.titel,
+      einleitung: content.situationen.einleitung,
+      eintraege: content.situationen.eintraege,
     },
 
-    // 3 — Geschaeftsfaelle.
-    faelle: {
-      titel: content.faelle.titel,
-      einleitung: content.faelle.einleitung,
-      eintraege: content.faelle.eintraege,
+    // 4 — Leistungen. Versicherungsbroking fuehrt.
+    leistungen: {
+      titel: content.leistungen.titel,
+      leit: content.leistungen.leit,
+      weitere: content.leistungen.weitere,
     },
 
-    // 4 — Weshalb A&C.
-    gruende: {
-      titel: content.gruende.titel,
-      punkte: content.gruende.punkte,
+    // 5 — Eine Stelle fuer Ihre Administration.
+    eineStelle: {
+      titel: content.eineStelle.titel,
+      kette: content.eineStelle.kette,
+      text: content.eineStelle.text,
+      nachsatz: content.eineStelle.nachsatz,
     },
 
-    // 5 — Ansprechpartner.
+    // 6 — Digital.
+    digital: {
+      titel: content.digital.titel,
+      text: content.digital.text,
+      nachsatz: content.digital.nachsatz,
+    },
+
+    // 7 — Ansprechpartner.
     personen: {
       titel: content.personen.titel,
       einleitung: content.personen.einleitung,
       leute: content.personen.leute,
+      link: (
+        <PageLink
+          target={content.personen.link.ziel}
+          label={content.personen.link.text}
+          locale={locale}
+        />
+      ),
     },
 
-    // 6 — Wissen. Die Beitraege gibt es noch nicht; die Verweise fuehren
-    //     darum vorerst nirgendwohin und sagen das auch.
-    wissen: {
-      titel: content.wissen.titel,
-      einleitung: content.wissen.einleitung,
-      beitraege: content.wissen.beitraege,
-      weiterlesen: content.wissen.weiterlesen,
-      alle: <PageLink target="wissen" label={content.wissen.alle} locale={locale} />,
+    // 8 — Ablauf.
+    ablauf: {
+      titel: content.ablauf.titel,
+      schritte: content.ablauf.schritte,
+      nachsatz: content.ablauf.nachsatz,
     },
 
-    // 7 — Kontaktabschluss.
+    // 9 — Kontaktabschluss.
     abschluss: {
       titel: content.abschluss.titel,
       satz: content.abschluss.satz,

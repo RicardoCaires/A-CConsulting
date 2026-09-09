@@ -25,7 +25,7 @@ export const firmengruendung: PageContent = {
     heading: 'Firma gründen im Kanton Bern',
     lead: 'Wir begleiten Sie von der Wahl der Rechtsform bis zur ersten Buchhaltung und sagen Ihnen vorher, was auf Sie zukommt.',
     actions: [
-      { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
+      { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
       { kind: 'phone' },
     ],
   },
@@ -294,7 +294,7 @@ export const firmengruendung: PageContent = {
         'Im Gründungsgespräch klären wir die Rechtsform, den Ablauf und die Kosten für Ihren Fall. Danach wissen Sie, was zu tun ist, auch wenn Sie sich für einen anderen Weg entscheiden.',
       ],
       actions: [
-        { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
+        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
         { kind: 'phone' },
       ],
     },

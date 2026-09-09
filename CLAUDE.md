@@ -322,22 +322,39 @@ Aussagen zur Rolle als Broker.
 ## 9. Seitenstruktur und Inhalte
 
 Rangfolge der Bereiche — überall gleich, in Navigation, Startseite und Footer:
-**1. Versicherungsbroking · 2. Treuhand · 3. Personal Finance.** Broking führt,
+**1. Versicherungsbroking · 2. Treuhand · 3. Finanzplanung.** Broking führt,
 die anderen beiden ergänzen. Diese Reihenfolge wird nie umgestellt.
 
 > Geändert am 07.09.2026 auf Anweisung von Ricardo. Bis dahin stand an dritter
 > Stelle **Steuern**. Steuern ist damit kein eigener Hauptpunkt mehr: Die Seite
 > `/steuern` bleibt bestehen, wird gepflegt und ist über den Fussbereich und
 > die Geschäftsfälle erreichbar — sie ordnet sich unter Treuhand ein. Neu an
-> dritter Stelle steht **Personal Finance** mit genau zwei Leistungen, Budget
+> dritter Stelle steht **Finanzplanung** mit genau zwei Leistungen, Budget
 > und Vorsorge. Weitere werden nicht erfunden.
+>
+> Am 09.09.2026 von **Personal Finance** in **Finanzplanung** umbenannt
+> (Revisionsauftrag Ricardo): „Personal Finance" weckt die Erwartung von
+> Anlageberatung oder Vermögensverwaltung. Beides bietet A&C nicht an. Die
+> Adresse lautet seither `/de/finanzplanung`.
 
 Hauptnavigation, fünf Punkte, flach — kein Aufklappmenü, kein Mega-Menü:
 
-**Versicherungen · Treuhand · Personal Finance · Wissen · Über uns**,
-rechts der Knopf „Erstgespräch vereinbaren". Kontakt steht nicht in der Reihe,
-sondern im Knopf; auf schmalen Geräten zusätzlich in der Menüliste. Ein Punkt,
-dessen Seite es noch nicht gibt, bleibt sichtbar und trägt den Vermerk „folgt".
+**Versicherungen · Treuhand · Finanzplanung · Über uns**, rechts der Knopf
+„Erstgespräch anfragen". Kontakt steht nicht in der Reihe, sondern im Knopf;
+auf schmalen Geräten zusätzlich in der Menüliste. Ein Punkt, dessen Seite es
+noch nicht gibt, bleibt sichtbar und trägt den Vermerk „folgt".
+
+> **Wissen ist am 09.09.2026 aus der Navigation genommen** (Revisionsauftrag
+> Ricardo). Der Bereich hat keinen einzigen Beitrag; eine Wissensseite, die nur
+> ankündigt, ist kein Wissensbereich. `/wissen` steht auf `published: false`
+> und erscheint weder in der Navigation noch in der Sitemap. Inhalt und Vorlage
+> bleiben stehen. **Zurück in die Navigation, sobald drei echte Beiträge
+> vorliegen** — dann sind es wieder fünf Hauptpunkte.
+
+> **Der Kopfbereich läuft seit dem 09.09.2026 zweizeilig**: Wortmarke mittig und
+> grösser, darunter die Kategorien, ebenfalls mittig. Sprachwahl und Knopf
+> stehen rechts. Grund: Mit fünf Kategorien war die eine Zeile voll, und die
+> Navigation lief bei rund 1280 px über das Logo.
 
 Seitenbaum:
 
@@ -349,14 +366,14 @@ Seitenbaum:
 | `/treuhand/treuhaender-wechseln` | Wechsel eines bestehenden Mandats | gebaut |
 | `/steuern` | Steuererklärung Privat, Selbständige, Firma | gebaut |
 | `/firmengruendung` | Rechtsform, Ablauf, Kosten | gebaut |
-| `/personal-finance` | Budget und Vorsorge | offen |
-| `/wissen` | Ratgeberbeiträge | offen |
+| `/finanzplanung` | Budget und Vorsorge | gebaut |
+| `/wissen` | Ratgeberbeiträge | gebaut, **nicht veröffentlicht** |
 | `/ueber-uns` | Inhaber, Werdegang, Sprachen | gebaut |
 | `/kontakt` | Direktkontakt, Formular, Anfahrt | gebaut |
 | `/transparenz` | Vermittlerstatus, Vergütung, Beschwerdeweg | offen |
 | `/schadenfall` | Was im Schadenfall zu tun ist | offen |
-| `/impressum` | Pflichtangaben | offen |
-| `/datenschutz` | revDSG | offen |
+| `/impressum` | Pflichtangaben | gebaut |
+| `/datenschutz` | revDSG | gebaut |
 
 Je Sprache derselbe Baum unter `/de/`, `/fr/`, `/pt/`. Verbindlich sind die
 acht Kernseiten aus Schritt 4, Fassung 2; `/transparenz` und `/schadenfall`
@@ -364,28 +381,37 @@ werden von dort verlinkt und kommen später dazu.
 
 ### Startseite
 
-Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
-`content/source/startseite_de.md` und wird nicht umformuliert. Diese
-Reihenfolge wird nicht verlängert und nicht umgestellt:
+Verbindlich sind **neun** Abschnitte. Der Wortlaut steht in
+`content/source/startseite_de.md` und wird nicht umformuliert.
 
 | # | Abschnitt | Überschrift auf der Seite | Fläche |
 |---|---|---|---|
-| 1 | Einstieg | Zwei Ansprechpartner statt drei Adressen | DOMINANT |
-| 2 | Die drei Bereiche | Was wir für Sie übernehmen | weiss |
-| 3 | Geschäftsfälle | Womit Menschen zu uns kommen | hell |
-| 4 | Warum A&C | Weshalb Kundinnen und Kunden mit uns arbeiten | FLÄCHE |
-| 5 | Ansprechpartner | Zwei Ansprechpartner | weiss |
-| 6 | Wissen | Wissen | hell |
-| 7 | Kontaktabschluss | Sprechen wir über Ihre Situation | FLÄCHE |
+| 1 | Einstieg | Treuhand und Versicherungen. Persönlich aus einer Hand. | DOMINANT |
+| 2 | Vertrauenszeile | — (vier Angaben, ein schmales Band) | — |
+| 3 | Situationen | Wobei können wir Sie unterstützen? | hell |
+| 4 | Leistungen | Was wir für Sie übernehmen | weiss |
+| 5 | Eine Stelle | Eine Stelle für Ihre Administration | FLÄCHE |
+| 6 | Digital | Persönlich beraten. Digital effizient. | weiss |
+| 7 | Ansprechpartner | Zwei Ansprechpartner | hell |
+| 8 | Ablauf | So beginnt die Zusammenarbeit | weiss |
+| 9 | Abschluss | Erzählen Sie uns, wobei wir Sie entlasten können. | FLÄCHE |
 
-> Geändert am 07.09.2026 auf Anweisung von Ricardo. Bis dahin galten neun
-> Bereiche aus Schritt 4, Fassung 2. Weggefallen sind „So arbeiten wir",
-> „Kosten und Vergütung" und „Standort und Region" — ihr Wortlaut steht
-> unverändert in `schritt4_fassung2_de.md` und gehört auf die Leistungs-,
-> Transparenz- und Kontaktseite. Dazugekommen ist „Wissen".
+> Geändert am 09.09.2026 auf Anweisung von Ricardo (Revisionsauftrag). Bis dahin
+> galten sieben Abschnitte. Vier Änderungen:
 >
-> **`schritt4_fassung2_de.md` bleibt verbindlich für alle Leistungsseiten.**
-> Nur die Startseite hat eine eigene Quelle.
+> - **Der Einstieg sagt jetzt, was A&C tut.** „Zwei Ansprechpartner statt drei
+>   Adressen" war für Erstbesucher zu abstrakt.
+> - **Die Situationen stehen vor den Leistungen.** Wer auf die Seite kommt,
+>   denkt in seinem Problem, nicht in unseren Bereichen.
+> - **Drei Abschnitte sind neu:** die Vertrauenszeile, „Eine Stelle für Ihre
+>   Administration" und „Persönlich beraten. Digital effizient.".
+> - **Der Wissensbereich ist weg**, solange es keine Beiträge gibt.
+>
+> Der frühere Abschnitt „Weshalb Kundinnen und Kunden mit uns arbeiten" ist
+> entfallen. Seine vier Aussagen stehen jetzt dort, wo sie hingehören:
+> „Zwei Bereiche, eine Stelle" ist Abschnitt 5, „Digital organisiert" ist
+> Abschnitt 6, „Feste Ansprechpartner" trägt Abschnitt 7 und „Verständliche
+> Entscheidungen" Abschnitt 8. Jeder Gedanke steht einmal.
 
 Die Flächenfolge ist fest und wird beim Bauen erzwungen (`pruefeFlaechen`).
 Ein Verstoss bricht den Build.
@@ -401,9 +427,21 @@ nummeriert und ohne Icons:
 5. Ich möchte meine Versicherungen prüfen → Versicherungen
 6. Ich habe einen Schadenfall → Versicherungen, Abschnitt Schadenfall
 
-Höchstens vier Punkte bei „Warum A&C". Keine Zähler mit erfundenen Zahlen
-("X Jahre, Y Kunden"), keine Kundenstimmen, keine Versicherer-Logos. Nur
-Angaben, die belegbar sind.
+Keine Zähler mit erfundenen Zahlen ("X Jahre, Y Kunden"), keine Kundenstimmen,
+keine Versicherer-Logos. Nur Angaben, die belegbar sind.
+
+**Digitalisierung, Abschnitt 6.** Am 07.09.2026 hatte Ricardo alle Aussagen zu
+Automatisierung, KI und digitalen Prozessen streichen lassen; am 09.09.2026 hat
+er sie im Revisionsauftrag ausdrücklich zurückverlangt — aber **als Werkzeug,
+nicht als Verkaufsargument**. Erlaubt ist, was Software für die Kundschaft tut;
+verboten bleiben Schlagwörter („KI-gestützt" als Auszeichnung, „AI-powered",
+„disruptiv", „next generation"). Die fachliche Prüfung, die Beratung und die
+Verantwortung liegen im Text ausdrücklich bei A&C.
+
+**Sprachwahl.** Gezeigt werden nur Sprachen, die es gibt. Solange nur Deutsch
+vorliegt, entfällt die Sprachwahl im Kopfbereich ganz — eine Auswahl mit einem
+Eintrag ist keine Auswahl. Sie erscheint von selbst wieder, sobald FR oder PT
+auf `published: true` stehen.
 
 ### Offene Angaben
 
@@ -414,34 +452,12 @@ nie stillschweigend weggelassen.
 `npm run check` listet sie bei jedem Lauf auf. Vor dem Go-live muss
 `npm run check:pending -- --strict` ohne Befund durchlaufen.
 
-Auf der Startseite sind derzeit **acht** Angaben offen:
-
-- zwei bis drei Sätze zu Ricardo und zu Octavio — Werdegang und fachlicher
-  Schwerpunkt (Abschnitt 5)
-- Datum und Anriss der drei Wissensbeiträge (Abschnitt 6)
-
-Die Wissen-Sektion hat noch **keinen einzigen Beitrag**. Die drei Titel dort
-sind Themenvorschläge, kein Versprechen; sie werden vor dem Go-live entweder
-geschrieben oder ersetzt.
+Stand 09.09.2026: **vier** offene Angaben — der Link auf den
+FINMA-Registereintrag im Impressum und drei Veröffentlichungsdaten im
+Wissensbereich, der nicht veröffentlicht ist.
 
 Alle Bildflächen sind Platzhalter mit Formatangabe. Das spätere Foto tritt an
 dieselbe Stelle, ohne dass sich das Layout verschiebt. Kein Stockbild.
-
-### Verweise auf noch nicht gebaute Seiten
-
-Ein Verweis wird nur dann zum Link, wenn die Zielseite in dieser Sprache
-veröffentlicht ist. Sonst steht die Beschriftung mit dem Vermerk „folgt" —
-sichtbar, aber nicht klickbar. Kein toter Link, keine stille Auslassung.
-
-### Ablauf-Muster
-
-Jede Leistungsseite enthält einen nummerierten Ablauf. Das ist das wichtigste
-Element der Seite: Es nimmt die Hemmschwelle, weil der Kunde sieht, was auf ihn
-zukommt.
-
-Wortlaut und Anzahl der Schritte stehen je Seite in Schritt 4, Fassung 2 und
-werden nicht vereinheitlicht — Versicherungen und Steuern haben drei Schritte,
-Treuhand vier, der Treuhänderwechsel fünf, die Firmengründung sechs.
 
 ### /versicherungen
 
