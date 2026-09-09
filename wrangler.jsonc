@@ -1,0 +1,33 @@
+/**
+ * Cloudflare — Aufschaltung der statischen Website.
+ *
+ * Cloudflare legt neue Projekte seit 2025 als Worker mit statischen Dateien an,
+ * nicht mehr als klassisches Pages-Projekt. Der Bauvorgang ruft darum
+ * `npx wrangler deploy` auf, und dieser Aufruf sucht genau diese Datei. Ohne
+ * sie laeuft der Bau durch und das Aufschalten scheitert.
+ *
+ * Es laeuft **kein** Code auf dem Server: Es gibt keinen Einstiegspunkt, nur
+ * den Ordner `out`, den `npm run build` erzeugt. Der Worker liefert Dateien
+ * aus, mehr nicht — genau das, was die Website braucht.
+ *
+ * `_headers` und `_redirects` liegen in `out/` und gelten unveraendert weiter;
+ * die statische Auslieferung wertet beide aus. Die Weiterleitung der Wurzel auf
+ * /de/ und die vier Sicherheitskopfzeilen kommen also von dort, nicht von hier.
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  // Muss dem Projektnamen in Cloudflare entsprechen.
+  "name": "a-cconsulting",
+
+  "compatibility_date": "2026-09-09",
+
+  "assets": {
+    // Ergebnis von `npm run build` (next.config.mjs, output: 'export').
+    "directory": "./out",
+
+    // Eine unbekannte Adresse liefert unsere eigene Fehlerseite mit Kopf- und
+    // Fussbereich, nicht die nackte Meldung von Cloudflare.
+    "not_found_handling": "404-page"
+  }
+}

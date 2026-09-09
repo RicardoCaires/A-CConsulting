@@ -22,7 +22,10 @@
     "check": "npm run tokens && npm run check:colors && npm run check:source && npm run check:pending && npm run typecheck && npm run lint",
     "check:colors": "node scripts/check-no-hex.mjs",
     "check:pending": "node scripts/check-pending.mjs",
-    "check:source": "node scripts/check-source.mjs"
+    "check:source": "node scripts/check-source.mjs",
+    "cf:login": "node ./node_modules/wrangler/bin/wrangler.js login",
+    "cf:whoami": "node ./node_modules/wrangler/bin/wrangler.js whoami",
+    "deploy": "npm run build && node ./node_modules/wrangler/bin/wrangler.js pages deploy out --project-name=ac-website"
   },
   "dependencies": {
     "next": "15.5.4",
@@ -36,6 +39,7 @@
     "@types/react-dom": "19.0.2",
     "eslint": "9.17.0",
     "eslint-config-next": "15.5.4",
-    "typescript": "5.7.2"
+    "typescript": "5.7.2",
+    "wrangler": "^4.130.0"
   }
 }
