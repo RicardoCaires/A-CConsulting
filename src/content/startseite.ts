@@ -44,7 +44,16 @@ export type Bereich = {
  * der Unterschied zu den beiden darunter, und er ist verbindlich:
  * Versicherungsbroking fuehrt (CLAUDE.md, Rangfolge der Bereiche).
  */
-export type LeitBereich = Bereich & {
+export type LeitBereich = Omit<Bereich, 'text'> & {
+  /**
+   * Beim fuehrenden Bereich freiwillig.
+   *
+   * Die Modellgrafik im Abschnitt darueber traegt den beschreibenden Satz
+   * bereits eingebrannt („Wir pruefen Ihre Vertraege, holen Offerten ein und
+   * uebernehmen den Schriftverkehr"). Stuende er hier noch einmal, sagte die
+   * Seite dieselbe Sache zweimal untereinander.
+   */
+  text?: string
   bild: { label: string; note?: string }
 }
 
@@ -88,6 +97,12 @@ export type StartseiteContent = {
   statement: {
     eyebrow: string
     satz: string
+    /**
+     * Der beschreibende Satz — nur auf schmalen Geraeten sichtbar.
+     *
+     * Ab Desktop steht er in der Grafik. Dort wird dieser Block ausgeblendet,
+     * damit er nicht doppelt erscheint.
+     */
     zusatz: string
     /**
      * Die Modellgrafik unter der Aussage: Kunde → Mandat → A&C → Preisvergleich.
@@ -170,13 +185,14 @@ const de: StartseiteContent = {
     titel: 'Verwurzelt im Seeland. Blick auf mehr.',
     satz: 'Wir unterstützen Selbständige, KMU und Privatpersonen bei Buchhaltung, Versicherungen und Finanzfragen – mit festen Ansprechpartnern in Lyss.',
     weiter: { text: 'Unsere Leistungen', ziel: 'treuhand' },
-    // Die Aufnahme liegt noch nicht in ihrer endgueltigen Fassung vor
-    // (Stand 09.09.2026). Bis dahin die ruhige Flaeche im richtigen Format —
-    // das Foto tritt spaeter an dieselbe Stelle, ohne dass sich etwas
-    // verschiebt. Dann steht hier `{ src, alt }` statt `{ label, note }`.
+    // Die Aufnahme traegt Ueberschrift und Vorzeile bereits eingebrannt.
+    // Darum blendet der Kopf seinen eigenen Text aus, sobald das Bild lesbar
+    // gross ist — sonst stuende beides doppelt. Auf schmalen Geraeten ist es
+    // umgekehrt: Dort ist der eingebrannte Text zu klein, und der HTML-Text
+    // traegt. Je Fenstergroesse steht die Aussage genau einmal.
     bild: {
-      label: 'SEELAND / PANORAMA',
-      note: 'Aufnahme 1 der Shootingliste',
+      src: '/bilder/startseite-seeland.png',
+      alt: 'Blick über das Seeland bei Dämmerung: Lichter der Stadt, der See und die Hügelkette im Abendhimmel.',
     },
   },
 
@@ -214,7 +230,6 @@ const de: StartseiteContent = {
 
     leit: {
       titel: 'Versicherungen',
-      text: 'Wir vertreten Sie, nicht die Versicherung. Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.',
       stichworte: [
         'Krankenversicherung und Zusatzversicherung',
         'Hausrat, Haftpflicht und Motorfahrzeug',

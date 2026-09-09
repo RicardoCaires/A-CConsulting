@@ -19,14 +19,19 @@
   min-height: 26rem;
 }
 
-/* Das Foto liegt hinter allem. `object-position` haelt den Horizont im Bild —
-   beschnitten wird oben und unten, nicht seitlich. */
+/* Das Foto liegt hinter allem.
+
+   Auf schmalen Geraeten ist der Ausschnitt hoch, das Bild breit — sichtbar
+   bleibt rund ein Viertel der Bildbreite. Gezeigt wird davon die rechte
+   Seite: See, Huegel, Abendhimmel. Die linke traegt die eingebrannte
+   Ueberschrift, und die stuende hier hinter demselben Satz in HTML — zwei
+   Mal dieselbe Aussage, die eine halb verdeckt hinter der anderen. */
 .foto {
   position: absolute;
   inset: 0;
   z-index: -2;
   object-fit: cover;
-  object-position: 50% 45%;
+  object-position: 78% 50%;
 }
 
 .platzhalter {
@@ -119,12 +124,108 @@
 /* ---- Ab Desktop ---------------------------------------------------------- */
 
 @media (min-width: 64rem) {
+  /* Die Hoehe folgt hier dem Bild, nicht dem Fenster.
+
+     Das Bild ist doppelt so breit wie hoch und traegt seine Aussage in der
+     oberen Haelfte — die Ueberschrift, den gruenen Strich, die Vorzeile. Bei
+     fester Hoehe schneidet `cover` mit wachsender Fensterbreite immer mehr
+     davon weg; bei 1920 fehlte die halbe Ueberschrift.
+
+     34vw ist etwas mehr als zwei Drittel der Bildhoehe (die 50vw betruege).
+     Damit steht die eingebrannte Aussage bei jeder Breite vollstaendig da,
+     und darunter bleibt Platz fuer den Knopf. 32rem haelt den Kopf auf
+     schmalen Desktops in der bisherigen Groesse. */
   .hero {
-    min-height: min(32rem, 62vh);
+    min-height: max(32rem, calc(29.2vw + 8rem));
+    /* Text nach unten: Ueber ihm steht die eingebrannte Ueberschrift des
+       Bildes. */
+    align-items: flex-end;
   }
 
   .titel {
     max-width: 13ch;
+  }
+
+  /* Oben verankert statt mittig. Das Bild ist doppelt so breit wie hoch; der
+     Kopf ist es nicht. `cover` schneidet darum ab — und bei mittiger Lage
+     wandert der Schnitt mit der Fensterbreite nach oben in die eingebrannte
+     Ueberschrift hinein. Bei 1920 fehlte die obere Haelfte von „Verwurzelt".
+     Von oben her gerechnet steht sie bei jeder Breite vollstaendig da;
+     abgeschnitten wird der Seegrund unten, wo nichts steht. */
+  .foto {
+    object-position: 50% 0%;
+  }
+
+  /* Ueberschrift, Marker und Vorzeile stehen bereits im Bild. Ab hier ist das
+     Bild gross genug, um sie zu tragen — der HTML-Text daneben waere dieselbe
+     Aussage ein zweites Mal.
+
+     Sie bleiben im Dokument: Suchmaschinen und Vorlesewerkzeuge brauchen die
+     Ueberschrift, und `visibility: hidden` nimmt sie nur dem Auge. */
+  /* Das Bild bringt seinen eigenen Kontrast mit — der Verlauf legte sich
+     ueber die eingebrannte Schrift und machte sie grau. Ab hier nur noch so
+     viel, wie der Satz und der Knopf unten links brauchen. */
+  .verlauf {
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--ac-color-navy-deep) 82%, transparent) 0%,
+      color-mix(in srgb, var(--ac-color-navy-deep) 45%, transparent) 26%,
+      transparent 52%
+    );
+  }
+
+  .titel,
+  .marker,
+  .eyebrow {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* Auch der Fliesstext weicht. Er kollidierte mit der eingebrannten Vorzeile
+     des Bildes, und zwar nicht bei einer Breite, sondern staerker je breiter
+     das Fenster: Der eingebrannte Text skaliert mit dem Bild, mein Text haengt
+     am unteren Rand. Gemessen 39 px bei 1280, 69 px bei 1920.
+
+     Jede Positionierung dagegen waere geraten. Die Vorlage traegt an dieser
+     Stelle ohnehin keinen Fliesstext — sie hat Ueberschrift, Strich, Vorzeile.
+     Also bleibt hier der Knopf, und der Satz steht auf schmalen Geraeten, wo
+     das Bild ihn nicht ersetzt.
+
+     Faellt der eingebrannte Text im Bild spaeter weg, wird aus diesem Block
+     wieder normaler Text — es ist nur diese eine Regel zu loeschen. */
+  .satz {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* Der Knopf richtet sich hier nach dem Bild, nicht nach dem Textcontainer.
+
+     Die eingebrannte Ueberschrift beginnt bei 11.84 Prozent der Bildbreite.
+     Das Bild laeuft ueber die volle Fensterbreite, der Container dagegen ist
+     mittig begrenzt — bei 1920 stand der Knopf darum 190 px rechts neben der
+     Ueberschrift, ohne erkennbaren Bezug. Prozentual gerechnet steht er bei
+     jeder Breite unter dem ersten Buchstaben. */
+  .inner {
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: 11.84vw var(--ac-gutter);
+    padding-block-end: clamp(1.75rem, 3.5vw, 2.75rem);
+  }
+
+  .aktionen {
+    margin-top: 0;
   }
 }
 

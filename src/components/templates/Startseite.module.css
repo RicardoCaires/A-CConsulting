@@ -25,6 +25,10 @@
   max-width: 18ch;
 }
 
+.nurSchmal {
+  margin-bottom: 0;
+}
+
 .statementZusatz {
   margin-top: var(--ac-space-md);
   font-size: var(--ac-lead-size);
@@ -33,19 +37,28 @@
   max-width: 42ch;
 }
 
-@media (min-width: 48rem) {
-  /* Der Zusatz steht eingerueckt unter der Aussage — versetzt, nicht buendig.
-     Das ist der Unterschied zwischen einer Aussage und einem Absatz. */
-  .statementZusatz {
-    margin-inline-start: clamp(2rem, 12vw, 9rem);
-  }
-}
-
 /* Die Modellgrafik unter der Aussage. Volle Containerbreite, ein kleiner
    Radius wie bei den Karten, kein Rahmen: Die Grafik bringt ihren eigenen
    hellen Grund mit. */
+/* Auf schmalen Geraeten faellt die Grafik weg: 1536 px auf 375 px gestaucht
+   ergeben eine Beschriftung von rund vier Pixeln — ein huebsches Muster ohne
+   Aussage. Dort traegt der Text darueber. */
 .modell {
+  display: none;
   margin: clamp(2rem, 4.5vw, 3.5rem) 0 0;
+}
+
+@media (min-width: 64rem) {
+  /* Ab hier traegt die Grafik. Der Text darueber verschwindet, sonst stuende
+     die Aussage zweimal auf derselben Seite. */
+  .modell {
+    display: block;
+    margin-top: 0;
+  }
+
+  .statement {
+    display: none;
+  }
 }
 
 .modellBild {

@@ -67,6 +67,8 @@ export type StartseiteInhalt = {
     eyebrow?: string
     titel: ReactNode
     satz: ReactNode
+    /** Nur auf schmalen Geraeten sichtbar — ab Desktop steht er in der Grafik. */
+    zusatz?: ReactNode
     /** Genau einer. Der Kopf traegt keinen zweiten Knopf. */
     knopf: { text: string; ziel: PageKey }
     /** Zurueckhaltender zweiter Weg, als Textlink. */
@@ -76,6 +78,7 @@ export type StartseiteInhalt = {
   statement: {
     eyebrow: string
     satz: ReactNode
+    /** Nur auf schmalen Geraeten sichtbar — ab Desktop steht er in der Grafik. */
     zusatz?: ReactNode
     /** Die Modellgrafik. Bild, sobald die Datei da ist; sonst Platzhalter. */
     grafik?:
@@ -175,22 +178,26 @@ export function StartseiteTemplate({
         bild={inhalt.einstieg.bild}
       />
 
-      {/* ---- 2 Statement — die eine Aussage, gross ------------------------- */}
-      <Section surface={fStatement} abstand="weit" labelledBy="statement" id="statement">
+      {/* ---- 2 Modell — die Grafik traegt die Aussage --------------------- */}
+      <Section surface={fStatement} abstand="weit" labelledBy="statement-titel" id="statement">
+        {/* Vorzeile, Aussage und Zusatz standen hier bis zum 09.09.2026 als
+            Text — und noch einmal in der Grafik darunter. Doppelt. Auf breiten
+            Fenstern traegt jetzt die Grafik allein.
+
+            Auf schmalen bleibt der Text sichtbar: Dort ist die Grafik auf
+            375 px gestaucht und ihre Beschriftung rund vier Pixel hoch, also
+            unlesbar. Je Fenstergroesse steht die Aussage damit genau einmal —
+            nirgends zweimal, nirgends gar nicht. */}
         <div className={styles.statement}>
-          <p className="ac-eyebrow">{inhalt.statement.eyebrow}</p>
-          <p id="statement" className={`ac-statement ${styles.statementSatz}`}>
+          <p className={`ac-eyebrow ${styles.nurSchmal}`}>{inhalt.statement.eyebrow}</p>
+          <h2 id="statement-titel" className={`ac-statement ${styles.statementSatz}`}>
             {inhalt.statement.satz}
-          </p>
+          </h2>
           {inhalt.statement.zusatz && (
             <p className={styles.statementZusatz}>{inhalt.statement.zusatz}</p>
           )}
         </div>
 
-        {/* Die Modellgrafik: volle Containerbreite, unter der Aussage. Als
-            Bild, nicht als HTML — so hat Ricardo es geliefert und gewollt.
-            Die Aussage selbst steht darueber als Text, damit Suche und
-            Vorlesen sie haben. */}
         {inhalt.statement.grafik && (
           <figure className={styles.modell}>
             {'src' in inhalt.statement.grafik ? (

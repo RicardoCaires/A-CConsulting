@@ -38,9 +38,10 @@ ist ein Leitsatz; was A&C tut, sagen die Vorzeile und der Untertitel darunter.
 
 Vorzeile: Versicherungen · Treuhand
 
-Bildplatz im Seitenkopf: SEELAND / PANORAMA — Aufnahme 1 der Shootingliste.
-Die endgültige Datei liegt noch nicht vor; der Alternativtext wird mit ihr
-festgelegt.
+Bild im Seitenkopf: Seeland-Panorama, von Ricardo am 09.09.2026 geliefert.
+Überschrift und Vorzeile sind darin eingebrannt.
+
+Alternativtext: Blick über das Seeland bei Dämmerung: Lichter der Stadt, der See und die Hügelkette im Abendhimmel.
 
 Untertitel: Wir unterstützen Selbständige, KMU und Privatpersonen bei Buchhaltung, Versicherungen und Finanzfragen – mit festen Ansprechpartnern in Lyss.
 
@@ -60,6 +61,9 @@ Vorzeile: Unsere Rolle
 Aussage: Wir vertreten Sie, nicht die Versicherung.
 
 Zusatz: Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.
+
+Der Zusatz erscheint nur auf schmalen Geräten. Ab Desktop steht er eingebrannt
+in der Modellgrafik; der Textblock wird dort ausgeblendet.
 
 Darunter die Modellgrafik „Unser Modell" (Kunde → Mandat → A&C → Preisvergleich),
 von Ricardo am 09.09.2026 als Bild geliefert und ausdrücklich so gewollt —
@@ -90,7 +94,11 @@ Einleitung: Sechs Ausgangslagen, die bei uns am häufigsten am Anfang stehen.
 
 ### Versicherungen
 
-Wir vertreten Sie, nicht die Versicherung. Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.
+Kein beschreibender Satz. Beide Sätze — „Wir vertreten Sie, nicht die
+Versicherung." und „Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen
+den Schriftverkehr — auch im Schadenfall." — stehen in Abschnitt 03 und in der
+Modellgrafik. Am 09.09.2026 hier gestrichen, damit die Seite sie nicht zweimal
+untereinander sagt. Die Karte trägt Überschrift, Stichworte und Verweis.
 
 Stichworte: Krankenversicherung und Zusatzversicherung · Hausrat, Haftpflicht und Motorfahrzeug · Leben und Säule 3a · BVG, UVG und Krankentaggeld · Betriebshaftpflicht und Sachversicherung
 
