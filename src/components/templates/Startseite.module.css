@@ -41,6 +41,26 @@
   }
 }
 
+/* Die Modellgrafik unter der Aussage. Volle Containerbreite, ein kleiner
+   Radius wie bei den Karten, kein Rahmen: Die Grafik bringt ihren eigenen
+   hellen Grund mit. */
+.modell {
+  margin: clamp(2rem, 4.5vw, 3.5rem) 0 0;
+}
+
+.modellBild {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--ac-radius-md);
+}
+
+/* Platzhalter im Format der Grafik (rund 4:3), bis die Datei da ist. */
+.modellPlatzhalter {
+  aspect-ratio: 4 / 3;
+  max-height: 32rem;
+}
+
 /* ---- 5 Eine Stelle für Ihre Administration ------------------------------- */
 
 /* Die Kette. Eine geordnete Liste, weil die Reihenfolge etwas bedeutet: So

@@ -438,6 +438,16 @@ verboten bleiben Schlagwörter („KI-gestützt" als Auszeichnung, „AI-powered
 „disruptiv", „next generation"). Die fachliche Prüfung, die Beratung und die
 Verantwortung liegen im Text ausdrücklich bei A&C.
 
+**Modellgrafik, Abschnitt 2.** Unter dem Statement steht seit dem 09.09.2026
+eine Grafik „Unser Modell" (Kunde → Mandat → A&C → Preisvergleich), die
+Ricardo als Bild geliefert hat. **Sie zeigt die Logos von acht
+Versicherungsgesellschaften** (Zurich, Helvetia, AXA, Allianz, Vaudoise,
+Die Mobiliar, Generali, Swiss Life). Das widerspricht der Regel in Abschnitt 3
+(„Logos von Versicherern ohne schriftliche Freigabe"). Ricardo wurde darauf
+hingewiesen und hat am 09.09.2026 entschieden, die Grafik so zu verwenden —
+die Verantwortung für Freigaben liegt bei ihm. Ändert sich das, ist die Grafik
+in `src/content/startseite.ts` unter `statement.grafik` zu ersetzen.
+
 **Sprachwahl.** Gezeigt werden nur Sprachen, die es gibt. Solange nur Deutsch
 vorliegt, entfällt die Sprachwahl im Kopfbereich ganz — eine Auswahl mit einem
 Eintrag ist keine Auswahl. Sie erscheint von selbst wieder, sobald FR oder PT

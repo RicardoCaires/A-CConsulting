@@ -66,7 +66,8 @@ export default async function HomePage({ params }: PageProps) {
       bild: content.einstieg.bild,
     },
 
-    // 2 — Statement. Die eine Aussage, die Haltung zeigt.
+    // 2 — Statement. Die eine Aussage, die Haltung zeigt — und darunter
+    //     die Modellgrafik, sobald die Datei vorliegt.
     statement: content.statement,
 
     // 3 — Situationen. Stehen vor den Leistungen: Wer herkommt, denkt in

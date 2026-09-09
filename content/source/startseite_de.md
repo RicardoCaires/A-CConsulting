@@ -61,6 +61,12 @@ Aussage: Wir vertreten Sie, nicht die Versicherung.
 
 Zusatz: Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.
 
+Darunter die Modellgrafik „Unser Modell" (Kunde → Mandat → A&C → Preisvergleich),
+von Ricardo am 09.09.2026 als Bild geliefert und ausdrücklich so gewollt —
+einschliesslich der Logos von acht Versicherungsgesellschaften.
+
+Alternativtext: Schaubild „Unser Modell": Der Kunde erteilt A&C Consulting ein Mandat. A&C analysiert den Bedarf, vergleicht Angebote am Markt, berät, übernimmt den Schriftverkehr und begleitet langfristig. Für den Preisvergleich holt A&C Offerten bei verschiedenen Versicherungsgesellschaften ein. Zurück zum Kunden geht ein transparenter Vorschlag.
+
 ---
 
 ## 03 Situationen

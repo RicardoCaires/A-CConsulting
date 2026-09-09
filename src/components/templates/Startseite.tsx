@@ -5,7 +5,10 @@ import { CTASection } from '@/components/blocks/CTASection'
 import { Faelle, type Fall } from '@/components/blocks/Faelle'
 import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
 import { SectionHeader } from '@/components/blocks/SectionHeader'
+import Image from 'next/image'
+
 import { StartHero, type HeroBild } from '@/components/blocks/StartHero'
+import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
 import { StepList } from '@/components/blocks/StepList'
 import { Team, type Mitglied } from '@/components/blocks/Team'
 import { Button } from '@/components/ui/Button'
@@ -74,6 +77,10 @@ export type StartseiteInhalt = {
     eyebrow: string
     satz: ReactNode
     zusatz?: ReactNode
+    /** Die Modellgrafik. Bild, sobald die Datei da ist; sonst Platzhalter. */
+    grafik?:
+      | { src: string; alt: string; breite: number; hoehe: number }
+      | { label: string; note?: string }
   }
   situationen: {
     titel: ReactNode
@@ -179,6 +186,31 @@ export function StartseiteTemplate({
             <p className={styles.statementZusatz}>{inhalt.statement.zusatz}</p>
           )}
         </div>
+
+        {/* Die Modellgrafik: volle Containerbreite, unter der Aussage. Als
+            Bild, nicht als HTML — so hat Ricardo es geliefert und gewollt.
+            Die Aussage selbst steht darueber als Text, damit Suche und
+            Vorlesen sie haben. */}
+        {inhalt.statement.grafik && (
+          <figure className={styles.modell}>
+            {'src' in inhalt.statement.grafik ? (
+              <Image
+                src={inhalt.statement.grafik.src}
+                alt={inhalt.statement.grafik.alt}
+                width={inhalt.statement.grafik.breite}
+                height={inhalt.statement.grafik.hoehe}
+                sizes="(min-width: 64rem) 1160px, 100vw"
+                className={styles.modellBild}
+              />
+            ) : (
+              <ImagePlaceholder
+                className={styles.modellPlatzhalter}
+                label={inhalt.statement.grafik.label}
+                note={inhalt.statement.grafik.note}
+              />
+            )}
+          </figure>
+        )}
       </Section>
 
       {/* ---- 3 Leistungen -------------------------------------------------- */}
