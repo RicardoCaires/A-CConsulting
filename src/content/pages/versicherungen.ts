@@ -47,6 +47,22 @@ export const versicherungen: PageContent = {
       ],
     },
 
+    // 03a Das Modell als Schaubild
+    //
+    // Steht unmittelbar nach „Wir arbeiten in Ihrem Auftrag": Der Abschnitt
+    // sagt, in wessen Auftrag wir arbeiten — das Bild zeigt, wie das ablaeuft.
+    // Dieselbe Datei wie auf der Startseite; eine zweite Fassung derselben
+    // Grafik waere eine zweite Wahrheit, die irgendwann auseinanderlaeuft.
+    {
+      kind: 'schaubild',
+      id: 'modell',
+      src: '/bilder/unser-modell.png',
+      alt: 'Schaubild „Unser Modell": Der Kunde erteilt A&C Consulting ein Mandat. A&C analysiert den Bedarf, vergleicht Angebote am Markt, berät, übernimmt den Schriftverkehr und begleitet langfristig. Für den Preisvergleich holt A&C Offerten bei verschiedenen Versicherungsgesellschaften ein. Zurück zum Kunden geht ein transparenter Vorschlag.',
+      breite: 1536,
+      hoehe: 1024,
+      lesbarAb: 720,
+    },
+
     // 04 Wie wir entschädigt werden
     {
       kind: 'prose',

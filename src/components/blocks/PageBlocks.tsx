@@ -1,3 +1,6 @@
+import type { CSSProperties } from 'react'
+import Image from 'next/image'
+
 import { Button } from '@/components/ui/Button'
 import { Icon, type IconName } from '@/components/ui/Icon'
 import { KLASSE, type Surface } from './Section'
@@ -283,6 +286,32 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
       )
     }
 
+    case 'schaubild':
+      return (
+        <figure className={styles.schaubild}>
+          {/* Waagrecht schiebbar, solange das Fenster schmaler ist als die
+              lesbare Mindestbreite. Der Rahmen ist mit der Tastatur
+              erreichbar — sonst kaeme man ohne Zeigegeraet nicht an die
+              rechte Haelfte. */}
+          <div
+            className={styles.schaubildRahmen}
+            style={{ '--schaubild-min': `${block.lesbarAb}px` } as CSSProperties}
+            tabIndex={0}
+            role="group"
+            aria-label={block.alt}
+          >
+            <Image
+              className={styles.schaubildBild}
+              src={block.src}
+              alt={block.alt}
+              width={block.breite}
+              height={block.hoehe}
+              sizes="(min-width: 88rem) 1360px, 100vw"
+            />
+          </div>
+        </figure>
+      )
+
     case 'anchors':
       return (
         <nav className={styles.anchorNav} aria-label={getUi(locale).sectionsNavLabel}>
@@ -372,6 +401,11 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
   // Rhythmus je nachdem, ob eine Seite eine Bereichsnavigation hat.
   let surfaceIndex = 0
 
+  // Ein Schaubild bekommt keine eigene Flaeche, sondern die des Abschnitts
+  // darueber. Sonst stuende es als abgesetzter Kasten da — angehaengt statt
+  // dazugehoerig — und der Wechsel aller folgenden Flaechen kippte mit.
+  let letzteFlaeche = KLASSE.weiss
+
   return (
     <>
       {blocks.map((block, index) => {
@@ -406,10 +440,31 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
           )
         }
 
+        // Das Schaubild schliesst ohne Fuge an den Abschnitt darueber an:
+        // gleiche Flaeche, kein Abstand nach oben. Der Text sagt, in wessen
+        // Auftrag wir arbeiten, das Bild zeigt den Ablauf — zusammen ein
+        // Gedanke, nicht zwei Abschnitte.
+        if (block.kind === 'schaubild') {
+          return (
+            <section
+              key={index}
+              id={block.id}
+              className={['ac-section', 'ac-section--eng', letzteFlaeche, styles.schaubildAbschnitt]
+                .filter(Boolean)
+                .join(' ')}
+            >
+              <div className={styles.schaubildContainer}>
+                <BlockBody block={block} locale={locale} />
+              </div>
+            </section>
+          )
+        }
+
         // Zwei Flaechen im Wechsel: weiss und Off-White. Der frueher dritte,
         // blaugraue Tint ist entfallen — drei kaum unterscheidbare helle Toene
         // haben die Seite gestreift statt gegliedert.
         const surface = KLASSE[surfaceIndex++ % 2 === 0 ? 'weiss' : 'hell']
+        letzteFlaeche = surface
 
         return (
           <section

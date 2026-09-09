@@ -307,3 +307,59 @@ a.serviceNavItem:hover {
     transition: none;
   }
 }
+
+/* ---- Schaubild ---------------------------------------------------------- */
+
+/* Ein Schaubild ist kein bebilderter Zusatz, sondern der Abschnitt selbst.
+   Darum: keine Ueberschrift, keine Bildunterschrift, kein Rahmen, kein
+   Schatten — und weniger Abstand ringsum als bei den Textabschnitten. Nach
+   oben gar keiner, weil es unmittelbar zum Abschnitt darueber gehoert. */
+.schaubildAbschnitt {
+  padding-block-start: 0;
+}
+
+/* Breiter als der Textcontainer (1160 px). Eine Grafik mit fuenf Spalten
+   braucht die Breite; Fliesstext braucht sie nicht. */
+.schaubildContainer {
+  width: 100%;
+  max-width: 85rem;
+  margin-inline: auto;
+  padding-inline: var(--ac-gutter);
+}
+
+.schaubild {
+  margin: 0;
+}
+
+/* Unterhalb der lesbaren Mindestbreite wird waagrecht geschoben statt weiter
+   gestaucht. Die Grafik traegt Beschriftungen von rund 14 px bei 1536 px
+   Breite; auf 375 px gequetscht waeren das zweieinhalb Pixel — ein Muster,
+   kein Inhalt. Lieber ein Ausschnitt, den man lesen kann. */
+/* Auf schmalen Geraeten laeuft der Ausschnitt bis an die Fensterkanten. Die
+   40 px Seitenrand waeren hier verschenkte Lesebreite, und ein Bild, das an
+   der Kante endet, sagt von selbst, dass es weitergeht. */
+.schaubildRahmen {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  margin-inline: calc(var(--ac-gutter) * -1);
+}
+
+.schaubildBild {
+  display: block;
+  width: 100%;
+  min-width: var(--schaubild-min, 0);
+  height: auto;
+  border-radius: var(--ac-radius-md);
+}
+
+/* Ab Tablet steht die Grafik wieder im Raster der Seite. Geschoben wird
+   trotzdem, falls noetig — `auto` entscheidet das selbst, statt an einer
+   geratenen Breite umzuschalten. Zwischen 768 und 785 px war die Grafik
+   sonst schmaler als ihre lesbare Mindestbreite und trotzdem festgestellt. */
+@media (min-width: 48rem) {
+  .schaubildRahmen {
+    margin-inline: 0;
+    border-radius: var(--ac-radius-md);
+  }
+}

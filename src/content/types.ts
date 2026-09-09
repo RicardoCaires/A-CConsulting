@@ -152,6 +152,30 @@ export type Block =
       kind: 'serviceNav'
       items: readonly PageKey[]
     }
+  /**
+   * Ein Schaubild als eigener Abschnitt.
+   *
+   * Kein Text daneben und keine Ueberschrift darueber: Das Bild erklaert die
+   * Sache selbst, und ein erklaerender Satz daneben saegte an genau der
+   * Wirkung. Was es zeigt, steht im Alternativtext — der ist Pflicht, nicht
+   * Beiwerk: Ohne ihn ist der Abschnitt fuer Vorlesewerkzeuge leer.
+   */
+  | {
+      kind: 'schaubild'
+      id?: string
+      src: string
+      alt: string
+      breite: number
+      hoehe: number
+      /**
+       * Ab welcher Breite das Bild lesbar ist, in Pixeln.
+       *
+       * Darunter laesst der Abschnitt es waagrecht schieben, statt es weiter
+       * zu stauchen — bei einer dichten Grafik ist eine Beschriftung von drei
+       * Pixeln Hoehe kein Inhalt mehr, sondern ein Muster.
+       */
+      lesbarAb: number
+    }
   /** Sprungmarken innerhalb der Seite. */
   | {
       kind: 'anchors'
