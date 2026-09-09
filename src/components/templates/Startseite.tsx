@@ -5,10 +5,7 @@ import { CTASection } from '@/components/blocks/CTASection'
 import { Faelle, type Fall } from '@/components/blocks/Faelle'
 import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
 import { SectionHeader } from '@/components/blocks/SectionHeader'
-import Image from 'next/image'
-
 import { StartHero, type HeroBild } from '@/components/blocks/StartHero'
-import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
 import { StepList } from '@/components/blocks/StepList'
 import { Team, type Mitglied } from '@/components/blocks/Team'
 import { Button } from '@/components/ui/Button'
@@ -68,6 +65,7 @@ export type StartseiteInhalt = {
     titel: ReactNode
     satz: ReactNode
     /** Nur auf schmalen Geraeten sichtbar — ab Desktop steht er in der Grafik. */
+    /** Der beschreibende Satz unter der Aussage. */
     zusatz?: ReactNode
     /** Genau einer. Der Kopf traegt keinen zweiten Knopf. */
     knopf: { text: string; ziel: PageKey }
@@ -78,12 +76,8 @@ export type StartseiteInhalt = {
   statement: {
     eyebrow: string
     satz: ReactNode
-    /** Nur auf schmalen Geraeten sichtbar — ab Desktop steht er in der Grafik. */
+    /** Der beschreibende Satz unter der Aussage. */
     zusatz?: ReactNode
-    /** Die Modellgrafik. Bild, sobald die Datei da ist; sonst Platzhalter. */
-    grafik?:
-      | { src: string; alt: string; breite: number; hoehe: number }
-      | { label: string; note?: string }
   }
   situationen: {
     titel: ReactNode
@@ -178,18 +172,14 @@ export function StartseiteTemplate({
         bild={inhalt.einstieg.bild}
       />
 
-      {/* ---- 2 Modell — die Grafik traegt die Aussage --------------------- */}
+      {/* ---- 2 Unsere Rolle — eine Aussage, die fuer sich steht ----------- */}
       <Section surface={fStatement} abstand="weit" labelledBy="statement-titel" id="statement">
-        {/* Vorzeile, Aussage und Zusatz standen hier bis zum 09.09.2026 als
-            Text — und noch einmal in der Grafik darunter. Doppelt. Auf breiten
-            Fenstern traegt jetzt die Grafik allein.
-
-            Auf schmalen bleibt der Text sichtbar: Dort ist die Grafik auf
-            375 px gestaucht und ihre Beschriftung rund vier Pixel hoch, also
-            unlesbar. Je Fenstergroesse steht die Aussage damit genau einmal —
-            nirgends zweimal, nirgends gar nicht. */}
+        {/* Die Modellgrafik stand hier vom 09.09.2026 bis zum 09.09.2026.
+            Ricardo hat sie am selben Tag wieder herausgenommen; sie steht
+            jetzt allein auf der Versicherungsseite, wo sie hingehoert. Damit
+            traegt hier wieder der Text — auf jeder Fenstergroesse. */}
         <div className={styles.statement}>
-          <p className={`ac-eyebrow ${styles.nurSchmal}`}>{inhalt.statement.eyebrow}</p>
+          <p className={`ac-eyebrow ${styles.statementVorzeile}`}>{inhalt.statement.eyebrow}</p>
           <h2 id="statement-titel" className={`ac-statement ${styles.statementSatz}`}>
             {inhalt.statement.satz}
           </h2>
@@ -197,27 +187,6 @@ export function StartseiteTemplate({
             <p className={styles.statementZusatz}>{inhalt.statement.zusatz}</p>
           )}
         </div>
-
-        {inhalt.statement.grafik && (
-          <figure className={styles.modell}>
-            {'src' in inhalt.statement.grafik ? (
-              <Image
-                src={inhalt.statement.grafik.src}
-                alt={inhalt.statement.grafik.alt}
-                width={inhalt.statement.grafik.breite}
-                height={inhalt.statement.grafik.hoehe}
-                sizes="(min-width: 64rem) 1160px, 100vw"
-                className={styles.modellBild}
-              />
-            ) : (
-              <ImagePlaceholder
-                className={styles.modellPlatzhalter}
-                label={inhalt.statement.grafik.label}
-                note={inhalt.statement.grafik.note}
-              />
-            )}
-          </figure>
-        )}
       </Section>
 
       {/* ---- 3 Leistungen -------------------------------------------------- */}

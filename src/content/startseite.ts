@@ -48,10 +48,10 @@ export type LeitBereich = Omit<Bereich, 'text'> & {
   /**
    * Beim fuehrenden Bereich freiwillig.
    *
-   * Die Modellgrafik im Abschnitt darueber traegt den beschreibenden Satz
-   * bereits eingebrannt („Wir pruefen Ihre Vertraege, holen Offerten ein und
-   * uebernehmen den Schriftverkehr"). Stuende er hier noch einmal, sagte die
-   * Seite dieselbe Sache zweimal untereinander.
+   * Der Abschnitt darueber traegt den beschreibenden Satz schon („Wir
+   * pruefen Ihre Vertraege, holen Offerten ein und uebernehmen den
+   * Schriftverkehr"). Stuende er hier noch einmal, sagte die Seite dieselbe
+   * Sache zweimal untereinander.
    */
   text?: string
   bild: { label: string; note?: string }
@@ -104,20 +104,6 @@ export type StartseiteContent = {
      * damit er nicht doppelt erscheint.
      */
     zusatz: string
-    /**
-     * Die Modellgrafik unter der Aussage: Kunde → Mandat → A&C → Preisvergleich.
-     *
-     * Ricardo hat sie am 09.09.2026 als Bild geliefert und ausdruecklich so
-     * gewollt — samt den Logos von acht Versicherungsgesellschaften. Der
-     * Hinweis auf die Projektregel (keine Versichererlogos ohne schriftliche
-     * Freigabe) ist ihm bekannt; die Entscheidung liegt bei ihm und steht in
-     * CLAUDE.md.
-     *
-     * Solange die Datei nicht im Projekt liegt: ruhige Flaeche mit Vermerk.
-     */
-    grafik:
-      | { src: string; alt: string; breite: number; hoehe: number }
-      | { label: string; note?: string }
   }
 
   situationen: {
@@ -202,12 +188,6 @@ const de: StartseiteContent = {
     satz: 'Wir vertreten Sie, nicht die Versicherung.',
     zusatz:
       'Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.',
-    grafik: {
-      src: '/bilder/unser-modell.webp',
-      alt: 'Schaubild „Unser Modell": Der Kunde erteilt A&C Consulting ein Mandat. A&C analysiert den Bedarf, vergleicht Angebote am Markt, berät, übernimmt den Schriftverkehr und begleitet langfristig. Für den Preisvergleich holt A&C Offerten bei verschiedenen Versicherungsgesellschaften ein. Zurück zum Kunden geht ein transparenter Vorschlag.',
-      breite: 1536,
-      hoehe: 1024,
-    },
   },
 
   // ---- 3 Situationen — vor den Leistungen, weil Kunden im Problem denken
