@@ -58,8 +58,8 @@ export const versicherungen: PageContent = {
       id: 'modell',
       src: '/bilder/unser-modell.webp',
       alt: 'Schaubild „Unser Modell": Der Kunde erteilt A&C Consulting ein Mandat. A&C analysiert den Bedarf, vergleicht Angebote am Markt, berät, übernimmt den Schriftverkehr und begleitet langfristig. Für den Preisvergleich holt A&C Offerten bei verschiedenen Versicherungsgesellschaften ein. Zurück zum Kunden geht ein transparenter Vorschlag.',
-      breite: 1536,
-      hoehe: 1024,
+      breite: 1448,
+      hoehe: 1086,
       lesbarAb: 720,
     },
 

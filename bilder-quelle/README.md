@@ -7,8 +7,12 @@ Sie ist bei gleicher Groesse rund ein Zehntel so schwer:
 
 | Datei | PNG | WebP (q90) |
 |---|---|---|
-| `unser-modell` | 1393 KB | 150 KB |
+| `unser-modell` | 1479 KB | 141 KB |
 | `startseite-seeland` | 1864 KB | 177 KB |
+
+`unser-modell` wurde am 09.09.2026 ausgetauscht: Die vorherige Fassung trug
+eine falsche Bildmarke — die gruene Spitze sass neben dem Navy-Berg statt auf
+ihm. Verbindlich ist die von Ricardo freigegebene Fassung, 1448 x 1086.
 
 Die Originale bleiben liegen, weil sie die Quelle sind: Aus ihnen wird die
 ausgelieferte Fassung erzeugt, nie umgekehrt. Wer eine neue Fassung eines
