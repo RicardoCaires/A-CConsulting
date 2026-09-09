@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/Button'
 import { getUi } from '@/i18n/messages/ui'
-import { isPublished, path } from '@/i18n/routes'
+import { hrefOrDefault } from '@/i18n/routes'
 import type { Locale } from '@/i18n/config'
 
 import { LanguageSwitcher } from './LanguageSwitcher'
@@ -11,12 +11,12 @@ import styles from './Header.module.css'
 /**
  * Kopfbereich — auf jeder Seite identisch.
  *
- * Links das Logo, klein und ruhig, immer zur Startseite. In der Mitte die
- * Hauptnavigation mit dem Treuhand-Aufklappmenue. Rechts die Sprachwahl und
- * der Kontakt-Knopf.
+ * Links das Logo, klein und ruhig, immer zur Startseite. Rechts die
+ * Navigationsreihe, die Sprachwahl und der eine Handlungsknopf.
  *
- * Auf schmalen Geraeten wird die Reihe zum Menue; der Kontakt-Knopf entfaellt
- * dort, weil Kontakt in der Liste steht.
+ * Auf schmalen Geraeten wird die Reihe zum Menue. Der Knopf entfaellt oben
+ * nicht ersatzlos — er steht unten im Menue ueber die volle Breite, wo er mit
+ * dem Daumen erreichbar ist.
  */
 
 type Props = {
@@ -37,11 +37,9 @@ export function Header({ locale }: Props) {
 
         <div className={styles.actions}>
           <LanguageSwitcher locale={locale} />
-          {isPublished('kontakt', locale) && (
-            <Button href={path('kontakt', locale)} className={styles.cta}>
-              {ui.page.kontakt}
-            </Button>
-          )}
+          <Button href={hrefOrDefault('kontakt', locale)} className={styles.cta}>
+            {ui.cta}
+          </Button>
         </div>
       </div>
     </header>

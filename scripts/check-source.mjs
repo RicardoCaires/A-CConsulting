@@ -1,10 +1,22 @@
 /**
  * Prueft, dass jeder Satz der deutschen Seiten aus der freigegebenen Quelle stammt.
  *
- * Verbindlich ist `content/source/schritt4_fassung2_de.md`. Dieses Skript liest
- * jedes Textstueck aus `src/content/` und sucht es dort. Was nicht gefunden
- * wird, ist entweder ein Tippfehler oder eine Erfindung — beides soll auffallen,
- * bevor es jemand liest.
+ * Verbindlich ist **jede** Datei in `content/source/`. Gesucht wird in ihrer
+ * Summe, nicht je Datei — ein Satz darf aus jeder von ihnen stammen.
+ *
+ *   `schritt4_fassung2_de.md`   die acht Kernseiten, Fassung vom 04.09.2026
+ *   `startseite_de.md`          die Startseite, sieben Abschnitte
+ *   `personal-finance_de.md`    Budget und Vorsorge
+ *   `wissen_de.md`              der Wissensbereich
+ *
+ * Das Verzeichnis wird gelesen, nicht aufgezaehlt: Eine neue Quelle gilt,
+ * sobald sie dort liegt. Das ist Absicht — eine Liste im Code haette bedeutet,
+ * dass ein vergessener Eintrag als „erfundener Text" erscheint, obwohl der
+ * Wortlaut sauber niedergeschrieben ist.
+ *
+ * Dieses Skript liest jedes Textstueck aus `src/content/` und sucht es dort.
+ * Was nirgends gefunden wird, ist entweder ein Tippfehler oder eine Erfindung —
+ * beides soll auffallen, bevor es jemand liest.
  *
  * Offene Angaben werden gegen `[ZU BESTAETIGEN: …]` in der Quelle geprueft,
  * damit auch dort nichts umformuliert wird.
@@ -29,7 +41,22 @@ const normalize = (s) =>
     .replaceAll('”', '"')
     .trim()
 
-const source = normalize(readFileSync(join(root, 'content/source/schritt4_fassung2_de.md'), 'utf8'))
+const QUELLEN_DIR = 'content/source'
+
+/** Alle Quelldateien, alphabetisch — damit die Meldung stabil bleibt. */
+const QUELLEN = readdirSync(join(root, QUELLEN_DIR))
+  .filter((datei) => datei.endsWith('.md'))
+  .sort()
+
+if (QUELLEN.length === 0) {
+  console.error(`Keine Quelldatei in ${QUELLEN_DIR} gefunden.`)
+  process.exit(1)
+}
+
+/** Alle Quellen hintereinander. Gesucht wird in der Summe, nicht je Datei. */
+const source = QUELLEN.map((datei) =>
+  normalize(readFileSync(join(root, QUELLEN_DIR, datei), 'utf8')),
+).join(' ')
 
 /**
  * Technische Werte, die keine Website-Texte sind: Blockarten, Seitenschluessel,
@@ -95,11 +122,12 @@ function literals(text) {
 /**
  * Schluessel, deren Werte niemals auf der Website erscheinen.
  *
- * `missing` haelt fest, welcher Text in einer Sprache noch fehlt — eine Notiz
- * an uns, die im Produktionsbau gar nicht ausgegeben wird. Sie kann per
+ * `missing` haelt fest, welcher Text in einer Sprache noch fehlt. `legal` sagt,
+ * worauf sich eine Aussage stuetzt und wer sie pruefen muss. Beides sind Notizen
+ * an uns, die im Produktionsbau gar nicht ausgegeben werden — sie koennen per
  * Definition nicht in der deutschen Quelle stehen.
  */
-const NOTIZ_SCHLUESSEL = new Set(['missing'])
+const NOTIZ_SCHLUESSEL = new Set(['missing', 'legal'])
 
 /**
  * Beschriftung einer Platzhalterflaeche, etwa `BUCHHALTUNG / BELEGE`.
@@ -181,9 +209,9 @@ if (missing.length > 0) {
     console.error(`  ${m.file}:${m.line}${m.pending ? '  [offene Angabe]' : ''}`)
     console.error(`    "${m.value.slice(0, 140)}${m.value.length > 140 ? '…' : ''}"\n`)
   }
-  console.error('Verbindlich ist content/source/schritt4_fassung2_de.md.')
+  console.error(`Verbindlich ist jede Datei in ${QUELLEN_DIR}/: ${QUELLEN.join(', ')}`)
   console.error('Texte werden von dort uebernommen, nicht umformuliert und nicht erfunden.')
   process.exit(1)
 }
 
-console.log(`Quellenpruefung: alle ${checked} Textstücke stammen aus Schritt 4, Fassung 2.`)
+console.log(`Quellenpruefung: alle ${checked} Textstücke stammen aus den freigegebenen Quellen.`)

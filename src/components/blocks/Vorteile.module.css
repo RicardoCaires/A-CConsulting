@@ -1,0 +1,50 @@
+/* Weshalb A&C — vier Punkte auf der Navy-Flaeche.
+
+   Vier Spalten auf dem Desktop, zwei auf dem Tablet, eine auf dem Telefon.
+   Der gruene Strich ersetzt das Icon: Er ordnet, ohne etwas zu behaupten. */
+
+.raster {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.5rem);
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding: 0;
+  list-style: none;
+}
+
+.strich {
+  width: 2.25rem;
+  height: var(--ac-border-marker);
+  margin: 0 0 var(--ac-space-sm);
+  border: 0;
+  /* Auf navy_deep und primary_navy traegt das aufgehellte Gruen — das dunkle
+     haette dort zu wenig Kontrast (Standard 1.1). */
+  background-color: var(--ac-color-accent-green-light);
+}
+
+.titel {
+  font-size: var(--ac-h3-size);
+  line-height: var(--ac-h3-line);
+  letter-spacing: var(--ac-h3-tracking);
+  text-wrap: balance;
+}
+
+.satz {
+  margin-top: var(--ac-space-2xs);
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-on-navy-muted);
+  max-width: 34ch;
+}
+
+@media (min-width: 40rem) {
+  .raster {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 64rem) {
+  .raster {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--ac-space-lg);
+  }
+}

@@ -29,10 +29,6 @@
   border-radius: 50%;
 }
 
-:global(.ac-section--blue) .number {
-  background-color: var(--ac-color-white);
-}
-
 :global(.on-navy) .number {
   color: var(--ac-color-navy-deep);
   background-color: var(--ac-color-accent-green-light);

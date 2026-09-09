@@ -202,6 +202,10 @@ a:hover {
   inset-inline-start: var(--ac-space-2xs);
   top: var(--ac-space-2xs);
   z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  /* Trefferflaeche 44 px, wie ueberall — auch fuer die Tastatur. */
+  min-height: 2.75rem;
   padding: var(--ac-space-2xs) var(--ac-space-sm);
   font-size: var(--ac-small-size);
   font-weight: 600;
@@ -241,30 +245,35 @@ a:hover {
   padding-block: var(--ac-section-y);
 }
 
-/* Vier Flaechen, alle aus dem Corporate Design. Sie trennen die Abschnitte,
-   ohne dass es ueberall Rahmen braucht — Weiss, Off-White, heller Navy-Tint
-   und die dunkle Flaeche. */
+/* Drei Flaechen, alle aus dem Corporate Design: Weiss, Off-White und die
+   dunkle Flaeche in zwei Toenen. Der frueher vierte, blaugraue Tint ist
+   entfallen — drei kaum unterscheidbare helle Toene haben die Seite nicht
+   gegliedert, sondern gestreift. */
 .ac-section--tint {
   background-color: var(--ac-surface-soft);
 }
 
-.ac-section--blue {
-  background-color: var(--ac-surface-blue);
-}
-
+/* Die eine dominante Flaeche je Seite. Standard 1.1, flaechen_website.dominant */
 .ac-section--navy {
-  background-color: var(--ac-color-navy-deep);
+  background-color: var(--ac-surface-dominant);
   color: var(--ac-color-white);
 }
 
-.ac-section--navy :is(h1, h2, h3) {
+/* Flaeche wiederkehrender Elemente. Standard 1.1, flaechen_website.wiederkehrend */
+.ac-section--flaeche {
+  background-color: var(--ac-surface-recurring);
+  color: var(--ac-color-white);
+}
+
+.ac-section--navy :is(h1, h2, h3),
+.ac-section--flaeche :is(h1, h2, h3) {
   color: var(--ac-color-white);
 }
 
 /* Zwei gleichfarbige Flaechen hintereinander sind eine Flaeche: der Abstand
    dazwischen faellt weg, damit sie nicht auseinanderfallen. */
 .ac-section--tint + .ac-section--tint,
-.ac-section--blue + .ac-section--blue,
+.ac-section--flaeche + .ac-section--flaeche,
 .ac-section--navy + .ac-section--navy {
   padding-block-start: 0;
 }
@@ -280,7 +289,8 @@ a:hover {
   margin-bottom: var(--ac-space-2xs);
 }
 
-.ac-section--navy .ac-eyebrow {
+.ac-section--navy .ac-eyebrow,
+.ac-section--flaeche .ac-eyebrow {
   color: var(--ac-on-navy-muted);
 }
 
@@ -291,7 +301,8 @@ a:hover {
   color: var(--ac-color-text-secondary);
 }
 
-.ac-section--navy .ac-lead {
+.ac-section--navy .ac-lead,
+.ac-section--flaeche .ac-lead {
   color: var(--ac-on-navy-muted);
 }
 
@@ -304,7 +315,8 @@ a:hover {
   margin: 0 0 var(--ac-space-sm);
 }
 
-.ac-section--navy .ac-marker {
+.ac-section--navy .ac-marker,
+.ac-section--flaeche .ac-marker {
   background-color: var(--ac-color-accent-green-light);
 }
 

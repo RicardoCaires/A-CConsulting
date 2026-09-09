@@ -5,9 +5,13 @@ import styles from './DraftNote.module.css'
 /**
  * Redaktionsmarke: hier fehlt etwas, das nicht erfunden wird.
  *
- * Zwei Anlaesse:
- *   `offen`       — eine Angabe, die A&C noch bestaetigen muss
+ * Drei Anlaesse:
+ *   `offen`        — eine Angabe, die A&C noch bestaetigen muss
  *   `uebersetzung` — ein Text, der in dieser Sprache noch nicht vorliegt
+ *   `rechtlich`    — die Aussage steht, muss aber vor der Veroeffentlichung
+ *                    fachlich geprueft werden. Hier fehlt nichts; der Satz
+ *                    ist lesbar und wird durch das Ausblenden nicht luecken-
+ *                    haft. Die Marke sagt, worauf er sich stuetzt.
  *
  * Sichtbar waehrend der Arbeit, im Produktionsbau nicht ausgegeben (siehe
  * `src/lib/draft.ts`). Das Ausblenden ist ein Sicherheitsnetz, kein Ersatz
@@ -20,13 +24,14 @@ import styles from './DraftNote.module.css'
 type Props = {
   /** Was fehlt — knapp, in eigenen Worten an uns, nicht an den Leser. */
   children: string
-  kind?: 'offen' | 'uebersetzung'
+  kind?: 'offen' | 'uebersetzung' | 'rechtlich'
   block?: boolean
 }
 
 const LABEL: Record<NonNullable<Props['kind']>, string> = {
   offen: 'Zu bestätigen',
   uebersetzung: 'Übersetzung fehlt',
+  rechtlich: 'Rechtlich zu prüfen',
 }
 
 export function DraftNote({ children, kind = 'offen', block = false }: Props) {
@@ -36,7 +41,9 @@ export function DraftNote({ children, kind = 'offen', block = false }: Props) {
   const Tag = block ? 'div' : 'mark'
 
   return (
-    <Tag className={[styles.note, block ? styles.block : styles.inline].join(' ')}>
+    <Tag
+      className={[styles.note, block ? styles.block : styles.inline, styles[kind]].join(' ')}
+    >
       <span className={styles.label}>{LABEL[kind]}</span>
       {detail !== '' && (
         <>

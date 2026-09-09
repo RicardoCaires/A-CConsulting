@@ -65,15 +65,16 @@
     "container_max_px": 1160,
     "container_narrow_px": 760,
     "gutter": "clamp(1.25rem, 4vw, 2rem)",
-    "section_y": "clamp(3.75rem, 7vw, 7.5rem)",
+    "section_y": "clamp(3.75rem, 6.2vw, 7rem)",
+    "header_height": "3.75rem",
+    "header_height_wide": "4.25rem",
     "hinweis_section_y": "Ein einziger Abstand zwischen Abschnitten. Bewusst gross: Die Ruhe kommt aus wenigen hohen Bloecken, nicht aus vielen schwachen Toenungen."
   },
   "radius_px": {
     "sm": 4,
-    "md": 8,
-    "lg": 14,
-    "xl": 20
+    "md": 12
   },
+  "hinweis_radius": "Zwei Radien, kein dritter. sm fuer kleine Marken (Stichwort, Fokus, Menueeintrag), md fuer alles, was als eigenes Objekt liest: Karten, Knoepfe, Bildflaechen, Klappfelder.",
   "border_width_px": {
     "hairline": 1,
     "marker": 3,
@@ -86,31 +87,31 @@
   },
   "type_scale_web": {
     "display": {
-      "size": "clamp(1.95rem, 1.1rem + 3.1vw, 3.5rem)",
+      "size": "clamp(2.25rem, 1.81rem + 1.88vw, 3.5rem)",
       "line": 1.08,
       "weight": 600,
       "tracking": "-0.018em"
     },
     "h1": {
-      "size": "clamp(2rem, 1.4rem + 2.6vw, 3rem)",
+      "size": "clamp(2.125rem, 1.82rem + 1.31vw, 3rem)",
       "line": 1.12,
       "weight": 600,
       "tracking": "-0.014em"
     },
     "h2": {
-      "size": "clamp(1.55rem, 1.2rem + 1.5vw, 2.35rem)",
+      "size": "clamp(2rem, 1.87rem + 0.56vw, 2.375rem)",
       "line": 1.16,
       "weight": 600,
       "tracking": "-0.012em"
     },
     "h3": {
-      "size": "clamp(1.075rem, 1.02rem + 0.28vw, 1.25rem)",
+      "size": "clamp(1.25rem, 1.2rem + 0.19vw, 1.375rem)",
       "line": 1.32,
       "weight": 600,
       "tracking": "-0.004em"
     },
     "lead": {
-      "size": "clamp(1.1rem, 1.03rem + 0.35vw, 1.32rem)",
+      "size": "clamp(1.1875rem, 1.145rem + 0.19vw, 1.3125rem)",
       "line": 1.62,
       "weight": 400,
       "tracking": "0"

@@ -9,7 +9,7 @@
  */
 
 import type { Locale } from '../config'
-import type { NavSectionKey, PageKey } from '../routes'
+import type { PageKey } from '../routes'
 
 type UiMessages = {
   /** Sprungmarke fuer Tastatur- und Screenreader-Bedienung. */
@@ -47,10 +47,13 @@ type UiMessages = {
   /** Beschriftung der Seiten in Navigation und Fussbereich. */
   page: Record<PageKey, string>
   /**
-   * Beschriftung der Unterpunkte, die auf einen Abschnitt fuehren.
-   * Sie sind Navigationsbezeichnungen, keine Seitentitel.
+   * Der eine Handlungsknopf der Website.
+   *
+   * Er steht im Kopfbereich, am Ende jeder Seite und im Menue — immer mit
+   * demselben Wortlaut. Ein zweiter Knopf mit anderer Beschriftung waere eine
+   * zweite Aufforderung, und die schwaecht beide.
    */
-  navSection: Record<NavSectionKey, string>
+  cta: string
   /** Beschriftung der Adresszeile im Direktkontakt. */
   contactAddressLabel: string
   /**
@@ -104,7 +107,7 @@ export const ui: Record<Locale, UiMessages> = {
       email: 'E-Mail',
       uid: 'UID',
       finma: 'FINMA-Register',
-      roleNote: 'Versicherungsbroker · Treuhand · Steuern',
+      roleNote: 'Versicherungen · Treuhand · Personal Finance',
     },
     page: {
       home: 'Startseite',
@@ -117,6 +120,8 @@ export const ui: Record<Locale, UiMessages> = {
       treuhaenderWechseln: 'Treuhänder wechseln',
       steuern: 'Steuern',
       firmengruendung: 'Firmengründung',
+      personalFinance: 'Personal Finance',
+      wissen: 'Wissen',
       ueberUns: 'Über uns',
       transparenz: 'Transparenz',
       schadenfall: 'Schadenfall',
@@ -136,17 +141,7 @@ export const ui: Record<Locale, UiMessages> = {
       badge: 'folgt',
       hint: 'Diese Seite ist noch nicht verfügbar.',
     },
-    navSection: {
-      privatkunden: 'Privatkunden',
-      unternehmen: 'Unternehmen',
-      vertragspruefung: 'Vertragsprüfung',
-      schadenfall: 'Schadenfall',
-      team: 'Team',
-      arbeitsweise: 'Arbeitsweise',
-      erstgespraech: 'Erstgespräch',
-      rueckruf: 'Rückruf',
-      standort: 'Standort',
-    },
+    cta: 'Erstgespräch vereinbaren',
     notFound: {
       title: 'Seite nicht gefunden',
       body: 'Die aufgerufene Adresse gibt es nicht oder nicht mehr.',
@@ -178,7 +173,7 @@ export const ui: Record<Locale, UiMessages> = {
       email: 'Courriel',
       uid: 'IDE',
       finma: 'Registre FINMA',
-      roleNote: 'Courtier en assurances · Fiduciaire · Impôts',
+      roleNote: 'Assurances · Fiduciaire · Finances personnelles',
     },
     page: {
       home: 'Accueil',
@@ -191,6 +186,8 @@ export const ui: Record<Locale, UiMessages> = {
       treuhaenderWechseln: 'Changer de fiduciaire',
       steuern: 'Impôts',
       firmengruendung: 'Création d’entreprise',
+      personalFinance: 'Finances personnelles',
+      wissen: 'Savoir',
       ueberUns: 'À propos',
       transparenz: 'Transparence',
       schadenfall: 'Sinistre',
@@ -210,17 +207,7 @@ export const ui: Record<Locale, UiMessages> = {
       badge: 'à venir',
       hint: 'Cette page n’est pas encore disponible.',
     },
-    navSection: {
-      privatkunden: 'Particuliers',
-      unternehmen: 'Entreprises',
-      vertragspruefung: 'Analyse des contrats',
-      schadenfall: 'Sinistre',
-      team: 'Équipe',
-      arbeitsweise: 'Méthode de travail',
-      erstgespraech: 'Premier entretien',
-      rueckruf: 'Rappel',
-      standort: 'Adresse',
-    },
+    cta: 'Prendre rendez-vous',
     notFound: {
       title: 'Page introuvable',
       body: 'L’adresse demandée n’existe pas ou n’existe plus.',
@@ -252,7 +239,7 @@ export const ui: Record<Locale, UiMessages> = {
       email: 'E-mail',
       uid: 'IDE',
       finma: 'Registo FINMA',
-      roleNote: 'Corretor de seguros · Fiduciária · Impostos',
+      roleNote: 'Seguros · Fiduciária · Finanças pessoais',
     },
     page: {
       home: 'Início',
@@ -265,6 +252,8 @@ export const ui: Record<Locale, UiMessages> = {
       treuhaenderWechseln: 'Mudar de fiduciária',
       steuern: 'Impostos',
       firmengruendung: 'Constituição de empresa',
+      personalFinance: 'Finanças pessoais',
+      wissen: 'Conhecimento',
       ueberUns: 'Sobre nós',
       transparenz: 'Transparência',
       schadenfall: 'Sinistro',
@@ -284,17 +273,7 @@ export const ui: Record<Locale, UiMessages> = {
       badge: 'em breve',
       hint: 'Esta página ainda não está disponível.',
     },
-    navSection: {
-      privatkunden: 'Particulares',
-      unternehmen: 'Empresas',
-      vertragspruefung: 'Análise de contratos',
-      schadenfall: 'Sinistro',
-      team: 'Equipa',
-      arbeitsweise: 'Forma de trabalhar',
-      erstgespraech: 'Primeira conversa',
-      rueckruf: 'Chamada de volta',
-      standort: 'Localização',
-    },
+    cta: 'Marcar uma primeira conversa',
     notFound: {
       title: 'Página não encontrada',
       body: 'O endereço indicado não existe ou já não está disponível.',

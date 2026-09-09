@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import { IconCircle } from '@/components/ui/IconCircle'
 import { company } from '@/lib/company'
 
-import type { Surface } from './Section'
+import { istDunkel, KLASSE, type Surface } from './Section'
 
 import styles from './CTASection.module.css'
 
@@ -45,10 +45,10 @@ export function CTASection({
   showContact = false,
   surface = 'hell',
 }: Props) {
-  const dunkel = surface === 'dunkel'
-  const flaeche = dunkel
-    ? 'ac-section--navy on-navy'
-    : `${surface === 'hell' ? 'ac-section--tint ' : ''}${styles.tintEdge}`
+  const dunkel = istDunkel(surface)
+  // Die gruene Oberkante trennt den Abschluss vom Fussbereich. Auf einer
+  // dunklen Flaeche braucht es sie nicht — dort trennt die Flaeche selbst.
+  const flaeche = `${KLASSE[surface]} ${dunkel ? '' : styles.tintEdge}`.trim()
   const headingId = id ? `${id}-titel` : undefined
 
   return (

@@ -54,8 +54,3 @@
   background-color: var(--ac-color-primary-navy);
   color: var(--ac-color-white);
 }
-
-/* Auf blaugrauer Flaeche wuerde der Normalton verschwinden — dort Weiss. */
-:global(.ac-section--blue) .tint {
-  background-color: var(--ac-color-white);
-}

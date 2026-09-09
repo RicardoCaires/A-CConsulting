@@ -78,10 +78,7 @@ export const buchhaltungDe: Leistungsseite = {
   vertiefung: {
     titel: 'Was Sie uns liefern',
     absaetze: [
-      [
-        'Sie müssen keine Buchhaltungssoftware bedienen und nichts vorbuchen. ',
-        { pending: 'ob Belege sortiert oder in bestimmter Form geliefert werden müssen' },
-      ],
+      'Sie müssen keine Buchhaltungssoftware bedienen und nichts vorbuchen. Sortiert ist hilfreich, nötig ist es nicht — das Ordnen übernehmen wir.',
       'In der Regel brauchen wir von Ihnen:',
     ],
     liste: [
@@ -92,14 +89,16 @@ export const buchhaltungDe: Leistungsseite = {
       'bei Mitarbeitenden: Arbeitsverträge, Änderungen, Absenzen',
     ],
     nachsatz: [
-      [
-        'In welcher Form und in welchem Rhythmus Sie das liefern, halten wir zu Beginn fest. ',
-        { pending: 'mögliche Lieferwege, etwa Portal, E-Mail, Fotos, physische Ablage' },
-      ],
+      'In welcher Form und in welchem Rhythmus Sie das liefern, halten wir zu Beginn fest. Sie können uns die Unterlagen digital oder physisch übergeben.',
     ],
   },
 
-  // Quelle Abschnitt 10 — die vier Fragen, die die Buchhaltung betreffen.
+  /**
+   * Quelle Abschnitt 10 — die zwei Fragen, die wirklich die Buchhaltung
+   * betreffen. „Welche Software setzen Sie ein?" und „Wer ist mein
+   * Ansprechpartner?" gelten fuer jedes Mandat und stehen auf der
+   * Treuhandseite.
+   */
   faq: [
     {
       frage: 'Kann ich mitten im Jahr starten?',
@@ -108,31 +107,15 @@ export const buchhaltungDe: Leistungsseite = {
     },
     {
       frage: 'Muss ich meine Belege sortieren?',
-      antwort: [{ pending: 'gewünschte Form der Belegablage' }],
-    },
-    {
-      frage: 'Welche Software setzen Sie ein?',
-      antwort: [
-        {
-          pending:
-            'eingesetzte Buchhaltungs- und Lohnsoftware, und ob Kundinnen und Kunden Zugriff erhalten',
-        },
-      ],
-    },
-    {
-      frage: 'Wer ist mein Ansprechpartner?',
-      antwort: [
-        'Eine feste Person, die Ihr Dossier führt. ',
-        { pending: 'Zuordnung nach Bereich oder nach Sprache' },
-      ],
+      antwort: 'Sortiert ist hilfreich, nötig ist es nicht — das Ordnen übernehmen wir.',
     },
   ],
 
   // Quelle Abschnitt 11 „Abschluss"
-  ctaVariante: 'hell',
+  ctaVariante: 'flaeche',
   cta: {
     titel: 'Reden wir über Ihre Administration',
     text: 'Im Erstgespräch schauen wir an, was heute bei Ihnen liegt und was davon zu uns kann. Danach wissen Sie, was eine Zusammenarbeit für Sie bedeuten würde.',
-    knopf: 'Unverbindliches Erstgespräch vereinbaren',
+    knopf: 'Erstgespräch vereinbaren',
   },
 }

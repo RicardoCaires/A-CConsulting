@@ -25,7 +25,7 @@ export const firmengruendung: PageContent = {
     heading: 'Firma gründen im Kanton Bern',
     lead: 'Wir begleiten Sie von der Wahl der Rechtsform bis zur ersten Buchhaltung und sagen Ihnen vorher, was auf Sie zukommt.',
     actions: [
-      { kind: 'page', target: 'kontakt', label: 'Gründungsgespräch anfragen' },
+      { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
       { kind: 'phone' },
     ],
   },
@@ -44,8 +44,8 @@ export const firmengruendung: PageContent = {
           heading: 'Kapital',
           paragraphs: [
             [
-              'Die Einzelfirma braucht kein Mindestkapital. Für die GmbH ist ein Stammkapital von 20 000 Franken nötig, das vor der Gründung einbezahlt wird. ',
-              { pending: 'Höhe des Stammkapitals und Einzahlungsvorschriften fachlich prüfen' },
+              'Die Einzelfirma braucht kein Mindestkapital. Für die GmbH ist ein Stammkapital nötig, das vor der Gründung einbezahlt wird. ',
+              { legal: 'Höhe des Stammkapitals und Einzahlungsvorschriften fachlich prüfen' },
             ],
           ],
         },
@@ -55,7 +55,7 @@ export const firmengruendung: PageContent = {
             [
               'Bei der Einzelfirma haften Sie mit Ihrem Privatvermögen. Bei der GmbH haftet grundsätzlich das Gesellschaftsvermögen. ',
               {
-                pending:
+                legal:
                   'Haftungsdarstellung je Rechtsform fachlich prüfen, inklusive Ausnahmen',
               },
             ],
@@ -71,9 +71,9 @@ export const firmengruendung: PageContent = {
           heading: 'Handelsregister',
           paragraphs: [
             [
-              'Die GmbH wird eingetragen. Für die Einzelfirma besteht die Eintragungspflicht ab einem Jahresumsatz von 100 000 Franken, vorher ist der Eintrag freiwillig. ',
+              'Die GmbH wird eingetragen. Für die Einzelfirma besteht die Eintragungspflicht ab einem bestimmten Jahresumsatz, vorher ist der Eintrag freiwillig. ',
               {
-                pending:
+                legal:
                   'Handelsregisterpflicht und Umsatzschwelle für die Einzelfirma fachlich prüfen',
               },
             ],
@@ -85,7 +85,7 @@ export const firmengruendung: PageContent = {
             [
               'Als Inhaberin oder Inhaber einer Einzelfirma gelten Sie als selbständigerwerbend. Bei einer GmbH sind Sie in der eigenen Firma angestellt, mit den entsprechenden Beiträgen und Versicherungen. ',
               {
-                pending:
+                legal:
                   'Behandlung bei AHV, ALV, UVG und BVG je Rechtsform fachlich prüfen',
               },
             ],
@@ -101,7 +101,7 @@ export const firmengruendung: PageContent = {
       outro: [
         [
           {
-            pending:
+            legal:
               'zusätzlich: sämtliche Angaben dieses Abschnitts vor der Veröffentlichung mit Stand und Jahresangabe versehen',
           },
         ],
@@ -126,7 +126,7 @@ export const firmengruendung: PageContent = {
           heading: 'Kapital',
           body: [
             'Bei der GmbH wird das Stammkapital auf ein Sperrkonto einbezahlt. ',
-            { pending: 'Verfahren der Kapitaleinzahlung fachlich prüfen' },
+            { legal: 'Verfahren der Kapitaleinzahlung fachlich prüfen' },
           ],
         },
         {
@@ -141,7 +141,7 @@ export const firmengruendung: PageContent = {
           heading: 'Anmeldungen',
           body: [
             'Ausgleichskasse, je nach Situation Mehrwertsteuer, bei Personal die Unfallversicherung und die berufliche Vorsorge. ',
-            { pending: 'Anmeldepflichten, Fristen und Zuständigkeiten fachlich prüfen' },
+            { legal: 'Anmeldepflichten, Fristen und Zuständigkeiten fachlich prüfen' },
           ],
         },
       ],
@@ -160,8 +160,7 @@ export const firmengruendung: PageContent = {
           heading: 'A&C',
           paragraphs: [
             [
-              'Beratung zur Rechtsform, Vorbereitung der Unterlagen, Koordination mit Notariat und Handelsregister, Anmeldungen bei den Sozialversicherungen und bei der Mehrwertsteuer, Aufbau der Buchhaltung. ',
-              { pending: 'abschliessender Umfang der Gründungsbegleitung' },
+              'Beratung zur Rechtsform, Vorbereitung der Unterlagen, Koordination mit Notariat und Handelsregister, Anmeldungen bei den Sozialversicherungen und bei der Mehrwertsteuer, Aufbau der Buchhaltung. Alles, was beglaubigt oder notariell beurkundet werden muss, erledigt das Notariat. Die übrigen Schritte begleiten wir.',
             ],
           ],
         },
@@ -193,8 +192,7 @@ export const firmengruendung: PageContent = {
           heading: 'Unser Honorar',
           paragraphs: [
             [
-              'Für die Begleitung rechnen wir nach dem vereinbarten Umfang ab. Sie erhalten die Offerte, bevor wir beginnen. ',
-              { pending: 'ob eine Gründungspauschale angeboten wird' },
+              'Für die Gründungsbegleitung vereinbaren wir eine Pauschale. Sie erhalten die Offerte, bevor wir beginnen.',
             ],
           ],
         },
@@ -202,11 +200,7 @@ export const firmengruendung: PageContent = {
           heading: 'Kosten von Dritten',
           paragraphs: [
             [
-              'Dazu kommen die Gebühren von Notariat und Handelsregisteramt, je nach Bank auch für das Sperrkonto. Diese Beträge gehen nicht an uns. Wir sagen Ihnen im Gespräch, womit zu rechnen ist. ',
-              {
-                pending:
-                  'ob Richtwerte genannt werden sollen; falls ja, mit Quelle und Stand',
-              },
+              'Dazu kommen die Gebühren von Notariat und Handelsregisteramt, je nach Bank auch für das Sperrkonto. Diese Beträge gehen nicht an uns. Wir sagen Ihnen im Gespräch, womit zu rechnen ist.',
             ],
           ],
         },
@@ -225,24 +219,24 @@ export const firmengruendung: PageContent = {
         [
           'Buchhaltung. Einnahmen und Ausgaben sind festzuhalten. Der Umfang der Pflicht hängt von Rechtsform und Umsatz ab. ',
           {
-            pending:
+            legal:
               'Buchführungs- und Rechnungslegungspflicht je Rechtsform und Umsatzschwelle fachlich prüfen',
           },
         ],
         [
           'Ausgleichskasse. Anmeldung als selbständigerwerbend oder als Arbeitgeberin. ',
-          { pending: 'AHV-Anmeldepflicht und Fristen fachlich prüfen' },
+          { legal: 'AHV-Anmeldepflicht und Fristen fachlich prüfen' },
         ],
         [
           'Mehrwertsteuer. Ab einer bestimmten Umsatzschwelle besteht Steuerpflicht. ',
           {
-            pending:
-              'Umsatzschwelle, Ausnahmen und Befreiungsmöglichkeiten fachlich prüfen; Richtwert bisher 100 000 Franken',
+            legal:
+              'Umsatzschwelle, Ausnahmen und Befreiungsmöglichkeiten fachlich prüfen',
           },
         ],
         [
           'Mit der ersten Anstellung. Unfallversicherung, berufliche Vorsorge, je nach Betrieb ein Krankentaggeld, dazu die monatliche Lohnabrechnung. ',
-          { pending: 'BVG-Eintrittsschwelle und UVG-Pflicht fachlich prüfen' },
+          { legal: 'BVG-Eintrittsschwelle und UVG-Pflicht fachlich prüfen' },
         ],
         'Betriebsversicherungen. Je nach Tätigkeit Haftpflicht, Sachversicherung oder Fahrzeuge.',
         'Erste Steuererklärung. Nach dem ersten Geschäftsjahr, aufbauend auf dem Abschluss.',
@@ -278,15 +272,16 @@ export const firmengruendung: PageContent = {
           question: 'Brauche ich ein Geschäftskonto?',
           answer: [
             'Für die GmbH braucht es zuerst ein Sperrkonto für das Stammkapital, das anschliessend in ein Geschäftskonto übergeht. Bei der Einzelfirma ist ein getrenntes Konto nicht vorgeschrieben, für die Buchhaltung aber sinnvoll. ',
-            { pending: 'Kontovorschriften fachlich prüfen' },
+            { legal: 'Kontovorschriften fachlich prüfen' },
           ],
         },
         {
           question: 'Ab wann bin ich mehrwertsteuerpflichtig?',
           answer: [
+            'Das hängt von Ihrem Umsatz und Ihrer Tätigkeit ab. Wir rechnen vor der Gründung mit Ihnen durch, ob und ab wann die Pflicht für Sie gilt. ',
             {
-              pending:
-                'Umsatzschwelle, Ausnahmen und Sonderfälle fachlich prüfen; Richtwert bisher 100 000 Franken',
+              legal:
+                'Umsatzschwelle, Ausnahmen und Sonderfälle fachlich prüfen',
             },
           ],
         },
@@ -294,14 +289,14 @@ export const firmengruendung: PageContent = {
           question: 'Kann ich später von der Einzelfirma in eine GmbH wechseln?',
           answer: [
             'Ein Wechsel der Rechtsform ist möglich. Er sollte vorbereitet werden, insbesondere steuerlich. ',
-            { pending: 'steuerliche Folgen einer Umwandlung fachlich prüfen' },
+            { legal: 'steuerliche Folgen einer Umwandlung fachlich prüfen' },
           ],
         },
         {
           question: 'Muss ich mich bei der AHV anmelden?',
           answer: [
             'Bei einer Einzelfirma als selbständigerwerbend, bei einer GmbH als Arbeitgeberin für den eigenen Lohn. ',
-            { pending: 'AHV-Anmeldepflicht je Rechtsform fachlich prüfen' },
+            { legal: 'AHV-Anmeldepflicht je Rechtsform fachlich prüfen' },
             ' Die Anmeldung übernehmen wir.',
           ],
         },
@@ -322,7 +317,7 @@ export const firmengruendung: PageContent = {
         'Im Gründungsgespräch klären wir die Rechtsform, den Ablauf und die Kosten für Ihren Fall. Danach wissen Sie, was zu tun ist, auch wenn Sie sich für einen anderen Weg entscheiden.',
       ],
       actions: [
-        { kind: 'page', target: 'kontakt', label: 'Gründungsgespräch anfragen' },
+        { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
         { kind: 'phone' },
       ],
     },

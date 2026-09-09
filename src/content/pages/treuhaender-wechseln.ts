@@ -25,7 +25,7 @@ export const treuhaenderWechseln: PageContent = {
     heading: 'Den Treuhänder wechseln',
     lead: 'Wir begleiten den Wechsel strukturiert und diskret. Zuerst klären wir mit Ihnen die bestehende Situation, den geeigneten Zeitpunkt und die Unterlagen, die für die Übernahme nötig sind.',
     actions: [
-      { kind: 'page', target: 'kontakt', label: 'Bestehende Buchhaltung besprechen' },
+      { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
       { kind: 'phone' },
     ],
   },
@@ -66,7 +66,7 @@ export const treuhaenderWechseln: PageContent = {
           heading: 'Zeitpunkt und Vertragliches',
           body: [
             'Wir schauen gemeinsam Ihre bestehende Vereinbarung an und legen einen Termin fest. Kündigungsfristen und Bedingungen ergeben sich aus Ihrem Vertrag. ',
-            { pending: 'fachlich geprüfte Formulierung' },
+            { legal: 'fachlich geprüfte Formulierung' },
           ],
         },
         {
@@ -110,7 +110,7 @@ export const treuhaenderWechseln: PageContent = {
         [
           'Welche Unterlagen Ihnen zustehen und in welcher Form sie übergeben werden, richtet sich nach Ihrer Vereinbarung und der jeweiligen Situation. ',
           {
-            pending:
+            legal:
               'fachlich geprüfte Formulierung zu Herausgabe, Zurückbehaltungsrecht und offenen Honoraren',
           },
         ],
@@ -128,15 +128,11 @@ export const treuhaenderWechseln: PageContent = {
         'Kontakt und Abstimmung mit Ihrem bisherigen Treuhänder',
         'Terminierung der Übergabe',
         'Übernahme der Daten und Prüfung auf Vollständigkeit',
-        ['Einrichtung der Buchhaltung ', { pending: 'Software' }],
+        'Einrichtung der Buchhaltung',
       ],
       outro: [
         [
-          'Bei Ihnen bleibt die Kündigung Ihrer bestehenden Vereinbarung. ',
-          {
-            pending:
-              'ob A&C die Kündigung auf Wunsch vorbereitet oder ob sie vollständig beim Kunden liegt',
-          },
+          'Die Kündigung beim bisherigen Treuhänder bereiten wir für Sie vor.',
         ],
       ],
     },
@@ -159,7 +155,7 @@ export const treuhaenderWechseln: PageContent = {
       paragraphs: [
         [
           'Im Jahr eines Wechsels können auf beiden Seiten Aufwände anfallen. Ihr bisheriger Treuhänder rechnet die Arbeiten bis zum Stichtag ab, wir übernehmen die Weiterführung. Je nach Zeitpunkt und Stand der Arbeiten fällt das unterschiedlich aus. ',
-          { pending: 'Abrechnungspraxis beim Mandatsübergang fachlich prüfen' },
+          'Im Jahr des Wechsels rechnen wir pro rata ab.',
         ],
         'Wir schauen im Gespräch an, wie sich das in Ihrem Fall verteilt, und halten unseren Teil in der Offerte fest.',
       ],
@@ -191,18 +187,18 @@ export const treuhaenderWechseln: PageContent = {
           answer: [
             'Was herausgegeben wird und in welcher Form, richtet sich nach Ihrer Vereinbarung und der Situation. ',
             {
-              pending:
+              legal:
                 'fachlich geprüfte Antwort, inklusive Hinweis auf mögliche Zurückbehaltung bei offenen Rechnungen',
             },
           ],
         },
         {
           question: 'Muss ich die Software wechseln?',
-          answer: [{ pending: 'welche Systeme übernommen werden können' }],
+          answer: 'Wir prüfen von Fall zu Fall, welches System sich übernehmen lässt.',
         },
         {
           question: 'Wer schreibt die Kündigung?',
-          answer: [{ pending: 'siehe Abschnitt 06' }],
+          answer: 'Die Kündigung beim bisherigen Treuhänder bereiten wir für Sie vor.',
         },
       ],
     },
@@ -216,7 +212,7 @@ export const treuhaenderWechseln: PageContent = {
         'Erzählen Sie uns, wie Ihre Buchhaltung heute läuft. Danach wissen Sie, ob und wann ein Wechsel für Sie sinnvoll ist. Ein Gespräch verpflichtet Sie zu nichts.',
       ],
       actions: [
-        { kind: 'page', target: 'kontakt', label: 'Bestehende Buchhaltung besprechen' },
+        { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
         { kind: 'phone' },
       ],
     },

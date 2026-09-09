@@ -1,3 +1,11 @@
+/* Kopfbereich.
+
+   Weiss, eine Haarlinie nach unten, sonst nichts. Er soll die Seite nicht
+   anfuehren, sondern sie halten: Was auffaellt, ist der Inhalt darunter.
+
+   Die Hoehe kommt aus einem Token, weil das Menue auf schmalen Geraeten
+   darunter haengt und beide denselben Wert brauchen. */
+
 .header {
   background-color: var(--ac-surface-header);
   border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
@@ -13,11 +21,13 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--ac-space-2xs);
-  min-height: 3.75rem;
-  padding-block: var(--ac-space-3xs);
+  min-height: var(--ac-header-height);
 }
 
-/* Die Navigation sitzt zwischen Logo und Aktionen und nimmt den freien Platz. */
+/* Die Navigation sitzt zwischen Logo und Aktionen und nimmt den freien Platz.
+   Sie steht rechtsbuendig: Zusammen mit Sprachwahl und Knopf entsteht rechts
+   eine Gruppe, links steht das Logo allein. Das ist ruhiger als eine mittig
+   gesetzte Reihe, die je nach Wortlaenge wandert. */
 .center {
   display: flex;
   justify-content: flex-end;
@@ -32,20 +42,16 @@
   flex: none;
 }
 
-/* Der Kontakt-Knopf erscheint erst, wenn die offene Navigationsreihe da ist —
-   auf schmalen Geraeten steht Kontakt im Menue. */
+/* Der Knopf erscheint erst mit der offenen Navigationsreihe — auf schmalen
+   Geraeten steht er unten im Menue, wo er die volle Breite bekommt. */
 .cta {
   display: none;
 }
 
 @media (min-width: 64rem) {
   .inner {
-    gap: var(--ac-space-md);
-    min-height: 4rem;
-  }
-
-  .center {
-    justify-content: center;
+    gap: var(--ac-space-lg);
+    min-height: var(--ac-header-height-wide);
   }
 
   .actions {
@@ -54,7 +60,7 @@
 
   .cta {
     display: inline-flex;
-    min-height: 2.5rem;
+    min-height: 2.75rem;
     padding-inline: var(--ac-space-md);
     font-size: var(--ac-small-size);
   }

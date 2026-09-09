@@ -12,6 +12,7 @@ import type { PageKey } from '@/i18n/routes'
 import type { PageContent } from '../types'
 import { firmengruendung } from './firmengruendung'
 import { kontakt } from './kontakt'
+import { personalFinance } from './personal-finance'
 import { steuern } from './steuern'
 import { treuhaenderWechseln } from './treuhaender-wechseln'
 import { treuhand } from './treuhand'
@@ -25,6 +26,7 @@ const de: PagesByKey = {
   treuhand,
   treuhaenderWechseln,
   steuern,
+  personalFinance,
   firmengruendung,
   ueberUns,
   kontakt,

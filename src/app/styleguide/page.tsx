@@ -47,6 +47,23 @@ const ALLE_ICONS: readonly IconName[] = [
   'chevron',
 ]
 
+const FLAECHEN = [
+  { name: 'weiss', wert: 'white', zweck: 'Grundfläche', klasse: '' },
+  { name: 'hell', wert: 'background_light', zweck: 'ruhiger Wechsel', klasse: 'ac-section--tint' },
+  {
+    name: 'flaeche',
+    wert: 'primary_navy',
+    zweck: 'wiederkehrende Elemente — beliebig oft',
+    klasse: 'ac-section--flaeche on-navy',
+  },
+  {
+    name: 'dominant',
+    wert: 'navy_deep',
+    zweck: 'genau eine je Seite, dazu der Fussbereich',
+    klasse: 'ac-section--navy on-navy',
+  },
+] as const
+
 const TOENE: readonly { tone: IconTone; name: string }[] = [
   { tone: 'tint', name: 'tint — Normalfall' },
   { tone: 'outline', name: 'outline — auf Dunkel' },
@@ -133,6 +150,22 @@ export default function StyleguidePage() {
           </p>
         </div>
       </header>
+
+      {/* ---- Flaechen -------------------------------------------------- */}
+      <Probe
+        titel="Flächen"
+        hinweis="Vier Flächen, mehr nicht — aus flaechen_website des Corporate-Design-Standards 1.1. Nie zwei gleiche hintereinander, höchstens eine dominante je Seite, höchstens zwei dunkle in Folge. Der frühere blaugraue Tint kommt nicht mehr vor."
+      >
+        <ul className={styles.flaechen} role="list">
+          {FLAECHEN.map((f) => (
+            <li key={f.name} className={`${styles.flaeche} ${f.klasse}`}>
+              <span className={styles.flaecheName}>{f.name}</span>
+              <span className={styles.flaecheWert}>{f.wert}</span>
+              <span className={styles.flaecheZweck}>{f.zweck}</span>
+            </li>
+          ))}
+        </ul>
+      </Probe>
 
       {/* ---- Die drei Vorlagen ---------------------------------------- */}
       <Probe
@@ -268,7 +301,7 @@ export default function StyleguidePage() {
       <Probe
         titel="IconFeature auf dunkler Fläche"
         hinweis="Derselbe Baustein, Ton „outline“. Höchstens zwei dunkle Flächen je Seite."
-        flaeche="ac-section--navy on-navy"
+        flaeche="ac-section--flaeche on-navy"
       >
         <SectionHeader heading="Beispielüberschrift auf Dunkel" />
         <IconFeatureGrid items={BEISPIEL_LEISTUNGEN.slice(0, 4)} columns={2} tone="outline" />
@@ -373,7 +406,7 @@ export default function StyleguidePage() {
       <CTASection
         heading="Dieselbe Ausprägung auf Dunkel"
         lead={<p>Beispielsatz. Höchstens einmal je Seite.</p>}
-        surface="dunkel"
+        surface="flaeche"
         showContact
         actions={<Button href="#">Beispielknopf</Button>}
       />

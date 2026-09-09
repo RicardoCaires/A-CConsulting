@@ -1,0 +1,140 @@
+/* Seitenkopf. Das Bild ist die Flaeche, der Text steht darauf.
+
+   Kein Rahmen, kein Abstand nach aussen: Der Kopf laeuft bis an die
+   Fensterkanten. Die einzige Begrenzung ist der Container des Textes. */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+
+  /* Mobil: Hochformat 4:5 wie Aufnahme 2 der Shootingliste.
+     Die Hoehe wird aus der Fensterbreite gerechnet, nicht ueber `aspect-ratio`
+     gesetzt: Zusammen mit einer Hoehenbegrenzung wuerde `aspect-ratio` die
+     **Breite** einschraenken, und der Kopf liefe nicht mehr bis an die
+     Fensterkanten.
+
+     Gesetzt wird eine **Mindest**hoehe, keine feste: Ein langer Titel darf den
+     Kopf wachsen lassen, statt unten abgeschnitten zu werden. Bei kurzem Text
+     ergibt sich dieselbe Hoehe wie bisher. */
+  width: 100%;
+  min-height: max(30rem, min(calc(100vw * 5 / 4), 88vh));
+}
+
+.bild {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  /* Die Flaeche fuellt den Kopf; das Seitenverhaeltnis gibt der Kopf vor. */
+  aspect-ratio: auto;
+  border-radius: 0;
+  /* Die Beschriftung sitzt oben, damit sie dem Text unten nicht ins Gehege kommt. */
+  justify-content: flex-start;
+  padding-top: var(--ac-space-xl);
+}
+
+/* Verlauf von unten. Auf dem Platzhalter kaum sichtbar, unter dem spaeteren
+   Foto der Grund dafuer, dass die Ueberschrift lesbar bleibt. */
+.verlauf {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to top,
+    var(--ac-color-navy-deep) 0%,
+    color-mix(in srgb, var(--ac-color-navy-deep) 72%, transparent) 34%,
+    transparent 68%
+  );
+  pointer-events: none;
+}
+
+/* Der Text sitzt unten, die Beschriftung der Bildflaeche oben. Damit ein
+   langer Titel nicht in sie hineinlaeuft, haelt der Textblock oben Platz frei.
+   Reicht die Kopfhoehe dann nicht mehr, waechst der Kopf — das ist der Grund
+   fuer die Mindest- statt Festhoehe oben.
+
+   Bei kurzem Titel bleibt dieser Abstand unsichtbar: Der Block sitzt weiterhin
+   am unteren Rand, der Kopf behaelt seine Hoehe. */
+.inhalt {
+  position: relative;
+  padding-block: clamp(7rem, 18vw, 9rem) clamp(2rem, 5vw, 3.5rem);
+}
+
+.eyebrow {
+  color: var(--ac-color-accent-green-light);
+}
+
+.titel {
+  /* Kurz halten: Das Versprechen soll in zwei Zeilen stehen, nicht in fünf. */
+  max-width: 16ch;
+  font-size: var(--ac-display-size);
+  line-height: var(--ac-display-line);
+  font-weight: var(--ac-display-weight);
+  letter-spacing: var(--ac-display-tracking);
+  color: var(--ac-color-white);
+}
+
+/* Langer Titel.
+
+   Die Seitentitel aus Schritt 4 sind ganze Saetze („Buchhaltung, Loehne und
+   Abschluss fuer Selbstaendige und KMU"). In der Display-Groesse hiessen das
+   fuenf Zeilen. Sie laufen darum in der H1-Groesse — dieselbe Schrift,
+   dieselbe Skala, nur die naechste Stufe darunter.
+
+   Das ist ein Zugestaendnis an vorhandene Texte, keine zweite Gestaltung:
+   Werden die Titel spaeter gekuerzt, faellt diese Variante ersatzlos weg. */
+.titelLang {
+  max-width: 22ch;
+  font-size: var(--ac-h1-size);
+  line-height: var(--ac-h1-line);
+  letter-spacing: var(--ac-h1-tracking);
+}
+
+.satz {
+  margin-top: var(--ac-space-sm);
+  font-size: var(--ac-lead-size);
+  line-height: var(--ac-lead-line);
+  color: var(--ac-on-navy-muted);
+  max-width: 42ch;
+}
+
+.aktion {
+  margin-top: var(--ac-space-md);
+}
+
+/* ---- Ab Desktop: Querformat 16:9 wie Aufnahme 1 -------------------------- */
+
+@media (min-width: 64rem) {
+  .hero {
+    /* Desktop: Querformat 16:9 wie Aufnahme 1. */
+    min-height: max(34rem, min(calc(100vw * 9 / 16), 88vh));
+  }
+
+  .titel {
+    max-width: 18ch;
+  }
+
+  .titelLang {
+    max-width: 24ch;
+  }
+}
+
+/* Wo `color-mix` fehlt, traegt ein einfacher Verlauf. */
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+  .verlauf {
+    background: linear-gradient(to top, var(--ac-color-navy-deep) 0%, transparent 70%);
+  }
+}
+
+@media print {
+  .hero {
+    min-height: 0;
+  }
+
+  .bild,
+  .verlauf {
+    display: none;
+  }
+}

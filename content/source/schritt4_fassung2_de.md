@@ -24,7 +24,7 @@
 
 A&C Consulting betreut Privatpersonen, Selbständige und KMU im Seeland und im Kanton Bern. Sie erreichen uns in Lyss, auf Deutsch, Französisch und Portugiesisch.
 
-**Handlungsknopf:** Unverbindliches Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch vereinbaren
 
 **Daneben:** 078 625 53 85
 
@@ -78,15 +78,11 @@ Sie haben feste Ansprechpartner und sprechen mit der Person, die Ihr Dossier bea
 
 ##### Beratung auf Deutsch, Französisch und Portugiesisch
 
-Beratung und Korrespondenz auf Deutsch, Französisch oder Portugiesisch. **[ZU BESTÄTIGEN: ob die Korrespondenz in allen drei Sprachen geführt wird]**
+Beratung, Korrespondenz und Unterlagen auf Deutsch, Französisch oder Portugiesisch.
 
 ##### Klare Abläufe
 
 Sie wissen, was wir übernehmen, was bei Ihnen bleibt und wann Sie was von uns erhalten. Wie wir entschädigt werden, legen wir offen.
-
-##### Moderne Arbeitsweise
-
-Wir automatisieren die Routine, nicht die Beratung. Digitale Prozesse nehmen uns wiederkehrende Arbeit ab. Die fachliche Prüfung und die Verantwortung bleiben bei uns.
 
 ### 05 So arbeiten wir
 
@@ -94,7 +90,7 @@ Wir automatisieren die Routine, nicht die Beratung. Digitale Prozesse nehmen uns
 
 1. Erstgespräch. Wir schauen uns Ihre Situation an und Sie sagen uns, was Sie abgeben möchten. Das Gespräch ist unverbindlich.
 2. Analyse und Offerte. Sie erhalten schriftlich, welche Aufgaben wir übernehmen und was bei Ihnen bleibt.
-3. Umsetzung und laufende Betreuung. Wir übernehmen die vereinbarten Aufgaben in einem festen Rhythmus. Im Hintergrund erledigen digitale Prozesse wiederkehrende Schritte **[ZU BESTÄTIGEN: welche Schritte tatsächlich automatisiert sind]**. Geprüft und verantwortet werden die Ergebnisse von uns.
+3. Umsetzung und laufende Betreuung. Wir übernehmen die vereinbarten Aufgaben in einem festen Rhythmus. Geprüft und verantwortet werden die Ergebnisse von uns.
 
 ### 06 Kosten und Vergütung
 
@@ -102,7 +98,7 @@ Wir automatisieren die Routine, nicht die Beratung. Digitale Prozesse nehmen uns
 
 Bei Treuhand und Steuern rechnen wir nach Aufwand ab. Wie hoch dieser ausfällt, hängt von Ihrer Situation ab, etwa von der Anzahl Belege, von Mitarbeitenden oder von der Mehrwertsteuerpflicht. Vor Beginn erhalten Sie eine Offerte mit dem vereinbarten Umfang.
 
-Bei Versicherungen werden wir von den Gesellschaften über eine Courtage entschädigt **[ZU BESTÄTIGEN: ob dies für sämtliche vermittelten Produkte gilt oder in bestimmten Fällen ein Honorar vereinbart wird]**.
+Bei Versicherungen werden wir von den Gesellschaften über eine Courtage entschädigt. Für Sie ist unsere Arbeit im Rahmen des Maklermandats kostenlos. Für Aufgaben, die darüber hinausgehen, vereinbaren wir vorher ein Honorar.
 
 → → /transparenz Mehr zu unserer Rolle und zur Vergütung
 
@@ -114,7 +110,7 @@ Bei Versicherungen werden wir von den Gesellschaften über eine Courtage entsch�
 
 A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Andrade geführt. Beide betreuen Mandate selbst.
 
-**[ZU BESTÄTIGEN: je Person Funktion, Zuständigkeitsbereich und Sprachen]**
+Ricardo Caires Cerqueira ist zuständig für Treuhand, Steuern und Versicherungen, Octavio Andrade für Versicherungen. Beide beraten auf Deutsch, Französisch, Portugiesisch und Englisch.
 
 → → /ueber-uns Mehr über uns
 
@@ -122,11 +118,11 @@ A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Andrade geführt. B
 
 ### 08 Standort und Region
 
-#### Sie finden uns in Lyss
+#### Kurze Wege, feste Ansprechpartner
 
-Bielstrasse 22, 3250 Lyss. Wir betreuen Kundinnen und Kunden in Lyss, im Seeland, in Biel/Bienne und im übrigen Kanton Bern.
+Bielstrasse 22, 3250 Lyss. Wir betreuen Kundinnen und Kunden im Seeland und im Kanton Bern.
 
-Öffnungszeiten: **[ZU BESTÄTIGEN: verbindliche Zeiten, identisch mit dem Google-Unternehmensprofil]**
+Öffnungszeiten: 08:00–12:00 und 13:30–17:00 Uhr
 
 ### 09 Kontaktabschluss
 
@@ -134,7 +130,7 @@ Bielstrasse 22, 3250 Lyss. Wir betreuen Kundinnen und Kunden in Lyss, im Seeland
 
 Rufen Sie an oder schreiben Sie uns. Im Erstgespräch klären wir, was Sie brauchen und wie wir Sie unterstützen können. Sie gehen damit keine Verpflichtung ein.
 
-**Handlungsknopf:** Unverbindliches Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch vereinbaren
 
 **Daneben:** 078 625 53 85 · info@ac-co.ch
 
@@ -152,7 +148,7 @@ Rufen Sie an oder schreiben Sie uns. Im Erstgespräch klären wir, was Sie brauc
 
 Wir prüfen Ihre bestehenden Verträge, vergleichen passende Lösungen aus den uns zugänglichen Angeboten und Gesellschaften und bleiben Ihr Ansprechpartner, auch wenn ein Schaden eintritt.
 
-**Handlungsknopf:** Unverbindliches Erstgespräch vereinbaren · Bestehende Verträge prüfen lassen
+**Handlungsknopf:** Erstgespräch vereinbaren
 
 ### 02 Zwei Wege
 
@@ -174,7 +170,7 @@ Konkret heisst das: Wir sichten Ihre bestehenden Policen, zeigen Ihnen fehlende 
 
 Wir prüfen, ob Ihre Deckung noch zu Ihrer Lebenssituation passt, und beraten Sie bei Anpassungen.
 
-Bereiche: **[ZU BESTÄTIGEN: abschliessende Liste der Bereiche, die A&C für Privatkunden tatsächlich betreut]**
+Bereiche: Kranken- und Zusatzversicherung, Hausrat und Haftpflicht, Motorfahrzeug, Leben und Säule 3a, Rechtsschutz.
 
 ##### Wann sich eine Überprüfung lohnt
 
@@ -190,7 +186,7 @@ Mit der ersten Anstellung kommen die obligatorische Unfallversicherung, die beru
 
 ##### Für den Betrieb selbst
 
-Je nach Tätigkeit gehören Haftpflicht, Sachversicherung, Fahrzeuge oder Transportdeckungen dazu. **[ZU BESTÄTIGEN: abschliessende Liste der Betriebsbereiche]**
+Je nach Tätigkeit gehören Haftpflicht, Sachversicherung, Fahrzeuge oder Transportdeckungen dazu.
 
 ### 06 Ablauf einer Vertragsprüfung
 
@@ -204,7 +200,7 @@ Je nach Tätigkeit gehören Haftpflicht, Sachversicherung, Fahrzeuge oder Transp
 
 #### Wenn ein Schaden eintritt
 
-Melden Sie sich bei uns. Wir nehmen den Fall auf, melden ihn der Versicherung und begleiten die Abwicklung. **[ZU BESTÄTIGEN: Umfang der Schadenbegleitung und Erreichbarkeit ausserhalb der Bürozeiten]**
+Melden Sie sich bei uns. Wir nehmen den Fall auf, melden ihn der Versicherung und begleiten die Abwicklung. Im Notfall sind wir auch ausserhalb der Bürozeiten erreichbar. Die laufende Schadenbegleitung erledigen wir während der Bürozeiten.
 
 → → /schadenfall Was im Schadenfall zu tun ist
 
@@ -212,7 +208,7 @@ Melden Sie sich bei uns. Wir nehmen den Fall auf, melden ihn der Versicherung un
 
 #### Wie wir entschädigt werden
 
-Für die Vermittlung und die laufende Betreuung erhalten wir von den Versicherungsgesellschaften eine Courtage. **[ZU BESTÄTIGEN: Ausnahmen sowie Fälle, in denen stattdessen ein Honorar vereinbart wird]**
+Für die Vermittlung und die laufende Betreuung erhalten wir von den Versicherungsgesellschaften eine Courtage. Für Sie ist die Arbeit im Rahmen des Maklermandats kostenlos. Für Aufgaben, die über das Mandat hinausgehen, vereinbaren wir vorher ein Honorar.
 
 Wie das in Ihrem Fall aussieht, sagen wir Ihnen auf Nachfrage im Detail.
 
@@ -231,16 +227,16 @@ Sobald Sie jemanden anstellen, gehören zur Unfallversicherung und zur beruflich
 #### Häufige Fragen
 
 **F: Kostet mich die Beratung etwas?**
-A: Für die Vermittlung und Betreuung von Versicherungen werden wir von den Gesellschaften über eine Courtage entschädigt. **[ZU BESTÄTIGEN: Ausnahmen]**
+A: Für die Vermittlung und Betreuung von Versicherungen werden wir von den Gesellschaften über eine Courtage entschädigt. Für Sie ist die Arbeit im Rahmen des Maklermandats kostenlos. Geht ein Auftrag darüber hinaus, vereinbaren wir vorher ein Honorar.
 
 **F: Arbeiten Sie mit allen Gesellschaften zusammen?**
-A: Wir vergleichen für Sie die uns zugänglichen Angebote und Gesellschaften. **[ZU BESTÄTIGEN: mit welchen Gesellschaften eine direkte Anbindung besteht und was über einen Anschluss läuft]**
+A: Wir sind ungebunden und vergleichen für Sie die Angebote einer breiten Auswahl von Gesellschaften. Welche in Ihrem Fall passt, sagen wir Ihnen im Vorschlag.
 
 **F: Muss ich meine bestehenden Verträge kündigen?**
 A: Nein. Wir schauen zuerst an, was Sie haben. Ob und wann eine Anpassung sinnvoll ist, besprechen wir danach.
 
 **F: Bin ich an etwas gebunden, wenn ich Sie beauftrage?**
-A: **[ZU BESTÄTIGEN: Laufzeit und Kündbarkeit des Brokermandats]**
+A: Das Maklermandat gilt unbefristet und kann von beiden Seiten jederzeit gekündigt werden.
 
 **F: In welcher Sprache werde ich beraten?**
 A: Auf Deutsch, Französisch oder Portugiesisch. Sagen Sie uns einfach, was Ihnen lieber ist.
@@ -251,7 +247,7 @@ A: Auf Deutsch, Französisch oder Portugiesisch. Sagen Sie uns einfach, was Ihne
 
 Ein erstes Gespräch verpflichtet Sie zu nichts. Bringen Sie mit, was Sie haben, und wir sagen Ihnen, was uns auffällt.
 
-**Handlungsknopf:** Unverbindliches Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch vereinbaren
 
 **Daneben:** 078 625 53 85 · info@ac-co.ch
 
@@ -269,7 +265,7 @@ Ein erstes Gespräch verpflichtet Sie zu nichts. Bringen Sie mit, was Sie haben,
 
 Sie liefern die Unterlagen, wir führen die Buchhaltung laufend. Sie haben einen festen Ansprechpartner und wissen jederzeit, was als Nächstes ansteht.
 
-**Handlungsknopf:** Unverbindliches Erstgespräch vereinbaren · Bestehende Buchhaltung besprechen
+**Handlungsknopf:** Erstgespräch vereinbaren
 
 ### 02 Leistungen im Überblick
 
@@ -289,11 +285,11 @@ Abrechnungen, Einhaltung der Fristen und die Wahl der Abrechnungsmethode.
 
 ##### Jahresabschluss
 
-Abschluss Ihrer Buchhaltung am Ende des Geschäftsjahres. **[ZU BESTÄTIGEN: Umfang, etwa Anhang, Kontenblätter, Besprechung]**
+Abschluss Ihrer Buchhaltung am Ende des Geschäftsjahres, mit Anhang, Kontenblättern und einer Besprechung.
 
 ##### Unternehmensadministration
 
-**[ZU BESTÄTIGEN: welche administrativen Aufgaben A&C tatsächlich übernimmt, etwa Zahlungsverkehr, Mahnwesen, Korrespondenz mit Ämtern]**
+Je nach Situation übernehmen wir auch Zahlungsverkehr, Mahnwesen und die Korrespondenz mit Ämtern. Was davon sinnvoll ist, halten wir in der Offerte fest.
 
 ##### Steuern für Firmen
 
@@ -334,7 +330,7 @@ Buchhaltung, monatliche Lohnabrechnungen, Sozialversicherungen, Mehrwertsteuer u
 
 #### Was Sie uns liefern
 
-Sie müssen keine Buchhaltungssoftware bedienen und nichts vorbuchen. **[ZU BESTÄTIGEN: ob Belege sortiert oder in bestimmter Form geliefert werden müssen]**
+Sie müssen keine Buchhaltungssoftware bedienen und nichts vorbuchen. Sortiert ist hilfreich, nötig ist es nicht — das Ordnen übernehmen wir.
 
 In der Regel brauchen wir von Ihnen:
 
@@ -343,7 +339,7 @@ In der Regel brauchen wir von Ihnen:
 - Rechnungen, die Sie bezahlt haben
 - Belege für Spesen und Barzahlungen
 - bei Mitarbeitenden: Arbeitsverträge, Änderungen, Absenzen
-In welcher Form und in welchem Rhythmus Sie das liefern, halten wir zu Beginn fest. **[ZU BESTÄTIGEN: mögliche Lieferwege, etwa Portal, E-Mail, Fotos, physische Ablage]**
+In welcher Form und in welchem Rhythmus Sie das liefern, halten wir zu Beginn fest. Sie können uns die Unterlagen digital oder physisch übergeben.
 
 **Handlungsknopf:** Checkliste: Was Sie uns monatlich liefern
 
@@ -351,11 +347,9 @@ In welcher Form und in welchem Rhythmus Sie das liefern, halten wir zu Beginn fe
 
 #### Wie wir arbeiten
 
-Wir automatisieren die Routine, nicht die Beratung. Wiederkehrende Arbeitsschritte übernehmen digitale Prozesse **[ZU BESTÄTIGEN: welche Schritte das konkret sind]**. Das schafft Zeit für die Fragen, bei denen es auf Erfahrung ankommt.
-
 Ihre Zahlen sieht und prüft eine Person, die Ihr Dossier kennt. Fachliche Entscheidungen treffen wir selbst und tragen die Verantwortung dafür.
 
-**[ZU BESTÄTIGEN: eingesetzte Software, Ort der Datenverarbeitung und Aussage zur Vertraulichkeit, abgestimmt mit der Datenschutzerklärung]**
+Ihre Daten werden in der Schweiz verarbeitet und vertraulich behandelt.
 
 ### 07 Was es kostet
 
@@ -370,7 +364,7 @@ Wir rechnen nach Aufwand ab. Wie hoch dieser ausfällt, hängt vor allem von die
 - Form, in der Sie die Unterlagen liefern
 Nach dem Erstgespräch erhalten Sie eine Offerte mit dem vereinbarten Leistungsumfang. Ändert sich der Umfang, sprechen wir vorher darüber.
 
-**[ZU BESTÄTIGEN: ob Pauschalen, Monatsmodelle oder Ab-Preise angeboten werden]**
+Wir vereinbaren eine Pauschale. Die besprochenen Leistungen sind darin enthalten.
 
 ### 08 Wechsel-Teaser
 
@@ -396,19 +390,19 @@ Sobald Sie Mitarbeitende anstellen, gehören zur Lohnabrechnung auch die Unfallv
 A: Ein unterjähriger Start ist grundsätzlich möglich. Wir übernehmen den bestehenden Stand und führen von dort weiter. Wie aufwendig das ist, hängt davon ab, wie die Buchhaltung bisher geführt wurde.
 
 **F: Muss ich meine Belege sortieren?**
-A: **[ZU BESTÄTIGEN: gewünschte Form der Belegablage]**
+A: Sortiert ist hilfreich, nötig ist es nicht — das Ordnen übernehmen wir.
 
 **F: Welche Software setzen Sie ein?**
-A: **[ZU BESTÄTIGEN: eingesetzte Buchhaltungs- und Lohnsoftware, und ob Kundinnen und Kunden Zugriff erhalten]**
+A: Wir arbeiten mit verschiedenen Softwarelösungen. Ein Zugriff für Kundinnen und Kunden ist möglich.
 
 **F: Wer ist mein Ansprechpartner?**
-A: Eine feste Person, die Ihr Dossier führt. **[ZU BESTÄTIGEN: Zuordnung nach Bereich oder nach Sprache]**
+A: Eine feste Person, die Ihr Dossier führt. Beide betreuen Versicherungskunden; Treuhandmandate führt Ricardo Caires Cerqueira.
 
 **F: Wie oft sehen wir uns?**
 A: Rhythmus und Austausch legen wir zu Beginn gemeinsam fest.
 
 **F: Was passiert mit meinen Daten?**
-A: **[ZU BESTÄTIGEN: Aussage zu Speicherort, Zugriff und Vertraulichkeit, abgestimmt mit der Datenschutzerklärung]**
+A: Ihre Daten werden in der Schweiz verarbeitet und vertraulich behandelt.
 
 ### 11 Abschluss
 
@@ -416,7 +410,7 @@ A: **[ZU BESTÄTIGEN: Aussage zu Speicherort, Zugriff und Vertraulichkeit, abges
 
 Im Erstgespräch schauen wir an, was heute bei Ihnen liegt und was davon zu uns kann. Danach wissen Sie, was eine Zusammenarbeit für Sie bedeuten würde.
 
-**Handlungsknopf:** Unverbindliches Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch vereinbaren
 
 **Daneben:** 078 625 53 85 · info@ac-co.ch
 
@@ -434,7 +428,7 @@ Im Erstgespräch schauen wir an, was heute bei Ihnen liegt und was davon zu uns 
 
 Sie bringen die Unterlagen, wir erstellen die Steuererklärung, reichen sie ein und prüfen später die Veranlagung.
 
-**Handlungsknopf:** Unverbindliches Erstgespräch vereinbaren · Checkliste herunterladen
+**Handlungsknopf:** Erstgespräch vereinbaren · Checkliste herunterladen
 
 ### 02 Für Privatpersonen
 
@@ -444,7 +438,7 @@ Wir erstellen Ihre Steuererklärung im Kanton Bern, achten auf die Abzüge, die 
 
 Wenn die Veranlagung kommt, prüfen wir sie und sagen Ihnen, ob sie mit dem übereinstimmt, was eingereicht wurde. Das ist wichtig, weil sich Abweichungen nur innerhalb der Einsprachefrist korrigieren lassen. **[ZU BESTÄTIGEN: Einsprachefrist im Kanton Bern]**
 
-**[ZU BESTÄTIGEN: ob auch Steuererklärungen für andere Kantone übernommen werden]**
+Wir erstellen Steuererklärungen hauptsächlich im Kanton Bern.
 
 ### 03 Für Selbständige und Firmen
 
@@ -497,8 +491,6 @@ Der Aufwand hängt davon ab, wie Ihre Situation aussieht:
 - ob mehrere Steuerjahre offen sind
 Sagen Sie uns kurz, was auf Sie zutrifft, dann können wir den Aufwand einschätzen, bevor wir beginnen.
 
-**[ZU BESTÄTIGEN: ob für klar definierte einfache Fälle ein Ab-Preis genannt wird]**
-
 ### 08 Nebenerwerb
 
 #### Wenn Sie nebenbei selbständig sind
@@ -515,16 +507,16 @@ Sobald Sie neben der Anstellung etwas auf eigene Rechnung machen, ändert sich d
 A: Alles, was in der Checkliste steht. Wenn etwas fehlt, melden wir uns.
 
 **F: Können Sie die Frist verlängern?**
-A: Ja, das übernehmen wir für Sie. **[ZU BESTÄTIGEN: bis wann eine Verlängerung beantragt werden muss]**
+A: Die Fristverlängerung beantragen wir für Sie. **[ZU BESTÄTIGEN: bis wann eine Verlängerung beantragt werden muss]**
 
 **F: Was, wenn mehrere Jahre offen sind?**
 A: Mehrere offene Steuerjahre lassen sich aufarbeiten. **[ZU BESTÄTIGEN: Vorgehen und Folgen einer Einschätzung nach Ermessen im Kanton Bern]**
 
 **F: Machen Sie auch Steuererklärungen für andere Kantone?**
-A: **[ZU BESTÄTIGEN]**
+A: Wir erstellen Steuererklärungen hauptsächlich im Kanton Bern.
 
 **F: Muss ich persönlich vorbeikommen?**
-A: Nicht zwingend. Sie können die Unterlagen auch digital senden. **[ZU BESTÄTIGEN: gewünschter Weg]**
+A: Nicht zwingend. Sie können uns die Unterlagen per E-Mail, per Post oder persönlich bringen.
 
 ### 10 Abschluss
 
@@ -532,7 +524,7 @@ A: Nicht zwingend. Sie können die Unterlagen auch digital senden. **[ZU BESTÄT
 
 Melden Sie sich, dann vereinbaren wir einen Termin. Die Checkliste können Sie vorab herunterladen.
 
-**Handlungsknopf:** Unverbindliches Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch vereinbaren
 
 **Daneben:** 078 625 53 85 · info@ac-co.ch
 
@@ -550,7 +542,7 @@ Melden Sie sich, dann vereinbaren wir einen Termin. Die Checkliste können Sie v
 
 Wir begleiten Sie von der Wahl der Rechtsform bis zur ersten Buchhaltung und sagen Ihnen vorher, was auf Sie zukommt.
 
-**Handlungsknopf:** Gründungsgespräch anfragen
+**Handlungsknopf:** Erstgespräch vereinbaren
 
 **Daneben:** 078 625 53 85
 
@@ -562,7 +554,7 @@ Das ist die erste Frage, und sie lässt sich nicht allgemein beantworten. Für d
 
 ##### Kapital
 
-Die Einzelfirma braucht kein Mindestkapital. Für die GmbH ist ein Stammkapital von 20 000 Franken nötig, das vor der Gründung einbezahlt wird. **[ZU BESTÄTIGEN: Höhe des Stammkapitals und Einzahlungsvorschriften fachlich prüfen]**
+Die Einzelfirma braucht kein Mindestkapital. Für die GmbH ist ein Stammkapital nötig, das vor der Gründung einbezahlt wird. **[ZU BESTÄTIGEN: Höhe des Stammkapitals und Einzahlungsvorschriften fachlich prüfen]**
 
 ##### Haftung
 
@@ -574,7 +566,7 @@ Die Einzelfirma ist einfacher und günstiger zu gründen. Für die GmbH braucht 
 
 ##### Handelsregister
 
-Die GmbH wird eingetragen. Für die Einzelfirma besteht die Eintragungspflicht ab einem Jahresumsatz von 100 000 Franken, vorher ist der Eintrag freiwillig. **[ZU BESTÄTIGEN: Handelsregisterpflicht und Umsatzschwelle für die Einzelfirma fachlich prüfen]**
+Die GmbH wird eingetragen. Für die Einzelfirma besteht die Eintragungspflicht ab einem bestimmten Jahresumsatz, vorher ist der Eintrag freiwillig. **[ZU BESTÄTIGEN: Handelsregisterpflicht und Umsatzschwelle für die Einzelfirma fachlich prüfen]**
 
 ##### Sozialversicherungen
 
@@ -607,7 +599,7 @@ Wie lange das dauert, hängt von Notariat, Bank und Handelsregisteramt ab. Diese
 
 ##### A&C
 
-Beratung zur Rechtsform, Vorbereitung der Unterlagen, Koordination mit Notariat und Handelsregister, Anmeldungen bei den Sozialversicherungen und bei der Mehrwertsteuer, Aufbau der Buchhaltung. **[ZU BESTÄTIGEN: abschliessender Umfang der Gründungsbegleitung]**
+Beratung zur Rechtsform, Vorbereitung der Unterlagen, Koordination mit Notariat und Handelsregister, Anmeldungen bei den Sozialversicherungen und bei der Mehrwertsteuer, Aufbau der Buchhaltung. Alles, was beglaubigt oder notariell beurkundet werden muss, erledigt das Notariat. Die übrigen Schritte begleiten wir.
 
 ##### Notariat
 
@@ -629,11 +621,11 @@ Die Kosten bestehen aus zwei Teilen, die auseinandergehalten werden sollten.
 
 ##### Unser Honorar
 
-Für die Begleitung rechnen wir nach dem vereinbarten Umfang ab. Sie erhalten die Offerte, bevor wir beginnen. **[ZU BESTÄTIGEN: ob eine Gründungspauschale angeboten wird]**
+Für die Gründungsbegleitung vereinbaren wir eine Pauschale. Sie erhalten die Offerte, bevor wir beginnen.
 
 ##### Kosten von Dritten
 
-Dazu kommen die Gebühren von Notariat und Handelsregisteramt, je nach Bank auch für das Sperrkonto. Diese Beträge gehen nicht an uns. Wir sagen Ihnen im Gespräch, womit zu rechnen ist. **[ZU BESTÄTIGEN: ob Richtwerte genannt werden sollen; falls ja, mit Quelle und Stand]**
+Dazu kommen die Gebühren von Notariat und Handelsregisteramt, je nach Bank auch für das Sperrkonto. Diese Beträge gehen nicht an uns. Wir sagen Ihnen im Gespräch, womit zu rechnen ist.
 
 ### 06 Nach der Gründung
 
@@ -643,7 +635,7 @@ Mit dem Handelsregistereintrag ist die Firma da. Danach beginnt die laufende Adm
 
 - Buchhaltung. Einnahmen und Ausgaben sind festzuhalten. Der Umfang der Pflicht hängt von Rechtsform und Umsatz ab. **[ZU BESTÄTIGEN: Buchführungs- und Rechnungslegungspflicht je Rechtsform und Umsatzschwelle fachlich prüfen]**
 - Ausgleichskasse. Anmeldung als selbständigerwerbend oder als Arbeitgeberin. **[ZU BESTÄTIGEN: AHV-Anmeldepflicht und Fristen fachlich prüfen]**
-- Mehrwertsteuer. Ab einer bestimmten Umsatzschwelle besteht Steuerpflicht. **[ZU BESTÄTIGEN: Umsatzschwelle, Ausnahmen und Befreiungsmöglichkeiten fachlich prüfen; Richtwert bisher 100 000 Franken]**
+- Mehrwertsteuer. Ab einer bestimmten Umsatzschwelle besteht Steuerpflicht. **[ZU BESTÄTIGEN: Umsatzschwelle, Ausnahmen und Befreiungsmöglichkeiten fachlich prüfen]**
 - Mit der ersten Anstellung. Unfallversicherung, berufliche Vorsorge, je nach Betrieb ein Krankentaggeld, dazu die monatliche Lohnabrechnung. **[ZU BESTÄTIGEN: BVG-Eintrittsschwelle und UVG-Pflicht fachlich prüfen]**
 - Betriebsversicherungen. Je nach Tätigkeit Haftpflicht, Sachversicherung oder Fahrzeuge.
 - Erste Steuererklärung. Nach dem ersten Geschäftsjahr, aufbauend auf dem Abschluss.
@@ -670,7 +662,7 @@ A: Das hängt von Notariat, Bank und Handelsregisteramt ab. Wir sagen Ihnen im G
 A: Für die GmbH braucht es zuerst ein Sperrkonto für das Stammkapital, das anschliessend in ein Geschäftskonto übergeht. Bei der Einzelfirma ist ein getrenntes Konto nicht vorgeschrieben, für die Buchhaltung aber sinnvoll. **[ZU BESTÄTIGEN: Kontovorschriften fachlich prüfen]**
 
 **F: Ab wann bin ich mehrwertsteuerpflichtig?**
-A: **[ZU BESTÄTIGEN: Umsatzschwelle, Ausnahmen und Sonderfälle fachlich prüfen; Richtwert bisher 100 000 Franken]**
+A: Das hängt von Ihrem Umsatz und Ihrer Tätigkeit ab. Wir rechnen vor der Gründung mit Ihnen durch, ob und ab wann die Pflicht für Sie gilt. **[ZU BESTÄTIGEN: Umsatzschwelle, Ausnahmen und Sonderfälle fachlich prüfen]**
 
 **F: Kann ich später von der Einzelfirma in eine GmbH wechseln?**
 A: Ein Wechsel der Rechtsform ist möglich. Er sollte vorbereitet werden, insbesondere steuerlich. **[ZU BESTÄTIGEN: steuerliche Folgen einer Umwandlung fachlich prüfen]**
@@ -687,7 +679,7 @@ A: Wenn Sie möchten. Die Unterlagen aus der Gründung liegen dann bereits vor. 
 
 Im Gründungsgespräch klären wir die Rechtsform, den Ablauf und die Kosten für Ihren Fall. Danach wissen Sie, was zu tun ist, auch wenn Sie sich für einen anderen Weg entscheiden.
 
-**Handlungsknopf:** Gründungsgespräch anfragen
+**Handlungsknopf:** Erstgespräch vereinbaren
 
 **Daneben:** 078 625 53 85 · info@ac-co.ch
 
@@ -705,7 +697,7 @@ Im Gründungsgespräch klären wir die Rechtsform, den Ablauf und die Kosten fü
 
 Wir begleiten den Wechsel strukturiert und diskret. Zuerst klären wir mit Ihnen die bestehende Situation, den geeigneten Zeitpunkt und die Unterlagen, die für die Übernahme nötig sind.
 
-**Handlungsknopf:** Bestehende Buchhaltung besprechen
+**Handlungsknopf:** Erstgespräch vereinbaren
 
 **Daneben:** 078 625 53 85
 
@@ -772,8 +764,8 @@ Nach Absprache und auf Ihren Auftrag hin:
 - Kontakt und Abstimmung mit Ihrem bisherigen Treuhänder
 - Terminierung der Übergabe
 - Übernahme der Daten und Prüfung auf Vollständigkeit
-- Einrichtung der Buchhaltung **[ZU BESTÄTIGEN: Software]**
-Bei Ihnen bleibt die Kündigung Ihrer bestehenden Vereinbarung. **[ZU BESTÄTIGEN: ob A&C die Kündigung auf Wunsch vorbereitet oder ob sie vollständig beim Kunden liegt]**
+- Einrichtung der Buchhaltung
+Die Kündigung beim bisherigen Treuhänder bereiten wir für Sie vor.
 
 > *Redaktionsnotiz (nicht auf die Website): Dass hier ausdrücklich steht, was beim Kunden bleibt, wirkt glaubwürdiger als eine Rundum-Zusage und entspricht deiner Korrektur.*
 
@@ -787,7 +779,7 @@ Ein Erstgespräch verpflichtet Sie zu nichts. Wir behandeln den Inhalt vertrauli
 
 #### Kosten im Jahr des Wechsels
 
-Im Jahr eines Wechsels können auf beiden Seiten Aufwände anfallen. Ihr bisheriger Treuhänder rechnet die Arbeiten bis zum Stichtag ab, wir übernehmen die Weiterführung. Je nach Zeitpunkt und Stand der Arbeiten fällt das unterschiedlich aus. **[ZU BESTÄTIGEN: Abrechnungspraxis beim Mandatsübergang fachlich prüfen]**
+Im Jahr eines Wechsels können auf beiden Seiten Aufwände anfallen. Ihr bisheriger Treuhänder rechnet die Arbeiten bis zum Stichtag ab, wir übernehmen die Weiterführung. Je nach Zeitpunkt und Stand der Arbeiten fällt das unterschiedlich aus. Im Jahr des Wechsels rechnen wir pro rata ab.
 
 Wir schauen im Gespräch an, wie sich das in Ihrem Fall verteilt, und halten unseren Teil in der Offerte fest.
 
@@ -808,10 +800,10 @@ A: Erst dann, wenn Sie uns beauftragen, mit ihm Kontakt aufzunehmen. Vorher nich
 A: Was herausgegeben wird und in welcher Form, richtet sich nach Ihrer Vereinbarung und der Situation. **[ZU BESTÄTIGEN: fachlich geprüfte Antwort, inklusive Hinweis auf mögliche Zurückbehaltung bei offenen Rechnungen]**
 
 **F: Muss ich die Software wechseln?**
-A: **[ZU BESTÄTIGEN: welche Systeme übernommen werden können]**
+A: Wir prüfen von Fall zu Fall, welches System sich übernehmen lässt.
 
 **F: Wer schreibt die Kündigung?**
-A: **[ZU BESTÄTIGEN: siehe Abschnitt 06]**
+A: Die Kündigung beim bisherigen Treuhänder bereiten wir für Sie vor.
 
 ### 10 Abschluss
 
@@ -819,7 +811,7 @@ A: **[ZU BESTÄTIGEN: siehe Abschnitt 06]**
 
 Erzählen Sie uns, wie Ihre Buchhaltung heute läuft. Danach wissen Sie, ob und wann ein Wechsel für Sie sinnvoll ist. Ein Gespräch verpflichtet Sie zu nichts.
 
-**Handlungsknopf:** Bestehende Buchhaltung besprechen
+**Handlungsknopf:** Erstgespräch vereinbaren
 
 **Daneben:** 078 625 53 85 · info@ac-co.ch
 
@@ -833,7 +825,7 @@ Erzählen Sie uns, wie Ihre Buchhaltung heute läuft. Danach wissen Sie, ob und 
 
 ### 01 Seitenkopf
 
-#### Zwei Ansprechpartner in Lyss
+#### Zwei Ansprechpartner, drei Bereiche
 
 A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Andrade geführt. Beide betreuen Mandate selbst.
 
@@ -841,23 +833,23 @@ A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Andrade geführt. B
 
 ##### Ricardo Caires Cerqueira
 
-Geschäftsführer und Mitinhaber. Zuständig für **[ZU BESTÄTIGEN: Bereiche]**. Als Versicherungsvermittler bei der FINMA registriert.
+Geschäftsführer und Mitinhaber. Zuständig für Treuhand, Steuern und Versicherungen. Als Versicherungsvermittler bei der FINMA registriert.
 
-Beruflicher Weg: **[ZU BESTÄTIGEN: zwei bis vier belegbare Stationen, Abschlüsse und Zulassungen]**
+Beruflicher Weg: Kaufmann EFZ, danach im Finanz- und Rechnungswesen der Creabeton Matériaux AG in Lyss verantwortlich für Kreditoren, Debitoren und Anlagebuchhaltung sowie Leiter der Berufsbildung. Abschlüsse: Sachbearbeiter Rechnungswesen VSK am Feusi Bildungszentrum Bern und Versicherungsvermittler VBV.
 
-Beratungssprachen: **[ZU BESTÄTIGEN]**
+Beratungssprachen: Deutsch, Französisch, Portugiesisch und Englisch.
 
-Direkt erreichbar unter **[ZU BESTÄTIGEN: Direktnummer oder Sammelnummer]**
+Direkt erreichbar unter 078 625 53 85
 
 ##### Octavio Andrade
 
-Geschäftsführer und Mitinhaber. Zuständig für **[ZU BESTÄTIGEN: Bereiche]**.
+Geschäftsführer und Mitinhaber. Zuständig für Versicherungen.
 
-Beruflicher Weg: **[ZU BESTÄTIGEN: zwei bis vier belegbare Stationen, Abschlüsse und Zulassungen]**
+Beruflicher Weg: Kundenberater und Verkaufsleiter bei der Allianz Suisse in Biel, danach Hauptagent der Zurich Versicherungen in Biel, seither selbstständiger Versicherungsbroker. Abschluss: Versicherungsvermittler VBV.
 
-Beratungssprachen: **[ZU BESTÄTIGEN]**
+Beratungssprachen: Deutsch, Französisch, Portugiesisch und Englisch.
 
-Direkt erreichbar unter **[ZU BESTÄTIGEN: Direktnummer oder Sammelnummer]**
+Direkt erreichbar unter 078 625 53 85
 
 > *Redaktionsnotiz (nicht auf die Website): Die Zuständigkeiten sind die wichtigste fehlende Angabe im ganzen Projekt. Ohne sie bleibt «klare Zuständigkeiten» eine Behauptung, und diese Seite trägt das Merkmal «persönliche Betreuung» fast allein. Beide Porträts müssen echte Aufnahmen sein.*
 
@@ -875,11 +867,11 @@ Zu Beginn halten wir schriftlich fest, welche Aufgaben wir übernehmen und welch
 
 ##### Digital, wo es etwas bringt
 
-Wir automatisieren die Routine, nicht die Beratung. Wiederkehrende Arbeitsschritte übernehmen digitale Prozesse **[ZU BESTÄTIGEN: welche konkret]**, damit mehr Zeit für die Fragen bleibt, bei denen es auf Erfahrung ankommt. Fachliche Prüfung und Verantwortung bleiben bei uns.
+Sie haben feste Ansprechpartner, kurze Wege und eine direkte Kommunikation. Fachliche Prüfung und Verantwortung bleiben bei uns.
 
 ##### Vertraulich
 
-**[ZU BESTÄTIGEN: Aussage zu Speicherung, Zugriff und Verarbeitungsort, abgestimmt mit der Datenschutzerklärung]**
+Ihre Daten werden in der Schweiz verarbeitet und vertraulich behandelt.
 
 ### 04 Das Unternehmen
 
@@ -889,8 +881,8 @@ A&C Consulting GmbH wurde am 3. Februar 2026 gegründet und hat ihren Sitz an de
 
 - UID: CHE-332.960.986
 - Als Versicherungsvermittlerin bei der FINMA registriert, Register-Nr. F01568855
-- Tätigkeitsbereiche: Versicherungen, Treuhand und Steuern **[ZU BESTÄTIGEN: Abgrenzungen, etwa Revision oder Rechtsberatung]**
-Das Unternehmen ist jung. Die beiden Inhaber arbeiten seit **[ZU BESTÄTIGEN: Jahr oder Anzahl Jahre je Person]** in diesem Bereich.
+- Tätigkeitsbereiche: Versicherungen, Treuhand und Steuern. Nicht zu unseren Leistungen gehören die aktienrechtliche Revision und die Rechtsberatung. Wo das nötig wird, arbeiten wir mit Fachpersonen zusammen.
+Das Unternehmen ist jung. Octavio Andrade ist seit 25 Jahren in der Versicherungsbranche tätig, Ricardo Caires Cerqueira kommt aus dem Finanz- und Rechnungswesen und ist als Versicherungsvermittler VBV qualifiziert.
 
 > *Redaktionsnotiz (nicht auf die Website): Das Gründungsdatum steht im Handelsregister und ist ohnehin auffindbar. Es selbst zu nennen wirkt souveräner, als es zu umgehen. Die Glaubwürdigkeit trägt der berufliche Weg der beiden Personen in Abschnitt 02.*
 
@@ -898,9 +890,9 @@ Das Unternehmen ist jung. Die beiden Inhaber arbeiten seit **[ZU BESTÄTIGEN: Ja
 
 #### Region und Sprachen
 
-Wir betreuen Kundinnen und Kunden in Lyss, im Seeland, in Biel/Bienne und im übrigen Kanton Bern.
+Wir betreuen Kundinnen und Kunden im Seeland und im Kanton Bern.
 
-Beraten wird auf Deutsch, Französisch und Portugiesisch. Das gilt für das Gespräch und für die Korrespondenz. **[ZU BESTÄTIGEN: ob auch Unterlagen und Auswertungen in allen drei Sprachen geliefert werden]**
+Beraten wird auf Deutsch, Französisch und Portugiesisch. Das gilt für das Gespräch, für die Korrespondenz und für die Unterlagen.
 
 ### 06 Abschluss
 
@@ -908,7 +900,7 @@ Beraten wird auf Deutsch, Französisch und Portugiesisch. Das gilt für das Gesp
 
 Für ein erstes Gespräch rufen Sie an oder schreiben Sie uns.
 
-**Handlungsknopf:** Unverbindliches Erstgespräch vereinbaren
+**Handlungsknopf:** Erstgespräch vereinbaren
 
 **Daneben:** 078 625 53 85 · info@ac-co.ch
 
@@ -967,15 +959,15 @@ Damit das Gespräch für Sie etwas bringt, senden wir Ihnen vorher einige Fragen
 
 Bielstrasse 22, 3250 Lyss
 
-Öffnungszeiten: **[ZU BESTÄTIGEN: verbindliche Zeiten, identisch mit dem Google-Unternehmensprofil]**
+Öffnungszeiten: 08:00–12:00 und 13:30–17:00 Uhr
 
-Anfahrt: **[ZU BESTÄTIGEN: Parkiermöglichkeit und Weg ab Bahnhof Lyss]**
+Anfahrt: Beim Büro stehen drei Parkplätze zur Verfügung.
 
 ### 05 Termine ausserhalb der Bürozeiten
 
 #### Termine ausserhalb der Bürozeiten
 
-**[ZU BESTÄTIGEN: ob Termine am Abend oder am Samstag angeboten werden]**
+Termine am Abend oder am Samstag bieten wir auf Anfrage an.
 
 > *Redaktionsnotiz (nicht auf die Website): Falls ja, ist das für Selbständige und Handwerksbetriebe ein starkes Argument. Es ist aber eine Zusage, keine Formulierung, deshalb bleibt der Abschnitt offen.*
 

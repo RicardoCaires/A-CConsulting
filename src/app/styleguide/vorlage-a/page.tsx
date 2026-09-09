@@ -11,9 +11,9 @@ export default function VorlageA() {
     <main>
       <VorlagenKopf
         name="Vorlage A — Startseite"
-        abfolge="Einstieg · Bereiche · Anliegen · Weshalb A&C · Ablauf · Ansprechpartner · Abschluss"
-        flaechen="hell · weiss · hell · DUNKEL · weiss · hell · weiss"
-        regel="Keine Sektion über etwa fünfzig Wörter Fliesstext."
+        abfolge="Einstieg · Bereiche · Geschäftsfälle · Weshalb A&C · Ansprechpartner · Wissen · Abschluss"
+        flaechen="DOMINANT · weiss · hell · flaeche · weiss · hell · flaeche"
+        regel="Text und Bildfläche nebeneinander. Keine Sektion über etwa fünfzig Wörter Fliesstext."
       />
       <StartseiteTemplate inhalt={beispielStartseite} locale="de" />
     </main>

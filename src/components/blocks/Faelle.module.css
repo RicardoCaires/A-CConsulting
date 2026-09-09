@@ -1,0 +1,143 @@
+/* Geschaeftsfaelle.
+
+   Ein Raster aus Linien, keine sechs Kaesten. Die Zellen teilen sich ihre
+   Kanten; dadurch entsteht ein Gitter, das ruhiger liegt als sechs einzelne
+   Karten mit Abstand dazwischen.
+
+   Der Zustand beim Zeigen ist der einzige Effekt: Die Flaeche wird weiss, die
+   Nummer gruen, der Pfeil rueckt nach. Mehr braucht es nicht. */
+
+.liste {
+  display: grid;
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding: 0;
+  list-style: none;
+  /* Die aeussere Kante des Gitters. Innen tragen die Zellen ihre eigene. */
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.zelle {
+  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.fall {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: var(--ac-space-sm);
+  /* Trefferflaeche deutlich ueber 44 px — das ist der Abschnitt, der auf dem
+     Telefon am haeufigsten getroffen wird. */
+  min-height: 4.5rem;
+  padding: var(--ac-space-md) var(--ac-space-sm) var(--ac-space-md) var(--ac-space-2xs);
+  color: var(--ac-color-text-primary);
+  text-decoration: none;
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.fall:hover {
+  background-color: var(--ac-color-white);
+  color: var(--ac-color-text-primary);
+}
+
+.nummer {
+  flex: none;
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--ac-color-text-muted);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.fall:hover .nummer {
+  color: var(--ac-color-accent-green);
+}
+
+.text {
+  font-family: var(--ac-font-display);
+  font-size: var(--ac-h3-size);
+  line-height: var(--ac-h3-line);
+  font-weight: var(--ac-h3-weight);
+  letter-spacing: var(--ac-h3-tracking);
+  color: var(--ac-color-primary-navy);
+  text-wrap: balance;
+}
+
+/* Der Pfeil sitzt rechts und ist zurueckhaltend, bis man zeigt. */
+.fall::after {
+  content: '→';
+  position: absolute;
+  right: var(--ac-space-2xs);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ac-color-text-muted);
+  opacity: 0;
+  transition:
+    opacity var(--ac-motion-base) var(--ac-motion-easing),
+    transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.fall:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0.2rem);
+}
+
+/* Fall ohne Zielseite: sichtbar, aber nicht anklickbar. */
+.pending {
+  cursor: default;
+}
+
+.pending .text {
+  color: var(--ac-color-text-secondary);
+}
+
+.pending::after {
+  display: none;
+}
+
+.badge {
+  align-self: center;
+  margin-left: auto;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-white);
+  border-radius: var(--ac-radius-sm);
+  padding: 0.1rem 0.3rem;
+}
+
+/* ---- Zwei Spalten ---------------------------------------------------------- */
+
+@media (min-width: 40rem) {
+  .liste {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Senkrechte Fuge zwischen den Spalten: dieselbe Linie, nur stehend. */
+  .zelle:nth-child(2n) .fall {
+    border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
+    padding-left: var(--ac-space-md);
+  }
+}
+
+/* ---- Drei Spalten ---------------------------------------------------------- */
+
+@media (min-width: 64rem) {
+  .liste {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Die Regel fuer zwei Spalten gilt hier nicht mehr — bei drei Spalten
+     traegt jede ausser der ersten die Linie. */
+  .zelle:nth-child(2n) .fall {
+    border-left: 0;
+    padding-left: var(--ac-space-2xs);
+  }
+
+  .zelle:not(:nth-child(3n + 1)) .fall {
+    border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
+    padding-left: var(--ac-space-md);
+  }
+}

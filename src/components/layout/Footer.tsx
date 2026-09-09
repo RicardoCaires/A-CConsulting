@@ -1,14 +1,6 @@
-import { company } from '@/lib/company'
+import { buero, company } from '@/lib/company'
 import { getUi } from '@/i18n/messages/ui'
-import {
-  isPublished,
-  legalNavOrder,
-  mainNavTree,
-  navChildHref,
-  path,
-  type NavChild,
-  type PageKey,
-} from '@/i18n/routes'
+import { isPublished, legalNavOrder, path, type PageKey } from '@/i18n/routes'
 import type { Locale } from '@/i18n/config'
 
 import { Logo } from './Logo'
@@ -17,11 +9,25 @@ import styles from './Footer.module.css'
 /**
  * Fussbereich — auf jeder Seite identisch.
  *
- * Bildet dieselbe Hierarchie ab wie der Kopfbereich, damit die Struktur nicht
- * an zwei Stellen gepflegt werden muss: Die Spalten kommen aus `mainNavTree`.
- * Wer unten auf einer langen Seite ankommt, kommt von dort ueberallhin.
+ * Er wiederholt die Hauptnavigation **nicht**. Bis Phase 1 stand hier eine
+ * zweite vollstaendige Navigation mit fuenf Spalten und siebzehn Zielen; auf
+ * dem Telefon war das 1445 px hoch und damit rund ein Fuenftel der Startseite.
+ * Wer unten ankommt, braucht dort keine zweite Karte des Hauses, sondern die
+ * Angaben, wegen derer man nach unten schaut: wer wir sind, wo wir sind, wie
+ * man uns erreicht.
  *
- * Dazu die Pflichtangaben. Die persoenliche FINMA-Nummer gehoert nicht hierher.
+ * Vier Gruppen, mehr nicht:
+ *   Firma und Anschrift · Leistungen (drei) · Rechtliches · Register
+ *
+ * Die Leistungen stehen in der verbindlichen Rangfolge: Versicherungen,
+ * Treuhand, Personal Finance. Steuern steht als vierter Eintrag dabei, obwohl
+ * es seit dem Neuaufbau kein eigener Hauptpunkt mehr ist — die Seite gibt es,
+ * sie wird gepflegt, und wer sie sucht, soll sie finden.
+ *
+ * Impressum und Datenschutz erscheinen erst, wenn es die Seiten gibt. Ein
+ * Vermerk „folgt" steht hier nicht: In der Navigation hat er nichts verloren.
+ *
+ * Die persoenliche FINMA-Nummer gehoert nicht hierher, nur die des Unternehmens.
  *
  * Dies ist die grossflaechige Navy-Flaeche — sie traegt die Negativversion des
  * Logos, nie die Farbversion.
@@ -31,44 +37,18 @@ type Props = {
   locale: Locale
 }
 
+/** Die Leistungsbereiche, in der verbindlichen Rangfolge. */
+const LEISTUNGEN: readonly PageKey[] = [
+  'versicherungen',
+  'treuhand',
+  'personalFinance',
+  'steuern',
+]
+
 export function Footer({ locale }: Props) {
   const ui = getUi(locale)
 
-  /** Ein Unterpunkt — nur verlinkt, wenn es das Ziel gibt. */
-  const childLink = (item: NavChild, index: number) => {
-    const label = item.kind === 'page' ? ui.page[item.page] : ui.navSection[item.label]
-    const href = navChildHref(item, locale)
-    const key = item.kind === 'page' ? item.page : `${item.label}-${index}`
-
-    return (
-      <li key={key}>
-        {href ? <a href={href}>{label}</a> : <span className={styles.pending}>{label}</span>}
-      </li>
-    )
-  }
-
-  /** Eine Spalte je Hauptbereich. */
-  const column = (page: PageKey, children: readonly NavChild[] | undefined, title?: string) => {
-    if (!isPublished(page, locale)) return null
-
-    return (
-      <div className={styles.column} key={page}>
-        <h2 className={styles.columnTitle}>
-          <a href={path(page, locale)}>{title ?? ui.page[page]}</a>
-        </h2>
-        {children && children.length > 0 && (
-          <ul className={styles.linkList} role="list">
-            {children.map(childLink)}
-          </ul>
-        )}
-      </div>
-    )
-  }
-
-  const versicherungen = mainNavTree.find((e) => e.page === 'versicherungen')
-  const treuhand = mainNavTree.find((e) => e.page === 'treuhand')
-  const ueberUns = mainNavTree.find((e) => e.page === 'ueberUns')
-  const kontakt = mainNavTree.find((e) => e.page === 'kontakt')
+  const leistungen = LEISTUNGEN.filter((key) => isPublished(key, locale))
   const legal = legalNavOrder.filter((key) => isPublished(key, locale))
 
   return (
@@ -76,13 +56,12 @@ export function Footer({ locale }: Props) {
       <div className={`ac-container ${styles.inner}`}>
         <div className={styles.brand}>
           <Logo locale={locale} variant="negativ" width={140} />
-          <p className={styles.role}>{ui.footer.roleNote}</p>
 
           <address className={styles.address}>
             <span className={styles.companyName}>{company.legalName}</span>
-            <span>{company.address.street}</span>
+            <span>{buero.street}</span>
             <span>
-              {company.address.postalCode} {company.address.city}
+              {buero.postalCode} {buero.city}
             </span>
             <a href={`tel:${company.phoneE164}`}>
               <span className="ac-visually-hidden">{ui.footer.phone}: </span>
@@ -93,36 +72,39 @@ export function Footer({ locale }: Props) {
               {company.email}
             </a>
           </address>
-
-          <p className={styles.languages}>{ui.language.spokenNote}</p>
         </div>
 
-        <nav className={styles.columns} aria-label={ui.nav.label}>
-          {column('versicherungen', versicherungen?.children)}
-          {column('treuhand', treuhand?.children)}
-          {/* Die Spalte heisst „Unternehmen", fuehrt aber auf „Über uns". */}
-          {column('ueberUns', ueberUns?.children, ui.footer.companyHeading)}
-          {column('kontakt', kontakt?.children)}
-
-          <div className={styles.column}>
-            <h2 className={styles.columnTitle}>{ui.footer.legalHeading}</h2>
-            {legal.length > 0 && (
-              <ul className={styles.linkList} role="list">
-                {legal.map((key) => (
-                  <li key={key}>
-                    <a href={path(key, locale)}>{ui.page[key]}</a>
-                  </li>
-                ))}
-              </ul>
-            )}
-            <dl className={styles.registry}>
-              <dt>{ui.footer.uid}</dt>
-              <dd>{company.uid}</dd>
-              <dt>{ui.footer.finma}</dt>
-              <dd>{company.finmaCompany}</dd>
-            </dl>
-          </div>
+        <nav className={styles.column} aria-label={ui.footer.servicesHeading}>
+          <h2 className={styles.columnTitle}>{ui.footer.servicesHeading}</h2>
+          <ul className={styles.linkList} role="list">
+            {leistungen.map((key) => (
+              <li key={key}>
+                <a href={path(key, locale)}>{ui.page[key]}</a>
+              </li>
+            ))}
+          </ul>
         </nav>
+
+        <div className={styles.column}>
+          <h2 className={styles.columnTitle}>{ui.footer.legalHeading}</h2>
+
+          {legal.length > 0 && (
+            <ul className={styles.linkList} role="list">
+              {legal.map((key) => (
+                <li key={key}>
+                  <a href={path(key, locale)}>{ui.page[key]}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <dl className={styles.registry}>
+            <dt>{ui.footer.uid}</dt>
+            <dd>{company.uid}</dd>
+            <dt>{ui.footer.finma}</dt>
+            <dd>{company.finmaCompany}</dd>
+          </dl>
+        </div>
       </div>
     </footer>
   )

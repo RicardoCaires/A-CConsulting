@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/Button'
 import { Icon, type IconName } from '@/components/ui/Icon'
+import { KLASSE, type Surface } from './Section'
 import { PageLink } from '@/components/ui/PageLink'
-import { RichText } from '@/components/ui/RichText'
+import { hatSichtbarenInhalt, RichText } from '@/components/ui/RichText'
 import { Accordion } from './Accordion'
 import { CTASection } from './CTASection'
 import { StepList } from './StepList'
@@ -9,20 +10,24 @@ import type { Action, Block, Download, PageRef, Rich } from '@/content/types'
 import type { Locale } from '@/i18n/config'
 import { getUi } from '@/i18n/messages/ui'
 import { isPublished, path, type PageKey } from '@/i18n/routes'
-import { company } from '@/lib/company'
+import { buero, company } from '@/lib/company'
 
 import styles from './PageBlocks.module.css'
 
 /**
  * Gibt die Abschnitte einer Inhaltsseite aus.
  *
- * Dieselbe Gestaltung wie auf der Startseite: ruhiger Wechsel zwischen weisser
- * und leicht getoenter Flaeche, Fliesstext auf lesbare Zeilenlaenge begrenzt,
+ * Dieselbe Gestaltung wie auf Startseite und Pilotseite: dunkler Seitenkopf
+ * darueber, dazwischen der Wechsel aus Weiss und Off-White, am Schluss die
+ * wiederkehrende Farbflaeche. Fliesstext auf lesbare Zeilenlaenge begrenzt,
  * Gruen nur als Marker.
  *
  * Verweise werden nur dann zu Links, wenn die Zielseite in dieser Sprache
  * veroeffentlicht ist — sonst steht die Beschriftung mit dem Vermerk „folgt".
  */
+
+/** Flaeche des Abschlussblocks. Auf jeder Seite dieselbe. */
+const ABSCHLUSS: Surface = 'flaeche'
 
 /** Icons der Unterkategorien. Gestaltung, darum hier und nicht im Inhalt. */
 const SERVICE_NAV_ICON: Partial<Record<PageKey, IconName>> = {
@@ -127,9 +132,13 @@ function DownloadButton({ download, locale }: { download: Download; locale: Loca
 /* ---- Absaetze ----------------------------------------------------------- */
 
 function Paragraphs({ items, className }: { items: readonly Rich[]; className?: string }) {
+  // Ein Absatz, der nur aus einer offenen Angabe besteht, faellt im
+  // Produktionsbau ganz weg — sonst bliebe ein leeres Loch stehen.
+  const sichtbar = items.filter(hatSichtbarenInhalt)
+
   return (
     <>
-      {items.map((paragraph, index) => (
+      {sichtbar.map((paragraph, index) => (
         <p key={index} className={className ?? styles.paragraph}>
           <RichText value={paragraph} />
         </p>
@@ -215,7 +224,7 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
           {block.intro && <Paragraphs items={block.intro} />}
 
           <ul className={styles.bullets}>
-            {block.items.map((item, index) => (
+            {block.items.filter(hatSichtbarenInhalt).map((item, index) => (
               <li key={index}>
                 <RichText value={item} />
               </li>
@@ -315,8 +324,7 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
               <dt>{getUi(locale).contactAddressLabel}</dt>
               <dd>
                 <address className={styles.address}>
-                  {company.legalName}, {company.address.street}, {company.address.postalCode}{' '}
-                  {company.address.city}
+                  {company.legalName}, {buero.street}, {buero.postalCode} {buero.city}
                 </address>
               </dd>
             </div>
@@ -382,11 +390,15 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
         // Der Abschlussblock ist ein eigener Baustein und bringt seine Flaeche
         // selbst mit. Er zaehlt beim Flaechenwechsel nicht mit, weil er immer
         // gleich aussieht — auf jeder Seite dieselbe Stelle, dieselbe Wirkung.
+        //
+        // Die Flaeche ist `flaeche`, wie auf Startseite und Pilotseite: Der
+        // Abschluss ist eine wiederkehrende Farbflaeche, keine getoente.
         if (block.kind === 'cta') {
           return (
             <CTASection
               key={index}
               id={block.id}
+              surface={ABSCHLUSS}
               heading={block.heading}
               lead={<Paragraphs items={block.paragraphs} className={styles.ctaLead} />}
               actions={<Actions actions={block.actions} locale={locale} />}
@@ -394,9 +406,10 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
           )
         }
 
-        // Drei Flaechen im Wechsel statt zwei: weiss, Off-White, heller
-        // Navy-Tint. Das trennt die Abschnitte, ohne dass es Rahmen braucht.
-        const surface = ['', 'ac-section--tint', '', 'ac-section--blue'][surfaceIndex++ % 4] ?? ''
+        // Zwei Flaechen im Wechsel: weiss und Off-White. Der frueher dritte,
+        // blaugraue Tint ist entfallen — drei kaum unterscheidbare helle Toene
+        // haben die Seite gestreift statt gegliedert.
+        const surface = KLASSE[surfaceIndex++ % 2 === 0 ? 'weiss' : 'hell']
 
         return (
           <section

@@ -19,6 +19,11 @@ wir sind, was wir tun und wie man uns erreicht.
 
 - Firma: A&C Consulting GmbH
 - Adresse: Bielstrasse 22, 3250 Lyss, Kanton Bern
+  > Umzug nach **Bielstrasse 10, 2558 Aegerten** ab **01.11.2026**. Bis dahin
+  > gilt öffentlich Lyss. Handelsregister und FINMA sind noch nicht
+  > nachgeführt — der **Sitz** wechselt erst danach. Beide Adressen stehen in
+  > `src/lib/company.ts`; der Wechsel geschieht beim ersten Bau nach dem
+  > Stichtag von selbst. Kein Livegang vor dem 01.11.2026.
 - FINMA-Registernummer Unternehmen: **F01568855**
 - Geschäftsführung: **Ricardo Caires Cerqueira**
 - Mitinhaber: Octavio Andrade
@@ -317,19 +322,35 @@ Aussagen zur Rolle als Broker.
 ## 9. Seitenstruktur und Inhalte
 
 Rangfolge der Bereiche — überall gleich, in Navigation, Startseite und Footer:
-**1. Versicherungsbroking · 2. Treuhand · 3. Steuern.** Broking führt, die
-anderen beiden ergänzen. Diese Reihenfolge wird nie umgestellt.
+**1. Versicherungsbroking · 2. Treuhand · 3. Personal Finance.** Broking führt,
+die anderen beiden ergänzen. Diese Reihenfolge wird nie umgestellt.
+
+> Geändert am 07.09.2026 auf Anweisung von Ricardo. Bis dahin stand an dritter
+> Stelle **Steuern**. Steuern ist damit kein eigener Hauptpunkt mehr: Die Seite
+> `/steuern` bleibt bestehen, wird gepflegt und ist über den Fussbereich und
+> die Geschäftsfälle erreichbar — sie ordnet sich unter Treuhand ein. Neu an
+> dritter Stelle steht **Personal Finance** mit genau zwei Leistungen, Budget
+> und Vorsorge. Weitere werden nicht erfunden.
+
+Hauptnavigation, fünf Punkte, flach — kein Aufklappmenü, kein Mega-Menü:
+
+**Versicherungen · Treuhand · Personal Finance · Wissen · Über uns**,
+rechts der Knopf „Erstgespräch vereinbaren". Kontakt steht nicht in der Reihe,
+sondern im Knopf; auf schmalen Geräten zusätzlich in der Menüliste. Ein Punkt,
+dessen Seite es noch nicht gibt, bleibt sichtbar und trägt den Vermerk „folgt".
 
 Seitenbaum:
 
 | Pfad | Inhalt | Stand DE |
 |---|---|---|
-| `/` | Start, neun Bereiche | gebaut |
+| `/` | Start, sieben Abschnitte | gebaut |
 | `/versicherungen` | Leitbereich, Broking Privat und Firma | gebaut |
 | `/treuhand` | Buchhaltung, Lohn, MWST, Abschluss | gebaut |
 | `/treuhand/treuhaender-wechseln` | Wechsel eines bestehenden Mandats | gebaut |
 | `/steuern` | Steuererklärung Privat, Selbständige, Firma | gebaut |
 | `/firmengruendung` | Rechtsform, Ablauf, Kosten | gebaut |
+| `/personal-finance` | Budget und Vorsorge | offen |
+| `/wissen` | Ratgeberbeiträge | offen |
 | `/ueber-uns` | Inhaber, Werdegang, Sprachen | gebaut |
 | `/kontakt` | Direktkontakt, Formular, Anfahrt | gebaut |
 | `/transparenz` | Vermittlerstatus, Vergütung, Beschwerdeweg | offen |
@@ -343,37 +364,48 @@ werden von dort verlinkt und kommen später dazu.
 
 ### Startseite
 
-Verbindlich ist die in **Schritt 4, Fassung 2** freigegebene Struktur mit neun
-Bereichen. Der Wortlaut steht in `content/source/schritt4_fassung2_de.md` und
-wird nicht umformuliert. Diese Reihenfolge wird nicht verkürzt und nicht
-umgestellt:
+Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
+`content/source/startseite_de.md` und wird nicht umformuliert. Diese
+Reihenfolge wird nicht verlängert und nicht umgestellt:
 
-| # | Bereich | Überschrift auf der Seite |
-|---|---|---|
-| 1 | Einstieg / Positionierung | Versicherungen, Treuhand und Steuern bei denselben Ansprechpartnern |
-| 2 | Versicherungen → Treuhand → Steuern | Was wir für Sie übernehmen |
-| 3 | Häufige Anlässe | Womit Menschen zu uns kommen |
-| 4 | Warum A&C | Weshalb Kundinnen und Kunden mit uns arbeiten |
-| 5 | So arbeiten wir | In drei Schritten zur Zusammenarbeit |
-| 6 | Kosten und Vergütung | Was unsere Arbeit kostet |
-| 7 | Wer wir sind | Zwei Ansprechpartner |
-| 8 | Standort und Region | Sie finden uns in Lyss |
-| 9 | Kontaktabschluss | Sprechen wir über Ihre Situation |
+| # | Abschnitt | Überschrift auf der Seite | Fläche |
+|---|---|---|---|
+| 1 | Einstieg | Zwei Ansprechpartner statt drei Adressen | DOMINANT |
+| 2 | Die drei Bereiche | Was wir für Sie übernehmen | weiss |
+| 3 | Geschäftsfälle | Womit Menschen zu uns kommen | hell |
+| 4 | Warum A&C | Weshalb Kundinnen und Kunden mit uns arbeiten | FLÄCHE |
+| 5 | Ansprechpartner | Zwei Ansprechpartner | weiss |
+| 6 | Wissen | Wissen | hell |
+| 7 | Kontaktabschluss | Sprechen wir über Ihre Situation | FLÄCHE |
 
-Bereich 3 ist für die Wachstumsstrategie zentral und trägt sechs
-Anlass-Einstiege — sie müssen sichtbar sein, nicht in einer Aufklappliste:
+> Geändert am 07.09.2026 auf Anweisung von Ricardo. Bis dahin galten neun
+> Bereiche aus Schritt 4, Fassung 2. Weggefallen sind „So arbeiten wir",
+> „Kosten und Vergütung" und „Standort und Region" — ihr Wortlaut steht
+> unverändert in `schritt4_fassung2_de.md` und gehört auf die Leistungs-,
+> Transparenz- und Kontaktseite. Dazugekommen ist „Wissen".
+>
+> **`schritt4_fassung2_de.md` bleibt verbindlich für alle Leistungsseiten.**
+> Nur die Startseite hat eine eigene Quelle.
 
-1. Ich suche eine Buchhaltung → Treuhand
-2. Ich möchte den Treuhänder wechseln → Treuhänder wechseln
-3. Ich gründe eine Firma → Firmengründung
-4. Ich stelle Mitarbeitende an → Treuhand
-5. Ich möchte meine Versicherungen prüfen lassen → Versicherungen
-6. Meine Steuererklärung steht an → Steuern
+Die Flächenfolge ist fest und wird beim Bauen erzwungen (`pruefeFlaechen`).
+Ein Verstoss bricht den Build.
 
-Keine Zähler mit erfundenen Zahlen ("X Jahre, Y Kunden"). Nur Angaben, die
-belegbar sind.
+Abschnitt 3 ist für die Wachstumsstrategie zentral und trägt sechs
+Geschäftsfälle — sie müssen sichtbar sein, nicht in einer Aufklappliste,
+nummeriert und ohne Icons:
 
-### Offene Angaben aus Schritt 4
+1. Ich gründe ein Unternehmen → Firmengründung
+2. Ich stelle Mitarbeitende ein → Treuhand
+3. Ich möchte meine Buchhaltung abgeben → Buchhaltung
+4. Ich möchte meinen Treuhänder wechseln → Treuhänder wechseln
+5. Ich möchte meine Versicherungen prüfen → Versicherungen
+6. Ich habe einen Schadenfall → Versicherungen, Abschnitt Schadenfall
+
+Höchstens vier Punkte bei „Warum A&C". Keine Zähler mit erfundenen Zahlen
+("X Jahre, Y Kunden"), keine Kundenstimmen, keine Versicherer-Logos. Nur
+Angaben, die belegbar sind.
+
+### Offene Angaben
 
 Stellen, die A&C noch bestätigen muss, stehen im Inhalt als `{ pending: '…' }`
 und erscheinen auf der Seite sichtbar markiert. Sie werden **nie** erfunden und
@@ -382,9 +414,18 @@ nie stillschweigend weggelassen.
 `npm run check` listet sie bei jedem Lauf auf. Vor dem Go-live muss
 `npm run check:pending -- --strict` ohne Befund durchlaufen.
 
-Auf der Startseite sind derzeit fünf Angaben offen: Korrespondenzsprachen
-(Bereich 4), automatisierte Arbeitsschritte (5), Courtage und Honorar (6),
-Funktion und Zuständigkeit je Person (7), Öffnungszeiten (8).
+Auf der Startseite sind derzeit **acht** Angaben offen:
+
+- zwei bis drei Sätze zu Ricardo und zu Octavio — Werdegang und fachlicher
+  Schwerpunkt (Abschnitt 5)
+- Datum und Anriss der drei Wissensbeiträge (Abschnitt 6)
+
+Die Wissen-Sektion hat noch **keinen einzigen Beitrag**. Die drei Titel dort
+sind Themenvorschläge, kein Versprechen; sie werden vor dem Go-live entweder
+geschrieben oder ersetzt.
+
+Alle Bildflächen sind Platzhalter mit Formatangabe. Das spätere Foto tritt an
+dieselbe Stelle, ohne dass sich das Layout verschiebt. Kein Stockbild.
 
 ### Verweise auf noch nicht gebaute Seiten
 
@@ -453,8 +494,11 @@ nennen und erklären, wovon der Aufwand abhängt. Was A&C angibt, muss stimmen.
 
 ### Später, nicht jetzt
 
-Blog oder Wissensbereich, Kundenlogin, Newsletter. Erst wenn die Grundseite
-steht und gepflegt wird.
+Kundenlogin, Newsletter. Erst wenn die Grundseite steht und gepflegt wird.
+
+Der Wissensbereich ist seit dem 07.09.2026 **nicht** mehr vertagt: Er ist
+eigener Hauptpunkt der Navigation und Abschnitt 6 der Startseite. Beiträge
+gibt es noch keine.
 
 ---
 
@@ -479,6 +523,29 @@ Inhalt und Freigaben:
       des Corporate-Design-Skills. Betrifft auch das Favicon
 - [ ] Unterlagen-Checkliste Steuern erstellen (DE/FR/PT)
 - [ ] Glossar DE/FR/PT für Fachbegriffe aufbauen (`content/glossar.md`)
+
+**Französisch — offen, blockiert alles Weitere in dieser Sprache**
+
+Stand 07.09.2026: Keiner der beiden Inhaber führt Französisch als
+Beratungssprache. Ricardo und Octavio beraten auf Deutsch, Portugiesisch und
+Englisch. Ob A&C Französisch in der bisherigen Form überhaupt anbietet, klärt
+Ricardo mit Octavio.
+
+Davon hängt ab:
+
+- die Zeile „Beratung auf Deutsch, Französisch und Portugiesisch" im
+  **Fussbereich jeder Seite** — `ui.language.spokenNote`
+- der Grund „Beratung auf Deutsch, Französisch und Portugiesisch" bei
+  „Weshalb Kundinnen und Kunden mit uns arbeiten" auf der Startseite
+- der Abschnitt „Region und Sprachen" auf `/ueber-uns`
+- die **gesamte Sprachfassung unter `/fr/`** und damit ein Drittel der
+  Übersetzungsarbeit
+- die Angabe in der Suchmaschinen-Beschreibung der Startseite
+
+Bis zur Klärung: `/fr/` bleibt auf `published: false`, es entstehen keine
+weiteren französischen Texte, und es wird keine Übersetzungsarbeit begonnen.
+
+---
 
 Übersetzungen:
 

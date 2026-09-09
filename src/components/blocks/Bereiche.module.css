@@ -1,0 +1,122 @@
+/* Die drei Beratungsbereiche.
+
+   Keine Karte, kein Rahmen, kein Schatten. Getrennt wird mit einer Haarlinie
+   und mit Abstand — das ist ruhiger und altert besser als ein Container. */
+
+.wrapper {
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+/* ---- Leitbereich ---------------------------------------------------------- */
+
+.leit {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.5rem);
+  align-items: center;
+  padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.leitBild :global(*) {
+  aspect-ratio: 3 / 2;
+}
+
+.titelGross {
+  font-size: var(--ac-h2-size);
+  line-height: var(--ac-h2-line);
+  letter-spacing: var(--ac-h2-tracking);
+}
+
+.titel {
+  font-size: var(--ac-h3-size);
+  line-height: var(--ac-h3-line);
+  letter-spacing: var(--ac-h3-tracking);
+}
+
+.text {
+  margin-top: var(--ac-space-xs);
+  max-width: 46ch;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Stichworte ----------------------------------------------------------- */
+
+/* Eine Liste mit feinen Trennlinien statt farbiger Marken. Sie soll gelesen
+   werden koennen, ohne dass sie den Blick vom Titel wegzieht. */
+.stichworte {
+  margin-top: var(--ac-space-md);
+  padding: 0;
+  list-style: none;
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.stichworte li {
+  padding-block: var(--ac-space-2xs);
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-color-text-primary);
+  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+/* ---- Weiterfuehrender Verweis ---------------------------------------------- */
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  /* Trefferflaeche 44 px, auch wenn der Text nur eine Zeile hoch ist. */
+  min-height: 2.75rem;
+  margin-top: var(--ac-space-2xs);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* Der Pfeil ist ein Zeichen, keine Datei — und er rueckt beim Zeigen nach. */
+.link::after {
+  content: '→';
+  margin-left: var(--ac-space-3xs);
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.link:hover::after {
+  transform: translateX(0.2rem);
+}
+
+/* ---- Die beiden ergaenzenden Bereiche -------------------------------------- */
+
+.weitere {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3rem);
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* ---- Ab Tablet ------------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  .weitere {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  /* Die senkrechte Linie trennt die beiden Spalten so, wie die waagrechte den
+     Leitbereich abtrennt — dieselbe Staerke, dieselbe Farbe. */
+  .spalte + .spalte {
+    padding-left: clamp(2rem, 4vw, 3.5rem);
+    border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  }
+}
+
+@media (min-width: 64rem) {
+  .leit {
+    grid-template-columns: 6fr 5fr;
+    gap: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .leitBild :global(*) {
+    aspect-ratio: 4 / 3;
+  }
+}

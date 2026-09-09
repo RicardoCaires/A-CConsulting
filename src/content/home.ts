@@ -26,7 +26,7 @@
 import type { Locale } from '@/i18n/config'
 import type { PageKey } from '@/i18n/routes'
 
-import { collectPending, type PendingNote, type Rich } from './types'
+import { collectPending, type Rich } from './types'
 
 export { collectPending, isPending } from './types'
 export type { Inline, PendingNote, Rich } from './types'
@@ -48,7 +48,7 @@ export type HomeContent = {
      */
     lead: string
     /** Zweiter Satz desselben Absatzes: Ort und Sprachen. */
-    leadSecondary: string
+    leadSecondary: Rich
   }
 
   /** 2 — Versicherungen, Treuhand, Steuern. Reihenfolge verbindlich. */
@@ -104,16 +104,16 @@ export type HomeContent = {
     body: string
     /** Die beiden Inhaber mit ihrer Funktion. Beides steht in Schritt 4. */
     members: readonly { name: string; role: string }[]
-    detail: PendingNote
+    detail: Rich
     link: { target: PageKey; label: string }
   }
 
   /** 8 — Standort und Region */
   location: {
     heading: string
-    body: string
+    body: Rich
     openingHoursLabel: string
-    openingHours: PendingNote
+    openingHours: Rich
   }
 
   /** 9 — Kontaktabschluss */
@@ -130,13 +130,17 @@ const de: HomeContent = {
       'A&C Consulting betreut Privatpersonen, Selbständige und KMU im Seeland und im Kanton Bern. Sie erreichen uns in Lyss, auf Deutsch, Französisch und Portugiesisch.',
   },
 
-  primaryCta: 'Unverbindliches Erstgespräch vereinbaren',
+  primaryCta: 'Erstgespräch vereinbaren',
 
   // ---- 1 Einstieg -------------------------------------------------------
   hero: {
     heading: 'Versicherungen, Treuhand und Steuern bei denselben Ansprechpartnern',
     lead: 'A&C Consulting betreut Privatpersonen, Selbständige und KMU im Seeland und im Kanton Bern.',
-    leadSecondary: 'Sie erreichen uns in Lyss, auf Deutsch, Französisch und Portugiesisch.',
+    leadSecondary: [
+      'Sie erreichen uns in ',
+      { company: 'ort' },
+      ', auf Deutsch, Französisch und Portugiesisch.',
+    ],
   },
 
   // ---- 2 Die drei Leistungsbereiche -------------------------------------
@@ -192,18 +196,11 @@ const de: HomeContent = {
       },
       {
         heading: 'Beratung auf Deutsch, Französisch und Portugiesisch',
-        body: [
-          'Beratung und Korrespondenz auf Deutsch, Französisch oder Portugiesisch. ',
-          { pending: 'ob die Korrespondenz in allen drei Sprachen geführt wird' },
-        ],
+        body: 'Beratung, Korrespondenz und Unterlagen auf Deutsch, Französisch oder Portugiesisch.',
       },
       {
         heading: 'Klare Abläufe',
         body: 'Sie wissen, was wir übernehmen, was bei Ihnen bleibt und wann Sie was von uns erhalten. Wie wir entschädigt werden, legen wir offen.',
-      },
-      {
-        heading: 'Moderne Arbeitsweise',
-        body: 'Wir automatisieren die Routine, nicht die Beratung. Digitale Prozesse nehmen uns wiederkehrende Arbeit ab. Die fachliche Prüfung und die Verantwortung bleiben bei uns.',
       },
     ],
   },
@@ -222,11 +219,7 @@ const de: HomeContent = {
       },
       {
         heading: 'Umsetzung und laufende Betreuung',
-        body: [
-          'Wir übernehmen die vereinbarten Aufgaben in einem festen Rhythmus. Im Hintergrund erledigen digitale Prozesse wiederkehrende Schritte ',
-          { pending: 'welche Schritte tatsächlich automatisiert sind' },
-          '. Geprüft und verantwortet werden die Ergebnisse von uns.',
-        ],
+        body: 'Wir übernehmen die vereinbarten Aufgaben in einem festen Rhythmus. Geprüft und verantwortet werden die Ergebnisse von uns.',
       },
     ],
   },
@@ -236,14 +229,7 @@ const de: HomeContent = {
     heading: 'Was unsere Arbeit kostet',
     paragraphs: [
       'Bei Treuhand und Steuern rechnen wir nach Aufwand ab. Wie hoch dieser ausfällt, hängt von Ihrer Situation ab, etwa von der Anzahl Belege, von Mitarbeitenden oder von der Mehrwertsteuerpflicht. Vor Beginn erhalten Sie eine Offerte mit dem vereinbarten Umfang.',
-      [
-        'Bei Versicherungen werden wir von den Gesellschaften über eine Courtage entschädigt ',
-        {
-          pending:
-            'ob dies für sämtliche vermittelten Produkte gilt oder in bestimmten Fällen ein Honorar vereinbart wird',
-        },
-        '.',
-      ],
+      'Bei Versicherungen werden wir von den Gesellschaften über eine Courtage entschädigt. Für Sie ist unsere Arbeit im Rahmen des Maklermandats kostenlos. Für Aufgaben, die darüber hinausgehen, vereinbaren wir vorher ein Honorar.',
     ],
     link: { target: 'transparenz', label: 'Mehr zu unserer Rolle und zur Vergütung' },
   },
@@ -256,18 +242,16 @@ const de: HomeContent = {
       { name: 'Ricardo Caires Cerqueira', role: 'Geschäftsführer und Mitinhaber' },
       { name: 'Octavio Andrade', role: 'Geschäftsführer und Mitinhaber' },
     ],
-    detail: { pending: 'je Person Funktion, Zuständigkeitsbereich und Sprachen' },
+    detail: 'Ricardo Caires Cerqueira ist zuständig für Treuhand, Steuern und Versicherungen, Octavio Andrade für Versicherungen. Beide beraten auf Deutsch, Französisch, Portugiesisch und Englisch.',
     link: { target: 'ueberUns', label: 'Mehr über uns' },
   },
 
   // ---- 8 Standort und Region --------------------------------------------
   location: {
-    heading: 'Sie finden uns in Lyss',
-    body: 'Bielstrasse 22, 3250 Lyss. Wir betreuen Kundinnen und Kunden in Lyss, im Seeland, in Biel/Bienne und im übrigen Kanton Bern.',
+    heading: 'Kurze Wege, feste Ansprechpartner',
+    body: [{ company: 'buero' }, '. Wir betreuen Kundinnen und Kunden im Seeland und im Kanton Bern.'],
     openingHoursLabel: 'Öffnungszeiten',
-    openingHours: {
-      pending: 'verbindliche Zeiten, identisch mit dem Google-Unternehmensprofil',
-    },
+    openingHours: '08:00–12:00 und 13:30–17:00 Uhr',
   },
 
   // ---- 9 Kontaktabschluss ------------------------------------------------
@@ -299,7 +283,6 @@ export function pendingOnHome(locale: Locale): string[] {
     ...c.why.items.flatMap((item) => collectPending(item.body)),
     ...c.process.steps.flatMap((step) => collectPending(step.body)),
     ...c.pricing.paragraphs.flatMap(collectPending),
-    c.people.detail.pending,
-    c.location.openingHours.pending,
+    ...collectPending(c.people.detail),
   ]
 }

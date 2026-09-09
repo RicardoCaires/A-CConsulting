@@ -3,8 +3,8 @@
 import { useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 
-import { Icon } from '@/components/ui/Icon'
-import { mainNavWithChildren, navChildHref, path, type NavChild } from '@/i18n/routes'
+import { Button } from '@/components/ui/Button'
+import { hrefOrDefault, isPublished, mainNavItems, path, type NavItem } from '@/i18n/routes'
 import { getUi } from '@/i18n/messages/ui'
 import type { Locale } from '@/i18n/config'
 
@@ -13,20 +13,22 @@ import styles from './Nav.module.css'
 /**
  * Hauptnavigation — auf jeder Seite dieselbe.
  *
- * Jeder Hauptpunkt ausser der Startseite traegt ein Aufklappmenue mit seinen
- * Unterkategorien. Ein Unterpunkt fuehrt entweder auf eine eigene Seite oder
- * auf einen Abschnitt der uebergeordneten Seite. Was es noch nirgends gibt,
- * steht sichtbar da, ist aber nicht anklickbar — die Struktur ist vollstaendig
- * erkennbar, ohne dass ein Link ins Leere fuehrt.
+ * Fuenf Punkte, flach. Keine Aufklappebene, kein Mega-Menue: Wer oben ankommt,
+ * soll fuenf Woerter lesen und sich entscheiden. Die frueheren Unterpunkte
+ * stehen auf der jeweiligen Bereichsseite und im Fussbereich.
+ *
+ * Ein Punkt, dessen Seite es noch nicht gibt, steht sichtbar da und traegt den
+ * Vermerk „folgt" — er ist nicht anklickbar. Die Struktur ist damit
+ * vollstaendig erkennbar, ohne dass ein Link ins Leere fuehrt.
  *
  * Die Liste steht zweimal im Markup: als offene Reihe fuer breite Fenster und
  * als aufklappbares Menue fuer schmale. Ein geschlossenes `<details>` blendet
- * seinen Inhalt aus, auch wenn CSS ihn anzeigen soll — eine einzige Liste waere
- * auf dem Desktop unsichtbar. Immer genau eine der beiden ist im Dokument.
+ * seinen Inhalt aus, auch wenn CSS ihn anzeigen soll — eine einzige Liste
+ * waere auf dem Desktop unsichtbar. Immer genau eine der beiden ist sichtbar.
  *
- * Ohne JavaScript funktioniert alles: `<details>` klappt von sich aus auf.
- * Das Skript schliesst das Aufklappmenue zusaetzlich bei Escape und bei einem
- * Klick daneben.
+ * Ohne JavaScript funktioniert alles: `<details>` klappt von sich aus auf. Das
+ * Skript schliesst das Menue zusaetzlich bei Escape, bei einem Klick daneben
+ * und nach einem Seitenwechsel.
  */
 
 type Props = {
@@ -36,24 +38,20 @@ type Props = {
 export function Nav({ locale }: Props) {
   const pathname = usePathname()
   const ui = getUi(locale)
-  const wideRef = useRef<HTMLElement>(null)
-  const narrowRef = useRef<HTMLElement>(null)
+  const menuRef = useRef<HTMLDetailsElement>(null)
 
-  // Aufgeklappte Menues schliessen, sobald daneben geklickt oder Escape
-  // gedrueckt wird. Ohne das bliebe ein Dropdown offen stehen.
+  // Menue schliessen, sobald daneben geklickt oder Escape gedrueckt wird.
   useEffect(() => {
-    const closeAll = (except?: EventTarget | null) => {
-      for (const root of [wideRef.current, narrowRef.current]) {
-        for (const details of root?.querySelectorAll('details[open]') ?? []) {
-          if (except instanceof Node && details.contains(except)) continue
-          details.removeAttribute('open')
-        }
-      }
+    const close = (except?: EventTarget | null) => {
+      const menu = menuRef.current
+      if (!menu?.open) return
+      if (except instanceof Node && menu.contains(except)) return
+      menu.removeAttribute('open')
     }
 
-    const onPointerDown = (event: PointerEvent) => closeAll(event.target)
+    const onPointerDown = (event: PointerEvent) => close(event.target)
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') closeAll()
+      if (event.key === 'Escape') close()
     }
 
     document.addEventListener('pointerdown', onPointerDown)
@@ -64,125 +62,62 @@ export function Nav({ locale }: Props) {
     }
   }, [])
 
-  const entries = mainNavWithChildren(locale)
-  if (entries.length === 0) return null
+  // Nach einem Seitenwechsel bleibt das Menue sonst offen stehen.
+  useEffect(() => {
+    menuRef.current?.removeAttribute('open')
+  }, [pathname])
 
+  const items = mainNavItems(locale)
   const isCurrent = (href: string) => pathname === href || `${pathname}/` === href
 
-  /** Ein Unterpunkt — Link, sobald es das Ziel gibt. */
-  const child = (item: NavChild, index: number) => {
-    const label = item.kind === 'page' ? ui.page[item.page] : ui.navSection[item.label]
-    const href = navChildHref(item, locale)
-    const key = item.kind === 'page' ? item.page : `${item.label}-${index}`
-
-    return (
-      <li key={key}>
-        {href ? (
-          <a
-            className={styles.childItem}
-            href={href}
-            aria-current={isCurrent(href) ? 'page' : undefined}
-          >
-            {label}
-          </a>
-        ) : (
-          <span className={styles.childPending}>
-            {label}
-            <span className={styles.badge}>{ui.pageComing.badge}</span>
-            <span className="ac-visually-hidden"> {ui.pageComing.hint}</span>
-          </span>
-        )}
-      </li>
-    )
-  }
+  /** Ein Punkt — Link, sobald es die Seite gibt. */
+  const eintrag = ({ page, href }: NavItem) => (
+    <li key={page}>
+      {href ? (
+        <a className={styles.item} href={href} aria-current={isCurrent(href) ? 'page' : undefined}>
+          {ui.page[page]}
+        </a>
+      ) : (
+        <span className={`${styles.item} ${styles.pending}`}>
+          {ui.page[page]}
+          <span className={styles.badge}>{ui.pageComing.badge}</span>
+          <span className="ac-visually-hidden"> {ui.pageComing.hint}</span>
+        </span>
+      )}
+    </li>
+  )
 
   return (
     <>
-      {/* ---- Breite Fenster: offene Reihe mit Aufklappmenue ----------
-           Kontakt fehlt hier bewusst — er steht rechts als Knopf. Im
-           Menue fuer schmale Fenster ist er weiterhin in der Liste. */}
-      <nav className={styles.wide} aria-label={ui.nav.label} ref={wideRef}>
+      {/* ---- Breite Fenster: offene Reihe ------------------------------- */}
+      <nav className={styles.wide} aria-label={ui.nav.label}>
         <ul className={styles.wideList} role="list">
-          {entries
-            .filter((entry) => entry.page !== 'kontakt')
-            .map((entry) => {
-            const href = path(entry.page, locale)
-
-            if (!entry.children) {
-              return (
-                <li key={entry.page}>
-                  <a
-                    className={styles.item}
-                    href={href}
-                    aria-current={isCurrent(href) ? 'page' : undefined}
-                  >
-                    {ui.page[entry.page]}
-                  </a>
-                </li>
-              )
-            }
-
-            return (
-              <li key={entry.page} className={styles.hasChildren}>
-                <details className={styles.dropdown}>
-                  <summary className={styles.item}>
-                    {ui.page[entry.page]}
-                    <Icon name="chevron" size={1} className={styles.chevron} />
-                  </summary>
-
-                  <div className={styles.panel}>
-                    <ul className={styles.childList} role="list">
-                      <li>
-                        <a
-                          className={styles.childItem}
-                          href={href}
-                          aria-current={isCurrent(href) ? 'page' : undefined}
-                        >
-                          {ui.page[entry.page]}
-                        </a>
-                      </li>
-                      {entry.children.map(child)}
-                    </ul>
-                  </div>
-                </details>
-              </li>
-              )
-            })}
+          {items.map(eintrag)}
         </ul>
       </nav>
 
-      {/* ---- Schmale Fenster: Menue mit sichtbarer Hierarchie -------- */}
-      <nav className={styles.narrow} aria-label={ui.nav.label} ref={narrowRef}>
-        <details className={styles.menu}>
+      {/* ---- Schmale Fenster: Menue ------------------------------------- */}
+      <nav className={styles.narrow} aria-label={ui.nav.label}>
+        <details className={styles.menu} ref={menuRef}>
           <summary className={styles.summary}>
-            <span>{ui.nav.menu}</span>
-            <span className={styles.summaryIcon} aria-hidden="true" />
+            <span className={styles.summaryText}>{ui.nav.menu}</span>
+            <span className={styles.burger} aria-hidden="true" />
           </summary>
 
-          <div className={styles.narrowPanel}>
+          <div className={styles.panel}>
             <ul className={styles.narrowList} role="list">
-              {entries.map((entry) => {
-                const href = path(entry.page, locale)
-
-                return (
-                  <li key={entry.page}>
-                    <a
-                      className={styles.item}
-                      href={href}
-                      aria-current={isCurrent(href) ? 'page' : undefined}
-                    >
-                      {ui.page[entry.page]}
-                    </a>
-
-                    {entry.children && (
-                      <ul className={styles.narrowChildren} role="list">
-                        {entry.children.map(child)}
-                      </ul>
-                    )}
-                  </li>
-                )
+              {items.map(eintrag)}
+              {/* Kontakt steht auf dem Desktop als Knopf rechts. Hier gehoert
+                  er in die Liste — sonst waere er im Menue nicht zu finden. */}
+              {eintrag({
+                page: 'kontakt',
+                href: isPublished('kontakt', locale) ? path('kontakt', locale) : null,
               })}
             </ul>
+
+            <Button href={hrefOrDefault('kontakt', locale)} className={styles.panelCta}>
+              {ui.cta}
+            </Button>
           </div>
         </details>
       </nav>

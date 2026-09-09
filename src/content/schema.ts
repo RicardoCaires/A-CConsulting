@@ -95,7 +95,12 @@ export type Bildplatz = {
 }
 
 export type Bereich = 'versicherungen' | 'treuhand' | 'steuern'
-export type CtaVariante = 'hell' | 'dunkel'
+/**
+ * Flaeche des Abschlussblocks.
+ * `flaeche` ist der Normalfall: `primary_navy`, eine der wiederkehrenden
+ * Farbflaechen aus dem Standard. `hell` fuer Seiten, die ruhig ausklingen sollen.
+ */
+export type CtaVariante = 'flaeche' | 'hell'
 
 /* ---- Die Seite ---------------------------------------------------------- */
 
@@ -121,7 +126,12 @@ export type Leistungsseite = {
     ablauf: Text
     fragen: Text
   }
-  /** Bild im Seitenkopf. `null`, wenn bewusst keines vorgesehen ist. */
+  /**
+   * Bild im Seitenkopf. `null`, wenn bewusst keines vorgesehen ist — der Kopf
+   * traegt dann die dunkle Flaeche allein. Fotos gibt es dort, wo ein Mensch
+   * oder das Buero zu sehen ist; Grafiken dort, wo etwas zu erklaeren ist;
+   * sonst nichts.
+   */
   bild: Bildplatz | null
   /** „Das übernehmen wir“ als Icon-Raster. */
   leistungen: readonly Leistung[]

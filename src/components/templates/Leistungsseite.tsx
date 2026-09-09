@@ -1,11 +1,11 @@
 import { Accordion } from '@/components/blocks/Accordion'
 import { CTASection } from '@/components/blocks/CTASection'
+import { Hero } from '@/components/blocks/Hero'
 import { IconFeatureGrid } from '@/components/blocks/IconFeature'
 import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
 import { SectionHeader } from '@/components/blocks/SectionHeader'
 import { StepList } from '@/components/blocks/StepList'
 import { Button } from '@/components/ui/Button'
-import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
 import { RichText } from '@/components/ui/RichText'
 import { alsText, Translated, TranslatedRich } from '@/components/ui/Translated'
 import type { Leistungsseite } from '@/content/schema'
@@ -21,35 +21,34 @@ import styles from './Leistungsseite.module.css'
  * Jede Leistung ist gleich aufgebaut, damit der Besucher sich nur einmal
  * zurechtfinden muss:
  *
- *   1 Seitenkopf     Titel, Nutzen in einem Satz, Bild
- *   2 Leistungen     Icon-Raster statt Absaetzen
- *   3 Ablauf         nummerierte Schritte
- *   4 Vertiefung     optional; hier landet abgegebener Fliesstext
- *   5 Fragen         Accordion
- *   6 Abschluss      CTASection
+ *   1 Seitenkopf     einspaltig, Bild als Flaeche, Titel darauf  — DOMINANT
+ *   2 Leistungen     Icon-Raster statt Absaetzen                  — weiss
+ *   3 Ablauf         nummerierte Schritte                         — hell
+ *   4 Vertiefung     optional; hier landet abgegebener Fliesstext — weiss
+ *   5 Fragen         Accordion                                    — hell
+ *   6 Abschluss      CTASection                                   — FLAECHE
  *
  * Fest ist die **Reihenfolge**, nicht der Wortlaut: Die drei Zwischentitel
  * kommen aus dem Inhalt, weil Schritt 4 je Seite eigene Ueberschriften nennt
  * und die nicht vereinheitlicht werden.
  *
- * Die Flaechen werden berechnet, nicht von Hand gesetzt — siehe
- * `flaechenFolge`. `pruefeFlaechen` prueft das Ergebnis und wirft im Zweifel;
- * der Build bricht, statt dass eine Seite mit zwei gleichen Flaechen
- * hintereinander live geht.
+ * Die Flaechen folgen dem Corporate-Design-Standard 1.1 (`flaechen_website`):
+ * Der Seitenkopf ist die **eine** dominante Flaeche, der Abschluss eine
+ * wiederkehrende. Dazwischen wechseln weiss und Off-White — wenige hohe
+ * Bloecke statt vieler schwacher Toenungen.
+ *
+ * `pruefeFlaechen` prueft das Ergebnis und wirft im Zweifel; der Build bricht,
+ * statt dass eine Seite gegen die Regel live geht.
  */
 
 /**
- * Flaechenfolge der Inhaltsabschnitte.
+ * Flaechen der Inhaltsabschnitte zwischen Kopf und Abschluss.
  *
- * Der Abschluss gibt vor, worauf es hinauslaeuft: Ist er hell, muss der
- * Abschnitt davor weiss sein. Daraus ergibt sich rueckwaerts, womit der
- * Seitenkopf beginnt. Ist der Abschluss dunkel, gibt es keine Einschraenkung
- * und der Kopf startet hell.
+ * Sie wechseln weiss und Off-White. Der Kopf ist immer dominant, der Abschluss
+ * bringt seine Flaeche selbst mit — beide zaehlen hier nicht mit.
  */
-function flaechenFolge(anzahl: number, ctaDunkel: boolean): Surface[] {
-  const start: Surface = ctaDunkel || anzahl % 2 === 0 ? 'hell' : 'weiss'
-  const anderes: Surface = start === 'hell' ? 'weiss' : 'hell'
-  return Array.from({ length: anzahl }, (_, i) => (i % 2 === 0 ? start : anderes))
+function flaechenFolge(anzahl: number): Surface[] {
+  return Array.from({ length: anzahl }, (_, i) => (i % 2 === 0 ? 'weiss' : 'hell'))
 }
 
 type Props = {
@@ -60,56 +59,33 @@ type Props = {
 export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
   const ui = getUi(locale)
 
-  // Der Abschluss bringt seine Flaeche selbst mit und zaehlt hier nicht mit.
-  const anzahl = inhalt.vertiefung ? 5 : 4
-  const ctaDunkel = inhalt.ctaVariante === 'dunkel'
-  const flaechen = flaechenFolge(anzahl, ctaDunkel)
-  const fAbschluss: Surface = ctaDunkel ? 'dunkel' : 'hell'
+  // Kopf und Abschluss bringen ihre Flaeche selbst mit.
+  const flaechen = flaechenFolge(inhalt.vertiefung ? 4 : 3)
+  const fAbschluss: Surface = inhalt.ctaVariante === 'flaeche' ? 'flaeche' : 'hell'
 
-  pruefeFlaechen([...flaechen, fAbschluss], String(inhalt.slug))
+  pruefeFlaechen(['dominant', ...flaechen, fAbschluss], String(inhalt.slug))
 
-  const [fKopf, fLeistungen, fAblauf, fVier, fFuenf] = flaechen as [
-    Surface,
+  const [fLeistungen, fAblauf, fDrei, fVier] = flaechen as [
     Surface,
     Surface,
     Surface,
     Surface | undefined,
   ]
-  const fVertiefung = inhalt.vertiefung ? fVier : undefined
-  const fFragen = inhalt.vertiefung ? (fFuenf ?? 'hell') : fVier
+  const fVertiefung = inhalt.vertiefung ? fDrei : undefined
+  const fFragen = inhalt.vertiefung ? (fVier ?? 'hell') : fDrei
 
   const knopf = alsText(inhalt.cta.knopf, ui.page.kontakt)
 
   return (
     <>
-      {/* ---- 1 Seitenkopf ------------------------------------------------ */}
-      <Section surface={fKopf} labelledBy="seitenkopf-titel">
-        <div className={styles.kopf}>
-          <div className={styles.kopfText}>
-            <p className="ac-eyebrow">{ui.page[inhalt.bereich]}</p>
-
-            <h1 id="seitenkopf-titel" className={styles.titel}>
-              <Translated value={inhalt.titel} fallback={ui.page[inhalt.slug]} />
-            </h1>
-
-            <p className={`ac-lead ${styles.nutzen}`}>
-              <TranslatedRich value={inhalt.nutzenSatz} />
-            </p>
-
-            <div className={styles.kopfAktion}>
-              <Button href={hrefOrDefault('kontakt', locale)}>{knopf}</Button>
-            </div>
-          </div>
-
-          {inhalt.bild && (
-            <ImagePlaceholder
-              className={styles.kopfBild}
-              label={inhalt.bild.label}
-              note={inhalt.bild.note}
-            />
-          )}
-        </div>
-      </Section>
+      {/* ---- 1 Seitenkopf — die dominante Flaeche der Seite -------------- */}
+      <Hero
+        eyebrow={ui.page[inhalt.bereich]}
+        titel={<Translated value={inhalt.titel} fallback={ui.page[inhalt.slug]} />}
+        satz={<TranslatedRich value={inhalt.nutzenSatz} />}
+        aktion={<Button href={hrefOrDefault('kontakt', locale)}>{knopf}</Button>}
+        bild={inhalt.bild ?? undefined}
+      />
 
       {/* ---- 2 Das übernehmen wir ---------------------------------------- */}
       <Section surface={fLeistungen} id="leistungen" labelledBy="leistungen-titel">

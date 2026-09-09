@@ -27,6 +27,8 @@ export type PageKey =
   | 'treuhaenderWechseln'
   | 'steuern'
   | 'firmengruendung'
+  | 'personalFinance'
+  | 'wissen'
   | 'ueberUns'
   | 'transparenz'
   | 'schadenfall'
@@ -87,9 +89,13 @@ export const pages: Record<PageKey, PageDefinition> = {
       fr: 'fiduciaire/comptabilite',
       pt: 'fiduciaria/contabilidade',
     },
-    // Pilotseite fuer Vorlage B (Schritt 3). In FR und PT steht die Struktur,
-    // der Wortlaut fehlt noch und ist auf der Seite als solcher markiert.
-    published: { de: true, fr: true, pt: true },
+    // Pilotseite fuer Vorlage B (Schritt 3).
+    //
+    // FR und PT sind seit dem 07.09.2026 abgeschaltet: Ihre Textfelder sind
+    // durchgehend als fehlende Uebersetzung markiert, und Marken verschwinden
+    // im Produktionsbau — die Seiten waeren dort leer. Die Struktur bleibt im
+    // Code stehen, damit die Uebersetzung sie spaeter nur noch fuellen muss.
+    published: { de: true, fr: false, pt: false },
     inMainNav: false,
     inLegalNav: false,
     sitemapPriority: 0.7,
@@ -156,6 +162,32 @@ export const pages: Record<PageKey, PageDefinition> = {
     inLegalNav: false,
     sitemapPriority: 0.7,
   },
+  /**
+   * Personal Finance — Budget und Vorsorge fuer Privatpersonen.
+   *
+   * Neuer Bereich, seit dem Neuaufbau eigener Hauptpunkt. Genau zwei
+   * Leistungen, keine weiteren: Budget und Vorsorge. Keine Anlage-, Trading-
+   * oder Bankdarstellung.
+   */
+  personalFinance: {
+    slug: {
+      de: 'personal-finance',
+      fr: 'finances-personnelles',
+      pt: 'financas-pessoais',
+    },
+    published: { de: true, fr: false, pt: false },
+    inMainNav: true,
+    inLegalNav: false,
+    sitemapPriority: 0.8,
+  },
+  /** Wissen — Ratgeberbeitraege. Loest den frueher vertagten Blogbereich ab. */
+  wissen: {
+    slug: { de: 'wissen', fr: 'savoir', pt: 'conhecimento' },
+    published: { de: true, fr: false, pt: false },
+    inMainNav: true,
+    inLegalNav: false,
+    sitemapPriority: 0.6,
+  },
   ueberUns: {
     slug: { de: 'ueber-uns', fr: 'a-propos', pt: 'sobre-nos' },
     published: { de: true, fr: false, pt: false },
@@ -203,95 +235,55 @@ export const pages: Record<PageKey, PageDefinition> = {
 /**
  * Aufbau der Hauptnavigation.
  *
- * Fuenf Hauptpunkte, jeder mit Unterkategorien. Sie steht auf jeder Seite
- * identisch im Kopf- und im Fussbereich; die Startseite ist der erste Eintrag,
- * damit man von ueberall mit einem Klick zurueckkommt — zusaetzlich zum Logo.
+ * Fuenf Punkte, flach. Keine Aufklappebene, kein Mega-Menue.
  *
- * Ein Unterpunkt ist entweder eine eigene Seite oder ein Abschnitt einer
- * bestehenden Seite. Der zweite Fall ist kein Notbehelf: „Für Privatpersonen"
- * ist ein Abschnitt der Versicherungsseite und soll dort bleiben — ein Sprung
- * dorthin fuehrt schneller ans Ziel als eine eigene duenne Seite. So entsteht
- * nirgends eine Sackgasse und kein Link ins Leere.
+ * Bis zum Neuaufbau trug jeder Punkt ein Aufklappmenue mit bis zu vier
+ * Unterzielen. Das war nicht falsch, aber es war laut: Wer die Seite oeffnet,
+ * soll fuenf Woerter lesen und sich entscheiden, nicht siebzehn Ziele
+ * abwaegen. Die Unterpunkte sind nicht verloren — sie stehen auf der jeweiligen
+ * Bereichsseite, wo sie hingehoeren, und im Fussbereich.
  *
- * Treuhand ist die Oberkategorie fuer alles Kaufmaennische. Steuern und
- * Firmengruendung stehen darunter, obwohl ihre Adressen flach bleiben
- * (`/de/steuern`, `/de/firmengruendung`): Beide haben laut Schritt 4 eine
- * eigene Suchintention, und wer „Steuererklaerung Lyss" sucht, sucht nicht
- * nach Treuhand. Navigation und Adresse muessen nicht deckungsgleich sein —
- * die Einordnung zeigt die Breadcrumb.
+ * Die Startseite steht nicht in der Reihe: Dafuer ist das Logo da.
+ * Kontakt steht nicht in der Reihe: Dafuer ist der Knopf rechts da. Auf
+ * schmalen Geraeten, wo die Reihe zum Menue wird, ist Kontakt in der Liste.
  *
- * Innerhalb der Leistungen gilt die verbindliche Rangfolge:
- * Versicherungsbroking, dann Treuhand.
+ * Rangfolge: Versicherungsbroking fuehrt, dann Treuhand. Personal Finance
+ * folgt als dritter Beratungsbereich, danach Wissen und Ueber uns.
  */
-
-/** Beschriftungen der Abschnitts-Unterpunkte. Sie stehen in `ui.navSection`. */
-export type NavSectionKey =
-  | 'privatkunden'
-  | 'unternehmen'
-  | 'vertragspruefung'
-  | 'schadenfall'
-  | 'team'
-  | 'arbeitsweise'
-  | 'erstgespraech'
-  | 'rueckruf'
-  | 'standort'
-
-export type NavChild =
-  /** Eine eigene Seite. */
-  | { kind: 'page'; page: PageKey }
-  /** Ein Abschnitt einer bestehenden Seite. */
-  | { kind: 'section'; page: PageKey; anchor: string; label: NavSectionKey }
-  /** Angekuendigt, aber noch nirgends vorhanden. */
-  | { kind: 'planned'; label: NavSectionKey }
-
-export type NavEntry = {
-  page: PageKey
-  children?: readonly NavChild[]
-}
-
-export const mainNavTree: readonly NavEntry[] = [
-  { page: 'home' },
-  {
-    page: 'versicherungen',
-    children: [
-      { kind: 'section', page: 'versicherungen', anchor: 'privatpersonen', label: 'privatkunden' },
-      { kind: 'section', page: 'versicherungen', anchor: 'unternehmen', label: 'unternehmen' },
-      { kind: 'section', page: 'versicherungen', anchor: 'ablauf', label: 'vertragspruefung' },
-      { kind: 'section', page: 'versicherungen', anchor: 'schadenfall', label: 'schadenfall' },
-    ],
-  },
-  {
-    page: 'treuhand',
-    children: [
-      { kind: 'page', page: 'buchhaltung' },
-      { kind: 'page', page: 'lohnbuchhaltung' },
-      { kind: 'page', page: 'mehrwertsteuer' },
-      { kind: 'page', page: 'jahresabschluss' },
-      { kind: 'page', page: 'steuern' },
-      { kind: 'page', page: 'firmengruendung' },
-      { kind: 'page', page: 'treuhaenderWechseln' },
-    ],
-  },
-  {
-    page: 'ueberUns',
-    children: [
-      { kind: 'section', page: 'ueberUns', anchor: 'inhaber', label: 'team' },
-      { kind: 'section', page: 'ueberUns', anchor: 'arbeitsweise', label: 'arbeitsweise' },
-      { kind: 'page', page: 'transparenz' },
-    ],
-  },
-  {
-    page: 'kontakt',
-    children: [
-      { kind: 'section', page: 'kontakt', anchor: 'direkt', label: 'erstgespraech' },
-      { kind: 'planned', label: 'rueckruf' },
-      { kind: 'section', page: 'kontakt', anchor: 'buero', label: 'standort' },
-    ],
-  },
+export const mainNavOrder: readonly PageKey[] = [
+  'versicherungen',
+  'treuhand',
+  'personalFinance',
+  'wissen',
+  'ueberUns',
 ]
 
-/** Flache Reihenfolge — fuer Stellen, die keine Hierarchie brauchen. */
-export const mainNavOrder: readonly PageKey[] = mainNavTree.map((entry) => entry.page)
+/** Ein Punkt der Hauptnavigation. Ohne Ziel, solange es die Seite nicht gibt. */
+export type NavItem = {
+  page: PageKey
+  /** Adresse — oder `null`, wenn die Seite in dieser Sprache fehlt. */
+  href: string | null
+}
+
+/**
+ * Die Hauptnavigation einer Sprache.
+ *
+ * Anders als bisher wird ein Punkt, dessen Seite noch nicht steht, **nicht**
+ * herausgefiltert. Er bleibt sichtbar und traegt den Vermerk „folgt", ist aber
+ * nicht anklickbar: Die Struktur der Seite ist damit vollstaendig erkennbar,
+ * ohne dass ein Link ins Leere fuehrt.
+ *
+ * Das ist der Unterschied zur frueheren Fassung, und er ist bewusst: Damals
+ * standen fuenf angekuendigte Ziele im Menue und liessen es wie eine Baustelle
+ * aussehen. Fuenf Hauptpunkte, von denen zwei noch entstehen, lesen sich
+ * anders — als Plan, nicht als Luecke.
+ */
+export function mainNavItems(locale: Locale): NavItem[] {
+  return mainNavOrder.map((page) => ({
+    page,
+    href: isPublished(page, locale) ? path(page, locale) : null,
+  }))
+}
 
 export const legalNavOrder: readonly PageKey[] = ['impressum', 'datenschutz']
 
@@ -303,6 +295,26 @@ export function path(key: PageKey, locale: Locale): string {
 
 export function isPublished(key: PageKey, locale: Locale): boolean {
   return pages[key].published[locale]
+}
+
+/**
+ * Uebergeordnete Seite, falls der Slug mehrstufig ist.
+ *
+ * `treuhand/buchhaltung` haengt unter `treuhand`. Die Hierarchie kommt damit
+ * aus dem Pfad und steht nicht ein zweites Mal daneben. Genutzt von der
+ * Seiteneinordnung und vom Seitenkopf, der den Bereich als Vorzeile nennt.
+ */
+export function parentPage(key: PageKey, locale: Locale): PageKey | null {
+  const slug = pages[key].slug[locale]
+  const cut = slug.lastIndexOf('/')
+  if (cut < 0) return null
+
+  const parentSlug = slug.slice(0, cut)
+  const match = (Object.keys(pages) as PageKey[]).find(
+    (candidate) => pages[candidate].slug[locale] === parentSlug,
+  )
+
+  return match && isPublished(match, locale) ? match : null
 }
 
 /**
@@ -343,36 +355,6 @@ export function publishedPages(locale: Locale): PageKey[] {
  */
 export function localesWithPages(): Locale[] {
   return locales.filter((locale) => publishedPages(locale).length > 0)
-}
-
-/** Hauptnavigation einer Sprache — nur veroeffentlichte Seiten, flach. */
-export function mainNav(locale: Locale): PageKey[] {
-  return mainNavOrder.filter((key) => isPublished(key, locale))
-}
-
-/**
- * Hauptnavigation mit Unterpunkten.
- *
- * Eine Unterseite erscheint auch dann, wenn sie noch nicht veroeffentlicht ist —
- * die Struktur soll vollstaendig sichtbar sein. Sie ist dann nicht anklickbar
- * und traegt den Vermerk „folgt".
- */
-export function mainNavWithChildren(locale: Locale): NavEntry[] {
-  return mainNavTree
-    .filter((entry) => isPublished(entry.page, locale))
-    .map((entry) => ({ page: entry.page, children: entry.children }))
-}
-
-/**
- * Ziel eines Unterpunkts — oder `null`, wenn es ihn noch nicht gibt.
- * Abschnitte fuehren auf die Sprungmarke der Seite, auf der sie stehen.
- */
-export function navChildHref(child: NavChild, locale: Locale): string | null {
-  if (child.kind === 'planned') return null
-  if (!isPublished(child.page, locale)) return null
-  return child.kind === 'section'
-    ? `${path(child.page, locale)}#${child.anchor}`
-    : path(child.page, locale)
 }
 
 export function legalNav(locale: Locale): PageKey[] {

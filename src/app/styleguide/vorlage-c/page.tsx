@@ -12,7 +12,7 @@ export default function VorlageC() {
       <VorlagenKopf
         name="Vorlage C — Inhaltsseite"
         abfolge="Titel · Einleitung · frei kombinierbare Abschnitte · Abschluss (optional)"
-        flaechen="wechselnd, hell beginnend"
+        flaechen="hell · weiss · … · flaeche (Abschluss)"
         regel="Kein Zwang zu Icons, wo sie nichts erklären."
       />
       <InhaltsseiteTemplate inhalt={beispielInhaltsseite} locale="de" name="Vorlage C" />

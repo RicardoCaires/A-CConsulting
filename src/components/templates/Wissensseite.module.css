@@ -1,0 +1,104 @@
+/* Vorlage D — Wissensbereich.
+
+   Der hervorgehobene Beitrag ist der einzige Abschnitt mit eigener Gestaltung.
+   Die Uebersicht darunter benutzt denselben Baustein wie die Startseite. */
+
+/* Hinweis, solange der Bereich im Aufbau ist. Er steht ueber dem ersten
+   Beitrag, nicht darunter: Wer die Seite oeffnet, soll nicht erst am Ende
+   merken, dass hier noch nichts zu lesen ist. */
+.hinweis {
+  max-width: var(--ac-content-measure);
+  padding-left: var(--ac-space-sm);
+  border-left: var(--ac-border-marker) solid var(--ac-color-accent-green);
+  color: var(--ac-color-text-secondary);
+}
+
+.featured {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.5rem);
+  align-items: center;
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.featuredBild :global(*) {
+  aspect-ratio: 3 / 2;
+}
+
+.datum {
+  font-size: var(--ac-small-size);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ac-color-text-secondary);
+}
+
+/* Der hervorgehobene Beitrag traegt H2-Groesse — er ist die Ueberschrift
+   dieses Abschnitts, nicht ein Element darin. */
+.featuredTitel {
+  margin-top: var(--ac-space-2xs);
+  font-size: var(--ac-h2-size);
+  line-height: var(--ac-h2-line);
+  letter-spacing: var(--ac-h2-tracking);
+  max-width: 20ch;
+}
+
+.featuredAnriss {
+  margin-top: var(--ac-space-sm);
+  font-size: var(--ac-lead-size);
+  line-height: var(--ac-lead-line);
+  color: var(--ac-color-text-secondary);
+  max-width: 46ch;
+}
+
+.featuredLink,
+.pending {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ac-space-3xs);
+  min-height: 2.75rem;
+  margin-top: var(--ac-space-2xs);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.featuredLink::after {
+  content: '→';
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.featuredLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.featuredLink:hover::after {
+  transform: translateX(0.2rem);
+}
+
+.pending {
+  color: var(--ac-color-text-muted);
+  cursor: default;
+}
+
+.badge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-background-light);
+  border-radius: var(--ac-radius-sm);
+  padding: 0.1rem 0.3rem;
+}
+
+/* ---- Ab Desktop: Text neben der Bildflaeche -------------------------------- */
+
+@media (min-width: 64rem) {
+  .featured {
+    grid-template-columns: 6fr 5fr;
+    gap: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .featuredBild :global(*) {
+    aspect-ratio: 4 / 3;
+  }
+}

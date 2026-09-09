@@ -1,6 +1,6 @@
 # Seitenarchetypen und Bausteine
 
-Stand 07.09.2026 · Schritt 3
+Stand 07.09.2026 · Schritt 3 · Corporate-Design-Standard 1.1
 
 Diese Datei sagt, welche Vorlage welche Abschnitte enthält, in welcher
 Reihenfolge, wie viel Text vorgesehen ist und welcher Baustein wofür zuständig
@@ -14,12 +14,24 @@ Zum Anschauen: `/styleguide/` zeigt die Bausteine, `/styleguide/vorlage-a/`,
 
 ## 1. Grundlagen
 
-**Flächen.** Drei, mehr nicht: `weiss`, `hell` (Off-White), `dunkel` (Navy).
-Der Wechsel zwischen ihnen ist das Mittel gegen die Textlastigkeit — nicht mehr
-Icons. Zwei Regeln, und sie sind erzwungen, nicht empfohlen:
+**Flächen.** Vier, mehr nicht — aus `flaechen_website` des Standards 1.1:
+
+| Name | Farbe | Wofür |
+|---|---|---|
+| `weiss` | `white` | Grundfläche |
+| `hell` | `background_light` | der ruhige Wechsel dazu |
+| `flaeche` | `primary_navy` | wiederkehrende Elemente: Servicekarten, Abschluss — beliebig oft |
+| `dominant` | `navy_deep` | **genau eine** je Seite, dazu der Fussbereich |
+
+Der frühere blaugraue Tint ist gestrichen. Er war die vierte schwache Tönung
+und hat die Seite nicht gegliedert, sondern unruhig gemacht. Wo eine Fläche
+wirken soll, wirkt sie jetzt: Farbe statt Tönung.
+
+Drei Regeln, und sie sind erzwungen, nicht empfohlen:
 
 1. Nie zwei gleiche Flächen hintereinander.
-2. Höchstens zwei dunkle Flächen je Seite.
+2. Höchstens **eine** dominante Fläche je Seite.
+3. Höchstens zwei dunkle Flächen in Folge.
 
 `pruefeFlaechen()` in `components/blocks/Section.tsx` wirft bei einem Verstoss.
 Da jede Seite beim Bauen erzeugt wird, bricht das den Build.
@@ -28,9 +40,20 @@ Da jede Seite beim Bauen erzeugt wird, bricht das den Build.
 auf `--ac-content-measure` begrenzt — über `<Section measure>` für einen ganzen
 Abschnitt oder `.ac-measure` für einen Teil.
 
-**Abstand.** Ein einziger Token: `--ac-section-y`. Es gibt keine engere und
-keine weitere Variante. Wo ein Abschnitt anders wirken soll, ändert die Fläche
-das, nicht der Abstand.
+**Abstand.** Ein einziger Token: `--ac-section-y`, `clamp(3.75rem, 7vw, 7.5rem)`.
+Es gibt keine engere und keine weitere Variante. Bewusst gross: Die Ruhe kommt
+aus **wenigen hohen Blöcken**, nicht aus vielen schwachen Tönungen. Richtwert
+rund 700 px je Block.
+
+**Schrift.** Zwei, und der Wechsel trägt die Hierarchie:
+
+| Rolle | Schrift |
+|---|---|
+| h1 bis h3 | **Source Serif 4** (SIL OFL 1.1, selbst gehostet) |
+| alles andere | **Inter** |
+
+Weil der Schriftwechsel die Hierarchie trägt, dürfen die Grade zurückhaltender
+sein als in einer Ein-Schrift-Seite. Dokumente bleiben in Arial.
 
 ---
 
@@ -39,6 +62,7 @@ das, nicht der Abstand.
 | Baustein | Zuständig für | Datei |
 |---|---|---|
 | `Section` | Abschnittsrahmen, Fläche, Abstand | `blocks/Section.tsx` |
+| `Hero` | Seitenkopf: einspaltig, Bild als Fläche, Titel darauf | `blocks/Hero.tsx` |
 | `SectionHeader` | Vorzeile, Überschrift, Einleitung | `blocks/SectionHeader.tsx` |
 | `ServiceCard` | Leistungsbereich: Icon, Titel, max. 3 Chips, ganze Karte verlinkt | `blocks/ServiceCard.tsx` |
 | `IconFeature` / `Grid` | Icon plus kurze Aussage — der Ersatz für den Absatz | `blocks/IconFeature.tsx` |
@@ -64,18 +88,19 @@ Seiten-Stylesheet ist ein Fehler, kein Sonderfall.
 
 | # | Abschnitt | Baustein | Fläche | Textmenge |
 |---|---|---|---|---|
-| 1 | Einstieg | Hero + `ImagePlaceholder` | hell | Titel + **1 Satz** |
+| 1 | Einstieg | `Hero` | **dominant** | Titel + **1 Satz**, ein Knopf |
 | 2 | Unsere Bereiche | 3 × `ServiceCard` | weiss | je Titel + max. 3 Chips |
 | 3 | Häufige Anliegen | Kachelliste mit `IconCircle` | hell | je 3–6 Wörter |
-| 4 | Weshalb A&C | `IconFeatureGrid`, 3 Spalten | **dunkel** | je max. 5 Wörter |
+| 4 | Weshalb A&C | `IconFeatureGrid`, 3 Spalten | **flaeche** | je max. 5 Wörter |
 | 5 | So läuft es ab | `StepList`, nebeneinander | weiss | je Titel + 1 Satz |
 | 6 | Ansprechpartner | `PersonCard` × 2 | hell | je Name, Funktion, Sprachen |
-| 7 | Abschluss | `CTASection` | weiss | Titel + 1 Satz |
+| 7 | Abschluss | `CTASection` | **flaeche** | Titel + 1 Satz |
 
 **Regel: keine Sektion über etwa fünfzig Wörter Fliesstext.** Was mehr braucht,
 gehört auf eine Leistungsseite — dort ist der vertiefende Abschnitt dafür da.
 
-Genau eine dunkle Fläche, und sie sitzt in der Mitte.
+Der Seitenkopf ist die eine dominante Fläche. Zwei Farbflächen in
+`primary_navy` geben der Seite in der Mitte und am Schluss Halt.
 
 ---
 
@@ -83,18 +108,22 @@ Genau eine dunkle Fläche, und sie sitzt in der Mitte.
 
 `components/templates/Leistungsseite.tsx` · Schema in `content/schema.ts`
 
-| # | Abschnitt | Baustein | Textmenge |
-|---|---|---|---|
-| 1 | Seitenkopf | Titel, Nutzensatz, `ImagePlaceholder` | Titel + **1 Satz** |
-| 2 | Das übernehmen wir | `IconFeatureGrid`, 3 Spalten | je Titel + max. 3 Chips |
-| 3 | Ablauf | `StepList`, gestapelt | je Titel + 1–2 Sätze |
-| 4 | Vertiefung *(optional)* | Fliesstext, Liste, Nachsatz | bis ~200 Wörter |
-| 5 | Häufige Fragen | `Accordion` | je Frage + 1–3 Sätze |
-| 6 | Abschluss | `CTASection` | Titel + 1 Satz |
+| # | Abschnitt | Baustein | Fläche | Textmenge |
+|---|---|---|---|---|
+| 1 | Seitenkopf | `Hero`, einspaltig | **dominant** | Titel + **1 Satz** |
+| 2 | Das übernehmen wir | `IconFeatureGrid`, 3 Spalten | weiss | je Titel + max. 3 Chips |
+| 3 | Ablauf | `StepList`, gestapelt | hell | je Titel + 1–2 Sätze |
+| 4 | Vertiefung *(optional)* | Fliesstext, Liste, Nachsatz | weiss | bis ~200 Wörter |
+| 5 | Häufige Fragen | `Accordion` | hell | je Frage + 1–3 Sätze |
+| 6 | Abschluss | `CTASection` | **flaeche** | Titel + 1 Satz |
 
-Die Flächen werden berechnet: Sie wechseln durchgehend, und die Folge wird so
-gewählt, dass der Abschluss nie auf derselben Fläche steht wie der Abschnitt
-davor.
+Der Kopf ist die dominante Fläche, der Abschluss eine wiederkehrende.
+Dazwischen wechseln weiss und Off-White.
+
+**Der Seitenkopf ist einspaltig.** Das Bild trägt den ganzen Kopf, die
+Überschrift steht darauf, darunter ein Satz und **ein** Knopf. Formate wie in
+der Shootingliste: 4:5 mobil, 16:9 ab Desktop. Der Platzhalter ist dunkel, weil
+weisser Text darauf steht — beim Einsetzen des Fotos kippt der Kontrast nicht.
 
 Fest ist die **Reihenfolge**, nicht der Wortlaut. Die drei Zwischentitel stehen
 im Inhalt, weil Schritt 4 je Seite eigene Überschriften nennt und die nicht
@@ -142,6 +171,7 @@ vertiefung?  { titel · absaetze · liste? · nachsatz? }
 ```
 
 Mindestmengen: 3 Leistungen, 2 Ablaufschritte, 2 Fragen.
+`ctaVariante` ist `flaeche` (Normalfall) oder `hell`.
 
 `pruefeLeistungsseite()` läuft beim Laden des Verzeichnisses und sammelt alle
 Befunde in **einer** Meldung. Ist eine Seite unvollständig, wirft sie — und
@@ -164,13 +194,37 @@ mit der Marke daneben.
 
 ---
 
-## 7. Was noch nicht auf den Vorlagen läuft
+## 7. Was auf welcher Vorlage läuft
 
-Stand Schritt 3 läuft genau eine Seite auf Vorlage B: `/treuhand/buchhaltung`
-in DE, FR und PT. Alle übrigen Seiten laufen weiter über das bisherige
-Blockmodell (`blocks/PageBlocks.tsx`) und ziehen in Schritt 5 um. Die
-Startseite zieht in Schritt 4 auf Vorlage A.
+| Seite | Vorlage | Stand |
+|---|---|---|
+| `/de/` Startseite | **A** | seit Schritt 4 |
+| `/de/treuhand/buchhaltung` (DE/FR/PT) | **B** | seit Schritt 3 |
+| Versicherungen, Treuhand, Steuern, Firmengründung, Treuhänder wechseln, Über uns, Kontakt | — | altes Blockmodell, zieht in Schritt 5 um |
 
-Bis dahin gelten zwei Flächenmodelle nebeneinander: die drei Flächen dieser
-Vorlagen und die alte Viererrotation in `PageBlocks`. Das ist bekannt und
-endet mit Schritt 5.
+Bis Schritt 5 gelten zwei Flächenmodelle nebeneinander: die vier Flächen dieser
+Vorlagen und die alte Viererrotation mit blaugrauem Tint in `PageBlocks`. Das
+ist bekannt und endet mit Schritt 5.
+
+---
+
+## 8. Redaktionsmarken
+
+Seit Schritt 4 laufen **beide** Marken über `DraftNote` und damit über denselben
+Schalter (`src/lib/draft.ts`):
+
+| Marke | Bedeutung |
+|---|---|
+| Zu bestätigen | A&C hat die Auskunft noch nicht geliefert |
+| Übersetzung fehlt | der Text liegt in dieser Sprache nicht vor |
+
+Im Produktionsbau erscheint keine davon. Für eine produktionsnahe Durchsicht:
+
+```
+AC_SHOW_DRAFT=1 npm run build
+```
+
+Das Ausblenden ist ein Sicherheitsnetz, kein Ersatz fürs Nachtragen.
+`npm run check:pending -- --strict` zählt beide Arten und ist die Bedingung für
+den Go-live. Ein Absatz, der nur aus einer Marke besteht, wird im
+Produktionsbau ganz weggelassen — sonst bliebe ein leeres Loch stehen.

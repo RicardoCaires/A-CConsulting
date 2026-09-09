@@ -33,11 +33,12 @@
   content: '';
 }
 
+/* Die Frage ist eine H3 und wird auch so gesetzt — eine Ebene, eine Groesse. */
 .question {
-  font-size: var(--ac-body-size);
-  line-height: 1.35;
-  font-weight: 600;
-  letter-spacing: -0.005em;
+  font-size: var(--ac-h3-size);
+  line-height: var(--ac-h3-line);
+  font-weight: var(--ac-h3-weight);
+  letter-spacing: var(--ac-h3-tracking);
   color: var(--ac-color-primary-navy);
   text-wrap: pretty;
 }

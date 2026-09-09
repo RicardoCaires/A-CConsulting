@@ -1,102 +1,106 @@
 /* Hauptnavigation.
-   Zwei Darstellungen, immer nur eine sichtbar: offene Reihe ab 64rem,
-   darunter ein Menue mit sichtbarer Hierarchie. */
+
+   Zwei Fassungen: eine offene Reihe ab 64rem, darunter ein Menue. Beide
+   benutzen dieselbe Beschriftung und dieselben Trefferflaechen — die schmale
+   Fassung ist keine verkleinerte, sondern eine eigene.
+
+   Der aktive Punkt traegt einen kurzen gruenen Strich. Das ist der einzige
+   Farbakzent im Kopfbereich. */
+
+/* ---- Offene Reihe (ab 64rem) -------------------------------------------- */
 
 .wide {
   display: none;
 }
 
-.narrow {
-  display: flex;
-}
-
-/* ---- Eintraege der obersten Ebene --------------------------------------- */
-
-.item {
+.wideList {
   display: flex;
   align-items: center;
-  gap: var(--ac-space-3xs);
-  min-height: 2.75rem;
-  padding: var(--ac-space-2xs) var(--ac-space-sm);
-  color: var(--ac-color-primary-navy);
-  text-decoration: none;
-  border-radius: var(--ac-radius-sm);
+  gap: var(--ac-space-md);
   list-style: none;
-  cursor: pointer;
+  margin: 0;
+  padding: 0;
 }
 
-.item::-webkit-details-marker {
-  display: none;
+.item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  /* Trefferflaeche 44 px — auch mit der Maus, nicht nur auf dem Telefon. */
+  min-height: 2.75rem;
+  padding-inline: var(--ac-space-3xs);
+  font-size: var(--ac-small-size);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ac-color-text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--ac-motion-fast) var(--ac-motion-easing);
 }
 
 .item:hover {
   color: var(--ac-color-primary-navy);
-  background-color: var(--ac-surface-soft);
+}
+
+/* Der gruene Strich sitzt unter dem Wort, nicht unter der Trefferflaeche —
+   sonst haengt er zu tief. */
+.item::after {
+  content: '';
+  position: absolute;
+  inset-inline: var(--ac-space-3xs);
+  bottom: 0.55rem;
+  height: var(--ac-border-rule);
+  background-color: var(--ac-color-accent-green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.item:hover::after,
+.item[aria-current='page']::after {
+  transform: scaleX(1);
 }
 
 .item[aria-current='page'] {
-  box-shadow: inset var(--ac-border-marker) 0 0 var(--ac-color-accent-green);
-  font-weight: 600;
-}
-
-.chevron {
-  transition: transform var(--ac-motion-fast) var(--ac-motion-easing);
-}
-
-.dropdown[open] .chevron {
-  transform: rotate(180deg);
-}
-
-/* ---- Unterpunkte -------------------------------------------------------- */
-
-.childItem,
-.childPending {
-  display: flex;
-  align-items: center;
-  gap: var(--ac-space-2xs);
-  min-height: 2.5rem;
-  padding: var(--ac-space-3xs) var(--ac-space-sm);
-  font-size: var(--ac-small-size);
-  border-radius: var(--ac-radius-sm);
-  text-decoration: none;
-}
-
-.childItem {
-  color: var(--ac-color-text-secondary);
-}
-
-.childItem:hover {
-  color: var(--ac-color-primary-navy);
-  background-color: var(--ac-surface-soft);
-}
-
-.childItem[aria-current='page'] {
   color: var(--ac-color-primary-navy);
   font-weight: 600;
 }
 
-/* Unterpunkt, den es noch nicht gibt. */
-.childPending {
+/* Punkt ohne Seite: sichtbar, aber nicht anklickbar. */
+.pending {
   color: var(--ac-color-text-muted);
   cursor: default;
 }
 
-.badge {
-  font-size: 0.6875rem;
-  font-weight: var(--ac-eyebrow-weight);
-  letter-spacing: var(--ac-eyebrow-tracking);
-  text-transform: uppercase;
-  color: var(--ac-color-text-secondary);
-  background-color: var(--ac-surface-blue);
-  border-radius: var(--ac-radius-sm);
-  padding: 0.1em 0.4em;
-  white-space: nowrap;
+.pending::after {
+  display: none;
 }
 
-/* ---- Schmale Fenster ---------------------------------------------------- */
+.badge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-background-light);
+  border-radius: var(--ac-radius-sm);
+  padding: 0.1rem 0.3rem;
+}
+
+/* ---- Menue (bis 64rem) --------------------------------------------------- */
+
+.narrow {
+  display: block;
+}
 
 .menu {
   position: relative;
+}
+
+/* Der Pfeil, den `<details>` von sich aus setzt, ist hier fehl am Platz. */
+.summary::-webkit-details-marker {
+  display: none;
 }
 
 .summary {
@@ -104,146 +108,126 @@
   align-items: center;
   gap: var(--ac-space-2xs);
   min-height: 2.75rem;
-  padding: var(--ac-space-2xs) var(--ac-space-xs);
-  margin-inline-end: calc(var(--ac-space-xs) * -1);
+  padding-inline: var(--ac-space-2xs);
   font-size: var(--ac-small-size);
   font-weight: 600;
   color: var(--ac-color-primary-navy);
-  cursor: pointer;
-  border-radius: var(--ac-radius-sm);
   list-style: none;
+  cursor: pointer;
+  user-select: none;
+  border-radius: var(--ac-radius-sm);
 }
 
-.summary::-webkit-details-marker {
+.summaryText {
+  /* Auf sehr schmalen Geraeten traegt das Zeichen allein. */
   display: none;
 }
 
-/* Hamburger aus drei Strichen. */
-.summaryIcon {
+/* Drei Striche, aus einem Element. Kein Icon, keine Datei. */
+.burger {
   position: relative;
-  width: 1.15rem;
-  height: 0.75rem;
-  border-top: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
+  display: block;
+  width: 1.25rem;
+  height: var(--ac-border-hairline);
+  background-color: currentColor;
 }
 
-.summaryIcon::before {
+.burger::before,
+.burger::after {
   content: '';
   position: absolute;
   inset-inline: 0;
-  top: calc(50% - 1px);
-  border-top: 2px solid currentColor;
+  height: var(--ac-border-hairline);
+  background-color: currentColor;
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.menu[open] .summaryIcon {
-  border-color: transparent;
+.burger::before {
+  top: -0.375rem;
 }
 
-.narrowPanel {
-  position: absolute;
-  inset-inline-end: calc(var(--ac-space-xs) * -1);
-  top: calc(100% + var(--ac-space-2xs));
-  z-index: 20;
-  width: max-content;
-  min-width: 16rem;
-  max-height: calc(100dvh - 6rem);
+.burger::after {
+  top: 0.375rem;
+}
+
+/* Offen: aus den drei Strichen wird ein Kreuz. */
+.menu[open] .burger {
+  background-color: transparent;
+}
+
+.menu[open] .burger::before {
+  transform: translateY(0.375rem) rotate(45deg);
+}
+
+.menu[open] .burger::after {
+  transform: translateY(-0.375rem) rotate(-45deg);
+}
+
+/* Das Panel haengt unter dem Kopfbereich und laeuft ueber die volle Breite.
+   Feste Positionierung statt absoluter: Der Kopf ist `sticky`, und ein
+   absolut gesetztes Panel wuerde beim Scrollen mitwandern. */
+.panel {
+  position: fixed;
+  inset-inline: 0;
+  top: var(--ac-header-height, 3.75rem);
+  max-height: calc(100dvh - var(--ac-header-height, 3.75rem));
   overflow-y: auto;
-  padding: var(--ac-space-2xs);
+  padding: var(--ac-space-md) var(--ac-gutter) var(--ac-space-lg);
   background-color: var(--ac-color-white);
-  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
-  border-radius: var(--ac-radius-lg);
+  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
 }
 
-.narrowList,
-.narrowChildren {
+.narrowList {
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
-/* Unterpunkte sichtbar eingerueckt, mit Linie als Zugehoerigkeit. */
-.narrowChildren {
-  margin: var(--ac-space-3xs) 0 var(--ac-space-2xs) var(--ac-space-sm);
-  padding-left: var(--ac-space-sm);
-  border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
+.narrowList li + li {
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
 }
 
-/* ---- Breite Fenster ----------------------------------------------------- */
+/* Im Menue traegt jeder Eintrag die volle Breite und eine hohe Trefferflaeche. */
+.narrowList .item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 3.25rem;
+  padding-inline: 0;
+  font-size: var(--ac-body-size);
+  font-weight: 500;
+}
+
+.narrowList .item::after {
+  display: none;
+}
+
+.narrowList .item[aria-current='page'] {
+  color: var(--ac-color-primary-navy);
+  font-weight: 600;
+}
+
+.panelCta {
+  display: flex;
+  width: 100%;
+  margin-top: var(--ac-space-md);
+}
+
+/* ---- Umschaltpunkt ------------------------------------------------------- */
 
 @media (min-width: 64rem) {
   .wide {
-    display: flex;
+    display: block;
   }
 
   .narrow {
     display: none;
   }
-
-  .wideList {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .wideList .item {
-    padding-inline: var(--ac-space-2xs);
-    font-size: var(--ac-small-size);
-    font-weight: 500;
-    color: var(--ac-color-text-secondary);
-    white-space: nowrap;
-    background: none;
-  }
-
-  .wideList .item:hover {
-    color: var(--ac-color-primary-navy);
-    background: none;
-  }
-
-  .wideList .item[aria-current='page'] {
-    color: var(--ac-color-primary-navy);
-    box-shadow: inset 0 -2px 0 var(--ac-color-accent-green);
-    background: none;
-  }
-
-  .hasChildren {
-    position: relative;
-  }
-
-  .panel {
-    position: absolute;
-    inset-inline-start: 0;
-    top: calc(100% + var(--ac-space-3xs));
-    z-index: 25;
-    min-width: 15rem;
-    padding: var(--ac-space-2xs);
-    background-color: var(--ac-color-white);
-    border: var(--ac-border-hairline) solid var(--ac-color-border-light);
-    border-radius: var(--ac-radius-lg);
-  }
-
-  .childList {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  /* Der erste Eintrag ist der Bereich selbst — danach eine feine Linie. */
-  .childList li:first-child {
-    padding-bottom: var(--ac-space-3xs);
-    margin-bottom: var(--ac-space-3xs);
-    border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
-  }
-
-  .childList li:first-child .childItem {
-    color: var(--ac-color-primary-navy);
-    font-weight: 600;
-  }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .chevron {
-    transition: none;
+@media print {
+  .narrow,
+  .wide {
+    display: none;
   }
 }

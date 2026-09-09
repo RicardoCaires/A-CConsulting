@@ -144,6 +144,8 @@ css.push(`  --ac-gutter: ${web.layout.gutter};`)
 // Genau ein Abstand zwischen Abschnitten. Es gibt keine engere Variante:
 // Die Ruhe kommt aus wenigen hohen Bloecken, nicht aus feiner Abstufung.
 css.push(`  --ac-section-y: ${web.layout.section_y};`)
+css.push(`  --ac-header-height: ${web.layout.header_height};`)
+css.push(`  --ac-header-height-wide: ${web.layout.header_height_wide};`)
 
 css.push('', '  /* --- Radien und Linien ---------------------------------------- */')
 for (const [name, px] of Object.entries(web.radius_px)) {

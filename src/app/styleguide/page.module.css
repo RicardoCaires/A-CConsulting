@@ -152,7 +152,7 @@
   height: 100%;
   padding: var(--ac-space-md);
   background-color: var(--ac-color-white);
-  border-radius: var(--ac-radius-xl);
+  border-radius: var(--ac-radius-md);
   text-decoration: none;
 }
 
@@ -186,5 +186,58 @@
 @media (min-width: 48rem) {
   .vorlagen {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ---- Flaechen ------------------------------------------------------------ */
+
+.flaechen {
+  display: grid;
+  gap: var(--ac-space-2xs);
+  margin: 0;
+  padding: 0;
+}
+
+.flaeche {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ac-space-3xs);
+  min-height: 9rem;
+  padding: var(--ac-space-md);
+  border-radius: var(--ac-radius-md);
+}
+
+/* Weiss braucht eine Kontur, sonst ist die Kachel unsichtbar. */
+.flaeche:not([class*='ac-section']) {
+  box-shadow: inset 0 0 0 var(--ac-border-hairline) var(--ac-color-border-light);
+}
+
+.flaecheName {
+  font-family: ui-monospace, 'SFMono-Regular', 'Consolas', monospace;
+  font-size: var(--ac-small-size);
+  font-weight: 650;
+}
+
+.flaecheWert {
+  font-family: ui-monospace, 'SFMono-Regular', 'Consolas', monospace;
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+.flaeche[class*='on-navy'] .flaecheWert,
+.flaeche[class*='on-navy'] .flaecheZweck {
+  color: var(--ac-on-navy-muted);
+}
+
+.flaecheZweck {
+  margin-top: auto;
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-color-text-secondary);
+}
+
+@media (min-width: 48rem) {
+  .flaechen {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }

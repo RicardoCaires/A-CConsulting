@@ -53,8 +53,6 @@ export const buchhaltungFr: Leistungsseite = {
   faq: [
     { frage: { missing: 'Frage 1' }, antwort: { missing: 'Antwort 1' } },
     { frage: { missing: 'Frage 2' }, antwort: { missing: 'Antwort 2' } },
-    { frage: { missing: 'Frage 3' }, antwort: { missing: 'Antwort 3' } },
-    { frage: { missing: 'Frage 4' }, antwort: { missing: 'Antwort 4' } },
   ],
 
   // Struktur deckungsgleich mit der deutschen Fassung: Der vertiefende
@@ -64,7 +62,7 @@ export const buchhaltungFr: Leistungsseite = {
     absaetze: [{ missing: 'Text des vertiefenden Abschnitts samt Aufzählung' }],
   },
 
-  ctaVariante: 'hell',
+  ctaVariante: 'flaeche',
   cta: {
     titel: { missing: 'Überschrift des Abschlusses' },
     text: { missing: 'Text des Abschlusses' },

@@ -1,18 +1,25 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { Hero } from '@/components/blocks/Hero'
 import { PageBlocks } from '@/components/blocks/PageBlocks'
-import { PageHero } from '@/components/blocks/PageHero'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
 import { LeistungsseiteTemplate } from '@/components/templates/Leistungsseite'
+import { WissensseiteTemplate } from '@/components/templates/Wissensseite'
+import { Button } from '@/components/ui/Button'
+import { RichText } from '@/components/ui/RichText'
 import { alsText } from '@/components/ui/Translated'
 import { getLeistungsseite } from '@/content/leistungsseiten'
 import { getPageContent } from '@/content/pages'
+import { getWissen } from '@/content/wissen'
 import { htmlLang, isLocale, locales } from '@/i18n/config'
+import { getUi } from '@/i18n/messages/ui'
 import {
+  hrefOrDefault,
   isPublished,
   pageKeyFromSlug,
   pages,
+  parentPage,
   path,
   publishedPages,
   type PageKey,
@@ -25,6 +32,9 @@ import { company } from '@/lib/company'
  * Die Beschriftungen sind Hinweise an uns, keine Website-Texte — darum stehen
  * sie hier und nicht im Inhalt. Sobald eine Aufnahme vorliegt, tritt sie an
  * dieselbe Stelle, ohne dass sich das Layout aendert.
+ *
+ * Wo kein Eintrag steht, traegt die dunkle Flaeche den Kopf allein. Das ist
+ * kein Mangel: lieber keine Aufnahme als eine beliebige.
  */
 const PAGE_VISUAL: Partial<Record<PageKey, { label: string; note?: string }>> = {
   versicherungen: {
@@ -68,6 +78,12 @@ export function generateStaticParams() {
       if (key === 'home') continue
       // Eine Seite wird erzeugt, wenn es Inhalt gibt — nach neuem Schema
       // (Vorlage B) oder nach dem bisherigen Blockmodell.
+      if (key === 'wissen') {
+        if (!getWissen(locale)) continue
+        params.push({ locale, slug: pages[key].slug[locale].split('/') })
+        continue
+      }
+
       if (!getLeistungsseite(locale, key) && !getPageContent(locale, key)) continue
 
       params.push({ locale, slug: pages[key].slug[locale].split('/') })
@@ -93,6 +109,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       .filter((candidate) => isPublished(key, candidate))
       .map((candidate) => [htmlLang[candidate], path(key, candidate)]),
   )
+
+  // Vorlage D: der Wissensbereich bringt seine Angaben selbst mit.
+  if (key === 'wissen') {
+    const wissen = getWissen(locale)
+    if (!wissen) return {}
+
+    return {
+      title: wissen.meta.title,
+      description: wissen.meta.description,
+      alternates: { canonical: path(key, locale), languages: sprachen },
+      openGraph: {
+        title: `${wissen.meta.title} — ${company.shortName}`,
+        description: wissen.meta.description,
+        url: path(key, locale),
+        locale: htmlLang[locale].replace('-', '_'),
+      },
+    }
+  }
 
   // Vorlage B: Titel und Beschreibung kommen aus dem Schema. Fehlt die
   // Uebersetzung, tritt hier die deutsche Fassung ein — ein leerer <title>
@@ -142,6 +176,20 @@ export default async function ContentPage({ params }: PageProps) {
   const key = pageKeyFromSlug(locale, slug)
   if (!key) notFound()
 
+  // Vorlage D: der Wissensbereich hat einen eigenen Aufbau — ein
+  // hervorgehobener Beitrag und eine Uebersicht passen in kein Blockmodell.
+  if (key === 'wissen') {
+    const wissen = getWissen(locale)
+    if (!wissen) notFound()
+
+    return (
+      <>
+        <Breadcrumb page={key} locale={locale} />
+        <WissensseiteTemplate inhalt={wissen} locale={locale} />
+      </>
+    )
+  }
+
   // Vorlage B hat Vorrang: Seiten, die auf das neue Schema umgestellt sind,
   // werden darueber ausgegeben. Alle uebrigen laufen bis Schritt 5 weiter
   // ueber das bisherige Blockmodell.
@@ -158,15 +206,34 @@ export default async function ContentPage({ params }: PageProps) {
   const content = getPageContent(locale, key)
   if (!content) notFound()
 
+  const ui = getUi(locale)
+  const bereich = parentPage(key, locale)
+
+  /*
+   * Der Seitenkopf ist derselbe Baustein wie auf Startseite und Pilotseite:
+   * dunkel, randlos, ein Knopf. Bis Schritt 5 laufen diese Seiten weiter ueber
+   * das Blockmodell — der **Kopf** ist damit aber schon der gemeinsame.
+   *
+   * Genau ein Knopf, und ueberall derselbe. Fuehrte der Kopf frueher zwei
+   * verschiedene Beschriftungen, steht jetzt die primaere; die zweite ist aus
+   * dem Inhalt entfernt. Seiten ohne Handlungsknopf (Kontakt) behalten keinen.
+   */
+  const knopf = content.hero.actions?.find((action) => action.kind === 'page')
+
   return (
     <>
       <Breadcrumb page={key} locale={locale} />
-      <PageHero
-        heading={content.hero.heading}
-        lead={content.hero.lead}
-        actions={content.hero.actions}
-        locale={locale}
-        visual={PAGE_VISUAL[key]}
+      <Hero
+        eyebrow={bereich ? ui.page[bereich] : undefined}
+        titel={content.hero.heading}
+        titelLaenge="lang"
+        satz={content.hero.lead ? <RichText value={content.hero.lead} /> : undefined}
+        aktion={
+          knopf ? (
+            <Button href={hrefOrDefault(knopf.target, locale)}>{knopf.label}</Button>
+          ) : undefined
+        }
+        bild={PAGE_VISUAL[key]}
       />
       <PageBlocks blocks={content.blocks} locale={locale} />
     </>

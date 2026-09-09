@@ -17,12 +17,18 @@ type Props = {
   label: string
   /** Ergaenzender Hinweis, etwa das gewuenschte Motiv. */
   note?: string
+  /**
+   * `dunkel` fuer Flaechen, ueber denen weisser Text steht — der Seitenkopf.
+   * Sonst waere die Ueberschrift auf dem Platzhalter nicht lesbar, und beim
+   * Einsetzen des Fotos wuerde sich der Kontrast ploetzlich aendern.
+   */
+  tone?: 'hell' | 'dunkel'
   className?: string
 }
 
-export function ImagePlaceholder({ label, note, className }: Props) {
+export function ImagePlaceholder({ label, note, tone = 'hell', className }: Props) {
   return (
-    <div className={[styles.frame, className].filter(Boolean).join(' ')}>
+    <div className={[styles.frame, styles[tone], className].filter(Boolean).join(' ')}>
       <span className={styles.label}>[{label}]</span>
       {note && <span className={styles.note}>{note}</span>}
     </div>

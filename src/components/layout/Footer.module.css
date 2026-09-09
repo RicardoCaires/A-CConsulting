@@ -1,3 +1,8 @@
+/* Fussbereich.
+
+   Drei Gruppen nebeneinander, sobald Platz ist: Firma, Leistungen,
+   Rechtliches. Darunter untereinander. Keine zweite Hauptnavigation. */
+
 .footer {
   background-color: var(--ac-surface-footer);
   color: var(--ac-on-navy);
@@ -18,25 +23,12 @@
   gap: var(--ac-space-2xs);
 }
 
-.role {
-  font-size: var(--ac-small-size);
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: var(--ac-on-navy);
-}
-
-.languages,
 .columnTitle,
 .address,
 .registry,
 .linkList {
   font-size: var(--ac-small-size);
   line-height: var(--ac-small-line);
-}
-
-.languages {
-  color: var(--ac-on-navy-muted);
-  max-width: var(--ac-content-measure);
 }
 
 .address {
@@ -54,11 +46,6 @@
 .companyName {
   color: var(--ac-on-navy);
   font-weight: 600;
-}
-
-.columns {
-  display: grid;
-  gap: var(--ac-space-md) var(--ac-space-lg);
 }
 
 .columnTitle {
@@ -92,20 +79,22 @@
   color: var(--ac-on-navy-muted);
 }
 
+/* Registernummern brechen nicht am Bindestrich: „CHE-332.960.986" ist eine
+   Angabe, keine zwei. */
 .registry dd {
   margin: 0;
   color: var(--ac-on-navy);
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 /* Im Fussbereich wird auf dem Smartphone tatsaechlich getippt — die Links
-   brauchen mehr als die Hoehe ihrer Textzeile. */
+   brauchen die volle Trefferflaeche von 44 px, nicht die Hoehe ihrer Zeile. */
 .linkList a,
-.address a,
-.columnTitle a {
+.address a {
   display: inline-flex;
   align-items: center;
-  min-height: 2.5rem;
+  min-height: 2.75rem;
 }
 
 /* Links auf dunklem Grund: das Markengruen traegt hier nicht genug Kontrast,
@@ -122,44 +111,9 @@
   text-decoration-color: var(--ac-color-accent-green-light);
 }
 
-.columnTitle a {
-  color: var(--ac-on-navy-muted);
-  text-decoration: none;
-}
-
-.columnTitle a:hover {
-  color: var(--ac-color-white);
-  text-decoration: underline;
-}
-
-/* Unterpunkt, den es noch nicht gibt. */
-.pending {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.5rem;
-  color: var(--ac-color-brand-grey);
-}
-
 @media (min-width: 40rem) {
-  .columns {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 56rem) {
-  .columns {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 72rem) {
   .inner {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 2.6fr);
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
     gap: var(--ac-space-xl);
-  }
-
-  .columns {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: var(--ac-space-md) var(--ac-space-sm);
   }
 }

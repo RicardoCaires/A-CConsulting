@@ -16,14 +16,14 @@ export const ueberUns: PageContent = {
   key: 'ueberUns',
 
   meta: {
-    title: 'Zwei Ansprechpartner in Lyss',
+    title: 'Zwei Ansprechpartner, drei Bereiche',
     description:
       'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Andrade geführt. Beide betreuen Mandate selbst.',
   },
 
   // 01 Seitenkopf
   hero: {
-    heading: 'Zwei Ansprechpartner in Lyss',
+    heading: 'Zwei Ansprechpartner, drei Bereiche',
     lead: 'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Andrade geführt. Beide betreuen Mandate selbst.',
   },
 
@@ -37,29 +37,19 @@ export const ueberUns: PageContent = {
         {
           heading: 'Ricardo Caires Cerqueira',
           paragraphs: [
-            [
-              'Geschäftsführer und Mitinhaber. Zuständig für ',
-              { pending: 'Bereiche' },
-              '. Als Versicherungsvermittler bei der FINMA registriert.',
-            ],
-            [
-              'Beruflicher Weg: ',
-              { pending: 'zwei bis vier belegbare Stationen, Abschlüsse und Zulassungen' },
-            ],
-            ['Beratungssprachen: ', { pending: '' }],
-            ['Direkt erreichbar unter ', { pending: 'Direktnummer oder Sammelnummer' }],
+            'Geschäftsführer und Mitinhaber. Zuständig für Treuhand, Steuern und Versicherungen. Als Versicherungsvermittler bei der FINMA registriert.',
+            'Beruflicher Weg: Kaufmann EFZ, danach im Finanz- und Rechnungswesen der Creabeton Matériaux AG in Lyss verantwortlich für Kreditoren, Debitoren und Anlagebuchhaltung sowie Leiter der Berufsbildung. Abschlüsse: Sachbearbeiter Rechnungswesen VSK am Feusi Bildungszentrum Bern und Versicherungsvermittler VBV.',
+            'Beratungssprachen: Deutsch, Französisch, Portugiesisch und Englisch.',
+            ['Direkt erreichbar unter ', { company: 'ricardo' }],
           ],
         },
         {
           heading: 'Octavio Andrade',
           paragraphs: [
-            ['Geschäftsführer und Mitinhaber. Zuständig für ', { pending: 'Bereiche' }, '.'],
-            [
-              'Beruflicher Weg: ',
-              { pending: 'zwei bis vier belegbare Stationen, Abschlüsse und Zulassungen' },
-            ],
-            ['Beratungssprachen: ', { pending: '' }],
-            ['Direkt erreichbar unter ', { pending: 'Direktnummer oder Sammelnummer' }],
+            'Geschäftsführer und Mitinhaber. Zuständig für Versicherungen.',
+            'Beruflicher Weg: Kundenberater und Verkaufsleiter bei der Allianz Suisse in Biel, danach Hauptagent der Zurich Versicherungen in Biel, seither selbstständiger Versicherungsbroker. Abschluss: Versicherungsvermittler VBV.',
+            'Beratungssprachen: Deutsch, Französisch, Portugiesisch und Englisch.',
+            ['Direkt erreichbar unter ', { company: 'octavio' }],
           ],
         },
       ],
@@ -86,77 +76,47 @@ export const ueberUns: PageContent = {
         {
           heading: 'Digital, wo es etwas bringt',
           paragraphs: [
-            [
-              'Wir automatisieren die Routine, nicht die Beratung. Wiederkehrende Arbeitsschritte übernehmen digitale Prozesse ',
-              { pending: 'welche konkret' },
-              ', damit mehr Zeit für die Fragen bleibt, bei denen es auf Erfahrung ankommt. Fachliche Prüfung und Verantwortung bleiben bei uns.',
-            ],
+            'Sie haben feste Ansprechpartner, kurze Wege und eine direkte Kommunikation. Fachliche Prüfung und Verantwortung bleiben bei uns.',
           ],
         },
         {
           heading: 'Vertraulich',
           paragraphs: [
-            [
-              {
-                pending:
-                  'Aussage zu Speicherung, Zugriff und Verarbeitungsort, abgestimmt mit der Datenschutzerklärung',
-              },
-            ],
+            'Ihre Daten werden in der Schweiz verarbeitet und vertraulich behandelt.',
+          ],
+        },
+        {
+          heading: 'Mit klaren Grenzen',
+          paragraphs: [
+            'Tätigkeitsbereiche: Versicherungen, Treuhand und Steuern. Nicht zu unseren Leistungen gehören die aktienrechtliche Revision und die Rechtsberatung. Wo das nötig wird, arbeiten wir mit Fachpersonen zusammen.',
           ],
         },
       ],
     },
 
-    // 04 Das Unternehmen
-    {
-      kind: 'list',
-      id: 'unternehmen',
-      heading: 'Das Unternehmen',
-      intro: [
-        'A&C Consulting GmbH wurde am 3. Februar 2026 gegründet und hat ihren Sitz an der Bielstrasse 22 in 3250 Lyss.',
-      ],
-      items: [
-        'UID: CHE-332.960.986',
-        'Als Versicherungsvermittlerin bei der FINMA registriert, Register-Nr. F01568855',
-        [
-          'Tätigkeitsbereiche: Versicherungen, Treuhand und Steuern ',
-          { pending: 'Abgrenzungen, etwa Revision oder Rechtsberatung' },
-        ],
-      ],
-      outro: [
-        [
-          'Das Unternehmen ist jung. Die beiden Inhaber arbeiten seit ',
-          { pending: 'Jahr oder Anzahl Jahre je Person' },
-          ' in diesem Bereich.',
-        ],
-      ],
-    },
-
-    // 05 Region und Sprachen
+    // 04 Standort
+    //
+    // Hiess bis zum Neuaufbau „Region und Sprachen". Der Anker `region`
+    // bleibt bestehen, damit bestehende Verweise nicht brechen.
     {
       kind: 'prose',
       id: 'region',
-      heading: 'Region und Sprachen',
+      heading: 'Wo Sie uns finden',
       paragraphs: [
-        'Wir betreuen Kundinnen und Kunden in Lyss, im Seeland, in Biel/Bienne und im übrigen Kanton Bern.',
-        [
-          'Beraten wird auf Deutsch, Französisch und Portugiesisch. Das gilt für das Gespräch und für die Korrespondenz. ',
-          {
-            pending:
-              'ob auch Unterlagen und Auswertungen in allen drei Sprachen geliefert werden',
-          },
-        ],
+        'Unser Büro liegt an der Bielstrasse in Lyss, wenige Minuten vom Bahnhof. Termine finden bei uns statt oder bei Ihnen — wie es Ihnen besser passt.',
+        'Wir betreuen Kundinnen und Kunden im Seeland und im Kanton Bern.',
+        'Beraten wird auf Deutsch, Französisch und Portugiesisch. Das gilt für das Gespräch, für die Korrespondenz und für die Unterlagen.',
       ],
     },
 
-    // 06 Abschluss
+    // 05 Abschluss
     {
       kind: 'cta',
       id: 'abschluss',
       heading: 'Lernen Sie uns kennen',
       paragraphs: ['Für ein erstes Gespräch rufen Sie an oder schreiben Sie uns.'],
       actions: [
-        { kind: 'page', target: 'kontakt', label: 'Unverbindliches Erstgespräch vereinbaren' },
+        { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
         { kind: 'phone' },
       ],
     },

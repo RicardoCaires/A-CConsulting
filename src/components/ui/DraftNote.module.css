@@ -47,3 +47,17 @@
     border: 1px solid var(--ac-color-text-secondary);
   }
 }
+
+/* Rechtlich zu pruefen: die Aussage steht, sie braucht nur eine Freigabe.
+   Darum ruhiger als die gelbe Marke — kein Loch im Text, nur ein Vermerk. */
+.rechtlich {
+  background-color: var(--ac-color-background-tint);
+}
+
+.rechtlich .label {
+  color: var(--ac-color-primary-navy);
+}
+
+.block.rechtlich {
+  border-inline-start-color: var(--ac-color-primary-navy);
+}

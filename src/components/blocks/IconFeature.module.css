@@ -11,11 +11,14 @@
   min-width: 0;
 }
 
+/* Eine Ebene, eine Groesse: H3 ist ueberall `--ac-h3-size`. Vorher stand hier
+   die Fliesstextgroesse — eine Ueberschrift, die genauso gross war wie der
+   Text darunter, traegt keine Hierarchie mehr. */
 .heading {
-  font-size: var(--ac-body-size);
-  line-height: 1.3;
-  font-weight: 600;
-  letter-spacing: -0.005em;
+  font-size: var(--ac-h3-size);
+  line-height: var(--ac-h3-line);
+  font-weight: var(--ac-h3-weight);
+  letter-spacing: var(--ac-h3-tracking);
   color: inherit;
   /* Kurz halten: eine Aussage, keine Ueberschrift. */
   max-width: 26ch;

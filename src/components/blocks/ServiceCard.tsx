@@ -40,7 +40,7 @@ export function ServiceCard({ icon, heading, chips = [], target, locale }: Props
 
   return (
     <article className={verfuegbar ? styles.card : `${styles.card} ${styles.cardPending}`}>
-      <IconCircle name={icon} size="lg" />
+      <IconCircle name={icon} size="lg" tone="outline" />
 
       <h3 className={styles.heading}>
         {verfuegbar ? (

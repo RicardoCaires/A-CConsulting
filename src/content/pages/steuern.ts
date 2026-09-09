@@ -21,7 +21,7 @@ export const steuern: PageContent = {
     heading: 'Steuererklärung für Privatpersonen, Selbständige und Firmen',
     lead: 'Sie bringen die Unterlagen, wir erstellen die Steuererklärung, reichen sie ein und prüfen später die Veranlagung.',
     actions: [
-      { kind: 'page', target: 'kontakt', label: 'Unverbindliches Erstgespräch vereinbaren' },
+      { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
     ],
   },
 
@@ -36,9 +36,9 @@ export const steuern: PageContent = {
         'Wir erstellen Ihre Steuererklärung im Kanton Bern, achten auf die Abzüge, die Ihnen zustehen, und reichen sie fristgerecht ein.',
         [
           'Wenn die Veranlagung kommt, prüfen wir sie und sagen Ihnen, ob sie mit dem übereinstimmt, was eingereicht wurde. Das ist wichtig, weil sich Abweichungen nur innerhalb der Einsprachefrist korrigieren lassen. ',
-          { pending: 'Einsprachefrist im Kanton Bern' },
+          { legal: 'Einsprachefrist im Kanton Bern' },
         ],
-        [{ pending: 'ob auch Steuererklärungen für andere Kantone übernommen werden' }],
+        'Wir erstellen Steuererklärungen hauptsächlich im Kanton Bern.',
       ],
     },
 
@@ -81,7 +81,7 @@ export const steuern: PageContent = {
       heading: 'Checkliste Steuererklärung Kanton Bern',
       paragraphs: [
         'Die Liste zeigt, welche Unterlagen Sie zusammenstellen sollten. Sie können sie ohne Anmeldung herunterladen und auch dann verwenden, wenn Sie die Steuererklärung selbst ausfüllen.',
-        [{ pending: 'Jahresangabe auf der Checkliste; jährlich zu aktualisieren' }],
+        [{ legal: 'Jahresangabe auf der Checkliste; jährlich zu aktualisieren' }],
       ],
       download: { label: 'Checkliste herunterladen (PDF)', file: null },
     },
@@ -94,11 +94,11 @@ export const steuern: PageContent = {
       paragraphs: [
         [
           'Die Steuererklärung im Kanton Bern ist bis zu einem festen Termin einzureichen. ',
-          { pending: 'Einreichefrist für Privatpersonen und für Firmen, mit Jahresangabe' },
+          { legal: 'Einreichefrist für Privatpersonen und für Firmen, mit Jahresangabe' },
         ],
         [
           'Eine Verlängerung ist möglich. ',
-          { pending: 'Verfahren, mögliche Dauer und allfällige Gebühren' },
+          { legal: 'Verfahren, mögliche Dauer und allfällige Gebühren' },
         ],
         'Wenn wir Ihre Steuererklärung erstellen, übernehmen wir auch die Fristverlängerung.',
       ],
@@ -119,7 +119,6 @@ export const steuern: PageContent = {
       ],
       outro: [
         'Sagen Sie uns kurz, was auf Sie zutrifft, dann können wir den Aufwand einschätzen, bevor wir beginnen.',
-        [{ pending: 'ob für klar definierte einfache Fälle ein Ab-Preis genannt wird' }],
       ],
     },
 
@@ -131,7 +130,7 @@ export const steuern: PageContent = {
       paragraphs: [
         [
           'Sobald Sie neben der Anstellung etwas auf eigene Rechnung machen, ändert sich die Steuererklärung. Es kommen eine Aufstellung der Einnahmen und Ausgaben dazu und die Frage der Anmeldung bei der Ausgleichskasse. ',
-          { pending: 'ab wann eine Anmeldung als selbständigerwerbend erforderlich ist' },
+          { legal: 'ab wann eine Anmeldung als selbständigerwerbend erforderlich ist' },
           ' Wir schauen das mit Ihnen an und klären, was zu tun ist.',
         ],
       ],
@@ -154,8 +153,8 @@ export const steuern: PageContent = {
         {
           question: 'Können Sie die Frist verlängern?',
           answer: [
-            'Ja, das übernehmen wir für Sie. ',
-            { pending: 'bis wann eine Verlängerung beantragt werden muss' },
+            'Die Fristverlängerung beantragen wir für Sie. ',
+            { legal: 'bis wann eine Verlängerung beantragt werden muss' },
           ],
         },
         {
@@ -163,21 +162,18 @@ export const steuern: PageContent = {
           answer: [
             'Mehrere offene Steuerjahre lassen sich aufarbeiten. ',
             {
-              pending:
+              legal:
                 'Vorgehen und Folgen einer Einschätzung nach Ermessen im Kanton Bern',
             },
           ],
         },
         {
           question: 'Machen Sie auch Steuererklärungen für andere Kantone?',
-          answer: [{ pending: '' }],
+          answer: 'Wir erstellen Steuererklärungen hauptsächlich im Kanton Bern.',
         },
         {
           question: 'Muss ich persönlich vorbeikommen?',
-          answer: [
-            'Nicht zwingend. Sie können die Unterlagen auch digital senden. ',
-            { pending: 'gewünschter Weg' },
-          ],
+          answer: 'Nicht zwingend. Sie können uns die Unterlagen per E-Mail, per Post oder persönlich bringen.',
         },
       ],
     },
@@ -191,7 +187,7 @@ export const steuern: PageContent = {
         'Melden Sie sich, dann vereinbaren wir einen Termin. Die Checkliste können Sie vorab herunterladen.',
       ],
       actions: [
-        { kind: 'page', target: 'kontakt', label: 'Unverbindliches Erstgespräch vereinbaren' },
+        { kind: 'page', target: 'kontakt', label: 'Erstgespräch vereinbaren' },
         { kind: 'phone' },
       ],
     },

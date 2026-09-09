@@ -11,8 +11,8 @@ export default function VorlageB() {
     <main>
       <VorlagenKopf
         name="Vorlage B — Leistungsseite"
-        abfolge="Seitenkopf · Das übernehmen wir · Ablauf · Vertiefung (optional) · Fragen · Abschluss"
-        flaechen="berechnet; der Abschluss steht nie auf derselben Fläche wie der Abschnitt davor"
+        abfolge="Seitenkopf (einspaltig) · Das übernehmen wir · Ablauf · Vertiefung (optional) · Fragen · Abschluss"
+        flaechen="DOMINANT · weiss · hell · weiss · hell · flaeche"
         regel="Für jede Leistung identisch. Der Wortlaut der Zwischentitel kommt aus dem Inhalt."
       />
       <LeistungsseiteTemplate inhalt={beispielLeistungsseite} locale="de" />

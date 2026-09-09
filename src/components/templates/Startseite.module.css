@@ -1,122 +1,18 @@
-/* Vorlage A — Startseite. Nur was diese Vorlage selbst regelt. */
+/* Vorlage A — Startseite.
 
-/* ---- 1 Einstieg ---------------------------------------------------------- */
+   Fast nichts: Jeder Abschnitt bringt seine Gestaltung selbst mit
+   (StartHero, Bereiche, Faelle, Vorteile, Team, Beitraege, CTASection).
+   Was hier steht, gehoert der Vorlage und keinem Baustein. */
 
-.hero {
-  display: grid;
-  gap: clamp(1.75rem, 4vw, 3rem);
+/* Verweis auf die Beitragsuebersicht, unter den drei Beitraegen. */
+.alleBeitraege {
+  margin-top: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+}
+
+.alleBeitraege > * {
+  display: inline-flex;
   align-items: center;
-}
-
-.heroText {
-  max-width: 34rem;
-}
-
-.heroTitel {
-  max-width: 17ch;
-  font-size: var(--ac-display-size);
-  line-height: var(--ac-display-line);
-  font-weight: var(--ac-display-weight);
-  letter-spacing: var(--ac-display-tracking);
-}
-
-.heroSatz {
-  margin-top: var(--ac-space-sm);
-  max-width: 36ch;
-}
-
-.heroAktionen {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ac-space-2xs);
-  margin-top: var(--ac-space-md);
-}
-
-.heroBild {
-  aspect-ratio: 16 / 10;
-}
-
-/* ---- 2 Bereiche ---------------------------------------------------------- */
-
-.karten {
-  display: grid;
-  gap: var(--ac-space-sm);
-  margin: var(--ac-space-lg) 0 0;
-  padding: 0;
-}
-
-.karten > li {
-  display: flex;
-}
-
-.karten > li > * {
-  width: 100%;
-}
-
-/* ---- 3 Anliegen ---------------------------------------------------------- */
-
-.anliegen {
-  display: grid;
-  gap: var(--ac-space-2xs);
-  margin: var(--ac-space-lg) 0 0;
-  padding: 0;
-}
-
-.anliegenLink {
-  display: flex;
-  align-items: center;
-  gap: var(--ac-space-sm);
-  width: 100%;
-  min-height: 4.5rem;
-  padding: var(--ac-space-2xs) var(--ac-space-sm) var(--ac-space-2xs) var(--ac-space-2xs);
-  font-weight: 550;
-  color: var(--ac-color-primary-navy);
-  text-decoration: none;
-  background-color: var(--ac-color-white);
-  border-radius: var(--ac-radius-lg);
-  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
-}
-
-.anliegenLink:hover {
-  color: var(--ac-color-primary-navy);
-  transform: translateY(-1px);
-}
-
-.anliegenPfeil {
-  margin-inline-start: auto;
-  color: var(--ac-color-accent-green);
-}
-
-/* ---- Breiter ------------------------------------------------------------- */
-
-@media (min-width: 48rem) {
-  .karten {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .anliegen {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 64rem) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  }
-
-  .heroBild {
-    aspect-ratio: 5 / 4;
-  }
-
-  .anliegen {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .anliegenLink,
-  .anliegenLink:hover {
-    transform: none;
-    transition: none;
-  }
+  /* Trefferflaeche 44 px, auch wenn es nur zwei Woerter sind. */
+  min-height: 2.75rem;
 }

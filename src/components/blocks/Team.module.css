@@ -1,0 +1,70 @@
+/* Die beiden Inhaber.
+
+   Zwei Bloecke, keine Karten. Das Portraet steht ueber den Angaben und ist
+   gross genug, um ein Gesicht zu sein — auf dem Telefon nicht kleiner als auf
+   dem Desktop. */
+
+.raster {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 3.5rem);
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding: 0;
+  list-style: none;
+}
+
+.person {
+  display: grid;
+  gap: var(--ac-space-md);
+}
+
+.bild :global(*) {
+  /* Hochformat wie in der Shootingliste — Portraets werden nicht quer. */
+  aspect-ratio: 4 / 5;
+}
+
+.name {
+  font-size: var(--ac-h3-size);
+  line-height: var(--ac-h3-line);
+  letter-spacing: var(--ac-h3-tracking);
+}
+
+/* Die Funktion steht unter dem Namen, klein und in Grossbuchstaben — sie ist
+   eine Einordnung, keine zweite Ueberschrift. */
+.funktion {
+  margin-top: var(--ac-space-3xs);
+  font-size: var(--ac-eyebrow-size);
+  line-height: var(--ac-eyebrow-line);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-accent-green);
+}
+
+.satz {
+  margin-top: var(--ac-space-sm);
+  max-width: 44ch;
+  color: var(--ac-color-text-secondary);
+}
+
+.satz + .satz {
+  margin-top: var(--ac-space-2xs);
+}
+
+/* ---- Ab Tablet: zwei Personen nebeneinander -------------------------------- */
+
+@media (min-width: 48rem) {
+  .raster {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+}
+
+/* ---- Ab Desktop: Bild neben den Angaben ------------------------------------ */
+
+@media (min-width: 64rem) {
+  .person {
+    grid-template-columns: 5fr 7fr;
+    gap: var(--ac-space-lg);
+    align-items: start;
+  }
+}

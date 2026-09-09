@@ -72,12 +72,9 @@ export const kontakt: PageContent = {
       id: 'buero',
       heading: 'Unser Büro',
       paragraphs: [
-        'Bielstrasse 22, 3250 Lyss',
-        [
-          'Öffnungszeiten: ',
-          { pending: 'verbindliche Zeiten, identisch mit dem Google-Unternehmensprofil' },
-        ],
-        ['Anfahrt: ', { pending: 'Parkiermöglichkeit und Weg ab Bahnhof Lyss' }],
+        [{ company: 'buero' }],
+        'Öffnungszeiten: 08:00–12:00 und 13:30–17:00 Uhr',
+        'Anfahrt: Beim Büro stehen drei Parkplätze zur Verfügung.',
       ],
     },
 
@@ -87,7 +84,21 @@ export const kontakt: PageContent = {
       id: 'randzeiten',
       heading: 'Termine ausserhalb der Bürozeiten',
       paragraphs: [
-        [{ pending: 'ob Termine am Abend oder am Samstag angeboten werden' }],
+        'Termine am Abend oder am Samstag bieten wir auf Anfrage an.',
+      ],
+    },
+
+    // 06 Abschluss
+    {
+      kind: 'cta',
+      id: 'abschluss',
+      heading: 'Am schnellsten geht es telefonisch',
+      paragraphs: [
+        'Wenn Sie lieber sprechen als schreiben: Rufen Sie an. Sie landen bei einem von uns beiden, nicht in einer Warteschlange.',
+      ],
+      actions: [
+        { kind: 'mail', label: 'E-Mail schreiben' },
+        { kind: 'phone' },
       ],
     },
   ],

@@ -80,3 +80,58 @@ export const addressLines: readonly string[] = [
   company.address.street,
   `${company.address.postalCode} ${company.address.city}`,
 ]
+
+/* ---- Umzug nach Aegerten, wirksam 01.11.2026 --------------------------- */
+
+/**
+ * Zwei Adressen, bewusst getrennt.
+ *
+ * `sitz` ist der Sitz laut Handelsregister und FINMA-Register. Er aendert sich
+ * **erst**, wenn die Register nachgefuehrt sind — eine Website, die einen
+ * anderen Sitz nennt als das oeffentliche Register, widerspricht sich selbst.
+ * Bis dahin bleibt hier Lyss stehen.
+ *
+ * `buero` ist der Ort, an dem Kundinnen und Kunden empfangen werden. Er
+ * wechselt am **01.11.2026** von Lyss nach Aegerten.
+ *
+ * Der Wechsel geschieht beim naechsten Bau nach dem Stichtag von selbst — die
+ * Seiten werden statisch erzeugt, und `Date.now()` wird dabei ausgewertet. Es
+ * ist an keiner anderen Stelle etwas von Hand zu aendern.
+ *
+ * Wenn die Register nachgefuehrt sind: `registerNachgefuehrt` auf `true` —
+ * dann folgt der Sitz dem Buero.
+ */
+
+const UMZUG_AB = Date.UTC(2026, 10, 1) // 01.11.2026
+
+/** Sobald Handelsregister und FINMA die neue Adresse fuehren: auf true. */
+const registerNachgefuehrt = false
+
+const bueroAegerten = {
+  street: 'Bielstrasse 10',
+  postalCode: '2558',
+  city: 'Aegerten',
+  region: 'Kanton Bern',
+  countryCode: 'CH',
+} as const
+
+/** Buero-Adresse zum Zeitpunkt des Baus. */
+export const buero = Date.now() >= UMZUG_AB ? bueroAegerten : company.address
+
+/** Sitz laut Register. Folgt dem Buero erst nach der Registeraenderung. */
+export const sitz = registerNachgefuehrt ? buero : company.address
+
+/** Buero-Adresse einzeilig — fuer Kontaktseite und Standortangaben. */
+export const bueroOneLine = `${buero.street}, ${buero.postalCode} ${buero.city}`
+
+/** Sitz einzeilig — fuer Impressum und die Angabe zum Unternehmen. */
+export const sitzOneLine = `${sitz.street}, ${sitz.postalCode} ${sitz.city}`
+
+/**
+ * Direktnummern der beiden Inhaber.
+ * Von Ricardo am 07.09.2026 freigegeben, Octavios Nummer mit seiner Zustimmung.
+ */
+export const direktnummern = {
+  ricardo: { anzeige: '078 625 53 85', e164: '+41786255385' },
+  octavio: { anzeige: '078 679 56 37', e164: '+41786795637' },
+} as const

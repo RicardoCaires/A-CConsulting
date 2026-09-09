@@ -16,7 +16,7 @@
   overflow: hidden;
 
   background-color: var(--ac-surface-blue);
-  border-radius: var(--ac-radius-xl);
+  border-radius: var(--ac-radius-md);
 
   /* Ohne Vorgabe von aussen ein ruhiges Querformat. */
   aspect-ratio: 4 / 3;
@@ -61,4 +61,29 @@
   .frame {
     display: none;
   }
+}
+
+/* ---- Toene --------------------------------------------------------------- */
+
+.hell {
+  background-color: var(--ac-surface-blue);
+}
+
+/* Fuer Flaechen, ueber denen weisser Text steht. Das spaetere Foto bekommt an
+   derselben Stelle einen Verlauf, damit der Kontrast gleich bleibt. */
+.dunkel {
+  background-color: var(--ac-surface-dominant);
+}
+
+.dunkel::before {
+  background: radial-gradient(120% 90% at 78% 12%, var(--ac-color-primary-navy) 0%, transparent 62%);
+  opacity: 0.9;
+}
+
+.dunkel .label {
+  color: var(--ac-on-navy-muted);
+}
+
+.dunkel .note {
+  color: var(--ac-on-navy-muted);
 }

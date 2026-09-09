@@ -67,7 +67,9 @@ export function InhaltsseiteTemplate({
 }) {
   // Seitenkopf plus Abschnitte; der Abschluss bringt seine Flaeche selbst mit.
   const folge = flaechen(1 + inhalt.abschnitte.length)
-  const abschlussFlaeche: Surface = folge[folge.length - 1] === 'hell' ? 'weiss' : 'hell'
+  // Der Abschluss steht auf einer Farbflaeche, ausser der Abschnitt davor
+  // waere selbst schon dunkel.
+  const abschlussFlaeche: Surface = 'flaeche'
   pruefeFlaechen(inhalt.abschluss ? [...folge, abschlussFlaeche] : folge, name)
 
   return (

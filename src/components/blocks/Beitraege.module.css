@@ -1,0 +1,96 @@
+/* Wissen — drei Beitraege, editorial gesetzt.
+
+   Die Linie oben ist das einzige gestaltende Element. Sie steht ueber jedem
+   Beitrag und macht aus drei Spalten eine Seite. */
+
+.liste {
+  display: grid;
+  gap: clamp(2rem, 5vw, 2.5rem);
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding: 0;
+  list-style: none;
+}
+
+.beitrag {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: var(--ac-space-md);
+  border-top: var(--ac-border-rule) solid var(--ac-color-primary-navy);
+}
+
+.datum {
+  font-size: var(--ac-small-size);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ac-color-text-secondary);
+}
+
+.titel {
+  margin-top: var(--ac-space-2xs);
+  font-size: var(--ac-h3-size);
+  line-height: var(--ac-h3-line);
+  letter-spacing: var(--ac-h3-tracking);
+  text-wrap: balance;
+}
+
+.anriss {
+  margin-top: var(--ac-space-2xs);
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-color-text-secondary);
+  max-width: 42ch;
+}
+
+.link,
+.pending {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ac-space-3xs);
+  /* Trefferflaeche 44 px. Der Verweis sitzt unten und schliesst den Beitrag ab. */
+  min-height: 2.75rem;
+  margin-top: auto;
+  padding-top: var(--ac-space-2xs);
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link::after {
+  content: '→';
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.link:hover::after {
+  transform: translateX(0.2rem);
+}
+
+.pending {
+  color: var(--ac-color-text-muted);
+  cursor: default;
+}
+
+.badge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-white);
+  border-radius: var(--ac-radius-sm);
+  padding: 0.1rem 0.3rem;
+}
+
+/* ---- Ab Tablet ------------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  .liste {
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+}

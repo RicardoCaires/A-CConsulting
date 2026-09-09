@@ -15,14 +15,47 @@ import type { PageKey } from '@/i18n/routes'
 /** Eine offene Angabe aus Schritt 4. Wird nie ersetzt, nur befuellt. */
 export type PendingNote = { readonly pending: string }
 
-/** Textstueck: Klartext oder eine offene Angabe. */
-export type Inline = string | PendingNote
+/**
+ * Eine Aussage, die vor der Veroeffentlichung rechtlich geprueft werden muss.
+ *
+ * Unterschied zur offenen Angabe: Hier fehlt **nichts**. Der Satz steht und ist
+ * lesbar — er darf nur nicht live gehen, bevor jemand mit der noetigen
+ * Fachkunde ihn bestaetigt hat. Der Text sagt, worauf sich die Aussage stuetzt.
+ *
+ * Gesammelt werden diese Stellen von `scripts/check-pending.mjs`; die Liste
+ * geht zur externen Pruefung.
+ */
+export type LegalNote = { readonly legal: string }
+
+/**
+ * Verweis auf eine Firmenangabe.
+ *
+ * Adresse und Ort stehen nie als Text im Inhalt, sondern nur in
+ * `src/lib/company.ts`. Sonst muesste ein Umzug an einem Dutzend Stellen
+ * nachgetragen werden — und eine davon wuerde vergessen.
+ *
+ *   `buero` — Adresse, an der Kundinnen und Kunden empfangen werden
+ *   `sitz`  — Sitz laut Handelsregister
+ *   `ort`   — nur der Ortsname des Bueros
+ */
+export type CompanyRef = { readonly company: 'buero' | 'sitz' | 'ort' | 'ricardo' | 'octavio' }
+
+/** Textstueck: Klartext, offene Angabe oder rechtlich zu pruefende Aussage. */
+export type Inline = string | PendingNote | LegalNote | CompanyRef
 
 /** Ein Absatz — einfacher Text oder Text mit eingebetteten offenen Angaben. */
 export type Rich = string | readonly Inline[]
 
 export function isPending(part: Inline): part is PendingNote {
-  return typeof part !== 'string'
+  return typeof part === 'object' && 'pending' in part
+}
+
+export function isLegal(part: Inline): part is LegalNote {
+  return typeof part === 'object' && 'legal' in part
+}
+
+export function isCompanyRef(part: Inline): part is CompanyRef {
+  return typeof part === 'object' && 'company' in part
 }
 
 export function collectPending(value: Rich): string[] {
