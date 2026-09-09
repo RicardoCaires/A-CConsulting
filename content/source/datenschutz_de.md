@@ -8,8 +8,7 @@ Analysewerkzeug, keine eingebundenen Schriften von fremden Servern, keine
 Aufrufe an Dritte. Sollte sich daran etwas ändern, ändert sich diese Erklärung
 zuerst.
 
-Zwei Angaben fehlen und stehen als offene Angabe: die Aufbewahrungsdauer für
-Anfragen und der Anbieter des E-Mail-Postfachs.
+Angaben zum Postfach und zur Löschung von Ricardo bestätigt am 09.09.2026.
 
 ---
 
@@ -77,9 +76,9 @@ Rufen Sie an oder schreiben Sie uns eine E-Mail, bearbeiten wir die Angaben, die
 
 Dazu gehören in der Regel Ihr Name, Ihre Telefonnummer oder E-Mail-Adresse und das, was Sie uns mitteilen.
 
-**[ZU BESTÄTIGEN: Anbieter des E-Mail-Postfachs info@ac-co.ch, für die Nennung als Auftragsbearbeiter]**
+Unser E-Mail-Postfach betreiben wir selbst. Gehostet wird es von Microsoft. Microsoft ist dabei Auftragsbearbeiterin und an unsere Weisungen gebunden.
 
-**[ZU BESTÄTIGEN: wie lange Anfragen aufbewahrt werden, die zu keinem Mandat führen]**
+Anfragen, die zu keinem Mandat führen, löschen wir, sobald sie nicht mehr benötigt werden.
 
 Ein Kontaktformular gibt es zurzeit nicht. Sobald eines aufgeschaltet wird, ergänzen wir diese Erklärung vorher.
 

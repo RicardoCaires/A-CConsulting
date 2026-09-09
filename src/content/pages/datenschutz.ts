@@ -12,9 +12,10 @@
  * Analysewerkzeug —, aendert sich **zuerst** diese Erklaerung. Ein Mustertext,
  * der mehr behauptet als die Seite tut, waere schlechter als keiner.
  *
- * Zwei Angaben fehlen und stehen als offene Angabe: die Aufbewahrungsdauer fuer
- * Anfragen und der Anbieter des E-Mail-Postfachs. Beide sind Tatsachen, die wir
- * nicht erfinden.
+ * Postfach und Loeschung hat Ricardo am 09.09.2026 bestaetigt: Das Postfach
+ * betreibt A&C selbst, gehostet von Microsoft; Anfragen ohne Mandat werden
+ * geloescht. Eine feste Frist ist bewusst **nicht** genannt — sie wurde nicht
+ * genannt, und erfunden wird sie nicht.
  *
  * **Vor dem Go-live rechtlich pruefen lassen.** Der Entwurf ist sorgfaeltig,
  * aber er ist ein Entwurf.
@@ -95,8 +96,8 @@ export const datenschutz: PageContent = {
       paragraphs: [
         'Rufen Sie an oder schreiben Sie uns eine E-Mail, bearbeiten wir die Angaben, die Sie uns dabei geben, um Ihre Anfrage zu beantworten.',
         'Dazu gehören in der Regel Ihr Name, Ihre Telefonnummer oder E-Mail-Adresse und das, was Sie uns mitteilen.',
-        [{ pending: 'Anbieter des E-Mail-Postfachs info@ac-co.ch, für die Nennung als Auftragsbearbeiter' }],
-        [{ pending: 'wie lange Anfragen aufbewahrt werden, die zu keinem Mandat führen' }],
+        'Unser E-Mail-Postfach betreiben wir selbst. Gehostet wird es von Microsoft. Microsoft ist dabei Auftragsbearbeiterin und an unsere Weisungen gebunden.',
+        'Anfragen, die zu keinem Mandat führen, löschen wir, sobald sie nicht mehr benötigt werden.',
         'Ein Kontaktformular gibt es zurzeit nicht. Sobald eines aufgeschaltet wird, ergänzen wir diese Erklärung vorher.',
         'Bitte senden Sie uns keine besonders schützenswerten Angaben per E-Mail — etwa Gesundheitsdaten, AHV-Nummer oder Bankangaben. Für den Austausch von Unterlagen richten wir nach dem Erstkontakt einen geschützten Weg ein.',
       ],
