@@ -34,3 +34,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return entries
 }
+
+/**
+ * Beim statischen Export gibt es keine Laufzeit, die diese Datei auf Anfrage
+ * erzeugen koennte. Sie wird darum beim Bau einmal geschrieben — ohne diese
+ * Zeile bricht `next build` mit `output: 'export'` ab.
+ */
+export const dynamic = 'force-static'

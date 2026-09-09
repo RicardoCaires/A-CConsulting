@@ -1,0 +1,12 @@
+# Weiterleitungen — Cloudflare Pages
+#
+# Diese Datei liegt in public/ und wird beim Bau unveraendert nach out/ kopiert.
+# Sie ersetzt das, was frueher `redirects()` in next.config.mjs getan hat: Beim
+# statischen Export gibt es keinen Server, der eine Weiterleitung ausspricht.
+#
+# Format: <von> <nach> <Statuscode>
+# Die erste passende Zeile gewinnt.
+
+# Die Wurzel fuehrt auf die Leitsprache. Dauerhaft (308), weil /de/ die
+# kanonische Startseite ist — es gibt bewusst kein out/index.html.
+/    /de/    308

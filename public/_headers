@@ -1,0 +1,18 @@
+# HTTP-Header — Cloudflare Pages
+#
+# Diese Datei liegt in public/ und wird beim Bau unveraendert nach out/ kopiert.
+# Sie ersetzt das, was frueher `headers()` in next.config.mjs getan hat.
+#
+# Format: ein Pfadmuster, darunter eingerueckt die Header.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+
+# Der Styleguide zeigt die Bausteine mit Beispieldaten. Er ist ein
+# Arbeitsmittel, kein Inhalt — robots.txt schliesst ihn aus, dieser Header
+# haelt ihn zusaetzlich aus dem Index, falls jemand direkt darauf verlinkt.
+/styleguide/*
+  X-Robots-Tag: noindex
