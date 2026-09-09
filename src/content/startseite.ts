@@ -191,7 +191,7 @@ const de: StartseiteContent = {
     // umgekehrt: Dort ist der eingebrannte Text zu klein, und der HTML-Text
     // traegt. Je Fenstergroesse steht die Aussage genau einmal.
     bild: {
-      src: '/bilder/startseite-seeland.png',
+      src: '/bilder/startseite-seeland.webp',
       alt: 'Blick über das Seeland bei Dämmerung: Lichter der Stadt, der See und die Hügelkette im Abendhimmel.',
     },
   },
@@ -203,7 +203,7 @@ const de: StartseiteContent = {
     zusatz:
       'Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.',
     grafik: {
-      src: '/bilder/unser-modell.png',
+      src: '/bilder/unser-modell.webp',
       alt: 'Schaubild „Unser Modell": Der Kunde erteilt A&C Consulting ein Mandat. A&C analysiert den Bedarf, vergleicht Angebote am Markt, berät, übernimmt den Schriftverkehr und begleitet langfristig. Für den Preisvergleich holt A&C Offerten bei verschiedenen Versicherungsgesellschaften ein. Zurück zum Kunden geht ein transparenter Vorschlag.',
       breite: 1536,
       hoehe: 1024,
