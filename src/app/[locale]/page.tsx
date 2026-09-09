@@ -65,8 +65,8 @@ export default async function HomePage({ params }: PageProps) {
       bild: content.einstieg.bild,
     },
 
-    // 2 — Vertrauenszeile. Vier nachpruefbare Angaben.
-    vertrauen: content.vertrauen,
+    // 2 — Statement. Die eine Aussage, die Haltung zeigt.
+    statement: content.statement,
 
     // 3 — Situationen. Stehen vor den Leistungen: Wer herkommt, denkt in
     //     seinem Problem, nicht in unseren Bereichen.

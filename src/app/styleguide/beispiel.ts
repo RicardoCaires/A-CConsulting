@@ -24,7 +24,11 @@ export const beispielStartseite: StartseiteInhalt = {
     weiter: { text: 'Beispiel-Textlink', ziel: 'ueberUns' },
     bild: { label: 'BEISPIELBILD EINSTIEG', note: 'Beispielhinweis zum Motiv' },
   },
-  vertrauen: ['Erste Angabe', 'Zweite Angabe', 'Dritte Angabe', 'Vierte Angabe'],
+  statement: {
+    eyebrow: 'Beispiel-Vorzeile',
+    satz: 'Beispielaussage, die für sich allein steht.',
+    zusatz: 'Beispielzusatz, der den Gedanken in einem Satz weiterführt.',
+  },
   situationen: {
     titel: 'Beispielüberschrift der Situationen',
     einleitung: 'Beispielsatz über die sechs Ausgangslagen.',

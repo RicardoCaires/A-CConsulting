@@ -28,7 +28,7 @@ html {
 
 @media (min-width: 64rem) {
   html {
-    scroll-padding-top: 9.5rem;
+    scroll-padding-top: 8.5rem;
   }
 }
 
@@ -248,8 +248,29 @@ a:hover {
   max-width: var(--ac-content-measure);
 }
 
+/* Drei Abstufungen statt einer.
+
+   Der fruehere eine Wert hat jeden Abschnitt gleich wichtig gemacht: Die Seite
+   las sich als Sammlung von Bloecken, nicht als Komposition. Jetzt haelt
+   eng zusammen, was zusammengehoert, normal trennt Gruppen, weit trennt
+   Hauptkapitel. */
 .ac-section {
   padding-block: var(--ac-section-y);
+}
+
+.ac-section--eng {
+  padding-block: var(--ac-section-y-sm);
+}
+
+.ac-section--weit {
+  padding-block: var(--ac-section-y-lg);
+}
+
+/* Zwei gleiche Flaechen hintereinander: Der Abstand dazwischen faellt weg,
+   damit sie nicht auseinanderfallen — auch bei den neuen Stufen. */
+.ac-section--eng + .ac-section--eng,
+.ac-section--weit + .ac-section--weit {
+  padding-block-start: 0;
 }
 
 /* Drei Flaechen, alle aus dem Corporate Design: Weiss, Off-White und die
@@ -299,6 +320,24 @@ a:hover {
 .ac-section--navy .ac-eyebrow,
 .ac-section--flaeche .ac-eyebrow {
   color: var(--ac-on-navy-muted);
+}
+
+/** Eine grosse Aussage, die fuer sich steht. Sparsam verwenden — eine je
+    Seite, hoechstens zwei. */
+.ac-statement {
+  font-family: var(--ac-font-display);
+  font-size: var(--ac-statement-size);
+  line-height: var(--ac-statement-line);
+  font-weight: var(--ac-statement-weight);
+  letter-spacing: var(--ac-statement-tracking);
+  color: var(--ac-color-primary-navy);
+  text-wrap: balance;
+  margin: 0;
+}
+
+.ac-section--navy .ac-statement,
+.ac-section--flaeche .ac-statement {
+  color: var(--ac-color-white);
 }
 
 /** Einleitungssatz unter einer Ueberschrift. */

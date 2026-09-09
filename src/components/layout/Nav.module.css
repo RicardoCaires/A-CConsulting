@@ -4,8 +4,17 @@
    benutzen dieselbe Beschriftung und dieselben Trefferflaechen — die schmale
    Fassung ist keine verkleinerte, sondern eine eigene.
 
+   Seit dem 09.09.2026 traegt jeder Bereich ein Untermenue. Es soll leicht
+   wirken, nicht wie ein Kasten, der sich ueber die Seite legt: weisse Flaeche,
+   eine Haarlinie, kein Schatten, kein Rahmen um jeden Eintrag. Was es schwer
+   machen wuerde, ist weggelassen.
+
    Der aktive Punkt traegt einen kurzen gruenen Strich. Das ist der einzige
    Farbakzent im Kopfbereich. */
+
+.wurzel {
+  display: contents;
+}
 
 /* ---- Offene Reihe (ab 64rem) -------------------------------------------- */
 
@@ -16,7 +25,7 @@
 .wideList {
   display: flex;
   align-items: center;
-  gap: var(--ac-space-md);
+  gap: var(--ac-space-sm);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -65,6 +74,113 @@
 .item[aria-current='page'] {
   color: var(--ac-color-primary-navy);
   font-weight: 600;
+}
+
+/* ---- Untermenue (breite Fenster) ---------------------------------------- */
+
+.hasChildren {
+  position: relative;
+}
+
+.dropdown > summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dropdown > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Ein Winkel aus zwei Strichen — kein Zeichensatzpfeil, keine Datei. */
+.chevron {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-inline-end: var(--ac-border-hairline) solid currentColor;
+  border-block-end: var(--ac-border-hairline) solid currentColor;
+  transform: translateY(-0.1em) rotate(45deg);
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+  opacity: 0.65;
+}
+
+.dropdown[open] .chevron {
+  transform: translateY(0.05em) rotate(-135deg);
+  opacity: 1;
+}
+
+/* Beim aufgeklappten Bereich bleibt der gruene Strich stehen. */
+.dropdown[open] > summary::after {
+  transform: scaleX(1);
+}
+
+.dropdownPanel {
+  position: absolute;
+  inset-inline-start: calc(var(--ac-space-3xs) * -1);
+  top: calc(100% + var(--ac-space-2xs));
+  z-index: 40;
+  min-width: 14rem;
+  padding: var(--ac-space-2xs) 0;
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+}
+
+.childList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.childItem {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: var(--ac-space-sm);
+  font-size: var(--ac-small-size);
+  line-height: 1.3;
+  color: var(--ac-color-text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color var(--ac-motion-fast) var(--ac-motion-easing),
+    background-color var(--ac-motion-fast) var(--ac-motion-easing);
+}
+
+.childItem:hover {
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-surface-soft);
+}
+
+/* Der Bereich selbst, als erster Eintrag: dunkler gesetzt und mit einer
+   Haarlinie abgetrennt — er ist die Uebersicht, nicht ein Punkt unter vielen. */
+.childLead {
+  color: var(--ac-color-primary-navy);
+  font-weight: 600;
+}
+
+.childList li:first-child {
+  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  margin-bottom: var(--ac-space-3xs);
+  padding-bottom: var(--ac-space-3xs);
+}
+
+/* ---- Untermenue (schmales Menue) ---------------------------------------- */
+
+.narrowChildren {
+  list-style: none;
+  margin: 0 0 var(--ac-space-2xs);
+  padding-inline-start: var(--ac-space-sm);
+  border-inline-start: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.narrowChildren .childItem {
+  padding-inline: var(--ac-space-sm) 0;
+  min-height: 2.75rem;
+}
+
+/* Der Trennstrich der Hauptliste gilt nicht fuer die eingerueckten Punkte. */
+.narrowChildren li + li {
+  border-top: 0;
 }
 
 /* Punkt ohne Seite: sichtbar, aber nicht anklickbar. */
@@ -169,8 +285,8 @@
 .panel {
   position: fixed;
   inset-inline: 0;
-  top: var(--ac-header-height, 3.75rem);
-  max-height: calc(100dvh - var(--ac-header-height, 3.75rem));
+  top: var(--ac-header-height, 3.5rem);
+  max-height: calc(100dvh - var(--ac-header-height, 3.5rem));
   overflow-y: auto;
   padding: var(--ac-space-md) var(--ac-gutter) var(--ac-space-lg);
   background-color: var(--ac-color-white);

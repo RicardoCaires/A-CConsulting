@@ -1,4 +1,13 @@
-/* Seitenkopf. Das Bild ist die Flaeche, der Text steht darauf.
+/* Seitenkopf einer Unterseite.
+
+   Bis zum 09.09.2026 war er 480 bis 804 px hoch — eine dunkle Flaeche, die
+   den halben Bildschirm fuellte und deren obere Haelfte leer blieb. Gedacht
+   war er als Bildbuehne; ohne Foto war er ein Farbbalken.
+
+   Jetzt bestimmt der **Text** die Hoehe, nicht das Format eines Bildes, das
+   es noch nicht gibt: rund 300 px mobil und 380 px am Bildschirm, und er
+   waechst nur, wenn der Titel es verlangt. Das Bild bleibt die Flaeche
+   dahinter — es traegt den Kopf, es macht ihn nicht mehr gross.
 
    Kein Rahmen, kein Abstand nach aussen: Der Kopf laeuft bis an die
    Fensterkanten. Die einzige Begrenzung ist der Container des Textes. */
@@ -10,17 +19,11 @@
   overflow: hidden;
   isolation: isolate;
 
-  /* Mobil: Hochformat 4:5 wie Aufnahme 2 der Shootingliste.
-     Die Hoehe wird aus der Fensterbreite gerechnet, nicht ueber `aspect-ratio`
-     gesetzt: Zusammen mit einer Hoehenbegrenzung wuerde `aspect-ratio` die
-     **Breite** einschraenken, und der Kopf liefe nicht mehr bis an die
-     Fensterkanten.
-
-     Gesetzt wird eine **Mindest**hoehe, keine feste: Ein langer Titel darf den
-     Kopf wachsen lassen, statt unten abgeschnitten zu werden. Bei kurzem Text
-     ergibt sich dieselbe Hoehe wie bisher. */
+  /* Eine Mindesthoehe, keine feste: Ein langer Titel laesst den Kopf wachsen,
+     statt unten abgeschnitten zu werden. Der Wert ist bewusst knapp — die
+     Hoehe soll aus dem Inhalt kommen. */
   width: 100%;
-  min-height: max(30rem, min(calc(100vw * 5 / 4), 88vh));
+  min-height: 19rem;
 }
 
 .bild {
@@ -32,7 +35,7 @@
   border-radius: 0;
   /* Die Beschriftung sitzt oben, damit sie dem Text unten nicht ins Gehege kommt. */
   justify-content: flex-start;
-  padding-top: var(--ac-space-xl);
+  padding-top: var(--ac-space-md);
 }
 
 /* Verlauf von unten. Auf dem Platzhalter kaum sichtbar, unter dem spaeteren
@@ -59,7 +62,9 @@
    am unteren Rand, der Kopf behaelt seine Hoehe. */
 .inhalt {
   position: relative;
-  padding-block: clamp(7rem, 18vw, 9rem) clamp(2rem, 5vw, 3.5rem);
+  /* Oben nur so viel, wie die Beschriftung der Bildflaeche braucht — frueher
+     standen hier 112 bis 144 px, und der Titel begann erst auf halber Hoehe. */
+  padding-block: clamp(3.5rem, 9vw, 4.5rem) clamp(1.75rem, 4vw, 2.75rem);
 }
 
 .eyebrow {
@@ -108,8 +113,8 @@
 
 @media (min-width: 64rem) {
   .hero {
-    /* Desktop: Querformat 16:9 wie Aufnahme 1. */
-    min-height: max(34rem, min(calc(100vw * 9 / 16), 88vh));
+    /* Knapp die Haelfte des Fensters, nicht mehr. */
+    min-height: min(24rem, 52vh);
   }
 
   .titel {

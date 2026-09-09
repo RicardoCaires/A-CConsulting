@@ -4,39 +4,41 @@
    (StartHero, Faelle, Bereiche, StepList, Team, CTASection).
    Was hier steht, gehoert der Vorlage und keinem Baustein. */
 
-/* ---- 2 Vertrauenszeile --------------------------------------------------- */
+/* ---- 2 Statement --------------------------------------------------------- */
 
-/* Ein schmales Band, kein Abschnitt: Es traegt keine Ueberschrift, keinen
-   Abstand nach Art der Sektionen und keine eigene Flaeche. Vier Angaben,
-   getrennt durch einen Mittelpunkt — dieselbe Schreibweise wie im Fussbereich
-   der Dokumente. Keine Abzeichen: Was hier steht, ist nachpruefbar, und
-   Nachpruefbares braucht keine Farbe. */
-.vertrauensband {
-  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
-  background-color: var(--ac-color-white);
+/* Eine Aussage, die fuer sich steht. Sie loest die Vertrauenszeile ab: Vier
+   Begriffe in einer schmalen Leiste unter dem Kopf waren eine Zusatzleiste,
+   kein Gestaltungsmittel.
+
+   Asymmetrisch gesetzt — der Satz nimmt gut zwei Drittel, der Zusatz bleibt
+   schmal darunter. Keine Flaeche, kein Rahmen: Die Groesse traegt allein. */
+.statement {
+  /* Keine Breitenbegrenzung auf dem Behaelter: `ch` misst hier in
+     Fliesstextgroesse, nicht in der Groesse der Aussage. Begrenzt wird die
+     Aussage selbst — dort stimmt die Einheit. */
+  display: grid;
 }
 
-.vertrauen {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--ac-space-2xs) var(--ac-space-md);
-  margin: 0;
-  padding-block: var(--ac-space-sm);
-  list-style: none;
+.statementSatz {
+  margin-top: var(--ac-space-2xs);
+  /* Rund zwei Zeilen. Die Aussage soll umbrechen, aber nicht zerfallen. */
+  max-width: 18ch;
+}
 
-  font-size: var(--ac-small-size);
-  line-height: var(--ac-small-line);
-  letter-spacing: 0.02em;
+.statementZusatz {
+  margin-top: var(--ac-space-md);
+  font-size: var(--ac-lead-size);
+  line-height: var(--ac-lead-line);
   color: var(--ac-color-text-secondary);
+  max-width: 42ch;
 }
 
-/* Der Mittelpunkt sitzt zwischen den Angaben, nicht am Anfang. Er ist
-   Dekoration und wird Hilfstechnik nicht vorgelesen. */
-.vertrauen li + li::before {
-  content: '·';
-  margin-inline-end: var(--ac-space-md);
-  color: var(--ac-color-border-light);
+@media (min-width: 48rem) {
+  /* Der Zusatz steht eingerueckt unter der Aussage — versetzt, nicht buendig.
+     Das ist der Unterschied zwischen einer Aussage und einem Absatz. */
+  .statementZusatz {
+    margin-inline-start: clamp(2rem, 12vw, 9rem);
+  }
 }
 
 /* ---- 5 Eine Stelle für Ihre Administration ------------------------------- */

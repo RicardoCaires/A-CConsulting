@@ -9,7 +9,7 @@
  */
 
 import type { Locale } from '../config'
-import type { PageKey } from '../routes'
+import type { NavSectionKey, PageKey } from '../routes'
 
 type UiMessages = {
   /** Sprungmarke fuer Tastatur- und Screenreader-Bedienung. */
@@ -46,6 +46,11 @@ type UiMessages = {
   }
   /** Beschriftung der Seiten in Navigation und Fussbereich. */
   page: Record<PageKey, string>
+  /**
+   * Beschriftung der Unterpunkte, die auf einen Abschnitt fuehren.
+   * Navigationsbezeichnungen, keine Seitentitel.
+   */
+  navSection: Record<NavSectionKey, string>
   /**
    * Der eine Handlungsknopf der Website.
    *
@@ -129,6 +134,17 @@ export const ui: Record<Locale, UiMessages> = {
       impressum: 'Impressum',
       datenschutz: 'Datenschutz',
     },
+    navSection: {
+      privatkunden: 'Für Privatpersonen',
+      unternehmen: 'Für Unternehmen',
+      vertragspruefung: 'Vertragsprüfung',
+      schadenfall: 'Schadenfall',
+      budget: 'Budget',
+      vorsorge: 'Vorsorge',
+      team: 'Die Inhaber',
+      arbeitsweise: 'Arbeitsweise',
+      standort: 'Standort',
+    },
     contactAddressLabel: 'Adresse',
     person: {
       responsibility: 'Zuständigkeit',
@@ -195,6 +211,17 @@ export const ui: Record<Locale, UiMessages> = {
       impressum: 'Mentions légales',
       datenschutz: 'Protection des données',
     },
+    navSection: {
+      privatkunden: 'Pour les particuliers',
+      unternehmen: 'Pour les entreprises',
+      vertragspruefung: 'Analyse des contrats',
+      schadenfall: 'Sinistre',
+      budget: 'Budget',
+      vorsorge: 'Prévoyance',
+      team: 'Les associés',
+      arbeitsweise: 'Notre façon de travailler',
+      standort: 'Situation',
+    },
     contactAddressLabel: 'Adresse',
     person: {
       responsibility: 'Domaine de responsabilité',
@@ -260,6 +287,17 @@ export const ui: Record<Locale, UiMessages> = {
       kontakt: 'Contacto',
       impressum: 'Informação legal',
       datenschutz: 'Proteção de dados',
+    },
+    navSection: {
+      privatkunden: 'Para particulares',
+      unternehmen: 'Para empresas',
+      vertragspruefung: 'Análise de contratos',
+      schadenfall: 'Sinistro',
+      budget: 'Orçamento',
+      vorsorge: 'Previdência',
+      team: 'Os sócios',
+      arbeitsweise: 'Como trabalhamos',
+      standort: 'Localização',
     },
     contactAddressLabel: 'Morada',
     person: {

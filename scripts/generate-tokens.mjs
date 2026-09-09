@@ -141,9 +141,11 @@ css.push(`  --ac-container: ${web.layout.container_max_px}px;`)
 css.push(`  --ac-container-narrow: ${web.layout.container_narrow_px}px;`)
 css.push(`  --ac-content-measure: ${web.layout.content_max_ch};`)
 css.push(`  --ac-gutter: ${web.layout.gutter};`)
-// Genau ein Abstand zwischen Abschnitten. Es gibt keine engere Variante:
-// Die Ruhe kommt aus wenigen hohen Bloecken, nicht aus feiner Abstufung.
+// Drei Abstufungen. Ein einziger Abstand hat jeden Abschnitt gleich wichtig
+// gemacht — die Seite las sich als Sammlung von Bloecken statt als Komposition.
+css.push(`  --ac-section-y-sm: ${web.layout.section_y_sm};`)
 css.push(`  --ac-section-y: ${web.layout.section_y};`)
+css.push(`  --ac-section-y-lg: ${web.layout.section_y_lg};`)
 css.push(`  --ac-header-height: ${web.layout.header_height};`)
 css.push(`  --ac-header-height-wide: ${web.layout.header_height_wide};`)
 

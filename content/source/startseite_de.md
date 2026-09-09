@@ -39,9 +39,18 @@ Zweiter Verweis: Unsere Leistungen
 
 ---
 
-## 02 Vertrauenszeile
+## 02 Statement
 
-Treuhand · Versicherungsbroker · FINMA registriert · Lyss
+Die Vertrauenszeile „Treuhand · Versicherungsbroker · FINMA registriert · Lyss"
+ist am 09.09.2026 entfallen: Vier Begriffe in einer schmalen Leiste unter dem
+Kopf waren eine Zusatzleiste, kein Gestaltungsmittel. An ihrer Stelle steht der
+Satz, der A&C von einem Versicherungsvertreter unterscheidet.
+
+Vorzeile: Unsere Rolle
+
+Aussage: Wir vertreten Sie, nicht die Versicherung.
+
+Zusatz: Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.
 
 ---
 

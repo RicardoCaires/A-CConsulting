@@ -259,11 +259,82 @@ export const mainNavOrder: readonly PageKey[] = [
   'ueberUns',
 ]
 
+/**
+ * Beschriftung eines Unterpunkts, der auf einen Abschnitt fuehrt.
+ * Die Texte stehen in `ui.navSection` — es sind Navigationsbezeichnungen,
+ * keine Seitentitel.
+ */
+export type NavSectionKey =
+  | 'privatkunden'
+  | 'unternehmen'
+  | 'vertragspruefung'
+  | 'schadenfall'
+  | 'budget'
+  | 'vorsorge'
+  | 'team'
+  | 'arbeitsweise'
+  | 'standort'
+
+/**
+ * Ein Unterpunkt: entweder eine eigene Seite oder ein Abschnitt der
+ * uebergeordneten Seite.
+ *
+ * Der zweite Fall ist kein Notbehelf. „Fuer Privatpersonen" ist ein Abschnitt
+ * der Versicherungsseite und soll dort bleiben — ein Sprung dorthin fuehrt
+ * schneller ans Ziel als eine eigene duenne Seite.
+ */
+export type NavChild =
+  | { kind: 'page'; page: PageKey }
+  | { kind: 'section'; page: PageKey; anchor: string; label: NavSectionKey }
+
 /** Ein Punkt der Hauptnavigation. Ohne Ziel, solange es die Seite nicht gibt. */
 export type NavItem = {
   page: PageKey
   /** Adresse — oder `null`, wenn die Seite in dieser Sprache fehlt. */
   href: string | null
+  /** Unterpunkte. Nur was es gibt — hier steht nie ein „folgt". */
+  children: readonly NavChild[]
+}
+
+/**
+ * Die Unterpunkte je Hauptbereich.
+ *
+ * Am 07.09.2026 war die Navigation flach gemacht worden, am 09.09.2026 kommen
+ * die Untermenues auf Ricardos Wunsch zurueck. Aufgenommen wird nur, was
+ * existiert: Jeder Eintrag hier fuehrt auf eine veroeffentlichte Seite oder
+ * auf einen Anker, den es auf ihr gibt. Nicht Vorhandenes wird beim Aufbau
+ * herausgefiltert, nicht mit einem Vermerk versehen.
+ */
+const UNTERPUNKTE: Partial<Record<PageKey, readonly NavChild[]>> = {
+  versicherungen: [
+    { kind: 'section', page: 'versicherungen', anchor: 'privatpersonen', label: 'privatkunden' },
+    { kind: 'section', page: 'versicherungen', anchor: 'unternehmen', label: 'unternehmen' },
+    { kind: 'section', page: 'versicherungen', anchor: 'ablauf', label: 'vertragspruefung' },
+    { kind: 'section', page: 'versicherungen', anchor: 'schadenfall', label: 'schadenfall' },
+  ],
+  treuhand: [
+    { kind: 'page', page: 'buchhaltung' },
+    { kind: 'page', page: 'steuern' },
+    { kind: 'page', page: 'firmengruendung' },
+    { kind: 'page', page: 'treuhaenderWechseln' },
+  ],
+  personalFinance: [
+    { kind: 'section', page: 'personalFinance', anchor: 'budget', label: 'budget' },
+    { kind: 'section', page: 'personalFinance', anchor: 'vorsorge', label: 'vorsorge' },
+  ],
+  ueberUns: [
+    { kind: 'section', page: 'ueberUns', anchor: 'inhaber', label: 'team' },
+    { kind: 'section', page: 'ueberUns', anchor: 'arbeitsweise', label: 'arbeitsweise' },
+    { kind: 'section', page: 'ueberUns', anchor: 'region', label: 'standort' },
+  ],
+}
+
+/** Ziel eines Unterpunkts — oder `null`, wenn es die Seite nicht gibt. */
+export function navChildHref(child: NavChild, locale: Locale): string | null {
+  if (!isPublished(child.page, locale)) return null
+  return child.kind === 'section'
+    ? `${path(child.page, locale)}#${child.anchor}`
+    : path(child.page, locale)
 }
 
 /**
@@ -283,6 +354,9 @@ export function mainNavItems(locale: Locale): NavItem[] {
   return mainNavOrder.map((page) => ({
     page,
     href: isPublished(page, locale) ? path(page, locale) : null,
+    children: (UNTERPUNKTE[page] ?? []).filter(
+      (child) => navChildHref(child, locale) !== null,
+    ),
   }))
 }
 

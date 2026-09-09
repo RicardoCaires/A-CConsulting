@@ -49,8 +49,9 @@ import styles from './Startseite.module.css'
 
 const FLAECHEN: readonly Surface[] = [
   'dominant', // 1 Einstieg
-  'hell', // 3 Situationen
-  'weiss', // 4 Leistungen
+  'weiss', // 2 Statement
+  'hell', // 3 Leistungen
+  'weiss', // 4 Situationen
   'flaeche', // 5 Eine Stelle
   'weiss', // 6 Digital
   'hell', // 7 Ansprechpartner
@@ -68,8 +69,11 @@ export type StartseiteInhalt = {
     weiter?: { text: string; ziel: PageKey }
     bild: { label: string; note?: string }
   }
-  /** Vier kurze Angaben. Nachpruefbar, darum ohne Farbe. */
-  vertrauen: readonly string[]
+  statement: {
+    eyebrow: string
+    satz: ReactNode
+    zusatz?: ReactNode
+  }
   situationen: {
     titel: ReactNode
     einleitung?: ReactNode
@@ -119,8 +123,27 @@ export function StartseiteTemplate({
   locale: Locale
 }) {
   pruefeFlaechen(FLAECHEN, 'Startseite')
-  const [, fSituationen, fLeistungen, fStelle, fDigital, fPersonen, fAblauf, fAbschluss] =
-    FLAECHEN as [Surface, Surface, Surface, Surface, Surface, Surface, Surface, Surface]
+  const [
+    ,
+    fStatement,
+    fLeistungen,
+    fSituationen,
+    fStelle,
+    fDigital,
+    fPersonen,
+    fAblauf,
+    fAbschluss,
+  ] = FLAECHEN as [
+    Surface,
+    Surface,
+    Surface,
+    Surface,
+    Surface,
+    Surface,
+    Surface,
+    Surface,
+    Surface,
+  ]
 
   return (
     <>
@@ -143,28 +166,20 @@ export function StartseiteTemplate({
         bild={inhalt.einstieg.bild}
       />
 
-      {/* ---- 2 Vertrauenszeile — ein Band, kein Abschnitt ------------------ */}
-      <div className={styles.vertrauensband}>
-        <div className="ac-container">
-          <ul className={styles.vertrauen} role="list">
-            {inhalt.vertrauen.map((angabe, index) => (
-              <li key={index}>{angabe}</li>
-            ))}
-          </ul>
+      {/* ---- 2 Statement — die eine Aussage, gross ------------------------- */}
+      <Section surface={fStatement} abstand="weit" labelledBy="statement" id="statement">
+        <div className={styles.statement}>
+          <p className="ac-eyebrow">{inhalt.statement.eyebrow}</p>
+          <p id="statement" className={`ac-statement ${styles.statementSatz}`}>
+            {inhalt.statement.satz}
+          </p>
+          {inhalt.statement.zusatz && (
+            <p className={styles.statementZusatz}>{inhalt.statement.zusatz}</p>
+          )}
         </div>
-      </div>
-
-      {/* ---- 3 Situationen — vor den Leistungen ---------------------------- */}
-      <Section surface={fSituationen} labelledBy="situationen" id="situationen">
-        <SectionHeader
-          id="situationen"
-          heading={inhalt.situationen.titel}
-          lead={inhalt.situationen.einleitung}
-        />
-        <Faelle faelle={inhalt.situationen.eintraege} locale={locale} />
       </Section>
 
-      {/* ---- 4 Leistungen -------------------------------------------------- */}
+      {/* ---- 3 Leistungen -------------------------------------------------- */}
       <Section surface={fLeistungen} labelledBy="leistungen" id="leistungen">
         <SectionHeader
           id="leistungen"
@@ -176,6 +191,21 @@ export function StartseiteTemplate({
           weitere={inhalt.leistungen.weitere}
           locale={locale}
         />
+      </Section>
+
+      {/* ---- 4 Situationen — eng an die Leistungen ------------------------- */}
+      <Section
+        surface={fSituationen}
+        abstand="eng"
+        labelledBy="situationen"
+        id="situationen"
+      >
+        <SectionHeader
+          id="situationen"
+          heading={inhalt.situationen.titel}
+          lead={inhalt.situationen.einleitung}
+        />
+        <Faelle faelle={inhalt.situationen.eintraege} locale={locale} />
       </Section>
 
       {/* ---- 5 Eine Stelle — der eigentliche Nutzen, als Kette ------------- */}
@@ -198,7 +228,7 @@ export function StartseiteTemplate({
       </Section>
 
       {/* ---- 6 Digital ------------------------------------------------------ */}
-      <Section surface={fDigital} labelledBy="digital" id="digital" measure>
+      <Section surface={fDigital} abstand="eng" labelledBy="digital" id="digital" measure>
         <SectionHeader id="digital" heading={inhalt.digital.titel} />
         <div className={styles.fliesstext}>
           <p>{inhalt.digital.text}</p>
@@ -218,7 +248,7 @@ export function StartseiteTemplate({
       </Section>
 
       {/* ---- 8 Ablauf --------------------------------------------------------- */}
-      <Section surface={fAblauf} labelledBy="ablauf" id="ablauf">
+      <Section surface={fAblauf} abstand="eng" labelledBy="ablauf" id="ablauf">
         <SectionHeader id="ablauf" heading={inhalt.ablauf.titel} />
         <StepList
           layout="flow"

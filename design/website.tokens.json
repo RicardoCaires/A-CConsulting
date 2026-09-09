@@ -65,10 +65,12 @@
     "container_max_px": 1160,
     "container_narrow_px": 760,
     "gutter": "clamp(1.25rem, 4vw, 2rem)",
-    "section_y": "clamp(3.75rem, 6.2vw, 7rem)",
-    "header_height": "3.75rem",
-    "header_height_wide": "4.25rem",
-    "hinweis_section_y": "Ein einziger Abstand zwischen Abschnitten. Bewusst gross: Die Ruhe kommt aus wenigen hohen Bloecken, nicht aus vielen schwachen Toenungen."
+    "section_y_sm": "clamp(1.75rem, 2.4vw, 2.5rem)",
+    "section_y": "clamp(2.25rem, 3.4vw, 3.5rem)",
+    "section_y_lg": "clamp(3rem, 4.8vw, 4.5rem)",
+    "header_height": "3.5rem",
+    "header_height_wide": "4rem",
+    "hinweis_section_y": "Drei Stufen statt einer. Ein einziger Abstand hat jeden Abschnitt gleich wichtig gemacht - die Seite las sich als Sammlung von Bloecken, nicht als Komposition. sm haelt Zusammengehoeriges zusammen, der Normalfall trennt Gruppen, lg trennt Hauptkapitel. Der Normalfall ist rund 40 % enger als die frueheren 60-112 px."
   },
   "radius_px": {
     "sm": 4,
@@ -86,20 +88,26 @@
     "hinweis_display": "Source Serif 4, SIL OFL 1.1. Nur h1 bis h3. Standard 1.1, font.website_display."
   },
   "type_scale_web": {
+    "statement": {
+      "size": "clamp(2.125rem, 1.5rem + 2.8vw, 3.75rem)",
+      "line": 1.1,
+      "weight": 600,
+      "tracking": "-0.02em"
+    },
     "display": {
-      "size": "clamp(2.25rem, 1.81rem + 1.88vw, 3.5rem)",
-      "line": 1.08,
+      "size": "clamp(2.5rem, 1.9rem + 2.9vw, 4.25rem)",
+      "line": 1.06,
       "weight": 600,
       "tracking": "-0.018em"
     },
     "h1": {
-      "size": "clamp(2.125rem, 1.82rem + 1.31vw, 3rem)",
+      "size": "clamp(2.125rem, 1.75rem + 1.6vw, 3.25rem)",
       "line": 1.12,
       "weight": 600,
       "tracking": "-0.014em"
     },
     "h2": {
-      "size": "clamp(2rem, 1.87rem + 0.56vw, 2.375rem)",
+      "size": "clamp(1.5rem, 1.32rem + 0.7vw, 1.875rem)",
       "line": 1.16,
       "weight": 600,
       "tracking": "-0.012em"

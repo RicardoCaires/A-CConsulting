@@ -75,13 +75,18 @@ export type StartseiteContent = {
   }
 
   /**
-   * Abschnitt 2 — eine Zeile, kein Abschnitt.
+   * Abschnitt 2 — eine Aussage, die fuer sich steht.
    *
-   * Sie sagt in vier Woertern, mit wem man es zu tun hat. Typografisch ruhig,
-   * keine Abzeichen: Was hier steht, ist nachpruefbar, und Nachpruefbares
-   * braucht keine Farbe.
+   * Loest die Vertrauenszeile ab: Vier Begriffe in einer schmalen Leiste unter
+   * dem Kopf waren eine Zusatzleiste, kein Gestaltungsmittel. Hier steht
+   * stattdessen der Satz, der A&C von einem Versicherungsvertreter
+   * unterscheidet — gross genug, dass man ihn nicht ueberliest.
    */
-  vertrauen: readonly string[]
+  statement: {
+    eyebrow: string
+    satz: string
+    zusatz: string
+  }
 
   situationen: {
     titel: string
@@ -153,8 +158,13 @@ const de: StartseiteContent = {
     },
   },
 
-  // ---- 2 Vertrauenszeile
-  vertrauen: ['Treuhand', 'Versicherungsbroker', 'FINMA registriert', 'Lyss'],
+  // ---- 2 Statement
+  statement: {
+    eyebrow: 'Unsere Rolle',
+    satz: 'Wir vertreten Sie, nicht die Versicherung.',
+    zusatz:
+      'Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.',
+  },
 
   // ---- 3 Situationen — vor den Leistungen, weil Kunden im Problem denken
   situationen: {

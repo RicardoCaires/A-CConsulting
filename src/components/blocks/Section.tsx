@@ -33,6 +33,25 @@ import styles from './Section.module.css'
 
 export type Surface = 'weiss' | 'hell' | 'flaeche' | 'dominant'
 
+/**
+ * Senkrechter Abstand eines Abschnitts.
+ *
+ *   `eng`    32–48 px   haelt zusammen, was zusammengehoert
+ *   `normal` 44–68 px   trennt Gruppen
+ *   `weit`   60–88 px   trennt Hauptkapitel
+ *
+ * Bis zum 09.09.2026 gab es genau einen Wert (60–112 px). Das war als Ruhe
+ * gemeint und las sich als Gleichfoermigkeit: Jeder Abschnitt gleich wichtig,
+ * jede Pause gleich lang. Rhythmus entsteht aus Unterschied.
+ */
+export type Abstand = 'eng' | 'normal' | 'weit'
+
+const ABSTAND: Record<Abstand, string> = {
+  eng: 'ac-section--eng',
+  normal: '',
+  weit: 'ac-section--weit',
+}
+
 /** Die CSS-Klasse einer Flaeche. Damit sie nur an einer Stelle steht. */
 export const KLASSE: Record<Surface, string> = {
   weiss: '',
@@ -81,6 +100,8 @@ export function pruefeFlaechen(flaechen: readonly Surface[], seite: string): voi
 
 type Props = {
   surface?: Surface
+  /** Senkrechter Abstand. Standard ist `normal`. */
+  abstand?: Abstand
   /** Sprungziel des Abschnitts. */
   id?: string
   /** Kennung der Ueberschrift, die den Abschnitt benennt. */
@@ -95,6 +116,7 @@ type Props = {
 
 export function Section({
   surface = 'weiss',
+  abstand = 'normal',
   id,
   labelledBy,
   measure = false,
@@ -102,7 +124,9 @@ export function Section({
   className,
   children,
 }: Props) {
-  const classes = [flush ? '' : 'ac-section', KLASSE[surface], className].filter(Boolean).join(' ')
+  const classes = [flush ? '' : 'ac-section', flush ? '' : ABSTAND[abstand], KLASSE[surface], className]
+    .filter(Boolean)
+    .join(' ')
 
   return (
     <section className={classes} id={id} aria-labelledby={labelledBy}>
