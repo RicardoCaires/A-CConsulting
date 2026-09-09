@@ -31,7 +31,16 @@ Erstgespräch anfragen
 
 ## 01 Einstieg
 
-Überschrift: Treuhand und Versicherungen. Persönlich aus einer Hand.
+Fassung vom 09.09.2026, von Ricardo als Bildvorlage geliefert. Die Überschrift
+ist ein Leitsatz; was A&C tut, sagen die Vorzeile und der Untertitel darunter.
+
+Überschrift: Verwurzelt im Seeland. Blick auf mehr.
+
+Vorzeile: Versicherungen · Treuhand
+
+Bildplatz im Seitenkopf: SEELAND / PANORAMA — Aufnahme 1 der Shootingliste.
+Die endgültige Datei liegt noch nicht vor; der Alternativtext wird mit ihr
+festgelegt.
 
 Untertitel: Wir unterstützen Selbständige, KMU und Privatpersonen bei Buchhaltung, Versicherungen und Finanzfragen – mit festen Ansprechpartnern in Lyss.
 

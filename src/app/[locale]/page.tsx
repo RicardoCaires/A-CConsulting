@@ -58,6 +58,7 @@ export default async function HomePage({ params }: PageProps) {
   const inhalt: StartseiteInhalt = {
     // 1 — Einstieg. Eine Aussage, ein Satz, ein Knopf, ein Textlink.
     einstieg: {
+      eyebrow: content.einstieg.eyebrow,
       titel: content.einstieg.titel,
       satz: content.einstieg.satz,
       knopf: { text: content.cta, ziel: 'kontakt' },

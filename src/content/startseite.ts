@@ -67,11 +67,14 @@ export type StartseiteContent = {
   cta: string
 
   einstieg: {
+    /** Steht unter der Ueberschrift und ordnet den Leitsatz ein. */
+    eyebrow: string
     titel: string
     satz: string
     /** Zweiter, ruhiger Verweis neben dem Knopf. */
     weiter: { text: string; ziel: PageKey }
-    bild: { label: string; note?: string }
+    /** Echte Aufnahme oder Platzhalter mit Formatangabe. */
+    bild: { src: string; alt: string } | { label: string; note?: string }
   }
 
   /**
@@ -149,11 +152,16 @@ const de: StartseiteContent = {
 
   // ---- 1 Einstieg
   einstieg: {
-    titel: 'Treuhand und Versicherungen. Persönlich aus einer Hand.',
+    eyebrow: 'Versicherungen · Treuhand',
+    titel: 'Verwurzelt im Seeland. Blick auf mehr.',
     satz: 'Wir unterstützen Selbständige, KMU und Privatpersonen bei Buchhaltung, Versicherungen und Finanzfragen – mit festen Ansprechpartnern in Lyss.',
     weiter: { text: 'Unsere Leistungen', ziel: 'treuhand' },
+    // Die Aufnahme liegt noch nicht in ihrer endgueltigen Fassung vor
+    // (Stand 09.09.2026). Bis dahin die ruhige Flaeche im richtigen Format —
+    // das Foto tritt spaeter an dieselbe Stelle, ohne dass sich etwas
+    // verschiebt. Dann steht hier `{ src, alt }` statt `{ label, note }`.
     bild: {
-      label: 'BÜRO LYSS / TEAM',
+      label: 'SEELAND / PANORAMA',
       note: 'Aufnahme 1 der Shootingliste',
     },
   },

@@ -5,7 +5,7 @@ import { CTASection } from '@/components/blocks/CTASection'
 import { Faelle, type Fall } from '@/components/blocks/Faelle'
 import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
 import { SectionHeader } from '@/components/blocks/SectionHeader'
-import { StartHero } from '@/components/blocks/StartHero'
+import { StartHero, type HeroBild } from '@/components/blocks/StartHero'
 import { StepList } from '@/components/blocks/StepList'
 import { Team, type Mitglied } from '@/components/blocks/Team'
 import { Button } from '@/components/ui/Button'
@@ -61,13 +61,14 @@ const FLAECHEN: readonly Surface[] = [
 
 export type StartseiteInhalt = {
   einstieg: {
+    eyebrow?: string
     titel: ReactNode
     satz: ReactNode
     /** Genau einer. Der Kopf traegt keinen zweiten Knopf. */
     knopf: { text: string; ziel: PageKey }
     /** Zurueckhaltender zweiter Weg, als Textlink. */
     weiter?: { text: string; ziel: PageKey }
-    bild: { label: string; note?: string }
+    bild: HeroBild
   }
   statement: {
     eyebrow: string
@@ -149,6 +150,7 @@ export function StartseiteTemplate({
     <>
       {/* ---- 1 Einstieg — die dominante Flaeche der Seite ----------------- */}
       <StartHero
+        eyebrow={inhalt.einstieg.eyebrow}
         titel={inhalt.einstieg.titel}
         satz={inhalt.einstieg.satz}
         aktion={
