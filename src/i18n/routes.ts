@@ -218,14 +218,14 @@ export const pages: Record<PageKey, PageDefinition> = {
   },
   impressum: {
     slug: { de: 'impressum', fr: 'mentions-legales', pt: 'informacao-legal' },
-    published: { de: false, fr: false, pt: false },
+    published: { de: true, fr: false, pt: false },
     inMainNav: false,
     inLegalNav: true,
     sitemapPriority: 0.2,
   },
   datenschutz: {
     slug: { de: 'datenschutz', fr: 'protection-des-donnees', pt: 'protecao-de-dados' },
-    published: { de: false, fr: false, pt: false },
+    published: { de: true, fr: false, pt: false },
     inMainNav: false,
     inLegalNav: true,
     sitemapPriority: 0.2,
@@ -258,11 +258,22 @@ export const mainNavOrder: readonly PageKey[] = [
   'ueberUns',
 ]
 
+/**
+ * Seiten, die es zwar gibt, deren Inhalt aber noch entsteht.
+ *
+ * Unterschied zu einer fehlenden Seite: Der Punkt ist anklickbar und führt auf
+ * etwas Lesbares. Er sagt nur dazu, dass dort noch nicht alles steht — sonst
+ * erwartet man Beiträge und findet drei Ankündigungen.
+ */
+const IN_VORBEREITUNG: readonly PageKey[] = ['wissen']
+
 /** Ein Punkt der Hauptnavigation. Ohne Ziel, solange es die Seite nicht gibt. */
 export type NavItem = {
   page: PageKey
   /** Adresse — oder `null`, wenn die Seite in dieser Sprache fehlt. */
   href: string | null
+  /** Seite vorhanden, Inhalt noch im Aufbau. */
+  inVorbereitung: boolean
 }
 
 /**
@@ -282,6 +293,7 @@ export function mainNavItems(locale: Locale): NavItem[] {
   return mainNavOrder.map((page) => ({
     page,
     href: isPublished(page, locale) ? path(page, locale) : null,
+    inVorbereitung: IN_VORBEREITUNG.includes(page),
   }))
 }
 

@@ -49,7 +49,7 @@ export function WissensseiteTemplate({ inhalt, locale }: Props) {
   return (
     <>
       {/* ---- 1 Einstieg -------------------------------------------------- */}
-      <Hero titel={inhalt.hero.heading} satz={inhalt.hero.lead} />
+      <Hero eyebrow={inhalt.hero.eyebrow} titel={inhalt.hero.heading} satz={inhalt.hero.lead} />
 
       {/* ---- 2 Hervorgehobener Beitrag ------------------------------------ */}
       <Section surface={f2} labelledBy="hervorgehoben">

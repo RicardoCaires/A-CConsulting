@@ -32,6 +32,8 @@ export type WissensBeitrag = {
 export type WissenContent = {
   meta: { title: string; description: string }
   hero: {
+    /** Vorzeile über der Überschrift. Sagt, dass der Bereich noch entsteht. */
+    eyebrow: string
     heading: string
     lead: string
   }
@@ -60,6 +62,7 @@ const de: WissenContent = {
   },
 
   hero: {
+    eyebrow: 'In Vorbereitung',
     heading: 'Wissen',
     lead: 'Kurze Beiträge zu Fragen, die im Erstgespräch immer wieder kommen. Kein Fachjargon, keine Werbung.',
   },

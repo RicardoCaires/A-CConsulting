@@ -112,6 +112,7 @@ export function Nav({ locale }: Props) {
               {eintrag({
                 page: 'kontakt',
                 href: isPublished('kontakt', locale) ? path('kontakt', locale) : null,
+                inVorbereitung: false,
               })}
             </ul>
 
