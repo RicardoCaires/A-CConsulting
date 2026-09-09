@@ -11,6 +11,9 @@ const config = [
   {
     ignores: [
       '.next/**',
+      // Der statische Export. Erzeugt, nicht geschrieben — und er enthaelt
+      // fremden Code aus Next.js und React, den zu pruefen sinnlos waere.
+      'out/**',
       'node_modules/**',
       'archiv/**',
       // Von Next.js bzw. vom Token-Generator erzeugt.

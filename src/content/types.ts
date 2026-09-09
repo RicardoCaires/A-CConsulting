@@ -37,8 +37,17 @@ export type LegalNote = { readonly legal: string }
  *   `buero` — Adresse, an der Kundinnen und Kunden empfangen werden
  *   `sitz`  — Sitz laut Handelsregister
  *   `ort`   — nur der Ortsname des Bueros
+ *   `firma` — vollstaendige Firmenbezeichnung
+ *   `uid`   — UID, zugleich Handelsregisternummer
+ *   `finma` — Registernummer des **Unternehmens**. Nie die persoenliche.
+ *
+ * Impressum und Datenschutzerklaerung bestehen fast nur aus solchen Angaben.
+ * Sie stehen darum auch dort nicht als Text, sondern als Verweis: Eine falsche
+ * Registernummer im Impressum waere kein Schoenheitsfehler.
  */
-export type CompanyRef = { readonly company: 'buero' | 'sitz' | 'ort' | 'ricardo' | 'octavio' }
+export type CompanyRef = {
+  readonly company: 'buero' | 'sitz' | 'ort' | 'ricardo' | 'octavio' | 'firma' | 'uid' | 'finma'
+}
 
 /** Textstueck: Klartext, offene Angabe oder rechtlich zu pruefende Aussage. */
 export type Inline = string | PendingNote | LegalNote | CompanyRef

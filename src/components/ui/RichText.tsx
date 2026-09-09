@@ -1,18 +1,23 @@
 import { Fragment } from 'react'
 
-import { isCompanyRef, isLegal, isPending, type Rich } from '@/content/types'
-import { bueroOneLine, buero, direktnummern, sitzOneLine } from '@/lib/company'
+import { isCompanyRef, isLegal, isPending, type CompanyRef, type Rich } from '@/content/types'
+import { bueroOneLine, buero, company, direktnummern, sitzOneLine } from '@/lib/company'
 import { showDraft } from '@/lib/draft'
 
 import { DraftNote } from './DraftNote'
 
 /** Firmenangaben, die im Inhalt als Verweis stehen duerfen. */
-const FIRMA: Record<'buero' | 'sitz' | 'ort' | 'ricardo' | 'octavio', string> = {
+const FIRMA: Record<CompanyRef['company'], string> = {
   buero: bueroOneLine,
   sitz: sitzOneLine,
   ort: buero.city,
   ricardo: direktnummern.ricardo.anzeige,
   octavio: direktnummern.octavio.anzeige,
+  firma: company.legalName,
+  uid: company.uid,
+  // Bewusst die Nummer des Unternehmens. Die persoenliche gehoert nicht auf
+  // die Website — sie steht nicht einmal in diesem Projekt.
+  finma: company.finmaCompany,
 }
 
 /**

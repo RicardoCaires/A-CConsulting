@@ -10,7 +10,9 @@ import type { Locale } from '@/i18n/config'
 import type { PageKey } from '@/i18n/routes'
 
 import type { PageContent } from '../types'
+import { datenschutz } from './datenschutz'
 import { firmengruendung } from './firmengruendung'
+import { impressum } from './impressum'
 import { kontakt } from './kontakt'
 import { personalFinance } from './personal-finance'
 import { steuern } from './steuern'
@@ -22,6 +24,8 @@ import { versicherungen } from './versicherungen'
 type PagesByKey = Partial<Record<PageKey, PageContent>>
 
 const de: PagesByKey = {
+  impressum,
+  datenschutz,
   versicherungen,
   treuhand,
   treuhaenderWechseln,
