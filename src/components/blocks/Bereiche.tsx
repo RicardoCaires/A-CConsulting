@@ -33,7 +33,9 @@ export type Bereich = {
   linkText: string
 }
 
-export type LeitBereich = Bereich & {
+export type LeitBereich = Omit<Bereich, 'text'> & {
+  /** Beim fuehrenden Bereich freiwillig — der Abschnitt darueber sagt es schon. */
+  text?: ReactNode
   bild: { label: string; note?: string }
 }
 
@@ -60,7 +62,7 @@ export function Bereiche({ leit, weitere, locale }: Props) {
       <article className={styles.leit}>
         <div className={styles.leitText}>
           <h3 className={styles.titelGross}>{leit.titel}</h3>
-          <p className={styles.text}>{leit.text}</p>
+          {leit.text && <p className={styles.text}>{leit.text}</p>}
           <Stichworte werte={leit.stichworte} />
           <PageLink
             target={leit.ziel}
