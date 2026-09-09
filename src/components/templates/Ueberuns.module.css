@@ -1,0 +1,312 @@
+/* Vorlage E — „Ueber uns".
+
+   Eine redaktionelle Seite, keine Abfolge von Sektionen. Der Rhythmus kommt
+   aus Breite, Ausrichtung, Bildanteil und Schriftgroesse — nicht aus Rahmen,
+   Karten oder Piktogrammen. Auf dieser Seite gibt es kein einziges Icon.
+
+   Die Abstaende sind bewusst enger als `--ac-section-y` (60–120 px). Was
+   zusammengehoert, steht zusammen: Kopf und Profile bilden eine durchgehende
+   Flaeche ohne Trennung dazwischen. */
+
+/* ---- 1 + 2  Kopf und Profile, eine Flaeche ------------------------------- */
+
+.oben {
+  padding-block: clamp(2rem, 5vw, 3.5rem) clamp(3rem, 7vw, 5rem);
+}
+
+/* Der Kopf: Text schmal, Bild gross. 58/42 ab Desktop. */
+.kopf {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
+}
+
+.kopfText {
+  /* Bewusst schmal — der Einstieg soll nicht ueber die halbe Seite laufen. */
+  max-width: 30rem;
+}
+
+.titel {
+  margin-bottom: var(--ac-space-sm);
+  /* Kurz halten, damit die Zeile nicht ueber vier Zeilen bricht. */
+  max-width: 15ch;
+}
+
+.kopfSatz {
+  font-size: var(--ac-lead-size);
+  line-height: var(--ac-lead-line);
+  color: var(--ac-color-text-secondary);
+  max-width: 42ch;
+}
+
+/* Das Bild traegt den Kopf. Hochformat 4:5 wie in der Shootingliste. */
+.kopfBild {
+  aspect-ratio: 4 / 5;
+}
+
+/* ---- 2  Profile ---------------------------------------------------------- */
+
+.profile {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4rem);
+  margin-top: clamp(3rem, 7vw, 5rem);
+}
+
+.profil {
+  display: grid;
+  gap: clamp(1.25rem, 4vw, 2.5rem);
+  align-items: start;
+  /* Eine Haarlinie statt eines Kastens: Sie trennt, ohne einzusperren. */
+  padding-top: clamp(2rem, 5vw, 3rem);
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.profil:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.profilBild {
+  aspect-ratio: 4 / 5;
+}
+
+/* Rolle steht ueber dem Namen und ist die kleinste Angabe im Block —
+   der Name faellt zuerst ins Auge, nicht die Funktion. */
+.rolle {
+  font-size: var(--ac-eyebrow-size);
+  line-height: var(--ac-eyebrow-line);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+  margin-bottom: var(--ac-space-2xs);
+}
+
+.name {
+  font-size: var(--ac-h2-size);
+  line-height: var(--ac-h2-line);
+  font-weight: var(--ac-h2-weight);
+  letter-spacing: var(--ac-h2-tracking);
+  margin-bottom: var(--ac-space-xs);
+}
+
+/* Das Wichtigste nach dem Namen: etwas groesser als Fliesstext. */
+.kern {
+  font-size: var(--ac-lead-size);
+  line-height: var(--ac-lead-line);
+  max-width: 40ch;
+}
+
+/* Der Werdegang ist Beleg, nicht Aussage: kleiner, ruhiger, schmaler. */
+.werdegang {
+  margin-top: var(--ac-space-sm);
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-color-text-secondary);
+  max-width: 46ch;
+}
+
+/* Sprachen und Telefon als Randangaben, ueber einer Haarlinie. */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ac-space-2xs) var(--ac-space-md);
+  margin-top: var(--ac-space-md);
+  padding-top: var(--ac-space-xs);
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-color-text-secondary);
+  max-width: 46ch;
+}
+
+.meta a {
+  font-variant-numeric: tabular-nums;
+  /* Trefferflaeche, ohne den Fluss der Zeile zu stoeren. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+/* ---- 3  Arbeitsweise ----------------------------------------------------- */
+
+.prinzipienRaster {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.prinzipienTitel {
+  /* Bleibt beim Scrollen neben der Liste stehen — die Ueberschrift gehoert
+     zu allen fuenf Punkten, nicht nur zum ersten. */
+  align-self: start;
+  max-width: 12ch;
+}
+
+.prinzipien {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.prinzip {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr;
+  gap: 0 var(--ac-space-sm);
+  padding-block: var(--ac-space-md);
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.prinzip:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.prinzip:last-child {
+  padding-bottom: 0;
+}
+
+.nummer {
+  font-family: var(--ac-font-display);
+  font-size: var(--ac-h3-size);
+  line-height: 1.35;
+  font-weight: var(--ac-h3-weight);
+  font-variant-numeric: tabular-nums;
+  color: var(--ac-color-accent-green);
+}
+
+.prinzipTitel {
+  font-size: var(--ac-h3-size);
+  line-height: var(--ac-h3-line);
+  font-weight: var(--ac-h3-weight);
+  letter-spacing: var(--ac-h3-tracking);
+  margin-bottom: var(--ac-space-3xs);
+}
+
+.prinzipSatz {
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-color-text-secondary);
+  max-width: 54ch;
+}
+
+/* ---- 4  Standort --------------------------------------------------------- */
+
+.standort {
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+.standortRaster {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.standortText {
+  max-width: 34rem;
+}
+
+/* Die Anschrift traegt den Block — groesser als der Satz darunter. */
+.adresse {
+  margin-top: var(--ac-space-sm);
+  font-size: var(--ac-lead-size);
+  line-height: var(--ac-lead-line);
+  font-variant-numeric: tabular-nums;
+}
+
+.standortSatz {
+  margin-top: var(--ac-space-xs);
+  color: var(--ac-color-text-secondary);
+  max-width: 46ch;
+}
+
+/* Breites Querformat — der Gegenpol zu den beiden Hochformaten darueber. */
+.standortBild {
+  aspect-ratio: 3 / 2;
+}
+
+/* Randangaben: Region und Beratungssprachen, durch Mittelpunkte getrennt. */
+.standortMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ac-space-2xs) var(--ac-space-md);
+  margin: clamp(1.5rem, 4vw, 2.5rem) 0 0;
+  padding-top: var(--ac-space-sm);
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  list-style: none;
+
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  letter-spacing: 0.02em;
+  color: var(--ac-color-text-secondary);
+}
+
+.standortMeta li + li::before {
+  content: '·';
+  margin-inline-end: var(--ac-space-md);
+  color: var(--ac-color-border-light);
+}
+
+/* ---- Ab Tablet ----------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  /* Kopf: Text schmal, Bild breiter — 58/42. */
+  .kopf {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  }
+
+  /* Quadratisch statt hochkant: Bei 3:4 war der Kopf 599 px hoch fuer 296 px
+     Text — 152 px Leerraum ueber der Vorzeile. Das Bild behaelt sein Gewicht,
+     der Kopf verliert die Luft, die niemand braucht. */
+  .kopfBild {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Profile: Bild links, Text rechts — und beim zweiten umgekehrt. */
+  .profil {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: center;
+  }
+
+  /* Beim Umdrehen wandern **beide** mit: Sonst steht das Bild in der breiten
+     Spalte und der Text in der schmalen — die beiden Profile haetten dann
+     unterschiedlich grosse Portraets. */
+  .gedreht {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  }
+
+  .gedreht .profilBild {
+    order: 2;
+  }
+
+  /* Ueberschrift links, Liste rechts. Die Ueberschrift bekommt bewusst
+     weniger Platz als die Liste. */
+  .prinzipienRaster {
+    grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.45fr);
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+
+  .prinzipienTitel {
+    position: sticky;
+    top: 10rem;
+  }
+
+  /* Standort: Text links, breites Bild rechts. */
+  .standortRaster {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prinzipienTitel {
+    position: static;
+  }
+}
+
+@media print {
+  .kopfBild,
+  .profilBild,
+  .standortBild {
+    display: none;
+  }
+}

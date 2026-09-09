@@ -18,7 +18,7 @@ import { personalFinance } from './personal-finance'
 import { steuern } from './steuern'
 import { treuhaenderWechseln } from './treuhaender-wechseln'
 import { treuhand } from './treuhand'
-import { ueberUns } from './ueber-uns'
+
 import { versicherungen } from './versicherungen'
 
 type PagesByKey = Partial<Record<PageKey, PageContent>>
@@ -32,7 +32,6 @@ const de: PagesByKey = {
   steuern,
   personalFinance,
   firmengruendung,
-  ueberUns,
   kontakt,
 }
 

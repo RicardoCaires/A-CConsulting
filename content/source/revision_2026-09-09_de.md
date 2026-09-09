@@ -43,3 +43,32 @@ Adresse: /de/finanzplanung
 Titel für Suchmaschinen: Budget und Vorsorge — Finanzplanung
 
 Rollenzeile: Versicherungen · Treuhand · Finanzplanung
+
+---
+
+## Über uns — visuelle Überarbeitung
+
+Der Wortlaut bleibt, bis auf drei Stellen. Geändert wird die Darstellung.
+
+### Vorzeile im Seitenkopf
+
+Über A&C
+
+### Drittes Prinzip
+
+Bisher hiess es „Digital, wo es etwas bringt", der Text darunter sagte aber
+nichts Digitales — ein Rest der am 07.09.2026 gestrichenen Automatisierung.
+Überschrift und Text passen jetzt zusammen.
+
+Überschrift: Digital
+
+Text: Moderne Prozesse dort, wo sie Administration vereinfachen. Die fachliche Prüfung und die Verantwortung bleiben bei uns.
+
+### Bildplätze
+
+| Platz | Beschriftung | Aufnahme |
+|---|---|---|
+| Seitenkopf | RICARDO & OCTAVIO | Aufnahme 2 der Shootingliste |
+| Profil Ricardo | PORTRÄT RICARDO | Aufnahme 4 der Shootingliste |
+| Profil Octavio | PORTRÄT OCTAVIO | Aufnahme 5 der Shootingliste |
+| Standort | BÜRO LYSS | Aufnahme 6 der Shootingliste |

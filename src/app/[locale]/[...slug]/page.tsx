@@ -5,12 +5,14 @@ import { Hero } from '@/components/blocks/Hero'
 import { PageBlocks } from '@/components/blocks/PageBlocks'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
 import { LeistungsseiteTemplate } from '@/components/templates/Leistungsseite'
+import { UeberunsTemplate } from '@/components/templates/Ueberuns'
 import { WissensseiteTemplate } from '@/components/templates/Wissensseite'
 import { Button } from '@/components/ui/Button'
 import { RichText } from '@/components/ui/RichText'
 import { alsText } from '@/components/ui/Translated'
 import { getLeistungsseite } from '@/content/leistungsseiten'
 import { getPageContent } from '@/content/pages'
+import { getUeberuns } from '@/content/ueberuns'
 import { getWissen } from '@/content/wissen'
 import { htmlLang, isLocale, locales } from '@/i18n/config'
 import { getUi } from '@/i18n/messages/ui'
@@ -78,6 +80,12 @@ export function generateStaticParams() {
       if (key === 'home') continue
       // Eine Seite wird erzeugt, wenn es Inhalt gibt — nach neuem Schema
       // (Vorlage B) oder nach dem bisherigen Blockmodell.
+      if (key === 'ueberUns') {
+        if (!getUeberuns(locale)) continue
+        params.push({ locale, slug: pages[key].slug[locale].split('/') })
+        continue
+      }
+
       if (key === 'wissen') {
         if (!getWissen(locale)) continue
         params.push({ locale, slug: pages[key].slug[locale].split('/') })
@@ -109,6 +117,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       .filter((candidate) => isPublished(key, candidate))
       .map((candidate) => [htmlLang[candidate], path(key, candidate)]),
   )
+
+  // Vorlage E: „Ueber uns" bringt seine Angaben selbst mit.
+  if (key === 'ueberUns') {
+    const ueberuns = getUeberuns(locale)
+    if (!ueberuns) return {}
+
+    return {
+      title: ueberuns.meta.title,
+      description: ueberuns.meta.description,
+      alternates: { canonical: path(key, locale) },
+      openGraph: {
+        title: `${ueberuns.meta.title} — ${company.shortName}`,
+        description: ueberuns.meta.description,
+        url: path(key, locale),
+        locale: htmlLang[locale].replace('-', '_'),
+      },
+    }
+  }
 
   // Vorlage D: der Wissensbereich bringt seine Angaben selbst mit.
   if (key === 'wissen') {
@@ -175,6 +201,21 @@ export default async function ContentPage({ params }: PageProps) {
 
   const key = pageKeyFromSlug(locale, slug)
   if (!key) notFound()
+
+  // Vorlage E: „Ueber uns" ist eine redaktionelle Seite mit fuenf eigenen
+  // Kompositionen statt gleichfoermiger Bloecke. Sie laeuft darum nicht ueber
+  // das Blockmodell.
+  if (key === 'ueberUns') {
+    const ueberuns = getUeberuns(locale)
+    if (!ueberuns) notFound()
+
+    return (
+      <>
+        <Breadcrumb page={key} locale={locale} />
+        <UeberunsTemplate inhalt={ueberuns} locale={locale} />
+      </>
+    )
+  }
 
   // Vorlage D: der Wissensbereich hat einen eigenen Aufbau — ein
   // hervorgehobener Beitrag und eine Uebersicht passen in kein Blockmodell.
