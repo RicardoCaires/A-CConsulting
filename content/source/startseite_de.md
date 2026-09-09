@@ -62,12 +62,11 @@ Aussage: Wir vertreten Sie, nicht die Versicherung.
 
 Zusatz: Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.
 
-Der Zusatz erscheint nur auf schmalen Geräten. Ab Desktop steht er eingebrannt
-in der Modellgrafik; der Textblock wird dort ausgeblendet.
+Vorzeile, Aussage und Zusatz stehen auf jeder Fenstergrösse als Text.
 
-Darunter die Modellgrafik „Unser Modell" (Kunde → Mandat → A&C → Preisvergleich),
-von Ricardo am 09.09.2026 als Bild geliefert und ausdrücklich so gewollt —
-einschliesslich der Logos von acht Versicherungsgesellschaften.
+Ohne Grafik. Die Modellgrafik „Unser Modell" stand hier am 09.09.2026 kurz und
+wurde von Ricardo am selben Tag wieder herausgenommen. Sie steht seither allein
+auf der Seite Versicherungen, nach „Wir arbeiten in Ihrem Auftrag".
 
 Alternativtext: Schaubild „Unser Modell": Der Kunde erteilt A&C Consulting ein Mandat. A&C analysiert den Bedarf, vergleicht Angebote am Markt, berät, übernimmt den Schriftverkehr und begleitet langfristig. Für den Preisvergleich holt A&C Offerten bei verschiedenen Versicherungsgesellschaften ein. Zurück zum Kunden geht ein transparenter Vorschlag.
 
@@ -96,9 +95,9 @@ Einleitung: Sechs Ausgangslagen, die bei uns am häufigsten am Anfang stehen.
 
 Kein beschreibender Satz. Beide Sätze — „Wir vertreten Sie, nicht die
 Versicherung." und „Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen
-den Schriftverkehr — auch im Schadenfall." — stehen in Abschnitt 03 und in der
-Modellgrafik. Am 09.09.2026 hier gestrichen, damit die Seite sie nicht zweimal
-untereinander sagt. Die Karte trägt Überschrift, Stichworte und Verweis.
+den Schriftverkehr — auch im Schadenfall." — stehen im Abschnitt darüber. Am
+09.09.2026 hier gestrichen, damit die Seite sie nicht zweimal untereinander
+sagt. Die Karte trägt Überschrift, Stichworte und Verweis.
 
 Stichworte: Krankenversicherung und Zusatzversicherung · Hausrat, Haftpflicht und Motorfahrzeug · Leben und Säule 3a · BVG, UVG und Krankentaggeld · Betriebshaftpflicht und Sachversicherung
 

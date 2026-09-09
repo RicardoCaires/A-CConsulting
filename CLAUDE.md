@@ -438,15 +438,26 @@ verboten bleiben Schlagwörter („KI-gestützt" als Auszeichnung, „AI-powered
 „disruptiv", „next generation"). Die fachliche Prüfung, die Beratung und die
 Verantwortung liegen im Text ausdrücklich bei A&C.
 
-**Modellgrafik, Abschnitt 2.** Unter dem Statement steht seit dem 09.09.2026
-eine Grafik „Unser Modell" (Kunde → Mandat → A&C → Preisvergleich), die
-Ricardo als Bild geliefert hat. **Sie zeigt die Logos von acht
-Versicherungsgesellschaften** (Zurich, Helvetia, AXA, Allianz, Vaudoise,
-Die Mobiliar, Generali, Swiss Life). Das widerspricht der Regel in Abschnitt 3
-(„Logos von Versicherern ohne schriftliche Freigabe"). Ricardo wurde darauf
-hingewiesen und hat am 09.09.2026 entschieden, die Grafik so zu verwenden —
-die Verantwortung für Freigaben liegt bei ihm. Ändert sich das, ist die Grafik
-in `src/content/startseite.ts` unter `statement.grafik` zu ersetzen.
+**Modellgrafik — nicht auf der Startseite.** Die Grafik „Unser Modell"
+(Kunde → Mandat → A&C → Preisvergleich) stand am 09.09.2026 kurz unter dem
+Statement und wurde von Ricardo am selben Tag wieder herausgenommen. Sie steht
+seither **nur** auf `/versicherungen`, direkt nach „Wir arbeiten in Ihrem
+Auftrag" — dort erklärt sie den Bereich, den sie zeigt. Abschnitt 2 der
+Startseite trägt wieder Text, auf jeder Fenstergrösse.
+
+**Sie zeigt die Logos von acht Versicherungsgesellschaften** (Zurich, Helvetia,
+AXA, Allianz, Vaudoise, Die Mobiliar, Generali, Swiss Life). Das widerspricht
+der Regel in Abschnitt 3 („Logos von Versicherern ohne schriftliche Freigabe").
+Ricardo wurde darauf hingewiesen und hat am 09.09.2026 entschieden, die Grafik
+so zu verwenden — die Verantwortung für Freigaben liegt bei ihm.
+
+**Die Datei ist verbindlich, nicht beliebig.** Ricardo hat am 09.09.2026
+festgestellt, dass die eingesetzte Fassung eine falsche Bildmarke trägt: Die
+grüne Spitze sitzt neben dem Navy-Berg statt auf ihm. Es gilt ausschliesslich
+die von Ricardo zuletzt freigegebene Datei. Eine Fassung, die nicht von ihm
+kommt, wird nicht eingesetzt und nicht nachgebaut. Gepflegt wird sie an einer
+Stelle: `bilder-quelle/unser-modell.png` als Quelle, `public/bilder/unser-modell.webp` als ausgelieferte Fassung, eingebunden in
+`src/content/pages/versicherungen.ts`.
 
 **Sprachwahl.** Gezeigt werden nur Sprachen, die es gibt. Solange nur Deutsch
 vorliegt, entfällt die Sprachwahl im Kopfbereich ganz — eine Auswahl mit einem
