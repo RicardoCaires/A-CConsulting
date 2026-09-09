@@ -21,8 +21,15 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   /* Der Kopfbereich bleibt beim Scrollen stehen — Sprungziele muessen darunter
-     hervorkommen, sonst landet man auf einer verdeckten Ueberschrift. */
+     hervorkommen, sonst landet man auf einer verdeckten Ueberschrift.
+     Schmal ist er eine Zeile hoch, ab 64rem zwei; der Abstand waechst mit. */
   scroll-padding-top: 5rem;
+}
+
+@media (min-width: 64rem) {
+  html {
+    scroll-padding-top: 9.5rem;
+  }
 }
 
 body,

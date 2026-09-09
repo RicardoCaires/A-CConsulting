@@ -3,8 +3,8 @@
    Weiss, eine Haarlinie nach unten, sonst nichts. Er soll die Seite nicht
    anfuehren, sondern sie halten: Was auffaellt, ist der Inhalt darunter.
 
-   Die Hoehe kommt aus einem Token, weil das Menue auf schmalen Geraeten
-   darunter haengt und beide denselben Wert brauchen. */
+   Ein Raster, zwei Anordnungen. Schmal eine Zeile, breit zwei — siehe
+   Header.tsx. */
 
 .header {
   background-color: var(--ac-surface-header);
@@ -16,22 +16,25 @@
   z-index: 30;
 }
 
+/* ---- Schmale Fenster: eine Zeile ---------------------------------------- */
+
 .inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--ac-space-2xs);
+  column-gap: var(--ac-space-2xs);
   min-height: var(--ac-header-height);
 }
 
-/* Die Navigation sitzt zwischen Logo und Aktionen und nimmt den freien Platz.
-   Sie steht rechtsbuendig: Zusammen mit Sprachwahl und Knopf entsteht rechts
-   eine Gruppe, links steht das Logo allein. Das ist ruhiger als eine mittig
-   gesetzte Reihe, die je nach Wortlaenge wandert. */
-.center {
+.logo {
+  /* Die Wortmarke wird nicht zusammengedrueckt. Als Rasterelement schrumpfte
+     sie sonst unter ihre eigene Breite, und die Nachbarn liefen darueber. */
+  min-width: 0;
+}
+
+.nav {
   display: flex;
   justify-content: flex-end;
-  flex: 1 1 auto;
   min-width: 0;
 }
 
@@ -39,7 +42,6 @@
   display: flex;
   align-items: center;
   gap: var(--ac-space-2xs);
-  flex: none;
 }
 
 /* Der Knopf erscheint erst mit der offenen Navigationsreihe — auf schmalen
@@ -48,14 +50,42 @@
   display: none;
 }
 
+/* ---- Breite Fenster: zwei Zeilen, beide mittig -------------------------- */
+
 @media (min-width: 64rem) {
   .inner {
-    gap: var(--ac-space-lg);
-    min-height: var(--ac-header-height-wide);
+    /* Die beiden Aussenspalten sind gleich breit. Nur so steht das Logo
+       wirklich in der Mitte des Fensters und nicht bloss in der Mitte des
+       Platzes, den die Nachbarn uebrig lassen. */
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas:
+      'leer logo aktionen'
+      'nav  nav  nav';
+    row-gap: var(--ac-space-2xs);
+    padding-block: var(--ac-space-sm);
+    min-height: 0;
+  }
+
+  .logo {
+    grid-area: logo;
+    justify-self: center;
+  }
+
+  /* Groesser als in der schmalen Fassung: In einer eigenen Zeile hat die
+     Wortmarke den Platz dafuer, und sie traegt den Kopf jetzt allein. */
+  .logo img {
+    width: clamp(11rem, 8rem + 6vw, 14rem);
   }
 
   .actions {
+    grid-area: aktionen;
+    justify-self: end;
     gap: var(--ac-space-sm);
+  }
+
+  .nav {
+    grid-area: nav;
+    justify-content: center;
   }
 
   .cta {

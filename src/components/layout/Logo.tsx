@@ -25,14 +25,26 @@ type Props = {
   width?: number
   variant?: 'color' | 'negativ'
   priority?: boolean
+  /** Zusatzklasse des Links — der Kopfbereich setzt darueber seine Groesse. */
+  className?: string
 }
 
-export function Logo({ locale, width = 150, variant = 'color', priority = false }: Props) {
+export function Logo({
+  locale,
+  width = 150,
+  variant = 'color',
+  priority = false,
+  className,
+}: Props) {
   const ui = getUi(locale)
   const src = variant === 'negativ' ? '/logo/ac-logo-negativ.png' : '/logo/ac-logo.png'
 
   return (
-    <a className={styles.link} href={homeHref(locale)} aria-label={ui.toHomepage}>
+    <a
+      className={[styles.link, className].filter(Boolean).join(' ')}
+      href={homeHref(locale)}
+      aria-label={ui.toHomepage}
+    >
       <Image
         src={src}
         alt="A&C Consulting GmbH"

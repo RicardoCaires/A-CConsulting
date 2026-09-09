@@ -11,12 +11,23 @@ import styles from './Header.module.css'
 /**
  * Kopfbereich — auf jeder Seite identisch.
  *
- * Links das Logo, klein und ruhig, immer zur Startseite. Rechts die
- * Navigationsreihe, die Sprachwahl und der eine Handlungsknopf.
+ * Zwei Anordnungen aus **einem** Markup, gesetzt ueber ein Raster:
  *
- * Auf schmalen Geraeten wird die Reihe zum Menue. Der Knopf entfaellt oben
- * nicht ersatzlos — er steht unten im Menue ueber die volle Breite, wo er mit
- * dem Daumen erreichbar ist.
+ *   schmal   Logo · Menue · Sprachwahl        — eine Zeile
+ *   breit    Logo mittig, Sprachwahl und      — zwei Zeilen
+ *            Knopf rechts; darunter die
+ *            Kategorien, ebenfalls mittig
+ *
+ * Die breite Fassung stammt vom 09.09.2026. Vorher stand das Logo links und
+ * die Kategorien rechts daneben — mit fuenf Punkten, Sprachwahl und Knopf war
+ * die Zeile voll, und die Kategorien liefen bei rund 1280 px ueber die
+ * Wortmarke. Zwei Zeilen loesen das nicht durch einen Kniff, sondern weil
+ * Logo und Navigation nicht mehr um dieselbe Zeile konkurrieren. Beide haben
+ * die ganze Breite; das Logo darf darum groesser stehen.
+ *
+ * Die Reihenfolge im Markup ist die des schmalen Geraets. Auf breiten Fenstern
+ * ordnet das Raster um — die Navigation bleibt im Quelltext an derselben
+ * Stelle, damit die Tastaturbedienung ihr folgt.
  */
 
 type Props = {
@@ -29,9 +40,9 @@ export function Header({ locale }: Props) {
   return (
     <header className={styles.header}>
       <div className={`ac-container ${styles.inner}`}>
-        <Logo locale={locale} priority />
+        <Logo locale={locale} priority className={styles.logo} />
 
-        <div className={styles.center}>
+        <div className={styles.nav}>
           <Nav locale={locale} />
         </div>
 
