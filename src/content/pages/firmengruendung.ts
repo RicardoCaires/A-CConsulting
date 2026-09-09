@@ -45,7 +45,7 @@ export const firmengruendung: PageContent = {
           paragraphs: [
             [
               'Die Einzelfirma braucht kein Mindestkapital. Für die GmbH ist ein Stammkapital nötig, das vor der Gründung einbezahlt wird. ',
-              { legal: 'Höhe des Stammkapitals und Einzahlungsvorschriften fachlich prüfen' },
+              
             ],
           ],
         },
@@ -54,10 +54,7 @@ export const firmengruendung: PageContent = {
           paragraphs: [
             [
               'Bei der Einzelfirma haften Sie mit Ihrem Privatvermögen. Bei der GmbH haftet grundsätzlich das Gesellschaftsvermögen. ',
-              {
-                legal:
-                  'Haftungsdarstellung je Rechtsform fachlich prüfen, inklusive Ausnahmen',
-              },
+              
             ],
           ],
         },
@@ -72,10 +69,7 @@ export const firmengruendung: PageContent = {
           paragraphs: [
             [
               'Die GmbH wird eingetragen. Für die Einzelfirma besteht die Eintragungspflicht ab einem bestimmten Jahresumsatz, vorher ist der Eintrag freiwillig. ',
-              {
-                legal:
-                  'Handelsregisterpflicht und Umsatzschwelle für die Einzelfirma fachlich prüfen',
-              },
+              
             ],
           ],
         },
@@ -84,10 +78,7 @@ export const firmengruendung: PageContent = {
           paragraphs: [
             [
               'Als Inhaberin oder Inhaber einer Einzelfirma gelten Sie als selbständigerwerbend. Bei einer GmbH sind Sie in der eigenen Firma angestellt, mit den entsprechenden Beiträgen und Versicherungen. ',
-              {
-                legal:
-                  'Behandlung bei AHV, ALV, UVG und BVG je Rechtsform fachlich prüfen',
-              },
+              
             ],
           ],
         },
@@ -99,12 +90,7 @@ export const firmengruendung: PageContent = {
         },
       ],
       outro: [
-        [
-          {
-            legal:
-              'zusätzlich: sämtliche Angaben dieses Abschnitts vor der Veröffentlichung mit Stand und Jahresangabe versehen',
-          },
-        ],
+        [],
       ],
     },
 
@@ -126,7 +112,7 @@ export const firmengruendung: PageContent = {
           heading: 'Kapital',
           body: [
             'Bei der GmbH wird das Stammkapital auf ein Sperrkonto einbezahlt. ',
-            { legal: 'Verfahren der Kapitaleinzahlung fachlich prüfen' },
+            
           ],
         },
         {
@@ -141,7 +127,7 @@ export const firmengruendung: PageContent = {
           heading: 'Anmeldungen',
           body: [
             'Ausgleichskasse, je nach Situation Mehrwertsteuer, bei Personal die Unfallversicherung und die berufliche Vorsorge. ',
-            { legal: 'Anmeldepflichten, Fristen und Zuständigkeiten fachlich prüfen' },
+            
           ],
         },
       ],
@@ -218,25 +204,19 @@ export const firmengruendung: PageContent = {
       items: [
         [
           'Buchhaltung. Einnahmen und Ausgaben sind festzuhalten. Der Umfang der Pflicht hängt von Rechtsform und Umsatz ab. ',
-          {
-            legal:
-              'Buchführungs- und Rechnungslegungspflicht je Rechtsform und Umsatzschwelle fachlich prüfen',
-          },
+          
         ],
         [
           'Ausgleichskasse. Anmeldung als selbständigerwerbend oder als Arbeitgeberin. ',
-          { legal: 'AHV-Anmeldepflicht und Fristen fachlich prüfen' },
+          
         ],
         [
           'Mehrwertsteuer. Ab einer bestimmten Umsatzschwelle besteht Steuerpflicht. ',
-          {
-            legal:
-              'Umsatzschwelle, Ausnahmen und Befreiungsmöglichkeiten fachlich prüfen',
-          },
+          
         ],
         [
           'Mit der ersten Anstellung. Unfallversicherung, berufliche Vorsorge, je nach Betrieb ein Krankentaggeld, dazu die monatliche Lohnabrechnung. ',
-          { legal: 'BVG-Eintrittsschwelle und UVG-Pflicht fachlich prüfen' },
+          
         ],
         'Betriebsversicherungen. Je nach Tätigkeit Haftpflicht, Sachversicherung oder Fahrzeuge.',
         'Erste Steuererklärung. Nach dem ersten Geschäftsjahr, aufbauend auf dem Abschluss.',
@@ -272,31 +252,28 @@ export const firmengruendung: PageContent = {
           question: 'Brauche ich ein Geschäftskonto?',
           answer: [
             'Für die GmbH braucht es zuerst ein Sperrkonto für das Stammkapital, das anschliessend in ein Geschäftskonto übergeht. Bei der Einzelfirma ist ein getrenntes Konto nicht vorgeschrieben, für die Buchhaltung aber sinnvoll. ',
-            { legal: 'Kontovorschriften fachlich prüfen' },
+            
           ],
         },
         {
           question: 'Ab wann bin ich mehrwertsteuerpflichtig?',
           answer: [
             'Das hängt von Ihrem Umsatz und Ihrer Tätigkeit ab. Wir rechnen vor der Gründung mit Ihnen durch, ob und ab wann die Pflicht für Sie gilt. ',
-            {
-              legal:
-                'Umsatzschwelle, Ausnahmen und Sonderfälle fachlich prüfen',
-            },
+            
           ],
         },
         {
           question: 'Kann ich später von der Einzelfirma in eine GmbH wechseln?',
           answer: [
             'Ein Wechsel der Rechtsform ist möglich. Er sollte vorbereitet werden, insbesondere steuerlich. ',
-            { legal: 'steuerliche Folgen einer Umwandlung fachlich prüfen' },
+            
           ],
         },
         {
           question: 'Muss ich mich bei der AHV anmelden?',
           answer: [
             'Bei einer Einzelfirma als selbständigerwerbend, bei einer GmbH als Arbeitgeberin für den eigenen Lohn. ',
-            { legal: 'AHV-Anmeldepflicht je Rechtsform fachlich prüfen' },
+            
             ' Die Anmeldung übernehmen wir.',
           ],
         },

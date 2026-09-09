@@ -86,10 +86,7 @@ export const personalFinance: PageContent = {
         'Die dritte Säule ist für viele die einzige Vorsorge, die sie selbst in der Hand haben — und oft die, um die sie sich am wenigsten kümmern.',
         [
           'Wir schauen mit Ihnen an, was aus AHV und Pensionskasse zu erwarten ist, wo eine Lücke entsteht und was die Säule 3a in Ihrer Situation leisten kann. Ob eine Bank- oder eine Versicherungslösung besser passt, hängt davon ab, wie fest Sie sich binden wollen; wir sagen Ihnen, was der Unterschied für Sie bedeutet.',
-          {
-            legal:
-              'Darstellung von Saeule 3a, Bindung und Unterschied Bank/Versicherung fachlich pruefen — Grenze zur bewilligungspflichtigen Anlageberatung',
-          },
+          
         ],
         'Wir empfehlen kein Produkt, bevor wir Ihre Ausgangslage kennen.',
       ],

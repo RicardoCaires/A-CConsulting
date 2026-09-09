@@ -88,7 +88,7 @@ export const versicherungen: PageContent = {
           paragraphs: [
             [
               'Mit der ersten Anstellung kommen die obligatorische Unfallversicherung, die berufliche Vorsorge und je nach Betrieb ein Krankentaggeld dazu. ',
-              { legal: 'Obligatorien und Eintrittsschwellen bei UVG und BVG fachlich prüfen' },
+              
               ' Wir klären mit Ihnen, was in Ihrem Fall vorgeschrieben ist und was freiwillig bleibt.',
             ],
           ],
@@ -101,7 +101,6 @@ export const versicherungen: PageContent = {
         },
       ],
     },
-
 
     // 07 Betreuung — der Abschnitt, an dem sich ein Mandat von einem
     // Direktabschluss unterscheidet. Quelle: ergaenzungen_de.md
@@ -125,7 +124,6 @@ export const versicherungen: PageContent = {
       ],
       links: [{ target: 'schadenfall', label: 'Was im Schadenfall zu tun ist' }],
     },
-
 
     // 09 Ablauf einer Vertragsprüfung
     {

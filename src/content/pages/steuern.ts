@@ -25,7 +25,6 @@ export const steuern: PageContent = {
     ],
   },
 
-
   blocks: [
     // 02 Für Privatpersonen
     {
@@ -36,7 +35,7 @@ export const steuern: PageContent = {
         'Wir erstellen Ihre Steuererklärung im Kanton Bern, achten auf die Abzüge, die Ihnen zustehen, und reichen sie fristgerecht ein.',
         [
           'Wenn die Veranlagung kommt, prüfen wir sie und sagen Ihnen, ob sie mit dem übereinstimmt, was eingereicht wurde. Das ist wichtig, weil sich Abweichungen nur innerhalb der Einsprachefrist korrigieren lassen. ',
-          { legal: 'Einsprachefrist im Kanton Bern' },
+          
         ],
         'Wir erstellen Steuererklärungen hauptsächlich im Kanton Bern.',
       ],
@@ -81,7 +80,7 @@ export const steuern: PageContent = {
       heading: 'Checkliste Steuererklärung Kanton Bern',
       paragraphs: [
         'Die Liste zeigt, welche Unterlagen Sie zusammenstellen sollten. Sie können sie ohne Anmeldung herunterladen und auch dann verwenden, wenn Sie die Steuererklärung selbst ausfüllen.',
-        [{ legal: 'Jahresangabe auf der Checkliste; jährlich zu aktualisieren' }],
+        
       ],
       download: { label: 'Checkliste herunterladen (PDF)', file: null },
     },
@@ -94,11 +93,11 @@ export const steuern: PageContent = {
       paragraphs: [
         [
           'Die Steuererklärung im Kanton Bern ist bis zu einem festen Termin einzureichen. ',
-          { legal: 'Einreichefrist für Privatpersonen und für Firmen, mit Jahresangabe' },
+          
         ],
         [
           'Eine Verlängerung ist möglich. ',
-          { legal: 'Verfahren, mögliche Dauer und allfällige Gebühren' },
+          
         ],
         'Wenn wir Ihre Steuererklärung erstellen, übernehmen wir auch die Fristverlängerung.',
       ],
@@ -130,7 +129,7 @@ export const steuern: PageContent = {
       paragraphs: [
         [
           'Sobald Sie neben der Anstellung etwas auf eigene Rechnung machen, ändert sich die Steuererklärung. Es kommen eine Aufstellung der Einnahmen und Ausgaben dazu und die Frage der Anmeldung bei der Ausgleichskasse. ',
-          { legal: 'ab wann eine Anmeldung als selbständigerwerbend erforderlich ist' },
+          
           ' Wir schauen das mit Ihnen an und klären, was zu tun ist.',
         ],
       ],
@@ -154,17 +153,14 @@ export const steuern: PageContent = {
           question: 'Können Sie die Frist verlängern?',
           answer: [
             'Die Fristverlängerung beantragen wir für Sie. ',
-            { legal: 'bis wann eine Verlängerung beantragt werden muss' },
+            
           ],
         },
         {
           question: 'Was, wenn mehrere Jahre offen sind?',
           answer: [
             'Mehrere offene Steuerjahre lassen sich aufarbeiten. ',
-            {
-              legal:
-                'Vorgehen und Folgen einer Einschätzung nach Ermessen im Kanton Bern',
-            },
+            
           ],
         },
         {

@@ -66,7 +66,7 @@ export const treuhaenderWechseln: PageContent = {
           heading: 'Zeitpunkt und Vertragliches',
           body: [
             'Wir schauen gemeinsam Ihre bestehende Vereinbarung an und legen einen Termin fest. Kündigungsfristen und Bedingungen ergeben sich aus Ihrem Vertrag. ',
-            { legal: 'fachlich geprüfte Formulierung' },
+            
           ],
         },
         {
@@ -109,10 +109,7 @@ export const treuhaenderWechseln: PageContent = {
       outro: [
         [
           'Welche Unterlagen Ihnen zustehen und in welcher Form sie übergeben werden, richtet sich nach Ihrer Vereinbarung und der jeweiligen Situation. ',
-          {
-            legal:
-              'fachlich geprüfte Formulierung zu Herausgabe, Zurückbehaltungsrecht und offenen Honoraren',
-          },
+          
         ],
       ],
       download: { label: 'Übersicht der Unterlagen herunterladen', file: null },
@@ -186,10 +183,7 @@ export const treuhaenderWechseln: PageContent = {
           question: 'Erhalte ich alle Unterlagen zurück?',
           answer: [
             'Was herausgegeben wird und in welcher Form, richtet sich nach Ihrer Vereinbarung und der Situation. ',
-            {
-              legal:
-                'fachlich geprüfte Antwort, inklusive Hinweis auf mögliche Zurückbehaltung bei offenen Rechnungen',
-            },
+            
           ],
         },
         {
