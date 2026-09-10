@@ -203,9 +203,22 @@
     margin-inline: 0;
   }
 
+  /* Zwei Spalten mit einer Haarlinie dazwischen — dieselbe Trennung wie
+     zwischen Text und Liste in der grossen Karte. Die Linie haengt an den
+     Eintraegen der zweiten Spalte; bei vier Eintraegen sind das der zweite
+     und der vierte. */
   .leistungenZweispaltig {
     grid-template-columns: 1fr 1fr;
-    column-gap: clamp(1.25rem, 3vw, 2rem);
+    column-gap: 0;
+  }
+
+  .leistungenZweispaltig .leistung:nth-child(2n) {
+    padding-left: clamp(1.25rem, 3vw, 2rem);
+    border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  }
+
+  .leistungenZweispaltig .leistung:nth-child(2n + 1) {
+    padding-right: clamp(1.25rem, 3vw, 2rem);
   }
 }
 
