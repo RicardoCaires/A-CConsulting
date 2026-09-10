@@ -566,6 +566,47 @@ eigene: 2 und 3 liegen zusammen in der Kartenzone, 6 und 7 sind seit dem
 nicht mehr auf dem Schirm steht. Das zu bereinigen ist ein eigener Auftrag —
 entweder die Regel anpassen oder die Zuweisungen wieder in die Folge holen.
 
+### Fussbereich
+
+Seit dem 10.09.2026 nach Ricardos Referenzgrafik
+(`bilder-quelle/footer_referenz.png`). Er steht auf **jeder** Seite — der
+Auftrag sprach von der Startseite, es gibt aber nur einen Fussbereich.
+
+Vier Spalten statt bisher drei: **Unternehmen · Leistungen · Rechtliches ·
+Regulatorisches.** Register und Rechtliches standen bis dahin zusammen.
+Darunter eine Schlusszeile mit Copyright links und dem Zusatz rechts.
+
+Alle Masse stammen aus der Vorlage, nicht aus dem Gefühl: senkrechte
+Trennlinien bei 28.5 / 50.0 / 71.5 Prozent der Inhaltsbreite, Spalten im
+Verhältnis 1.33 : 1 : 1 : 1.33, Logo 20.8 Prozent der Inhaltsbreite, grüner
+Strich unter den Spaltentiteln 42 von 1916 px.
+
+**Das gelieferte Hintergrundbild** hängt unten und behält sein
+Seitenverhältnis. Auf breiten Fenstern deckt es den ganzen Fussbereich, auf
+schmalen liegt es als Band am unteren Rand — nie verzerrt, die Bergformen
+immer unten rechts. Die grüne Linie der Datei wird abgeschnitten; dieselbe
+Linie steht bereits als Rand des Fussbereichs im Tokenwert und läge sonst
+doppelt.
+
+**Vier gelieferte Symbole fehlen** (Standort-Pin, Telefonhörer, Briefsymbol,
+grüner Chevron). Sie waren am 10.09.2026 nicht im Assets-Ordner. Bis sie
+kommen, stehen die Kontaktzeilen und die Links ohne Symbol. **Es wird nichts
+nachgezeichnet und nichts aus einer Bibliothek geholt** — dieselbe Regel wie
+überall sonst. Der Aufbau ist so, dass die Bilder ohne Umbau davortreten.
+
+Das Logo im Fussbereich ist die **Negativfassung aus dem Corporate Design**
+(`public/logo/ac-logo-negativ.png`), nicht eine neu gelieferte Datei. Es ist
+grösser als im Kopfbereich; `Logo.module.css` deckelt die Breite dort bei
+9.25rem, der Fussbereich überschreibt das für sich allein.
+
+**Der Zusatz „Perspektiven für morgen" ist neu.** Die Wortmarke trägt daneben
+weiterhin „Kompetenz schafft Klarheit" — A&C führt damit zwei Zusätze.
+Ricardo ist darauf hingewiesen; die Entscheidung liegt bei ihm.
+
+**Die Jahreszahl im Copyright kommt aus dem Bau**, nicht aus einer Zahl im
+Code. Die Vorlage zeigt 2024; das ist die Jahreszahl der Vorlage, nicht die
+gewünschte Angabe.
+
 **Sprachwahl.** Gezeigt werden nur Sprachen, die es gibt. Solange nur Deutsch
 vorliegt, entfällt die Sprachwahl im Kopfbereich ganz — eine Auswahl mit einem
 Eintrag ist keine Auswahl. Sie erscheint von selbst wieder, sobald FR oder PT
