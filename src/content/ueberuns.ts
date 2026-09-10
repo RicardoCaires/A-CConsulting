@@ -85,7 +85,7 @@ const de: UeberunsContent = {
   meta: {
     title: 'Zwei Ansprechpartner, drei Bereiche',
     description:
-      'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Andrade geführt. Beide betreuen Mandate selbst.',
+      'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade geführt. Beide betreuen Mandate selbst.',
   },
 
   // ---- 1 Seitenkopf
@@ -96,7 +96,7 @@ const de: UeberunsContent = {
   kopf: {
     eyebrow: 'Über A&C',
     titel: 'Zwei Ansprechpartner, drei Bereiche',
-    satz: 'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Andrade geführt. Beide betreuen Mandate selbst.',
+    satz: 'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade geführt. Beide betreuen Mandate selbst.',
     bild: { label: 'RICARDO & OCTAVIO', note: 'Aufnahme 2 der Shootingliste' },
   },
 
@@ -115,7 +115,7 @@ const de: UeberunsContent = {
         bild: { label: 'PORTRÄT RICARDO', note: 'Aufnahme 4 der Shootingliste' },
       },
       {
-        name: 'Octavio Andrade',
+        name: 'Octavio Nuno Gouveia Andrade',
         rolle: 'Geschäftsführer und Mitinhaber',
         kern: 'Zuständig für Versicherungen.',
         werdegang:

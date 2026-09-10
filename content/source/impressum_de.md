@@ -48,7 +48,7 @@ Telefon und E-Mail stehen im Fussbereich jeder Seite und auf der Kontaktseite.
 
 Geschäftsführer und Mitinhaber: Ricardo Caires Cerqueira
 
-Mitinhaber: Octavio Andrade
+Mitinhaber: Octavio Nuno Gouveia Andrade
 
 ---
 

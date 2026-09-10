@@ -18,13 +18,13 @@ export const ueberUns: PageContent = {
   meta: {
     title: 'Zwei Ansprechpartner, drei Bereiche',
     description:
-      'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Andrade geführt. Beide betreuen Mandate selbst.',
+      'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade geführt. Beide betreuen Mandate selbst.',
   },
 
   // 01 Seitenkopf
   hero: {
     heading: 'Zwei Ansprechpartner, drei Bereiche',
-    lead: 'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Andrade geführt. Beide betreuen Mandate selbst.',
+    lead: 'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade geführt. Beide betreuen Mandate selbst.',
   },
 
   blocks: [
@@ -44,7 +44,7 @@ export const ueberUns: PageContent = {
           ],
         },
         {
-          heading: 'Octavio Andrade',
+          heading: 'Octavio Nuno Gouveia Andrade',
           paragraphs: [
             'Geschäftsführer und Mitinhaber. Zuständig für Versicherungen.',
             'Beruflicher Weg: Kundenberater und Verkaufsleiter bei der Allianz Suisse in Biel, danach Hauptagent der Zurich Versicherungen in Biel, seither selbstständiger Versicherungsbroker. Abschluss: Versicherungsvermittler VBV.',
