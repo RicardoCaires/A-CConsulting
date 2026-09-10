@@ -99,9 +99,11 @@ export type StartseiteInhalt = {
     knopf: { text: string; ziel: PageKey }
   }
   personen: {
+    eyebrow: string
     titel: ReactNode
     einleitung?: ReactNode
     leute: readonly Mitglied[]
+    linkedinText: string
     /** Weiterfuehrender Verweis, als fertiges Element. */
     link?: ReactNode
   }
@@ -290,13 +292,21 @@ export function StartseiteTemplate({
       </Section>
 
       {/* ---- 5 Ansprechpartner ---------------------------------------------- */}
-      <Section surface={fPersonen} labelledBy="personen" id="personen">
-        <SectionHeader
-          id="personen"
-          heading={inhalt.personen.titel}
-          lead={inhalt.personen.einleitung}
-        />
-        <Team mitglieder={inhalt.personen.leute} />
+      <Section
+        surface={fPersonen}
+        className={styles.personenFlaeche}
+        labelledBy="personen"
+        id="personen"
+      >
+        <div className={styles.leistungenKopf}>
+          <SectionHeader
+            id="personen"
+            eyebrow={inhalt.personen.eyebrow}
+            heading={inhalt.personen.titel}
+            lead={inhalt.personen.einleitung}
+          />
+        </div>
+        <Team mitglieder={inhalt.personen.leute} linkedinText={inhalt.personen.linkedinText} />
         {inhalt.personen.link && <p className={styles.personenLink}>{inhalt.personen.link}</p>}
       </Section>
 

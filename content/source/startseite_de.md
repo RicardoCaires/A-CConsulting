@@ -233,15 +233,40 @@ werden:
 
 ## 07 Ansprechpartner
 
+Aufbau und Wortlaut hat Ricardo am 10.09.2026 als Referenzgrafik geliefert und
+im Auftrag ausgeschrieben.
+
+Vorzeile: Unser Team
+
 Überschrift: Zwei Ansprechpartner
 
 Einleitung: Keine Hotline. Ihr Dossier wird von einem von uns beiden geführt — und der geht auch ans Telefon.
 
-Ricardo Caires Cerqueira — Treuhand · Steuern · Versicherungen
+Zwei liegende Profilkarten, je Karte Porträt, Name, grüner Strich,
+Zuständigkeit und der Verweis auf LinkedIn.
 
-Octavio Andrade — Versicherungen
+**Ricardo Caires Cerqueira**, zwei Zeilen: Treuhand · Buchhaltung / Administration
+
+**Octavio Andrade**, eine Zeile: Versicherungen
+
+Verweis auf beiden Karten: Auf LinkedIn vernetzen
+
+Alternativtext Porträt eins: Ricardo Caires Cerqueira, Porträt vor hellem Bürohintergrund.
+
+Alternativtext Porträt zwei: Octavio Andrade, Porträt vor hellem Bürohintergrund.
 
 Verweis: Mehr über uns
+
+> **Geändert am 10.09.2026.** Ricardos Zuständigkeit lautete bis dahin
+> „Treuhand · Steuern · Versicherungen" und lautet jetzt „Treuhand ·
+> Buchhaltung / Administration" — so steht sie in seinem Auftrag und in der
+> Referenzgrafik. Steuern und Versicherungen sind damit aus seiner Zeile
+> verschwunden. Das ist eine Aussage über eine Person und keine Gestaltung;
+> wenn es ein Versehen war, gehört es zurückgeändert.
+
+> **Offen: die beiden LinkedIn-Adressen.** Solange sie fehlen, erscheint der
+> Verweis auf der Karte nicht — ein Knopf, der nirgends hinführt, ist
+> schlimmer als keiner.
 
 ---
 

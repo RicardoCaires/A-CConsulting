@@ -350,3 +350,13 @@
     display: none;
   }
 }
+
+/* ---- 5 Ansprechpartner ------------------------------------------------------
+
+   Sehr hell, eine Spur waermer als reines Weiss — die Karten darauf sind
+   heller als der Grund und heben sich dadurch ab, ohne einen Rahmen zu
+   brauchen. Der Ton ist aus dem System gemischt, keine neue Farbe. */
+
+.personenFlaeche {
+  background-color: color-mix(in srgb, var(--ac-color-background-light) 45%, var(--ac-color-white));
+}
