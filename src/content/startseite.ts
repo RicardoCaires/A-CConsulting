@@ -30,6 +30,7 @@ import type { Rich } from '@/content/types'
 import type { IconName } from '@/components/ui/Icon'
 import type { Motiv } from '@/components/ui/Illustration'
 import type { PiktogrammName } from '@/components/ui/Piktogramm'
+import type { SchrittName } from '@/components/ui/Schrittbild'
 import type { Locale } from '@/i18n/config'
 import type { PageKey } from '@/i18n/routes'
 
@@ -106,11 +107,15 @@ export type StartseiteContent = {
   }
 
   eineStelle: {
+    eyebrow: string
     titel: string
-    /** Die Kette. Nur Leistungen, die es wirklich gibt. */
-    kette: readonly string[]
+    /** Die Kette. Nur Leistungen, die es wirklich gibt — je Glied ein Bild. */
+    kette: readonly { text: string; bild: SchrittName }[]
     text: string
     nachsatz: string
+    /** Drei Zeilen rechts neben dem Kopf. */
+    merksatz: readonly string[]
+    knopf: { text: string; ziel: PageKey }
   }
 
   personen: {
@@ -251,10 +256,20 @@ const de: StartseiteContent = {
   // Die Kette nennt fuenf Leistungen, die A&C tatsaechlich erbringt. Sie ist
   // keine Aufzaehlung dessen, was ein Unternehmen alles braucht.
   eineStelle: {
+    eyebrow: 'Alles aus einer Hand',
     titel: 'Eine Stelle für Ihre Administration',
-    kette: ['Gründung', 'Buchhaltung', 'Lohn', 'Versicherungen', 'Steuern'],
-    text: 'Viele dieser Themen hängen zusammen. Deshalb betrachten wir sie nicht isoliert.',
-    nachsatz: 'Statt mehrere Stellen zu koordinieren, haben Sie bei uns feste Ansprechpartner.',
+    kette: [
+      { text: 'Gründung', bild: 'gruendung' },
+      { text: 'Buchhaltung', bild: 'buchhaltung' },
+      { text: 'Lohn', bild: 'lohn' },
+      { text: 'Versicherungen', bild: 'versicherungen' },
+      { text: 'Steuern', bild: 'steuern' },
+    ],
+    text: 'Wir koordinieren die Themen, die zusammengehören – mit einem festen Ansprechpartner.',
+    nachsatz:
+      'Statt mehrere Stellen zu koordinieren, haben Sie bei uns einen zentralen Ansprechpartner.',
+    merksatz: ['Weniger Aufwand.', 'Mehr Übersicht.', 'Ein Ansprechpartner.'],
+    knopf: { text: 'Mehr über unseren Ansatz', ziel: 'ueberUns' },
   },
 
   // ---- 6 Digital

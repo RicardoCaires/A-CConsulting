@@ -177,13 +177,37 @@ bestehen und steht auf /versicherungen.
 
 ## 05 Eine Stelle für Ihre Administration
 
+Aufbau und Wortlaut hat Ricardo am 10.09.2026 als Referenzgrafik geliefert und
+im Auftrag ausgeschrieben.
+
+Vorzeile: Alles aus einer Hand
+
 Überschrift: Eine Stelle für Ihre Administration
 
 Kette: Gründung · Buchhaltung · Lohn · Versicherungen · Steuern
 
-Text: Viele dieser Themen hängen zusammen. Deshalb betrachten wir sie nicht isoliert.
+Je Glied ein geliefertes Bild (`01_gruendung` bis `05_steuern`), dazwischen ein
+grüner Pfeil.
 
-Nachsatz: Statt mehrere Stellen zu koordinieren, haben Sie bei uns feste Ansprechpartner.
+Text: Wir koordinieren die Themen, die zusammengehören – mit einem festen Ansprechpartner.
+
+Nachsatz: Statt mehrere Stellen zu koordinieren, haben Sie bei uns einen zentralen Ansprechpartner.
+
+Knopf: Mehr über unseren Ansatz → /ueber-uns
+
+Rechts daneben, drei Zeilen: Weniger Aufwand. Mehr Übersicht. Ein Ansprechpartner.
+
+Rechts unten das gelieferte Bürobild (`06_buero_visual`).
+
+### Frühere Fassung, bis 10.09.2026
+
+Nicht widerrufen, nur ersetzt:
+
+> Text: Viele dieser Themen hängen zusammen. Deshalb betrachten wir sie nicht
+> isoliert.
+>
+> Nachsatz: Statt mehrere Stellen zu koordinieren, haben Sie bei uns feste
+> Ansprechpartner.
 
 ---
 
