@@ -247,13 +247,18 @@ Zuständigkeit und der Verweis auf LinkedIn.
 
 **Ricardo Caires Cerqueira**, zwei Zeilen: Treuhand · Buchhaltung / Administration
 
-**Octavio Andrade**, eine Zeile: Versicherungen
+**Octavio Nuno Gouveia Andrade**, eine Zeile: Versicherungen · Steuern
 
 Verweis auf beiden Karten: Auf LinkedIn vernetzen
 
 Alternativtext Porträt eins: Ricardo Caires Cerqueira, Porträt vor hellem Bürohintergrund.
 
-Alternativtext Porträt zwei: Octavio Andrade, Porträt vor hellem Bürohintergrund.
+Alternativtext Porträt zwei: Octavio Nuno Gouveia Andrade, Porträt vor hellem Bürohintergrund.
+
+Adressen, von Ricardo am 10.09.2026 geliefert:
+
+- Ricardo: https://www.linkedin.com/in/ricardo-caires-84a222214/
+- Octavio: https://www.linkedin.com/in/octavio-andrade-211083130/
 
 Verweis: Mehr über uns
 
@@ -264,9 +269,16 @@ Verweis: Mehr über uns
 > verschwunden. Das ist eine Aussage über eine Person und keine Gestaltung;
 > wenn es ein Versehen war, gehört es zurückgeändert.
 
-> **Offen: die beiden LinkedIn-Adressen.** Solange sie fehlen, erscheint der
-> Verweis auf der Karte nicht — ein Knopf, der nirgends hinführt, ist
-> schlimmer als keiner.
+> **Geändert am 10.09.2026, zweiter Durchgang.** Ricardo hat bestätigt, dass
+> seine eigene Zuständigkeit stimmt, und bei Octavio Steuern ergänzen lassen:
+> „Versicherungen · Steuern". Ausserdem lautet Octavios vollständiger Name
+> **Octavio Nuno Gouveia Andrade**; auf dieser Karte steht seither die
+> vollständige Form.
+>
+> **Noch zu klären:** Ob die vollständige Form auch die Kurzform „Octavio
+> Andrade" im Impressum, im Fussbereich, auf „Über uns" und in
+> `src/lib/company.ts` ersetzt. Das sind Pflichtangaben; die werden nach der
+> Hausordnung nicht automatisch nachgezogen.
 
 ---
 
