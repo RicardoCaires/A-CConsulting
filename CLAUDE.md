@@ -392,7 +392,7 @@ Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
 | 4 | Eine Stelle | Eine Stelle für Ihre Administration | FLÄCHE |
 | 5 | Ansprechpartner | Zwei Ansprechpartner | hell |
 | 6 | Ablauf | So beginnt die Zusammenarbeit | weiss |
-| 7 | Abschluss | Erzählen Sie uns, wobei wir Sie entlasten können. | FLÄCHE |
+| 7 | Abschluss | Erzählen Sie uns, wobei wir Sie entlasten können. | weiss |
 
 > **Am 10.09.2026 von neun auf sieben verkürzt** auf Anweisung von Ricardo.
 > Weggefallen sind **„Unsere Rolle"** („Wir vertreten Sie, nicht die
@@ -437,10 +437,12 @@ zwei grüne Kurven; Ricardo hat sie am 10.09.2026 streichen lassen und dafür
 mehr von den Flächen verlangt. Die Deckkraft bleibt niedrig: Was man als
 Muster erkennt, ist schon zu viel.
 
-Die drei Illustrationen sind **gezeichnet, nicht geliefert**
-(`src/components/ui/Illustration.tsx`): flache Vektorformen, nur Tokenfarben,
-kein Verlauf, kein Schatten. Kommt später eine Datei von A&C, tritt sie an
-dieselbe Stelle im Layout.
+Die drei Illustrationen sind **geliefert, nicht gezeichnet**
+(`src/components/ui/Illustration.tsx`). Ricardo hat sie am 10.09.2026 als PNG
+bereitgestellt; die drei SVG, die vorher an dieser Stelle standen, sind
+ersatzlos entfallen. Die Datei wird unverändert gezeigt: kein Filter, keine
+Umfärbung, kein Beschnitt. Eine neue Fassung tritt an dieselbe Stelle —
+Datei ersetzen, umwandeln, fertig.
 
 > Geändert am 09.09.2026 auf Anweisung von Ricardo (Revisionsauftrag). Bis dahin
 > galten sieben Abschnitte. Vier Änderungen:
@@ -516,6 +518,32 @@ die von Ricardo zuletzt freigegebene Datei. Eine Fassung, die nicht von ihm
 kommt, wird nicht eingesetzt und nicht nachgebaut. Gepflegt wird sie an einer
 Stelle: `bilder-quelle/unser-modell.png` als Quelle, `public/bilder/unser-modell.webp` als ausgelieferte Fassung, eingebunden in
 `src/content/pages/versicherungen.ts`.
+
+**Abschnitt 7, der Abschluss, seit dem 10.09.2026 nach Ricardos Referenz.**
+Er läuft **nicht** mehr über `CTASection`, sondern über den eigenen Baustein
+`src/components/blocks/Kontaktabschluss.tsx`: Titel, ein Satz, Telefon und
+E-Mail mit den gelieferten Symbolen, darunter der Knopf. Telefon und E-Mail
+kommen aus `src/lib/company.ts` und stehen nirgends sonst ausgeschrieben.
+
+Zwei Punkte, die man wissen muss:
+
+- **Der Grund ist weiss, nicht FLÄCHE.** Der Ablauf darüber steht auf
+  `background_tint`. Gäbe man dem Abschluss denselben Ton, stünden 1300 Pixel
+  Grundton ohne Kante untereinander — am 10.09.2026 gemessen, vorher war genau
+  das der Fall. Das gelieferte Hintergrundmuster ist ausserdem Navy bei acht
+  Prozent Deckung; auf Weiss trägt es, auf dem getönten Grund verschwände es.
+- **Der Abschluss sieht auf der Startseite jetzt anders aus als auf den fünf
+  Leistungsseiten**, die weiterhin `CTASection` tragen. Das war nicht so
+  gewollt, sondern die Folge davon, dass die Startseite als Erste umgebaut
+  wurde. Bekommen die Leistungsseiten ihren Umbau, gehört das wieder
+  zusammengeführt.
+
+**Die Flächenfolge beschreibt die Startseite nicht mehr vollständig.** Vier
+Abschnitte setzen sich über die zugewiesene Fläche hinweg und tragen eine
+eigene: 2 und 3 liegen zusammen in der Kartenzone, 6 und 7 sind seit dem
+10.09.2026 selbst eingefärbt. `pruefeFlaechen` prüft damit eine Reihe, die so
+nicht mehr auf dem Schirm steht. Das zu bereinigen ist ein eigener Auftrag —
+entweder die Regel anpassen oder die Zuweisungen wieder in die Folge holen.
 
 **Sprachwahl.** Gezeigt werden nur Sprachen, die es gibt. Solange nur Deutsch
 vorliegt, entfällt die Sprachwahl im Kopfbereich ganz — eine Auswahl mit einem

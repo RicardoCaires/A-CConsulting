@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import { Ablauf } from '@/components/blocks/Ablauf'
 import { Bereiche, type Bereich, type LeitBereich } from '@/components/blocks/Bereiche'
-import { CTASection } from '@/components/blocks/CTASection'
+import { Kontaktabschluss } from '@/components/blocks/Kontaktabschluss'
 import { Faelle, type Fall } from '@/components/blocks/Faelle'
 import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
 import { SectionHeader } from '@/components/blocks/SectionHeader'
@@ -48,6 +48,13 @@ import styles from './Startseite.module.css'
  *
  * Die Flaechenfolge wird beim Bauen geprueft (`pruefeFlaechen`). Ein Verstoss
  * bricht den Build — die Regel kann nicht versehentlich umgangen werden.
+ *
+ * **Achtung, Stand 10.09.2026:** Mit dem Umbau nach Ricardos Referenzgrafiken
+ * setzen sich vier Abschnitte ueber die zugewiesene Flaeche hinweg und tragen
+ * eine eigene: 2 und 3 liegen zusammen in der Kartenzone, 6 und 7 auf
+ * demselben getoenten Grund. Die Folge unten beschreibt damit nicht mehr, was
+ * man sieht. Sie zu bereinigen ist ein eigener Auftrag — entweder die Regel
+ * anpassen oder die Zuweisungen wieder in die Folge holen.
  *
  * Regel fuer den Inhalt: **keine Sektion mit mehr als etwa fuenfzig Woertern
  * Fliesstext.** Was mehr braucht, gehoert auf eine Bereichsseite.
@@ -131,8 +138,18 @@ export function StartseiteTemplate({
   locale: Locale
 }) {
   pruefeFlaechen(FLAECHEN, 'Startseite')
-  const [, fLeistungen, fSituationen, fStelle, fPersonen, fAblauf, fAbschluss] =
-    FLAECHEN as [Surface, Surface, Surface, Surface, Surface, Surface, Surface]
+  // Der Abschluss traegt seine Flaeche seit dem 10.09.2026 selbst und wird
+  // darum nicht mehr aus der Folge bedient — der letzte Eintrag bleibt in
+  // FLAECHEN stehen, damit die Reihe vollstaendig dokumentiert ist.
+  const [, fLeistungen, fSituationen, fStelle, fPersonen, fAblauf] = FLAECHEN as [
+    Surface,
+    Surface,
+    Surface,
+    Surface,
+    Surface,
+    Surface,
+    Surface,
+  ]
 
   return (
     <>
@@ -357,15 +374,26 @@ export function StartseiteTemplate({
         />
       </Section>
 
-      {/* ---- 7 Abschluss ------------------------------------------------------ */}
-      <CTASection
-        surface={fAbschluss}
-        heading={inhalt.abschluss.titel}
-        lead={inhalt.abschluss.satz ? <p>{inhalt.abschluss.satz}</p> : undefined}
-        showContact
-        actions={
-          <Button href={hrefOrDefault(inhalt.abschluss.knopf.ziel, locale)}>
+      {/* ---- 7 Abschluss ------------------------------------------------------
+
+          Eigener Baustein: `CTASection` steht am Fuss jeder Leistungsseite und
+          bleibt unveraendert. Der Abschluss sieht damit auf der Startseite
+          anders aus als dort — die Folge davon, dass die Startseite als Erste
+          umgebaut wurde. Bekommen die Leistungsseiten ihren Umbau, gehoert das
+          wieder zusammengefuehrt. */}
+      <Kontaktabschluss
+        id="abschluss"
+        titel={inhalt.abschluss.titel}
+        satz={inhalt.abschluss.satz}
+        aktion={
+          <Button
+            href={hrefOrDefault(inhalt.abschluss.knopf.ziel, locale)}
+            variant="akzent"
+          >
             {inhalt.abschluss.knopf.text}
+            <span className={styles.knopfPfeil} aria-hidden="true">
+              →
+            </span>
           </Button>
         }
       />
