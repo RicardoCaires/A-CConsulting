@@ -9,9 +9,14 @@ import styles from './Schrittbild.module.css'
  * bereitgestellt. Sie werden gezeigt, wie sie sind — kein Filter, keine
  * Farbaenderung, kein Schatten, kein Beschnitt.
  *
- * Sie bringen ihre helle Kreisflaeche selbst mit; die Karte legt keine
- * dahinter. Alle fuenf sind quadratisch (1024 x 1024), also wirken sie ohne
- * weiteres Zutun gleich gross.
+ * Sie bringen ihre weisse Plaettchenflaeche selbst mit; das Layout legt keine
+ * dahinter. Alle fuenf sind quadratisch, also wirken sie ohne weiteres Zutun
+ * gleich gross.
+ *
+ * Ausgeliefert werden sie auf 384 px verkleinert. Sie stehen bei hoechstens
+ * 112 px; das deckt die doppelte Punktdichte samt Reserve. Ricardos Fassung
+ * hat 1254 px und traegt weiche Schatten — unverkleinert waeren es 84 KB je
+ * Symbol statt 15.
  *
  * Dekorativ: Unter jedem steht sein Begriff. Darum ein leerer Alternativtext.
  */
@@ -43,8 +48,8 @@ export function Schrittbild({ name, className }: Props) {
       className={[styles.bild, className].filter(Boolean).join(' ')}
       src={`/bilder/${DATEIEN[name]}.webp`}
       alt=""
-      width={1024}
-      height={1024}
+      width={384}
+      height={384}
       sizes="96px"
     />
   )

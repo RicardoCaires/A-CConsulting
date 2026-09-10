@@ -52,15 +52,26 @@ ausgeliefert.
 
 ## Eine Stelle für Ihre Administration
 
-Am 10.09.2026 geliefert, Dateinamen von Ricardo und schon ohne Umlaut. Die
-fünf Schrittbilder sind quadratisch (1024 x 1024) und durchsichtig, das
-Bürobild ist ein Foto (663 x 543). Zusammen 591 KB PNG, 107 KB WebP.
+Am 10.09.2026 geliefert und am selben Tag durch eine zweite Fassung ersetzt.
+Verbindlich ist die zweite: fünf quadratische Symbole (1254 x 1254) auf
+weissem Plättchen und das Bürobild als freigestelltes Foto (1672 x 941).
 
-| Datei | PNG | WebP |
+**Diese sechs werden vor dem Ausliefern verkleinert**, anders als alle übrigen
+Bilder im Projekt. Grund: Die Symbole tragen weiche Schatten und wiegen in
+voller Grösse rund 84 KB je Stück, stehen aber bei höchstens 112 px. 384 px
+decken die doppelte Punktdichte samt Reserve.
+
+| Datei | Quelle | ausgeliefert |
 |---|---|---|
-| `01_gruendung` | 20 KB | 11 KB |
-| `02_buchhaltung` | 22 KB | 11 KB |
-| `03_lohn` | 50 KB | 22 KB |
-| `04_versicherungen` | 43 KB | 20 KB |
-| `05_steuern` | 31 KB | 15 KB |
-| `06_buero_visual` | 425 KB | 29 KB |
+| `01_gruendung` | 1254 px, 490 KB | 384 px, 16 KB |
+| `02_buchhaltung` | 1254 px, 581 KB | 384 px, 16 KB |
+| `03_lohn` | 1254 px, 487 KB | 384 px, 15 KB |
+| `04_versicherungen` | 1254 px, 458 KB | 384 px, 14 KB |
+| `05_steuern` | 1254 px, 444 KB | 384 px, 14 KB |
+| `06_buero_visual` | 1672 px, 1045 KB | 1400 px, 146 KB |
+
+Umwandeln mit Verkleinern:
+
+```
+node -e "require('sharp')('bilder-quelle/NAME.png').resize({width:384}).webp({quality:90,effort:6}).toFile('public/bilder/NAME.webp')"
+```
