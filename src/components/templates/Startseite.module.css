@@ -376,3 +376,12 @@
 .personenFlaeche {
   background-color: color-mix(in srgb, var(--ac-color-background-light) 45%, var(--ac-color-white));
 }
+
+/* ---- 6 Ablauf ---------------------------------------------------------------
+
+   Dieselbe getoente Flaeche wie die Kartenabschnitte weiter oben: Auch hier
+   sind die Karten weiss und stuenden auf dem gewohnten Off-White kaum ab. */
+
+.ablaufFlaeche {
+  background-color: var(--ac-color-background-tint);
+}

@@ -114,6 +114,9 @@ export default async function HomePage({ params }: PageProps) {
 
     // 8 — Ablauf.
     ablauf: {
+      eyebrow: content.ablauf.eyebrow,
+      einleitung: content.ablauf.einleitung,
+      nachsatzBild: content.ablauf.nachsatzBild,
       titel: content.ablauf.titel,
       schritte: content.ablauf.schritte,
       nachsatz: content.ablauf.nachsatz,

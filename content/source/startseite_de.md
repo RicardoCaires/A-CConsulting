@@ -284,12 +284,24 @@ Verweis: Mehr über uns
 
 ## 08 Ablauf
 
+Aufbau und die beiden neuen Zeilen hat Ricardo am 10.09.2026 als
+Referenzgrafik geliefert und im Auftrag ausgeschrieben.
+
+Vorzeile: So funktioniert es
+
 Überschrift: So beginnt die Zusammenarbeit
 
-1. Kennenlernen. Sie schildern Ihre Situation, wir sagen Ihnen, was wir davon übernehmen können.
-2. Situation prüfen. Wir sehen uns Unterlagen und Verträge an, bevor wir etwas empfehlen.
-3. Vorschlag erhalten. Sie bekommen schriftlich, welche Aufgaben zu uns kommen und was das kostet.
-4. Wir übernehmen. Ab dem vereinbarten Zeitpunkt läuft es über uns.
+Einleitung: Transparent, strukturiert und auf Augenhöhe – in vier einfachen Schritten zu einer verlässlichen Zusammenarbeit.
+
+Vier Karten auf einer Zeitachse, je Karte ein geliefertes Symbol, die Nummer
+im Kreis auf der Achse, der Titel und der Satz.
+
+1. Kennenlernen. Sie schildern Ihre Situation, wir sagen Ihnen, was wir davon übernehmen können. (`01_kennenlernen`)
+2. Situation prüfen. Wir sehen uns Unterlagen und Verträge an, bevor wir etwas empfehlen. (`02_situation_pruefen`)
+3. Vorschlag erhalten. Sie bekommen schriftlich, welche Aufgaben zu uns kommen und was das kostet. (`03_vorschlag_erhalten`)
+4. Wir übernehmen. Ab dem vereinbarten Zeitpunkt läuft es über uns. (`04_wir_uebernehmen`)
+
+Darunter ein flacher Hinweiskasten mit dem Symbol `05_info`:
 
 Nachsatz: Wir erklären Optionen, Kosten und die nächsten Schritte verständlich. Auch dann, wenn daraus kein Auftrag wird.
 
