@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react'
 import Image from 'next/image'
 
+import { Ablauf } from '@/components/blocks/Ablauf'
 import { Bereiche, type Bereich, type LeitBereich } from '@/components/blocks/Bereiche'
 import { CTASection } from '@/components/blocks/CTASection'
 import { Faelle, type Fall } from '@/components/blocks/Faelle'
 import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
 import { SectionHeader } from '@/components/blocks/SectionHeader'
 import { StartHero, type HeroBild } from '@/components/blocks/StartHero'
-import { StepList } from '@/components/blocks/StepList'
 import { Team, type Mitglied } from '@/components/blocks/Team'
 import { Button } from '@/components/ui/Button'
 import { Schrittbild, type SchrittName } from '@/components/ui/Schrittbild'
@@ -109,9 +109,12 @@ export type StartseiteInhalt = {
     link?: ReactNode
   }
   ablauf: {
+    eyebrow: string
     titel: ReactNode
-    schritte: readonly { titel: string; satz: string }[]
+    einleitung?: ReactNode
+    schritte: readonly { titel: string; satz: string; bild: string }[]
     nachsatz?: ReactNode
+    nachsatzBild: string
   }
   abschluss: {
     titel: ReactNode
@@ -322,17 +325,36 @@ export function StartseiteTemplate({
         {inhalt.personen.link && <p className={styles.personenLink}>{inhalt.personen.link}</p>}
       </Section>
 
-      {/* ---- 6 Ablauf --------------------------------------------------------- */}
-      <Section surface={fAblauf} abstand="eng" labelledBy="ablauf" id="ablauf">
-        <SectionHeader id="ablauf" heading={inhalt.ablauf.titel} />
-        <StepList
-          layout="flow"
-          steps={inhalt.ablauf.schritte.map((schritt) => ({
-            heading: schritt.titel,
-            body: schritt.satz,
+      {/* ---- 6 Ablauf ---------------------------------------------------------
+
+          Vier Karten auf einer Zeitachse, nach Ricardos Referenz vom
+          10.09.2026. Eigener Baustein: `StepList` traegt denselben Ablauf auf
+          fuenf Leistungsseiten und bleibt, wie er ist — nur die Startseite
+          bekommt Symbole, Karten und die Achse. */}
+      <Section
+        surface={fAblauf}
+        className={styles.ablaufFlaeche}
+        labelledBy="ablauf"
+        id="ablauf"
+      >
+        <div className={styles.leistungenKopf}>
+          <SectionHeader
+            id="ablauf"
+            eyebrow={inhalt.ablauf.eyebrow}
+            heading={inhalt.ablauf.titel}
+            lead={inhalt.ablauf.einleitung}
+          />
+        </div>
+
+        <Ablauf
+          schritte={inhalt.ablauf.schritte.map((schritt) => ({
+            titel: schritt.titel,
+            satz: schritt.satz,
+            bild: schritt.bild,
           }))}
+          hinweis={inhalt.ablauf.nachsatz}
+          hinweisBild={inhalt.ablauf.nachsatzBild}
         />
-        {inhalt.ablauf.nachsatz && <p className={styles.ablaufNachsatz}>{inhalt.ablauf.nachsatz}</p>}
       </Section>
 
       {/* ---- 7 Abschluss ------------------------------------------------------ */}

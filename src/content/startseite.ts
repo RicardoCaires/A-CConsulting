@@ -64,10 +64,12 @@ export type Fall = {
   anker?: string
 }
 
-/** Ein Schritt in Abschnitt 8. */
+/** Ein Schritt im Ablauf. */
 export type Schritt = {
   titel: string
   satz: string
+  /** Das gelieferte Symbol, Dateiname ohne Pfad und Endung. */
+  bild: string
 }
 
 export type StartseiteContent = {
@@ -139,9 +141,14 @@ export type StartseiteContent = {
   }
 
   ablauf: {
+    eyebrow: string
     titel: string
+    einleitung: string
     schritte: readonly Schritt[]
+    /** Der flache Hinweiskasten unter den Karten. */
     nachsatz: string
+    /** Symbol im Hinweiskasten. */
+    nachsatzBild: string
   }
 
   abschluss: {
@@ -317,27 +324,35 @@ const de: StartseiteContent = {
 
   // ---- 8 Ablauf
   ablauf: {
+    eyebrow: 'So funktioniert es',
     titel: 'So beginnt die Zusammenarbeit',
+    einleitung:
+      'Transparent, strukturiert und auf Augenhöhe – in vier einfachen Schritten zu einer verlässlichen Zusammenarbeit.',
     schritte: [
       {
         titel: 'Kennenlernen',
         satz: 'Sie schildern Ihre Situation, wir sagen Ihnen, was wir davon übernehmen können.',
+        bild: '01_kennenlernen',
       },
       {
         titel: 'Situation prüfen',
         satz: 'Wir sehen uns Unterlagen und Verträge an, bevor wir etwas empfehlen.',
+        bild: '02_situation_pruefen',
       },
       {
         titel: 'Vorschlag erhalten',
         satz: 'Sie bekommen schriftlich, welche Aufgaben zu uns kommen und was das kostet.',
+        bild: '03_vorschlag_erhalten',
       },
       {
         titel: 'Wir übernehmen',
         satz: 'Ab dem vereinbarten Zeitpunkt läuft es über uns.',
+        bild: '04_wir_uebernehmen',
       },
     ],
     nachsatz:
       'Wir erklären Optionen, Kosten und die nächsten Schritte verständlich. Auch dann, wenn daraus kein Auftrag wird.',
+    nachsatzBild: '05_info',
   },
 
   // ---- 9 Abschluss

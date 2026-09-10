@@ -90,3 +90,18 @@ verkleinert: Die Porträts stehen bei höchstens 200 px, das Logo bei 20 px.
 
 Das LinkedIn-Logo ist die Marke eines Dritten. Es wird nicht eingefärbt, nicht
 beschnitten und nicht an das A&C-Grün angepasst.
+
+
+## So beginnt die Zusammenarbeit
+
+Am 10.09.2026 geliefert, quadratisch (1024 x 1024) und durchsichtig. Auch
+diese werden verkleinert: Die vier Schrittsymbole stehen bei höchstens 72 px,
+das Symbol im Hinweiskasten bei 32 px. 177 KB PNG werden zu 29 KB WebP.
+
+| Datei | ausgeliefert |
+|---|---|
+| `01_kennenlernen` | 256 px, 8 KB |
+| `02_situation_pruefen` | 256 px, 6 KB |
+| `03_vorschlag_erhalten` | 256 px, 6 KB |
+| `04_wir_uebernehmen` | 256 px, 6 KB |
+| `05_info` | 128 px, 3 KB |
