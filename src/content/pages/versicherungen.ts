@@ -2,7 +2,14 @@
  * /de/versicherungen
  *
  * QUELLE: `content/source/schritt4_fassung2_de.md`, Abschnitt „Versicherungen".
- * Wortlaut unveraendert uebernommen. Reihenfolge der elf Abschnitte wie dort.
+ * Wortlaut unveraendert uebernommen.
+ *
+ * **Vier Abschnitte sind am 10.09.2026 auf Ricardos Anweisung entfallen:**
+ * „Wir arbeiten in Ihrem Auftrag", „Wie wir entschaedigt werden", „So laeuft
+ * eine Vertragspruefung ab" und „Wenn Sie selbstaendig sind oder Personal
+ * haben". Ihr Wortlaut steht unveraendert in der Quelle und ist nicht
+ * widerrufen — er steht nur nicht mehr auf der Seite. Mit dem Ablauf ist auch
+ * seine Sprungmarke entfallen; sie haette ins Leere gezeigt.
  */
 
 import type { PageContent } from '../types'
@@ -35,7 +42,6 @@ export const versicherungen: PageContent = {
         { label: 'Für Unternehmen', anchor: 'unternehmen' },
         { label: 'Betreuung', anchor: 'betreuung' },
         { label: 'Schadenfall', anchor: 'schadenfall' },
-        { label: 'Ablauf', anchor: 'ablauf' },
       ],
     },
 
@@ -141,17 +147,6 @@ export const versicherungen: PageContent = {
       },
     },
 
-    // 04 Wie wir entschädigt werden
-    {
-      kind: 'prose',
-      id: 'verguetung',
-      heading: 'Wie wir entschädigt werden',
-      paragraphs: [
-        'Für die Vermittlung und die laufende Betreuung erhalten wir von den Versicherungsgesellschaften eine Courtage. Für Sie ist die Arbeit im Rahmen des Maklermandats kostenlos. Für Aufgaben, die über das Mandat hinausgehen, vereinbaren wir vorher ein Honorar.',
-        'Wie das in Ihrem Fall aussieht, sagen wir Ihnen auf Nachfrage im Detail.',
-      ],
-      links: [{ target: 'transparenz', label: 'Vermittlerstatus, Vergütung und Beschwerdeweg' }],
-    },
     // 05 Für Privatpersonen
     {
       kind: 'subsections',
@@ -219,36 +214,6 @@ export const versicherungen: PageContent = {
       links: [{ target: 'schadenfall', label: 'Was im Schadenfall zu tun ist' }],
     },
 
-    // 09 Ablauf einer Vertragsprüfung
-    {
-      kind: 'steps',
-      id: 'ablauf',
-      heading: 'So läuft eine Vertragsprüfung ab',
-      steps: [
-        {
-          heading: 'Unterlagen sichten',
-          body: 'Sie stellen uns Ihre bestehenden Policen zusammen. Wir schauen sie durch und stellen Rückfragen, wo etwas unklar ist.',
-        },
-        {
-          heading: 'Auswerten',
-          body: 'Wir zeigen Ihnen, wo eine Deckung fehlt, wo sich zwei Verträge überschneiden und wo Prämie und Leistung nicht zusammenpassen.',
-        },
-        {
-          heading: 'Vorschlag',
-          body: 'Sie erhalten eine Übersicht mit unseren Empfehlungen und, wo es sinnvoll ist, einen Vergleich. Sie entscheiden, was umgesetzt wird.',
-        },
-      ],
-    },
-    // 10 Übergang zum Treuhand
-    {
-      kind: 'prose',
-      id: 'treuhand-uebergang',
-      heading: 'Wenn Sie selbständig sind oder Personal haben',
-      paragraphs: [
-        'Sobald Sie jemanden anstellen, gehören zur Unfallversicherung und zur beruflichen Vorsorge auch die monatliche Lohnabrechnung und die Meldungen an die Sozialversicherungen. Beides lässt sich im selben Gespräch klären.',
-      ],
-      links: [{ target: 'treuhand', label: 'Buchhaltung, Löhne und Abschluss' }],
-    },
 
     // 11 Häufige Fragen
     {

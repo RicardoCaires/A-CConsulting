@@ -309,7 +309,11 @@ const UNTERPUNKTE: Partial<Record<PageKey, readonly NavChild[]>> = {
   versicherungen: [
     { kind: 'section', page: 'versicherungen', anchor: 'privatpersonen', label: 'privatkunden' },
     { kind: 'section', page: 'versicherungen', anchor: 'unternehmen', label: 'unternehmen' },
-    { kind: 'section', page: 'versicherungen', anchor: 'ablauf', label: 'vertragspruefung' },
+    // „Vertragspruefung" ist am 10.09.2026 entfallen: Der Abschnitt `#ablauf`,
+    // auf den der Punkt zeigte, ist auf Ricardos Anweisung von der Seite
+    // genommen. Ein Menuepunkt, der ins Leere springt, ist schlechter als
+    // keiner. Die Beschriftung bleibt in `ui.ts` stehen — kommt der Abschnitt
+    // zurueck, genuegt diese eine Zeile.
     { kind: 'section', page: 'versicherungen', anchor: 'schadenfall', label: 'schadenfall' },
   ],
   treuhand: [
