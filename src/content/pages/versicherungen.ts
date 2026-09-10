@@ -21,6 +21,9 @@ export const versicherungen: PageContent = {
     heading: 'Versicherungen für Privatpersonen und Unternehmen',
     lead: 'Wir prüfen Ihre bestehenden Verträge, vergleichen passende Lösungen aus den uns zugänglichen Angeboten und Gesellschaften und bleiben Ihr Ansprechpartner, auch wenn ein Schaden eintritt.',
     actions: [{ kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' }],
+    // Von Ricardo am 10.09.2026 vorgegeben, Wortlaut unveraendert.
+    // Quelle: `content/source/versicherungen_seitenkopf_de.md`.
+    belege: ['Unabhängig beraten', 'Passende Lösungen', 'Langfristig an Ihrer Seite'],
   },
 
   blocks: [

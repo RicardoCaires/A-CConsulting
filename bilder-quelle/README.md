@@ -171,3 +171,27 @@ nachgezeichnet und nichts aus einer Bibliothek geholt.
 `a_c_consulting_berglogo` fehlt ebenfalls. Dafuer wird nichts beschafft: Das
 Negativlogo aus dem Corporate Design liegt bereits unter
 `public/logo/ac-logo-negativ.png` und ist die verbindliche Fassung.
+## Seitenkopf Versicherungen
+
+Am 10.09.2026 geliefert. Beide Dateien lagen unter Arbeitsnamen
+(`Background bild.png`, `Header Versicherungen.png`) und sind hier auf die
+Namen aus dem Auftrag umbenannt.
+
+| Datei | Quelle | ausgeliefert |
+|---|---|---|
+| `wide_cinematic_vector_3d_illustration_style_insu` | 1896 x 830 | 1600 x 700, 260 KB |
+| `versicherungen_seitenkopf_referenz` | 1896 x 829 | nur Vorlage, nicht ausgeliefert |
+
+**260 KB sind viel** — mehr als alles andere auf der Seite zusammen. Die Datei
+ist ein Farbverlauf mit weichen Uebergaengen; niedrigere Qualitaet bringt fast
+nichts (bei q68 noch 237 KB). Kleiner ginge es nur ueber die Breite, und die
+ist mit 1600 px schon knapp: Der Kopf zeigt das Bild auf 78 Prozent der
+Fensterbreite.
+
+Das Bild traegt links seinen eigenen Navy-Grund (3,34,74 — praktisch
+`navy_deep`) und wird darum nicht freigestellt, sondern rechts angesetzt. Das
+helle Motiv beginnt bei 45.6 Prozent der Bildbreite.
+
+`versicherungen_seitenkopf_referenz.png` ist die Gestaltungsvorlage. Alle Masse
+im Kopf stammen daraus: Kopfhoehe 29.5 Prozent der Breite, Text ab der normalen
+Containerkante, helles Motiv ab 58.5 Prozent.
