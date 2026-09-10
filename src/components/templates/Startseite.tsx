@@ -11,6 +11,7 @@ import { StepList } from '@/components/blocks/StepList'
 import { Team, type Mitglied } from '@/components/blocks/Team'
 import { Button } from '@/components/ui/Button'
 import { Schrittbild, type SchrittName } from '@/components/ui/Schrittbild'
+import { Zonenmuster } from '@/components/ui/Zonenmuster'
 import type { Locale } from '@/i18n/config'
 import { hrefOrDefault, type PageKey } from '@/i18n/routes'
 
@@ -152,14 +153,24 @@ export function StartseiteTemplate({
         bild={inhalt.einstieg.bild}
       />
 
+      {/* ---- 2 und 3: eine gemeinsame Kartenzone ---------------------------
+
+          Die beiden Abschnitte tragen Karten und liegen darum auf einer
+          durchgehenden Flaeche, nicht auf zweien. So zeigt es Ricardos
+          Referenz vom 10.09.2026, und so laufen die Formen im Grund ueber
+          beide hinweg statt an der Naht zu enden.
+
+          Der Ton ist eine Stufe dunkler als die uebrigen hellen Abschnitte:
+          Die Karten sind weiss und stuenden auf dem gewohnten Off-White kaum
+          ab. `background_tint` ist keine neue Farbe, sondern die zweite Stufe
+          derselben. */}
+      <div className={styles.kartenzone}>
+        <Zonenmuster />
+
       {/* ---- 2 Leistungen -------------------------------------------------- */}
-      {/* Der Grund ist hier eine Stufe dunkler als sonst: Die Karten sind
-          weiss, und auf dem gewohnten Off-White waeren sie kaum als Karten zu
-          erkennen. Der Ton kommt aus dem Corporate Design (background_tint),
-          ist also keine neue Farbe, sondern die zweite Stufe derselben. */}
       <Section
         surface={fLeistungen}
-        className={styles.leistungenFlaeche}
+        className={styles.zonenAbschnitt}
         labelledBy="leistungen"
         id="leistungen"
       >
@@ -196,7 +207,7 @@ export function StartseiteTemplate({
           Ueberschriften, nicht von einem Farbwechsel. */}
       <Section
         surface={fSituationen}
-        className={styles.leistungenFlaeche}
+        className={styles.zonenAbschnitt}
         labelledBy="situationen"
         id="situationen"
       >
@@ -217,6 +228,7 @@ export function StartseiteTemplate({
 
         <Faelle faelle={inhalt.situationen.eintraege} locale={locale} />
       </Section>
+      </div>
 
       {/* ---- 4 Eine Stelle — der eigentliche Nutzen, als Kette -------------
 

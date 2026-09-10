@@ -1,0 +1,62 @@
+/* Der Grund unter den beiden Kartenabschnitten.
+
+   Alle Toene sind aus den Tokens gemischt, keiner ist neu gewaehlt. Die Werte
+   sind bewusst klein: Was man als Muster erkennt, ist schon zu viel. Es soll
+   der Flaeche nur das Flache nehmen. */
+
+.muster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Die organischen Flaechen. Kaum heller als der Grund — auf dem Schirm sind
+   das wenige Helligkeitsstufen, mehr braucht es nicht. */
+.flaechen path {
+  fill: color-mix(in srgb, var(--ac-color-white) 70%, transparent);
+}
+
+/* Zwei der vier gehen in die andere Richtung: eine Spur dunkler statt heller.
+   Dadurch liegen die Formen nicht alle auf derselben Ebene. */
+.flaechen path:nth-child(2),
+.flaechen path:nth-child(3) {
+  fill: color-mix(in srgb, var(--ac-color-primary-navy) 5%, transparent);
+}
+
+/* Die Hoehenlinien. Haarfein und Ton in Ton. */
+.hoehen path {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ac-color-primary-navy) 13%, transparent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+/* Die gruenen Kurven. Zwei, am Rand, sparsam. */
+.gruen {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ac-color-accent-green) 32%, transparent);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+}
+
+/* ---- Auf schmalen Geraeten weniger ----------------------------------------
+
+   Bei 375 px ist von einer Kurve, die ueber 2000 px laeuft, ohnehin nur ein
+   Stueck zu sehen. Drei Gruppen Hoehenlinien und zwei Kurven ergeben dort
+   keinen Grund, sondern Gekritzel. */
+
+@media (max-width: 47.999rem) {
+  .hoehen,
+  .gruenRechts {
+    display: none;
+  }
+}
+
+/* Wo `color-mix` fehlt, bleibt die Flaeche einfarbig — das ist kein Verlust. */
+@supports not (color: color-mix(in srgb, red 50%, blue)) {
+  .muster {
+    display: none;
+  }
+}

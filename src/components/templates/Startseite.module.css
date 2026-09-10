@@ -153,11 +153,27 @@
 
 /* ---- 2 Leistungen ---------------------------------------------------------- */
 
-/* Eine Stufe dunkler als die uebrigen hellen Abschnitte. Die Karten darin sind
-   weiss; auf dem gewohnten Off-White stuenden sie kaum ab. `background_tint`
-   ist die zweite Stufe derselben Farbe aus dem Corporate Design. */
-.leistungenFlaeche {
+/* Die Kartenzone traegt die Flaeche fuer beide Abschnitte — Leistungen und
+   Ausgangslagen. Eine Stufe dunkler als die uebrigen hellen Abschnitte: Die
+   Karten darin sind weiss und stuenden auf dem gewohnten Off-White kaum ab.
+   `background_tint` ist die zweite Stufe derselben Farbe.
+
+   `overflow: hidden` schneidet die Formen im Grund an den Kanten ab,
+   `isolation` haelt sie unter den Abschnitten. */
+.kartenzone {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   background-color: var(--ac-color-background-tint);
+}
+
+/* Die beiden Abschnitte darin bringen keine eigene Flaeche mehr mit — sie
+   liegen auf der der Zone. Ihr Platz in der Flaechenfolge bleibt, was zaehlt
+   ist der Ton, und der ist derselbe. */
+.zonenAbschnitt {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
 }
 
 .leistungenKopf {

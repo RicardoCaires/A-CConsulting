@@ -425,6 +425,17 @@ Abschnitt und werden nicht zum neuen Standard:
   dem gewohnten Off-White wären weisse Karten kaum als Karten zu erkennen. Es
   ist keine neue Farbe, sondern die zweite Stufe derselben.
 
+**Die Abschnitte 2 und 3 liegen auf einer gemeinsamen Fläche** (`kartenzone`),
+seit dem 10.09.2026 und nach Ricardos Referenz. Beide tragen Karten; eine Naht
+dazwischen gibt es bewusst nicht. Im Grund liegen weiche organische Formen,
+feine Höhenlinien und zwei dünne grüne Kurven — gezeichnet als ein einziges
+SVG (`src/components/ui/Zonenmuster.tsx`), nicht als Bilddatei: Die Fläche ist
+über 2000 px hoch, als Datei wären das je nach Gerät 200 KB und mehr.
+
+Die Deckkraft ist bewusst niedrig. Was man als Muster erkennt, ist schon zu
+viel — es soll der Fläche nur das Flache nehmen. Auf schmalen Geräten bleiben
+nur die Formen; Höhenlinien und die zweite grüne Kurve entfallen.
+
 Die drei Illustrationen sind **gezeichnet, nicht geliefert**
 (`src/components/ui/Illustration.tsx`): flache Vektorformen, nur Tokenfarben,
 kein Verlauf, kein Schatten. Kommt später eine Datei von A&C, tritt sie an
