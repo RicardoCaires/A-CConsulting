@@ -38,3 +38,15 @@
   border-color: var(--ac-color-primary-navy);
   background-color: var(--ac-color-background-light);
 }
+
+/* Gruene Flaeche — die Ausnahme, siehe Button.tsx. Der dunklere Ton beim
+   Zeigen kommt aus derselben Farbe, nicht aus einer zweiten. */
+.akzent {
+  background-color: var(--ac-color-accent-green);
+  color: var(--ac-color-white);
+}
+
+.akzent:hover {
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 85%, var(--ac-color-navy-deep));
+  color: var(--ac-color-white);
+}

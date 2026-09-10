@@ -1,61 +1,114 @@
-/* Die drei Beratungsbereiche.
+/* Die drei Beratungsbereiche als Karten.
 
-   Keine Karte, kein Rahmen, kein Schatten. Getrennt wird mit einer Haarlinie
-   und mit Abstand — das ist ruhiger und altert besser als ein Container. */
+   Weisse Karten auf getoentem Grund. Damit sie als Karten lesbar sind,
+   braucht es dreierlei zugleich — Grund dunkler als die Karte, feine Kontur,
+   sehr schwacher Schatten. Eines allein reicht nicht: Ohne Kontur franst die
+   Karte auf hellem Grund aus, ohne Schatten liegt sie flach auf.
+
+   Der Schatten ist die eine Abweichung von „keine Schlagschatten" und bleibt
+   darum am unteren Ende dessen, was ueberhaupt wirkt. */
 
 .wrapper {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
   margin-top: clamp(2rem, 5vw, 3rem);
 }
 
-/* ---- Leitbereich ---------------------------------------------------------- */
+.karte {
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow:
+    0 1px 2px color-mix(in srgb, var(--ac-color-navy-deep) 5%, transparent),
+    0 10px 24px -14px color-mix(in srgb, var(--ac-color-navy-deep) 22%, transparent);
+}
 
-.leit {
-  display: grid;
-  gap: clamp(1.75rem, 4vw, 2.5rem);
+/* ---- Kategorie ------------------------------------------------------------ */
+
+/* Der gruene Strich steht in der Zeile, nicht darueber: So bleibt die
+   Kategorie eine Zeile hoch und die Karte faengt ruhiger an. */
+.kategorie {
+  display: flex;
   align-items: center;
-  padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
-  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  gap: var(--ac-space-2xs);
+  margin-bottom: var(--ac-space-xs);
 }
 
-.leitBild :global(*) {
-  aspect-ratio: 3 / 2;
+.kategorieStrich {
+  display: block;
+  flex: none;
+  width: 1.75rem;
+  height: var(--ac-border-marker);
+  background-color: var(--ac-color-accent-green);
 }
 
+/* ---- Ueberschriften und Text ---------------------------------------------- */
+
+/* `balance` verteilt die Zeilen gleichmaessig, statt die letzte als Rest
+   stehen zu lassen. Eine Ueberschrift aus zwei Saetzen bricht damit zwischen
+   den Saetzen und nicht mitten im zweiten. Wo der Browser es nicht kann,
+   traegt die Breitenbegrenzung allein. */
 .titelGross {
   font-size: var(--ac-h2-size);
   line-height: var(--ac-h2-line);
   letter-spacing: var(--ac-h2-tracking);
+  max-width: 22ch;
+  text-wrap: balance;
 }
 
 .titel {
   font-size: var(--ac-h3-size);
   line-height: var(--ac-h3-line);
   letter-spacing: var(--ac-h3-tracking);
+  max-width: 20ch;
+  text-wrap: balance;
 }
 
 .text {
-  margin-top: var(--ac-space-xs);
+  margin-top: var(--ac-space-sm);
   max-width: 46ch;
   color: var(--ac-color-text-secondary);
 }
 
-/* ---- Stichworte ----------------------------------------------------------- */
+/* ---- Leistungen ------------------------------------------------------------ */
 
-/* Eine Liste mit feinen Trennlinien statt farbiger Marken. Sie soll gelesen
-   werden koennen, ohne dass sie den Blick vom Titel wegzieht. */
-.stichworte {
-  margin-top: var(--ac-space-md);
+/* Icon und Begriff, sonst nichts. Keine Trennlinien mehr: Auf einer Karte
+   waeren sie die dritte waagrechte Linie und wuerden sie zerschneiden. */
+.leistungen {
+  display: grid;
+  gap: var(--ac-space-sm);
+  margin: 0;
   padding: 0;
   list-style: none;
-  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
 }
 
-.stichworte li {
-  padding-block: var(--ac-space-2xs);
+.leistung {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--ac-space-xs);
+  align-items: start;
   font-size: var(--ac-small-size);
   line-height: var(--ac-small-line);
   color: var(--ac-color-text-primary);
-  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+/* Das Icon steht in Gruen — das ist der Akzent, den die Liste braucht, und
+   der einzige Ort in der Karte, an dem Gruen als Kontur vorkommt. */
+.leistungIcon {
+  color: var(--ac-color-accent-green);
+  /* Auf die erste Textzeile ausgerichtet, nicht auf den Kasten. */
+  margin-top: -0.05em;
+}
+
+/* ---- Knopf des Leitbereichs ------------------------------------------------ */
+
+.knopf {
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.knopfPfeil {
+  margin-left: var(--ac-space-2xs);
 }
 
 /* ---- Weiterfuehrender Verweis ---------------------------------------------- */
@@ -65,7 +118,7 @@
   align-items: center;
   /* Trefferflaeche 44 px, auch wenn der Text nur eine Zeile hoch ist. */
   min-height: 2.75rem;
-  margin-top: var(--ac-space-2xs);
+  margin-top: var(--ac-space-sm);
   font-weight: 600;
   text-decoration: none;
 }
@@ -86,37 +139,103 @@
   transform: translateX(0.2rem);
 }
 
-/* ---- Die beiden ergaenzenden Bereiche -------------------------------------- */
+/* ---- Aufbau der Karten ----------------------------------------------------- */
+
+.leit {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
+}
+
+.spalte {
+  display: flex;
+  flex-direction: column;
+}
+
+.spalteKopf {
+  display: grid;
+  gap: var(--ac-space-md);
+  align-items: start;
+}
+
+/* Die Leistungen sitzen unten, damit beide Karten gleich hoch enden, auch
+   wenn der eine Text eine Zeile laenger ist als der andere. */
+.spalte .leistungen {
+  margin-top: auto;
+  padding-top: clamp(1.25rem, 3vw, 1.75rem);
+}
 
 .weitere {
   display: grid;
-  gap: clamp(2rem, 5vw, 3rem);
-  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* Auf schmalen Geraeten steht die Illustration unter dem Text und kleiner —
+   sie ist Schmuck und darf den Weg zum naechsten Satz nicht verlaengern. */
+.leitBild,
+.spalteBild {
+  max-width: 20rem;
+  margin-inline: auto;
 }
 
 /* ---- Ab Tablet ------------------------------------------------------------- */
 
 @media (min-width: 48rem) {
-  .weitere {
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(2rem, 4vw, 3.5rem);
+  .leit {
+    grid-template-columns: 7fr 5fr;
   }
 
-  /* Die senkrechte Linie trennt die beiden Spalten so, wie die waagrechte den
-     Leitbereich abtrennt — dieselbe Staerke, dieselbe Farbe. */
-  .spalte + .spalte {
-    padding-left: clamp(2rem, 4vw, 3.5rem);
-    border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  /* Bis zum Desktop steht die Illustration unter den beiden Textspalten und
+     darf die volle Breite nutzen. */
+  .leitBild {
+    grid-column: 1 / -1;
+    max-width: 24rem;
+  }
+
+  .spalteKopf {
+    grid-template-columns: 1fr auto;
+    gap: var(--ac-space-sm);
+  }
+
+  .spalteBild {
+    width: 10rem;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .leistungenZweispaltig {
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(1.25rem, 3vw, 2rem);
   }
 }
 
+/* ---- Ab Desktop ------------------------------------------------------------ */
+
 @media (min-width: 64rem) {
+  /* Drei Spalten: Text mit Knopf, Leistungen, Illustration. Die mittlere
+     Spalte bekommt eine Haarlinie — dieselbe Trennung wie frueher zwischen
+     den Bereichen, jetzt innerhalb der Karte. */
   .leit {
-    grid-template-columns: 6fr 5fr;
-    gap: clamp(3rem, 6vw, 4.5rem);
+    grid-template-columns: 5fr 4fr 6fr;
+    gap: clamp(2rem, 4vw, 3rem);
   }
 
-  .leitBild :global(*) {
-    aspect-ratio: 4 / 3;
+  .leitListe {
+    padding-left: clamp(1.5rem, 3vw, 2.5rem);
+    border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  }
+
+  .leitBild {
+    grid-column: auto;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .weitere {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .spalteBild {
+    width: 12rem;
   }
 }

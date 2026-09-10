@@ -387,7 +387,7 @@ Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
 | # | Abschnitt | Überschrift auf der Seite | Fläche |
 |---|---|---|---|
 | 1 | Einstieg | Verwurzelt im Seeland. Blick auf mehr. | DOMINANT |
-| 2 | Leistungen | Was wir für Sie übernehmen | hell |
+| 2 | Leistungen | Was wir für Sie übernehmen. | hell (getönt) |
 | 3 | Situationen | Wobei können wir Sie unterstützen? | weiss |
 | 4 | Eine Stelle | Eine Stelle für Ihre Administration | FLÄCHE |
 | 5 | Ansprechpartner | Zwei Ansprechpartner | hell |
@@ -400,10 +400,35 @@ Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
 > Wortlaute stehen unverändert in `content/source/startseite_de.md` und sind
 > nicht widerrufen — sie sind nur nicht mehr auf der Startseite.
 >
-> Der Satz „Wir vertreten Sie, nicht die Versicherung. Wir prüfen Ihre
-> Verträge …" steht seither wieder in der Leistungskarte Versicherungen
-> (Abschnitt 2), wo er bis zum 09.09.2026 schon stand. Ausführlich erklärt das
-> Modell weiterhin das Schaubild auf `/versicherungen`.
+> Der Satz „Wir vertreten Sie, nicht die Versicherung." steht seither in der
+> Leistungskarte Versicherungen (Abschnitt 2). Ausführlich erklärt das Modell
+> weiterhin das Schaubild auf `/versicherungen`.
+
+**Abschnitt 2 als Karten, seit dem 10.09.2026.** Ricardo hat eine
+Referenzgrafik geliefert und den Abschnitt danach nachbauen lassen: weisse
+Karten auf getöntem Grund, je Bereich eine Kategorie, eine eigene Überschrift,
+vier Leistungen mit Icon und eine Illustration. Die Rangfolge bleibt sichtbar —
+Versicherungen über die volle Breite, Treuhand und Finanzplanung halb so gross
+darunter.
+
+Drei Abweichungen von den Gestaltungsprinzipien, alle auf seine ausdrückliche
+Anweisung und alle bewusst klein gehalten. Sie gelten **nur** für diesen
+Abschnitt und werden nicht zum neuen Standard:
+
+- **Die Karten tragen einen Schatten.** Abschnitt 5 sagt „keine
+  Schlagschatten". Hier ist es der schwächste, der eine weisse Karte vom Grund
+  noch abhebt, und er ergänzt eine Kontur, statt sie zu ersetzen.
+- **Der Knopf des Leitbereichs ist grün.** Sonst gilt „Grün ist Akzent, nicht
+  Fläche". Ein Knopf ist die kleinste Fläche, auf der das noch vertretbar ist;
+  er kommt genau einmal auf der Seite vor (`Button variant="akzent"`).
+- **Der Abschnittsgrund ist `background_tint`, nicht `background_light`.** Auf
+  dem gewohnten Off-White wären weisse Karten kaum als Karten zu erkennen. Es
+  ist keine neue Farbe, sondern die zweite Stufe derselben.
+
+Die drei Illustrationen sind **gezeichnet, nicht geliefert**
+(`src/components/ui/Illustration.tsx`): flache Vektorformen, nur Tokenfarben,
+kein Verlauf, kein Schatten. Kommt später eine Datei von A&C, tritt sie an
+dieselbe Stelle im Layout.
 
 > Geändert am 09.09.2026 auf Anweisung von Ricardo (Revisionsauftrag). Bis dahin
 > galten sieben Abschnitte. Vier Änderungen:

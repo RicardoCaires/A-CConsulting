@@ -37,6 +37,12 @@ export type IconName =
   | 'pfeil'
   | 'dokument'
   | 'uhr'
+  | 'schildPlus'
+  | 'fahrzeug'
+  | 'diagramm'
+  | 'muenzen'
+  | 'pflanze'
+  | 'kompass'
 
 const PATHS: Record<IconName, React.ReactNode> = {
   // Versicherungen — Schild
@@ -168,6 +174,57 @@ const PATHS: Record<IconName, React.ReactNode> = {
     <>
       <circle cx="12" cy="12" r="8.2" />
       <path d="M12 7.2V12l3.2 2" />
+    </>
+  ),
+
+  // Krankenversicherung — Schild mit Kreuz
+  schildPlus: (
+    <>
+      <path d="M12 3.2 19 6v5.4c0 4-2.8 7.4-7 9.4-4.2-2-7-5.4-7-9.4V6l7-2.8Z" />
+      <path d="M12 8.9v5M9.5 11.4h5" />
+    </>
+  ),
+
+  // Motorfahrzeug — Wagen von der Seite
+  fahrzeug: (
+    <>
+      <path d="M4 15.5v-2.1l1.9-4.3c.2-.5.7-.8 1.2-.8h9.8c.5 0 1 .3 1.2.8L20 13.4v2.1" />
+      <path d="M4 15.5h16v2.2h-2.6M4 15.5v2.2h2.6" />
+      <path d="M6.6 17.7a1.5 1.5 0 1 0 3 0 1.5 1.5 0 1 0-3 0M14.4 17.7a1.5 1.5 0 1 0 3 0 1.5 1.5 0 1 0-3 0" />
+    </>
+  ),
+
+  // Auswertung — Balken
+  diagramm: (
+    <>
+      <path d="M4 19.5h16" />
+      <path d="M7 19.5v-5.2M12 19.5V8.4M17 19.5v-8" />
+    </>
+  ),
+
+  // Budget — gestapelte Muenzen
+  muenzen: (
+    <>
+      <path d="M5 7.2c0-1.2 3.1-2.2 7-2.2s7 1 7 2.2-3.1 2.2-7 2.2-7-1-7-2.2Z" />
+      <path d="M5 7.2V12c0 1.2 3.1 2.2 7 2.2s7-1 7-2.2V7.2" />
+      <path d="M5 12v4.8c0 1.2 3.1 2.2 7 2.2s7-1 7-2.2V12" />
+    </>
+  ),
+
+  // Vorsorge — Blatt am Trieb
+  pflanze: (
+    <>
+      <path d="M12 20.5v-7.2" />
+      <path d="M12 13.3c0-3.4 2.4-6.2 6.2-6.6.4 3.8-2.3 6.6-6.2 6.6Z" />
+      <path d="M12 15.6C9.2 15.6 7 13.4 6.6 10.4c3 .3 5 2.4 5.4 5.2Z" />
+    </>
+  ),
+
+  // Begleitung — Kompass
+  kompass: (
+    <>
+      <path d="M12 3.6a8.4 8.4 0 1 0 0 16.8 8.4 8.4 0 0 0 0-16.8Z" />
+      <path d="m14.9 9.1-1.6 4.2-4.2 1.6 1.6-4.2 4.2-1.6Z" />
     </>
   ),
 }
