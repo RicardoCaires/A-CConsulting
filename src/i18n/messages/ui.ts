@@ -43,6 +43,12 @@ type UiMessages = {
     finma: string
     /** Kurze Rollenangabe im Fussbereich. */
     roleNote: string
+    /** Spaltentitel ueber UID und FINMA-Nummer. */
+    registryHeading: string
+    /** Rechtevorbehalt in der untersten Zeile, hinter dem Copyright. */
+    rightsReserved: string
+    /** Der Zusatz rechts unten. Wird in Grossbuchstaben gesetzt. */
+    claim: string
   }
   /** Beschriftung der Seiten in Navigation und Fussbereich. */
   page: Record<PageKey, string>
@@ -120,6 +126,9 @@ export const ui: Record<Locale, UiMessages> = {
       uid: 'UID',
       finma: 'FINMA-Register',
       roleNote: 'Versicherungen · Treuhand · Finanzplanung',
+      registryHeading: 'Regulatorisches',
+      rightsReserved: 'Alle Rechte vorbehalten.',
+      claim: 'Perspektiven für morgen',
     },
     page: {
       home: 'Startseite',
@@ -198,6 +207,9 @@ export const ui: Record<Locale, UiMessages> = {
       uid: 'IDE',
       finma: 'Registre FINMA',
       roleNote: 'Assurances · Fiduciaire · Finances personnelles',
+      registryHeading: 'Réglementaire',
+      rightsReserved: 'Tous droits réservés.',
+      claim: 'Des perspectives pour demain',
     },
     page: {
       home: 'Accueil',
@@ -276,6 +288,9 @@ export const ui: Record<Locale, UiMessages> = {
       uid: 'IDE',
       finma: 'Registo FINMA',
       roleNote: 'Seguros · Fiduciária · Finanças pessoais',
+      registryHeading: 'Regulatório',
+      rightsReserved: 'Todos os direitos reservados.',
+      claim: 'Perspectivas para amanhã',
     },
     page: {
       home: 'Início',

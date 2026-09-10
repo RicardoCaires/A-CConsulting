@@ -1,96 +1,179 @@
-/* Fussbereich.
+/* Fussbereich, seit dem 10.09.2026 nach Ricardos Referenzgrafik.
 
-   Drei Gruppen nebeneinander, sobald Platz ist: Firma, Leistungen,
-   Rechtliches. Darunter untereinander. Keine zweite Hauptnavigation. */
+   Vier Spalten nebeneinander, sobald Platz ist: Unternehmen, Leistungen,
+   Rechtliches, Regulatorisches. Darunter eine Schlusszeile. Keine zweite
+   Hauptnavigation.
+
+   Die Masse stammen aus der Vorlage (1916 x 821, Fussbereich ab y 170):
+     senkrechte Trennlinien  31.2 % / 50.0 % / 68.8 % der Breite
+     Spaltenverhaeltnis      1.33 : 1 : 1 : 1.33
+     gruener Strich          42 von 1916 px, 3 px stark, buendig zum Titel
+     waagrechte Trennlinie   96 px unter der letzten Zeile
+     Logo                    349 von 1678 px Inhaltsbreite = 20.8 % */
 
 .footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   background-color: var(--ac-surface-footer);
   color: var(--ac-on-navy);
   /* Gruene Akzentlinie oben — der Marker aus dem Corporate Design.
-     Kein zusaetzlicher Aussenabstand: den bringt die letzte Sektion mit. */
+     Die gelieferte Datei bringt dieselbe Linie mit; die wird abgeschnitten
+     (siehe `.hintergrundBild`), damit sie nicht doppelt liegt. Hier steht sie
+     im Tokenwert und ist auf jeder Fenstergroesse gleich stark. */
   border-top: var(--ac-border-marker) solid var(--ac-color-accent-green);
 }
 
+/* ---- Das gelieferte Hintergrundbild ----------------------------------------
+
+   Es haengt unten und behaelt sein Seitenverhaeltnis (2.33 : 1). Auf breiten
+   Fenstern deckt es damit den ganzen Fussbereich, auf schmalen liegt es als
+   Band am unteren Rand — in beiden Faellen unverzerrt und mit den Bergformen
+   dort, wo sie hingehoeren: unten rechts.
+
+   Der negative obere Aussenabstand schneidet die gruene Linie der Datei ab.
+   Prozente beziehen sich beim Aussenabstand auf die *Breite*: 0.5 % der Breite
+   sind bei jedem Seitenverhaeltnis mehr als die 0.37 % der Hoehe, die die
+   Linie misst. Darum stimmt die eine Zahl auf jeder Fenstergroesse. */
+
+.hintergrund {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hintergrundBild {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: -0.5%;
+}
+
 .inner {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--ac-space-xl) var(--ac-space-lg);
+}
+
+/* ---- Die vier Spalten ------------------------------------------------------ */
+
+.spalten {
   display: grid;
   gap: var(--ac-space-lg);
-  padding-block: var(--ac-space-lg) var(--ac-space-md);
 }
 
-.brand {
+.spalte {
   display: flex;
   flex-direction: column;
-  gap: var(--ac-space-2xs);
+  min-width: 0;
 }
 
-.columnTitle,
+.spaltenTitel,
 .address,
-.registry,
-.linkList {
+.register,
+.linkListe {
   font-size: var(--ac-small-size);
   line-height: var(--ac-small-line);
+}
+
+/* ---- Spalte 1: Unternehmen und Kontakt ------------------------------------- */
+
+/* Das Logo traegt den Fussbereich, anders als im Kopfbereich: In der Vorlage
+   misst es 349 von 1678 px Inhaltsbreite, also 20.8 %. `Logo.module.css`
+   deckelt die Breite bei 9.25rem — das gilt fuer den Kopfbereich und bleibt
+   dort so; hier wird es ueberschrieben, ohne den Baustein anzufassen. */
+.logo img {
+  width: clamp(9.5rem, 7rem + 8vw, 14.25rem);
 }
 
 .address {
   display: flex;
   flex-direction: column;
+  gap: var(--ac-space-2xs);
+  margin-top: var(--ac-space-md);
   font-style: normal;
-  margin-top: var(--ac-space-2xs);
   color: var(--ac-on-navy-muted);
 }
 
-.address span {
-  padding-block: 0.08rem;
-}
-
 .companyName {
+  margin-bottom: var(--ac-space-2xs);
   color: var(--ac-on-navy);
+  font-size: var(--ac-body-size);
   font-weight: 600;
 }
 
-.columnTitle {
+/* Eine Kontaktzeile. In der Vorlage sitzt links ein Symbol; die Dateien
+   fehlen, darum steht hier vorerst nur der Text. Der Aufbau bleibt so, dass
+   ein Symbol ohne Umbau davortritt. */
+.kontaktZeile {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ac-space-sm);
+}
+
+/* ---- Spalten 2 bis 4: Titel mit gruenem Strich ------------------------------ */
+
+.spaltenTitel {
+  margin: 0;
   font-size: var(--ac-eyebrow-size);
   line-height: var(--ac-eyebrow-line);
   font-weight: var(--ac-eyebrow-weight);
   letter-spacing: var(--ac-eyebrow-tracking);
   text-transform: uppercase;
-  color: var(--ac-on-navy-muted);
-  margin-bottom: var(--ac-space-2xs);
+  color: var(--ac-on-navy);
 }
 
-.linkList {
+/* Der gruene Strich unter dem Titel: in der Vorlage 42 von 1916 px breit und
+   3 px stark, buendig mit dem Titel. */
+.spaltenTitel::after {
+  content: '';
+  display: block;
+  width: 2.25rem;
+  height: var(--ac-border-marker);
+  margin-top: var(--ac-space-2xs);
+  background-color: var(--ac-color-accent-green);
+}
+
+.linkListe {
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin: var(--ac-space-sm) 0 0;
   padding: 0;
   list-style: none;
 }
 
-.registry {
+/* ---- Spalte 4: Register ---------------------------------------------------- */
+
+.register {
   display: grid;
   grid-template-columns: auto 1fr;
-  column-gap: var(--ac-space-2xs);
-  row-gap: 0.15rem;
+  column-gap: var(--ac-space-md);
+  row-gap: var(--ac-space-2xs);
   margin: var(--ac-space-sm) 0 0;
-  color: var(--ac-on-navy-muted);
 }
 
-.registry dt {
+.register dt {
   color: var(--ac-on-navy-muted);
 }
 
 /* Registernummern brechen nicht am Bindestrich: „CHE-332.960.986" ist eine
    Angabe, keine zwei. */
-.registry dd {
+.register dd {
   margin: 0;
   color: var(--ac-on-navy);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
+/* ---- Links ----------------------------------------------------------------- */
+
 /* Im Fussbereich wird auf dem Smartphone tatsaechlich getippt — die Links
    brauchen die volle Trefferflaeche von 44 px, nicht die Hoehe ihrer Zeile. */
-.linkList a,
+.linkListe a,
 .address a {
   display: inline-flex;
   align-items: center;
@@ -102,7 +185,7 @@
 .footer a {
   color: var(--ac-on-navy);
   text-decoration: underline;
-  text-decoration-color: var(--ac-color-brand-grey);
+  text-decoration-color: color-mix(in srgb, var(--ac-on-navy) 35%, transparent);
   text-underline-offset: 0.2em;
 }
 
@@ -111,9 +194,86 @@
   text-decoration-color: var(--ac-color-accent-green-light);
 }
 
+/* ---- Die Schlusszeile ------------------------------------------------------ */
+
+.schluss {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ac-space-sm);
+  margin-top: var(--ac-space-xl);
+  /* Die feine waagrechte Linie ueber der Zeile. Sie ist kein Token, weil es
+     auf dunklem Grund keinen gibt: aufgehelltes Navy, aus `on-navy`
+     gemischt — kein neuer Farbwert. */
+  padding-top: var(--ac-space-lg);
+  border-top: var(--ac-border-hairline) solid
+    color-mix(in srgb, var(--ac-on-navy) 18%, transparent);
+}
+
+.copyright,
+.zusatz {
+  margin: 0;
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-on-navy-muted);
+}
+
+.trenner {
+  margin-inline: var(--ac-space-sm);
+  color: color-mix(in srgb, var(--ac-on-navy) 40%, transparent);
+}
+
+/* Der Zusatz steht gesperrt in Grossbuchstaben, mit dem gruenen Strich davor —
+   in der Vorlage 55 von 1916 px breit und 2 px stark. */
+.zusatz {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-sm);
+  font-size: var(--ac-eyebrow-size);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+}
+
+.zusatzStrich {
+  flex: none;
+  width: 2.75rem;
+  height: var(--ac-border-hairline);
+  background-color: var(--ac-color-accent-green);
+}
+
+/* ---- Ab Tablet: zwei Spalten ------------------------------------------------ */
+
 @media (min-width: 40rem) {
-  .inner {
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--ac-space-xl);
+  .spalten {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--ac-space-xl) var(--ac-space-lg);
+  }
+}
+
+/* ---- Ab Desktop: vier Spalten mit Trennlinien -------------------------------
+
+   Das Verhaeltnis 1.33 : 1 : 1 : 1.33 stammt aus der Vorlage. Die Trennlinie
+   ist der linke Rand der Spalten 2 bis 4; der Innenabstand davor und dahinter
+   ergibt den Abstand, den die Vorlage zeigt (rund 75 von 1916 px). */
+
+@media (min-width: 64rem) {
+  .spalten {
+    grid-template-columns: 1.33fr 1fr 1fr 1.33fr;
+    gap: 0;
+  }
+
+  .getrennt {
+    padding-left: var(--ac-space-lg);
+    border-left: var(--ac-border-hairline) solid
+      color-mix(in srgb, var(--ac-on-navy) 18%, transparent);
+  }
+
+  .spalte:not(.getrennt) {
+    padding-right: var(--ac-space-lg);
+  }
+
+  .schluss {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }

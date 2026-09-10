@@ -135,3 +135,39 @@ Abschnittsbreite gedacht, nicht als Aufkleber in der Ecke. Es wird darum
 unbeschnitten eingesetzt, obwohl gut die Haelfte der Datei durchsichtig ist.
 Sein Ton ist Navy bei acht Prozent Deckung; darum steht der Abschnitt auf
 Weiss und nicht auf getoentem Grund.
+## Fussbereich
+
+Am 10.09.2026 geliefert. Ricardo hat im Auftrag **sechs** Dateien genannt;
+im Assets-Ordner lag zu diesem Zeitpunkt genau eine davon.
+
+| Datei | Quelle | ausgeliefert |
+|---|---|---|
+| `dunkelblaue_minimalismus_landschaft_mit_gruener_linie` | 1916 x 821 | 1600 x 686, 8 KB |
+| `footer_referenz` | 1916 x 821 | nur Vorlage, nicht ausgeliefert |
+
+Das Hintergrundbild lag unter einem zufaelligen Namen
+(`c20f6b12-eee1-458c-a018-811fa35dbcd5.png`) und ist hier auf den Namen aus
+dem Auftrag umbenannt. Seine gruene Linie sitzt in den obersten **drei** von
+821 Pixeln, der Grundton ist 1,33,74 — praktisch `navy_deep`. Darum steht der
+Fussbereich auf dem Token und das Bild nur darueber.
+
+`footer_referenz.png` ist die Gestaltungsvorlage, kein Seitenbestandteil. Alle
+Masse im Fussbereich stammen daraus: senkrechte Trennlinien bei 28.5, 50.0 und
+71.5 Prozent der Inhaltsbreite, Logo 20.8 Prozent, gruener Strich unter den
+Spaltentiteln 42 von 1916 px.
+
+**Diese vier Dateien fehlen** und sind im Auftrag genannt:
+
+| erwartet | wofuer |
+|---|---|
+| `minimalist_weisser_standort_pin` | Adresszeile |
+| `minimalist_weisses_telefonhoerer_symbol` | Telefonzeile |
+| `minimalistisches_weisses_briefsymbol` | E-Mail-Zeile |
+| `gruener_chevron_auf_transparentem_hintergrund` | hinter jedem Link |
+
+Solange sie fehlen, stehen die Zeilen und Links ohne Symbol. Es wird nichts
+nachgezeichnet und nichts aus einer Bibliothek geholt.
+
+`a_c_consulting_berglogo` fehlt ebenfalls. Dafuer wird nichts beschafft: Das
+Negativlogo aus dem Corporate Design liegt bereits unter
+`public/logo/ac-logo-negativ.png` und ist die verbindliche Fassung.
