@@ -176,6 +176,42 @@ export type Block =
        */
       lesbarAb: number
     }
+  /**
+   * Das Modell als gebauter Abschnitt, nicht als Bilddatei.
+   *
+   * Loest auf `/versicherungen` das `schaubild` ab: Ricardo hat am 10.09.2026
+   * eine Referenzgrafik und elf Einzelbilder geliefert und ausdruecklich
+   * verlangt, dass daraus ein Webabschnitt wird — Text bleibt Text, die Bilder
+   * sind nur die Symbole.
+   *
+   * Der Typ ist auf diesen einen Abschnitt zugeschnitten. Er wandert erst in
+   * eine allgemeine Form, wenn es einen zweiten gibt.
+   */
+  | {
+      kind: 'modell'
+      id?: string
+      eyebrow: string
+      heading: string
+      lead: Rich
+      /** Die drei Grundsaetze oben rechts. */
+      grundsaetze: readonly { bild: string; titel: string; satz: string }[]
+      /** Links: der Kunde. */
+      kunde: { bild: string; titel: string; punkte: readonly string[] }
+      /** Der Pfeil vom Kunden zu A&C. */
+      mandat: { titel: string; satz: string }
+      /** Mitte: A&C. Das Logo kommt aus dem Corporate Design, nicht von hier. */
+      mitte: { bild: string; alt: string; punkte: readonly string[] }
+      /** Der Pfeil von A&C zum Markt. */
+      preisvergleich: { titel: string; satz: string }
+      /** Rechts: das gelieferte Panel der Gesellschaften. */
+      markt: { bild: string; alt: string }
+      /** Der Rueckweg zum Kunden. */
+      ergebnis: { titel: string; satz: string }
+      /** Die Nutzenleiste unten. */
+      nutzen: readonly { bild: string; titel: string; satz: string }[]
+      /** Die Schlusszeile. */
+      schluss: { links: string; rechts: string }
+    }
   /** Sprungmarken innerhalb der Seite. */
   | {
       kind: 'anchors'

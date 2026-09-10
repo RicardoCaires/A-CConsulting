@@ -50,16 +50,95 @@ export const versicherungen: PageContent = {
     // die im gestrichenen Text stand, steht weiterhin im Fussbereich jeder
     // Seite und vollstaendig im Impressum.
     //
-    // Dieselbe Datei wie auf der Startseite; eine zweite Fassung derselben
-    // Grafik waere eine zweite Wahrheit, die irgendwann auseinanderlaeuft.
+    // Seit dem 10.09.2026 ein gebauter Abschnitt statt einer Bilddatei: Ricardo
+    // hat eine Referenzgrafik und elf Einzelbilder geliefert und ausdruecklich
+    // verlangt, dass daraus ein Webabschnitt wird. Text bleibt damit Text —
+    // waehlbar, uebersetzbar und fuer Vorlesewerkzeuge lesbar.
+    //
+    // Die frueher hier eingesetzte Datei `unser-modell.webp` bleibt unter
+    // `public/bilder/` liegen; sie ist von Ricardo freigegeben und wird nicht
+    // geloescht, steht aber auf keiner Seite mehr.
     {
-      kind: 'schaubild',
+      kind: 'modell',
       id: 'modell',
-      src: '/bilder/unser-modell.webp',
-      alt: 'Schaubild „Unser Modell": Der Kunde erteilt A&C Consulting ein Mandat. A&C analysiert den Bedarf, vergleicht Angebote am Markt, berät, übernimmt den Schriftverkehr und begleitet langfristig. Für den Preisvergleich holt A&C Offerten bei verschiedenen Versicherungsgesellschaften ein. Zurück zum Kunden geht ein transparenter Vorschlag.',
-      breite: 1448,
-      hoehe: 1086,
-      lesbarAb: 720,
+      eyebrow: 'Unser Modell',
+      heading: 'Wir vertreten Sie, nicht die Versicherung.',
+      lead: 'Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr – auch im Schadenfall.',
+      grundsaetze: [
+        {
+          bild: '01_icon_unabhaengig',
+          titel: 'Unabhängig',
+          satz: 'Wir sind an keine Versicherungsgesellschaft gebunden.',
+        },
+        {
+          bild: '02_icon_objektiv',
+          titel: 'Objektiv',
+          satz: 'Wir vergleichen Angebote und empfehlen die beste Lösung für Ihre Situation.',
+        },
+        {
+          bild: '03_icon_interesse',
+          titel: 'In Ihrem Interesse',
+          satz: 'Wir vertreten Sie – bei Vertragsabschluss und im Schadenfall.',
+        },
+      ],
+      kunde: {
+        bild: '04_icon_kunde',
+        titel: 'Sie als Kunde',
+        punkte: ['Ihre Bedürfnisse', 'Ihre aktuelle Situation', 'Ihre Fragen und Ziele'],
+      },
+      mandat: {
+        titel: 'Mandat',
+        satz: 'Sie beauftragen uns mit der Analyse und Beratung.',
+      },
+      mitte: {
+        bild: '05_logo_ac_consulting',
+        alt: 'A&C Consulting GmbH — Versicherungen und Treuhand',
+        punkte: [
+          'Analysieren Ihren Bedarf',
+          'Vergleichen Angebote am Markt',
+          'Beraten Sie neutral und transparent',
+          'Übernehmen den gesamten Schriftverkehr',
+          'Begleiten Sie langfristig – auch im Schadenfall',
+        ],
+      },
+      preisvergleich: {
+        titel: 'Preisvergleich',
+        satz: 'Wir holen Offerten bei verschiedenen Gesellschaften ein und vergleichen für Sie Leistungen und Preise.',
+      },
+      markt: {
+        bild: '06_panel_versicherungsgesellschaften',
+        alt: 'Versicherungsgesellschaften: Zurich, Helvetia, AXA, Allianz, Vaudoise, die Mobiliar, Generali, Swiss Life und weitere.',
+      },
+      ergebnis: {
+        titel: 'Die beste Lösung für Sie',
+        satz: 'Sie erhalten unseren Vorschlag – transparent, nachvollziehbar und in Ihrem Interesse.',
+      },
+      nutzen: [
+        {
+          bild: '07_benefit_sparschwein',
+          titel: 'Bessere Konditionen',
+          satz: 'Durch den Vergleich profitieren Sie von einem optimalen Preis-Leistungs-Verhältnis.',
+        },
+        {
+          bild: '08_benefit_diamant',
+          titel: 'Mehr Auswahl',
+          satz: 'Wir prüfen den gesamten Markt und finden die Lösung, die wirklich zu Ihnen passt.',
+        },
+        {
+          bild: '09_benefit_schild',
+          titel: 'Zeitersparnis',
+          satz: 'Wir übernehmen die Abklärungen und den Administrationsaufwand für Sie.',
+        },
+        {
+          bild: '10_benefit_handshake',
+          titel: 'Langfristige Betreuung',
+          satz: 'Ein Ansprechpartner für alle Ihre Versicherungen – auch im Schadenfall.',
+        },
+      ],
+      schluss: {
+        links: 'A&C Consulting GmbH',
+        rechts: 'Persönlich. Unabhängig. An Ihrer Seite.',
+      },
     },
 
     // 04 Wie wir entschädigt werden
