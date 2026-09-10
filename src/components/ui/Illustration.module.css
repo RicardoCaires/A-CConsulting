@@ -1,95 +1,15 @@
 /* Die Bereichsillustrationen.
 
-   Alle Farben kommen aus den erzeugten Tokens. Die beiden Aufhellungen werden
-   nicht als neue Werte gesetzt, sondern aus vorhandenen gemischt — so bleibt
-   das Corporate Design die einzige Quelle, auch fuer die blassen Toene. */
+   Geliefert, nicht gezeichnet: Die Datei wird gezeigt, wie sie ist. Kein
+   Filter, keine Farbaenderung, kein Schatten, kein Rahmen — sie bringt einen
+   durchsichtigen Grund mit und steht direkt auf der Karte.
 
-.svg {
+   `contain` haelt das Seitenverhaeltnis. Beschnitten wird nichts: Bei einer
+   Illustration geht sonst genau der Teil verloren, der sie erklaert. */
+
+.bild {
   display: block;
   width: 100%;
   height: auto;
-}
-
-/* Der Grund. Sehr blasses Gruen, damit die Formen nicht im Weiss schwimmen —
-   die einzige gruene Flaeche der Seite und bewusst kaum sichtbar. */
-.grund {
-  fill: color-mix(in srgb, var(--ac-color-accent-green) 10%, var(--ac-color-white));
-}
-
-.weiss {
-  fill: var(--ac-color-white);
-}
-
-.hell {
-  fill: var(--ac-color-background-tint);
-}
-
-.mittel {
-  fill: var(--ac-color-brand-grey);
-}
-
-.dunkel {
-  fill: var(--ac-color-primary-navy);
-}
-
-.gruen {
-  fill: var(--ac-color-accent-green);
-}
-
-/* Kleine Farbfelder — dieselben Toene, nur als Punkt statt als Form. */
-.gruenPunkt {
-  fill: color-mix(in srgb, var(--ac-color-accent-green) 70%, var(--ac-color-white));
-}
-
-.hellPunkt {
-  fill: color-mix(in srgb, var(--ac-color-brand-grey) 35%, var(--ac-color-white));
-}
-
-/* Konturen und Linien: dieselbe Staerke wie die Icons, damit beides
-   nebeneinander aus einer Hand wirkt. */
-.kontur {
-  fill: none;
-  stroke: var(--ac-color-primary-navy);
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.linie {
-  fill: none;
-  stroke: var(--ac-color-border-tint);
-  stroke-width: 3;
-  stroke-linecap: round;
-}
-
-.haken {
-  fill: none;
-  stroke: var(--ac-color-white);
-  stroke-width: 6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* Der Weg im Motiv Finanzplanung — gestrichelt, weil er noch vor einem liegt. */
-.weg {
-  fill: none;
-  stroke: var(--ac-color-brand-grey);
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-dasharray: 2 12;
-}
-
-/* Wo `color-mix` fehlt, tragen die naechstgelegenen Tokens. */
-@supports not (color: color-mix(in srgb, red 50%, blue)) {
-  .grund {
-    fill: var(--ac-color-background-light);
-  }
-
-  .gruenPunkt {
-    fill: var(--ac-color-accent-green);
-  }
-
-  .hellPunkt {
-    fill: var(--ac-color-background-tint);
-  }
+  object-fit: contain;
 }

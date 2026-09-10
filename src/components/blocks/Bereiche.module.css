@@ -170,11 +170,12 @@
   gap: clamp(1rem, 2vw, 1.5rem);
 }
 
-/* Auf schmalen Geraeten steht die Illustration unter dem Text und kleiner —
-   sie ist Schmuck und darf den Weg zum naechsten Satz nicht verlaengern. */
+/* Die Illustrationen sind quadratisch. Begrenzt wird darum die Breite; die
+   Hoehe folgt. Auf schmalen Geraeten stehen sie unter dem Text und kleiner —
+   sie sind Schmuck und duerfen den Weg zum naechsten Satz nicht verlaengern. */
 .leitBild,
 .spalteBild {
-  max-width: 20rem;
+  max-width: 17rem;
   margin-inline: auto;
 }
 
@@ -238,10 +239,13 @@
     border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
   }
 
+  /* Quadratisch und in der Spalte zentriert. Ohne Deckel waere sie so breit
+     wie die Spalte und damit hoeher als der Text daneben — die Karte wuerde
+     um die Illustration herum wachsen statt um ihren Inhalt. */
   .leitBild {
     grid-column: auto;
-    max-width: none;
-    margin-inline: 0;
+    max-width: 23rem;
+    margin-inline: auto;
   }
 
   .weitere {

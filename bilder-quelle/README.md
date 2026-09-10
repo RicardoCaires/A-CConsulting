@@ -9,6 +9,13 @@ Sie ist bei gleicher Groesse rund ein Zehntel so schwer:
 |---|---|---|
 | `unser-modell` | 1479 KB | 141 KB |
 | `startseite-seeland` | 1864 KB | 177 KB |
+| `versicherungsschutz_mit_schirm_und_schild` | 641 KB | 67 KB |
+| `finanzillustration_mit_rechner_und_ordnern` | 587 KB | 53 KB |
+| `kompass_weg_und_gipfelflagge` | 733 KB | 78 KB |
+
+Die drei letzten sind die Bereichsillustrationen der Startseite, von Ricardo am
+10.09.2026 geliefert. Sie sind quadratisch (1254 x 1254) und durchsichtig; die
+Namen sind seine und werden nicht geändert.
 
 `unser-modell` wurde am 09.09.2026 ausgetauscht: Die vorherige Fassung trug
 eine falsche Bildmarke — die gruene Spitze sass neben dem Navy-Berg statt auf
