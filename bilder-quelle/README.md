@@ -261,3 +261,23 @@ ihren gruenen Kreis mit; im Layout liegt keine Flaeche dahinter.
 Assets-Ordner.** Der Abschnitt steht darum auf dem ruhigen Grundton der hellen
 Bereiche, ohne Muster. Nachgezeichnet wird nichts; kommt die Datei, tritt sie
 ohne Umbau dazu.
+## Nach dem Abschluss hört es nicht auf
+
+Am 10.09.2026 geliefert, freigestellt und quadratisch. Sie bringen ihren
+hellgruenen Kreis mit; im Layout liegt keine Flaeche dahinter.
+
+| Datei | Quelle | ausgeliefert |
+|---|---|---|
+| `01_betreuung_adresse` | 1254 x 1254 | 224 px, 8 KB |
+| `02_betreuung_familie` | 1254 x 1254 | 224 px, 10 KB |
+| `03_betreuung_praemie` | 1254 x 1254 | 224 px, 8 KB |
+| `04_betreuung_ansprechpartner` | 1254 x 1254 | 224 px, 9 KB |
+| `05_betreuung_persoenlich` | 1254 x 1254 | 224 px, 9 KB |
+| `versicherungen_betreuung_referenz` | 1672 x 941 | nur Vorlage, nicht ausgeliefert |
+
+Zusammen 44 KB. Ausgeliefert bei 224 px, dargestellt bei 80 px — Reserve fuer
+Bildschirme mit doppelter Punktdichte.
+
+Fuer den Hintergrund war keine eigene Datei dabei. Der Abschnitt nimmt darum
+`wide_minimal_abstract_background_design_a_clean`, dieselbe Datei wie der
+Modellabschnitt weiter oben auf derselben Seite.

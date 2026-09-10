@@ -7,6 +7,7 @@ import { KLASSE, type Surface } from './Section'
 import { PageLink } from '@/components/ui/PageLink'
 import { hatSichtbarenInhalt, RichText } from '@/components/ui/RichText'
 import { Accordion } from './Accordion'
+import { Betreuung } from './Betreuung'
 import { CTASection } from './CTASection'
 import { Segmente } from './Segmente'
 import { UnserModell } from './UnserModell'
@@ -158,7 +159,10 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
   // `segmente` traegt seine Ueberschriften selbst — je Block eine, mit
   // eigenem Anker. Es hat darum kein `id` auf der Blockebene.
   const headingId =
-    block.kind === 'anchors' || block.kind === 'serviceNav' || block.kind === 'segmente'
+    block.kind === 'anchors' ||
+    block.kind === 'serviceNav' ||
+    block.kind === 'segmente' ||
+    block.kind === 'betreuung'
       ? undefined
       : block.id
         ? `${block.id}-titel`
@@ -440,6 +444,22 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               heading={block.heading}
               lead={<Paragraphs items={block.paragraphs} className={styles.ctaLead} />}
               actions={<Actions actions={block.actions} locale={locale} />}
+            />
+          )
+        }
+
+        // Die Betreuung ist ein eigener Baustein und bringt ihre Flaeche
+        // selbst mit. Sie zaehlt beim Flaechenwechsel darum nicht mit.
+        if (block.kind === 'betreuung') {
+          return (
+            <Betreuung
+              key={index}
+              id={block.id}
+              eyebrow={block.eyebrow}
+              heading={block.heading}
+              lead={block.lead}
+              karten={block.karten}
+              schluss={block.schluss}
             />
           )
         }
