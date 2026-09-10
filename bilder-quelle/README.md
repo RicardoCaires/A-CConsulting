@@ -105,3 +105,20 @@ das Symbol im Hinweiskasten bei 32 px. 177 KB PNG werden zu 29 KB WebP.
 | `03_vorschlag_erhalten` | 256 px, 6 KB |
 | `04_wir_uebernehmen` | 256 px, 6 KB |
 | `05_info` | 128 px, 3 KB |
+## Kontaktbereich
+
+Am 10.09.2026 geliefert. Die beiden Symbole bringen ihren gruenen Ring mit —
+sie stehen ohne Kreis aus dem Layout dahinter und ohne Umfaerbung.
+
+| Datei | Quelle | ausgeliefert |
+|---|---|---|
+| `01_telefon` | 1024 x 1024 | 128 px, 5 KB |
+| `02_email` | 1024 x 1024 | 128 px, 5 KB |
+| `03_kontakt_hintergrundmuster` | 1920 x 720 | 1600 x 600, 42 KB |
+
+Das Hintergrundmuster ist links zu 53.6 Prozent leer — gemessen, nicht
+geschaetzt. Es bringt seinen eigenen Rand mit und ist als Band ueber die volle
+Abschnittsbreite gedacht, nicht als Aufkleber in der Ecke. Es wird darum
+unbeschnitten eingesetzt, obwohl gut die Haelfte der Datei durchsichtig ist.
+Sein Ton ist Navy bei acht Prozent Deckung; darum steht der Abschnitt auf
+Weiss und nicht auf getoentem Grund.

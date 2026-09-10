@@ -1,0 +1,118 @@
+/* Der Abschluss der Startseite.
+
+   Weiss, nicht getoent. Der Ablauf darueber steht bereits auf
+   `background-tint`; beide gleich einzufaerben ergaebe 1300 Pixel Grundton
+   ohne Kante — gemessen am 10.09.2026, vorher war genau das der Fall. So
+   endet die Seite hell und geht in den dunklen Fussbereich ueber.
+
+   Das gelieferte Muster ist ein durchsichtiges Band aus Navy bei acht Prozent
+   Deckung. Auf Weiss traegt es; auf dem getoenten Grund verschwaende es. */
+
+.abschnitt {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--ac-color-white);
+}
+
+/* ---- Das Muster ------------------------------------------------------------
+
+   Die gelieferte Datei ist 1600 x 600 und links zu 53.6 Prozent leer — sie
+   bringt ihren eigenen Rand mit und ist als Band ueber die volle Breite
+   gedacht, nicht als Aufkleber in der Ecke. Sie steht darum unbeschnitten und
+   unverzerrt ueber die ganze Breite, unten rechts verankert; was oben
+   ueberhaengt, ist ohnehin leer.
+
+   Die 90rem sind eine Obergrenze fuer sehr breite Fenster. Bei 1265 Pixeln
+   Abschnittsbreite beginnt der sichtbare Teil des Musters bei 678 Pixeln, der
+   Text endet bei 635 — gemessen, nicht geschaetzt. */
+
+.muster {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  width: min(100%, 90rem);
+  pointer-events: none;
+}
+
+.musterBild {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---- Der Inhalt ------------------------------------------------------------ */
+
+.inner {
+  position: relative;
+  z-index: 1;
+  /* Der Text bleibt links; rechts liegt das Muster. */
+  max-width: var(--ac-container);
+}
+
+.titel {
+  font-size: var(--ac-h1-size);
+  line-height: var(--ac-h1-line);
+  letter-spacing: var(--ac-h1-tracking);
+  color: var(--ac-color-primary-navy);
+  /* Drei Zeilen wie in der Vorlage. */
+  max-width: 16ch;
+}
+
+.satz {
+  margin-top: var(--ac-space-md);
+  max-width: 42ch;
+  font-size: var(--ac-lead-size);
+  line-height: var(--ac-lead-line);
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Telefon und E-Mail ----------------------------------------------------- */
+
+.kontakte {
+  display: grid;
+  gap: var(--ac-space-sm) clamp(1.5rem, 4vw, 3rem);
+  margin: clamp(1.75rem, 4vw, 2.5rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kontakt {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ac-space-sm);
+  /* Trefferflaeche deutlich ueber 44 px — das sind die beiden Wege, auf denen
+     eine Anfrage tatsaechlich hereinkommt. */
+  min-height: 3rem;
+  color: var(--ac-color-text-primary);
+  text-decoration: none;
+}
+
+.kontakt:hover {
+  color: var(--ac-color-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+/* Die Symbole bringen ihren gruenen Ring mit — kein Kreis aus dem Layout
+   dahinter, keine Farbaenderung, kein Filter. */
+.kontaktBild {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+}
+
+.aktion {
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+/* ---- Ab Tablet: Telefon und E-Mail nebeneinander ---------------------------- */
+
+@media (min-width: 40rem) {
+  .kontakte {
+    grid-auto-flow: column;
+    justify-content: start;
+  }
+}
