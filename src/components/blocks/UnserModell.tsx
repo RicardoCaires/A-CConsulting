@@ -6,34 +6,34 @@ import type { Rich } from '@/content/types'
 import styles from './UnserModell.module.css'
 
 /**
- * „Wir vertreten Sie, nicht die Versicherung." — das Modell als gebauter
- * Abschnitt.
+ * „Wir vertreten Sie, nicht die Versicherung." — das Modell als Abschnitt.
  *
- * Nach Ricardos Referenzgrafik vom 10.09.2026
- * (`bilder-quelle/unser-modell_referenz.png`). Bis dahin stand hier **eine
- * Bilddatei**; er hat ausdruecklich verlangt, dass daraus ein Webabschnitt
- * wird. Der Unterschied ist nicht nur Gestaltung: Text bleibt Text — waehlbar,
- * uebersetzbar, durchsuchbar und fuer Vorlesewerkzeuge lesbar. Aus dem Bild
- * kommen nur die Symbole.
+ * Dritte Fassung, 10.09.2026. Ricardo hat die Referenz diesmal als **fertiges
+ * HTML** geliefert (`bilder-quelle/unser-modell_referenz.html`); sie ist damit
+ * kein Bild mehr, das man ausmessen muss, sondern eine Vorlage, die man lesen
+ * kann. Aufbau, Reihenfolge, Groessen und Abstaende stammen von dort.
  *
- * Vier Ebenen, wie in der Vorlage:
- *   1 Einleitung links, drei Grundsaetze rechts
- *   2 der Kreislauf: Kunde → Mandat → A&C → Preisvergleich → Markt → Ergebnis
- *   3 die Nutzenleiste
- *   4 die Schlusszeile
+ * Uebernommen wurde die Gestaltung, nicht der Code: Die Vorlage schreibt
+ * Farbwerte und Georgia direkt hinein. Hier stehen dafuer die Projekt-Tokens
+ * und die Schrift der Website — ein Hex-Wert in einer Komponente ist in diesem
+ * Projekt ein Fehler, und eine zweite Schriftfamilie waere eine zweite Marke.
  *
- * **Die gelieferten Dateien der ersten Runde waren Bildschirmausschnitte** mit
- * eingebackenem Titel und Resten der Nachbarelemente. Ricardo hat am selben
- * Tag saubere Symbole nachgeliefert — 1254 x 1254, freigestellt. Diese sind
- * eingesetzt; die Titel stehen als Text daneben und nicht im Bild.
+ * Fuenf Teile, wie in der Vorlage:
+ *   1 Einleitung links, drei Grundsaetze rechts (43 zu 57 Prozent)
+ *   2 der Ablauf: Kunde → Mandat → A&C → Preisvergleich → Gesellschaften
+ *   3 die Rueckfuehrung: eine Klammer von rechts unten zurueck nach links oben
+ *   4 die Nutzenleiste, vier Spalten
+ *   5 die Schlusszeile
  *
- * Die Marker vor den Stichpunkten sind kleine Ringe aus CSS, keine Bilddatei
- * und kein Icon: In der Vorlage sind es Punkte von wenigen Pixeln. Ricardo hat
- * sie ausdruecklich „deutlich dezenter" verlangt.
+ * **Die Rueckfuehrung ist der Teil, der bisher fehlte.** In der Vorlage ist es
+ * eine U-Klammer aus drei Raendern mit einer Spitze oben links; in ihrer Mitte
+ * sitzt das Ergebnis und stanzt die Linie frei. Sie hat eigenen senkrechten
+ * Raum, damit nichts ueberlappt.
  *
- * Der Kreislauf ist auf schmalen Geraeten keine Grafik, sondern eine Abfolge:
- * Die Pfeile werden zu Zwischenschritten. Eine waagrechte Prozessgrafik auf
- * 375 px zu quetschen ergaebe ein Muster, keinen Inhalt.
+ * Die Symbole sind geliefert und stehen unveraendert da: kein Filter, keine
+ * Umfaerbung, kein Beschnitt. Die Marker vor den Stichpunkten sind Ringe aus
+ * CSS in hellem Blaugrau — so schreibt es die Vorlage, und so sind sie
+ * zurueckhaltender als die gruenen Haken der ersten Fassung.
  */
 
 type Grundsatz = { bild: string; titel: string; satz: string }
@@ -55,7 +55,7 @@ type Props = {
   schluss: { links: string; rechts: string }
 }
 
-/** Ein Symbol aus der Lieferung. Immer quadratisch, nie eingefaerbt. */
+/** Ein geliefertes Symbol. Immer quadratisch, nie eingefaerbt. */
 function Symbol({ datei, groesse }: { datei: string; groesse: number }) {
   return (
     <Image
@@ -69,13 +69,27 @@ function Symbol({ datei, groesse }: { datei: string; groesse: number }) {
   )
 }
 
-/** Ein Stichpunkt mit dezentem Marker. */
-function Punkt({ children }: { children: string }) {
+/** Eine Liste mit den zurueckhaltenden Ringmarkern der Vorlage. */
+function Liste({ punkte }: { punkte: readonly string[] }) {
   return (
-    <li className={styles.punkt}>
-      <span className={styles.marker} aria-hidden="true" />
-      {children}
-    </li>
+    <ul className={styles.liste} role="list">
+      {punkte.map((punkt) => (
+        <li key={punkt}>{punkt}</li>
+      ))}
+    </ul>
+  )
+}
+
+/** Ein Zwischenschritt: Linie, Titel, Pfeil — darunter der Satz. */
+function Schritt({ titel, satz }: { titel: string; satz: string }) {
+  return (
+    <div className={styles.schritt}>
+      <p className={styles.schrittZeile}>
+        <strong>{titel}</strong>
+        <span aria-hidden="true">→</span>
+      </p>
+      <p className={styles.schrittSatz}>{satz}</p>
+    </div>
   )
 }
 
@@ -98,8 +112,8 @@ export function UnserModell({
 
   return (
     <section id={id} className={styles.abschnitt} aria-labelledby={headingId}>
-      {/* Das gelieferte Hintergrundmuster. Sehr zurueckhaltend — was man als
-          Muster erkennt, ist schon zu viel. */}
+      {/* Das gelieferte Hintergrundmuster: feine Boegen und vereinzelte
+          Punkte. Es liegt hinter allem und traegt halbe Deckkraft. */}
       <div className={styles.muster} aria-hidden="true">
         <Image
           className={styles.musterBild}
@@ -111,14 +125,11 @@ export function UnserModell({
         />
       </div>
 
-      {/* Eigener Container statt `ac-container`: 1400 px statt 1160. Siehe
-          den Kopf des Stylesheets — im Standardmass wird der Abschnitt
-          zwangslaeufig zu klein. */}
       <div className={styles.inner}>
         {/* ---- 1 Einleitung und Grundsaetze ----------------------------- */}
         <div className={styles.kopf}>
-          <div className={styles.einleitung}>
-            <p className={`ac-eyebrow ${styles.eyebrow}`}>{eyebrow}</p>
+          <div>
+            <p className={styles.eyebrow}>{eyebrow}</p>
             <h2 id={headingId} className={styles.titel}>
               {heading}
             </h2>
@@ -130,96 +141,85 @@ export function UnserModell({
           <ul className={styles.grundsaetze} role="list">
             {grundsaetze.map((g) => (
               <li key={g.titel} className={styles.grundsatz}>
-                <Symbol datei={g.bild} groesse={64} />
-                <h3 className={styles.grundsatzTitel}>{g.titel}</h3>
-                <p className={styles.grundsatzSatz}>{g.satz}</p>
+                <Symbol datei={g.bild} groesse={74} />
+                <h3>{g.titel}</h3>
+                <p>{g.satz}</p>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* ---- 2 Der Kreislauf ------------------------------------------ */}
-        <div className={styles.kreislauf}>
-          <div className={`${styles.station} ${styles.kunde}`}>
-            <Symbol datei={kunde.bild} groesse={64} />
-            <h3 className={styles.stationTitel}>{kunde.titel}</h3>
-            <ul className={styles.punkte} role="list">
-              {kunde.punkte.map((p) => (
-                <Punkt key={p}>{p}</Punkt>
-              ))}
-            </ul>
-          </div>
+        {/* ---- 2 Der Ablauf --------------------------------------------- */}
+        <div className={styles.ablauf}>
+          <article className={`${styles.karte} ${styles.kunde}`}>
+            <div className={styles.kartenKopf}>
+              <Symbol datei={kunde.bild} groesse={68} />
+              <h3>{kunde.titel}</h3>
+            </div>
+            <span className={styles.akzent} aria-hidden="true" />
+            <Liste punkte={kunde.punkte} />
+          </article>
 
-          <div className={styles.schritt}>
-            <span className={styles.pfeil} aria-hidden="true" />
-            <p className={styles.schrittTitel}>{mandat.titel}</p>
-            <p className={styles.schrittSatz}>{mandat.satz}</p>
-          </div>
+          <Schritt titel={mandat.titel} satz={mandat.satz} />
 
-          <div className={`${styles.station} ${styles.zentral}`}>
+          <article className={`${styles.karte} ${styles.zentral}`}>
             <Image
               className={styles.logo}
               src={`/bilder/${mitte.bild}.webp`}
               alt={mitte.alt}
               width={440}
               height={330}
-              sizes="240px"
+              sizes="300px"
             />
-            <ul className={styles.punkte} role="list">
-              {mitte.punkte.map((p) => (
-                <Punkt key={p}>{p}</Punkt>
-              ))}
-            </ul>
-          </div>
+            <span className={styles.akzent} aria-hidden="true" />
+            <Liste punkte={mitte.punkte} />
+          </article>
 
-          <div className={styles.schritt}>
-            <span className={styles.pfeil} aria-hidden="true" />
-            <p className={styles.schrittTitel}>{preisvergleich.titel}</p>
-            <p className={styles.schrittSatz}>{preisvergleich.satz}</p>
-          </div>
+          <Schritt titel={preisvergleich.titel} satz={preisvergleich.satz} />
 
-          {/* Das gelieferte Panel. Es bringt seine Karten mit und steht darum
-              ohne Rahmen aus dem Layout dahinter. */}
-          <div className={styles.markt}>
+          {/* Das gelieferte Panel bringt seine Karten mit; die Karte darum
+              gibt ihm nur den gemeinsamen Rahmen der drei Stationen. */}
+          <article className={`${styles.karte} ${styles.markt}`}>
             <Image
-              className={styles.marktBild}
               src={`/bilder/${markt.bild}.webp`}
               alt={markt.alt}
               width={760}
               height={570}
-              sizes="(min-width: 64rem) 320px, 100vw"
+              sizes="(min-width: 74rem) 300px, 100vw"
             />
+          </article>
+        </div>
+
+        {/* ---- 3 Die Rueckfuehrung ---------------------------------------
+
+            Eine Klammer von den Gesellschaften nach unten, waagrecht nach
+            links und mit der Spitze wieder hinauf zum Kunden. Sie hat eigenen
+            senkrechten Raum, damit sie nichts ueberlappt. */}
+        <div className={styles.rueckfuehrung}>
+          <span className={styles.klammer} aria-hidden="true" />
+          <div className={styles.ergebnis}>
+            <h3>{ergebnis.titel}</h3>
+            <p>{ergebnis.satz}</p>
           </div>
         </div>
 
-        {/* ---- Der Rueckweg zum Kunden ---------------------------------- */}
-        <div className={styles.ergebnis}>
-          <span className={styles.rueckweg} aria-hidden="true" />
-          <p className={styles.ergebnisTitel}>{ergebnis.titel}</p>
-          <p className={styles.ergebnisSatz}>{ergebnis.satz}</p>
-        </div>
-
-        {/* ---- 3 Die Nutzenleiste --------------------------------------- */}
+        {/* ---- 4 Die Nutzenleiste --------------------------------------- */}
         <ul className={styles.nutzen} role="list">
           {nutzen.map((n) => (
             <li key={n.titel} className={styles.nutzenPosten}>
-              <Symbol datei={n.bild} groesse={56} />
-              <h3 className={styles.nutzenTitel}>{n.titel}</h3>
-              <p className={styles.nutzenSatz}>{n.satz}</p>
+              <Symbol datei={n.bild} groesse={72} />
+              <div>
+                <h3>{n.titel}</h3>
+                <p>{n.satz}</p>
+              </div>
             </li>
           ))}
         </ul>
 
-        {/* ---- 4 Die Schlusszeile --------------------------------------- */}
+        {/* ---- 5 Die Schlusszeile --------------------------------------- */}
         <div className={styles.schluss}>
-          <p className={styles.schlussText}>
-            <span className={styles.schlussStrich} aria-hidden="true" />
-            {schluss.links}
-          </p>
-          <p className={styles.schlussText}>
-            {schluss.rechts}
-            <span className={styles.schlussStrich} aria-hidden="true" />
-          </p>
+          <span>{schluss.links}</span>
+          <span>{schluss.rechts}</span>
         </div>
       </div>
     </section>

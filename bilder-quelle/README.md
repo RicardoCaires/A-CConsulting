@@ -231,3 +231,9 @@ weiterhin die Fassung aus dem Corporate Design (`public/logo/`).
 
 `unser-modell.webp` bleibt liegen. Die Datei ist von Ricardo freigegeben und
 wird nicht geloescht, steht seit dem 10.09.2026 aber auf keiner Seite mehr.
+
+`unser-modell_referenz.html` ist Ricardos dritte und verbindliche Vorlage fuer
+diesen Abschnitt, geliefert am 10.09.2026. Sie ist kein Bild, sondern fertiger
+Quelltext — Aufbau, Groessen und Abstaende stammen von dort. Uebernommen wurde
+die Gestaltung, nicht der Code: Farbwerte und Georgia sind durch die
+Projekt-Tokens und die Schrift der Website ersetzt.
