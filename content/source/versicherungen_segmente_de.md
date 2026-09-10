@@ -3,15 +3,12 @@
 Aus dem Auftrag vom 10.09.2026, den Abschnitt nach der Referenzgrafik neu zu
 bauen (`bilder-quelle/versicherungen_segmente_referenz.png`).
 
-Der Wortlaut ist **unverändert** aus `schritt4_fassung2_de.md` übernommen. Neu
-sind nur zwei Zusätze, die Ricardo im Auftrag ausdrücklich als „optional"
-bezeichnet und beide vorgegeben hat:
+Der Wortlaut ist **unverändert** aus `schritt4_fassung2_de.md` übernommen.
 
-## Zusätze
-
-Persönlich vorausdenken
-
-Starke Partner für nachhaltige Sicherheit
+> Die zwei Zusätze aus der Vorlage — „Persönlich vorausdenken" und „Starke
+> Partner für nachhaltige Sicherheit" — hat Ricardo am 10.09.2026 noch am
+> selben Tag wieder streichen lassen. A&C führte damit vier Zusätze, drei
+> davon auf dieser einen Seite.
 
 ## Anmerkung
 
@@ -20,9 +17,9 @@ Motorfahrzeug, Leben und Säule 3a, Rechtsschutz." steht jetzt als fünf
 einzelne Pills. Derselbe Inhalt, andere Form — nichts ergänzt, nichts
 weggelassen.
 
-**A&C führt damit vier Zusätze:** „Kompetenz schafft Klarheit" (Wortmarke),
-„Perspektiven für morgen" (Fussbereich), „Persönlich. Unabhängig. An Ihrer
-Seite." (Modellabschnitt) und die zwei hier. Ricardo ist darauf hingewiesen.
+**A&C führt noch drei Zusätze:** „Kompetenz schafft Klarheit" (Wortmarke),
+„Perspektiven für morgen" (Fussbereich) und „Persönlich. Unabhängig. An Ihrer
+Seite." (Modellabschnitt).
 
 `04_hintergrundmuster.png` war im Auftrag genannt, lag aber nicht im
 Assets-Ordner. Der Abschnitt steht darum auf dem ruhigen Grundton der hellen

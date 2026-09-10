@@ -33,12 +33,11 @@
 
 /* ---- Kopf: Einleitung links, Zusatz rechts --------------------------------- */
 
+/* Bis zum 10.09.2026 stand rechts daneben ein leiser Zusatz; Ricardo hat ihn
+   streichen lassen. Der Kopf traegt seither nur noch die Einleitung. */
 .kopf {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--ac-space-lg);
-  align-items: flex-start;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .einleitung {
@@ -101,30 +100,6 @@
   background-color: var(--ac-color-white);
   border: var(--ac-border-hairline) solid var(--ac-color-border-light);
   border-radius: 999px;
-}
-
-/* ---- Der leise Zusatz ------------------------------------------------------ */
-
-.claim {
-  display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
-  margin: 0;
-  font-size: var(--ac-eyebrow-size);
-  line-height: 1.5;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--ac-color-text-secondary) 70%, transparent);
-}
-
-/* Der kurze Strich darunter, wie in der Vorlage. */
-.claim::after {
-  content: '';
-  display: block;
-  width: 2.625rem;
-  height: var(--ac-border-hairline);
-  margin-top: var(--ac-space-sm);
-  background-color: var(--ac-color-border-light);
 }
 
 /* ---- Die Karten ------------------------------------------------------------ */
@@ -201,25 +176,7 @@
    Ueberschrift ueber die volle Breite. */
 
 @media (min-width: 64rem) {
-  .kopf {
-    flex-wrap: nowrap;
-  }
-
-  .claim {
-    flex: none;
-    text-align: right;
-  }
-
-  .claim::after {
-    margin-left: auto;
-  }
-
-  /* Der erste Block: Einleitung und Karte teilen sich eine Zeile. Das geht
-     ueber das Raster der Karten, damit der Zusatz oben rechts bleibt. */
-  .block:first-child .kopf {
-    align-items: flex-start;
-  }
-
+  /* Der erste Block: Einleitung links, Karte rechts, auf einer Zeile. */
   .block:first-child {
     display: grid;
     grid-template-columns: minmax(0, 43fr) minmax(0, 52fr);
@@ -230,15 +187,6 @@
   .block:first-child .kopf {
     grid-column: 1;
     grid-row: 1;
-    flex-direction: column;
-    gap: var(--ac-space-lg);
-  }
-
-  /* Der Zusatz des ersten Blocks gehoert optisch nach ganz oben rechts —
-     er sitzt darum ueber der Karte, nicht neben dem Text. */
-  .block:first-child .claim {
-    order: -1;
-    align-self: flex-end;
   }
 
   .block:first-child .karten {
@@ -258,9 +206,5 @@
   /* Piktogramm ueber dem Text, sonst bleibt fuer den Text zu wenig Breite. */
   .karte {
     flex-direction: column;
-  }
-
-  .claim {
-    text-align: left;
   }
 }

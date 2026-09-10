@@ -234,8 +234,6 @@ export type Block =
         lead?: string
         /** Die Bereiche als Pills. Nur der erste Block hat welche. */
         pills?: readonly string[]
-        /** Der leise Zusatz oben rechts, zweizeilig. */
-        claim?: readonly [string, string]
         karten: readonly { bild: string; titel: string; satz: string }[]
       }[]
     }
