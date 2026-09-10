@@ -108,9 +108,9 @@ Bei Versicherungen werden wir von den Gesellschaften über eine Courtage entsch�
 
 #### Zwei Ansprechpartner
 
-A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Andrade geführt. Beide betreuen Mandate selbst.
+A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade geführt. Beide betreuen Mandate selbst.
 
-Ricardo Caires Cerqueira ist zuständig für Treuhand, Steuern und Versicherungen, Octavio Andrade für Versicherungen. Beide beraten auf Deutsch, Französisch, Portugiesisch und Englisch.
+Ricardo Caires Cerqueira ist zuständig für Treuhand, Steuern und Versicherungen, Octavio Nuno Gouveia Andrade für Versicherungen. Beide beraten auf Deutsch, Französisch, Portugiesisch und Englisch.
 
 → → /ueber-uns Mehr über uns
 
@@ -837,7 +837,7 @@ Erzählen Sie uns, wie Ihre Buchhaltung heute läuft. Danach wissen Sie, ob und 
 
 #### Zwei Ansprechpartner, drei Bereiche
 
-A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Andrade geführt. Beide betreuen Mandate selbst.
+A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade geführt. Beide betreuen Mandate selbst.
 
 ### 02 Die beiden Inhaber
 
@@ -851,7 +851,7 @@ Beratungssprachen: Deutsch, Französisch, Portugiesisch und Englisch.
 
 Direkt erreichbar unter 078 625 53 85
 
-##### Octavio Andrade
+##### Octavio Nuno Gouveia Andrade
 
 Geschäftsführer und Mitinhaber. Zuständig für Versicherungen.
 
@@ -892,7 +892,7 @@ A&C Consulting GmbH wurde am 3. Februar 2026 gegründet und hat ihren Sitz an de
 - UID: CHE-332.960.986
 - Als Versicherungsvermittlerin bei der FINMA registriert, Register-Nr. F01568855
 - Tätigkeitsbereiche: Versicherungen, Treuhand und Steuern. Nicht zu unseren Leistungen gehören die aktienrechtliche Revision und die Rechtsberatung. Wo das nötig wird, arbeiten wir mit Fachpersonen zusammen.
-Das Unternehmen ist jung. Octavio Andrade ist seit 25 Jahren in der Versicherungsbranche tätig, Ricardo Caires Cerqueira kommt aus dem Finanz- und Rechnungswesen und ist als Versicherungsvermittler VBV qualifiziert.
+Das Unternehmen ist jung. Octavio Nuno Gouveia Andrade ist seit 25 Jahren in der Versicherungsbranche tätig, Ricardo Caires Cerqueira kommt aus dem Finanz- und Rechnungswesen und ist als Versicherungsvermittler VBV qualifiziert.
 
 > *Redaktionsnotiz (nicht auf die Website): Das Gründungsdatum steht im Handelsregister und ist ohnehin auffindbar. Es selbst zu nennen wirkt souveräner, als es zu umgehen. Die Glaubwürdigkeit trägt der berufliche Weg der beiden Personen in Abschnitt 02.*
 

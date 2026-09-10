@@ -237,12 +237,12 @@ const de: HomeContent = {
   // ---- 7 Wer wir sind ----------------------------------------------------
   people: {
     heading: 'Zwei Ansprechpartner',
-    body: 'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Andrade geführt. Beide betreuen Mandate selbst.',
+    body: 'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade geführt. Beide betreuen Mandate selbst.',
     members: [
       { name: 'Ricardo Caires Cerqueira', role: 'Geschäftsführer und Mitinhaber' },
-      { name: 'Octavio Andrade', role: 'Geschäftsführer und Mitinhaber' },
+      { name: 'Octavio Nuno Gouveia Andrade', role: 'Geschäftsführer und Mitinhaber' },
     ],
-    detail: 'Ricardo Caires Cerqueira ist zuständig für Treuhand, Steuern und Versicherungen, Octavio Andrade für Versicherungen. Beide beraten auf Deutsch, Französisch, Portugiesisch und Englisch.',
+    detail: 'Ricardo Caires Cerqueira ist zuständig für Treuhand, Steuern und Versicherungen, Octavio Nuno Gouveia Andrade für Versicherungen. Beide beraten auf Deutsch, Französisch, Portugiesisch und Englisch.',
     link: { target: 'ueberUns', label: 'Mehr über uns' },
   },
 

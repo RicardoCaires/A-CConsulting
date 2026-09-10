@@ -26,7 +26,7 @@ wir sind, was wir tun und wie man uns erreicht.
   > Stichtag von selbst. Kein Livegang vor dem 01.11.2026.
 - FINMA-Registernummer Unternehmen: **F01568855**
 - Geschäftsführung: **Ricardo Caires Cerqueira**
-- Mitinhaber: Octavio Andrade
+- Mitinhaber: Octavio Nuno Gouveia Andrade
 
 > Öffentlich auf der Website gilt die vollständige Form „Ricardo Caires Cerqueira"
 > (Festlegung Ricardo, 04.09.2026). Die Kurzform „Ricardo Caires" ist in knappen
@@ -427,14 +427,15 @@ Abschnitt und werden nicht zum neuen Standard:
 
 **Die Abschnitte 2 und 3 liegen auf einer gemeinsamen Fläche** (`kartenzone`),
 seit dem 10.09.2026 und nach Ricardos Referenz. Beide tragen Karten; eine Naht
-dazwischen gibt es bewusst nicht. Im Grund liegen weiche organische Formen,
-feine Höhenlinien und zwei dünne grüne Kurven — gezeichnet als ein einziges
-SVG (`src/components/ui/Zonenmuster.tsx`), nicht als Bilddatei: Die Fläche ist
-über 2000 px hoch, als Datei wären das je nach Gerät 200 KB und mehr.
+dazwischen gibt es bewusst nicht. Im Grund liegen acht weiche organische
+Formen — gezeichnet als ein einziges SVG (`src/components/ui/Zonenmuster.tsx`),
+nicht als Bilddatei: Die Fläche ist über 2000 px hoch, als Datei wären das je
+nach Gerät 200 KB und mehr.
 
-Die Deckkraft ist bewusst niedrig. Was man als Muster erkennt, ist schon zu
-viel — es soll der Fläche nur das Flache nehmen. Auf schmalen Geräten bleiben
-nur die Formen; Höhenlinien und die zweite grüne Kurve entfallen.
+**Keine Linien.** Die erste Fassung hatte zusätzlich feine Höhenlinien und
+zwei grüne Kurven; Ricardo hat sie am 10.09.2026 streichen lassen und dafür
+mehr von den Flächen verlangt. Die Deckkraft bleibt niedrig: Was man als
+Muster erkennt, ist schon zu viel.
 
 Die drei Illustrationen sind **gezeichnet, nicht geliefert**
 (`src/components/ui/Illustration.tsx`): flache Vektorformen, nur Tokenfarben,

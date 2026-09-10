@@ -56,11 +56,16 @@ export const company = {
    * Die Kurzform darf in knappen Oberflaechen-Zusammenhaengen stehen —
    * Bildunterschrift, Tabellenzelle, Signatur —, aber nur, wenn der
    * vollstaendige Name auf derselben Seite bereits eindeutig zu lesen ist.
+   *
+   * Fuer Octavio gilt seit dem 10.09.2026 dasselbe, auf Ricardos Anweisung:
+   * ueberall die vollstaendige Form „Octavio Nuno Gouveia Andrade". Die
+   * Kurzform „Octavio Andrade" stand bis dahin an achtzehn Stellen,
+   * einschliesslich Impressum und Fussbereich, und ist ersetzt.
    */
   people: {
     managingDirector: 'Ricardo Caires Cerqueira',
     managingDirectorShort: 'Ricardo Caires',
-    coOwner: 'Octavio Andrade',
+    coOwner: 'Octavio Nuno Gouveia Andrade',
   },
 
   /**
