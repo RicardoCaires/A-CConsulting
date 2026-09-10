@@ -4,40 +4,7 @@
    (StartHero, Faelle, Bereiche, StepList, Team, CTASection).
    Was hier steht, gehoert der Vorlage und keinem Baustein. */
 
-/* ---- 2 Statement --------------------------------------------------------- */
-
-/* Eine Aussage, die fuer sich steht. Sie loest die Vertrauenszeile ab: Vier
-   Begriffe in einer schmalen Leiste unter dem Kopf waren eine Zusatzleiste,
-   kein Gestaltungsmittel.
-
-   Asymmetrisch gesetzt — der Satz nimmt gut zwei Drittel, der Zusatz bleibt
-   schmal darunter. Keine Flaeche, kein Rahmen: Die Groesse traegt allein. */
-.statement {
-  /* Keine Breitenbegrenzung auf dem Behaelter: `ch` misst hier in
-     Fliesstextgroesse, nicht in der Groesse der Aussage. Begrenzt wird die
-     Aussage selbst — dort stimmt die Einheit. */
-  display: grid;
-}
-
-.statementSatz {
-  margin-top: var(--ac-space-2xs);
-  /* Rund zwei Zeilen. Die Aussage soll umbrechen, aber nicht zerfallen. */
-  max-width: 18ch;
-}
-
-.statementVorzeile {
-  margin-bottom: 0;
-}
-
-.statementZusatz {
-  margin-top: var(--ac-space-md);
-  font-size: var(--ac-lead-size);
-  line-height: var(--ac-lead-line);
-  color: var(--ac-color-text-secondary);
-  max-width: 42ch;
-}
-
-/* ---- 5 Eine Stelle für Ihre Administration ------------------------------- */
+/* ---- 4 Eine Stelle für Ihre Administration ------------------------------- */
 
 /* Die Kette. Eine geordnete Liste, weil die Reihenfolge etwas bedeutet: So
    laeuft ein Betrieb durch das Jahr. Auf schmalen Geraeten untereinander,
@@ -82,19 +49,7 @@
   color: var(--ac-on-navy-muted);
 }
 
-/* ---- 6 Digital ------------------------------------------------------------ */
-
-.fliesstext {
-  max-width: var(--ac-content-measure);
-  margin-top: var(--ac-space-sm);
-}
-
-.fliesstext p + p {
-  margin-top: var(--ac-space-sm);
-  color: var(--ac-color-text-secondary);
-}
-
-/* ---- 7 Ansprechpartner ---------------------------------------------------- */
+/* ---- 5 Ansprechpartner ---------------------------------------------------- */
 
 .personenLink {
   margin-top: clamp(1.5rem, 4vw, 2rem);
@@ -108,7 +63,7 @@
   min-height: 2.75rem;
 }
 
-/* ---- 8 Ablauf -------------------------------------------------------------- */
+/* ---- 6 Ablauf -------------------------------------------------------------- */
 
 .ablaufNachsatz {
   margin-top: clamp(1.5rem, 4vw, 2rem);

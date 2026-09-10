@@ -24,11 +24,6 @@ export const beispielStartseite: StartseiteInhalt = {
     weiter: { text: 'Beispiel-Textlink', ziel: 'ueberUns' },
     bild: { label: 'BEISPIELBILD EINSTIEG', note: 'Beispielhinweis zum Motiv' },
   },
-  statement: {
-    eyebrow: 'Beispiel-Vorzeile',
-    satz: 'Beispielaussage, die für sich allein steht.',
-    zusatz: 'Beispielzusatz, der den Gedanken in einem Satz weiterführt.',
-  },
   situationen: {
     titel: 'Beispielüberschrift der Situationen',
     einleitung: 'Beispielsatz über die sechs Ausgangslagen.',
@@ -73,11 +68,6 @@ export const beispielStartseite: StartseiteInhalt = {
     kette: ['Erstes Glied', 'Zweites Glied', 'Drittes Glied', 'Viertes Glied'],
     text: 'Beispielsatz darüber, weshalb die Themen zusammenhängen.',
     nachsatz: 'Beispielnachsatz mit einem zweiten Gedanken.',
-  },
-  digital: {
-    titel: 'Beispielüberschrift zur Arbeitsweise',
-    text: 'Beispielsatz darüber, wo Software hilft und wo die Verantwortung bleibt.',
-    nachsatz: 'Beispielnachsatz mit dem Nutzen für die Kundschaft.',
   },
   personen: {
     titel: 'Beispielüberschrift der Ansprechpartner',

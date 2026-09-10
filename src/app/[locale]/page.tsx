@@ -66,10 +66,6 @@ export default async function HomePage({ params }: PageProps) {
       bild: content.einstieg.bild,
     },
 
-    // 2 — Statement. Die eine Aussage, die Haltung zeigt — und darunter
-    //     die Modellgrafik, sobald die Datei vorliegt.
-    statement: content.statement,
-
     // 3 — Situationen. Stehen vor den Leistungen: Wer herkommt, denkt in
     //     seinem Problem, nicht in unseren Bereichen.
     situationen: {
@@ -91,13 +87,6 @@ export default async function HomePage({ params }: PageProps) {
       kette: content.eineStelle.kette,
       text: content.eineStelle.text,
       nachsatz: content.eineStelle.nachsatz,
-    },
-
-    // 6 — Digital.
-    digital: {
-      titel: content.digital.titel,
-      text: content.digital.text,
-      nachsatz: content.digital.nachsatz,
     },
 
     // 7 — Ansprechpartner.

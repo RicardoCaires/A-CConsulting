@@ -381,20 +381,29 @@ werden von dort verlinkt und kommen später dazu.
 
 ### Startseite
 
-Verbindlich sind **neun** Abschnitte. Der Wortlaut steht in
+Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
 `content/source/startseite_de.md` und wird nicht umformuliert.
 
 | # | Abschnitt | Überschrift auf der Seite | Fläche |
 |---|---|---|---|
-| 1 | Einstieg | Treuhand und Versicherungen. Persönlich aus einer Hand. | DOMINANT |
-| 2 | Vertrauenszeile | — (vier Angaben, ein schmales Band) | — |
-| 3 | Situationen | Wobei können wir Sie unterstützen? | hell |
-| 4 | Leistungen | Was wir für Sie übernehmen | weiss |
-| 5 | Eine Stelle | Eine Stelle für Ihre Administration | FLÄCHE |
-| 6 | Digital | Persönlich beraten. Digital effizient. | weiss |
-| 7 | Ansprechpartner | Zwei Ansprechpartner | hell |
-| 8 | Ablauf | So beginnt die Zusammenarbeit | weiss |
-| 9 | Abschluss | Erzählen Sie uns, wobei wir Sie entlasten können. | FLÄCHE |
+| 1 | Einstieg | Verwurzelt im Seeland. Blick auf mehr. | DOMINANT |
+| 2 | Leistungen | Was wir für Sie übernehmen | hell |
+| 3 | Situationen | Wobei können wir Sie unterstützen? | weiss |
+| 4 | Eine Stelle | Eine Stelle für Ihre Administration | FLÄCHE |
+| 5 | Ansprechpartner | Zwei Ansprechpartner | hell |
+| 6 | Ablauf | So beginnt die Zusammenarbeit | weiss |
+| 7 | Abschluss | Erzählen Sie uns, wobei wir Sie entlasten können. | FLÄCHE |
+
+> **Am 10.09.2026 von neun auf sieben verkürzt** auf Anweisung von Ricardo.
+> Weggefallen sind **„Unsere Rolle"** („Wir vertreten Sie, nicht die
+> Versicherung.") und **„Persönlich beraten. Digital effizient."**. Beide
+> Wortlaute stehen unverändert in `content/source/startseite_de.md` und sind
+> nicht widerrufen — sie sind nur nicht mehr auf der Startseite.
+>
+> Der Satz „Wir vertreten Sie, nicht die Versicherung. Wir prüfen Ihre
+> Verträge …" steht seither wieder in der Leistungskarte Versicherungen
+> (Abschnitt 2), wo er bis zum 09.09.2026 schon stand. Ausführlich erklärt das
+> Modell weiterhin das Schaubild auf `/versicherungen`.
 
 > Geändert am 09.09.2026 auf Anweisung von Ricardo (Revisionsauftrag). Bis dahin
 > galten sieben Abschnitte. Vier Änderungen:
@@ -430,20 +439,20 @@ nummeriert und ohne Icons:
 Keine Zähler mit erfundenen Zahlen ("X Jahre, Y Kunden"), keine Kundenstimmen,
 keine Versicherer-Logos. Nur Angaben, die belegbar sind.
 
-**Digitalisierung, Abschnitt 6.** Am 07.09.2026 hatte Ricardo alle Aussagen zu
-Automatisierung, KI und digitalen Prozessen streichen lassen; am 09.09.2026 hat
-er sie im Revisionsauftrag ausdrücklich zurückverlangt — aber **als Werkzeug,
-nicht als Verkaufsargument**. Erlaubt ist, was Software für die Kundschaft tut;
-verboten bleiben Schlagwörter („KI-gestützt" als Auszeichnung, „AI-powered",
-„disruptiv", „next generation"). Die fachliche Prüfung, die Beratung und die
-Verantwortung liegen im Text ausdrücklich bei A&C.
+**Digitalisierung — derzeit nicht auf der Startseite.** Der Abschnitt
+„Persönlich beraten. Digital effizient." ist am 10.09.2026 entfallen. Die
+inhaltliche Regel bleibt und gilt, sobald das Thema irgendwo wieder auftaucht:
+**Werkzeug, nicht Verkaufsargument.** Erlaubt ist, was Software für die
+Kundschaft tut; verboten bleiben Schlagwörter („KI-gestützt" als Auszeichnung,
+„AI-powered", „disruptiv", „next generation"). Die fachliche Prüfung, die
+Beratung und die Verantwortung liegen im Text ausdrücklich bei A&C.
 
 **Modellgrafik — nicht auf der Startseite.** Die Grafik „Unser Modell"
 (Kunde → Mandat → A&C → Preisvergleich) stand am 09.09.2026 kurz unter dem
 Statement und wurde von Ricardo am selben Tag wieder herausgenommen. Sie steht
 seither **nur** auf `/versicherungen`, direkt nach „Wir arbeiten in Ihrem
-Auftrag" — dort erklärt sie den Bereich, den sie zeigt. Abschnitt 2 der
-Startseite trägt wieder Text, auf jeder Fenstergrösse.
+Auftrag" — dort erklärt sie den Bereich, den sie zeigt. Der Abschnitt, unter dem
+sie stand, ist am 10.09.2026 ganz entfallen.
 
 **Sie zeigt die Logos von acht Versicherungsgesellschaften** (Zurich, Helvetia,
 AXA, Allianz, Vaudoise, Die Mobiliar, Generali, Swiss Life). Das widerspricht
