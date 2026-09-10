@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { BildHero } from '@/components/blocks/BildHero'
 import { Hero } from '@/components/blocks/Hero'
 import { PageBlocks } from '@/components/blocks/PageBlocks'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
@@ -58,6 +59,23 @@ const PAGE_VISUAL: Partial<Record<PageKey, { label: string; note?: string }>> = 
   kontakt: {
     label: 'BÜRO / LYSS',
     note: 'Aussen- oder Innenaufnahme Bielstrasse 22',
+  },
+}
+
+/**
+ * Gelieferte Seitenkopfbilder, je Seite.
+ *
+ * Wo ein Eintrag steht, traegt der Kopf das Bild und laeuft zweispaltig
+ * (`BildHero`). Wo keiner steht, bleibt es beim bisherigen Kopf mit der
+ * Bildflaeche aus `PAGE_VISUAL` — unveraendert fuer alle uebrigen Seiten.
+ *
+ * Ricardo hat am 10.09.2026 das erste dieser Bilder geliefert. Kommen weitere,
+ * treten sie hier dazu; am Baustein aendert sich nichts.
+ */
+const PAGE_HERO_BILD: Partial<Record<PageKey, { src: string; alt: string }>> = {
+  versicherungen: {
+    src: '/bilder/wide_cinematic_vector_3d_illustration_style_insu.webp',
+    alt: '',
   },
 }
 
@@ -261,21 +279,49 @@ export default async function ContentPage({ params }: PageProps) {
    */
   const knopf = content.hero.actions?.find((action) => action.kind === 'page')
 
+  /* Liegt ein geliefertes Bild vor, traegt der Kopf es und laeuft zweispaltig. */
+  const heroBild = PAGE_HERO_BILD[key]
+
   return (
     <>
       <Breadcrumb page={key} locale={locale} />
-      <Hero
-        eyebrow={bereich ? ui.page[bereich] : undefined}
-        titel={content.hero.heading}
-        titelLaenge="lang"
-        satz={content.hero.lead ? <RichText value={content.hero.lead} /> : undefined}
-        aktion={
-          knopf ? (
-            <Button href={hrefOrDefault(knopf.target, locale)}>{knopf.label}</Button>
-          ) : undefined
-        }
-        bild={PAGE_VISUAL[key]}
-      />
+
+      {heroBild ? (
+        <BildHero
+          /* Ohne uebergeordnete Seite traegt die Kategoriezeile den eigenen
+             Namen der Seite — der Kopf mit Bild braucht sie, der bisherige
+             kam ohne aus. */
+          eyebrow={bereich ? ui.page[bereich] : ui.page[key]}
+          titel={content.hero.heading}
+          satz={content.hero.lead ? <RichText value={content.hero.lead} /> : undefined}
+          aktion={
+            knopf ? (
+              /* Gruen, auf Ricardos Vorgabe vom 10.09.2026 („A&C-Grün für CTA").
+                 Sonst gilt „Gruen ist Akzent, nicht Flaeche"; ein Knopf ist die
+                 kleinste Flaeche, auf der das noch traegt, und er kommt auf
+                 dieser Seite genau einmal vor. */
+              <Button href={hrefOrDefault(knopf.target, locale)} variant="akzent">
+                {knopf.label}
+              </Button>
+            ) : undefined
+          }
+          belege={content.hero.belege}
+          bild={heroBild}
+        />
+      ) : (
+        <Hero
+          eyebrow={bereich ? ui.page[bereich] : undefined}
+          titel={content.hero.heading}
+          titelLaenge="lang"
+          satz={content.hero.lead ? <RichText value={content.hero.lead} /> : undefined}
+          aktion={
+            knopf ? (
+              <Button href={hrefOrDefault(knopf.target, locale)}>{knopf.label}</Button>
+            ) : undefined
+          }
+          bild={PAGE_VISUAL[key]}
+        />
+      )}
       <PageBlocks blocks={content.blocks} locale={locale} />
     </>
   )

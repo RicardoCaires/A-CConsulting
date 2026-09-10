@@ -222,6 +222,14 @@ export type PageContent = {
     heading: string
     lead?: Rich
     actions?: readonly Action[]
+    /**
+     * Drei kurze Belege unter dem Knopf. Sie stehen nur dort, wo der
+     * Seitenkopf ein Bild traegt — sonst haengen sie im Leeren.
+     *
+     * Bewusst knapp und ohne Superlativ: Was hier steht, muss belegbar sein
+     * (CLAUDE.md, Abschnitt 3).
+     */
+    belege?: readonly string[]
   }
   blocks: readonly Block[]
 }

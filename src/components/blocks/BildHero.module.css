@@ -1,0 +1,217 @@
+/* Seitenkopf mit geliefertem Bild.
+
+   Masse aus Ricardos Vorlage (1896 px breit, Kopf 559 px hoch):
+     Kopfhoehe        29.5 % der Breite
+     Text ab          12.5 % — die normale Containerkante
+     helles Motiv ab  58.5 %
+
+   Auf schmalen Geraeten steht der Text oben und das Bild darunter, beides
+   ueber die volle Breite. Ab Desktop liegt das Bild rechts hinter dem Text. */
+
+/* Unterhalb von Desktop stehen Text und Bild untereinander — der Text zuerst.
+   Im Markup steht das Bild vorn, weil es ab Desktop die Flaeche dahinter ist;
+   `order` dreht die Reihenfolge fuer die schmale Ansicht um, ohne dass das
+   Markup sich der Ansicht beugen muss. */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  isolation: isolate;
+  width: 100%;
+  background-color: var(--ac-color-navy-deep);
+}
+
+/* ---- Das gelieferte Bild ---------------------------------------------------
+
+   Mobil im Fluss unter dem Text, ueber die volle Breite und im eigenen
+   Seitenverhaeltnis — nichts beschnitten, nichts verzerrt. */
+
+.bild {
+  order: 2;
+  position: relative;
+  z-index: 0;
+  width: 100%;
+}
+
+.bildDatei {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Mobil braucht es keinen Verlauf: Text und Bild stehen untereinander. */
+.verlauf {
+  display: none;
+}
+
+.inhalt {
+  order: 1;
+  position: relative;
+  z-index: 2;
+  padding-block: clamp(2.5rem, 8vw, 4rem) clamp(2rem, 6vw, 3rem);
+}
+
+.eyebrow {
+  color: var(--ac-color-accent-green-light);
+}
+
+/* Der Titel laeuft in der H1-Groesse, nicht in der Display-Groesse.
+
+   Gemessen am 10.09.2026: In der Display-Groesse (68 px) brach der Satz
+   „Versicherungen für Privatpersonen und Unternehmen" in fuenf Zeilen, und
+   der Kopf wurde 840 px hoch — 59 Prozent der Breite statt der 29.5 aus der
+   Vorlage. In der H1-Groesse steht er dreizeilig wie dort.
+
+   Das ist dieselbe Entscheidung, die `Hero` als `titelLaenge="lang"` trifft:
+   Die Seitentitel aus Schritt 4 sind ganze Saetze. Werden sie gekuerzt, kann
+   hier die Display-Groesse zurueck. */
+.titel {
+  max-width: 15ch;
+  font-size: var(--ac-h1-size);
+  line-height: var(--ac-h1-line);
+  font-weight: var(--ac-display-weight);
+  letter-spacing: var(--ac-h1-tracking);
+  color: var(--ac-color-white);
+}
+
+.satz {
+  margin-top: var(--ac-space-sm);
+  max-width: 40ch;
+  font-size: var(--ac-lead-size);
+  line-height: var(--ac-lead-line);
+  color: var(--ac-on-navy-muted);
+}
+
+.aktion {
+  margin-top: var(--ac-space-md);
+}
+
+/* ---- Die drei Belege --------------------------------------------------------
+
+   Sie umbrechen auf schmalen Geraeten und stehen ab Tablet in einer Zeile.
+   Der Haken ist das bestehende Zeichen aus `Icon.tsx`, klein und gruen. */
+
+.belege {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ac-space-2xs) var(--ac-space-md);
+  margin: var(--ac-space-sm) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-on-navy-muted);
+}
+
+/* Ein Beleg bricht nicht in sich um: „Unabhängig beraten" ueber zwei Zeilen
+   sieht aus wie ein Fehler und machte den Kopf am 10.09.2026 um 24 px hoeher
+   als noetig. Ist die Zeile zu eng, umbricht stattdessen die Liste. */
+.beleg {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  white-space: nowrap;
+}
+
+.haken {
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--ac-color-accent-green-light);
+}
+
+/* ---- Ab Desktop: Text links, Bild rechts dahinter ---------------------------
+
+   Das Bild traegt links seinen eigenen Navy-Grund und geht darum nahtlos in
+   die Flaeche ueber. Bei 78 % Breite, rechts angesetzt, beginnt sein helles
+   Motiv bei 57.6 % des Kopfes — die Vorlage zeigt 58.5 %.
+
+   `cover` beschneidet oben und unten, nie seitlich: Das Motiv sitzt rechts
+   und bleibt vollstaendig. */
+
+@media (min-width: 64rem) {
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    min-height: 29.5vw;
+  }
+
+  .bild {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 78%;
+  }
+
+  .bildDatei {
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+  }
+
+  /* Der Verlauf laeuft von der linken Kante nach rechts aus. Er endet vor dem
+     Motiv — dort, wo das Bild ohnehin hell wird, soll nichts mehr liegen. */
+  .verlauf {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to right,
+      var(--ac-color-navy-deep) 0%,
+      var(--ac-color-navy-deep) 26%,
+      color-mix(in srgb, var(--ac-color-navy-deep) 82%, transparent) 42%,
+      transparent 62%
+    );
+    pointer-events: none;
+  }
+
+  .inhalt {
+    width: 100%;
+    padding-block: clamp(2.5rem, 3.5vw, 3.5rem);
+  }
+
+  /* Der Text darf nie unter das Motiv laufen, das bei 57.6 % der Kopfbreite
+     beginnt. Der Prozentwert bezieht sich auf den **Container**, nicht auf den
+     Kopf: 56 % von 1096 px sind 614 px, der Text endet damit bei 54.6 % der
+     Kopfbreite — 43 px vor dem Motiv. Gemessen am 10.09.2026. */
+  .text {
+    max-width: 56%;
+  }
+
+  /* 19ch fassen „für Privatpersonen" in einer Zeile. Bei 16ch brach der Titel
+     vierzeilig statt dreizeilig wie in der Vorlage — gemessen, nicht geraten. */
+  .titel {
+    max-width: 19ch;
+  }
+
+  .belege {
+    gap: var(--ac-space-2xs) var(--ac-space-md);
+  }
+}
+
+/* Wo `color-mix` fehlt, traegt ein einfacher Verlauf. */
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+  @media (min-width: 64rem) {
+    .verlauf {
+      background: linear-gradient(
+        to right,
+        var(--ac-color-navy-deep) 30%,
+        transparent 62%
+      );
+    }
+  }
+}
+
+@media print {
+  .hero {
+    min-height: 0;
+  }
+
+  .bild,
+  .verlauf {
+    display: none;
+  }
+}

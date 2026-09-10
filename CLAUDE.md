@@ -645,6 +645,41 @@ Broker von einem Direktabschluss unterscheidet.
 
 Kein Prämienrechner, keine Vergleichstabellen mit Versicherernamen.
 
+#### Seitenkopf mit Bild, seit dem 10.09.2026
+
+Ricardo hat für `/versicherungen` ein Kopfbild und eine Referenzgrafik
+geliefert. Der Kopf läuft dort über den eigenen Baustein
+`src/components/blocks/BildHero.tsx`: links Kategorie, Titel, Satz, grüner
+Knopf und drei Belege, rechts das Bild bis an die Fensterkante.
+
+**`Hero.tsx` bleibt unverändert.** Er trägt acht andere Seitenköpfe. Welche
+Seite ein Bild bekommt, steht in `PAGE_HERO_BILD` in
+`src/app/[locale]/[...slug]/page.tsx` — heute genau eine. Kommen weitere
+Bilder, treten sie dort dazu.
+
+Masse aus der Vorlage: Kopfhöhe 29.5 Prozent der Breite, helles Motiv ab
+58.5 Prozent. Nachgemessen bei 1900 px: 30.4 Prozent und 57.6 Prozent.
+
+Drei Punkte, die man wissen muss:
+
+- **Der Knopf ist grün** (`variant="akzent"`), auf Ricardos Vorgabe. Sonst gilt
+  „Grün ist Akzent, nicht Fläche". Er kommt auf der Seite genau einmal vor.
+- **Der Titel läuft in der H1-Grösse**, nicht in der Display-Grösse. In der
+  Display-Grösse brach „Versicherungen für Privatpersonen und Unternehmen" in
+  fünf Zeilen und der Kopf wurde 840 px hoch. Dieselbe Entscheidung trifft
+  `Hero` als `titelLaenge="lang"`.
+- **Die Kategoriezeile heisst „Versicherungen", nicht „[BERATUNGSSITUATION]".**
+  Der Auftrag nannte Letzteres; das ist aber die interne Regieanweisung für das
+  fehlende Foto aus `PAGE_VISUAL` und kein Website-Text. Die Referenzgrafik hat
+  sie aus der bestehenden Seite übernommen. Ricardo entscheidet, ob es so
+  bleibt.
+
+Die **Sprungmarken** unter dem Kopf sind neu gestaltet: mittig, weisse Pillen
+mit feiner Kontur, die erste leicht hinterlegt. Sie stehen auf mehreren Seiten,
+die Änderung gilt darum überall. Dass die erste hinterlegt ist, ist Gestaltung
+und kein Zustand — welcher Abschnitt gerade sichtbar ist, wüsste nur
+JavaScript.
+
 ### /treuhand
 
 Buchhaltung, Lohnadministration, MWST-Abrechnung, Jahresabschluss,

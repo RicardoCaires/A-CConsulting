@@ -141,13 +141,22 @@
   background-color: var(--ac-color-white);
 }
 
+/* Die Sprungmarken schliessen an den Seitenkopf an: mittig, ruhige Pillen,
+   weiss mit feiner Kontur. Nach Ricardos Referenzgrafik vom 10.09.2026.
+
+   Die Leiste steht auf mehreren Seiten; die Aenderung gilt darum ueberall.
+   Das ist Absicht — zwei verschiedene Sprungleisten waeren schlechter als
+   eine. */
+
 .anchorNav {
   display: flex;
+  justify-content: center;
 }
 
 .anchorList {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: var(--ac-space-2xs);
   margin: 0;
   padding: 0;
@@ -158,18 +167,29 @@
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  padding-inline: var(--ac-space-sm);
+  padding-inline: var(--ac-space-md);
   font-size: var(--ac-small-size);
   font-weight: 500;
   color: var(--ac-color-primary-navy);
   text-decoration: none;
-  background-color: var(--ac-color-background-light);
-  border-radius: var(--ac-radius-md);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  /* Pillenform: der halbe Rand, nicht die kleine Rundung. */
+  border-radius: 999px;
+}
+
+/* Die erste Marke ist leicht hinterlegt — sie fuehrt zum Abschnitt, bei dem
+   man ankommt. Das ist Gestaltung, kein Zustand: Welcher Abschnitt gerade
+   sichtbar ist, wuesste nur Javascript, und dafuer ist die Leiste zu klein. */
+.anchorList li:first-child .anchorLink {
+  background-color: var(--ac-color-background-tint);
+  border-color: transparent;
 }
 
 .anchorLink:hover {
   color: var(--ac-color-primary-navy);
-  background-color: var(--ac-color-background-tint);
+  background-color: var(--ac-color-background-light);
+  border-color: var(--ac-color-border-light);
 }
 
 /* ---- Direktkontakt ------------------------------------------------------ */
