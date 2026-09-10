@@ -1,25 +1,36 @@
 /* „Wir vertreten Sie, nicht die Versicherung." — das Modell als Abschnitt.
 
-   Nach Ricardos Referenzgrafik vom 10.09.2026. Sie ist die Vorlage, aber der
-   Abschnitt soll ausdruecklich **leichter** wirken als sie: mehr Luft, feinere
-   Linien, dezentere Marker. Das steht so im Auftrag und ist hier umgesetzt.
+   Zweite Fassung, 10.09.2026. Die erste war Ricardo zu klein und zu schwach
+   gewichtet — zu Recht: Sie lief im Standardcontainer von 1160 px, seine
+   Vorlage hat 1390 px Inhaltsbreite. Alles darin musste zwangslaeufig
+   schrumpfen, und der Fliesstext lief in der Kleinschrift statt im Fliesstext.
 
-   Der Grund ist getoent wie die hellen Bereiche der Startseite, nicht weiss.
-   Darauf liegt das gelieferte Muster mit sehr geringer Deckkraft. */
+   Alle Masse stammen jetzt aus der Vorlage (1576 px breit, Inhalt x 93 bis
+   1486 = 1390 px), nachgemessen und nicht geschaetzt:
+
+     Karten          Kunde 294 · A&C 348 · Gesellschaften 303
+     Zwischenraeume  224 und 221 — sie tragen Pfeil, Titel und Satz
+     Grundsaetze     drei Spalten, Trennlinien bei x 978 und 1218
+     Kopf            Text links bis x 600, Grundsaetze ab x 738
+     Titel           drei Zeilen, Zeilenabstand 61 px, breiteste Zeile 380 px
+     Lead            zwei Zeilen, Zeilenabstand 27 px
+
+   Der Abschnitt bekommt darum einen **eigenen, breiteren Container**. Er ist
+   der einzige auf der Seite mit dieser Ausnahme; alles andere bleibt im
+   Standardmass. */
 
 .abschnitt {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: var(--ac-section-y);
+  padding-block: var(--ac-section-y-lg);
   background-color: var(--ac-color-background-light);
 }
 
 /* ---- Das Muster ------------------------------------------------------------
 
-   Grossflaechig und zurueckhaltend. Es deckt den Abschnitt, wird oben und
-   unten beschnitten und traegt nur ein Zehntel Deckkraft — der Inhalt bleibt
-   in jedem Fall vorn. */
+   Grossflaechig und zurueckhaltend. Es deckt den Abschnitt und traegt halbe
+   Deckkraft — der Inhalt bleibt in jedem Fall vorn. */
 
 .muster {
   position: absolute;
@@ -36,16 +47,22 @@
   object-position: center;
 }
 
+/* Der eigene Container: 1400 px statt der 1160 des Standards. Ricardo hat
+   1320 bis 1400 verlangt, die Vorlage misst 1390. */
 .inner {
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: var(--ac-gutter);
 }
 
 /* ---- 1 Einleitung und Grundsaetze ------------------------------------------ */
 
 .kopf {
   display: grid;
-  gap: var(--ac-space-xl);
+  gap: clamp(2rem, 4vw, 3.5rem);
 }
 
 .eyebrow {
@@ -55,34 +72,37 @@
   color: var(--ac-color-text-secondary);
 }
 
-/* Der gruene Strich vor der Kategoriezeile. */
+/* Der gruene Strich vor der Kategoriezeile. In der Vorlage 47 px lang. */
 .eyebrow::before {
   content: '';
   display: block;
-  width: 2.25rem;
+  width: 2.9rem;
   height: var(--ac-border-marker);
   background-color: var(--ac-color-accent-green);
 }
 
+/* Gross und praesent. 13ch zwingen den Satz in die drei Zeilen der Vorlage:
+   „Wir vertreten / Sie, nicht die / Versicherung." */
 .titel {
-  margin-top: var(--ac-space-sm);
-  max-width: 14ch;
-  font-size: var(--ac-h1-size);
-  line-height: var(--ac-h1-line);
-  letter-spacing: var(--ac-h1-tracking);
+  margin-top: var(--ac-space-md);
+  max-width: 13ch;
+  font-size: var(--ac-display-size);
+  line-height: 1.06;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: var(--ac-display-tracking);
   color: var(--ac-color-primary-navy);
 }
 
 .lead {
-  margin-top: var(--ac-space-md);
-  max-width: 44ch;
+  margin-top: var(--ac-space-lg);
+  max-width: 46ch;
   font-size: var(--ac-lead-size);
   line-height: var(--ac-lead-line);
   color: var(--ac-color-text-secondary);
 }
 
-/* Die drei Grundsaetze. Keine Karten — offen und leicht, nur durch feine
-   Linien getrennt. */
+/* Die drei Grundsaetze. Keine Karten — offen, nur durch feine Linien
+   getrennt, wie in der Vorlage. */
 
 .grundsaetze {
   display: grid;
@@ -100,17 +120,17 @@
 }
 
 .grundsatzTitel {
-  margin: var(--ac-space-sm) 0 0;
+  margin: var(--ac-space-md) 0 0;
   font-size: var(--ac-h3-size);
   line-height: var(--ac-h3-line);
   color: var(--ac-color-primary-navy);
 }
 
 .grundsatzSatz {
-  margin: var(--ac-space-2xs) 0 0;
-  max-width: 26ch;
-  font-size: var(--ac-small-size);
-  line-height: var(--ac-small-line);
+  margin: var(--ac-space-sm) 0 0;
+  max-width: 24ch;
+  font-size: var(--ac-body-size);
+  line-height: var(--ac-body-line);
   color: var(--ac-color-text-secondary);
 }
 
@@ -118,43 +138,48 @@
    keine Umfaerbung, kein Filter. */
 .symbol {
   flex: none;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4rem;
+  height: 4rem;
   object-fit: contain;
 }
 
 /* ---- 2 Der Kreislauf -------------------------------------------------------
 
    Auf schmalen Geraeten eine Abfolge untereinander: Station, Zwischenschritt,
-   Station. Ab Desktop stehen die drei Stationen nebeneinander und die
-   Zwischenschritte dazwischen. */
+   Station. Ab Desktop stehen die drei Stationen nebeneinander, die
+   Zwischenschritte dazwischen — im Verhaeltnis der Vorlage. */
 
 .kreislauf {
   display: grid;
-  gap: var(--ac-space-md);
-  margin-top: var(--ac-space-xl);
+  gap: var(--ac-space-lg);
+  margin-top: clamp(3rem, 6vw, 5rem);
 }
 
 .station {
   display: flex;
   flex-direction: column;
-  padding: var(--ac-space-lg);
+  padding: clamp(1.5rem, 2.4vw, 2.25rem);
   background-color: var(--ac-color-white);
-  border-radius: var(--ac-radius-lg);
-  /* Der schwaechste Schatten, der eine weisse Karte vom Grund noch abhebt —
-     dieselbe Ausnahme wie in Abschnitt 2 der Startseite. */
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
 }
 
-/* Die mittlere Station ist die wichtigste und traegt darum etwas mehr. */
+/* Die mittlere Station ist die wichtigste: mehr Innenabstand, ein Hauch
+   Schatten statt der Kontur. */
 .zentral {
   align-items: center;
-  box-shadow: 0 2px 12px color-mix(in srgb, var(--ac-color-primary-navy) 8%, transparent);
+  text-align: center;
+  /* Knapper als die Aussenkarten: Sie traegt fuenf Zeilen, und jeder Punkt
+     Innenabstand kostet hier eine Textzeile mehr. Gemessen am 10.09.2026 —
+     bei 2.75rem lief die Karte auf 658 px Hoehe. */
+  padding: clamp(1.5rem, 2.2vw, 2rem);
+  border-color: transparent;
+  box-shadow: 0 2px 24px color-mix(in srgb, var(--ac-color-primary-navy) 10%, transparent);
 }
 
 .stationTitel {
-  margin: var(--ac-space-sm) 0 0;
-  font-size: var(--ac-h3-size);
+  margin: var(--ac-space-md) 0 0;
+  font-size: var(--ac-h2-size);
   line-height: var(--ac-h3-line);
   color: var(--ac-color-primary-navy);
 }
@@ -163,142 +188,164 @@
 .kunde .stationTitel::after {
   content: '';
   display: block;
-  width: 2rem;
-  height: var(--ac-border-hairline);
-  margin-top: var(--ac-space-sm);
+  width: 2.5rem;
+  height: var(--ac-border-marker);
+  margin-top: var(--ac-space-md);
   background-color: var(--ac-color-accent-green);
 }
 
 .logo {
-  width: min(100%, 11rem);
+  width: min(100%, 13rem);
   height: auto;
   object-fit: contain;
 }
 
 /* ---- Stichpunkte mit dezentem Marker ---------------------------------------
 
-   In der Vorlage sind es Punkte von wenigen Pixeln. Ricardo hat sie
-   ausdruecklich „deutlich dezenter" verlangt: ein feiner Ring, kein Haken,
-   keine Flaeche. */
+   Kein Haken, keine Flaeche: ein feiner Ring, wie in der Vorlage. */
 
 .punkte {
   display: grid;
   gap: var(--ac-space-sm);
-  margin: var(--ac-space-md) 0 0;
+  margin: var(--ac-space-lg) 0 0;
   padding: 0;
   list-style: none;
   width: 100%;
+  text-align: left;
 }
 
 .punkt {
   display: flex;
   align-items: flex-start;
   gap: var(--ac-space-sm);
-  font-size: var(--ac-small-size);
-  line-height: var(--ac-small-line);
+  font-size: var(--ac-body-size);
+  line-height: var(--ac-body-line);
   color: var(--ac-color-text-secondary);
 }
 
 .marker {
   flex: none;
   /* Auf die Zeilenmitte gesetzt, damit der Ring nicht am Oberrand klebt. */
-  margin-top: 0.4em;
+  margin-top: 0.45em;
   width: 0.5rem;
   height: 0.5rem;
   border: var(--ac-border-hairline) solid var(--ac-color-accent-green);
   border-radius: 50%;
 }
 
-/* ---- Die Zwischenschritte -------------------------------------------------- */
+/* ---- Die Zwischenschritte --------------------------------------------------
+
+   Sie sind keine Luecke, sondern eine eigene Spalte: In der Vorlage sind sie
+   224 und 221 px breit und tragen Pfeil, Titel und Satz. */
 
 .schritt {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-inline: var(--ac-space-sm);
 }
 
-/* Der Pfeil: mobil senkrecht, ab Desktop waagrecht. Eine feine Linie mit
-   Spitze, gebaut aus Rahmen — keine Bilddatei fuer einen Strich. */
+/* Der Pfeil. Mobil senkrecht, ab Desktop waagrecht — eine feine Linie mit
+   Spitze, aus Rahmen gebaut. Fuer einen Strich wird keine Bilddatei geladen. */
 .pfeil {
+  position: relative;
   display: block;
   width: var(--ac-border-hairline);
-  height: 1.5rem;
+  height: 2.5rem;
   background-color: var(--ac-color-border-light);
+}
+
+.pfeil::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-right: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  transform: translate(-50%, 0.05rem) rotate(45deg);
 }
 
 .schrittTitel {
-  margin: var(--ac-space-sm) 0 0;
-  font-size: var(--ac-small-size);
-  font-weight: 600;
-  color: var(--ac-color-primary-navy);
-}
-
-.schrittSatz {
-  margin: var(--ac-space-2xs) 0 0;
-  max-width: 30ch;
-  font-size: var(--ac-small-size);
-  line-height: var(--ac-small-line);
-  color: var(--ac-color-text-secondary);
-}
-
-/* Das gelieferte Panel bringt seine Karten und seinen Rahmen mit. */
-.markt {
-  display: flex;
-  justify-content: center;
-}
-
-.marktBild {
-  width: 100%;
-  max-width: 22rem;
-  height: auto;
-  object-fit: contain;
-}
-
-/* ---- Der Rueckweg zum Kunden ----------------------------------------------- */
-
-.ergebnis {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-top: var(--ac-space-lg);
-}
-
-.rueckweg {
-  display: block;
-  width: var(--ac-border-hairline);
-  height: 1.5rem;
-  margin-bottom: var(--ac-space-sm);
-  background-color: var(--ac-color-border-light);
-}
-
-.ergebnisTitel {
-  margin: 0;
+  margin: var(--ac-space-md) 0 0;
   font-size: var(--ac-h3-size);
   line-height: var(--ac-h3-line);
   font-weight: 600;
   color: var(--ac-color-primary-navy);
 }
 
-.ergebnisSatz {
-  margin: var(--ac-space-2xs) 0 0;
-  max-width: 46ch;
-  font-size: var(--ac-small-size);
-  line-height: var(--ac-small-line);
+.schrittSatz {
+  margin: var(--ac-space-sm) 0 0;
+  max-width: 24ch;
+  font-size: var(--ac-body-size);
+  line-height: var(--ac-body-line);
   color: var(--ac-color-text-secondary);
 }
 
-/* ---- 3 Die Nutzenleiste ---------------------------------------------------- */
+/* Das gelieferte Panel bringt seine Karten und seinen Rahmen mit — darum
+   steht es ohne Kasten aus dem Layout dahinter. */
+.markt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marktBild {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ---- Der Rueckweg zum Kunden -----------------------------------------------
+
+   Eine Klammer unter dem Ablauf: Sie zeigt, dass alles beim Kunden ankommt. */
+
+.ergebnis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.rueckweg {
+  display: block;
+  width: var(--ac-border-hairline);
+  height: 2rem;
+  margin-bottom: var(--ac-space-md);
+  background-color: var(--ac-color-border-light);
+}
+
+.ergebnisTitel {
+  margin: 0;
+  font-size: var(--ac-h1-size);
+  line-height: var(--ac-h1-line);
+  letter-spacing: var(--ac-h1-tracking);
+  color: var(--ac-color-primary-navy);
+}
+
+.ergebnisSatz {
+  margin: var(--ac-space-sm) 0 0;
+  max-width: 52ch;
+  font-size: var(--ac-lead-size);
+  line-height: var(--ac-lead-line);
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- 3 Die Nutzenleiste ----------------------------------------------------
+
+   In der Vorlage ein eigenes helles Panel ueber die volle Breite, mit feinen
+   senkrechten Trennlinien. */
 
 .nutzen {
   display: grid;
-  gap: var(--ac-space-lg);
-  margin: var(--ac-space-xl) 0 0;
-  padding: var(--ac-space-lg) 0 0;
+  gap: var(--ac-space-xl);
+  margin: clamp(3rem, 6vw, 5rem) 0 0;
+  padding: clamp(2rem, 3.5vw, 3rem);
   list-style: none;
-  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  background-color: var(--ac-color-white);
+  border-radius: var(--ac-radius-md);
 }
 
 .nutzenPosten {
@@ -307,22 +354,22 @@
 }
 
 .nutzenPosten .symbol {
-  width: 3rem;
-  height: 3rem;
+  width: 3.5rem;
+  height: 3.5rem;
 }
 
 .nutzenTitel {
-  margin: var(--ac-space-sm) 0 0;
+  margin: var(--ac-space-md) 0 0;
   font-size: var(--ac-h3-size);
   line-height: var(--ac-h3-line);
   color: var(--ac-color-primary-navy);
 }
 
 .nutzenSatz {
-  margin: var(--ac-space-2xs) 0 0;
-  max-width: 32ch;
-  font-size: var(--ac-small-size);
-  line-height: var(--ac-small-line);
+  margin: var(--ac-space-sm) 0 0;
+  max-width: 30ch;
+  font-size: var(--ac-body-size);
+  line-height: var(--ac-body-line);
   color: var(--ac-color-text-secondary);
 }
 
@@ -332,7 +379,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--ac-space-sm);
-  margin-top: var(--ac-space-xl);
+  margin-top: clamp(2rem, 4vw, 3rem);
   padding-top: var(--ac-space-lg);
   border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
 }
@@ -340,7 +387,7 @@
 .schlussText {
   display: flex;
   align-items: center;
-  gap: var(--ac-space-sm);
+  gap: var(--ac-space-md);
   margin: 0;
   font-size: var(--ac-eyebrow-size);
   line-height: var(--ac-eyebrow-line);
@@ -351,7 +398,7 @@
 
 .schlussStrich {
   flex: none;
-  width: 2.25rem;
+  width: 2.9rem;
   height: var(--ac-border-hairline);
   background-color: var(--ac-color-accent-green);
 }
@@ -361,12 +408,12 @@
 @media (min-width: 40rem) {
   .grundsaetze {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--ac-space-md);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
   }
 
   /* Feine Trennlinien zwischen den Grundsaetzen, wie in der Vorlage. */
   .grundsatz + .grundsatz {
-    padding-left: var(--ac-space-md);
+    padding-left: clamp(1.5rem, 3vw, 2.5rem);
     border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
   }
 
@@ -377,53 +424,58 @@
 
 /* ---- Ab Desktop ------------------------------------------------------------
 
-   Einleitung links, Grundsaetze rechts. Der Kreislauf laeuft waagrecht:
-   Station, Schritt, Station, Schritt, Station. Die mittlere Station ist die
-   breiteste — sie ist die wichtigste. */
+   Kopf: Text links, Grundsaetze rechts — in der Vorlage 507 zu 720 px.
+   Kreislauf: die fuenf Spalten im Verhaeltnis der Vorlage,
+   294 : 224 : 348 : 221 : 303. Der Zwischenraum ist die Spalte selbst, darum
+   steht der Abstand auf null. */
 
 @media (min-width: 64rem) {
   .kopf {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    gap: var(--ac-space-xl);
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
     align-items: start;
   }
 
-  /* Die Stationen tragen den Inhalt, die Zwischenschritte nur zwei Zeilen.
-     Bei gleichem Gewicht bekamen die Stationen 190 px und die Schritte 192 —
-     gemessen am 10.09.2026. Jetzt 227 / 125 / 295 / 125 / 227 bei 1096 px
-     Inhaltsbreite. */
   .kreislauf {
     grid-template-columns:
-      minmax(0, 1fr) minmax(0, 0.55fr) minmax(0, 1.3fr)
-      minmax(0, 0.55fr) minmax(0, 1fr);
+      minmax(0, 294fr) minmax(0, 224fr) minmax(0, 348fr)
+      minmax(0, 221fr) minmax(0, 303fr);
     align-items: center;
-    gap: var(--ac-space-md);
-    margin-top: clamp(2.5rem, 5vw, 4rem);
+    gap: 0;
   }
 
+  /* Der Zwischenschritt haelt selbst Abstand zu den Karten. */
   .schritt {
-    padding-inline: 0;
+    padding-inline: clamp(1rem, 2vw, 2rem);
   }
 
-  /* Waagrecht: eine feine Linie ueber die Breite des Zwischenschritts. */
+  /* Waagrecht: eine feine Linie ueber die Breite des Zwischenschritts, mit
+     Spitze am rechten Ende. */
   .pfeil {
     width: 100%;
     height: var(--ac-border-hairline);
   }
 
+  .pfeil::after {
+    top: 50%;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    transform: translate(0.05rem, -50%) rotate(-45deg);
+  }
+
   .rueckweg {
-    width: 60%;
+    width: 55%;
     height: var(--ac-border-hairline);
   }
 
   .nutzen {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--ac-space-lg);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
   }
 
   /* Fein getrennte Spalten, wie in der Vorlage. */
   .nutzenPosten + .nutzenPosten {
-    padding-left: var(--ac-space-lg);
+    padding-left: clamp(1.5rem, 3vw, 2.5rem);
     border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
   }
 

@@ -545,6 +545,18 @@ Vier Ebenen: Einleitung und drei Grundsätze, der Kreislauf
 die Schlusszeile. Alle elf Dateien zusammen wiegen 124 KB — weniger als die
 eine Bilddatei, die sie ersetzen.
 
+**Der Abschnitt hat als einziger einen eigenen, breiteren Container: 1400 px
+statt der 1160 des Standards.** Das ist eine bewusste Ausnahme, keine neue
+Regel. Die erste Fassung lief im Standardmass; Ricardo hat sie am 10.09.2026
+als „zu klein, zu schwach gewichtet" zurückgewiesen — zu Recht: Seine Vorlage
+hat 1390 px Inhaltsbreite, im Standardcontainer musste alles darin schrumpfen.
+
+Alle Masse stammen aus der Vorlage (1576 px breit, Inhalt 1390 px), gemessen
+und nicht geschätzt: Karten 294 · 348 · 303, Zwischenräume 224 und 221,
+Trennlinien der Grundsätze bei x 978 und 1218. Die fünf Spalten des Kreislaufs
+stehen im Code in genau diesen Verhältnissen und treffen sie im Bau auf das
+Zehntel Pixel.
+
 Vier Punkte, die man wissen muss:
 
 - **Die erste Lieferung war unbrauchbar.** Es waren Bildschirmausschnitte aus
