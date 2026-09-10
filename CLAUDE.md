@@ -35,12 +35,33 @@ wir sind, was wir tun und wie man uns erreicht.
 > `src/lib/company.ts`.
 - UID / Handelsregister-Nr.: **CHE-332.960.986**
   (BFS-Schreiben vom 23.02.2026; eingetragen am 03.09.2026 auf Anweisung von Ricardo)
-- Telefon: **078 625 53 85**
+- Telefon: **032 373 22 44**
 - E-Mail: **info@ac-co.ch**
 
 > Von Ricardo am 04.09.2026 zur öffentlichen Verwendung freigegeben.
 > Sie werden ausschliesslich zentral in `src/lib/company.ts` gepflegt —
 > nirgends sonst im Code ausgeschrieben.
+
+> **Die Telefonnummer ist am 10.09.2026 gewechselt** — auf Ricardos
+> ausdrückliche Anweisung („ja soll die hauptnummer werden"). Bis dahin galt
+> öffentlich seine Mobilnummer **078 625 53 85**; sie stammte aus der Fusszeile
+> der bestehenden A&C-Dokumente. Neu gilt die Festnetznummer des Büros.
+>
+> Seine Mobilnummer ist damit nicht verschwunden: Sie steht weiterhin unter
+> `direktnummern.ricardo` als seine **persönliche** Direktnummer. Das ist die
+> Trennung, die jetzt gilt — hier die Firma, dort die Person.
+>
+> **Zwei Stellen ausserhalb dieses Projekts führen weiterhin die Mobilnummer**
+> und sind nicht nachgezogen, weil sie nicht hierher gehören: der Skill
+> `ac-corporate-design` (Abschnitt 5, Fusszeile aller Geschäftsdokumente) und
+> `00_Shared/Stammdaten.md`. Beide ändert Ricardo oder der zuständige Bereich,
+> nicht dieses Projekt. Solange das offen ist, tragen Website und
+> Geschäftsdokumente **verschiedene** Nummern.
+>
+> `design/ac-corporate-design.tokens.json` ist eine Kopie der Skill-Tokens und
+> enthält die Nummer ebenfalls. Sie wird hier nicht von Hand geändert — sonst
+> läuft die Kopie vom Skill weg. Sie fliesst auch nicht auf die Website: Die
+> Seite liest ausschliesslich `src/lib/company.ts`.
 
 Diese Angaben stehen im Footer **jeder** Seite und vollständig im Impressum.
 Änderungen daran nur auf ausdrückliche Anweisung von Ricardo — nie automatisch,

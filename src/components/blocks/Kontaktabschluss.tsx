@@ -22,9 +22,6 @@ import styles from './Kontaktabschluss.module.css'
  * ausgeschrieben — sie sind Pflichtangaben und werden an einer Stelle
  * gepflegt.
  *
- * Hier steht seit dem 10.09.2026 die **Festnetznummer** (`phoneOffice`), auf
- * Ricardos Anweisung und nur an dieser Stelle. Fussbereich, Impressum und
- * Kontaktseite zeigen unveraendert die Mobilnummer aus `phone`.
  */
 
 type Props = {
@@ -65,7 +62,7 @@ export function Kontaktabschluss({ id, titel, satz, aktion }: Props) {
 
         <ul className={styles.kontakte} role="list">
           <li>
-            <a className={styles.kontakt} href={`tel:${company.phoneOfficeE164}`}>
+            <a className={styles.kontakt} href={`tel:${company.phoneE164}`}>
               <Image
                 className={`${styles.kontaktBild} ${styles.kontaktBildTelefon}`}
                 src="/bilder/01_telefon.webp"
@@ -76,7 +73,7 @@ export function Kontaktabschluss({ id, titel, satz, aktion }: Props) {
               />
               {/* Die Unterstreichung gehoert an den Text, nicht an den Link:
                   sonst zoege der Strich auch unter dem Symbol durch. */}
-              <span className={styles.kontaktText}>{company.phoneOffice}</span>
+              <span className={styles.kontaktText}>{company.phone}</span>
             </a>
           </li>
           <li>

@@ -24,26 +24,31 @@ export const company = {
   },
 
   /**
-   * Telefon und E-Mail stammen aus der Fusszeile der bestehenden A&C-Dokumente
-   * und sind von Ricardo am 04.09.2026 zur oeffentlichen Verwendung auf der
-   * Website freigegeben. Sie stehen nur hier — nie in einer Komponente.
-   */
-  phone: '078 625 53 85',
-  /** Maschinenlesbare Form fuer `tel:` — E.164. */
-  phoneE164: '+41786255385',
-
-  /**
-   * Die Festnetznummer. Ricardo hat sie am 10.09.2026 fuer den Kontaktbereich
-   * der Startseite angegeben und im selben Auftrag verlangt, dass sonst nichts
-   * geaendert wird. Sie steht darum **neben** `phone`, nicht an dessen Stelle:
-   * Fussbereich, Impressum und Kontaktseite zeigen unveraendert die Mobilnummer.
+   * Telefon und E-Mail sind Pflichtangaben und stehen nur hier — nie in einer
+   * Komponente. Die E-Mail ist von Ricardo am 04.09.2026 zur oeffentlichen
+   * Verwendung freigegeben.
    *
-   * Offen und von Ricardo zu entscheiden: ob diese Nummer die oeffentliche
-   * Hauptnummer wird und `phone` ersetzt. Bis dahin gelten beide.
+   * **Die Telefonnummer ist am 10.09.2026 gewechselt**, auf Ricardos
+   * ausdrueckliche Anweisung („ja soll die hauptnummer werden"). Bis dahin
+   * stand hier seine Mobilnummer 078 625 53 85; sie stammte aus der Fusszeile
+   * der bestehenden A&C-Dokumente. Neu ist es die Festnetznummer des Bueros.
+   *
+   * Die Aenderung wirkt ueberall auf einmal: Fussbereich jeder Seite,
+   * Impressum, Kontaktseite, die Leistungsseiten und der Kontaktbereich der
+   * Startseite lesen alle diesen Wert.
+   *
+   * Seine Mobilnummer ist damit **nicht** verschwunden — sie steht weiter
+   * unter `direktnummern.ricardo` als seine persoenliche Direktnummer. Das ist
+   * die Trennung, die jetzt gilt: hier die Firma, dort die Person.
+   *
+   * Noch offen und ausserhalb dieses Projekts: Der Corporate-Design-Skill und
+   * `00_Shared/Stammdaten.md` fuehren in ihren Fusszeilen weiterhin die
+   * Mobilnummer. Beide gehoeren nicht hierher und werden nicht von hier aus
+   * geaendert.
    */
-  phoneOffice: '032 373 22 44',
+  phone: '032 373 22 44',
   /** Maschinenlesbare Form fuer `tel:` — E.164. */
-  phoneOfficeE164: '+41323732244',
+  phoneE164: '+41323732244',
 
   email: 'info@ac-co.ch',
 
