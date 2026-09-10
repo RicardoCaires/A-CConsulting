@@ -23,7 +23,27 @@ Abwicklung begleiten
 
 Wir begleiten Sie persönlich
 
-Logos der Versicherungsgesellschaften: Allianz, AXA, Generali, GVB, Helvetia, die Mobiliar, Smile, Vaudoise und Zurich.
+Allianz — Schaden melden
+
+AXA — Schaden melden
+
+die Mobiliar — Schaden melden
+
+Generali — Schaden melden
+
+GVB — Schaden melden
+
+Helvetia — Schaden melden
+
+Smile — Schaden melden
+
+Vaudoise — Schaden melden
+
+Zurich — Schaden melden
+
+## Der Knopf
+
+Herunterladen
 
 ## Anmerkungen
 
@@ -46,3 +66,19 @@ trägt Titel und Logoraster.
 Modellabschnitt ab** (dort Swiss Life statt GVB und Smile). Auf derselben
 Seite stehen damit zwei verschiedene Aufzählungen. Ricardo ist darauf
 hingewiesen.
+
+## Änderungen vom 11.09.2026
+
+Auf Ricardos Anweisung:
+
+- **Der Grund ist weiss**, das Hintergrundmuster ist heraus.
+- **„Wir begleiten Sie persönlich" fluchtet mit den Logokacheln** — das Symbol
+  steht darüber statt daneben.
+- **Jedes Logo ist ein Link** auf die Schadenmeldung seiner Gesellschaft. Die
+  Adressen stammen von der Übersicht, die Ricardo genannt hat
+  (`providereconcepts.ch/schadenfall`). Dafür ist das gelieferte Raster in
+  seine neun Kacheln geschnitten — mechanisch, entlang der Kartenkanten,
+  nichts umgezeichnet.
+- **Statt des Vermerks „folgt" steht ein grüner Knopf „Herunterladen".** Das
+  PDF fehlt noch; Ricardo legt es später ab. Bis dahin führt der Knopf ins
+  Leere. Der offene Punkt steht in CLAUDE.md.

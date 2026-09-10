@@ -85,6 +85,8 @@ const isTechnical = (value) =>
   /^[a-z][a-zA-Z0-9]*$/.test(value) || // camelCase-Schluessel, Anker, Slugs
   /^[a-z0-9-]+$/.test(value) || // kebab-case Anker
   /^[0-9]{2}_[a-z0-9_]+$/.test(value) || // gelieferte Bilddateien: `07_benefit_sparschwein`
+  /^[a-z0-9]+(_[a-z0-9]+)+$/.test(value) || // Dateinamen: `partner_allianz`
+  /^https?:\/\//.test(value) || // Verweise auf fremde Seiten
   value.startsWith('/') ||
   value.startsWith('.') ||
   value.startsWith('@/')

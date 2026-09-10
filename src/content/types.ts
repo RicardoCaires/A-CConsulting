@@ -269,14 +269,18 @@ export type Block =
       heading: string
       lead: string
       schritte: readonly { bild: string; titel: string }[]
-      link: PageRef
+      /** Der gruene Knopf. `datei` ist null, solange das PDF fehlt. */
+      download: Download
       partner: {
         bild: string
         /** Ueberschrift der Karte rechts. */
         titel: string
-        /** Alternativtext des Logorasters — Pflicht, nicht Beiwerk. */
-        rasterBild: string
-        rasterAlt: string
+        /**
+         * Die neun Gesellschaften, jede mit ihrem Logo und dem Link auf ihre
+         * eigene Schadenmeldung. Die Ziele sind fremde Seiten — sie oeffnen
+         * in einem neuen Fenster und tragen `rel="noopener"`.
+         */
+        gesellschaften: readonly { bild: string; name: string; url: string }[]
       }
     }
   /** Sprungmarken innerhalb der Seite. */

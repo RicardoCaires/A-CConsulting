@@ -269,13 +269,65 @@ export const versicherungen: PageContent = {
         { bild: '02_schaden_dokument', titel: 'Versicherung informieren' },
         { bild: '04_schaden_begleitung', titel: 'Abwicklung begleiten' },
       ],
-      link: { target: 'schadenfall', label: 'Was im Schadenfall zu tun ist' },
+      // Der gruene Knopf steht auf Ricardos Anweisung vom 11.09.2026 an der
+      // Stelle des frueheren Links mit dem Vermerk „folgt". **Das PDF fehlt
+      // noch** — er legt es spaeter ab. Bis dahin fuehrt der Knopf ins Leere;
+      // die Seite geht ohnehin nicht vor dem 01.11.2026 live. Der offene
+      // Punkt steht in CLAUDE.md.
+      download: { label: 'Herunterladen', file: '/dokumente/schadenfall.pdf' },
       partner: {
         bild: '01_schaden_warnung',
         titel: 'Wir begleiten Sie persönlich',
-        rasterBild: '05_versicherungspartner',
-        rasterAlt:
-          'Logos der Versicherungsgesellschaften: Allianz, AXA, Generali, GVB, Helvetia, die Mobiliar, Smile, Vaudoise und Zurich.',
+        // Die Ziele sind die Schadenmeldungen der Gesellschaften selbst,
+        // uebernommen von der Uebersicht, die Ricardo genannt hat
+        // (providereconcepts.ch/schadenfall). Fremde Seiten: neues Fenster.
+        gesellschaften: [
+          {
+            bild: 'partner_allianz',
+            name: 'Allianz',
+            url: 'https://www.allianz.ch/de/privatkunden/services/meine-versicherung/schaden-melden.html',
+          },
+          {
+            bild: 'partner_axa',
+            name: 'AXA',
+            url: 'https://www.axa.ch/de/privatkunden/schaden/rund-um-den-schaden/schaden-melden.html',
+          },
+          {
+            bild: 'partner_mobiliar',
+            name: 'die Mobiliar',
+            url: 'https://www.mobiliar.ch/versicherungen-und-vorsorge/services/schaden-melden',
+          },
+          {
+            bild: 'partner_generali',
+            name: 'Generali',
+            url: 'https://www.generali.ch/privatkunden/services/schaden-online-melden',
+          },
+          {
+            bild: 'partner_gvb',
+            name: 'GVB',
+            url: 'https://schaden.gvb.ch/',
+          },
+          {
+            bild: 'partner_helvetia',
+            name: 'Helvetia',
+            url: 'https://www.helvetia.com/ch/web/de/services/schaden-und-leistung/schaden-melden-privatkunden.html',
+          },
+          {
+            bild: 'partner_smile',
+            name: 'Smile',
+            url: 'https://www.smile-insurances.com/ch/main/de/home/service/schadenmeldung.html',
+          },
+          {
+            bild: 'partner_vaudoise',
+            name: 'Vaudoise',
+            url: 'https://www.vaudoise.ch/de/service-center/schadenmeldung',
+          },
+          {
+            bild: 'partner_zurich',
+            name: 'Zurich',
+            url: 'https://www.zurich.ch/de/services/schadenservices/schadenmeldung',
+          },
+        ],
       },
     },
 

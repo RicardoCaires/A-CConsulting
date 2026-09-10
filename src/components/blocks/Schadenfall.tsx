@@ -21,10 +21,15 @@ import styles from './Schadenfall.module.css'
  * Unabhaengig. An Ihrer Seite."). Ricardo hat am 10.09.2026 zwei Zusaetze von
  * dieser Seite streichen lassen; drei neue waeren ein Rueckschritt.
  *
- * Das Logoraster ist **eine** gelieferte Datei und wird nicht in neun Teile
- * zerlegt: Ein Zuschnitt waere eine Veraenderung an fremden Marken. Sein
- * Alternativtext zaehlt die Gesellschaften auf — ohne ihn waere die Karte
- * fuer Vorlesewerkzeuge leer.
+ * **Seit dem 11.09.2026 ist jedes Logo ein Link** auf die Schadenmeldung der
+ * jeweiligen Gesellschaft. Dafuer ist das gelieferte Raster in seine neun
+ * Kacheln geschnitten — rein mechanisch, entlang der Kartenkanten, nichts
+ * umgezeichnet und nichts umgefaerbt. Anders ginge es nicht: Ein einziges
+ * Bild kann nicht neun Ziele haben.
+ *
+ * Jede Kachel traegt den Namen der Gesellschaft als Alternativtext und
+ * oeffnet in einem neuen Fenster; `rel="noopener"` ist Pflicht, sobald ein
+ * Link ein fremdes Fenster oeffnet.
  *
  * Der Anker `schadenfall` bleibt, wie er war; die Sprungmarken zeigen darauf.
  */
@@ -35,9 +40,13 @@ type Props = {
   heading: string
   lead: string
   schritte: readonly { bild: string; titel: string }[]
-  /** Der Link wird vom Aufrufer gebaut — er kennt die Pfade, dieser Baustein nicht. */
-  link: ReactNode
-  partner: { bild: string; titel: string; rasterBild: string; rasterAlt: string }
+  /** Der Knopf wird vom Aufrufer gebaut — er kennt die Pfade, dieser nicht. */
+  aktion: ReactNode
+  partner: {
+    bild: string
+    titel: string
+    gesellschaften: readonly { bild: string; name: string; url: string }[]
+  }
 }
 
 /** Ein geliefertes Symbol. Immer quadratisch, nie eingefaerbt. */
@@ -60,25 +69,13 @@ export function Schadenfall({
   heading,
   lead,
   schritte,
-  link,
+  aktion,
   partner,
 }: Props) {
   const headingId = `${id}-titel`
 
   return (
     <section id={id} className={styles.abschnitt} aria-labelledby={headingId}>
-      {/* Das gelieferte Muster: feine Boegen, sehr heller Grund. */}
-      <div className={styles.muster} aria-hidden="true">
-        <Image
-          className={styles.musterBild}
-          src="/bilder/06_schaden_hintergrund.webp"
-          alt=""
-          width={1672}
-          height={941}
-          sizes="100vw"
-        />
-      </div>
-
       <div className={styles.inner}>
         {/* ---- Links: Text und Schritte -------------------------------- */}
         <div className={styles.text}>
@@ -99,10 +96,14 @@ export function Schadenfall({
             ))}
           </ol>
 
-          <div className={styles.link}>{link}</div>
+          <div className={styles.aktion}>{aktion}</div>
         </div>
 
         {/* ---- Rechts: die Partnerkarte --------------------------------
+
+            Symbol ueber dem Titel, nicht daneben: So beginnt der Titel auf
+            derselben Senkrechten wie die erste Logokachel. Ricardo hat das am
+            11.09.2026 so verlangt.
 
             Fuer einen Zusatztext gab es keine Vorgabe. Es wird keiner
             erfunden — die Karte traegt Titel und Raster. */}
@@ -112,14 +113,26 @@ export function Schadenfall({
             <h3>{partner.titel}</h3>
           </div>
 
-          <Image
-            className={styles.raster}
-            src={`/bilder/${partner.rasterBild}.webp`}
-            alt={partner.rasterAlt}
-            width={900}
-            height={675}
-            sizes="(min-width: 64rem) 620px, 100vw"
-          />
+          <ul className={styles.raster} role="list">
+            {partner.gesellschaften.map((g) => (
+              <li key={g.name}>
+                <a
+                  className={styles.kachel}
+                  href={g.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src={`/bilder/${g.bild}.webp`}
+                    alt={`${g.name} — Schaden melden`}
+                    width={409}
+                    height={227}
+                    sizes="(min-width: 64rem) 200px, 30vw"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
