@@ -1,0 +1,12 @@
+/* Die Bilder der Prozessleiste.
+
+   Die Datei wird gezeigt, wie sie ist: kein Filter, keine Farbaenderung, kein
+   Schatten, kein Rahmen. Die helle Kreisflaeche gehoert zum Bild, nicht zum
+   Layout — darum steht hier nichts davon. */
+
+.bild {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

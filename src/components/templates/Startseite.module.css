@@ -4,40 +4,62 @@
    (StartHero, Faelle, Bereiche, StepList, Team, CTASection).
    Was hier steht, gehoert der Vorlage und keinem Baustein. */
 
-/* ---- 4 Eine Stelle für Ihre Administration ------------------------------- */
+/* ---- 4 Eine Stelle für Ihre Administration -------------------------------
+
+   Nach Ricardos Referenzgrafik vom 10.09.2026: Kopf und Prozessleiste links,
+   drei Zeilen und das Buerobild rechts. Das Bild laeuft bis an die rechte und
+   die untere Kante des Abschnitts. */
+
+.stelleFlaeche {
+  position: relative;
+  overflow: hidden;
+}
+
+.stelleRaster {
+  position: relative;
+  /* Ueber dem Bild, sonst liegt der Text darunter. */
+  z-index: 1;
+  display: grid;
+  gap: var(--ac-space-md);
+}
 
 /* Die Kette. Eine geordnete Liste, weil die Reihenfolge etwas bedeutet: So
-   laeuft ein Betrieb durch das Jahr. Auf schmalen Geraeten untereinander,
-   sonst nebeneinander — der Pfeil dreht sich entsprechend mit. */
+   laeuft ein Betrieb durch das Jahr. Auf schmalen Geraeten zweispaltig, ab
+   Tablet in einer Reihe — der Pfeil dreht sich entsprechend mit. */
 .kette {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--ac-space-xs);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ac-space-md) var(--ac-space-sm);
   /* Abstand nach oben, sonst steht die Kette auf der Grundlinie der
      Ueberschrift. */
-  margin: var(--ac-space-lg) 0;
+  margin: clamp(2rem, 4vw, 2.75rem) 0;
   padding: 0;
   list-style: none;
-
-  font-family: var(--ac-font-display);
-  font-size: var(--ac-h3-size);
-  line-height: var(--ac-h3-line);
-  font-weight: var(--ac-h3-weight);
-  color: var(--ac-color-white);
 }
 
 .kette li {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: var(--ac-space-xs);
+  text-align: center;
 }
 
-.kette li + li::before {
-  content: '↓';
-  font-family: var(--ac-font-sans);
-  font-size: 0.8em;
-  color: var(--ac-color-accent-green-light);
+/* Alle fuenf Dateien sind quadratisch — eine Breite genuegt, damit sie gleich
+   gross wirken. Die helle Kreisflaeche gehoert zum Bild. */
+.ketteBild {
+  width: clamp(4rem, 12vw, 6rem);
+}
+
+/* Die Beschriftung waechst mit, aber gedeckelt: „Versicherungen" ist das
+   laengste Wort und laesst sich nicht umbrechen — es muss in seine Spalte
+   passen, sonst laufen die Glieder ineinander. */
+.ketteText {
+  font-family: var(--ac-font-display);
+  font-size: clamp(0.875rem, 1.2vw, 1.0625rem);
+  line-height: var(--ac-h3-line);
+  font-weight: var(--ac-h3-weight);
+  color: var(--ac-color-white);
 }
 
 .stelleText {
@@ -49,7 +71,42 @@
   color: var(--ac-on-navy-muted);
 }
 
+.stelleKnopf {
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.knopfPfeil {
+  margin-left: var(--ac-space-2xs);
+}
+
+/* Der Merksatz steht hier auf dunklem Grund — dieselbe Form wie in den hellen
+   Abschnitten, nur in den Farben, die darauf lesbar sind. */
+.merksatzHell {
+  color: var(--ac-on-navy-muted);
+  border-left-color: color-mix(in srgb, var(--ac-color-white) 35%, transparent);
+}
+
+/* ---- Das Buerobild --------------------------------------------------------
+
+   Auf schmalen Geraeten steht es als eigener Block unter dem Text und laeuft
+   bis an die Fensterkanten. Ab Desktop liegt es in der rechten unteren Ecke
+   des Abschnitts. */
+.buero {
+  position: relative;
+  z-index: 0;
+  margin: clamp(2rem, 5vw, 3rem) calc(var(--ac-gutter) * -1) calc(var(--ac-section-y) * -1);
+}
+
+.bueroBild {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 /* ---- 5 Ansprechpartner ---------------------------------------------------- */
+
+
 
 .personenLink {
   margin-top: clamp(1.5rem, 4vw, 2rem);
@@ -71,19 +128,33 @@
   color: var(--ac-color-text-secondary);
 }
 
-/* ---- Ab Desktop ------------------------------------------------------------ */
+/* ---- Ab Tablet ------------------------------------------------------------- */
 
 @media (min-width: 48rem) {
-  /* Die Kette laeuft in einer Zeile, der Pfeil zeigt nach rechts. */
+  /* Die Kette laeuft in einer Zeile, mit gruenem Pfeil zwischen den Gliedern.
+     Fuenf gleiche Spalten und dazwischen je eine schmale fuer den Pfeil —
+     so stehen die Glieder gleichmaessig, unabhaengig von der Wortlaenge. */
   .kette {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: var(--ac-space-sm);
+    align-items: start;
+  }
+
+  .kette li {
+    position: relative;
   }
 
   .kette li + li::before {
     content: '→';
+    position: absolute;
+    /* In der Mitte der Bildhoehe, auf halbem Weg zum Glied davor. */
+    top: calc(clamp(4rem, 12vw, 6rem) / 2);
+    right: calc(100% + var(--ac-space-sm) / 2);
+    transform: translate(50%, -50%);
+    font-family: var(--ac-font-sans);
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--ac-color-accent-green-light);
   }
 }
 
@@ -103,13 +174,15 @@
 
 /* Der gruene Strich steht in der Zeile der Vorzeile, wie auf den Karten
    darunter — nicht als eigene Linie darueber. Ein Muster, nicht zwei. */
-.leistungenKopf :global(.ac-eyebrow) {
+.leistungenKopf :global(.ac-eyebrow),
+.stelleRaster :global(.ac-eyebrow) {
   display: flex;
   align-items: center;
   gap: var(--ac-space-2xs);
 }
 
-.leistungenKopf :global(.ac-eyebrow)::before {
+.leistungenKopf :global(.ac-eyebrow)::before,
+.stelleRaster :global(.ac-eyebrow)::before {
   content: '';
   display: block;
   flex: none;
@@ -125,11 +198,13 @@
    Der Kopf sprengt hier die Lesebreite: Sie gilt fuer Fliesstext, nicht fuer
    eine Ueberschrift, die in einer Zeile stehen soll. Die Einleitung darunter
    bleibt auf Lesebreite. */
-.leistungenKopf > :first-child {
+.leistungenKopf > :first-child,
+.stelleHaupt > :first-child {
   max-width: none;
 }
 
-.leistungenKopf h2 {
+.leistungenKopf h2,
+.stelleHaupt h2 {
   font-size: var(--ac-h1-size);
   line-height: var(--ac-h1-line);
   letter-spacing: var(--ac-h1-tracking);
@@ -157,5 +232,46 @@
     /* Auf der Grundlinie der Einleitung, nicht der Ueberschrift. */
     margin-top: var(--ac-space-lg);
     max-width: 16rem;
+  }
+}
+
+/* ---- Ab Desktop: Kopf und drei Zeilen nebeneinander ---------------------- */
+
+@media (min-width: 64rem) {
+  .stelleRaster {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+    grid-template-areas: 'haupt merksatz';
+  }
+
+  /* Die Textspalte endet, bevor das Bild beginnt. 40rem ist die Breite, in
+     der die Ueberschrift zweizeilig steht und die fuenf Glieder der Kette
+     nebeneinander Platz haben. */
+  .stelleHaupt {
+    grid-area: haupt;
+    max-width: 40rem;
+  }
+
+  .stelleRaster .merksatz {
+    grid-area: merksatz;
+    margin-top: var(--ac-space-2xs);
+    max-width: 14rem;
+  }
+}
+
+/* ---- Ab 80rem: das Bild in die rechte untere Ecke -------------------------
+
+   Erst hier, nicht schon ab 64rem. Dazwischen ist der Abschnitt zu schmal:
+   Die Textspalte braucht 40rem fuer die Kette, das Bild 33rem — zusammen
+   mehr, als bei 1024 px zur Verfuegung steht. Bis dahin steht das Bild als
+   eigener Block unter dem Text, wie auf dem Telefon. */
+@media (min-width: 80rem) {
+  .buero {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: min(42%, 33rem);
+    margin: 0;
   }
 }

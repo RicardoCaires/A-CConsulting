@@ -88,10 +88,13 @@ export default async function HomePage({ params }: PageProps) {
 
     // 5 — Eine Stelle fuer Ihre Administration.
     eineStelle: {
+      eyebrow: content.eineStelle.eyebrow,
       titel: content.eineStelle.titel,
       kette: content.eineStelle.kette,
       text: content.eineStelle.text,
       nachsatz: content.eineStelle.nachsatz,
+      merksatz: content.eineStelle.merksatz,
+      knopf: content.eineStelle.knopf,
     },
 
     // 7 — Ansprechpartner.

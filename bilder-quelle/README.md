@@ -48,3 +48,19 @@ node -e "require('sharp')('bilder-quelle/NAME.png').webp({quality:90,effort:6}).
 
 Dieser Ordner liegt ausserhalb von `public/` und wird darum nicht mit
 ausgeliefert.
+
+
+## Eine Stelle für Ihre Administration
+
+Am 10.09.2026 geliefert, Dateinamen von Ricardo und schon ohne Umlaut. Die
+fünf Schrittbilder sind quadratisch (1024 x 1024) und durchsichtig, das
+Bürobild ist ein Foto (663 x 543). Zusammen 591 KB PNG, 107 KB WebP.
+
+| Datei | PNG | WebP |
+|---|---|---|
+| `01_gruendung` | 20 KB | 11 KB |
+| `02_buchhaltung` | 22 KB | 11 KB |
+| `03_lohn` | 50 KB | 22 KB |
+| `04_versicherungen` | 43 KB | 20 KB |
+| `05_steuern` | 31 KB | 15 KB |
+| `06_buero_visual` | 425 KB | 29 KB |

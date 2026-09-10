@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import Image from 'next/image'
 
 import { Bereiche, type Bereich, type LeitBereich } from '@/components/blocks/Bereiche'
 import { CTASection } from '@/components/blocks/CTASection'
@@ -9,6 +10,7 @@ import { StartHero, type HeroBild } from '@/components/blocks/StartHero'
 import { StepList } from '@/components/blocks/StepList'
 import { Team, type Mitglied } from '@/components/blocks/Team'
 import { Button } from '@/components/ui/Button'
+import { Schrittbild, type SchrittName } from '@/components/ui/Schrittbild'
 import type { Locale } from '@/i18n/config'
 import { hrefOrDefault, type PageKey } from '@/i18n/routes'
 
@@ -89,10 +91,14 @@ export type StartseiteInhalt = {
     weitere: readonly Bereich[]
   }
   eineStelle: {
+    eyebrow: string
     titel: ReactNode
-    kette: readonly string[]
+    kette: readonly { text: string; bild: SchrittName }[]
     text: ReactNode
     nachsatz?: ReactNode
+    /** Drei Zeilen rechts neben dem Kopf. */
+    merksatz: readonly string[]
+    knopf: { text: string; ziel: PageKey }
   }
   personen: {
     titel: ReactNode
@@ -212,22 +218,72 @@ export function StartseiteTemplate({
         <Faelle faelle={inhalt.situationen.eintraege} locale={locale} />
       </Section>
 
-      {/* ---- 4 Eine Stelle — der eigentliche Nutzen, als Kette ------------- */}
-      <Section surface={fStelle} labelledBy="einestelle" id="einestelle">
-        <SectionHeader id="einestelle" heading={inhalt.eineStelle.titel} />
+      {/* ---- 4 Eine Stelle — der eigentliche Nutzen, als Kette -------------
 
-        {/* Eine geordnete Liste, weil die Reihenfolge etwas bedeutet: So
-            laeuft ein Betrieb durch das Jahr. Die Pfeile stehen im CSS und
-            werden Hilfstechnik nicht vorgelesen. */}
-        <ol className={styles.kette}>
-          {inhalt.eineStelle.kette.map((glied, index) => (
-            <li key={index}>{glied}</li>
-          ))}
-        </ol>
+          Nach Ricardos Referenzgrafik vom 10.09.2026: Kopf und Prozessleiste
+          links, drei Zeilen und das Buerobild rechts. Das Bild laeuft bis an
+          die rechte und untere Kante des Abschnitts — darum traegt die
+          Sektion `position: relative` und `overflow: hidden`. */}
+      <Section
+        surface={fStelle}
+        className={styles.stelleFlaeche}
+        labelledBy="einestelle"
+        id="einestelle"
+      >
+        <div className={styles.stelleRaster}>
+          <div className={styles.stelleHaupt}>
+            <SectionHeader
+              id="einestelle"
+              eyebrow={inhalt.eineStelle.eyebrow}
+              heading={inhalt.eineStelle.titel}
+            />
 
-        <div className={styles.stelleText}>
-          <p>{inhalt.eineStelle.text}</p>
-          {inhalt.eineStelle.nachsatz && <p>{inhalt.eineStelle.nachsatz}</p>}
+            {/* Eine geordnete Liste, weil die Reihenfolge etwas bedeutet: So
+                laeuft ein Betrieb durch das Jahr. Die Pfeile stehen im CSS
+                und werden Hilfstechnik nicht vorgelesen. */}
+            <ol className={styles.kette}>
+              {inhalt.eineStelle.kette.map((glied) => (
+                <li key={glied.text}>
+                  <Schrittbild className={styles.ketteBild} name={glied.bild} />
+                  <span className={styles.ketteText}>{glied.text}</span>
+                </li>
+              ))}
+            </ol>
+
+            <div className={styles.stelleText}>
+              <p>{inhalt.eineStelle.text}</p>
+              {inhalt.eineStelle.nachsatz && <p>{inhalt.eineStelle.nachsatz}</p>}
+            </div>
+
+            <Button
+              className={styles.stelleKnopf}
+              href={hrefOrDefault(inhalt.eineStelle.knopf.ziel, locale)}
+              variant="akzent"
+            >
+              {inhalt.eineStelle.knopf.text}
+              <span className={styles.knopfPfeil} aria-hidden="true">
+                →
+              </span>
+            </Button>
+          </div>
+
+          <p className={`${styles.merksatz} ${styles.merksatzHell}`}>
+            {inhalt.eineStelle.merksatz.map((zeile) => (
+              <span key={zeile}>{zeile}</span>
+            ))}
+          </p>
+        </div>
+
+        {/* Der Bildplatz. Dekorativ — was der Abschnitt sagt, steht im Text. */}
+        <div className={styles.buero} aria-hidden="true">
+          <Image
+            className={styles.bueroBild}
+            src="/bilder/06_buero_visual.webp"
+            alt=""
+            width={663}
+            height={543}
+            sizes="(min-width: 64rem) 640px, 100vw"
+          />
         </div>
       </Section>
 

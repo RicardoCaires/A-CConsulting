@@ -89,10 +89,19 @@ export const beispielStartseite: StartseiteInhalt = {
     ],
   },
   eineStelle: {
+    eyebrow: 'Beispiel-Vorzeile',
     titel: 'Beispielüberschrift zur Bündelung',
-    kette: ['Erstes Glied', 'Zweites Glied', 'Drittes Glied', 'Viertes Glied'],
+    kette: [
+      { text: 'Erstes Glied', bild: 'gruendung' },
+      { text: 'Zweites Glied', bild: 'buchhaltung' },
+      { text: 'Drittes Glied', bild: 'lohn' },
+      { text: 'Viertes Glied', bild: 'versicherungen' },
+      { text: 'Fünftes Glied', bild: 'steuern' },
+    ],
     text: 'Beispielsatz darüber, weshalb die Themen zusammenhängen.',
     nachsatz: 'Beispielnachsatz mit einem zweiten Gedanken.',
+    merksatz: ['Erste Zeile.', 'Zweite Zeile.', 'Dritte Zeile.'],
+    knopf: { text: 'Beispielknopf', ziel: 'ueberUns' },
   },
   personen: {
     titel: 'Beispielüberschrift der Ansprechpartner',
