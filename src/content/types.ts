@@ -212,6 +212,33 @@ export type Block =
       /** Die Schlusszeile. */
       schluss: { links: string; rechts: string }
     }
+  /**
+   * Zwei Zielgruppen als je ein Block: Privatpersonen und Unternehmen.
+   *
+   * Loest auf `/versicherungen` die beiden `subsections` ab. Ricardo hat am
+   * 10.09.2026 eine Referenzgrafik geliefert: links Einleitung mit Pills,
+   * rechts Karten mit Piktogramm — je Block ein eigener Anker, damit die
+   * Sprungmarken darueber weiter treffen.
+   *
+   * Der Typ ist auf diesen einen Abschnitt zugeschnitten und wandert erst in
+   * eine allgemeine Form, wenn es einen zweiten gibt.
+   */
+  | {
+      kind: 'segmente'
+      bloecke: readonly {
+        /** Wird zum Anker — `privatpersonen`, `unternehmen`. */
+        id: string
+        eyebrow: string
+        heading: string
+        /** Ein Satz unter der Ueberschrift. Nur der erste Block hat einen. */
+        lead?: string
+        /** Die Bereiche als Pills. Nur der erste Block hat welche. */
+        pills?: readonly string[]
+        /** Der leise Zusatz oben rechts, zweizeilig. */
+        claim?: readonly [string, string]
+        karten: readonly { bild: string; titel: string; satz: string }[]
+      }[]
+    }
   /** Sprungmarken innerhalb der Seite. */
   | {
       kind: 'anchors'

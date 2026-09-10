@@ -732,6 +732,29 @@ Dann zwei Blöcke mit Ankern:
 - **Firmen** — BVG, UVG und UVG-Zusatz, Krankentaggeld, Betriebshaftpflicht,
   Sachversicherung, Rechtsschutz
 
+> **Seit dem 10.09.2026 ein eigener Baustein** nach Ricardos Referenzgrafik:
+> `src/components/blocks/Segmente.tsx`. Vorher zwei `subsections` aus dem
+> allgemeinen Blockmodell. Je Block links Kategorie, Überschrift und die
+> Bereiche als Pills, rechts Karten mit geliefertem Piktogramm; dazwischen
+> eine feine Linie.
+>
+> **Die Anker `privatpersonen` und `unternehmen` sind unverändert** — die
+> Sprungmarken unter dem Seitenkopf und die Hauptnavigation zeigen darauf. Ein
+> Umbau der Gestaltung darf keine Verweise brechen.
+>
+> Der Satz „Bereiche: Kranken- und Zusatzversicherung, …" steht jetzt als fünf
+> Pills. Derselbe Inhalt, andere Form.
+>
+> **Zwei neue Zusätze**, von Ricardo im Auftrag vorgegeben: „Persönlich
+> vorausdenken" und „Starke Partner für nachhaltige Sicherheit". Damit führt
+> A&C **vier** Zusätze — dazu „Kompetenz schafft Klarheit" (Wortmarke),
+> „Perspektiven für morgen" (Fussbereich) und „Persönlich. Unabhängig. An
+> Ihrer Seite." (Modellabschnitt). Ricardo ist darauf hingewiesen.
+>
+> `04_hintergrundmuster.png` war im Auftrag genannt, lag aber nicht im
+> Assets-Ordner. Der Abschnitt steht darum ohne Muster auf dem Grundton der
+> hellen Bereiche.
+
 Eigener Abschnitt zur Schadenbetreuung — das ist der Punkt, an dem sich ein
 Broker von einem Direktabschluss unterscheidet.
 
