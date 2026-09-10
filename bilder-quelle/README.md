@@ -112,9 +112,22 @@ sie stehen ohne Kreis aus dem Layout dahinter und ohne Umfaerbung.
 
 | Datei | Quelle | ausgeliefert |
 |---|---|---|
-| `01_telefon` | 1024 x 1024 | 128 px, 5 KB |
-| `02_email` | 1024 x 1024 | 128 px, 5 KB |
+| `01_telefon` | 1254 x 1254 | 128 px, 3 KB |
+| `02_email` | 1254 x 1254 | 128 px, 5 KB |
 | `03_kontakt_hintergrundmuster` | 1920 x 720 | 1600 x 600, 42 KB |
+
+Die beiden Symbole hat Ricardo am 10.09.2026 um 13:56 und 14:01 ein zweites
+Mal geliefert; die Fassung von 13:36 (je 1024 x 1024) ist ersetzt.
+
+**Sie haben nicht gleich viel Luft um den Kreis:** beim Telefon misst er
+74.6 %, bei der E-Mail 82.9 % der Kantenlaenge. In derselben Box waeren die
+Kreise elf Prozent verschieden gross. Ausgeglichen wird das im CSS
+(`Kontaktabschluss.module.css`) ueber zwei Faktoren, die beide auf 27.3 px
+bringen — die Dateien selbst bleiben unangetastet.
+
+**Die Telefondatei hat keinen durchsichtigen Grund**, sondern ein Weiss von
+254/255. Auf dem weissen Abschnitt faellt das nicht auf; auf einer Flaeche
+stuende dort ein heller Kasten.
 
 Das Hintergrundmuster ist links zu 53.6 Prozent leer — gemessen, nicht
 geschaetzt. Es bringt seinen eigenen Rand mit und ist als Band ueber die volle

@@ -31,6 +31,20 @@ export const company = {
   phone: '078 625 53 85',
   /** Maschinenlesbare Form fuer `tel:` — E.164. */
   phoneE164: '+41786255385',
+
+  /**
+   * Die Festnetznummer. Ricardo hat sie am 10.09.2026 fuer den Kontaktbereich
+   * der Startseite angegeben und im selben Auftrag verlangt, dass sonst nichts
+   * geaendert wird. Sie steht darum **neben** `phone`, nicht an dessen Stelle:
+   * Fussbereich, Impressum und Kontaktseite zeigen unveraendert die Mobilnummer.
+   *
+   * Offen und von Ricardo zu entscheiden: ob diese Nummer die oeffentliche
+   * Hauptnummer wird und `phone` ersetzt. Bis dahin gelten beide.
+   */
+  phoneOffice: '032 373 22 44',
+  /** Maschinenlesbare Form fuer `tel:` — E.164. */
+  phoneOfficeE164: '+41323732244',
+
   email: 'info@ac-co.ch',
 
   domain: 'ac-co.ch',
