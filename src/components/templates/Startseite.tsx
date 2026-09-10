@@ -280,8 +280,8 @@ export function StartseiteTemplate({
             className={styles.bueroBild}
             src="/bilder/06_buero_visual.webp"
             alt=""
-            width={663}
-            height={543}
+            width={1400}
+            height={788}
             sizes="(min-width: 64rem) 640px, 100vw"
           />
         </div>
