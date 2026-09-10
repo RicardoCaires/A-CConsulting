@@ -112,16 +112,22 @@ export function UnserModell({
 
   return (
     <section id={id} className={styles.abschnitt} aria-labelledby={headingId}>
-      {/* Das gelieferte Hintergrundmuster: feine Boegen und vereinzelte
-          Punkte. Es liegt hinter allem und traegt halbe Deckkraft. */}
+      {/* Der gelieferte Hintergrund. Seit dem 10.09.2026 die zweite Datei:
+          grosse helle Kreise in den Ecken, feine Boegen, vereinzelte Punkte —
+          und in der Mitte bewusst ruhig, damit die Karten davor stehen.
+
+          Er deckt den Abschnitt und wird oben und unten beschnitten. Auf
+          schmalen Geraeten bleibt davon fast nur der Grundton uebrig; das ist
+          gewollt, dort soll kein Kreis hinter einem Text liegen. */}
       <div className={styles.muster} aria-hidden="true">
         <Image
           className={styles.musterBild}
-          src="/bilder/11_hintergrundmuster.webp"
+          src="/bilder/wide_minimal_abstract_background_design_a_clean.webp"
           alt=""
-          width={1600}
-          height={900}
+          width={1672}
+          height={941}
           sizes="100vw"
+          priority={false}
         />
       </div>
 

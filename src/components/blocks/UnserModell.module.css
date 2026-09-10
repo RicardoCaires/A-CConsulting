@@ -27,17 +27,23 @@
   background-color: var(--ac-color-background-light);
 }
 
-/* ---- Das Muster ------------------------------------------------------------
+/* ---- Der Hintergrund -------------------------------------------------------
 
-   Die Vorlage zeichnet zwei grosse, gedrehte Ellipsen als Kontur. Hier liegt
-   stattdessen Ricardos geliefertes Muster: Es bringt dieselben weichen Boegen
-   mit, dazu die vereinzelten Punkte, und stammt aus seiner Hand. */
+   Ricardos gelieferte Datei, zweite Fassung vom 10.09.2026: grosse helle
+   Kreise in den Ecken, feine Boegen, vereinzelte Punkte. Ihr Grundton ist
+   229,235,244 — etwas blaeulicher als `background_light`, das darum nur noch
+   als Rueckfallebene darunter liegt.
+
+   Sie deckt jetzt voll statt mit halber Deckkraft: Die Datei ist von sich aus
+   zurueckhaltend genug (der ganze Tonumfang liegt zwischen 213 und 250), und
+   halbtransparent verloren die Kreise genau die Wirkung, wegen der sie da
+   sind. Gemessen am 10.09.2026: Fliesstext auf der dunkelsten Stelle der
+   Datei traegt 5.6:1 und damit mehr als die geforderten 4.5:1. */
 
 .muster {
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.55;
   pointer-events: none;
 }
 
