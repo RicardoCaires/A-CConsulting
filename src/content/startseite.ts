@@ -46,12 +46,10 @@ export type Bereich = {
  */
 export type LeitBereich = Omit<Bereich, 'text'> & {
   /**
-   * Beim fuehrenden Bereich freiwillig.
+   * Beim fuehrenden Bereich freiwillig — belegt seit dem 10.09.2026 wieder.
    *
-   * Der Abschnitt darueber traegt den beschreibenden Satz schon („Wir
-   * pruefen Ihre Vertraege, holen Offerten ein und uebernehmen den
-   * Schriftverkehr"). Stuende er hier noch einmal, sagte die Seite dieselbe
-   * Sache zweimal untereinander.
+   * Vom 09. bis zum 10.09.2026 stand hier nichts: Der Abschnitt „Unsere Rolle"
+   * trug denselben Satz. Der Abschnitt ist weg, der Satz steht wieder hier.
    */
   text?: string
   bild: { label: string; note?: string }
@@ -86,26 +84,6 @@ export type StartseiteContent = {
     bild: { src: string; alt: string } | { label: string; note?: string }
   }
 
-  /**
-   * Abschnitt 2 — eine Aussage, die fuer sich steht.
-   *
-   * Loest die Vertrauenszeile ab: Vier Begriffe in einer schmalen Leiste unter
-   * dem Kopf waren eine Zusatzleiste, kein Gestaltungsmittel. Hier steht
-   * stattdessen der Satz, der A&C von einem Versicherungsvertreter
-   * unterscheidet — gross genug, dass man ihn nicht ueberliest.
-   */
-  statement: {
-    eyebrow: string
-    satz: string
-    /**
-     * Der beschreibende Satz — nur auf schmalen Geraeten sichtbar.
-     *
-     * Ab Desktop steht er in der Grafik. Dort wird dieser Block ausgeblendet,
-     * damit er nicht doppelt erscheint.
-     */
-    zusatz: string
-  }
-
   situationen: {
     titel: string
     einleitung: string
@@ -123,12 +101,6 @@ export type StartseiteContent = {
     titel: string
     /** Die Kette. Nur Leistungen, die es wirklich gibt. */
     kette: readonly string[]
-    text: string
-    nachsatz: string
-  }
-
-  digital: {
-    titel: string
     text: string
     nachsatz: string
   }
@@ -182,14 +154,6 @@ const de: StartseiteContent = {
     },
   },
 
-  // ---- 2 Statement
-  statement: {
-    eyebrow: 'Unsere Rolle',
-    satz: 'Wir vertreten Sie, nicht die Versicherung.',
-    zusatz:
-      'Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.',
-  },
-
   // ---- 3 Situationen — vor den Leistungen, weil Kunden im Problem denken
   situationen: {
     titel: 'Wobei können wir Sie unterstützen?',
@@ -210,6 +174,7 @@ const de: StartseiteContent = {
 
     leit: {
       titel: 'Versicherungen',
+      text: 'Wir vertreten Sie, nicht die Versicherung. Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.',
       stichworte: [
         'Krankenversicherung und Zusatzversicherung',
         'Hausrat, Haftpflicht und Motorfahrzeug',
@@ -262,14 +227,6 @@ const de: StartseiteContent = {
 
   // ---- 6 Digital
   //
-  // Werkzeug, nicht Verkaufsargument: Was die Software tut, steht in einem
-  // Satz; wer prueft und verantwortet, im naechsten.
-  digital: {
-    titel: 'Persönlich beraten. Digital effizient.',
-    text: 'Wir nutzen moderne Software dort, wo sie Administration reduziert, Abläufe vereinfacht und Fehler vermeidet. Die fachliche Prüfung, die Beratung und die Verantwortung bleiben bei uns.',
-    nachsatz: 'Sie merken davon vor allem eines: weniger Papier und kürzere Wege.',
-  },
-
   // ---- 7 Ansprechpartner
   //
   // Auf der Startseite nur Name und Zustaendigkeit. Der Werdegang steht auf

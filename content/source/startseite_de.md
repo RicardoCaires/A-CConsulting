@@ -56,19 +56,13 @@ ist am 09.09.2026 entfallen: Vier Begriffe in einer schmalen Leiste unter dem
 Kopf waren eine Zusatzleiste, kein Gestaltungsmittel. An ihrer Stelle steht der
 Satz, der A&C von einem Versicherungsvertreter unterscheidet.
 
-Vorzeile: Unsere Rolle
+ENTFALLEN am 10.09.2026 auf Anweisung von Ricardo.
 
-Aussage: Wir vertreten Sie, nicht die Versicherung.
-
-Zusatz: Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.
-
-Vorzeile, Aussage und Zusatz stehen auf jeder Fenstergrösse als Text.
-
-Ohne Grafik. Die Modellgrafik „Unser Modell" stand hier am 09.09.2026 kurz und
-wurde von Ricardo am selben Tag wieder herausgenommen. Sie steht seither allein
-auf der Seite Versicherungen, nach „Wir arbeiten in Ihrem Auftrag".
-
-Alternativtext: Schaubild „Unser Modell": Der Kunde erteilt A&C Consulting ein Mandat. A&C analysiert den Bedarf, vergleicht Angebote am Markt, berät, übernimmt den Schriftverkehr und begleitet langfristig. Für den Preisvergleich holt A&C Offerten bei verschiedenen Versicherungsgesellschaften ein. Zurück zum Kunden geht ein transparenter Vorschlag.
+Der Abschnitt trug „Unsere Rolle / Wir vertreten Sie, nicht die Versicherung. /
+Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr
+— auch im Schadenfall." Beide Sätze stehen weiterhin auf der Seite: in der
+Leistungskarte Versicherungen (Abschnitt 04) und ausführlich als Schaubild auf
+/versicherungen.
 
 ---
 
@@ -93,11 +87,12 @@ Einleitung: Sechs Ausgangslagen, die bei uns am häufigsten am Anfang stehen.
 
 ### Versicherungen
 
-Kein beschreibender Satz. Beide Sätze — „Wir vertreten Sie, nicht die
-Versicherung." und „Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen
-den Schriftverkehr — auch im Schadenfall." — stehen im Abschnitt darüber. Am
-09.09.2026 hier gestrichen, damit die Seite sie nicht zweimal untereinander
-sagt. Die Karte trägt Überschrift, Stichworte und Verweis.
+Wir vertreten Sie, nicht die Versicherung. Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.
+
+Der Satz stand hier bis zum 09.09.2026, war dann gestrichen, weil der Abschnitt
+„Unsere Rolle" ihn ebenfalls trug, und steht seit dem 10.09.2026 wieder hier:
+Jener Abschnitt ist entfallen, und die führende Leistung wäre sonst die einzige
+ohne beschreibenden Satz.
 
 Stichworte: Krankenversicherung und Zusatzversicherung · Hausrat, Haftpflicht und Motorfahrzeug · Leben und Säule 3a · BVG, UVG und Krankentaggeld · Betriebshaftpflicht und Sachversicherung
 
@@ -135,11 +130,18 @@ Nachsatz: Statt mehrere Stellen zu koordinieren, haben Sie bei uns feste Ansprec
 
 ## 06 Digital
 
-Überschrift: Persönlich beraten. Digital effizient.
+ENTFALLEN am 10.09.2026 auf Anweisung von Ricardo.
 
-Text: Wir nutzen moderne Software dort, wo sie Administration reduziert, Abläufe vereinfacht und Fehler vermeidet. Die fachliche Prüfung, die Beratung und die Verantwortung bleiben bei uns.
+Der Abschnitt trug „Persönlich beraten. Digital effizient." mit zwei Sätzen über
+den Einsatz von Software. Der Wortlaut ist damit nicht widerrufen — er bleibt
+hier stehen und kann jederzeit zurückgeholt oder auf eine Bereichsseite gesetzt
+werden:
 
-Nachsatz: Sie merken davon vor allem eines: weniger Papier und kürzere Wege.
+> Wir nutzen moderne Software dort, wo sie Administration reduziert, Abläufe
+> vereinfacht und Fehler vermeidet. Die fachliche Prüfung, die Beratung und die
+> Verantwortung bleiben bei uns.
+>
+> Sie merken davon vor allem eines: weniger Papier und kürzere Wege.
 
 ---
 

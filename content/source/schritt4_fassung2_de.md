@@ -164,6 +164,16 @@ Konkret heisst das: Wir sichten Ihre bestehenden Policen, zeigen Ihnen fehlende 
 
 > *Redaktionsnotiz (nicht auf die Website): Diese Formulierung ist bewusst zurückhaltend gewählt und bleibt so, bis die tatsächlichen Anbindungen bestätigt sind. Aussagen wie «gesamter Markt» oder «alle Gesellschaften» kommen im gesamten Entwurf nicht vor.*
 
+#### Schaubild „Unser Modell"
+
+Direkt nach „Wir arbeiten in Ihrem Auftrag", seit dem 09.09.2026. Kein Text
+daneben, keine Überschrift darüber — die Grafik erklärt den Ablauf selbst.
+Von Ricardo geliefert und freigegeben, einschliesslich der Logos von acht
+Versicherungsgesellschaften. Die Fassung mit der falschen Bildmarke wurde am
+09.09.2026 durch die freigegebene ersetzt.
+
+Alternativtext: Schaubild „Unser Modell": Der Kunde erteilt A&C Consulting ein Mandat. A&C analysiert den Bedarf, vergleicht Angebote am Markt, berät, übernimmt den Schriftverkehr und begleitet langfristig. Für den Preisvergleich holt A&C Offerten bei verschiedenen Versicherungsgesellschaften ein. Zurück zum Kunden geht ein transparenter Vorschlag.
+
 ### 04 Für Privatpersonen
 
 #### Für Privatpersonen
