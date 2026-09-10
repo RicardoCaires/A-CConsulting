@@ -4,12 +4,16 @@
  * QUELLE: `content/source/schritt4_fassung2_de.md`, Abschnitt „Versicherungen".
  * Wortlaut unveraendert uebernommen.
  *
- * **Vier Abschnitte sind am 10.09.2026 auf Ricardos Anweisung entfallen:**
+ * **Fuenf Abschnitte sind am 10.09.2026 auf Ricardos Anweisung entfallen:**
  * „Wir arbeiten in Ihrem Auftrag", „Wie wir entschaedigt werden", „So laeuft
- * eine Vertragspruefung ab" und „Wenn Sie selbstaendig sind oder Personal
- * haben". Ihr Wortlaut steht unveraendert in der Quelle und ist nicht
- * widerrufen — er steht nur nicht mehr auf der Seite. Mit dem Ablauf ist auch
- * seine Sprungmarke entfallen; sie haette ins Leere gezeigt.
+ * eine Vertragspruefung ab", „Wenn Sie selbstaendig sind oder Personal haben"
+ * und der Abschluss „Lassen Sie Ihre Vertraege anschauen". Ihr Wortlaut steht
+ * unveraendert in der Quelle und ist nicht widerrufen — er steht nur nicht
+ * mehr auf der Seite. Mit dem Ablauf ist auch seine Sprungmarke entfallen;
+ * sie haette ins Leere gezeigt.
+ *
+ * **Die Seite hat damit keinen Abschluss mehr.** Der einzige Handlungsknopf
+ * steht oben im Seitenkopf und im Kopfbereich der Seite.
  */
 
 import type { PageContent } from '../types'
@@ -171,7 +175,6 @@ export const versicherungen: PageContent = {
             'Leben und Säule 3a',
             'Rechtsschutz',
           ],
-          claim: ['Persönlich', 'vorausdenken'],
           karten: [
             {
               bild: '01_privathaushalt_haus',
@@ -184,7 +187,6 @@ export const versicherungen: PageContent = {
           id: 'unternehmen',
           eyebrow: 'Für Unternehmen',
           heading: 'Für Unternehmen',
-          claim: ['Starke Partner', 'für nachhaltige Sicherheit'],
           karten: [
             {
               bild: '02_mitarbeitende',
@@ -253,20 +255,6 @@ export const versicherungen: PageContent = {
           answer:
             'Auf Deutsch, Französisch oder Portugiesisch. Sagen Sie uns einfach, was Ihnen lieber ist.',
         },
-      ],
-    },
-
-    // 12 Abschluss
-    {
-      kind: 'cta',
-      id: 'abschluss',
-      heading: 'Lassen Sie Ihre Verträge anschauen',
-      paragraphs: [
-        'Ein erstes Gespräch verpflichtet Sie zu nichts. Bringen Sie mit, was Sie haben, und wir sagen Ihnen, was uns auffällt.',
-      ],
-      actions: [
-        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
-        { kind: 'phone' },
       ],
     },
   ],

@@ -704,12 +704,18 @@ dieselbe Stelle, ohne dass sich das Layout verschiebt. Kein Stockbild.
 Die Rolle erklärt seit dem 10.09.2026 das **Schaubild**, nicht mehr ein
 Textabschnitt: A&C vertritt den Kunden, nicht die Versicherung.
 
-> **Vier Abschnitte sind am 10.09.2026 auf Ricardos Anweisung entfallen:**
+> **Fünf Abschnitte sind am 10.09.2026 auf Ricardos Anweisung entfallen:**
 > „Wir arbeiten in Ihrem Auftrag", „Wie wir entschädigt werden", „So läuft eine
-> Vertragsprüfung ab" und „Wenn Sie selbständig sind oder Personal haben".
+> Vertragsprüfung ab", „Wenn Sie selbständig sind oder Personal haben" und der
+> Abschluss **„Lassen Sie Ihre Verträge anschauen"**.
 > Ihr Wortlaut steht unverändert in `content/source/schritt4_fassung2_de.md`
 > und ist nicht widerrufen — er steht nur nicht mehr auf der Seite. Mit dem
 > Ablauf ist auch seine **Sprungmarke** entfallen; sie hätte ins Leere gezeigt.
+>
+> **Die Seite hat damit keinen Abschluss mehr** und endet mit den häufigen
+> Fragen. Sie ist die einzige Leistungsseite ohne `CTASection`; der einzige
+> Handlungsknopf steht im Seitenkopf und im Kopfbereich. **Ricardo ist darauf
+> hingewiesen.**
 >
 > **Damit sagt die Seite nichts mehr zur Vergütung.** Das betrifft drei Punkte,
 > die weiter oben in diesem Abschnitt als Inhalt von `/versicherungen` stehen:
@@ -745,11 +751,13 @@ Dann zwei Blöcke mit Ankern:
 > Der Satz „Bereiche: Kranken- und Zusatzversicherung, …" steht jetzt als fünf
 > Pills. Derselbe Inhalt, andere Form.
 >
-> **Zwei neue Zusätze**, von Ricardo im Auftrag vorgegeben: „Persönlich
-> vorausdenken" und „Starke Partner für nachhaltige Sicherheit". Damit führt
-> A&C **vier** Zusätze — dazu „Kompetenz schafft Klarheit" (Wortmarke),
-> „Perspektiven für morgen" (Fussbereich) und „Persönlich. Unabhängig. An
-> Ihrer Seite." (Modellabschnitt). Ricardo ist darauf hingewiesen.
+> **Ohne Zusätze.** Die Vorlage zeigt oben rechts je einen leisen Zusatz
+> („Persönlich vorausdenken", „Starke Partner für nachhaltige Sicherheit");
+> Ricardo hat beide am 10.09.2026 noch am selben Tag wieder streichen lassen.
+> A&C führte damit vier Zusätze, drei davon auf dieser einen Seite. Es bleiben
+> „Kompetenz schafft Klarheit" (Wortmarke), „Perspektiven für morgen"
+> (Fussbereich) und „Persönlich. Unabhängig. An Ihrer Seite."
+> (Modellabschnitt).
 >
 > `04_hintergrundmuster.png` war im Auftrag genannt, lag aber nicht im
 > Assets-Ordner. Der Abschnitt steht darum ohne Muster auf dem Grundton der

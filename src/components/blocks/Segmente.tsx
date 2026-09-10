@@ -10,8 +10,13 @@ import styles from './Segmente.module.css'
  * zwei `subsections`-Bloecke aus dem allgemeinen Blockmodell.
  *
  * Je Block: links Kategorie, Ueberschrift, ein Satz und die Bereiche als
- * Pills — rechts eine oder zwei Karten mit Piktogramm. Oben rechts steht ein
- * leiser Zusatz. Zwischen den beiden Bloecken eine feine Linie.
+ * Pills — rechts eine oder zwei Karten mit Piktogramm. Zwischen den beiden
+ * Bloecken eine feine Linie.
+ *
+ * Die Vorlage zeigt oben rechts je einen leisen Zusatz („Persoenlich
+ * vorausdenken", „Starke Partner fuer nachhaltige Sicherheit"). Ricardo hat
+ * beide am 10.09.2026 wieder streichen lassen — A&C fuehrte damit vier
+ * Zusaetze, drei davon auf dieser einen Seite.
  *
  * **Die Anker bleiben, wie sie waren** (`privatpersonen`, `unternehmen`): Die
  * Sprungmarken unter dem Seitenkopf und die Hauptnavigation zeigen darauf.
@@ -34,7 +39,6 @@ type Block = {
   heading: string
   lead?: string
   pills?: readonly string[]
-  claim?: readonly [string, string]
   karten: readonly Karte[]
 }
 
@@ -66,16 +70,6 @@ export function Segmente({ bloecke }: Props) {
                   </ul>
                 )}
               </div>
-
-              {/* Der leise Zusatz oben rechts. Er traegt keine Information,
-                  die sonst fehlte — darum steht er als Dekoration und nicht
-                  als Ueberschrift. */}
-              {block.claim && (
-                <p className={styles.claim}>
-                  <span>{block.claim[0]}</span>
-                  <span>{block.claim[1]}</span>
-                </p>
-              )}
             </div>
 
             <ul
