@@ -1,9 +1,11 @@
 /* „Wenn ein Schaden eintritt" — zweispaltig.
 
-   Nach Ricardos Referenzgrafik vom 11.09.2026 (1672 x 941). Dieselbe Sprache
-   wie die uebrigen neu gebauten Bereiche der Seite: eigener breiter Container,
-   sehr heller Grund mit dem gelieferten Muster, weisse Karte mit weichem
-   Schatten, Ueberschrift in der Serifenschrift, Gruen nur als Strich.
+   Nach Ricardos Referenzgrafik vom 11.09.2026 (1672 x 941).
+
+   **Der Grund ist weiss.** Er trug bis zum 11.09.2026 das gelieferte Muster;
+   Ricardo hat es an diesem Tag herausnehmen lassen. Damit ist es der einzige
+   ruhige Abschnitt zwischen den getoenten — und die Logokacheln der Partner
+   stehen auf demselben Weiss wie die Karte, statt sich davon abzuheben.
 
    Aus der Vorlage uebernommen: Text links etwa bis zur Haelfte, Partnerkarte
    rechts, die drei Schritte als Zeilen mit Symbol davor.
@@ -11,32 +13,11 @@
    Alles ist auf `.abschnitt` gekapselt; ausserhalb aendert sich nichts. */
 
 .abschnitt {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
   padding-block: var(--ac-section-y-lg);
-  background-color: var(--ac-color-background-light);
-}
-
-/* ---- Der Hintergrund ------------------------------------------------------- */
-
-.muster {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.musterBild {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  background-color: var(--ac-color-white);
 }
 
 .inner {
-  position: relative;
-  z-index: 1;
   display: grid;
   gap: clamp(2.5rem, 5vw, 4rem);
   width: min(1400px, calc(100% - 4rem));
@@ -112,7 +93,7 @@
   object-fit: contain;
 }
 
-.link {
+.aktion {
   margin-top: clamp(2rem, 4vw, 2.75rem);
 }
 
@@ -125,9 +106,13 @@
   box-shadow: 0 8px 28px color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
 }
 
+/* Symbol ueber dem Titel, nicht daneben: So beginnt der Titel auf derselben
+   Senkrechten wie die erste Logokachel. Stand daneben, sass er um Symbol plus
+   Abstand nach rechts versetzt. */
 .partnerKopf {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: var(--ac-space-md);
   margin-bottom: clamp(1.5rem, 3vw, 2rem);
 }
@@ -144,12 +129,50 @@
   color: var(--ac-color-primary-navy);
 }
 
-/* Das gelieferte Raster bringt seine Kacheln mit und steht unbeschnitten da. */
+/* ---- Das Logoraster --------------------------------------------------------
+
+   Neun Kacheln, jede ein Link auf die Schadenmeldung ihrer Gesellschaft. Die
+   Kacheln stammen aus der gelieferten Datei und sind entlang der Kartenkanten
+   geschnitten — sie bringen ihren Rahmen und ihren Grund selbst mit. */
+
 .raster {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--ac-space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kachel {
+  display: block;
+  border-radius: 10px;
+  /* Trefferflaeche: Die Kachel selbst ist deutlich groesser als 44 px. */
+  transition: transform 120ms ease;
+}
+
+.kachel img {
   display: block;
   width: 100%;
   height: auto;
   object-fit: contain;
+}
+
+.kachel:hover,
+.kachel:focus-visible {
+  transform: translateY(-2px);
+}
+
+/* Wer die Bewegung nicht will, bekommt sie nicht. */
+@media (prefers-reduced-motion: reduce) {
+  .kachel {
+    transition: none;
+  }
+
+  .kachel:hover,
+  .kachel:focus-visible {
+    transform: none;
+  }
 }
 
 /* ---- Ab Desktop: Text links, Karte rechts ----------------------------------- */
@@ -167,6 +190,12 @@
     width: calc(100% - 2.5rem);
   }
 
+  /* Drei Spalten waeren auf 375 px 85 px breite Kacheln — zu klein, um ein
+     Logo zu lesen. Zwei Spalten geben 139 px. Gemessen am 11.09.2026. */
+  .raster {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   /* Auf schmalen Geraeten braucht die Zeile den Umbruch, sonst wird das
      Symbol gequetscht. */
   .schritt {
@@ -180,8 +209,3 @@
   }
 }
 
-@media print {
-  .muster {
-    display: none;
-  }
-}

@@ -806,6 +806,17 @@ Broker von einem Direktabschluss unterscheidet.
 > Seite stehen damit zwei verschiedene Aufzählungen. Ricardo ist darauf
 > hingewiesen. Für beide gilt weiterhin: Die Freigaben der Versicherer
 > verantwortet er.
+>
+> **Am 11.09.2026 auf Ricardos Anweisung geändert:** Der Grund ist weiss statt
+> gemustert. „Wir begleiten Sie persönlich" fluchtet mit den Logokacheln — das
+> Symbol steht darüber statt daneben. **Jedes Logo ist ein Link** auf die
+> Schadenmeldung seiner Gesellschaft; die Adressen stammen von der Übersicht,
+> die Ricardo genannt hat. Dafür ist das gelieferte Raster in seine neun
+> Kacheln geschnitten — mechanisch, entlang der Kartenkanten. Anders ginge es
+> nicht: Ein Bild kann nicht neun Ziele haben.
+>
+> **Statt des Vermerks „folgt" steht ein grüner Knopf „Herunterladen".** Das
+> PDF fehlt noch und steht als offener Punkt in Abschnitt 10.
 
 Kein Prämienrechner, keine Vergleichstabellen mit Versicherernamen.
 
@@ -909,6 +920,10 @@ Inhalt und Freigaben:
       (die Startseite kommt bewusst ohne Fotos aus, statt Stockbilder zu setzen)
 - [ ] Vektorlogo (SVG) beschaffen — bisher nur PNG, siehe `offene-punkte.md`
       des Corporate-Design-Skills. Betrifft auch das Favicon
+- [ ] **PDF für den Schadenfall hinterlegen** — `public/dokumente/schadenfall.pdf`.
+      Der grüne Knopf im Abschnitt „Wenn ein Schaden eintritt" zeigt seit dem
+      11.09.2026 darauf und führt bis dahin ins Leere. Auf Ricardos Anweisung;
+      er legt die Datei später ab. **Vor dem Go-live zwingend.**
 - [ ] Unterlagen-Checkliste Steuern erstellen (DE/FR/PT)
 - [ ] Glossar DE/FR/PT für Fachbegriffe aufbauen (`content/glossar.md`)
 

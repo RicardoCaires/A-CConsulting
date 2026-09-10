@@ -461,12 +461,16 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               heading={block.heading}
               lead={block.lead}
               schritte={block.schritte}
-              link={
-                <PageLink
-                  target={block.link.target}
-                  label={block.link.label}
-                  locale={locale}
-                />
+              aktion={
+                /* Gruen, auf Ricardos Anweisung vom 11.09.2026. Vorher stand
+                   hier ein Link mit dem Vermerk „folgt". */
+                block.download.file ? (
+                  <Button href={block.download.file} variant="akzent">
+                    {block.download.label}
+                  </Button>
+                ) : (
+                  <DownloadButton download={block.download} locale={locale} />
+                )
               }
               partner={block.partner}
             />
