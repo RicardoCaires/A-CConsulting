@@ -178,18 +178,16 @@
   border-radius: 999px;
 }
 
-/* Die erste Marke ist leicht hinterlegt — sie fuehrt zum Abschnitt, bei dem
-   man ankommt. Das ist Gestaltung, kein Zustand: Welcher Abschnitt gerade
-   sichtbar ist, wuesste nur Javascript, und dafuer ist die Leiste zu klein. */
-.anchorList li:first-child .anchorLink {
-  background-color: var(--ac-color-background-tint);
-  border-color: transparent;
-}
+/* Alle Marken sehen gleich aus. Die erste war bis zum 10.09.2026 hinterlegt;
+   Ricardo hat das an diesem Tag zuruecknehmen lassen. Zu Recht: Die Fuellung
+   sah aus wie ein Zustand („hier bin ich"), war aber nur Gestaltung — welcher
+   Abschnitt gerade sichtbar ist, wuesste nur Javascript.
 
+   Das Hellblau erscheint jetzt dort, wo es hingehoert: beim Darueberfahren. */
 .anchorLink:hover {
   color: var(--ac-color-primary-navy);
-  background-color: var(--ac-color-background-light);
-  border-color: var(--ac-color-border-light);
+  background-color: var(--ac-color-background-tint);
+  border-color: transparent;
 }
 
 /* ---- Direktkontakt ------------------------------------------------------ */

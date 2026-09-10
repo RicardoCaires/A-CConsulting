@@ -522,8 +522,9 @@ Beratung und die Verantwortung liegen im Text ausdrücklich bei A&C.
 **Modellgrafik — nicht auf der Startseite.** Die Grafik „Unser Modell"
 (Kunde → Mandat → A&C → Preisvergleich) stand am 09.09.2026 kurz unter dem
 Statement und wurde von Ricardo am selben Tag wieder herausgenommen. Sie steht
-seither **nur** auf `/versicherungen`, direkt nach „Wir arbeiten in Ihrem
-Auftrag" — dort erklärt sie den Bereich, den sie zeigt. Der Abschnitt, unter dem
+seither **nur** auf `/versicherungen`. Bis zum 10.09.2026 stand sie dort direkt
+nach „Wir arbeiten in Ihrem Auftrag"; seit dieser Abschnitt entfallen ist,
+steht sie unmittelbar nach den Sprungmarken und erklärt das Modell allein. Der Abschnitt, unter dem
 sie stand, ist am 10.09.2026 ganz entfallen.
 
 **Sie zeigt die Logos von acht Versicherungsgesellschaften** (Zurich, Helvetia,
@@ -630,9 +631,20 @@ dieselbe Stelle, ohne dass sich das Layout verschiebt. Kein Stockbild.
 
 ### /versicherungen
 
-Zuerst die Rolle erklären: A&C vertritt den Kunden, nicht die Versicherung.
-Was ein Maklermandat ist, was es kostet (nichts), wie die Entschädigung
-funktioniert.
+Die Rolle erklärt seit dem 10.09.2026 das **Schaubild**, nicht mehr ein
+Textabschnitt: A&C vertritt den Kunden, nicht die Versicherung.
+
+> Der Abschnitt **„Wir arbeiten in Ihrem Auftrag"** ist am 10.09.2026 auf
+> Ricardos Anweisung entfallen. Sein Wortlaut steht unverändert in
+> `content/source/schritt4_fassung2_de.md` und ist nicht widerrufen — er steht
+> nur nicht mehr auf der Seite.
+>
+> Zwei Dinge, die damit vom Text ins Bild gewandert sind: was ein Maklermandat
+> ist und wie die Entschädigung funktioniert. Was es kostet (nichts), sagt die
+> Seite an dieser Stelle nicht mehr aus. **Ricardo ist darauf hingewiesen.**
+>
+> Die **FINMA-Registrierung** stand ebenfalls in diesem Text. Sie ist nicht
+> verloren: Sie steht im Fussbereich jeder Seite und vollständig im Impressum.
 
 Dann zwei Blöcke mit Ankern:
 - **Privat** — Kranken- und Zusatzversicherung, Hausrat und Haftpflicht,
@@ -675,10 +687,14 @@ Drei Punkte, die man wissen muss:
   bleibt.
 
 Die **Sprungmarken** unter dem Kopf sind neu gestaltet: mittig, weisse Pillen
-mit feiner Kontur, die erste leicht hinterlegt. Sie stehen auf mehreren Seiten,
-die Änderung gilt darum überall. Dass die erste hinterlegt ist, ist Gestaltung
-und kein Zustand — welcher Abschnitt gerade sichtbar ist, wüsste nur
-JavaScript.
+mit feiner Kontur, alle gleich. Sie stehen auf mehreren Seiten, die Änderung
+gilt darum überall.
+
+Die erste war zunächst leicht hinterlegt, wie die Referenzgrafik sie zeigt;
+Ricardo hat das am 10.09.2026 zurücknehmen lassen. Die Füllung sah aus wie ein
+Zustand („hier bin ich"), war aber nur Gestaltung — welcher Abschnitt gerade
+sichtbar ist, wüsste nur JavaScript. Das Hellblau erscheint jetzt beim
+Darüberfahren.
 
 ### /treuhand
 

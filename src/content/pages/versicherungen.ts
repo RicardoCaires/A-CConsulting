@@ -39,21 +39,17 @@ export const versicherungen: PageContent = {
       ],
     },
 
-    // 03 Was ein Broker für Sie tut
-    {
-      kind: 'prose',
-      id: 'broker',
-      heading: 'Wir arbeiten in Ihrem Auftrag',
-      paragraphs: [
-        'Als Versicherungsbroker beraten wir im Auftrag unserer Kundinnen und Kunden. A&C Consulting ist bei der FINMA als Versicherungsvermittlerin registriert, Register-Nr. F01568855.',
-        'Konkret heisst das: Wir sichten Ihre bestehenden Policen, zeigen Ihnen fehlende und doppelte Deckungen auf und vergleichen passende Lösungen aus den uns zugänglichen Angeboten und Gesellschaften. Was davon umgesetzt wird, entscheiden Sie.',
-      ],
-    },
-
-    // 03a Das Modell als Schaubild
+    // 03 Das Modell als Schaubild
     //
-    // Steht unmittelbar nach „Wir arbeiten in Ihrem Auftrag": Der Abschnitt
-    // sagt, in wessen Auftrag wir arbeiten — das Bild zeigt, wie das ablaeuft.
+    // Der Abschnitt „Wir arbeiten in Ihrem Auftrag", der hier bis zum
+    // 10.09.2026 davorstand, ist auf Ricardos Anweisung entfallen. Sein
+    // Wortlaut steht unveraendert in `content/source/schritt4_fassung2_de.md`
+    // und ist nicht widerrufen — er steht nur nicht mehr auf der Seite.
+    //
+    // Damit erklaert das Schaubild das Modell allein. Die FINMA-Registrierung,
+    // die im gestrichenen Text stand, steht weiterhin im Fussbereich jeder
+    // Seite und vollstaendig im Impressum.
+    //
     // Dieselbe Datei wie auf der Startseite; eine zweite Fassung derselben
     // Grafik waere eine zweite Wahrheit, die irgendwann auseinanderlaeuft.
     {
