@@ -98,6 +98,8 @@ export default async function HomePage({ params }: PageProps) {
 
     // 7 — Ansprechpartner.
     personen: {
+      eyebrow: content.personen.eyebrow,
+      linkedinText: content.personen.linkedinText,
       titel: content.personen.titel,
       einleitung: content.personen.einleitung,
       leute: content.personen.leute,

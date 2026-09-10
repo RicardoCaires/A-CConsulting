@@ -75,3 +75,18 @@ Umwandeln mit Verkleinern:
 ```
 node -e "require('sharp')('bilder-quelle/NAME.png').resize({width:384}).webp({quality:90,effort:6}).toFile('public/bilder/NAME.webp')"
 ```
+
+
+## Zwei Ansprechpartner
+
+Am 10.09.2026 geliefert. Auch diese drei werden vor dem Ausliefern
+verkleinert: Die Porträts stehen bei höchstens 200 px, das Logo bei 20 px.
+
+| Datei | Quelle | ausgeliefert |
+|---|---|---|
+| `portrait_ricardo` | 1448 x 1086 | 560 px, 17 KB |
+| `portrait_octavio` | 1448 x 1086 | 560 px, 18 KB |
+| `linkedin_logo` | 1254 x 1254 | 96 px, 2 KB |
+
+Das LinkedIn-Logo ist die Marke eines Dritten. Es wird nicht eingefärbt, nicht
+beschnitten und nicht an das A&C-Grün angepasst.

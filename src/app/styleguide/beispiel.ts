@@ -103,20 +103,22 @@ export const beispielStartseite: StartseiteInhalt = {
     knopf: { text: 'Beispielknopf', ziel: 'ueberUns' },
   },
   personen: {
+    eyebrow: 'Beispiel-Vorzeile',
     titel: 'Beispielüberschrift der Ansprechpartner',
     einleitung: 'Beispielsatz über die beiden Personen.',
     leute: [
       {
         name: 'Erste Beispielperson',
-        funktion: 'Beispielfunktion',
-        bild: { label: 'BEISPIELPORTRÄT EINS' },
+        funktion: ['Erste Beispielzeile', 'Zweite Beispielzeile'],
+        bild: { datei: '/bilder/portrait_ricardo.webp', alt: 'Beispielporträt eins.' },
       },
       {
         name: 'Zweite Beispielperson',
-        funktion: 'Beispielfunktion',
-        bild: { label: 'BEISPIELPORTRÄT ZWEI' },
+        funktion: ['Beispielfunktion'],
+        bild: { datei: '/bilder/portrait_octavio.webp', alt: 'Beispielporträt zwei.' },
       },
     ],
+    linkedinText: 'Beispielverweis',
   },
   ablauf: {
     titel: 'Beispielüberschrift des Ablaufs',

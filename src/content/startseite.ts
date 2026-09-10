@@ -117,13 +117,24 @@ export type StartseiteContent = {
   }
 
   personen: {
+    eyebrow: string
     titel: string
     einleitung: string
     leute: readonly {
       name: string
-      funktion: string
-      bild: { label: string; note?: string }
+      /** Zeile fuer Zeile, damit der Umbruch sitzt wie in der Vorlage. */
+      funktion: readonly string[]
+      bild: { datei: string; alt: string }
+      /**
+       * Vollstaendige Adresse des LinkedIn-Profils.
+       *
+       * Fehlt sie, entfaellt der Verweis auf der Karte — ein Knopf, der
+       * nirgends hinfuehrt, ist schlimmer als keiner.
+       */
+      linkedin?: string
     }[]
+    /** Beschriftung des Verweises. Bei beiden dieselbe. */
+    linkedinText: string
     link: { text: string; ziel: PageKey }
   }
 
@@ -276,21 +287,29 @@ const de: StartseiteContent = {
   // Auf der Startseite nur Name und Zustaendigkeit. Der Werdegang steht auf
   // „Ueber uns" — hier waere er ein Lebenslauf an der falschen Stelle.
   personen: {
+    eyebrow: 'Unser Team',
     titel: 'Zwei Ansprechpartner',
     einleitung:
       'Keine Hotline. Ihr Dossier wird von einem von uns beiden geführt — und der geht auch ans Telefon.',
     leute: [
       {
         name: 'Ricardo Caires Cerqueira',
-        funktion: 'Treuhand · Steuern · Versicherungen',
-        bild: { label: 'PORTRÄT RICARDO', note: 'Aufnahme 4 der Shootingliste' },
+        funktion: ['Treuhand · Buchhaltung', 'Administration'],
+        bild: {
+          datei: '/bilder/portrait_ricardo.webp',
+          alt: 'Ricardo Caires Cerqueira, Porträt vor hellem Bürohintergrund.',
+        },
       },
       {
         name: 'Octavio Andrade',
-        funktion: 'Versicherungen',
-        bild: { label: 'PORTRÄT OCTAVIO', note: 'Aufnahme 5 der Shootingliste' },
+        funktion: ['Versicherungen'],
+        bild: {
+          datei: '/bilder/portrait_octavio.webp',
+          alt: 'Octavio Andrade, Porträt vor hellem Bürohintergrund.',
+        },
       },
     ],
+    linkedinText: 'Auf LinkedIn vernetzen',
     link: { text: 'Mehr über uns', ziel: 'ueberUns' },
   },
 
