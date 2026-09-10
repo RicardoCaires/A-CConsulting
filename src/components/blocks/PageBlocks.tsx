@@ -8,6 +8,7 @@ import { PageLink } from '@/components/ui/PageLink'
 import { hatSichtbarenInhalt, RichText } from '@/components/ui/RichText'
 import { Accordion } from './Accordion'
 import { CTASection } from './CTASection'
+import { Segmente } from './Segmente'
 import { UnserModell } from './UnserModell'
 import { StepList } from './StepList'
 import type { Action, Block, Download, PageRef, Rich } from '@/content/types'
@@ -154,8 +155,10 @@ function Paragraphs({ items, className }: { items: readonly Rich[]; className?: 
 /* ---- Ein Abschnitt ------------------------------------------------------ */
 
 function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
+  // `segmente` traegt seine Ueberschriften selbst — je Block eine, mit
+  // eigenem Anker. Es hat darum kein `id` auf der Blockebene.
   const headingId =
-    block.kind === 'anchors' || block.kind === 'serviceNav'
+    block.kind === 'anchors' || block.kind === 'serviceNav' || block.kind === 'segmente'
       ? undefined
       : block.id
         ? `${block.id}-titel`
@@ -439,6 +442,12 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               actions={<Actions actions={block.actions} locale={locale} />}
             />
           )
+        }
+
+        // Die beiden Zielgruppen sind ein eigener Baustein und bringen ihre
+        // Flaeche selbst mit. Sie zaehlen beim Flaechenwechsel darum nicht mit.
+        if (block.kind === 'segmente') {
+          return <Segmente key={index} bloecke={block.bloecke} />
         }
 
         // Das Modell ist ein eigener Baustein und bringt seine Flaeche selbst

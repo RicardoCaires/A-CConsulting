@@ -245,3 +245,19 @@ liegt so eng beieinander, dass die Datei ohne Abschwaechung deckt.
 
 `11_hintergrundmuster` war die erste Fassung und bleibt liegen; sie steht auf
 keiner Seite mehr.
+## Für Privatpersonen / Für Unternehmen
+
+Am 10.09.2026 geliefert, freigestellt und quadratisch. Die Piktogramme bringen
+ihren gruenen Kreis mit; im Layout liegt keine Flaeche dahinter.
+
+| Datei | Quelle | ausgeliefert |
+|---|---|---|
+| `01_privathaushalt_haus` | 1024 x 1024 | 192 px, 4 KB |
+| `02_mitarbeitende` | 1024 x 1024 | 192 px, 6 KB |
+| `03_betrieb_gebaeude` | 1024 x 1024 | 192 px, 5 KB |
+| `versicherungen_segmente_referenz` | 1672 x 941 | nur Vorlage, nicht ausgeliefert |
+
+**`04_hintergrundmuster.png` war im Auftrag genannt, lag aber nicht im
+Assets-Ordner.** Der Abschnitt steht darum auf dem ruhigen Grundton der hellen
+Bereiche, ohne Muster. Nachgezeichnet wird nichts; kommt die Datei, tritt sie
+ohne Umbau dazu.

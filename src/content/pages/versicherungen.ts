@@ -147,45 +147,55 @@ export const versicherungen: PageContent = {
       },
     },
 
-    // 05 Für Privatpersonen
+    // 05 Die beiden Zielgruppen
+    //
+    // Seit dem 10.09.2026 ein Block nach Ricardos Referenzgrafik
+    // (`bilder-quelle/versicherungen_segmente_referenz.png`). Bis dahin waren
+    // es zwei `subsections`; Wortlaut und Anker sind unveraendert uebernommen,
+    // damit die Sprungmarken darueber weiter treffen.
+    //
+    // Aus dem Satz „Bereiche: Kranken- und Zusatzversicherung, …" sind die
+    // fuenf Pills geworden. Derselbe Inhalt, andere Form.
     {
-      kind: 'subsections',
-      id: 'privatpersonen',
-      heading: 'Für Privatpersonen',
-      intro: [
-        'Wir prüfen, ob Ihre Deckung noch zu Ihrer Lebenssituation passt, und beraten Sie bei Anpassungen.',
-        'Bereiche: Kranken- und Zusatzversicherung, Hausrat und Haftpflicht, Motorfahrzeug, Leben und Säule 3a, Rechtsschutz.',
-      ],
-      items: [
+      kind: 'segmente',
+      bloecke: [
         {
-          heading: 'Wann sich eine Überprüfung lohnt',
-          paragraphs: [
-            'Sie ziehen um, heiraten, bekommen ein Kind, kaufen Wohneigentum, wechseln die Stelle oder nähern sich der Pensionierung. In solchen Situationen kann mehr als eine Police betroffen sein.',
+          id: 'privatpersonen',
+          eyebrow: 'Für Privatpersonen',
+          heading: 'Für Privatpersonen',
+          lead: 'Wir prüfen, ob Ihre Deckung noch zu Ihrer Lebenssituation passt, und beraten Sie bei Anpassungen.',
+          pills: [
+            'Kranken- und Zusatzversicherung',
+            'Hausrat und Haftpflicht',
+            'Motorfahrzeug',
+            'Leben und Säule 3a',
+            'Rechtsschutz',
+          ],
+          claim: ['Persönlich', 'vorausdenken'],
+          karten: [
+            {
+              bild: '01_privathaushalt_haus',
+              titel: 'Wann sich eine Überprüfung lohnt',
+              satz: 'Sie ziehen um, heiraten, bekommen ein Kind, kaufen Wohneigentum, wechseln die Stelle oder nähern sich der Pensionierung. In solchen Situationen kann mehr als eine Police betroffen sein.',
+            },
           ],
         },
-      ],
-    },
-
-    // 06 Für Unternehmen
-    {
-      kind: 'subsections',
-      id: 'unternehmen',
-      heading: 'Für Unternehmen',
-      items: [
         {
-          heading: 'Wenn Sie Mitarbeitende beschäftigen',
-          paragraphs: [
-            [
-              'Mit der ersten Anstellung kommen die obligatorische Unfallversicherung, die berufliche Vorsorge und je nach Betrieb ein Krankentaggeld dazu. ',
-              
-              ' Wir klären mit Ihnen, was in Ihrem Fall vorgeschrieben ist und was freiwillig bleibt.',
-            ],
-          ],
-        },
-        {
-          heading: 'Für den Betrieb selbst',
-          paragraphs: [
-            'Je nach Tätigkeit gehören Haftpflicht, Sachversicherung, Fahrzeuge oder Transportdeckungen dazu.',
+          id: 'unternehmen',
+          eyebrow: 'Für Unternehmen',
+          heading: 'Für Unternehmen',
+          claim: ['Starke Partner', 'für nachhaltige Sicherheit'],
+          karten: [
+            {
+              bild: '02_mitarbeitende',
+              titel: 'Wenn Sie Mitarbeitende beschäftigen',
+              satz: 'Mit der ersten Anstellung kommen die obligatorische Unfallversicherung, die berufliche Vorsorge und je nach Betrieb ein Krankentaggeld dazu. Wir klären mit Ihnen, was in Ihrem Fall vorgeschrieben ist und was freiwillig bleibt.',
+            },
+            {
+              bild: '03_betrieb_gebaeude',
+              titel: 'Für den Betrieb selbst',
+              satz: 'Je nach Tätigkeit gehören Haftpflicht, Sachversicherung, Fahrzeuge oder Transportdeckungen dazu.',
+            },
           ],
         },
       ],
