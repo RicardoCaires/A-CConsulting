@@ -86,3 +86,76 @@
     content: '→';
   }
 }
+
+/* ---- 2 Leistungen ---------------------------------------------------------- */
+
+/* Eine Stufe dunkler als die uebrigen hellen Abschnitte. Die Karten darin sind
+   weiss; auf dem gewohnten Off-White stuenden sie kaum ab. `background_tint`
+   ist die zweite Stufe derselben Farbe aus dem Corporate Design. */
+.leistungenFlaeche {
+  background-color: var(--ac-color-background-tint);
+}
+
+.leistungenKopf {
+  display: grid;
+  gap: var(--ac-space-md);
+}
+
+/* Der gruene Strich steht in der Zeile der Vorzeile, wie auf den Karten
+   darunter — nicht als eigene Linie darueber. Ein Muster, nicht zwei. */
+.leistungenKopf :global(.ac-eyebrow) {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+}
+
+.leistungenKopf :global(.ac-eyebrow)::before {
+  content: '';
+  display: block;
+  flex: none;
+  width: 1.75rem;
+  height: var(--ac-border-marker);
+  background-color: var(--ac-color-accent-green);
+}
+
+/* Der eine Abschnitt, dessen Ueberschrift traegt statt nur benennt. Sie steht
+   in der Groesse eines Seitentitels; die Karten darunter fuehren dann in zwei
+   Stufen weiter.
+
+   Der Kopf sprengt hier die Lesebreite: Sie gilt fuer Fliesstext, nicht fuer
+   eine Ueberschrift, die in einer Zeile stehen soll. Die Einleitung darunter
+   bleibt auf Lesebreite. */
+.leistungenKopf > :first-child {
+  max-width: none;
+}
+
+.leistungenKopf h2 {
+  font-size: var(--ac-h1-size);
+  line-height: var(--ac-h1-line);
+  letter-spacing: var(--ac-h1-tracking);
+  max-width: none;
+}
+
+/* Drei Zeilen, nicht ein Satz. Der senkrechte Strich bindet sie an den Kopf,
+   ohne sie zu einem zweiten Absatz zu machen. */
+.merksatz {
+  display: grid;
+  gap: var(--ac-space-3xs);
+  color: var(--ac-color-text-secondary);
+  padding-left: var(--ac-space-md);
+  border-left: var(--ac-border-hairline) solid var(--ac-color-border-tint);
+}
+
+@media (min-width: 48rem) {
+  .leistungenKopf {
+    grid-template-columns: 1fr auto;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .merksatz {
+    /* Auf der Grundlinie der Einleitung, nicht der Ueberschrift. */
+    margin-top: var(--ac-space-lg);
+    max-width: 16rem;
+  }
+}

@@ -77,8 +77,11 @@ export type StartseiteInhalt = {
     eintraege: readonly Fall[]
   }
   leistungen: {
+    eyebrow: string
     titel: ReactNode
     einleitung?: ReactNode
+    /** Drei Zeilen rechts neben dem Kopf. */
+    merksatz: readonly string[]
     leit: LeitBereich
     weitere: readonly Bereich[]
   }
@@ -141,12 +144,33 @@ export function StartseiteTemplate({
       />
 
       {/* ---- 2 Leistungen -------------------------------------------------- */}
-      <Section surface={fLeistungen} labelledBy="leistungen" id="leistungen">
-        <SectionHeader
-          id="leistungen"
-          heading={inhalt.leistungen.titel}
-          lead={inhalt.leistungen.einleitung}
-        />
+      {/* Der Grund ist hier eine Stufe dunkler als sonst: Die Karten sind
+          weiss, und auf dem gewohnten Off-White waeren sie kaum als Karten zu
+          erkennen. Der Ton kommt aus dem Corporate Design (background_tint),
+          ist also keine neue Farbe, sondern die zweite Stufe derselben. */}
+      <Section
+        surface={fLeistungen}
+        className={styles.leistungenFlaeche}
+        labelledBy="leistungen"
+        id="leistungen"
+      >
+        {/* Der Kopf steht zweispaltig: links Vorzeile, Ueberschrift und
+            Einleitung, rechts drei Zeilen, die den Nutzen zusammenfassen.
+            Sie sind kein Satz und sollen auch keiner werden. */}
+        <div className={styles.leistungenKopf}>
+          <SectionHeader
+            id="leistungen"
+            eyebrow={inhalt.leistungen.eyebrow}
+            heading={inhalt.leistungen.titel}
+            lead={inhalt.leistungen.einleitung}
+          />
+
+          <p className={styles.merksatz}>
+            {inhalt.leistungen.merksatz.map((zeile) => (
+              <span key={zeile}>{zeile}</span>
+            ))}
+          </p>
+        </div>
         <Bereiche
           leit={inhalt.leistungen.leit}
           weitere={inhalt.leistungen.weitere}

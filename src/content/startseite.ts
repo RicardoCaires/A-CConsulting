@@ -27,33 +27,31 @@
  */
 
 import type { Rich } from '@/content/types'
+import type { IconName } from '@/components/ui/Icon'
+import type { Motiv } from '@/components/ui/Illustration'
 import type { Locale } from '@/i18n/config'
 import type { PageKey } from '@/i18n/routes'
 
-/** Ein Leistungsbereich in Abschnitt 4. */
+/** Ein Leistungsbereich in Abschnitt 2. */
 export type Bereich = {
+  /** Der Bereichsname, klein ueber der Ueberschrift. */
+  kategorie: string
+  /** Die eigene Aussage des Bereichs — nicht noch einmal der Bereichsname. */
   titel: string
   text: string
-  stichworte: readonly string[]
+  /** Genau vier. Weniger laesst die Karte leer aussehen, mehr ueberfuellt sie. */
+  leistungen: readonly { icon: IconName; text: string }[]
   ziel: PageKey
   linkText: string
+  motiv: Motiv
 }
 
 /**
- * Der fuehrende Bereich. Er traegt als einziger eine Bildflaeche — das ist
- * der Unterschied zu den beiden darunter, und er ist verbindlich:
- * Versicherungsbroking fuehrt (CLAUDE.md, Rangfolge der Bereiche).
+ * Der fuehrende Bereich. Gleich gebaut wie die beiden anderen, nur groesser
+ * gesetzt — das ist verbindlich: Versicherungsbroking fuehrt (CLAUDE.md,
+ * Rangfolge der Bereiche).
  */
-export type LeitBereich = Omit<Bereich, 'text'> & {
-  /**
-   * Beim fuehrenden Bereich freiwillig — belegt seit dem 10.09.2026 wieder.
-   *
-   * Vom 09. bis zum 10.09.2026 stand hier nichts: Der Abschnitt „Unsere Rolle"
-   * trug denselben Satz. Der Abschnitt ist weg, der Satz steht wieder hier.
-   */
-  text?: string
-  bild: { label: string; note?: string }
-}
+export type LeitBereich = Bereich
 
 /** Eine Ausgangslage in Abschnitt 3. */
 export type Fall = {
@@ -91,7 +89,11 @@ export type StartseiteContent = {
   }
 
   leistungen: {
+    eyebrow: string
     titel: string
+    einleitung: string
+    /** Drei Zeilen rechts neben dem Kopf. Kein Satz, drei Aussagen. */
+    merksatz: readonly string[]
     /** Versicherungsbroking fuehrt — darum steht es allein und gross. */
     leit: LeitBereich
     weitere: readonly Bereich[]
@@ -170,46 +172,55 @@ const de: StartseiteContent = {
 
   // ---- 4 Leistungen
   leistungen: {
-    titel: 'Was wir für Sie übernehmen',
+    eyebrow: 'Unsere Leistungen',
+    titel: 'Was wir für Sie übernehmen.',
+    einleitung:
+      'Drei Bereiche, die sich in Ihrer Situation oft überschneiden – und bei A&C sinnvoll zusammen gedacht werden.',
+    merksatz: ['Ein Ansprechpartner.', 'Mehr Überblick.', 'Langfristige Sicherheit.'],
 
     leit: {
-      titel: 'Versicherungen',
-      text: 'Wir vertreten Sie, nicht die Versicherung. Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.',
-      stichworte: [
-        'Krankenversicherung und Zusatzversicherung',
-        'Hausrat, Haftpflicht und Motorfahrzeug',
-        'Leben und Säule 3a',
-        'BVG, UVG und Krankentaggeld',
-        'Betriebshaftpflicht und Sachversicherung',
+      kategorie: 'Versicherungen',
+      titel: 'Wir vertreten Sie, nicht die Versicherung.',
+      text: 'Wir prüfen Ihre Verträge, vergleichen Angebote unabhängig und finden die passende Lösung für Ihre Situation – transparent, verständlich und auch im Schadenfall an Ihrer Seite.',
+      leistungen: [
+        { icon: 'schildPlus', text: 'Krankenversicherung und Zusatzversicherung' },
+        { icon: 'fahrzeug', text: 'Hausrat, Haftpflicht und Motorfahrzeug' },
+        { icon: 'personen', text: 'BVG, UVG und Krankentaggeld' },
+        { icon: 'gebaeude', text: 'Betriebshaftpflicht und Sachversicherung' },
       ],
       ziel: 'versicherungen',
       linkText: 'Zu den Versicherungen',
-      bild: {
-        label: 'BERATUNGSGESPRÄCH',
-        note: 'Aufnahme 3 der Shootingliste',
-      },
+      motiv: 'versicherungen',
     },
 
     weitere: [
       {
-        titel: 'Treuhand',
-        text: 'Buchhaltung, Löhne und Abschluss für Selbständige und kleine Betriebe. Auch dann, wenn Sie mitten im Jahr wechseln.',
-        stichworte: [
-          'Buchhaltung',
-          'Lohnadministration und Sozialversicherungen',
-          'Mehrwertsteuer und Jahresabschluss',
-          'Firmengründung',
-          'Treuhänderwechsel',
+        kategorie: 'Treuhand',
+        titel: 'Zahlen, die für Sie arbeiten.',
+        text: 'Buchhaltung, Löhne und Abschluss für Selbständige und KMU – klar, zuverlässig und mit einem festen Ansprechpartner.',
+        leistungen: [
+          { icon: 'dokument', text: 'Buchhaltung' },
+          { icon: 'diagramm', text: 'Mehrwertsteuer und Jahresabschluss' },
+          { icon: 'personen', text: 'Lohnadministration und Sozialversicherungen' },
+          { icon: 'gebaeude', text: 'Firmengründung und Treuhänderwechsel' },
         ],
         ziel: 'treuhand',
         linkText: 'Zur Treuhand',
+        motiv: 'treuhand',
       },
       {
-        titel: 'Finanzplanung',
-        text: 'Zwei Fragen, die im Alltag untergehen: Wohin fliesst Ihr Geld, und was bleibt für später.',
-        stichworte: ['Budget', 'Vorsorge'],
+        kategorie: 'Finanzplanung',
+        titel: 'Heute planen. Morgen freier sein.',
+        text: 'Zwei Fragen, die im Alltag untergehen: Wohin fliesst Ihr Geld, und was bleibt für später? Wir schaffen Klarheit.',
+        leistungen: [
+          { icon: 'muenzen', text: 'Budget' },
+          { icon: 'diagramm', text: 'Analyse und Optimierung' },
+          { icon: 'pflanze', text: 'Vorsorge' },
+          { icon: 'kompass', text: 'Persönliche Begleitung' },
+        ],
         ziel: 'personalFinance',
         linkText: 'Zur Finanzplanung',
+        motiv: 'finanzplanung',
       },
     ],
   },

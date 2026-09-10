@@ -83,36 +83,84 @@ Einleitung: Sechs Ausgangslagen, die bei uns am häufigsten am Anfang stehen.
 
 ## 04 Leistungen
 
-Überschrift: Was wir für Sie übernehmen
+Wortlaut und Aufbau dieses Abschnitts hat Ricardo am 10.09.2026 als
+Referenzgrafik geliefert und im Auftrag ausgeschrieben. Die früheren Fassungen
+stehen weiter unten, damit nachvollziehbar bleibt, was sich geändert hat.
+
+Vorzeile: Unsere Leistungen
+
+Überschrift: Was wir für Sie übernehmen.
+
+Einleitung: Drei Bereiche, die sich in Ihrer Situation oft überschneiden – und bei A&C sinnvoll zusammen gedacht werden.
+
+Rechts daneben, drei Zeilen: Ein Ansprechpartner. Mehr Überblick. Langfristige Sicherheit.
 
 ### Versicherungen
 
-Wir vertreten Sie, nicht die Versicherung. Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im Schadenfall.
+Kategorie: Versicherungen
 
-Der Satz stand hier bis zum 09.09.2026, war dann gestrichen, weil der Abschnitt
-„Unsere Rolle" ihn ebenfalls trug, und steht seit dem 10.09.2026 wieder hier:
-Jener Abschnitt ist entfallen, und die führende Leistung wäre sonst die einzige
-ohne beschreibenden Satz.
+Überschrift: Wir vertreten Sie, nicht die Versicherung.
 
-Stichworte: Krankenversicherung und Zusatzversicherung · Hausrat, Haftpflicht und Motorfahrzeug · Leben und Säule 3a · BVG, UVG und Krankentaggeld · Betriebshaftpflicht und Sachversicherung
+Wir prüfen Ihre Verträge, vergleichen Angebote unabhängig und finden die passende Lösung für Ihre Situation – transparent, verständlich und auch im Schadenfall an Ihrer Seite.
+
+Leistungen: Krankenversicherung und Zusatzversicherung · Hausrat, Haftpflicht und Motorfahrzeug · BVG, UVG und Krankentaggeld · Betriebshaftpflicht und Sachversicherung
 
 Verweis: Zu den Versicherungen
 
 ### Treuhand
 
-Buchhaltung, Löhne und Abschluss für Selbständige und kleine Betriebe. Auch dann, wenn Sie mitten im Jahr wechseln.
+Kategorie: Treuhand
 
-Stichworte: Buchhaltung · Lohnadministration und Sozialversicherungen · Mehrwertsteuer und Jahresabschluss · Firmengründung · Treuhänderwechsel
+Überschrift: Zahlen, die für Sie arbeiten.
+
+Buchhaltung, Löhne und Abschluss für Selbständige und KMU – klar, zuverlässig und mit einem festen Ansprechpartner.
+
+Leistungen: Buchhaltung · Mehrwertsteuer und Jahresabschluss · Lohnadministration und Sozialversicherungen · Firmengründung und Treuhänderwechsel
 
 Verweis: Zur Treuhand
 
 ### Finanzplanung
 
-Zwei Fragen, die im Alltag untergehen: Wohin fliesst Ihr Geld, und was bleibt für später.
+Kategorie: Finanzplanung
 
-Stichworte: Budget · Vorsorge
+Überschrift: Heute planen. Morgen freier sein.
+
+Zwei Fragen, die im Alltag untergehen: Wohin fliesst Ihr Geld, und was bleibt für später? Wir schaffen Klarheit.
+
+Leistungen: Budget · Analyse und Optimierung · Vorsorge · Persönliche Begleitung
 
 Verweis: Zur Finanzplanung
+
+> **Zu klären, Stand 10.09.2026.** „Analyse und Optimierung" und „Persönliche
+> Begleitung" sind neu. Die Hausordnung führt für die Finanzplanung genau zwei
+> Leistungen — Budget und Vorsorge — und hält fest, dass weitere nicht erfunden
+> werden. Diese beiden sind nicht erfunden: Sie stehen wörtlich im Auftrag von
+> Ricardo vom 10.09.2026. Ob sie als eigene Leistungen gelten oder nur die
+> Arbeitsweise beschreiben, entscheidet er.
+
+### Frühere Fassung, bis 10.09.2026
+
+Nicht widerrufen, nur ersetzt:
+
+> Überschrift: Was wir für Sie übernehmen
+>
+> Versicherungen — Wir vertreten Sie, nicht die Versicherung. Wir prüfen Ihre
+> Verträge, holen Offerten ein und übernehmen den Schriftverkehr — auch im
+> Schadenfall. Stichworte: Krankenversicherung und Zusatzversicherung ·
+> Hausrat, Haftpflicht und Motorfahrzeug · Leben und Säule 3a · BVG, UVG und
+> Krankentaggeld · Betriebshaftpflicht und Sachversicherung
+>
+> Treuhand — Buchhaltung, Löhne und Abschluss für Selbständige und kleine
+> Betriebe. Auch dann, wenn Sie mitten im Jahr wechseln. Stichworte:
+> Buchhaltung · Lohnadministration und Sozialversicherungen · Mehrwertsteuer
+> und Jahresabschluss · Firmengründung · Treuhänderwechsel
+>
+> Finanzplanung — Zwei Fragen, die im Alltag untergehen: Wohin fliesst Ihr
+> Geld, und was bleibt für später. Stichworte: Budget · Vorsorge
+
+Weggefallen ist damit „Leben und Säule 3a" aus der Liste der Versicherungen —
+die Referenz zeigt vier Leistungen, nicht fünf. Die Leistung selbst bleibt
+bestehen und steht auf /versicherungen.
 
 ---
 

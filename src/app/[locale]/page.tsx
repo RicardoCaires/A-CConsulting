@@ -76,7 +76,10 @@ export default async function HomePage({ params }: PageProps) {
 
     // 4 — Leistungen. Versicherungsbroking fuehrt.
     leistungen: {
+      eyebrow: content.leistungen.eyebrow,
       titel: content.leistungen.titel,
+      einleitung: content.leistungen.einleitung,
+      merksatz: content.leistungen.merksatz,
       leit: content.leistungen.leit,
       weitere: content.leistungen.weitere,
     },
