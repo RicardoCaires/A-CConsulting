@@ -281,3 +281,26 @@ Bildschirme mit doppelter Punktdichte.
 Fuer den Hintergrund war keine eigene Datei dabei. Der Abschnitt nimmt darum
 `wide_minimal_abstract_background_design_a_clean`, dieselbe Datei wie der
 Modellabschnitt weiter oben auf derselben Seite.
+## Wenn ein Schaden eintritt
+
+Am 11.09.2026 geliefert.
+
+| Datei | Quelle | ausgeliefert |
+|---|---|---|
+| `01_schaden_warnung` | 1254 x 1254 | 224 px, 7 KB |
+| `02_schaden_dokument` | 1254 x 1254 | 224 px, 6 KB |
+| `03_schaden_telefon` | 1254 x 1254 | 224 px, 7 KB |
+| `04_schaden_begleitung` | 1254 x 1254 | 224 px, 7 KB |
+| `05_versicherungspartner` | 1448 x 1086 | 900 px, 92 KB |
+| `06_schaden_hintergrund` | 1672 x 941 | 1672 px, 15 KB |
+| `versicherungen_schadenfall_referenz` | 1672 x 941 | nur Vorlage, nicht ausgeliefert |
+
+Zusammen 134 KB.
+
+**Das Logoraster bleibt eine Datei** und wird nicht in neun Teile zerlegt: Ein
+Zuschnitt waere eine Veraenderung an fremden Marken. Sein Alternativtext
+zaehlt die neun Gesellschaften auf.
+
+**Es zeigt andere Gesellschaften als das Raster im Modellabschnitt**: hier GVB
+und Smile, dort Swiss Life. Auf derselben Seite stehen damit zwei
+verschiedene Aufzaehlungen.

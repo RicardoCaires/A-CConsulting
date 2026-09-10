@@ -256,6 +256,29 @@ export type Block =
       /** Die breite Karte unter dem Raster. */
       schluss: { bild: string; titel: string; satz: string }
     }
+  /**
+   * Der Schadenfall: links Text und drei Schritte, rechts die Partnerkarte.
+   *
+   * Loest auf `/versicherungen` den `prose`-Block ab. Ricardo hat am
+   * 11.09.2026 eine Referenzgrafik, vier Symbole und ein Logoraster geliefert.
+   */
+  | {
+      kind: 'schadenfall'
+      id: string
+      eyebrow: string
+      heading: string
+      lead: string
+      schritte: readonly { bild: string; titel: string }[]
+      link: PageRef
+      partner: {
+        bild: string
+        /** Ueberschrift der Karte rechts. */
+        titel: string
+        /** Alternativtext des Logorasters — Pflicht, nicht Beiwerk. */
+        rasterBild: string
+        rasterAlt: string
+      }
+    }
   /** Sprungmarken innerhalb der Seite. */
   | {
       kind: 'anchors'
