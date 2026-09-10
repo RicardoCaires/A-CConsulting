@@ -113,8 +113,6 @@ export type StartseiteContent = {
     kette: readonly { text: string; bild: SchrittName }[]
     text: string
     nachsatz: string
-    /** Drei Zeilen rechts neben dem Kopf. */
-    merksatz: readonly string[]
     knopf: { text: string; ziel: PageKey }
   }
 
@@ -268,7 +266,6 @@ const de: StartseiteContent = {
     text: 'Wir koordinieren die Themen, die zusammengehören – mit einem festen Ansprechpartner.',
     nachsatz:
       'Statt mehrere Stellen zu koordinieren, haben Sie bei uns einen zentralen Ansprechpartner.',
-    merksatz: ['Weniger Aufwand.', 'Mehr Übersicht.', 'Ein Ansprechpartner.'],
     knopf: { text: 'Mehr über unseren Ansatz', ziel: 'ueberUns' },
   },
 

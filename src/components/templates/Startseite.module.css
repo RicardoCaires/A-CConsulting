@@ -29,7 +29,7 @@
 .kette {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--ac-space-md) var(--ac-space-sm);
+  gap: var(--ac-space-md) var(--ac-space-2xs);
   /* Abstand nach oben, sonst steht die Kette auf der Grundlinie der
      Ueberschrift. */
   margin: clamp(2rem, 4vw, 2.75rem) 0;
@@ -56,7 +56,7 @@
    passen, sonst laufen die Glieder ineinander. */
 .ketteText {
   font-family: var(--ac-font-display);
-  font-size: clamp(0.875rem, 1.2vw, 1.0625rem);
+  font-size: clamp(0.875rem, 1.05vw, 0.9375rem);
   line-height: var(--ac-h3-line);
   font-weight: var(--ac-h3-weight);
   color: var(--ac-color-white);
@@ -77,13 +77,6 @@
 
 .knopfPfeil {
   margin-left: var(--ac-space-2xs);
-}
-
-/* Der Merksatz steht hier auf dunklem Grund — dieselbe Form wie in den hellen
-   Abschnitten, nur in den Farben, die darauf lesbar sind. */
-.merksatzHell {
-  color: var(--ac-on-navy-muted);
-  border-left-color: color-mix(in srgb, var(--ac-color-white) 35%, transparent);
 }
 
 /* ---- Das Buerobild --------------------------------------------------------
@@ -136,7 +129,7 @@
      so stehen die Glieder gleichmaessig, unabhaengig von der Wortlaenge. */
   .kette {
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: var(--ac-space-sm);
+    gap: var(--ac-space-2xs);
     align-items: start;
   }
 
@@ -149,7 +142,7 @@
     position: absolute;
     /* In der Mitte der Bildhoehe, auf halbem Weg zum Glied davor. */
     top: calc(clamp(4rem, 12vw, 6rem) / 2);
-    right: calc(100% + var(--ac-space-sm) / 2);
+    right: calc(100% + var(--ac-space-2xs) / 2);
     transform: translate(50%, -50%);
     font-family: var(--ac-font-sans);
     font-size: 1.25rem;
@@ -245,12 +238,13 @@
     grid-template-areas: 'haupt merksatz';
   }
 
-  /* Die Textspalte endet, bevor das Bild beginnt. 40rem ist die Breite, in
+  /* Die Textspalte endet, bevor das Bild beginnt. 36rem ist die Breite, in
      der die Ueberschrift zweizeilig steht und die fuenf Glieder der Kette
-     nebeneinander Platz haben. */
+     nebeneinander Platz haben — enger als zuvor, damit rechts Raum fuer das
+     groessere Bild bleibt. */
   .stelleHaupt {
     grid-area: haupt;
-    max-width: 40rem;
+    max-width: 36rem;
   }
 
   .stelleRaster .merksatz {
@@ -267,11 +261,92 @@
    mehr, als bei 1024 px zur Verfuegung steht. Bis dahin steht das Bild als
    eigener Block unter dem Text, wie auf dem Telefon. */
 @media (min-width: 80rem) {
+  /* 47 Prozent ist die Breite, bei der das Bild links gerade noch an der
+     Textspalte vorbeikommt: Die endet bei 36rem hinter dem Containerrand,
+     das Bild beginnt bei 53 Prozent des Abschnitts. Der Deckel von 52rem
+     haelt es auf sehr breiten Schirmen im Verhaeltnis. */
   .buero {
     position: absolute;
     right: 0;
     bottom: 0;
-    width: min(42%, 33rem);
+    width: min(47%, 52rem);
     margin: 0;
+  }
+
+  /* Genug Hoehe, damit das groessere Bild unten Platz hat, ohne den Text
+     nach oben zu draengen. */
+  .stelleFlaeche {
+    min-height: 38rem;
+  }
+}
+
+/* ---- Der Grund des Abschnitts ---------------------------------------------
+
+   Zwei grosse Boegen Ton in Ton und eine feine gruene Linie. Alle drei sind
+   Kreise, die weit ueber die Kanten hinausragen; sichtbar ist nur ihr Bogen.
+   Der Abschnitt schneidet sie ab (`overflow: hidden`).
+
+   Sehr zurueckhaltend gehalten: Sie sollen der Flaeche das Flache nehmen,
+   nicht auffallen. Kein Verlauf, kein Schein, keine zweite Farbe — die
+   Fuellungen sind aus dem Navy des Abschnitts gemischt. */
+
+.muster {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.muster span {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+}
+
+/* Der grosse Bogen: heller als der Grund, aber nur um eine Spur. */
+.bogenGross {
+  top: -32%;
+  right: -14%;
+  width: 62rem;
+  height: 62rem;
+  background-color: color-mix(in srgb, var(--ac-color-white) 5%, transparent);
+}
+
+/* Der zweite sitzt darin und ist noch schwaecher. */
+.bogenKlein {
+  top: -14%;
+  right: -4%;
+  width: 42rem;
+  height: 42rem;
+  background-color: color-mix(in srgb, var(--ac-color-white) 4%, transparent);
+}
+
+/* Die gruene Linie. Ein Kreis mit Kontur statt Fuellung — dadurch ein
+   grosszuegiger Bogen ohne einen einzigen Pfad. */
+.linie {
+  top: -46%;
+  right: 4%;
+  width: 74rem;
+  height: 74rem;
+  background-color: transparent;
+  border: 2px solid color-mix(in srgb, var(--ac-color-accent-green-light) 40%, transparent);
+}
+
+/* Auf schmalen Geraeten bleibt nur der grosse Bogen. Zwei weitere Formen auf
+   375 px sind kein Grund, sondern Unruhe. */
+@media (max-width: 47.999rem) {
+  /* Mit `.muster` davor, sonst gewinnt `.muster span { display: block }` —
+     dieselbe Zahl an Klassen, aber ein Element mehr. */
+  .muster .bogenKlein,
+  .muster .linie {
+    display: none;
+  }
+}
+
+/* Wo `color-mix` fehlt, bleibt der Grund einfarbig — das ist kein Verlust. */
+@supports not (color: color-mix(in srgb, red 50%, blue)) {
+  .muster {
+    display: none;
   }
 }

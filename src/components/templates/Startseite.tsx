@@ -96,8 +96,6 @@ export type StartseiteInhalt = {
     kette: readonly { text: string; bild: SchrittName }[]
     text: ReactNode
     nachsatz?: ReactNode
-    /** Drei Zeilen rechts neben dem Kopf. */
-    merksatz: readonly string[]
     knopf: { text: string; ziel: PageKey }
   }
   personen: {
@@ -266,12 +264,16 @@ export function StartseiteTemplate({
               </span>
             </Button>
           </div>
+        </div>
 
-          <p className={`${styles.merksatz} ${styles.merksatzHell}`}>
-            {inhalt.eineStelle.merksatz.map((zeile) => (
-              <span key={zeile}>{zeile}</span>
-            ))}
-          </p>
+        {/* Der Grund: zwei grosse Boegen Ton in Ton und eine feine gruene
+            Linie. Sie stehen tief im Hintergrund und tragen keine Aussage —
+            sie nehmen der Flaeche nur das Flache. Alle drei sind Kreise; der
+            Abschnitt schneidet sie an seinen Kanten ab. */}
+        <div className={styles.muster} aria-hidden="true">
+          <span className={styles.bogenGross} />
+          <span className={styles.bogenKlein} />
+          <span className={styles.linie} />
         </div>
 
         {/* Der Bildplatz. Dekorativ — was der Abschnitt sagt, steht im Text. */}
