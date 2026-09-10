@@ -89,19 +89,52 @@
   text-decoration: none;
 }
 
-.kontakt:hover {
-  color: var(--ac-color-text-primary);
+/* Der Strich sitzt am Text, nicht am Link — sonst zoege er auch unter dem
+   Symbol durch. Fein und gruen: 1 px, mit Abstand zur Schrift. Die Schrift
+   selbst bleibt in der Textfarbe, sie wird nicht gruen. */
+.kontaktText {
   text-decoration: underline;
-  text-underline-offset: 0.25em;
+  text-decoration-color: var(--ac-color-accent-green);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* Beim Zeigen wird der Strich etwas kraeftiger — mehr braucht es nicht,
+   die Unterstreichung ist ja schon da. */
+.kontakt:hover .kontaktText {
+  text-decoration-thickness: 2px;
 }
 
 /* Die Symbole bringen ihren gruenen Ring mit — kein Kreis aus dem Layout
-   dahinter, keine Farbaenderung, kein Filter. */
+   dahinter, keine Farbaenderung, kein Filter.
+
+   Die beiden gelieferten Dateien haben unterschiedlich viel Luft um den
+   Kreis: beim Telefon misst er 74.6 %, bei der E-Mail 82.9 % der Kantenlaenge
+   (gemessen am 10.09.2026 an den Originalen). In derselben Box waeren die
+   Kreise elf Prozent verschieden gross. Die beiden Faktoren bringen sie auf
+   dieselben 27.3 px — genau die Groesse, die die vorherige Fassung zeigte.
+
+   Die Dateien selbst bleiben unangetastet: gleichmaessig skaliert, nichts
+   beschnitten, nichts umgefaerbt, Seitenverhaeltnis unveraendert. Die Box ist
+   fuer beide gleich gross, damit die Kreise auch untereinander buendig
+   stehen, wenn die beiden Angaben auf schmalen Geraeten uebereinander liegen.
+
+   Nebenbei: Die Telefondatei hat keinen durchsichtigen Grund, sondern ein
+   Weiss von 254/255. Auf dem weissen Abschnitt faellt das nicht auf. Bekaeme
+   der Abschnitt je eine Flaeche, stuende dort ein heller Kasten. */
 .kontaktBild {
   flex: none;
   width: 2.5rem;
   height: 2.5rem;
   object-fit: contain;
+}
+
+.kontaktBildTelefon {
+  transform: scale(0.915);
+}
+
+.kontaktBildEmail {
+  transform: scale(0.823);
 }
 
 .aktion {

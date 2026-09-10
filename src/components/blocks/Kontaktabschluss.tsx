@@ -21,6 +21,10 @@ import styles from './Kontaktabschluss.module.css'
  * Telefon und E-Mail kommen aus `company.ts` und stehen nirgends sonst
  * ausgeschrieben — sie sind Pflichtangaben und werden an einer Stelle
  * gepflegt.
+ *
+ * Hier steht seit dem 10.09.2026 die **Festnetznummer** (`phoneOffice`), auf
+ * Ricardos Anweisung und nur an dieser Stelle. Fussbereich, Impressum und
+ * Kontaktseite zeigen unveraendert die Mobilnummer aus `phone`.
  */
 
 type Props = {
@@ -61,29 +65,31 @@ export function Kontaktabschluss({ id, titel, satz, aktion }: Props) {
 
         <ul className={styles.kontakte} role="list">
           <li>
-            <a className={styles.kontakt} href={`tel:${company.phoneE164}`}>
+            <a className={styles.kontakt} href={`tel:${company.phoneOfficeE164}`}>
               <Image
-                className={styles.kontaktBild}
+                className={`${styles.kontaktBild} ${styles.kontaktBildTelefon}`}
                 src="/bilder/01_telefon.webp"
                 alt=""
                 width={128}
                 height={128}
                 sizes="40px"
               />
-              {company.phone}
+              {/* Die Unterstreichung gehoert an den Text, nicht an den Link:
+                  sonst zoege der Strich auch unter dem Symbol durch. */}
+              <span className={styles.kontaktText}>{company.phoneOffice}</span>
             </a>
           </li>
           <li>
             <a className={styles.kontakt} href={`mailto:${company.email}`}>
               <Image
-                className={styles.kontaktBild}
+                className={`${styles.kontaktBild} ${styles.kontaktBildEmail}`}
                 src="/bilder/02_email.webp"
                 alt=""
                 width={128}
                 height={128}
                 sizes="40px"
               />
-              {company.email}
+              <span className={styles.kontaktText}>{company.email}</span>
             </a>
           </li>
         </ul>
