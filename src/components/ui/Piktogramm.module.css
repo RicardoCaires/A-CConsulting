@@ -1,0 +1,15 @@
+/* Die Piktogramme der Ausgangslagen.
+
+   Die Datei wird gezeigt, wie sie ist: kein Filter, keine Farbaenderung, kein
+   Schatten, kein Rahmen. Sie bringt einen durchsichtigen Grund mit und steht
+   direkt auf der Karte.
+
+   `contain` haelt das Seitenverhaeltnis; beschnitten wird nichts. Alle sechs
+   sind quadratisch, darum wirken sie ohne weiteres Zutun gleich gross. */
+
+.bild {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

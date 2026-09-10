@@ -69,6 +69,8 @@ export default async function HomePage({ params }: PageProps) {
     // 3 — Situationen. Stehen vor den Leistungen: Wer herkommt, denkt in
     //     seinem Problem, nicht in unseren Bereichen.
     situationen: {
+      eyebrow: content.situationen.eyebrow,
+      merksatz: content.situationen.merksatz,
       titel: content.situationen.titel,
       einleitung: content.situationen.einleitung,
       eintraege: content.situationen.eintraege,

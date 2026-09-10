@@ -17,6 +17,23 @@ Die drei letzten sind die Bereichsillustrationen der Startseite, von Ricardo am
 10.09.2026 geliefert. Sie sind quadratisch (1254 x 1254) und durchsichtig; die
 Namen sind seine und werden nicht geändert.
 
+Am selben Tag kamen die sechs Piktogramme der Ausgangslagen dazu, ebenfalls
+1254 x 1254 und durchsichtig — zusammen 2257 KB PNG, 278 KB WebP:
+
+| Quelle (Ricardos Name) | ausgeliefert als |
+|---|---|
+| `moderne_bürogebäude_mit_grünen_akzenten` | `moderne-buerogebaeude` |
+| `personen_hinzufügen_symbol` | `personen-hinzufuegen` |
+| `minimalist_icon_für_buchhaltung_und_finanzen` | `buchhaltung-und-finanzen` |
+| `dokument_mit_grünen_austauschpfeilen` | `dokument-austauschpfeile` |
+| `schild_und_lupe_im_mintkreis` | `schild-und-lupe` |
+| `schild_warnsymbol_mit_grünen_akzenten` | `schild-warnsymbol` |
+
+Warum umbenannt: Ein Umlaut in einer Adresse geht lokal gut und macht auf dem
+Weg über ein CDN, einen Zwischenspeicher oder eine Verknüpfung früher oder
+später Ärger. Die Quelldatei behält Ricardos Namen; nur der ausgelieferte
+Name ist ASCII. Die Zuordnung steht in `src/components/ui/Piktogramm.tsx`.
+
 `unser-modell` wurde am 09.09.2026 ausgetauscht: Die vorherige Fassung trug
 eine falsche Bildmarke — die gruene Spitze sass neben dem Navy-Berg statt auf
 ihm. Verbindlich ist die von Ricardo freigegebene Fassung, 1448 x 1086.

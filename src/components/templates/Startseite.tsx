@@ -72,8 +72,11 @@ export type StartseiteInhalt = {
     bild: HeroBild
   }
   situationen: {
+    eyebrow: string
     titel: ReactNode
     einleitung?: ReactNode
+    /** Drei Zeilen rechts neben dem Kopf. */
+    merksatz: readonly string[]
     eintraege: readonly Fall[]
   }
   leistungen: {
@@ -178,18 +181,34 @@ export function StartseiteTemplate({
         />
       </Section>
 
-      {/* ---- 3 Situationen — eng an die Leistungen ------------------------- */}
+      {/* ---- 3 Situationen — eng an die Leistungen -------------------------
+
+          Derselbe getoente Grund und derselbe zweispaltige Kopf wie im
+          Abschnitt darueber. Beide tragen weisse Karten; auf dem gewohnten
+          Off-White stuenden sie kaum ab. Die beiden Abschnitte bilden damit
+          eine zusammenhaengende Zone — getrennt werden sie von ihren
+          Ueberschriften, nicht von einem Farbwechsel. */}
       <Section
         surface={fSituationen}
-        abstand="eng"
+        className={styles.leistungenFlaeche}
         labelledBy="situationen"
         id="situationen"
       >
-        <SectionHeader
-          id="situationen"
-          heading={inhalt.situationen.titel}
-          lead={inhalt.situationen.einleitung}
-        />
+        <div className={styles.leistungenKopf}>
+          <SectionHeader
+            id="situationen"
+            eyebrow={inhalt.situationen.eyebrow}
+            heading={inhalt.situationen.titel}
+            lead={inhalt.situationen.einleitung}
+          />
+
+          <p className={styles.merksatz}>
+            {inhalt.situationen.merksatz.map((zeile) => (
+              <span key={zeile}>{zeile}</span>
+            ))}
+          </p>
+        </div>
+
         <Faelle faelle={inhalt.situationen.eintraege} locale={locale} />
       </Section>
 

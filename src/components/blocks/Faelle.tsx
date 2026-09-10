@@ -1,3 +1,4 @@
+import { Piktogramm, type PiktogrammName } from '@/components/ui/Piktogramm'
 import { getUi } from '@/i18n/messages/ui'
 import { isPublished, path, type PageKey } from '@/i18n/routes'
 import type { Locale } from '@/i18n/config'
@@ -11,9 +12,18 @@ import styles from './Faelle.module.css'
  * „Was bietet A&C an?", sondern „Bin ich hier richtig?" — und die stellt sich
  * ein Besucher zuerst. Wer seinen eigenen Satz liest, klickt.
  *
- * Darum: Ich-Saetze in der Sprache des Kunden, keine Leistungsbegriffe. Keine
- * Icons — sechs bunte Zeichen waeren genau das Rauschen, das die Seite nicht
- * haben soll. Die Nummer ordnet und gibt dem Raster Halt.
+ * Darum: Ich-Saetze in der Sprache des Kunden, keine Leistungsbegriffe.
+ *
+ * Seit dem 10.09.2026 als sechs Karten, drei mal zwei, nach Ricardos
+ * Referenzgrafik. Bis dahin war es ein Gitter aus Haarlinien, und es stand
+ * hier ausdruecklich „keine Icons — sechs bunte Zeichen waeren genau das
+ * Rauschen, das die Seite nicht haben soll". Ricardo hat die Piktogramme
+ * geliefert und entschieden; die Regel gilt damit fuer diesen Abschnitt nicht
+ * mehr. Sie bleibt fuer alles, wofuer er keine geliefert hat.
+ *
+ * Die ganze Karte ist der Link, nicht nur die Zeile darunter — auf dem
+ * Telefon ist das der Unterschied zwischen treffen und zielen. „Mehr
+ * erfahren" steht als Wegweiser dabei, ist aber kein zweiter Link.
  *
  * Jeder Fall fuehrt auf die Seite, die ihn beantwortet, notfalls auf deren
  * Abschnitt. Gibt es die Seite in dieser Sprache noch nicht, bleibt der Fall
@@ -23,6 +33,8 @@ import styles from './Faelle.module.css'
 export type Fall = {
   /** Der Satz, in dem sich der Kunde wiedererkennt. */
   text: string
+  /** Das gelieferte Piktogramm. */
+  bild: PiktogrammName
   ziel: PageKey
   /** Sprungmarke auf der Zielseite, falls der Fall dort ein Abschnitt ist. */
   anker?: string
@@ -48,11 +60,20 @@ export function Faelle({ faelle, locale }: Props) {
 
         const inhalt = (
           <>
-            <span className={styles.nummer} aria-hidden="true">
-              {nummer}
-            </span>
-            <span className={styles.text}>{fall.text}</span>
-            {!href && (
+            <div className={styles.kopf}>
+              <span className={styles.nummer} aria-hidden="true">
+                {nummer}
+              </span>
+              <Piktogramm className={styles.bild} name={fall.bild} />
+            </div>
+
+            <h3 className={styles.text}>{fall.text}</h3>
+
+            {href ? (
+              <span className={styles.weiter} aria-hidden="true">
+                {ui.moreLabel}
+              </span>
+            ) : (
               <>
                 <span className={styles.badge}>{ui.pageComing.badge}</span>
                 <span className="ac-visually-hidden"> {ui.pageComing.hint}</span>
@@ -62,13 +83,13 @@ export function Faelle({ faelle, locale }: Props) {
         )
 
         return (
-          <li key={fall.text} className={styles.zelle}>
+          <li key={fall.text}>
             {href ? (
-              <a className={styles.fall} href={href}>
+              <a className={styles.karte} href={href}>
                 {inhalt}
               </a>
             ) : (
-              <span className={`${styles.fall} ${styles.pending}`}>{inhalt}</span>
+              <span className={`${styles.karte} ${styles.pending}`}>{inhalt}</span>
             )}
           </li>
         )
