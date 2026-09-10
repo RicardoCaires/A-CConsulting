@@ -533,6 +533,39 @@ der Regel in Abschnitt 3 („Logos von Versicherern ohne schriftliche Freigabe")
 Ricardo wurde darauf hingewiesen und hat am 09.09.2026 entschieden, die Grafik
 so zu verwenden — die Verantwortung für Freigaben liegt bei ihm.
 
+**Seit dem 10.09.2026 ist das Modell kein Bild mehr, sondern ein Abschnitt.**
+Ricardo hat eine Referenzgrafik und elf Einzelbilder geliefert und ausdrücklich
+verlangt, dass daraus ein Webabschnitt wird
+(`src/components/blocks/UnserModell.tsx`). Der Unterschied ist nicht nur
+Gestaltung: Text bleibt Text — wählbar, übersetzbar, durchsuchbar und für
+Vorlesewerkzeuge lesbar. Aus den Bildern kommen nur die Symbole.
+
+Vier Ebenen: Einleitung und drei Grundsätze, der Kreislauf
+(Kunde → Mandat → A&C → Preisvergleich → Markt → Ergebnis), die Nutzenleiste,
+die Schlusszeile. Alle elf Dateien zusammen wiegen 124 KB — weniger als die
+eine Bilddatei, die sie ersetzen.
+
+Vier Punkte, die man wissen muss:
+
+- **Die erste Lieferung war unbrauchbar.** Es waren Bildschirmausschnitte aus
+  der Referenz: Titel im Bild eingebacken, Reste der Nachbarelemente, Symbole
+  von rund 60 px. Sie sind **nicht** eingesetzt worden; Ricardo hat freigestellte
+  Symbole nachgeliefert. Nichts wurde nachgezeichnet.
+- **Das Logo in der Mitte ist die Fassung mit „Versicherungen · Treuhand"** und
+  steht nur in diesem Abschnitt. Kopf- und Fussbereich tragen weiterhin die
+  Fassung aus dem Corporate Design.
+- **Der Zusatz „Persönlich. Unabhängig. An Ihrer Seite."** kommt aus der
+  Referenzgrafik. Er ist der dritte neben „Kompetenz schafft Klarheit"
+  (Wortmarke) und „Perspektiven für morgen" (Fussbereich). Ricardo ist darauf
+  hingewiesen.
+- **Die Marker vor den Stichpunkten sind feine grüne Ringe aus CSS**, keine
+  Häkchen und keine Bilddatei. Ricardo hat sie ausdrücklich „deutlich dezenter"
+  verlangt.
+
+`unser-modell.webp` bleibt liegen — freigegeben, nicht gelöscht, aber auf
+keiner Seite mehr. Der folgende Abschnitt beschreibt sie und gilt weiter,
+falls sie je zurückkehrt.
+
 **Die Datei ist verbindlich, nicht beliebig.** Ricardo hat am 09.09.2026
 festgestellt, dass die eingesetzte Fassung eine falsche Bildmarke trägt: Die
 grüne Spitze sitzt neben dem Navy-Berg statt auf ihm. Es gilt ausschliesslich

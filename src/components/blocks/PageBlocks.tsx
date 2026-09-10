@@ -8,6 +8,7 @@ import { PageLink } from '@/components/ui/PageLink'
 import { hatSichtbarenInhalt, RichText } from '@/components/ui/RichText'
 import { Accordion } from './Accordion'
 import { CTASection } from './CTASection'
+import { UnserModell } from './UnserModell'
 import { StepList } from './StepList'
 import type { Action, Block, Download, PageRef, Rich } from '@/content/types'
 import type { Locale } from '@/i18n/config'
@@ -436,6 +437,30 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               heading={block.heading}
               lead={<Paragraphs items={block.paragraphs} className={styles.ctaLead} />}
               actions={<Actions actions={block.actions} locale={locale} />}
+            />
+          )
+        }
+
+        // Das Modell ist ein eigener Baustein und bringt seine Flaeche selbst
+        // mit — getoent, mit dem gelieferten Muster darauf. Es zaehlt beim
+        // Flaechenwechsel darum nicht mit.
+        if (block.kind === 'modell') {
+          return (
+            <UnserModell
+              key={index}
+              id={block.id}
+              eyebrow={block.eyebrow}
+              heading={block.heading}
+              lead={block.lead}
+              grundsaetze={block.grundsaetze}
+              kunde={block.kunde}
+              mandat={block.mandat}
+              mitte={block.mitte}
+              preisvergleich={block.preisvergleich}
+              markt={block.markt}
+              ergebnis={block.ergebnis}
+              nutzen={block.nutzen}
+              schluss={block.schluss}
             />
           )
         }

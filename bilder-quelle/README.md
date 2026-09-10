@@ -195,3 +195,39 @@ helle Motiv beginnt bei 45.6 Prozent der Bildbreite.
 `versicherungen_seitenkopf_referenz.png` ist die Gestaltungsvorlage. Alle Masse
 im Kopf stammen daraus: Kopfhoehe 29.5 Prozent der Breite, Text ab der normalen
 Containerkante, helles Motiv ab 58.5 Prozent.
+## Unser Modell (Versicherungsseite)
+
+Am 10.09.2026 geliefert, **in zwei Runden**. Die erste Runde waren
+Bildschirmausschnitte aus der Referenzgrafik: In `01` bis `03` klebte der Titel
+im Bild, `04` und `05` enthielten Reste der Nachbarelemente, und die eigentlichen
+Symbole massen rund 60 px. Sie sind nicht eingesetzt worden. Ricardo hat noch am
+selben Tag freigestellte Symbole nachgeliefert; diese liegen hier.
+
+| Datei | Quelle | ausgeliefert |
+|---|---|---|
+| `01_icon_unabhaengig` | 1254 x 1254 | 192 px, 5 KB |
+| `02_icon_objektiv` | 1254 x 1254 | 192 px, 7 KB |
+| `03_icon_interesse` | 1254 x 1254 | 192 px, 4 KB |
+| `04_icon_kunde` | 1254 x 1254 | 192 px, 5 KB |
+| `05_logo_ac_consulting` | 1448 x 1086 | 440 px, 22 KB |
+| `06_panel_versicherungsgesellschaften` | 1448 x 1086 | 760 px, 58 KB |
+| `07_benefit_sparschwein` | 1254 x 1254 | 192 px, 5 KB |
+| `08_benefit_diamant` | 1254 x 1254 | 192 px, 4 KB |
+| `09_benefit_schild` | 1254 x 1254 | 192 px, 4 KB |
+| `10_benefit_handshake` | 1254 x 1254 | 192 px, 4 KB |
+| `11_hintergrundmuster` | 1600 x 900 | 1600 x 900, 6 KB |
+| `unser-modell_referenz` | 1600 x 1080 | nur Vorlage, nicht ausgeliefert |
+
+Zusammen 124 KB — der ganze Abschnitt wiegt weniger als die eine Bilddatei,
+die er ersetzt (`unser-modell.webp`, 96 KB, plus unlesbar auf dem Telefon).
+
+Die Titel stehen **nicht** in den Bildern, sondern als Text daneben. Die
+Symbole tragen ihren hellblauen Kreis selbst; im Layout liegt keine Flaeche
+dahinter und es wird nichts umgefaerbt.
+
+`05_logo_ac_consulting` ist die Fassung mit dem Zusatz „Versicherungen ·
+Treuhand". Sie steht **nur** in diesem Abschnitt. Kopf- und Fussbereich tragen
+weiterhin die Fassung aus dem Corporate Design (`public/logo/`).
+
+`unser-modell.webp` bleibt liegen. Die Datei ist von Ricardo freigegeben und
+wird nicht geloescht, steht seit dem 10.09.2026 aber auf keiner Seite mehr.
