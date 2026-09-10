@@ -237,3 +237,11 @@ diesen Abschnitt, geliefert am 10.09.2026. Sie ist kein Bild, sondern fertiger
 Quelltext — Aufbau, Groessen und Abstaende stammen von dort. Uebernommen wurde
 die Gestaltung, nicht der Code: Farbwerte und Georgia sind durch die
 Projekt-Tokens und die Schrift der Website ersetzt.
+
+`wide_minimal_abstract_background_design_a_clean.png` (1672 x 941, ausgeliefert
+als WebP mit 12 KB) ist der Hintergrund des Modellabschnitts, geliefert am
+10.09.2026. Grundton 229,235,244, Tonumfang 213 bis 250 — der ganze Umfang
+liegt so eng beieinander, dass die Datei ohne Abschwaechung deckt.
+
+`11_hintergrundmuster` war die erste Fassung und bleibt liegen; sie steht auf
+keiner Seite mehr.

@@ -563,6 +563,19 @@ Farbwerte und Georgia direkt hinein; im Projekt stehen dafür die Tokens und die
 Schrift der Website. Ein Hex-Wert in einer Komponente ist hier ein Fehler, und
 eine zweite Schriftfamilie wäre eine zweite Marke.
 
+**Der Hintergrund** ist seit dem 10.09.2026 Ricardos zweite Datei
+(`wide_minimal_abstract_background_design_a_clean`): grosse helle Kreise in den
+Ecken, feine Bögen, vereinzelte Punkte — und in der Mitte bewusst ruhig. Sie
+deckt voll statt halbtransparent; die Datei ist von sich aus zurückhaltend
+genug (Tonumfang 213 bis 250), und halbtransparent verloren die Kreise die
+Wirkung, wegen der sie da sind. Fliesstext auf der dunkelsten Stelle trägt
+5.5:1 und damit mehr als die geforderten 4.5:1.
+
+Auf schmalen Geräten ist nur die ruhige Mitte der Datei sichtbar — bei 375 px
+noch 6.1 Prozent ihrer Breite. Das ist gewollt: Dort soll kein Kreis hinter
+einem Text liegen. `11_hintergrundmuster` bleibt im Repository liegen, steht
+aber auf keiner Seite mehr.
+
 **Die Rückführung** — die U-Klammer von den Gesellschaften zurück zum Kunden —
 ist der Teil, der in den ersten beiden Fassungen fehlte. Sie hat eigenen
 senkrechten Raum, damit nichts überlappt, und entfällt unterhalb von 1180 px:
