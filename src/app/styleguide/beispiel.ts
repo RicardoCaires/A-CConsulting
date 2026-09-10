@@ -25,15 +25,17 @@ export const beispielStartseite: StartseiteInhalt = {
     bild: { label: 'BEISPIELBILD EINSTIEG', note: 'Beispielhinweis zum Motiv' },
   },
   situationen: {
+    eyebrow: 'Beispiel-Vorzeile',
     titel: 'Beispielüberschrift der Situationen',
     einleitung: 'Beispielsatz über die sechs Ausgangslagen.',
+    merksatz: ['Erste Zeile.', 'Zweite Zeile.', 'Dritte Zeile.'],
     eintraege: [
-      { text: 'Erster Beispielfall', ziel: 'firmengruendung' },
-      { text: 'Zweiter Beispielfall', ziel: 'treuhand' },
-      { text: 'Dritter Beispielfall', ziel: 'buchhaltung' },
-      { text: 'Vierter Beispielfall', ziel: 'treuhaenderWechseln' },
-      { text: 'Fünfter Beispielfall', ziel: 'versicherungen' },
-      { text: 'Sechster Beispielfall', ziel: 'versicherungen' },
+      { text: 'Erster Beispielfall', bild: 'firmengruendung', ziel: 'firmengruendung' },
+      { text: 'Zweiter Beispielfall', bild: 'mitarbeitende', ziel: 'treuhand' },
+      { text: 'Dritter Beispielfall', bild: 'buchhaltung', ziel: 'buchhaltung' },
+      { text: 'Vierter Beispielfall', bild: 'treuhaenderwechsel', ziel: 'treuhaenderWechseln' },
+      { text: 'Fünfter Beispielfall', bild: 'versicherungspruefung', ziel: 'versicherungen' },
+      { text: 'Sechster Beispielfall', bild: 'schadenfall', ziel: 'versicherungen' },
     ],
   },
   leistungen: {

@@ -1,88 +1,125 @@
-/* Geschaeftsfaelle.
+/* Geschaeftsfaelle — sechs Karten, drei mal zwei.
 
-   Ein Raster aus Linien, keine sechs Kaesten. Die Zellen teilen sich ihre
-   Kanten; dadurch entsteht ein Gitter, das ruhiger liegt als sechs einzelne
-   Karten mit Abstand dazwischen.
+   Bis zum 10.09.2026 war das ein Gitter aus Haarlinien. Ricardos
+   Referenzgrafik zeigt Karten; sie sind gebaut wie die im Abschnitt darueber,
+   damit die Seite nicht zwei Kartenarten kennt: weiss, feine Kontur,
+   schwacher Schatten, derselbe Radius, dasselbe Innenmass.
 
-   Der Zustand beim Zeigen ist der einzige Effekt: Die Flaeche wird weiss, die
-   Nummer gruen, der Pfeil rueckt nach. Mehr braucht es nicht. */
+   Der Zustand beim Zeigen bleibt zurueckhaltend: Die Karte hebt sich einen
+   Pixel, der Schatten wird eine Spur tiefer, die Kontur nimmt Gruen an. Kein
+   Zoom, kein Springen. */
 
 .liste {
   display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
   margin-top: clamp(2rem, 5vw, 3rem);
   padding: 0;
   list-style: none;
-  /* Die aeussere Kante des Gitters. Innen tragen die Zellen ihre eigene. */
-  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
 }
 
-.zelle {
-  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
-}
-
-.fall {
-  position: relative;
+.karte {
   display: flex;
-  align-items: baseline;
-  gap: var(--ac-space-sm);
-  /* Trefferflaeche deutlich ueber 44 px — das ist der Abschnitt, der auf dem
-     Telefon am haeufigsten getroffen wird. */
-  min-height: 4.5rem;
-  padding: var(--ac-space-md) var(--ac-space-sm) var(--ac-space-md) var(--ac-space-2xs);
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+  box-shadow:
+    0 1px 2px color-mix(in srgb, var(--ac-color-navy-deep) 5%, transparent),
+    0 10px 24px -14px color-mix(in srgb, var(--ac-color-navy-deep) 22%, transparent);
   color: var(--ac-color-text-primary);
   text-decoration: none;
-  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+  transition:
+    transform var(--ac-motion-base) var(--ac-motion-easing),
+    border-color var(--ac-motion-base) var(--ac-motion-easing),
+    box-shadow var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.fall:hover {
-  background-color: var(--ac-color-white);
+a.karte:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--ac-color-accent-green) 40%, var(--ac-color-border-light));
+  box-shadow:
+    0 1px 2px color-mix(in srgb, var(--ac-color-navy-deep) 6%, transparent),
+    0 16px 30px -16px color-mix(in srgb, var(--ac-color-navy-deep) 30%, transparent);
   color: var(--ac-color-text-primary);
+}
+
+/* Wer das Anheben nicht sehen will, sieht nur die Kontur. */
+@media (prefers-reduced-motion: reduce) {
+  .karte {
+    transition: border-color var(--ac-motion-base) var(--ac-motion-easing);
+  }
+
+  a.karte:hover {
+    transform: none;
+  }
+}
+
+/* ---- Kopf der Karte: Nummer und Piktogramm nebeneinander ------------------ */
+
+.kopf {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ac-space-sm);
 }
 
 .nummer {
   flex: none;
+  /* Auf der Oberkante des Piktogramms, nicht auf seiner Mitte. */
+  margin-top: 0.15rem;
   font-size: var(--ac-small-size);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.04em;
   color: var(--ac-color-text-muted);
-  transition: color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.fall:hover .nummer {
-  color: var(--ac-color-accent-green);
+/* Alle sechs Dateien sind quadratisch — eine Breite genuegt, damit sie gleich
+   gross wirken. */
+.bild {
+  flex: none;
+  width: clamp(5rem, 14vw, 7rem);
 }
+
+/* ---- Aussage und Verweis --------------------------------------------------- */
 
 .text {
-  font-family: var(--ac-font-display);
+  margin-top: clamp(1.25rem, 3vw, 1.75rem);
   font-size: var(--ac-h3-size);
   line-height: var(--ac-h3-line);
-  font-weight: var(--ac-h3-weight);
   letter-spacing: var(--ac-h3-tracking);
   color: var(--ac-color-primary-navy);
+  /* Zwei Zeilen, gleichmaessig gebrochen — wie in der Vorlage. 18ch waren zu
+     eng: „Ich moechte meine Buchhaltung abgeben" brach in drei. */
+  max-width: 22ch;
   text-wrap: balance;
 }
 
-/* Der Pfeil sitzt rechts und ist zurueckhaltend, bis man zeigt. */
-.fall::after {
+/* Ganz unten, damit die Zeile in allen sechs Karten auf derselben Hoehe
+   steht, auch wenn die eine Aussage kuerzer ist als die andere. */
+.weiter {
+  display: inline-flex;
+  align-items: center;
+  margin-top: auto;
+  padding-top: clamp(1.25rem, 3vw, 1.75rem);
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  color: var(--ac-color-accent-green);
+}
+
+.weiter::after {
   content: '→';
-  position: absolute;
-  right: var(--ac-space-2xs);
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--ac-color-text-muted);
-  opacity: 0;
-  transition:
-    opacity var(--ac-motion-base) var(--ac-motion-easing),
-    transform var(--ac-motion-base) var(--ac-motion-easing);
+  margin-left: var(--ac-space-2xs);
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.fall:hover::after {
-  opacity: 1;
-  transform: translateY(-50%) translateX(0.2rem);
+a.karte:hover .weiter::after {
+  transform: translateX(0.2rem);
 }
 
-/* Fall ohne Zielseite: sichtbar, aber nicht anklickbar. */
+/* ---- Fall ohne Zielseite --------------------------------------------------- */
+
 .pending {
   cursor: default;
 }
@@ -91,21 +128,15 @@
   color: var(--ac-color-text-secondary);
 }
 
-.pending::after {
-  display: none;
-}
-
 .badge {
-  align-self: center;
-  margin-left: auto;
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: clamp(1.25rem, 3vw, 1.75rem);
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--ac-color-text-secondary);
-  background-color: var(--ac-color-white);
-  border-radius: var(--ac-radius-sm);
-  padding: 0.1rem 0.3rem;
 }
 
 /* ---- Zwei Spalten ---------------------------------------------------------- */
@@ -114,12 +145,6 @@
   .liste {
     grid-template-columns: 1fr 1fr;
   }
-
-  /* Senkrechte Fuge zwischen den Spalten: dieselbe Linie, nur stehend. */
-  .zelle:nth-child(2n) .fall {
-    border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
-    padding-left: var(--ac-space-md);
-  }
 }
 
 /* ---- Drei Spalten ---------------------------------------------------------- */
@@ -127,17 +152,5 @@
 @media (min-width: 64rem) {
   .liste {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  /* Die Regel fuer zwei Spalten gilt hier nicht mehr — bei drei Spalten
-     traegt jede ausser der ersten die Linie. */
-  .zelle:nth-child(2n) .fall {
-    border-left: 0;
-    padding-left: var(--ac-space-2xs);
-  }
-
-  .zelle:not(:nth-child(3n + 1)) .fall {
-    border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
-    padding-left: var(--ac-space-md);
   }
 }

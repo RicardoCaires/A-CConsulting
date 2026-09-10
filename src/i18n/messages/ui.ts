@@ -71,6 +71,13 @@ type UiMessages = {
   }
   /** Beschriftung der Sprungmarken innerhalb einer Seite. */
   sectionsNavLabel: string
+  /**
+   * Wegweiser am Fuss einer Karte, die als Ganzes verlinkt ist.
+   *
+   * Oberflaechentext, kein Inhalt: Er steht sechsmal gleich und benennt keine
+   * Leistung. Darum hier und nicht in `src/content/`.
+   */
+  moreLabel: string
   /** Hinweis am Formular, solange der Endpunkt fehlt. */
   formPending: string
   /** Verweis auf eine Seite, die es noch nicht gibt. */
@@ -151,6 +158,7 @@ export const ui: Record<Locale, UiMessages> = {
       languages: 'Sprachen',
     },
     sectionsNavLabel: 'Abschnitte dieser Seite',
+    moreLabel: 'Mehr erfahren',
     formPending:
       'Das Formular wird aufgeschaltet, sobald der serverseitige Endpunkt eingerichtet ist. Bis dahin erreichen Sie uns telefonisch oder per E-Mail.',
     pageComing: {
@@ -228,6 +236,7 @@ export const ui: Record<Locale, UiMessages> = {
       languages: 'Langues',
     },
     sectionsNavLabel: 'Sections de cette page',
+    moreLabel: 'En savoir plus',
     formPending:
       'Le formulaire sera activé dès que le point de réception côté serveur sera en place. D’ici là, vous pouvez nous joindre par téléphone ou par courriel.',
     pageComing: {
@@ -305,6 +314,7 @@ export const ui: Record<Locale, UiMessages> = {
       languages: 'Línguas',
     },
     sectionsNavLabel: 'Secções desta página',
+    moreLabel: 'Saber mais',
     formPending:
       'O formulário será activado assim que o ponto de recepção no servidor estiver disponível. Até lá, contacte-nos por telefone ou por e-mail.',
     pageComing: {

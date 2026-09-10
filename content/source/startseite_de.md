@@ -68,9 +68,20 @@ Leistungskarte Versicherungen (Abschnitt 04) und ausführlich als Schaubild auf
 
 ## 03 Situationen
 
+Aufbau und Wortlaut dieses Abschnitts hat Ricardo am 10.09.2026 als
+Referenzgrafik geliefert und im Auftrag ausgeschrieben.
+
+Vorzeile: Ausgangslagen
+
 Überschrift: Wobei können wir Sie unterstützen?
 
 Einleitung: Sechs Ausgangslagen, die bei uns am häufigsten am Anfang stehen.
+
+Rechts daneben, drei Zeilen: Klarer Einstieg. Schnelle Orientierung. Direkt zur passenden Lösung.
+
+Je Ausgangslage eine Karte mit Nummer, geliefertem Piktogramm, dem Satz und
+dem Wegweiser „Mehr erfahren". Die Piktogramme liegen unter `bilder-quelle/`
+mit Ricardos Dateinamen.
 
 - Ich gründe ein Unternehmen
 - Ich stelle Mitarbeitende ein

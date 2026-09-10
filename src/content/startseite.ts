@@ -29,6 +29,7 @@
 import type { Rich } from '@/content/types'
 import type { IconName } from '@/components/ui/Icon'
 import type { Motiv } from '@/components/ui/Illustration'
+import type { PiktogrammName } from '@/components/ui/Piktogramm'
 import type { Locale } from '@/i18n/config'
 import type { PageKey } from '@/i18n/routes'
 
@@ -56,6 +57,8 @@ export type LeitBereich = Bereich
 /** Eine Ausgangslage in Abschnitt 3. */
 export type Fall = {
   text: string
+  /** Das gelieferte Piktogramm zur Ausgangslage. */
+  bild: PiktogrammName
   ziel: PageKey
   anker?: string
 }
@@ -83,8 +86,11 @@ export type StartseiteContent = {
   }
 
   situationen: {
+    eyebrow: string
     titel: string
     einleitung: string
+    /** Drei Zeilen rechts neben dem Kopf. Kein Satz, drei Aussagen. */
+    merksatz: readonly string[]
     eintraege: readonly Fall[]
   }
 
@@ -158,15 +164,30 @@ const de: StartseiteContent = {
 
   // ---- 3 Situationen — vor den Leistungen, weil Kunden im Problem denken
   situationen: {
+    eyebrow: 'Ausgangslagen',
     titel: 'Wobei können wir Sie unterstützen?',
     einleitung: 'Sechs Ausgangslagen, die bei uns am häufigsten am Anfang stehen.',
+    merksatz: ['Klarer Einstieg.', 'Schnelle Orientierung.', 'Direkt zur passenden Lösung.'],
     eintraege: [
-      { text: 'Ich gründe ein Unternehmen', ziel: 'firmengruendung' },
-      { text: 'Ich stelle Mitarbeitende ein', ziel: 'treuhand' },
-      { text: 'Ich möchte meine Buchhaltung abgeben', ziel: 'buchhaltung' },
-      { text: 'Ich möchte meinen Treuhänder wechseln', ziel: 'treuhaenderWechseln' },
-      { text: 'Ich möchte meine Versicherungen prüfen', ziel: 'versicherungen' },
-      { text: 'Ich habe einen Schadenfall', ziel: 'versicherungen', anker: 'schadenfall' },
+      { text: 'Ich gründe ein Unternehmen', bild: 'firmengruendung', ziel: 'firmengruendung' },
+      { text: 'Ich stelle Mitarbeitende ein', bild: 'mitarbeitende', ziel: 'treuhand' },
+      { text: 'Ich möchte meine Buchhaltung abgeben', bild: 'buchhaltung', ziel: 'buchhaltung' },
+      {
+        text: 'Ich möchte meinen Treuhänder wechseln',
+        bild: 'treuhaenderwechsel',
+        ziel: 'treuhaenderWechseln',
+      },
+      {
+        text: 'Ich möchte meine Versicherungen prüfen',
+        bild: 'versicherungspruefung',
+        ziel: 'versicherungen',
+      },
+      {
+        text: 'Ich habe einen Schadenfall',
+        bild: 'schadenfall',
+        ziel: 'versicherungen',
+        anker: 'schadenfall',
+      },
     ],
   },
 

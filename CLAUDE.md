@@ -452,7 +452,7 @@ Ein Verstoss bricht den Build.
 
 Abschnitt 3 ist für die Wachstumsstrategie zentral und trägt sechs
 Geschäftsfälle — sie müssen sichtbar sein, nicht in einer Aufklappliste,
-nummeriert und ohne Icons:
+und nummeriert:
 
 1. Ich gründe ein Unternehmen → Firmengründung
 2. Ich stelle Mitarbeitende ein → Treuhand
@@ -460,6 +460,18 @@ nummeriert und ohne Icons:
 4. Ich möchte meinen Treuhänder wechseln → Treuhänder wechseln
 5. Ich möchte meine Versicherungen prüfen → Versicherungen
 6. Ich habe einen Schadenfall → Versicherungen, Abschnitt Schadenfall
+
+> **Seit dem 10.09.2026 mit Piktogrammen**, als sechs Karten drei mal zwei,
+> nach Ricardos Referenzgrafik. Bis dahin galt hier ausdrücklich „ohne Icons —
+> sechs bunte Zeichen wären genau das Rauschen, das die Seite nicht haben
+> soll". Ricardo hat die sechs Piktogramme geliefert und den Umbau angeordnet;
+> die Regel gilt für diesen Abschnitt nicht mehr.
+>
+> Sie bleibt für alles, wofür er **keine** Bilder geliefert hat: Dort wird
+> nichts nachgezeichnet und nichts aus einer Bibliothek geholt. Die Dateien
+> liegen unter `bilder-quelle/` mit seinen Namen; ausgeliefert werden sie
+> ohne Umlaut im Dateinamen. Die Zuordnung steht in
+> `src/components/ui/Piktogramm.tsx` und nirgends sonst.
 
 Keine Zähler mit erfundenen Zahlen ("X Jahre, Y Kunden"), keine Kundenstimmen,
 keine Versicherer-Logos. Nur Angaben, die belegbar sind.
