@@ -691,17 +691,27 @@ dieselbe Stelle, ohne dass sich das Layout verschiebt. Kein Stockbild.
 Die Rolle erklärt seit dem 10.09.2026 das **Schaubild**, nicht mehr ein
 Textabschnitt: A&C vertritt den Kunden, nicht die Versicherung.
 
-> Der Abschnitt **„Wir arbeiten in Ihrem Auftrag"** ist am 10.09.2026 auf
-> Ricardos Anweisung entfallen. Sein Wortlaut steht unverändert in
-> `content/source/schritt4_fassung2_de.md` und ist nicht widerrufen — er steht
-> nur nicht mehr auf der Seite.
+> **Vier Abschnitte sind am 10.09.2026 auf Ricardos Anweisung entfallen:**
+> „Wir arbeiten in Ihrem Auftrag", „Wie wir entschädigt werden", „So läuft eine
+> Vertragsprüfung ab" und „Wenn Sie selbständig sind oder Personal haben".
+> Ihr Wortlaut steht unverändert in `content/source/schritt4_fassung2_de.md`
+> und ist nicht widerrufen — er steht nur nicht mehr auf der Seite. Mit dem
+> Ablauf ist auch seine **Sprungmarke** entfallen; sie hätte ins Leere gezeigt.
 >
-> Zwei Dinge, die damit vom Text ins Bild gewandert sind: was ein Maklermandat
-> ist und wie die Entschädigung funktioniert. Was es kostet (nichts), sagt die
-> Seite an dieser Stelle nicht mehr aus. **Ricardo ist darauf hingewiesen.**
+> **Damit sagt die Seite nichts mehr zur Vergütung.** Das betrifft drei Punkte,
+> die weiter oben in diesem Abschnitt als Inhalt von `/versicherungen` stehen:
+> was ein Maklermandat ist, **was es kostet (nichts)** und wie die Entschädigung
+> funktioniert. Der Satz „Für Sie ist die Arbeit im Rahmen des Maklermandats
+> kostenlos" stand nur dort. **Ricardo ist darauf hingewiesen; die Entscheidung
+> ist seine.**
 >
-> Die **FINMA-Registrierung** stand ebenfalls in diesem Text. Sie ist nicht
-> verloren: Sie steht im Fussbereich jeder Seite und vollständig im Impressum.
+> Für einen Broker ist das keine gestalterische Frage: Wie er entschädigt wird,
+> ist die Angabe, die ihn vom Direktabschluss unterscheidet. Solange
+> `/transparenz` nicht existiert, steht sie nirgends auf der Website.
+>
+> Die **FINMA-Registrierung** stand ebenfalls in einem der gestrichenen Texte.
+> Sie ist nicht verloren: Sie steht im Fussbereich jeder Seite und vollständig
+> im Impressum.
 
 Dann zwei Blöcke mit Ankern:
 - **Privat** — Kranken- und Zusatzversicherung, Hausrat und Haftpflicht,
