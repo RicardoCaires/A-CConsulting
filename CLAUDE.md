@@ -766,6 +766,23 @@ Dann zwei Blöcke mit Ankern:
 Eigener Abschnitt zur Schadenbetreuung — das ist der Punkt, an dem sich ein
 Broker von einem Direktabschluss unterscheidet.
 
+> **„Nach dem Abschluss hört es nicht auf" ist seit dem 10.09.2026 ein eigener
+> Baustein** (`src/components/blocks/Betreuung.tsx`), nach Ricardos
+> Referenzgrafik. Vorher ein `prose`-Block mit drei Absätzen: Der Text war
+> richtig, aber niemand sah, was gemeint ist.
+>
+> **Der Leadtext ist unverändert** — er stand schon vorher so da. Neu sind die
+> Kategoriezeile, vier Karten mit geliefertem Symbol und eine breite
+> Schlusskarte. Der Anker `betreuung` bleibt; die Sprungmarken zeigen darauf.
+>
+> **„Persönlich. Vorausschauend. An Ihrer Seite." ist fast derselbe Zusatz wie
+> „Persönlich. Unabhängig. An Ihrer Seite."** im Modellabschnitt. Beide stehen
+> auf derselben Seite und unterscheiden sich in einem Wort. Ricardo ist darauf
+> hingewiesen.
+>
+> Für den Hintergrund lag keine eigene Datei bei; der Abschnitt nimmt dieselbe
+> wie der Modellabschnitt.
+
 Kein Prämienrechner, keine Vergleichstabellen mit Versicherernamen.
 
 #### Seitenkopf mit Bild, seit dem 10.09.2026

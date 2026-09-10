@@ -1,0 +1,209 @@
+/* „Nach dem Abschluss hört es nicht auf" — die Betreuung als Karten.
+
+   Nach Ricardos Referenzgrafik vom 10.09.2026. Dieselbe Sprache wie die
+   uebrigen neu gebauten Bereiche der Seite: eigener breiter Container, heller
+   Grund mit dem gelieferten Muster, weisse Karten mit weichem Schatten,
+   Ueberschrift in der Serifenschrift, gruene Akzente nur als Strich.
+
+   Ricardo hat im Auftrag konkrete Farbwerte genannt. Sie stehen hier bewusst
+   nicht: Ein Farbwert in einer Komponente ist in diesem Projekt ein Fehler,
+   und der Pruefer faengt ihn auch im Kommentar ab. Zugeordnet ist sein
+   helles Eisblau auf `background-light`, sein Navy auf `primary-navy`, sein
+   Fliesstextton auf `text-secondary`, sein Gruen auf `accent-green` und seine
+   Linien auf `border-light`. Die Abweichungen liegen jeweils im Bereich
+   weniger Prozent Helligkeit.
+
+   Alles ist auf `.abschnitt` gekapselt; ausserhalb aendert sich nichts. */
+
+.abschnitt {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: var(--ac-section-y-lg);
+  background-color: var(--ac-color-background-light);
+}
+
+/* ---- Der Hintergrund ------------------------------------------------------- */
+
+.muster {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.musterBild {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: min(1400px, calc(100% - 4rem));
+  margin-inline: auto;
+}
+
+/* ---- Einleitung ------------------------------------------------------------ */
+
+.kopf {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-sm);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 2.375rem;
+  height: 2px;
+  background-color: var(--ac-color-accent-green);
+}
+
+.titel {
+  margin: var(--ac-space-md) 0 0;
+  max-width: 14ch;
+  font-size: clamp(2.5rem, 1.9rem + 2.4vw, 3.75rem);
+  line-height: 1.06;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.02em;
+  color: var(--ac-color-primary-navy);
+}
+
+.lead {
+  display: grid;
+  gap: var(--ac-space-md);
+  max-width: 58ch;
+}
+
+.lead p {
+  margin: 0;
+  font-size: var(--ac-body-size);
+  line-height: 1.7;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Die vier Karten ------------------------------------------------------- */
+
+.karten {
+  display: grid;
+  gap: var(--ac-space-lg);
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.karte {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 2.4vw, 2.25rem);
+  background-color: var(--ac-color-white);
+  border-radius: 14px;
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
+}
+
+.karte h3 {
+  margin: var(--ac-space-lg) 0 0;
+  font-size: var(--ac-h3-size);
+  line-height: 1.25;
+  color: var(--ac-color-primary-navy);
+}
+
+.karte p {
+  margin: var(--ac-space-sm) 0 0;
+  font-size: var(--ac-body-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-secondary);
+}
+
+/* Die Symbole bringen ihren hellgruenen Kreis mit — keine Flaeche dahinter,
+   keine Umfaerbung, kein Filter. */
+.symbol {
+  flex: none;
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+}
+
+/* ---- Die breite Schlusskarte ------------------------------------------------
+
+   Sie fasst zusammen, statt einen fuenften Punkt anzuhaengen. Ein Hauch Gruen
+   im Grund und ein feiner gruener Rahmen setzen sie ab, ohne laut zu werden. */
+
+.schluss {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ac-space-lg);
+  margin-top: var(--ac-space-lg);
+  padding: clamp(1.5rem, 2.4vw, 2.25rem);
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 5%, var(--ac-color-white));
+  border: var(--ac-border-hairline) solid
+    color-mix(in srgb, var(--ac-color-accent-green) 22%, transparent);
+  border-radius: 14px;
+}
+
+.schluss h3 {
+  margin: 0;
+  font-size: var(--ac-h2-size);
+  line-height: 1.25;
+  color: var(--ac-color-primary-navy);
+}
+
+.schluss p {
+  margin: var(--ac-space-sm) 0 0;
+  max-width: 62ch;
+  font-size: var(--ac-body-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Ab Tablet: zwei Karten nebeneinander, Schlusskarte quer ---------------- */
+
+@media (min-width: 48rem) {
+  .karten {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .schluss {
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+}
+
+/* ---- Ab Desktop: Titel links, Lead rechts; vier Karten in einer Reihe ------- */
+
+@media (min-width: 64rem) {
+  .kopf {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .karten {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .schluss {
+    padding-inline: clamp(2rem, 3vw, 3rem);
+  }
+}
+
+@media print {
+  .muster {
+    display: none;
+  }
+}

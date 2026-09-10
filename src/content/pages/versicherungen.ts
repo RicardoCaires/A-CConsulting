@@ -205,15 +205,48 @@ export const versicherungen: PageContent = {
 
     // 07 Betreuung — der Abschnitt, an dem sich ein Mandat von einem
     // Direktabschluss unterscheidet. Quelle: ergaenzungen_de.md
+    //
+    // Seit dem 10.09.2026 nach Ricardos Referenzgrafik als Karten statt als
+    // Textblock. Der **Leadtext ist unveraendert** — er stand schon vorher so
+    // da. Neu sind die vier Kartentexte und die Schlusskarte; sie stehen in
+    // `content/source/versicherungen_betreuung_de.md`.
     {
-      kind: 'prose',
+      kind: 'betreuung',
       id: 'betreuung',
+      eyebrow: 'Betreuung nach dem Abschluss',
       heading: 'Nach dem Abschluss hört es nicht auf',
-      paragraphs: [
+      lead: [
         'Die meisten Policen liegen jahrelang unangetastet in einem Ordner, während sich das Leben darum herum ändert. Genau da entstehen die Lücken.',
         'Wir behalten Ihre Verträge im Blick: Wir melden Adress- und Personenänderungen, sehen uns Prämienanpassungen an, wenn sie ins Haus kommen, und melden uns, wenn wir etwas bemerken, das Ihre Deckung betrifft.',
         'Für Sie ändert sich damit vor allem eines: Sie haben eine Stelle, bei der Sie anrufen, statt bei jeder Gesellschaft einzeln.',
       ],
+      karten: [
+        {
+          bild: '01_betreuung_adresse',
+          titel: 'Adress- und Datenänderungen',
+          satz: 'Wenn sich Adresse, Haushalt oder persönliche Angaben ändern, helfen wir bei der Aktualisierung der relevanten Verträge.',
+        },
+        {
+          bild: '02_betreuung_familie',
+          titel: 'Veränderungen im Leben',
+          satz: 'Heirat, Kinder, Wohneigentum, Berufswechsel oder Pensionierung können Auswirkungen auf mehrere Policen haben.',
+        },
+        {
+          bild: '03_betreuung_praemie',
+          titel: 'Prämien im Blick behalten',
+          satz: 'Wenn Anpassungen oder neue Prämieninformationen eintreffen, schauen wir mit darauf und melden uns bei Auffälligkeiten.',
+        },
+        {
+          bild: '04_betreuung_ansprechpartner',
+          titel: 'Eine Stelle für Ihre Anliegen',
+          satz: 'Statt jede Gesellschaft einzeln zu kontaktieren, haben Sie bei Fragen, Änderungen oder im Schadenfall einen festen Ansprechpartner.',
+        },
+      ],
+      schluss: {
+        bild: '05_betreuung_persoenlich',
+        titel: 'Persönlich. Vorausschauend. An Ihrer Seite.',
+        satz: 'Wir begleiten Sie nicht nur beim Abschluss, sondern auch danach – damit Ihre Lösung mit Ihrer Situation mitwächst.',
+      },
     },
     // 08 Im Schadenfall
     {
