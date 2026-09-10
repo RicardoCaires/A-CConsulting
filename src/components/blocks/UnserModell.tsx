@@ -111,7 +111,10 @@ export function UnserModell({
         />
       </div>
 
-      <div className={`ac-container ${styles.inner}`}>
+      {/* Eigener Container statt `ac-container`: 1400 px statt 1160. Siehe
+          den Kopf des Stylesheets — im Standardmass wird der Abschnitt
+          zwangslaeufig zu klein. */}
+      <div className={styles.inner}>
         {/* ---- 1 Einleitung und Grundsaetze ----------------------------- */}
         <div className={styles.kopf}>
           <div className={styles.einleitung}>
@@ -127,7 +130,7 @@ export function UnserModell({
           <ul className={styles.grundsaetze} role="list">
             {grundsaetze.map((g) => (
               <li key={g.titel} className={styles.grundsatz}>
-                <Symbol datei={g.bild} groesse={56} />
+                <Symbol datei={g.bild} groesse={64} />
                 <h3 className={styles.grundsatzTitel}>{g.titel}</h3>
                 <p className={styles.grundsatzSatz}>{g.satz}</p>
               </li>
@@ -138,7 +141,7 @@ export function UnserModell({
         {/* ---- 2 Der Kreislauf ------------------------------------------ */}
         <div className={styles.kreislauf}>
           <div className={`${styles.station} ${styles.kunde}`}>
-            <Symbol datei={kunde.bild} groesse={56} />
+            <Symbol datei={kunde.bild} groesse={64} />
             <h3 className={styles.stationTitel}>{kunde.titel}</h3>
             <ul className={styles.punkte} role="list">
               {kunde.punkte.map((p) => (
@@ -160,7 +163,7 @@ export function UnserModell({
               alt={mitte.alt}
               width={440}
               height={330}
-              sizes="200px"
+              sizes="240px"
             />
             <ul className={styles.punkte} role="list">
               {mitte.punkte.map((p) => (
@@ -184,7 +187,7 @@ export function UnserModell({
               alt={markt.alt}
               width={760}
               height={570}
-              sizes="(min-width: 64rem) 340px, 100vw"
+              sizes="(min-width: 64rem) 320px, 100vw"
             />
           </div>
         </div>
@@ -200,7 +203,7 @@ export function UnserModell({
         <ul className={styles.nutzen} role="list">
           {nutzen.map((n) => (
             <li key={n.titel} className={styles.nutzenPosten}>
-              <Symbol datei={n.bild} groesse={48} />
+              <Symbol datei={n.bild} groesse={56} />
               <h3 className={styles.nutzenTitel}>{n.titel}</h3>
               <p className={styles.nutzenSatz}>{n.satz}</p>
             </li>
