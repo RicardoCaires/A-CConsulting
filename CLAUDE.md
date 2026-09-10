@@ -783,6 +783,30 @@ Broker von einem Direktabschluss unterscheidet.
 > Für den Hintergrund lag keine eigene Datei bei; der Abschnitt nimmt dieselbe
 > wie der Modellabschnitt.
 
+> **„Wenn ein Schaden eintritt" ist seit dem 11.09.2026 ein eigener Baustein**
+> (`src/components/blocks/Schadenfall.tsx`), nach Ricardos Referenzgrafik:
+> links Kategorie, Titel, Lead, drei Schritte und der Link, rechts die
+> Partnerkarte mit dem gelieferten Logoraster.
+>
+> **Titel, Lead und Linkbeschriftung sind unverändert.** Die Referenzgrafik
+> zeigt einen anderen Wortlaut („Wir begleiten Sie durch den Schadenfall.",
+> „Jetzt Schadenfall melden"); Ricardos Auftragstext nennt ausdrücklich den
+> bestehenden, und der ist freigegeben.
+>
+> **Die drei Zusätze der Grafik sind nicht übernommen** („Starke Partner. Für
+> Ihre Sicherheit.", „Gemeinsam Lösungen finden.", „Persönlich. Unabhängig. An
+> Ihrer Seite."). Ricardo hat am 10.09.2026 zwei Zusätze von dieser Seite
+> streichen lassen; drei neue wären ein Rückschritt.
+>
+> Für die Partnerkarte war **kein Zusatztext** vorgegeben. Es wird keiner
+> erfunden.
+>
+> **Das Logoraster zeigt neun Gesellschaften und weicht vom Raster im
+> Modellabschnitt ab** — hier GVB und Smile, dort Swiss Life. Auf derselben
+> Seite stehen damit zwei verschiedene Aufzählungen. Ricardo ist darauf
+> hingewiesen. Für beide gilt weiterhin: Die Freigaben der Versicherer
+> verantwortet er.
+
 Kein Prämienrechner, keine Vergleichstabellen mit Versicherernamen.
 
 #### Seitenkopf mit Bild, seit dem 10.09.2026

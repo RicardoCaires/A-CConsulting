@@ -249,14 +249,34 @@ export const versicherungen: PageContent = {
       },
     },
     // 08 Im Schadenfall
+    //
+    // Seit dem 11.09.2026 nach Ricardos Referenzgrafik zweispaltig statt als
+    // Textblock. **Titel, Lead und Linkbeschriftung sind unveraendert** — die
+    // Referenzgrafik zeigt einen anderen Wortlaut, sein Auftragstext nennt
+    // aber ausdruecklich den bestehenden, und der ist freigegeben.
+    //
+    // Neu sind die Kategoriezeile, die drei Schrittbeschriftungen und der
+    // Titel der Partnerkarte. Sie stehen in
+    // `content/source/versicherungen_schadenfall_de.md`.
     {
-      kind: 'prose',
+      kind: 'schadenfall',
       id: 'schadenfall',
+      eyebrow: 'Schadenfall',
       heading: 'Wenn ein Schaden eintritt',
-      paragraphs: [
-        'Melden Sie sich bei uns. Wir nehmen den Fall auf, melden ihn der Versicherung und begleiten die Abwicklung. Im Notfall sind wir auch ausserhalb der Bürozeiten erreichbar. Die laufende Schadenbegleitung erledigen wir während der Bürozeiten.',
+      lead: 'Melden Sie sich bei uns. Wir nehmen den Fall auf, melden ihn der Versicherung und begleiten die Abwicklung. Im Notfall sind wir auch ausserhalb der Bürozeiten erreichbar. Die laufende Schadenbegleitung erledigen wir während der Bürozeiten.',
+      schritte: [
+        { bild: '03_schaden_telefon', titel: 'Fall aufnehmen' },
+        { bild: '02_schaden_dokument', titel: 'Versicherung informieren' },
+        { bild: '04_schaden_begleitung', titel: 'Abwicklung begleiten' },
       ],
-      links: [{ target: 'schadenfall', label: 'Was im Schadenfall zu tun ist' }],
+      link: { target: 'schadenfall', label: 'Was im Schadenfall zu tun ist' },
+      partner: {
+        bild: '01_schaden_warnung',
+        titel: 'Wir begleiten Sie persönlich',
+        rasterBild: '05_versicherungspartner',
+        rasterAlt:
+          'Logos der Versicherungsgesellschaften: Allianz, AXA, Generali, GVB, Helvetia, die Mobiliar, Smile, Vaudoise und Zurich.',
+      },
     },
 
 

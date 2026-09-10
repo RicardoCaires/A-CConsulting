@@ -8,6 +8,7 @@ import { PageLink } from '@/components/ui/PageLink'
 import { hatSichtbarenInhalt, RichText } from '@/components/ui/RichText'
 import { Accordion } from './Accordion'
 import { Betreuung } from './Betreuung'
+import { Schadenfall } from './Schadenfall'
 import { CTASection } from './CTASection'
 import { Segmente } from './Segmente'
 import { UnserModell } from './UnserModell'
@@ -162,7 +163,8 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
     block.kind === 'anchors' ||
     block.kind === 'serviceNav' ||
     block.kind === 'segmente' ||
-    block.kind === 'betreuung'
+    block.kind === 'betreuung' ||
+    block.kind === 'schadenfall'
       ? undefined
       : block.id
         ? `${block.id}-titel`
@@ -444,6 +446,29 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               heading={block.heading}
               lead={<Paragraphs items={block.paragraphs} className={styles.ctaLead} />}
               actions={<Actions actions={block.actions} locale={locale} />}
+            />
+          )
+        }
+
+        // Der Schadenfall ist ein eigener Baustein und bringt seine Flaeche
+        // selbst mit. Er zaehlt beim Flaechenwechsel darum nicht mit.
+        if (block.kind === 'schadenfall') {
+          return (
+            <Schadenfall
+              key={index}
+              id={block.id}
+              eyebrow={block.eyebrow}
+              heading={block.heading}
+              lead={block.lead}
+              schritte={block.schritte}
+              link={
+                <PageLink
+                  target={block.link.target}
+                  label={block.link.label}
+                  locale={locale}
+                />
+              }
+              partner={block.partner}
             />
           )
         }
