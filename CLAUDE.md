@@ -545,17 +545,29 @@ Vier Ebenen: Einleitung und drei Grundsätze, der Kreislauf
 die Schlusszeile. Alle elf Dateien zusammen wiegen 124 KB — weniger als die
 eine Bilddatei, die sie ersetzen.
 
-**Der Abschnitt hat als einziger einen eigenen, breiteren Container: 1400 px
+**Der Abschnitt hat als einziger einen eigenen, breiteren Container: 1380 px
 statt der 1160 des Standards.** Das ist eine bewusste Ausnahme, keine neue
 Regel. Die erste Fassung lief im Standardmass; Ricardo hat sie am 10.09.2026
-als „zu klein, zu schwach gewichtet" zurückgewiesen — zu Recht: Seine Vorlage
-hat 1390 px Inhaltsbreite, im Standardcontainer musste alles darin schrumpfen.
+als „zu klein, zu schwach gewichtet" zurückgewiesen — zu Recht: Im
+Standardcontainer musste alles darin schrumpfen.
 
-Alle Masse stammen aus der Vorlage (1576 px breit, Inhalt 1390 px), gemessen
-und nicht geschätzt: Karten 294 · 348 · 303, Zwischenräume 224 und 221,
-Trennlinien der Grundsätze bei x 978 und 1218. Die fünf Spalten des Kreislaufs
-stehen im Code in genau diesen Verhältnissen und treffen sie im Bau auf das
-Zehntel Pixel.
+**Verbindlich ist seit dem 10.09.2026 Ricardos HTML-Vorlage**
+(`bilder-quelle/unser-modell_referenz.html`). Er hat die Referenz nicht als
+Bild, sondern als fertigen Quelltext geliefert; Aufbau, Grössen und Abstände
+stammen von dort und stehen im Kopf von `UnserModell.module.css` aufgelistet.
+Der Ablauf misst `286px 165px minmax(340px, 1fr) 175px 300px` — nachgemessen
+bei 1500 px Fensterbreite trifft er das exakt.
+
+**Übernommen ist die Gestaltung, nicht der Code.** Die Vorlage schreibt
+Farbwerte und Georgia direkt hinein; im Projekt stehen dafür die Tokens und die
+Schrift der Website. Ein Hex-Wert in einer Komponente ist hier ein Fehler, und
+eine zweite Schriftfamilie wäre eine zweite Marke.
+
+**Die Rückführung** — die U-Klammer von den Gesellschaften zurück zum Kunden —
+ist der Teil, der in den ersten beiden Fassungen fehlte. Sie hat eigenen
+senkrechten Raum, damit nichts überlappt, und entfällt unterhalb von 1180 px:
+Untereinander gelesen ist der Ablauf eine Kette, und eine gequetschte Klammer
+wäre ein Muster statt einer Aussage.
 
 Vier Punkte, die man wissen muss:
 

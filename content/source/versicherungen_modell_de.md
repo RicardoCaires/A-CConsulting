@@ -14,7 +14,7 @@ UNSER MODELL
 
 Wir vertreten Sie, nicht die Versicherung.
 
-Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr – auch im Schadenfall.
+Wir prüfen Ihre Verträge, holen passende Angebote ein und begleiten Sie – auch im Schadenfall.
 
 ## Die drei Grundsätze
 
@@ -74,11 +74,11 @@ Durch den Vergleich profitieren Sie von einem optimalen Preis-Leistungs-Verhält
 
 Mehr Auswahl
 
-Wir prüfen den gesamten Markt und finden die Lösung, die wirklich zu Ihnen passt.
+Wir prüfen den Markt und finden die Lösung, die wirklich zu Ihnen passt.
 
 Zeitersparnis
 
-Wir übernehmen die Abklärungen und den Administrationsaufwand für Sie.
+Wir übernehmen die Abklärungen und den administrativen Aufwand für Sie.
 
 Langfristige Betreuung
 
@@ -92,13 +92,20 @@ Persönlich. Unabhängig. An Ihrer Seite.
 
 ## Anmerkungen
 
-Zwei Stellen weichen vom Auftrag ab, beide sind Tippfehler in der Vorlage:
+Der Wortlaut ist am 10.09.2026 ein zweites Mal nachgefuehrt: Ricardo hat die
+Referenz als fertiges HTML geliefert, und dessen Wortlaut gilt. Drei Stellen
+haben sich geaendert:
 
-- „Sie erhalten unser Vorschlag" heisst auf der Seite **„Sie erhalten unseren
-  Vorschlag"**.
-- „Wir prüfen den Markt und finden die Lösung" steht in der Referenzgrafik,
-  „Wir prüfen den gesamten Markt und finden die Lösung" im Auftragstext. Es
-  gilt der Auftragstext.
+- Der Einleitungssatz heisst neu „…holen **passende Angebote** ein und
+  **begleiten Sie** – auch im Schadenfall." statt „…holen Offerten ein und
+  übernehmen den Schriftverkehr…".
+- „Wir prüfen den Markt" statt „den gesamten Markt".
+- „den **administrativen Aufwand**" statt „den Administrationsaufwand". Die
+  Referenzgrafik schreibt „Administrativen Aufwand" gross; das ist ein
+  Tippfehler und wird nicht uebernommen.
+
+Der Tippfehler „Sie erhalten unser Vorschlag" aus der Grafik heisst auf der
+Seite weiterhin **„Sie erhalten unseren Vorschlag"** — so auch im HTML.
 
 Der Zusatz „Persönlich. Unabhängig. An Ihrer Seite." kommt aus der
 Referenzgrafik. Er ist der dritte Zusatz neben „Kompetenz schafft Klarheit"

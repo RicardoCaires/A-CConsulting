@@ -1,36 +1,37 @@
 /* „Wir vertreten Sie, nicht die Versicherung." — das Modell als Abschnitt.
 
-   Zweite Fassung, 10.09.2026. Die erste war Ricardo zu klein und zu schwach
-   gewichtet — zu Recht: Sie lief im Standardcontainer von 1160 px, seine
-   Vorlage hat 1390 px Inhaltsbreite. Alles darin musste zwangslaeufig
-   schrumpfen, und der Fliesstext lief in der Kleinschrift statt im Fliesstext.
+   Dritte Fassung, 10.09.2026, nach Ricardos gelieferter HTML-Vorlage
+   (`bilder-quelle/unser-modell_referenz.html`). Die Masse stehen dort im
+   Klartext und sind hier uebernommen:
 
-   Alle Masse stammen jetzt aus der Vorlage (1576 px breit, Inhalt x 93 bis
-   1486 = 1390 px), nachgemessen und nicht geschaetzt:
+     Container        min(1380px, 100% - 64px)
+     Kopf             43 % zu 57 %, Abstand 54 px
+     Grundsaetze      Symbol 74 px, Titel 23 px, Satz 15 px, max. 220 px
+     Ablauf           286 · 165 · minmax(340, 1fr) · 175 · 300, Abstand 22 px
+     Kundenkarte      min. 330 px hoch, Symbol 68 px neben dem Titel
+     Mittelkarte      min. 400 px hoch, Logo bis 300 px
+     Marker           12 px Ring, 1.5 px stark, helles Blaugrau
+     Rueckfuehrung    118 px hoch, Klammer 78 px, Radius 14 px
+     Nutzenleiste     vier Spalten, je min. 146 px hoch, Symbol 72 px
 
-     Karten          Kunde 294 · A&C 348 · Gesellschaften 303
-     Zwischenraeume  224 und 221 — sie tragen Pfeil, Titel und Satz
-     Grundsaetze     drei Spalten, Trennlinien bei x 978 und 1218
-     Kopf            Text links bis x 600, Grundsaetze ab x 738
-     Titel           drei Zeilen, Zeilenabstand 61 px, breiteste Zeile 380 px
-     Lead            zwei Zeilen, Zeilenabstand 27 px
-
-   Der Abschnitt bekommt darum einen **eigenen, breiteren Container**. Er ist
-   der einzige auf der Seite mit dieser Ausnahme; alles andere bleibt im
-   Standardmass. */
+   **Uebernommen ist die Gestaltung, nicht der Code.** Die Vorlage schreibt
+   Farbwerte und Georgia direkt hinein; hier stehen die Projekt-Tokens und die
+   Schrift der Website. Ein Hex-Wert in einer Komponente ist in diesem Projekt
+   ein Fehler, und eine zweite Schriftfamilie waere eine zweite Marke. */
 
 .abschnitt {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: var(--ac-section-y-lg);
+  padding-block: var(--ac-section-y-lg) var(--ac-section-y);
   background-color: var(--ac-color-background-light);
 }
 
 /* ---- Das Muster ------------------------------------------------------------
 
-   Grossflaechig und zurueckhaltend. Es deckt den Abschnitt und traegt halbe
-   Deckkraft — der Inhalt bleibt in jedem Fall vorn. */
+   Die Vorlage zeichnet zwei grosse, gedrehte Ellipsen als Kontur. Hier liegt
+   stattdessen Ricardos geliefertes Muster: Es bringt dieselben weichen Boegen
+   mit, dazu die vereinzelten Punkte, und stammt aus seiner Hand. */
 
 .muster {
   position: absolute;
@@ -47,62 +48,59 @@
   object-position: center;
 }
 
-/* Der eigene Container: 1400 px statt der 1160 des Standards. Ricardo hat
-   1320 bis 1400 verlangt, die Vorlage misst 1390. */
 .inner {
   position: relative;
   z-index: 1;
-  width: 100%;
-  max-width: 1400px;
+  width: min(1380px, calc(100% - 4rem));
   margin-inline: auto;
-  padding-inline: var(--ac-gutter);
 }
 
 /* ---- 1 Einleitung und Grundsaetze ------------------------------------------ */
 
 .kopf {
   display: grid;
-  gap: clamp(2rem, 4vw, 3.5rem);
+  gap: var(--ac-space-xl);
 }
 
 .eyebrow {
   display: flex;
   align-items: center;
   gap: var(--ac-space-sm);
-  color: var(--ac-color-text-secondary);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ac-color-primary-navy);
 }
 
-/* Der gruene Strich vor der Kategoriezeile. In der Vorlage 47 px lang. */
 .eyebrow::before {
   content: '';
   display: block;
-  width: 2.9rem;
-  height: var(--ac-border-marker);
+  width: 2.375rem;
+  height: 2px;
   background-color: var(--ac-color-accent-green);
 }
 
-/* Gross und praesent. 13ch zwingen den Satz in die drei Zeilen der Vorlage:
-   „Wir vertreten / Sie, nicht die / Versicherung." */
 .titel {
-  margin-top: var(--ac-space-md);
+  margin: var(--ac-space-md) 0 var(--ac-space-lg);
+  /* 13ch zwingen den Satz in die drei Zeilen der Vorlage:
+     „Wir vertreten / Sie, nicht die / Versicherung." */
   max-width: 13ch;
-  font-size: var(--ac-display-size);
-  line-height: 1.06;
+  font-size: clamp(3.375rem, 5vw, 4.875rem);
+  line-height: 0.94;
   font-weight: var(--ac-display-weight);
-  letter-spacing: var(--ac-display-tracking);
+  letter-spacing: -0.03em;
   color: var(--ac-color-primary-navy);
 }
 
 .lead {
-  margin-top: var(--ac-space-lg);
-  max-width: 46ch;
+  margin: 0;
+  max-width: 39rem;
   font-size: var(--ac-lead-size);
-  line-height: var(--ac-lead-line);
+  line-height: 1.42;
   color: var(--ac-color-text-secondary);
 }
-
-/* Die drei Grundsaetze. Keine Karten — offen, nur durch feine Linien
-   getrennt, wie in der Vorlage. */
 
 .grundsaetze {
   display: grid;
@@ -113,369 +111,403 @@
 }
 
 .grundsatz {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 0.5rem 1.875rem 0.875rem;
   text-align: center;
 }
 
-.grundsatzTitel {
-  margin: var(--ac-space-md) 0 0;
-  font-size: var(--ac-h3-size);
-  line-height: var(--ac-h3-line);
+.grundsatz h3 {
+  margin: 0 0 var(--ac-space-sm);
+  font-size: 1.4375rem;
+  line-height: 1.1;
   color: var(--ac-color-primary-navy);
 }
 
-.grundsatzSatz {
-  margin: var(--ac-space-sm) 0 0;
-  max-width: 24ch;
-  font-size: var(--ac-body-size);
-  line-height: var(--ac-body-line);
+.grundsatz p {
+  margin: 0 auto;
+  max-width: 13.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.42;
   color: var(--ac-color-text-secondary);
 }
 
 /* Die Symbole bringen ihren hellblauen Kreis mit — keine Flaeche dahinter,
    keine Umfaerbung, kein Filter. */
 .symbol {
+  display: block;
   flex: none;
-  width: 4rem;
-  height: 4rem;
   object-fit: contain;
 }
 
-/* ---- 2 Der Kreislauf -------------------------------------------------------
+.grundsatz .symbol {
+  width: 4.625rem;
+  height: 4.625rem;
+  margin: 0 auto 0.625rem;
+}
 
-   Auf schmalen Geraeten eine Abfolge untereinander: Station, Zwischenschritt,
-   Station. Ab Desktop stehen die drei Stationen nebeneinander, die
-   Zwischenschritte dazwischen — im Verhaeltnis der Vorlage. */
+/* ---- 2 Der Ablauf ---------------------------------------------------------- */
 
-.kreislauf {
+.ablauf {
   display: grid;
   gap: var(--ac-space-lg);
-  margin-top: clamp(3rem, 6vw, 5rem);
+  margin-top: clamp(2.5rem, 5vw, 3.75rem);
 }
 
-.station {
-  display: flex;
-  flex-direction: column;
-  padding: clamp(1.5rem, 2.4vw, 2.25rem);
-  background-color: var(--ac-color-white);
-  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
-  border-radius: var(--ac-radius-md);
+.karte {
+  background-color: color-mix(in srgb, var(--ac-color-white) 96%, transparent);
+  border: var(--ac-border-hairline) solid
+    color-mix(in srgb, var(--ac-color-primary-navy) 26%, transparent);
+  border-radius: 14px;
+  /* Der schwaechste Schatten, der eine weisse Karte vom Grund noch abhebt. */
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--ac-color-primary-navy) 5%, transparent);
 }
 
-/* Die mittlere Station ist die wichtigste: mehr Innenabstand, ein Hauch
-   Schatten statt der Kontur. */
+.kunde {
+  padding: 1.875rem 1.75rem;
+}
+
 .zentral {
-  align-items: center;
-  text-align: center;
-  /* Knapper als die Aussenkarten: Sie traegt fuenf Zeilen, und jeder Punkt
-     Innenabstand kostet hier eine Textzeile mehr. Gemessen am 10.09.2026 —
-     bei 2.75rem lief die Karte auf 658 px Hoehe. */
-  padding: clamp(1.5rem, 2.2vw, 2rem);
-  border-color: transparent;
-  box-shadow: 0 2px 24px color-mix(in srgb, var(--ac-color-primary-navy) 10%, transparent);
+  padding: 1.875rem 2rem;
 }
 
-.stationTitel {
-  margin: var(--ac-space-md) 0 0;
-  font-size: var(--ac-h2-size);
-  line-height: var(--ac-h3-line);
+/* Symbol und Titel nebeneinander, wie in der Vorlage — nicht untereinander. */
+.kartenKopf {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-md);
+}
+
+.kartenKopf .symbol {
+  width: 4.25rem;
+  height: 4.25rem;
+}
+
+.kartenKopf h3 {
+  margin: 0;
+  font-size: 1.625rem;
+  line-height: 1.08;
   color: var(--ac-color-primary-navy);
 }
 
-/* Der gruene Strich unter dem Titel der Kundenkarte, wie in der Vorlage. */
-.kunde .stationTitel::after {
-  content: '';
+.akzent {
   display: block;
-  width: 2.5rem;
-  height: var(--ac-border-marker);
-  margin-top: var(--ac-space-md);
+  width: 2.125rem;
+  height: 2px;
+  margin: var(--ac-space-md) 0 var(--ac-space-lg);
   background-color: var(--ac-color-accent-green);
 }
 
+.zentral .akzent {
+  margin-inline: auto;
+}
+
 .logo {
-  width: min(100%, 13rem);
-  height: auto;
+  display: block;
+  width: min(18.75rem, 90%);
+  max-height: 9.0625rem;
+  margin-inline: auto;
   object-fit: contain;
 }
 
-/* ---- Stichpunkte mit dezentem Marker ---------------------------------------
+/* ---- Die Stichpunkte -------------------------------------------------------
 
-   Kein Haken, keine Flaeche: ein feiner Ring, wie in der Vorlage. */
+   Ein feiner Ring in hellem Blaugrau, kein Haken und keine Flaeche — so
+   schreibt es die Vorlage. */
 
-.punkte {
+.liste {
   display: grid;
-  gap: var(--ac-space-sm);
-  margin: var(--ac-space-lg) 0 0;
+  gap: 0.8125rem;
+  margin: 0;
   padding: 0;
   list-style: none;
-  width: 100%;
-  text-align: left;
 }
 
-.punkt {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--ac-space-sm);
-  font-size: var(--ac-body-size);
-  line-height: var(--ac-body-line);
+.liste li {
+  position: relative;
+  padding-left: 1.875rem;
+  font-size: 0.9375rem;
+  line-height: 1.4;
   color: var(--ac-color-text-secondary);
 }
 
-.marker {
-  flex: none;
-  /* Auf die Zeilenmitte gesetzt, damit der Ring nicht am Oberrand klebt. */
-  margin-top: 0.45em;
-  width: 0.5rem;
-  height: 0.5rem;
-  border: var(--ac-border-hairline) solid var(--ac-color-accent-green);
+.liste li::before {
+  content: '';
+  position: absolute;
+  top: 0.34em;
+  left: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 1.5px solid color-mix(in srgb, var(--ac-color-primary-navy) 34%, transparent);
   border-radius: 50%;
 }
 
-/* ---- Die Zwischenschritte --------------------------------------------------
-
-   Sie sind keine Luecke, sondern eine eigene Spalte: In der Vorlage sind sie
-   224 und 221 px breit und tragen Pfeil, Titel und Satz. */
+/* ---- Die Zwischenschritte -------------------------------------------------- */
 
 .schritt {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding-inline: 0.25rem;
   text-align: center;
 }
 
-/* Der Pfeil. Mobil senkrecht, ab Desktop waagrecht — eine feine Linie mit
-   Spitze, aus Rahmen gebaut. Fuer einen Strich wird keine Bilddatei geladen. */
-.pfeil {
-  position: relative;
-  display: block;
-  width: var(--ac-border-hairline);
-  height: 2.5rem;
-  background-color: var(--ac-color-border-light);
+/* Titel und Pfeil auf einer Linie, die Linie selbst laeuft davor aus. */
+.schrittZeile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5625rem;
+  margin: 0 0 var(--ac-space-sm);
 }
 
-.pfeil::after {
+.schrittZeile::before {
   content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0.4rem;
-  height: 0.4rem;
-  border-right: var(--ac-border-hairline) solid var(--ac-color-border-light);
-  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
-  transform: translate(-50%, 0.05rem) rotate(45deg);
+  flex: 1;
+  height: var(--ac-border-hairline);
+  background-color: color-mix(in srgb, var(--ac-color-primary-navy) 45%, transparent);
 }
 
-.schrittTitel {
-  margin: var(--ac-space-md) 0 0;
-  font-size: var(--ac-h3-size);
-  line-height: var(--ac-h3-line);
-  font-weight: 600;
+.schrittZeile strong {
+  white-space: nowrap;
+  font-size: 1.125rem;
+  line-height: 1;
+  color: var(--ac-color-primary-navy);
+}
+
+.schrittZeile span {
+  font-size: 1.375rem;
+  line-height: 1;
   color: var(--ac-color-primary-navy);
 }
 
 .schrittSatz {
-  margin: var(--ac-space-sm) 0 0;
-  max-width: 24ch;
-  font-size: var(--ac-body-size);
-  line-height: var(--ac-body-line);
+  margin: 0 auto;
+  max-width: 10rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
   color: var(--ac-color-text-secondary);
 }
 
-/* Das gelieferte Panel bringt seine Karten und seinen Rahmen mit — darum
-   steht es ohne Kasten aus dem Layout dahinter. */
+/* ---- Das gelieferte Panel der Gesellschaften -------------------------------- */
+
 .markt {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1.125rem;
 }
 
-.marktBild {
+.markt img {
+  display: block;
   width: 100%;
-  height: auto;
+  max-width: 18.75rem;
+  max-height: 17.1875rem;
   object-fit: contain;
 }
 
-/* ---- Der Rueckweg zum Kunden -----------------------------------------------
+/* ---- 3 Die Rueckfuehrung ---------------------------------------------------
 
-   Eine Klammer unter dem Ablauf: Sie zeigt, dass alles beim Kunden ankommt. */
+   Eine U-Klammer aus drei Raendern: von den Gesellschaften hinunter, waagrecht
+   nach links und mit der Spitze wieder hinauf zum Kunden. Das Ergebnis sitzt
+   mittig auf der unteren Kante und stanzt sie frei.
+
+   Der Block hat eigene Hoehe — die Klammer liegt darin absolut, nicht ueber
+   dem Ablauf. Damit kann nichts ueberlappen, auf keiner Fenstergroesse. */
+
+.rueckfuehrung {
+  position: relative;
+  width: calc(100% - 6.875rem);
+  height: 7.375rem;
+  margin: var(--ac-space-sm) auto var(--ac-space-xl);
+}
+
+.klammer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4.875rem;
+  border-right: 2px solid var(--ac-color-primary-navy);
+  border-bottom: 2px solid var(--ac-color-primary-navy);
+  border-left: 2px solid var(--ac-color-primary-navy);
+  border-radius: 0 0 14px 14px;
+}
+
+/* Die Spitze am linken Ende, nach oben zum Kunden. */
+.klammer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -7px;
+  width: 0;
+  height: 0;
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid var(--ac-color-primary-navy);
+  border-left: 6px solid transparent;
+  transform: translateY(-6px);
+}
 
 .ergebnis {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  min-width: 27.5rem;
+  padding-inline: var(--ac-space-md);
   text-align: center;
-  margin-top: clamp(2rem, 4vw, 3rem);
+  /* Stanzt die Klammer frei — dieselbe Farbe wie der Abschnittsgrund. */
+  background-color: var(--ac-color-background-light);
+  transform: translateX(-50%);
 }
 
-.rueckweg {
-  display: block;
-  width: var(--ac-border-hairline);
-  height: 2rem;
-  margin-bottom: var(--ac-space-md);
-  background-color: var(--ac-color-border-light);
-}
-
-.ergebnisTitel {
-  margin: 0;
-  font-size: var(--ac-h1-size);
-  line-height: var(--ac-h1-line);
-  letter-spacing: var(--ac-h1-tracking);
+.ergebnis h3 {
+  margin: 0 0 0.4375rem;
+  font-size: 1.625rem;
+  line-height: 1.1;
   color: var(--ac-color-primary-navy);
 }
 
-.ergebnisSatz {
-  margin: var(--ac-space-sm) 0 0;
-  max-width: 52ch;
-  font-size: var(--ac-lead-size);
-  line-height: var(--ac-lead-line);
+.ergebnis p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.35;
   color: var(--ac-color-text-secondary);
 }
 
-/* ---- 3 Die Nutzenleiste ----------------------------------------------------
-
-   In der Vorlage ein eigenes helles Panel ueber die volle Breite, mit feinen
-   senkrechten Trennlinien. */
+/* ---- 4 Die Nutzenleiste ---------------------------------------------------- */
 
 .nutzen {
   display: grid;
-  gap: var(--ac-space-xl);
-  margin: clamp(3rem, 6vw, 5rem) 0 0;
-  padding: clamp(2rem, 3.5vw, 3rem);
+  margin: 0;
+  padding: 0;
   list-style: none;
-  background-color: var(--ac-color-white);
-  border-radius: var(--ac-radius-md);
+  background-color: color-mix(in srgb, var(--ac-color-white) 72%, transparent);
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
 }
 
 .nutzenPosten {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: var(--ac-space-md);
+  min-height: 9.125rem;
+  padding: 1.5rem 1.625rem;
 }
 
 .nutzenPosten .symbol {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4.5rem;
+  height: 4.5rem;
 }
 
-.nutzenTitel {
-  margin: var(--ac-space-md) 0 0;
-  font-size: var(--ac-h3-size);
-  line-height: var(--ac-h3-line);
+.nutzenPosten h3 {
+  margin: 0 0 0.375rem;
+  font-size: 1.1875rem;
+  line-height: 1.15;
   color: var(--ac-color-primary-navy);
 }
 
-.nutzenSatz {
-  margin: var(--ac-space-sm) 0 0;
-  max-width: 30ch;
-  font-size: var(--ac-body-size);
-  line-height: var(--ac-body-line);
+.nutzenPosten p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.38;
   color: var(--ac-color-text-secondary);
 }
 
-/* ---- 4 Die Schlusszeile ---------------------------------------------------- */
+/* ---- 5 Die Schlusszeile ---------------------------------------------------- */
 
 .schluss {
   display: flex;
   flex-direction: column;
   gap: var(--ac-space-sm);
-  margin-top: clamp(2rem, 4vw, 3rem);
   padding-top: var(--ac-space-lg);
-  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ac-color-primary-navy);
 }
 
-.schlussText {
+.schluss span {
   display: flex;
   align-items: center;
-  gap: var(--ac-space-md);
-  margin: 0;
-  font-size: var(--ac-eyebrow-size);
-  line-height: var(--ac-eyebrow-line);
-  letter-spacing: var(--ac-eyebrow-tracking);
-  text-transform: uppercase;
-  color: var(--ac-color-text-secondary);
+  gap: var(--ac-space-sm);
 }
 
-.schlussStrich {
+.schluss span:first-child::before,
+.schluss span:last-child::after {
+  content: '';
   flex: none;
-  width: 2.9rem;
-  height: var(--ac-border-hairline);
+  width: 2.625rem;
+  height: 2px;
   background-color: var(--ac-color-accent-green);
 }
 
-/* ---- Ab Tablet ------------------------------------------------------------- */
+/* ---- Ab Tablet: Grundsaetze und Nutzen nebeneinander ------------------------ */
 
-@media (min-width: 40rem) {
+@media (min-width: 45rem) {
   .grundsaetze {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(1.5rem, 3vw, 2.5rem);
+    gap: 0;
+    margin-top: 1.125rem;
   }
 
-  /* Feine Trennlinien zwischen den Grundsaetzen, wie in der Vorlage. */
   .grundsatz + .grundsatz {
-    padding-left: clamp(1.5rem, 3vw, 2.5rem);
     border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
   }
 
   .nutzen {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .nutzenPosten:nth-child(2) {
+    border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  }
+
+  .nutzenPosten:nth-child(n + 3) {
+    border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  }
+
+  .nutzenPosten:nth-child(4) {
+    border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  }
 }
 
-/* ---- Ab Desktop ------------------------------------------------------------
+/* ---- Ab Desktop: der Ablauf waagrecht ---------------------------------------
 
-   Kopf: Text links, Grundsaetze rechts — in der Vorlage 507 zu 720 px.
-   Kreislauf: die fuenf Spalten im Verhaeltnis der Vorlage,
-   294 : 224 : 348 : 221 : 303. Der Zwischenraum ist die Spalte selbst, darum
-   steht der Abstand auf null. */
+   Die Vorlage schaltet bei 1180 px um. Darunter stehen die Stationen
+   untereinander und die Klammer entfaellt — als Kette gelesen braucht es
+   keinen Rueckweg zu zeichnen, und eine gequetschte Klammer waere ein Muster,
+   kein Inhalt. */
 
-@media (min-width: 64rem) {
+@media (min-width: 74rem) {
   .kopf {
-    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+    grid-template-columns: 43% 57%;
+    gap: 3.375rem;
     align-items: start;
   }
 
-  .kreislauf {
-    grid-template-columns:
-      minmax(0, 294fr) minmax(0, 224fr) minmax(0, 348fr)
-      minmax(0, 221fr) minmax(0, 303fr);
+  .ablauf {
+    grid-template-columns: 17.875rem 10.3125rem minmax(21.25rem, 1fr) 10.9375rem 18.75rem;
+    gap: 1.375rem;
     align-items: center;
-    gap: 0;
   }
 
-  /* Der Zwischenschritt haelt selbst Abstand zu den Karten. */
-  .schritt {
-    padding-inline: clamp(1rem, 2vw, 2rem);
+  .kunde {
+    min-height: 20.625rem;
   }
 
-  /* Waagrecht: eine feine Linie ueber die Breite des Zwischenschritts, mit
-     Spitze am rechten Ende. */
-  .pfeil {
-    width: 100%;
-    height: var(--ac-border-hairline);
+  .zentral {
+    min-height: 25rem;
   }
 
-  .pfeil::after {
-    top: 50%;
-    right: 0;
-    bottom: auto;
-    left: auto;
-    transform: translate(0.05rem, -50%) rotate(-45deg);
-  }
-
-  .rueckweg {
-    width: 55%;
-    height: var(--ac-border-hairline);
+  .markt {
+    min-height: 19.375rem;
   }
 
   .nutzen {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(1.5rem, 3vw, 2.5rem);
   }
 
-  /* Fein getrennte Spalten, wie in der Vorlage. */
+  .nutzenPosten:nth-child(n + 3) {
+    border-top: 0;
+  }
+
   .nutzenPosten + .nutzenPosten {
-    padding-left: clamp(1.5rem, 3vw, 2.5rem);
     border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
   }
 
@@ -483,6 +515,77 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+}
+
+/* ---- Unterhalb von Desktop -------------------------------------------------- */
+
+@media (max-width: 73.99rem) {
+  .kunde,
+  .zentral,
+  .markt {
+    width: 100%;
+    max-width: 47.5rem;
+    margin-inline: auto;
+  }
+
+  .schritt {
+    padding-block: 0.375rem;
+  }
+
+  .schrittZeile {
+    max-width: 32.5rem;
+    margin-inline: auto;
+  }
+
+  .schrittSatz {
+    max-width: 28.75rem;
+  }
+
+  /* Untereinander gelesen ist der Ablauf eine Kette; eine Klammer ueber die
+     ganze Breite waere hier nur ein Strich ohne Aussage. */
+  .rueckfuehrung {
+    width: 92%;
+    height: auto;
+    margin-block: var(--ac-space-xl);
+  }
+
+  .klammer {
+    display: none;
+  }
+
+  .ergebnis {
+    position: static;
+    min-width: 0;
+    padding: 0;
+    background-color: transparent;
+    transform: none;
+  }
+}
+
+@media (max-width: 45rem) {
+  .inner {
+    width: calc(100% - 1.75rem);
+  }
+
+  .nutzen {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nutzenPosten + .nutzenPosten {
+    border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+    border-left: 0;
+  }
+
+  .grundsatz + .grundsatz {
+    margin-top: 0.875rem;
+    padding-top: 1.375rem;
+    border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+    border-left: 0;
+  }
+
+  .schluss {
+    align-items: flex-start;
   }
 }
 

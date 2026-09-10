@@ -63,7 +63,7 @@ export const versicherungen: PageContent = {
       id: 'modell',
       eyebrow: 'Unser Modell',
       heading: 'Wir vertreten Sie, nicht die Versicherung.',
-      lead: 'Wir prüfen Ihre Verträge, holen Offerten ein und übernehmen den Schriftverkehr – auch im Schadenfall.',
+      lead: 'Wir prüfen Ihre Verträge, holen passende Angebote ein und begleiten Sie – auch im Schadenfall.',
       grundsaetze: [
         {
           bild: '01_icon_unabhaengig',
@@ -122,12 +122,12 @@ export const versicherungen: PageContent = {
         {
           bild: '08_benefit_diamant',
           titel: 'Mehr Auswahl',
-          satz: 'Wir prüfen den gesamten Markt und finden die Lösung, die wirklich zu Ihnen passt.',
+          satz: 'Wir prüfen den Markt und finden die Lösung, die wirklich zu Ihnen passt.',
         },
         {
           bild: '09_benefit_schild',
           titel: 'Zeitersparnis',
-          satz: 'Wir übernehmen die Abklärungen und den Administrationsaufwand für Sie.',
+          satz: 'Wir übernehmen die Abklärungen und den administrativen Aufwand für Sie.',
         },
         {
           bild: '10_benefit_handshake',
