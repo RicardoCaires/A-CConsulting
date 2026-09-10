@@ -14,24 +14,36 @@
   isolation: isolate;
 
   /* Die Hoehe kommt aus dem Inhalt, nicht aus dem Bildformat. Der Wert ist
-     eine Untergrenze: Ein langer Titel laesst den Kopf wachsen. */
+     eine Untergrenze: Ein langer Titel laesst den Kopf wachsen.
+
+     `100vw` ist keine Gestaltung, sondern eine Bedingung. Das Bild ist doppelt
+     so breit wie hoch; ist der Kopf mindestens so hoch wie breit, zeigt
+     `cover` hoechstens die rechte Haelfte — und nur dort steht keine
+     eingebrannte Schrift. Wird der Kopf flacher, waechst der sichtbare
+     Ausschnitt nach links in die Ueberschrift hinein. */
   width: 100%;
-  min-height: 26rem;
+  min-height: max(26rem, 100vw);
 }
 
 /* Das Foto liegt hinter allem.
 
    Auf schmalen Geraeten ist der Ausschnitt hoch, das Bild breit — sichtbar
-   bleibt rund ein Viertel der Bildbreite. Gezeigt wird davon die rechte
-   Seite: See, Huegel, Abendhimmel. Die linke traegt die eingebrannte
-   Ueberschrift, und die stuende hier hinter demselben Satz in HTML — zwei
-   Mal dieselbe Aussage, die eine halb verdeckt hinter der anderen. */
+   bleibt die rechte Seite: See, Huegel, Abendhimmel. Die linke traegt die
+   eingebrannte Ueberschrift, und die stuende hier hinter demselben Satz in
+   HTML — zwei Mal dieselbe Aussage, die eine halb verdeckt hinter der
+   anderen.
+
+   Gemessen: Die eingebrannte Schrift endet bei 46.4 Prozent der Bildbreite.
+   Ganz rechts verankert beginnt der sichtbare Ausschnitt zusammen mit der
+   Mindesthoehe oben bei 50 Prozent — mit Abstand dahinter. Bei 78 Prozent
+   war er es nicht: Zwischen 640 und 1023 px schaute das Ende der
+   Ueberschrift hinter dem HTML-Text hervor. */
 .foto {
   position: absolute;
   inset: 0;
   z-index: -2;
   object-fit: cover;
-  object-position: 78% 50%;
+  object-position: 100% 50%;
 }
 
 .platzhalter {
@@ -123,7 +135,15 @@
 
 /* ---- Ab Desktop ---------------------------------------------------------- */
 
-@media (min-width: 64rem) {
+/* Ab 40rem traegt das Bild den Text.
+
+   Frueher stand die Grenze bei 64rem. Dazwischen lief die Seite in beide
+   Fallen zugleich: Der Ausschnitt war zu breit, um die eingebrannte Schrift
+   auszusparen, und der HTML-Text stand trotzdem da — auf jedem Tablet zweimal
+   dieselbe Ueberschrift. 40rem ist die Breite, ab der die Rechnung unten
+   aufgeht (0.292w + 8rem bleibt unter w/2, also wird seitlich nichts mehr
+   abgeschnitten). */
+@media (min-width: 40rem) {
   /* Die Hoehe folgt hier dem Bild, nicht dem Fenster.
 
      Das Bild ist doppelt so breit wie hoch und traegt seine Aussage in der
@@ -131,12 +151,15 @@
      fester Hoehe schneidet `cover` mit wachsender Fensterbreite immer mehr
      davon weg; bei 1920 fehlte die halbe Ueberschrift.
 
-     34vw ist etwas mehr als zwei Drittel der Bildhoehe (die 50vw betruege).
-     Damit steht die eingebrannte Aussage bei jeder Breite vollstaendig da,
-     und darunter bleibt Platz fuer den Knopf. 32rem haelt den Kopf auf
-     schmalen Desktops in der bisherigen Groesse. */
+     Die eingebrannte Aussage endet bei 58.3 Prozent der Bildhoehe, also bei
+     0.292 der Fensterbreite. 8rem darunter tragen den Knopf — bei jeder
+     Breite gleich viel, weil der Knopf nicht mitwaechst.
+
+     Ohne Untergrenze: Eine feste Mindesthoehe waere unterhalb von rund
+     1100 px hoeher als die halbe Fensterbreite, und dann schneidet `cover`
+     seitlich ab — mitten in die Ueberschrift. */
   .hero {
-    min-height: max(32rem, calc(29.2vw + 8rem));
+    min-height: calc(29.2vw + 8rem);
     /* Text nach unten: Ueber ihm steht die eingebrannte Ueberschrift des
        Bildes. */
     align-items: flex-end;
