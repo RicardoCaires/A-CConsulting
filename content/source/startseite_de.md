@@ -195,9 +195,12 @@ Nachsatz: Statt mehrere Stellen zu koordinieren, haben Sie bei uns einen zentral
 
 Knopf: Mehr über unseren Ansatz → /ueber-uns
 
-Rechts daneben, drei Zeilen: Weniger Aufwand. Mehr Übersicht. Ein Ansprechpartner.
+Die drei Zeilen „Weniger Aufwand. Mehr Übersicht. Ein Ansprechpartner." standen
+am 10.09.2026 kurz rechts oben und sind am selben Tag auf Anweisung von Ricardo
+wieder entfallen. Dort bleibt jetzt Grund.
 
-Rechts unten das gelieferte Bürobild (`06_buero_visual`).
+Rechts das gelieferte Bürobild (`06_buero_visual`), gross und randnah. Im Grund
+zwei grosse Bögen Ton in Ton und eine feine grüne Linie.
 
 ### Frühere Fassung, bis 10.09.2026
 

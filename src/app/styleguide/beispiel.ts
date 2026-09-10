@@ -100,7 +100,6 @@ export const beispielStartseite: StartseiteInhalt = {
     ],
     text: 'Beispielsatz darüber, weshalb die Themen zusammenhängen.',
     nachsatz: 'Beispielnachsatz mit einem zweiten Gedanken.',
-    merksatz: ['Erste Zeile.', 'Zweite Zeile.', 'Dritte Zeile.'],
     knopf: { text: 'Beispielknopf', ziel: 'ueberUns' },
   },
   personen: {
