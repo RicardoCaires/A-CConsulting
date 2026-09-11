@@ -1,0 +1,270 @@
+/* „Was wir uebernehmen" auf `/treuhand`.
+
+   Nach Ricardos Referenzgrafik vom 11.09.2026: Kategoriezeile mit gruenem
+   Strich, grosser Titel, Einleitung, darunter weisse Karten in zwei Spalten.
+
+   Der Abschnitt steht im Standardcontainer der Website und auf der Flaeche,
+   die ihm die Seite zuweist. Die Referenz zeigt einen sehr hellen Grund; der
+   folgende Abschnitt „Fuer wen wir arbeiten" steht aber schon auf dem hellen
+   Grundton. Zwei fast gleiche Toene hintereinander wuerden die Seite streifen
+   statt gliedern — die Karten tragen darum Kontur und einen sehr weichen
+   Schatten, damit sie sich auch auf Weiss als Karten abheben.
+
+   Drei Anordnungen:
+
+     schmal            eine Spalte; Symbol und Pfeil oben, Text darunter
+     40rem bis 75rem   eine Spalte; Symbol, Text und Pfeil nebeneinander
+     ab 75rem          zwei Spalten, gleich hohe Karten je Reihe
+
+   Alles ist auf diesen Baustein gekapselt. */
+
+.leistungen {
+  /* Kantenlaenge der Symboldatei. Der sichtbare Kreis misst davon 65.6 Prozent
+     (Radius 168 von 512) — bei 5.5rem also 58 px, ab Desktop bei 7rem 73 px.
+     Beides liegt in den Groessen, die der Auftrag nennt (mobil 52 bis 60,
+     Desktop 64 bis 74 px). */
+  --icon: 5.5rem;
+}
+
+/* ---- Kopf ------------------------------------------------------------------ */
+
+.kopf {
+  max-width: 50rem;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-sm);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+.eyebrow::before {
+  content: '';
+  flex: none;
+  width: 2.375rem;
+  height: 2px;
+  background-color: var(--ac-color-accent-green);
+}
+
+.titel {
+  margin: var(--ac-space-sm) 0 0;
+  font-size: clamp(2.25rem, 1.6rem + 2.2vw, 3.5rem);
+  line-height: 1.06;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.02em;
+  color: var(--ac-color-primary-navy);
+}
+
+.lead {
+  margin: var(--ac-space-md) 0 0;
+  max-width: 62ch;
+  font-size: var(--ac-lead-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Raster ---------------------------------------------------------------- */
+
+.raster {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---- Karte ----------------------------------------------------------------- */
+
+.karte {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: 'icon inhalt pfeil';
+  align-items: center;
+  column-gap: clamp(1rem, 1.6vw, 1.25rem);
+  padding: clamp(1.25rem, 2vw, 1.5rem);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid
+    color-mix(in srgb, var(--ac-color-primary-navy) 11%, transparent);
+  border-radius: var(--ac-radius-md);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--ac-color-primary-navy) 4%, transparent);
+  transition:
+    transform var(--ac-motion-base) var(--ac-motion-easing),
+    border-color var(--ac-motion-base) var(--ac-motion-easing),
+    box-shadow var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+/* Die Datei traegt rund um ihren Kreis einen transparenten Rand von 17.2
+   Prozent je Seite. Der negative Rand gleicht ihn aus: Im Layout zaehlt nur
+   der sichtbare Kreis, und nichts wird beschnitten. */
+.icon {
+  grid-area: icon;
+  display: block;
+  width: var(--icon);
+  /* Die allgemeine Regel `img { max-width: 100% }` deckelte das Symbol auf
+     die Spaltenbreite, die wegen des negativen Randes nur den Kreis umfasst —
+     der Kreis mass 48 statt 73 px, gemessen am 11.09.2026. */
+  max-width: none;
+  height: var(--icon);
+  margin: calc(var(--icon) * -0.171875);
+  object-fit: contain;
+}
+
+.inhalt {
+  grid-area: inhalt;
+  min-width: 0;
+}
+
+.kartenTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.25rem, 1.05rem + 0.55vw, 1.5rem);
+  line-height: 1.25;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.005em;
+  color: var(--ac-color-primary-navy);
+  /* „Unternehmensadministration" ist breiter als manche Spalte. Getrennt wird
+     nach deutscher Regel, nicht mitten im Wort abgeschnitten. */
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.satz {
+  margin: 0.5rem 0 0;
+  max-width: 54ch;
+  /* Eine Stufe unter dem Fliesstext: Im Standardcontainer ist eine Karte
+     536 px breit, und in Fliesstextgroesse lief der Satz zur Buchhaltung
+     auf fuenf Zeilen — gemessen am 11.09.2026 bei 1440 px. */
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Link und Pfeil ---------------------------------------------------------
+
+   Der Link sitzt auf dem Titel und spannt sich ueber die ganze Karte. */
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: inherit;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: var(--ac-radius-md);
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.link:focus-visible::after {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+.pfeil {
+  grid-area: pfeil;
+  display: inline-grid;
+  place-items: center;
+  /* Der Pfeil zeigt nur an — Trefferflaeche ist die ganze Karte. Er darf
+     darum kleiner sein als die 44 px einer eigenen Schaltflaeche. */
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-size: 1.125rem;
+  line-height: 1;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-light);
+  transition:
+    transform var(--ac-motion-base) var(--ac-motion-easing),
+    background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+/* Dezent: Die Karte hebt sich zwei Pixel, die Kontur wird eine Spur kraeftiger,
+   der Pfeil rueckt nach rechts. Nur verlinkte Karten reagieren — eine Karte
+   ohne Ziel soll nicht so tun, als koenne man sie anklicken. */
+.verlinkt:hover,
+.verlinkt:focus-within {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--ac-color-primary-navy) 22%, transparent);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--ac-color-primary-navy) 7%, transparent);
+}
+
+.verlinkt:hover .pfeil,
+.verlinkt:focus-within .pfeil {
+  transform: translateX(3px);
+  background-color: var(--ac-color-background-tint);
+}
+
+/* ---- Schmale Geraete: Symbol und Pfeil oben, der Text darunter --------------
+
+   Neben Symbol und Pfeil blieben bei 375 px keine 180 px fuer den Text —
+   zu wenig fuer „Unternehmensadministration". */
+
+@media (max-width: 39.99rem) {
+  .karte {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      'icon . pfeil'
+      'inhalt inhalt inhalt';
+    row-gap: var(--ac-space-sm);
+  }
+}
+
+/* ---- Ab 64rem groesseres Symbol, ab 75rem zwei Spalten ----------------------
+
+   Zwei Spalten erst ab 75rem, wie beim einzeiligen Kopfbereich. Bei 1024 px
+   war eine Karte in zwei Spalten 462 px breit, und der Satz zur Buchhaltung
+   lief auf sechs Zeilen — gemessen am 11.09.2026. Darunter steht je Reihe eine
+   Karte ueber die volle Breite. */
+
+@media (min-width: 64rem) {
+  .leistungen {
+    --icon: 7rem;
+  }
+}
+
+@media (min-width: 75rem) {
+  .raster {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .karte,
+  .pfeil {
+    transition: none;
+  }
+
+  .verlinkt:hover,
+  .verlinkt:focus-within,
+  .verlinkt:hover .pfeil,
+  .verlinkt:focus-within .pfeil {
+    transform: none;
+  }
+}
+
+@media print {
+  .karte {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .pfeil {
+    display: none;
+  }
+}

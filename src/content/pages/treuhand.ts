@@ -32,51 +32,60 @@ export const treuhand: PageContent = {
       items: ['buchhaltung', 'steuern', 'firmengruendung', 'treuhaenderWechseln'],
     },
 
-    // 03 Leistungen im Überblick
+    // 03 Leistungen im Überblick — seit dem 11.09.2026 als Kartenraster nach
+    // Ricardos Referenzgrafik. Kategoriezeile und Einleitung stammen aus
+    // `content/source/treuhand_leistungen_de.md`, die Karten wie bisher.
+    // Verlinkt wird nur, was als Seite veroeffentlicht ist — die uebrigen
+    // Ziele werden von selbst zu Links, sobald ihre Seite erscheint.
     {
-      kind: 'subsections',
+      kind: 'leistungen',
       id: 'leistungen',
+      eyebrow: 'Unsere Leistungen',
       heading: 'Was wir übernehmen',
-      items: [
+      lead: 'Wir kümmern uns um Ihre Buchhaltung und administrativen Aufgaben, damit Sie sich auf das Wesentliche konzentrieren können – Ihr Geschäft.',
+      karten: [
         {
-          heading: 'Buchhaltung',
-          paragraphs: [
-            'Wir führen Ihre Buchhaltung laufend oder periodisch — je nachdem, was zu Ihrem Betrieb passt. Sie liefern die Belege, wir verbuchen sie und sagen Ihnen, was fehlt.',
-          ],
+          bild: '01_buchhaltung',
+          titel: 'Buchhaltung',
+          satz: 'Wir führen Ihre Buchhaltung laufend oder periodisch – je nachdem, was zu Ihrem Betrieb passt. Sie liefern die Belege, wir verbuchen sie und sagen Ihnen, was fehlt.',
+          ziel: 'buchhaltung',
         },
         {
-          heading: 'Lohnbuchhaltung',
-          paragraphs: [
-            'Monatliche Lohnabrechnungen, Lohnausweise, Quellensteuer und die Meldungen an die Sozialversicherungen.',
-          ],
+          bild: '02_lohnbuchhaltung',
+          titel: 'Lohnbuchhaltung',
+          satz: 'Monatliche Lohnabrechnungen, Lohnausweise, Quellensteuer und die Meldungen an die Sozialversicherungen.',
+          ziel: 'lohnbuchhaltung',
         },
         {
-          heading: 'Mehrwertsteuer',
-          paragraphs: [
-            'Abrechnungen, Einhaltung der Fristen und die Wahl der Abrechnungsmethode.',
-          ],
+          bild: '03_mehrwertsteuer',
+          titel: 'Mehrwertsteuer',
+          satz: 'Abrechnungen, Einhaltung der Fristen und die Wahl der Abrechnungsmethode.',
+          ziel: 'mehrwertsteuer',
         },
         {
-          heading: 'Jahresabschluss',
-          paragraphs: [
-            'Abschluss Ihrer Buchhaltung am Ende des Geschäftsjahres, mit Anhang, Kontenblättern und einer Besprechung.',
-          ],
+          bild: '04_jahresabschluss',
+          titel: 'Jahresabschluss',
+          satz: 'Abschluss Ihrer Buchhaltung am Ende des Geschäftsjahres, mit Anhang, Kontenblättern und einer Besprechung.',
+          ziel: 'jahresabschluss',
         },
         {
-          heading: 'Unternehmensadministration',
-          paragraphs: [
-            'Je nach Situation übernehmen wir auch Zahlungsverkehr, Mahnwesen und die Korrespondenz mit Ämtern. Was davon sinnvoll ist, halten wir in der Offerte fest.',
-          ],
+          // Keine eigene Seite — die Karte steht ohne Pfeil.
+          bild: '05_unternehmensadministration',
+          titel: 'Unternehmensadministration',
+          satz: 'Je nach Situation übernehmen wir auch Zahlungsverkehr, Mahnwesen und die Korrespondenz mit Ämtern. Was davon sinnvoll ist, halten wir in der Offerte fest.',
         },
         {
-          heading: 'Firmengründung',
-          paragraphs: [
-            'Von der Wahl der Rechtsform bis zum Eintrag im Handelsregister. Wir sagen Ihnen vorher, was der Weg kostet und wie lange er dauert.',
-          ],
+          bild: '06_firmengruendung',
+          titel: 'Firmengründung',
+          satz: 'Von der Wahl der Rechtsform bis zum Eintrag im Handelsregister. Wir sagen Ihnen vorher, was der Weg kostet und wie lange er dauert.',
+          ziel: 'firmengruendung',
         },
         {
-          heading: 'Steuern für Firmen',
-          paragraphs: ['Die Steuererklärung Ihrer Gesellschaft, aufbauend auf dem Abschluss.'],
+          bild: '07_steuern_firmen',
+          titel: 'Steuern für Firmen',
+          satz: 'Die Steuererklärung Ihrer Gesellschaft, aufbauend auf dem Abschluss.',
+          ziel: 'steuern',
+          anker: 'firmen',
         },
       ],
     },

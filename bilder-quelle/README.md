@@ -304,3 +304,31 @@ zaehlt die neun Gesellschaften auf.
 **Es zeigt andere Gesellschaften als das Raster im Modellabschnitt**: hier GVB
 und Smile, dort Swiss Life. Auf derselben Seite stehen damit zwei
 verschiedene Aufzaehlungen.
+
+## Treuhand — Was wir uebernehmen
+
+Am 11.09.2026 geliefert, als SVG. Die Quellen liegen unter
+`treuhand_leistungen/`, ausgeliefert werden sie **unveraendert** aus
+`public/bilder/treuhand/` — keine Umwandlung in WebP: Ein SVG dieser Art ist
+bereits die kleinste und schaerfste Form.
+
+| Datei | Quelle | ausgeliefert |
+|---|---|---|
+| `01_buchhaltung` | SVG, 512 x 512 | unveraendert, 608 B |
+| `02_lohnbuchhaltung` | SVG, 512 x 512 | unveraendert, 722 B |
+| `03_mehrwertsteuer` | SVG, 512 x 512 | unveraendert, 648 B |
+| `04_jahresabschluss` | SVG, 512 x 512 | unveraendert, 581 B |
+| `05_unternehmensadministration` | SVG, 512 x 512 | unveraendert, 761 B |
+| `06_firmengruendung` | SVG, 512 x 512 | unveraendert, 612 B |
+| `07_steuern_firmen` | SVG, 512 x 512 | unveraendert, 556 B |
+
+Zusammen 4.4 KB.
+
+Jede Datei bringt ihren hellen Kreis selbst mit (Radius 168 von 512) und
+ringsum einen transparenten Rand. Das Stylesheet gleicht den Rand mit einem
+negativen Aussenabstand aus, statt die Datei zu beschneiden.
+
+**Die Farben stehen in den Dateien** und stammen nicht aus den Design-Tokens:
+ein Navy nahe `navy_deep` und ein helleres Gruen als `accent_green`. Auf
+Ricardos Anweisung bleiben sie, wie sie sind. `07_steuern_firmen` setzt das
+Paragrafenzeichen als Text in Arial.
