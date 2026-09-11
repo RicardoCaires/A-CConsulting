@@ -327,6 +327,28 @@ export type Block =
         anker?: string
       }[]
     }
+  /**
+   * Der Ablauf als vier Karten mit Nummer und Verbindung: Kategoriezeile,
+   * Titel, ein Satz, darunter die Schritte.
+   *
+   * Loest auf `/treuhand` den `steps`-Block „So laeuft eine Zusammenarbeit an"
+   * ab (11.09.2026, Referenzgrafik von Ricardo). `StepList` bleibt fuer die
+   * uebrigen Seiten unveraendert. Der Abschnitt zaehlt in der Flaechenfolge
+   * mit, steht aber hellblau.
+   */
+  | {
+      kind: 'vorgehen'
+      id: string
+      eyebrow: string
+      heading: string
+      lead: string
+      schritte: readonly {
+        /** Dateiname unter `public/bilder/treuhand/`, ohne Endung. Traegt die Nummer. */
+        bild: string
+        titel: string
+        satz: string
+      }[]
+    }
   /** Sprungmarken innerhalb der Seite. */
   | {
       kind: 'anchors'

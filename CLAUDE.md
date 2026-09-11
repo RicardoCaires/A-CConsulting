@@ -948,6 +948,29 @@ Betriebe und Selbstständige in der Region.
 > Dass Daten in der Schweiz verarbeitet werden, steht weiterhin in den
 > häufigen Fragen.
 
+> **„So läuft eine Zusammenarbeit an" ist seit dem 11.09.2026 ein eigener
+> Baustein** (`src/components/blocks/Vorgehen.tsx`), nach Ricardos
+> Referenzgrafik: Kategoriezeile „Unser Vorgehen", Titel, ein Satz, darunter
+> vier weisse Karten mit gelieferter Nummer, Titel, kurzem grünem Strich und
+> Text; zwischen den Karten eine feine Linie mit grünem Punkt. `StepList`
+> bleibt für die übrigen Seiten unverändert. **Titel und Schritte sind
+> unverändert.**
+>
+> **Kategoriezeile und Satz** („Klar strukturiert, persönlich begleitet – von
+> Anfang an.") stammen **aus der Referenzgrafik**, nicht aus einem
+> Auftragstext (`content/source/treuhand_vorgehen_de.md`). Ricardo ist darauf
+> hingewiesen.
+>
+> **Der Grund ist hellblau** (`background_tint`), auf Ricardos Anweisung —
+> derselbe Ton wie „So beginnt die Zusammenarbeit" auf der Startseite. Der
+> Abschnitt zählt im Flächenwechsel weiter mit; die Abschnitte darunter
+> behalten ihren Grund.
+>
+> Vier Karten in einer Reihe ab 75rem (1200 px), darunter zwei, auf dem
+> Telefon eine. Die Verbindungslinien stehen nur in der Viererreihe. Die
+> Nummern sind SVG mit Georgia als Schrift; fehlt Georgia, nimmt der Browser
+> eine ähnliche Serifenschrift.
+
 ### /steuern
 
 Getrennt für Privatpersonen und Firmen. Enthält zusätzlich:
