@@ -923,6 +923,31 @@ Betriebe und Selbstständige in der Region.
 > umgefärbt. `07_steuern_firmen` setzt das Paragrafenzeichen als Schrift
 > (Arial); auf Geräten ohne Arial nimmt der Browser eine ähnliche.
 
+> **Fünf Abschnitte sind am 11.09.2026 auf Ricardos Anweisung entfallen:**
+> „Für wen wir arbeiten", „Wie wir arbeiten", „Klare Kosten vor Beginn",
+> „Was dazugehört" und der Abschluss **„Reden wir über Ihre Administration"**.
+> Ihr Wortlaut steht unverändert unter `content/source/` und ist nicht
+> widerrufen — er steht nur nicht mehr auf der Seite. Keiner der Anker wurde
+> von anderswo angesprungen.
+>
+> Die Seite läuft seither: Seitenkopf → Bereichsnavigation → „Was wir
+> übernehmen" → Ablauf → Wechsel-Hinweis → häufige Fragen. **Sie hat damit wie
+> `/versicherungen` keinen Abschluss mehr**; Handlungsknöpfe stehen nur noch im
+> Seitenkopf und im Kopfbereich. Ricardo ist darauf hingewiesen.
+>
+> Zwei Folgen, auf die Ricardo hingewiesen ist:
+>
+> - **Wovon die Kosten abhängen, steht nicht mehr auf der Seite.** Abschnitt 9,
+>   „Preisdarstellung", verlangt, zu erklären, wovon der Aufwand abhängt. Der
+>   Ablauf sagt noch, dass der Umfang samt Kosten vor Beginn schriftlich
+>   festgehalten wird.
+> - **Die Verweise auf Versicherungen und Steuern** aus „Was dazugehört" sind
+>   weg. Steuern bleibt über die Bereichsnavigation und die Karte „Steuern für
+>   Firmen" erreichbar, Versicherungen nur noch über den Kopfbereich.
+>
+> Dass Daten in der Schweiz verarbeitet werden, steht weiterhin in den
+> häufigen Fragen.
+
 ### /steuern
 
 Getrennt für Privatpersonen und Firmen. Enthält zusätzlich:

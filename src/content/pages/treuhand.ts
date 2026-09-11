@@ -2,7 +2,8 @@
  * /de/treuhand
  *
  * QUELLE: `content/source/schritt4_fassung2_de.md`, Abschnitt „Treuhand".
- * Wortlaut unveraendert uebernommen. Reihenfolge der elf Abschnitte wie dort.
+ * Wortlaut unveraendert uebernommen. Reihenfolge wie dort; fuenf der elf Abschnitte sind
+ * am 11.09.2026 entfallen.
  */
 
 import type { PageContent } from '../types'
@@ -90,68 +91,10 @@ export const treuhand: PageContent = {
       ],
     },
 
-    // 04 Für wen wir arbeiten
-    {
-      kind: 'subsections',
-      id: 'zielgruppen',
-      heading: 'Für wen wir arbeiten',
-      items: [
-        {
-          heading: 'Selbständigerwerbende',
-          paragraphs: [
-            'Sie führen Ihren Betrieb allein. Dazu gehören in der Regel die laufende Buchhaltung, die Mehrwertsteuer und die Steuererklärung.',
-          ],
-        },
-        {
-          heading: 'Einzelfirmen',
-          paragraphs: [
-            'Wie oben, dazu kommen je nach Grösse der Abschluss und die Abgrenzung zwischen geschäftlich und privat.',
-          ],
-        },
-        {
-          heading: 'GmbH ohne Personal',
-          paragraphs: [
-            'Buchführungspflicht, Jahresabschluss und Steuererklärung der Gesellschaft. Dazu die Abrechnung Ihres eigenen Lohns.',
-          ],
-        },
-        {
-          heading: 'KMU mit Mitarbeitenden',
-          paragraphs: [
-            'Buchhaltung, monatliche Lohnabrechnungen, Sozialversicherungen, Mehrwertsteuer und Abschluss. Diese Aufgaben greifen ineinander: Löhne, Sozialversicherungen und Jahresabschluss bauen auf denselben Zahlen auf.',
-          ],
-        },
-      ],
-    },
-
-    // 05 Wie wir arbeiten
-    {
-      kind: 'prose',
-      id: 'arbeitsweise',
-      heading: 'Wie wir arbeiten',
-      paragraphs: [
-        'Ihre Zahlen sieht und prüft eine Person, die Ihr Dossier kennt. Fachliche Entscheidungen treffen wir selbst und tragen die Verantwortung dafür.',
-        'Ihre Daten werden in der Schweiz verarbeitet und vertraulich behandelt.',
-      ],
-    },
-
-    // 06 Was es kostet
-    {
-      kind: 'list',
-      id: 'kosten',
-      heading: 'Klare Kosten vor Beginn',
-      intro: ['Was die Betreuung kostet, hängt vor allem von diesen Punkten ab:'],
-      items: [
-        'Anzahl Belege und Buchungen',
-        'Anzahl Mitarbeitende',
-        'Mehrwertsteuerpflicht und Abrechnungsmethode',
-        'Umfang des Jahresabschlusses',
-        'Form, in der Sie die Unterlagen liefern',
-      ],
-      outro: [
-        'Nach dem Erstgespräch erhalten Sie eine transparente Offerte. Je nach Mandat arbeiten wir mit einer monatlichen Pauschale oder einem klar vereinbarten Aufwandrahmen.',
-        'Ändert sich der Umfang, sprechen wir vorher darüber.',
-      ],
-    },
+    // Am 11.09.2026 auf Ricardos Anweisung entfallen: 04 „Für wen wir
+    // arbeiten", 05 „Wie wir arbeiten", 06 „Klare Kosten vor Beginn",
+    // 09 „Was dazugehört" und 11, der Abschluss „Reden wir über Ihre
+    // Administration". Ihr Wortlaut steht unverändert unter `content/source/`.
 
     // 07 Ablauf
     {
@@ -189,20 +132,6 @@ export const treuhand: PageContent = {
       links: [{ target: 'treuhaenderWechseln', label: 'So gehen wir bei einem Wechsel vor' }],
     },
 
-    // 09 Was dazugehört
-    {
-      kind: 'prose',
-      id: 'dazugehoert',
-      heading: 'Was dazugehört',
-      paragraphs: [
-        'Sobald Sie Mitarbeitende anstellen, gehören zur Lohnabrechnung auch die Unfallversicherung, die berufliche Vorsorge und das Krankentaggeld. Und auf den Jahresabschluss folgt die Steuererklärung der Firma. Beides erledigen wir im selben Haus, damit Sie nicht zwischen mehreren Stellen vermitteln müssen.',
-      ],
-      links: [
-        { target: 'versicherungen', label: 'Versicherungen' },
-        { target: 'steuern', label: 'Steuern' },
-      ],
-    },
-
     // 10 Häufige Fragen
     {
       kind: 'faq',
@@ -225,20 +154,6 @@ export const treuhand: PageContent = {
           question: 'Was passiert mit meinen Daten?',
           answer: 'Ihre Daten werden in der Schweiz verarbeitet und vertraulich behandelt.',
         },
-      ],
-    },
-
-    // 11 Abschluss
-    {
-      kind: 'cta',
-      id: 'abschluss',
-      heading: 'Reden wir über Ihre Administration',
-      paragraphs: [
-        'Im Erstgespräch schauen wir an, was heute bei Ihnen liegt und was davon zu uns kann. Danach wissen Sie, was eine Zusammenarbeit für Sie bedeuten würde.',
-      ],
-      actions: [
-        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
-        { kind: 'phone' },
       ],
     },
   ],
