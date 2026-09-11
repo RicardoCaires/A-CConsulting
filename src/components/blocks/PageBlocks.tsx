@@ -16,6 +16,7 @@ import { Segmente } from './Segmente'
 import { UnserModell } from './UnserModell'
 import { Vorgehen, vorgehenFlaeche } from './Vorgehen'
 import { WechselHinweis } from './WechselHinweis'
+import { ZielgruppenKarten } from './ZielgruppenKarten'
 import { StepList } from './StepList'
 import type { Action, Block, Download, PageRef, Rich } from '@/content/types'
 import type { Locale } from '@/i18n/config'
@@ -167,6 +168,7 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
     block.kind === 'anchors' ||
     block.kind === 'serviceNav' ||
     block.kind === 'segmente' ||
+    block.kind === 'zielgruppenKarten' ||
     block.kind === 'betreuung' ||
     block.kind === 'schadenfall' ||
     block.kind === 'fragen'
@@ -559,6 +561,20 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
 
         // Die beiden Zielgruppen sind ein eigener Baustein und bringen ihre
         // Flaeche selbst mit. Sie zaehlen beim Flaechenwechsel darum nicht mit.
+        // Die Zielgruppen auf `/steuern` sind ein eigener Baustein mit eigener
+        // Flaeche. Sie zaehlen beim Flaechenwechsel nicht mit: Sie ersetzen
+        // zwei Abschnitte, der Wechsel darunter bleibt damit, wie er war.
+        if (block.kind === 'zielgruppenKarten') {
+          return (
+            <ZielgruppenKarten
+              key={index}
+              hintergrund={block.hintergrund}
+              karten={block.karten}
+              locale={locale}
+            />
+          )
+        }
+
         if (block.kind === 'segmente') {
           return <Segmente key={index} bloecke={block.bloecke} />
         }

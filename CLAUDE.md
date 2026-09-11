@@ -1119,6 +1119,24 @@ eidg. Fachausweis suggeriert.
 > und Ausgaben, Anmeldung bei der Ausgleichskasse — samt den Verweisen auf
 > Treuhand und Firmengründung ist weg.
 
+> **„Für Privatpersonen" und „Für Selbständige und Firmen" seit dem 11.09.2026
+> nach Ricardos Referenzgrafik** — ein eigener Baustein
+> (`src/components/blocks/ZielgruppenKarten.tsx`): zwei grosse weisse Karten
+> auf dem gelieferten Hintergrund, links Titel mit grünem Strich, Absätze und
+> Link mit Pfeil, rechts hinter einer feinen Linie drei Merkmale mit Symbol
+> beziehungsweise ein grün getönter Hinweis. **Titel, Absätze und Link sind
+> unverändert; die Anker `privatpersonen` und `firmen` bleiben** — `#firmen`
+> ist von der Karte „Steuern für Firmen" auf `/treuhand` verlinkt.
+>
+> **Die Merkmale und der Hinweis stammen aus der Referenzgrafik**
+> (`content/source/steuern_zielgruppen_de.md`). Ricardo ist auf den Ton
+> hingewiesen: „zuverlässig", „effizient" und „für weniger Aufwand und mehr
+> Übersicht" versprechen mehr als die Absätze daneben.
+>
+> Der Baustein bringt seine Fläche selbst mit und zählt beim Flächenwechsel
+> nicht mit; die Abschnitte darunter behalten ihren Grund. Derselbe breite
+> Container wie auf `/treuhand/buchhaltung` (1344 px).
+
 ### /ueber-uns
 
 Die Inhaber mit Namen, Werdegang und Sprachen. Warum es die Firma gibt. Kein
