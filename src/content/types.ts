@@ -380,6 +380,30 @@ export type Block =
         satz: string
       }[]
     }
+  /**
+   * Zielgruppen als grosse Karten auf gemeinsamer Flaeche: je Karte Titel,
+   * Absaetze, Link und rechts Merkmale oder ein Hinweis.
+   *
+   * Loest auf `/steuern` die beiden `prose`-Bloecke „Für Privatpersonen" und
+   * „Für Selbständige und Firmen" ab (11.09.2026, Referenzgrafik von Ricardo).
+   * Bringt die Flaeche selbst mit und zaehlt beim Flaechenwechsel nicht mit.
+   */
+  | {
+      kind: 'zielgruppenKarten'
+      /** Hintergrund, Dateiname unter `public/bilder/` ohne Endung. */
+      hintergrund?: string
+      karten: readonly {
+        /** Wird zum Anker — `privatpersonen`, `firmen`. */
+        id: string
+        heading: string
+        paragraphs: readonly Rich[]
+        links?: readonly PageRef[]
+        /** Merkmale rechts; Symbol als Dateiname unter `public/bilder/`. */
+        merkmale?: readonly { bild: string; titel: string; satz: string }[]
+        /** Getoenter Hinweis rechts, statt Merkmalen. */
+        hinweis?: { bild: string; titel: string; satz: string }
+      }[]
+    }
   /** Sprungmarken innerhalb der Seite. */
   | {
       kind: 'anchors'

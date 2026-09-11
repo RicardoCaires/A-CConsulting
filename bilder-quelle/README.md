@@ -435,3 +435,22 @@ Kreises transparent. Kreis und Zeichen unveraendert.
 
 **Die Linie (7)** ist eine 4 px dicke Linie im Ton 190/212/236 auf Weiss. Sie
 steht als Rahmen in `border_tint` im Stylesheet, nicht als Bild.
+
+## Steuern — Für Privatpersonen / Für Selbständige und Firmen
+
+Am 11.09.2026 geliefert, sechs PNG. Sie liegen mit ihren Namen unter
+`steuern/`; die Referenzgrafik heisst dort `zielgruppen_referenz.png`
+(1672 x 941, nicht ausgeliefert). Ausgeliefert wird flach unter
+`public/bilder/`, mit dem Vorsatz `steuern_`.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `… 15_08_42 (1).png` | `steuern_frist.webp` (Uhr) | 1254 x 1254, RGBA |
+| `… 15_08_43 (2).png` | `steuern_abzuege.webp` (Münzen) | 1254 x 1254, RGBA |
+| `… 15_08_43 (3).png` | `steuern_veranlagung.webp` (Dokument mit Haken) | 1254 x 1254, RGBA |
+| `… 15_08_43 (4).png` | `steuern_einort.webp` (Balken) | 1254 x 1254, RGBA |
+| `… 15_08_44 (5).png` | `steuern_hintergrund.webp` | 1672 x 941, RGB |
+
+Die Symbole sind wie die der Buchhaltungsseite auf ihren Kreis zugeschnitten
+(Quadrat mit 2 Prozent Rand, ausserhalb des Kreises transparent); Kreis und
+Zeichen unverändert.

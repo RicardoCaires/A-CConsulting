@@ -1,0 +1,240 @@
+/* Zielgruppen als grosse Karten — heute auf `/steuern`.
+
+   Nach Ricardos Referenzgrafik vom 11.09.2026 (1672 x 941). Aus der Vorlage
+   gemessen:
+
+     Karten        x 126 bis 1551, Fuge 36 px, Ecken rund 18 px
+     Innen         Text ab x 195, Trennlinie bei x 978, rechte Spalte ab 1043
+     Merkmale      Symbolkreis 88 px, Titel in der Titelschrift
+     Hinweis       getoente Flaeche ueber die volle Hoehe der rechten Spalte
+
+   Der Container ist derselbe breite wie auf der Buchhaltungsseite (1344 px).
+
+   Zwei Anordnungen:
+
+     bis 64rem   Text oben, Merkmale darunter, die Linie liegt waagrecht
+     ab 64rem    Text links, Merkmale rechts, die Linie steht senkrecht */
+
+.flaeche {
+  padding-block: var(--ac-section-y);
+  background-color: var(--ac-color-background-light);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.flaeche .container {
+  display: grid;
+  gap: clamp(1.25rem, 2.4vw, 2.25rem);
+  max-width: 84rem;
+}
+
+.karte {
+  display: grid;
+  gap: clamp(1.75rem, 3.5vw, 2.5rem);
+  padding: clamp(1.75rem, 4vw, 3rem) clamp(1.25rem, 4.5vw, 4.25rem);
+  background-color: color-mix(in srgb, var(--ac-color-white) 90%, transparent);
+  border: var(--ac-border-hairline) solid
+    color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
+  border-radius: 18px;
+  box-shadow: 0 16px 44px color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
+}
+
+/* ---- Links: Titel, Absaetze, Link ------------------------------------------ */
+
+.text {
+  min-width: 0;
+}
+
+/* Hoechstens 48 px: „Für Selbständige und Firmen" steht in der Vorlage auf
+   einer Zeile; mit 56 px brach der Titel bei 1440 px zweizeilig — gemessen
+   am 11.09.2026. */
+.titel {
+  font-size: clamp(2.25rem, 1.6rem + 2vw, 3rem);
+  line-height: 1.06;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.02em;
+  color: var(--ac-color-primary-navy);
+}
+
+.titel::before {
+  content: '';
+  display: block;
+  width: 3.75rem;
+  height: 3px;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 55%, transparent);
+}
+
+.absatz {
+  margin: var(--ac-space-sm) 0 0;
+  max-width: 62ch;
+  font-size: var(--ac-body-size);
+  line-height: 1.7;
+  color: var(--ac-color-text-secondary);
+}
+
+.titel + .absatz {
+  margin-top: var(--ac-space-md);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: var(--ac-space-md);
+  font-weight: 500;
+  color: var(--ac-color-accent-green);
+  text-decoration: none;
+}
+
+.linkText {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+.pfeil {
+  display: inline-block;
+  font-size: 1.125rem;
+  line-height: 1;
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.link:hover {
+  color: var(--ac-color-accent-green);
+}
+
+.link:hover .pfeil {
+  transform: translateX(3px);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 4px;
+  border-radius: var(--ac-radius-sm);
+}
+
+/* ---- Rechts: Merkmale oder Hinweis ------------------------------------------ */
+
+/* Die Trennlinie liegt auf schmalen Geraeten waagrecht ueber den Merkmalen. */
+.seite {
+  min-width: 0;
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+/* Die gelieferten Symbole sind auf ihren Kreis zugeschnitten. */
+.symbol {
+  display: block;
+  flex: none;
+  width: var(--symbol, 4.5rem);
+  max-width: none;
+  height: var(--symbol, 4.5rem);
+}
+
+.merkmale {
+  --symbol: clamp(3.75rem, 3rem + 1.5vw, 5rem);
+
+  display: grid;
+  gap: clamp(1.25rem, 2.4vw, 1.75rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.merkmal {
+  display: grid;
+  grid-template-columns: var(--symbol) minmax(0, 1fr);
+  column-gap: clamp(1rem, 2vw, 1.75rem);
+  align-items: center;
+}
+
+.merkmalTitel,
+.hinweisTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-weight: var(--ac-display-weight);
+  line-height: 1.25;
+  color: var(--ac-color-primary-navy);
+}
+
+.merkmalTitel {
+  font-size: clamp(1.125rem, 1rem + 0.35vw, 1.3125rem);
+}
+
+.merkmalSatz {
+  margin: 0.25rem 0 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
+/* Getoent in einem Hauch Gruen, wie in der Vorlage. */
+.hinweis {
+  --symbol: clamp(3.5rem, 3rem + 1vw, 4rem);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: clamp(1.5rem, 2.6vw, 2rem);
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 6%, var(--ac-color-white));
+  border-radius: 14px;
+}
+
+.hinweisTitel {
+  margin-top: clamp(0.875rem, 1.6vw, 1.25rem);
+  font-size: clamp(1.375rem, 1.1rem + 0.6vw, 1.625rem);
+}
+
+.hinweis .merkmalSatz {
+  margin-top: 0.5rem;
+  line-height: 1.55;
+}
+
+/* ---- Ab 64rem: Text links, rechte Spalte daneben ---------------------------- */
+
+@media (min-width: 64rem) {
+  .karte {
+    /* In der Vorlage steht die Trennlinie bei 60 Prozent der Karte. */
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    column-gap: 0;
+    align-items: stretch;
+  }
+
+  .text {
+    padding-right: clamp(2.5rem, 4.5vw, 4rem);
+  }
+
+  .seite {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 0;
+    padding-left: clamp(2.5rem, 4.5vw, 4rem);
+    border-top: 0;
+    border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pfeil {
+    transition: none;
+  }
+
+  .link:hover .pfeil {
+    transform: none;
+  }
+}
+
+@media print {
+  .flaeche {
+    background-image: none !important;
+  }
+
+  .karte {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}
