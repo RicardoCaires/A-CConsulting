@@ -89,10 +89,21 @@ export type Vertiefung = {
   titel: Text
   /** Darf offene Angaben aus Schritt 4 und fehlende Uebersetzungen enthalten. */
   absaetze: readonly RichText[]
+  /** Titel ueber der Aufzaehlung, in der Karte. Optional. */
+  listenTitel?: Text
   /** Aufzaehlung, wo die Quelle eine enthaelt. */
   liste?: readonly Rich[]
+  /**
+   * Gelieferte Symbole zur Aufzaehlung, in derselben Reihenfolge, als
+   * Dateinamen unter `public/bilder/<slug>/` ohne Endung. Optional.
+   */
+  listenBilder?: readonly string[]
   /** Nachsatz unter der Aufzaehlung. */
   nachsatz?: readonly Rich[]
+  /** Symbol in der Leiste des Nachsatzes. Optional. */
+  nachsatzBild?: string
+  /** Hintergrund des Abschnitts, Dateiname ohne Endung. Optional. */
+  hintergrund?: string
 }
 
 /** Platz fuer eine Aufnahme, die noch nicht vorliegt. */
@@ -268,6 +279,13 @@ export function pruefeLeistungsseite(seite: Leistungsseite): void {
 
   if (seite.vertiefung && seite.vertiefung.absaetze.length === 0) {
     fehler.push('vertiefung ist gesetzt, enthaelt aber keinen Absatz')
+  }
+  const listenBilder = seite.vertiefung?.listenBilder
+  if (listenBilder && listenBilder.length !== (seite.vertiefung?.liste?.length ?? 0)) {
+    fehler.push(
+      `vertiefung.listenBilder: ${listenBilder.length} Symbole fuer ` +
+        `${seite.vertiefung?.liste?.length ?? 0} Listeneintraege`,
+    )
   }
 
   if (fehler.length > 0) {

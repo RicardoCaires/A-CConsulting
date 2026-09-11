@@ -1068,6 +1068,26 @@ Betriebe und Selbstständige in der Region.
 > heisst weiterhin „Erstgespräch anfragen" — er nimmt jetzt die Beschriftung
 > der Kopfzeile (`ui.cta`).
 
+> **„Was Sie uns liefern" auf `/treuhand/buchhaltung` seit dem 11.09.2026 nach
+> Ricardos Referenzgrafik** (Vorlage B, Abschnitt 4): links Titel mit grünem
+> Strich und Einleitung, rechts die Aufzählung als weisse Karte mit Titel,
+> gelieferten Symbolen und feinen Trennlinien, unten der Nachsatz als Leiste
+> mit Laptop-Symbol. Gelieferter Hintergrund, derselbe breite Container wie
+> die Fläche darüber.
+>
+> **Der Wortlaut ist unverändert.** Neu ist nur die Form: „In der Regel
+> brauchen wir von Ihnen:" steht als Kartentitel (`listenTitel`) statt als
+> zweiter Absatz. Die Referenzgrafik zeigt durchgehend andere Formulierungen —
+> etwa „Bank- und Postkontoauszüge", „Rechnungen an Ihre Kunden",
+> „Eingangsrechnungen und Quittungen", „Belege zu Spesen, Barzahlungen und
+> Einkäufen", „Ein- und Austritte, Lohnänderungen und Absenzen" und einen
+> anderen Einleitungs- und Schlusssatz. Sie sind **nicht** übernommen; was
+> A&C von Kundinnen und Kunden verlangt, ändert sich nur auf ausdrückliche
+> Anweisung. Ricardo ist darauf hingewiesen.
+>
+> Die gelieferte Trennlinie (eigene Datei) steht als Rahmen im Stylesheet in
+> `border_tint`, nicht als Bild; sie war farblich nahezu dieser Token.
+
 ### /steuern
 
 Getrennt für Privatpersonen und Firmen. Enthält zusätzlich:
