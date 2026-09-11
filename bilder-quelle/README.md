@@ -383,3 +383,31 @@ Ihr Kreis misst 913 von 1254 px, also 72.8 Prozent; bei den SVG sind es 62.5.
 Der Baustein setzt die Datei darum etwas kleiner, damit der Kreis so gross
 steht wie die beiden anderen. `03_reibungslos_uebernehmen.svg` bleibt liegen,
 steht aber auf keiner Seite mehr.
+
+## Buchhaltung — Was wir uebernehmen und So laeuft die Zusammenarbeit
+
+Am 11.09.2026 geliefert, sechs PNG mit den Namen, die ChatGPT vergeben hat.
+Sie liegen mit diesen Namen unter `buchhaltung/`; ausgeliefert werden sie aus
+`public/bilder/buchhaltung/` unter sprechenden Namen.
+
+| Datei (Lieferung) | ausgeliefert | Quelle | ausgeliefert |
+|---|---|---|---|
+| `… 13_41_48 (1).png` | `dokument.webp` | 1254 x 1254, RGBA | 256 px, 8 KB |
+| `… 13_41_48 (2).png` | `balken.webp` | 1254 x 1254, RGBA | 256 px, 8 KB |
+| `… 13_41_49 (3).png` | `uhr.webp` | 1254 x 1254, RGBA | 256 px, 10 KB |
+| `… 13_41_49 (4).png` | `sprechblase.webp` | 1254 x 1254, RGBA | 256 px, 9 KB |
+| `… 13_41_50 (5).png` | `zahnrad.webp` | 1254 x 1254, RGBA | 256 px, 11 KB |
+| `… 13_41_50 (6).png` | `hintergrund.webp` | 1448 x 1086, RGB | 1448 px, 10 KB |
+
+**Die fuenf Symbole sind auf ihren Kreis zugeschnitten.** Der Kreis mass je
+Datei zwischen 69 und 82 Prozent der Kantenlaenge, und um ihn lagen lose
+halbtransparente Pixel. Zugeschnitten wurde mechanisch: ein Quadrat um den
+Kreis mit 2 Prozent Rand, ausserhalb des Kreises transparent. Kreis und
+Zeichen sind unveraendert, nichts umgefaerbt.
+
+Der Hintergrund hat genau das Format der Referenzgrafik (1448 x 1086) und
+traegt beide Abschnitte zusammen; er wird nicht beschnitten, sondern deckt die
+Flaeche.
+
+Die Nummernkreise des Ablaufs sind keine neuen Dateien, sondern
+`01_schritt_01` bis `04_schritt_04` aus dem Ablauf der Treuhandseite.

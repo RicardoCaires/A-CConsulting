@@ -140,10 +140,17 @@ export const steuern: PageContent = {
     },
 
     // 09 Häufige Fragen
+    // Seit dem 11.09.2026 im Baustein der Versicherungsseite („häufige Fragen
+    // überall gleich designen", Ricardo). Fragen und Antworten unveraendert.
     {
-      kind: 'faq',
+      kind: 'fragen',
       id: 'fragen',
+      eyebrow: 'Gut zu wissen',
       heading: 'Häufige Fragen',
+      lead: [
+        'Hier finden Sie kompakte Antworten auf die wichtigsten Fragen.',
+        'Sollten Sie weitere Anliegen haben, sind wir gerne persönlich für Sie da.',
+      ],
       items: [
         {
           question: 'Was muss ich mitbringen?',
@@ -172,6 +179,7 @@ export const steuern: PageContent = {
           answer: 'Nicht zwingend. Sie können uns die Unterlagen per E-Mail, per Post oder persönlich bringen.',
         },
       ],
+      schluss: 'Persönlich. Unabhängig. An Ihrer Seite.',
     },
 
     // 10 Abschluss

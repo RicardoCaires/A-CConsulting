@@ -1,11 +1,12 @@
-import { Accordion } from '@/components/blocks/Accordion'
+import Image from 'next/image'
+
 import { CTASection } from '@/components/blocks/CTASection'
+import { Fragen } from '@/components/blocks/Fragen'
 import { Hero } from '@/components/blocks/Hero'
-import { IconFeatureGrid } from '@/components/blocks/IconFeature'
 import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
 import { SectionHeader } from '@/components/blocks/SectionHeader'
-import { StepList } from '@/components/blocks/StepList'
 import { Button } from '@/components/ui/Button'
+import { Icon } from '@/components/ui/Icon'
 import { RichText } from '@/components/ui/RichText'
 import { alsText, Translated, TranslatedRich } from '@/components/ui/Translated'
 import type { Leistungsseite } from '@/content/schema'
@@ -22,23 +23,31 @@ import styles from './Leistungsseite.module.css'
  * zurechtfinden muss:
  *
  *   1 Seitenkopf     einspaltig, Bild als Flaeche, Titel darauf  — DOMINANT
- *   2 Leistungen     Icon-Raster statt Absaetzen                  — weiss
- *   3 Ablauf         nummerierte Schritte                         — hell
+ *   2 Leistungen     Karten mit Symbol                            ┐ eine
+ *   3 Ablauf         vier Karten, Nummern verbunden               ┘ Flaeche
  *   4 Vertiefung     optional; hier landet abgegebener Fliesstext — weiss
- *   5 Fragen         Accordion                                    — hell
+ *   5 Fragen         der Baustein `Fragen`, hellblau
  *   6 Abschluss      CTASection                                   — FLAECHE
  *
- * Fest ist die **Reihenfolge**, nicht der Wortlaut: Die drei Zwischentitel
- * kommen aus dem Inhalt, weil Schritt 4 je Seite eigene Ueberschriften nennt
- * und die nicht vereinheitlicht werden.
+ * **2 und 3 seit dem 11.09.2026 nach Ricardos Referenzgrafik** fuer
+ * `/treuhand/buchhaltung`: beide auf einer gemeinsamen Flaeche mit dem
+ * gelieferten Hintergrund, der Ablauf eine Spur blauer abgesetzt. Die
+ * Symbole kommen aus `bild`, wo die Seite geliefert hat; sonst bleibt das
+ * Zeichen aus `Icon.tsx` — die Vorlage bleibt fuer kuenftige Seiten nutzbar.
  *
- * Die Flaechen folgen dem Corporate-Design-Standard 1.1 (`flaechen_website`):
- * Der Seitenkopf ist die **eine** dominante Flaeche, der Abschluss eine
- * wiederkehrende. Dazwischen wechseln weiss und Off-White — wenige hohe
- * Bloecke statt vieler schwacher Toenungen.
+ * Die beiden leisen Zusaetze der Grafik („Zuverlässig. Strukturiert. An Ihrer
+ * Seite.", „Klar. Persönlich. Effizient.") und die Marke „A&C Consulting"
+ * unten rechts sind **nicht** uebernommen. Ricardo hat Zusaetze, die nicht im
+ * Auftragstext stehen, mehrfach streichen lassen.
  *
- * `pruefeFlaechen` prueft das Ergebnis und wirft im Zweifel; der Build bricht,
- * statt dass eine Seite gegen die Regel live geht.
+ * **5 seit demselben Tag der Baustein `Fragen`** — „häufige Fragen überall
+ * gleich designen".
+ *
+ * Fest ist die **Reihenfolge**, nicht der Wortlaut: Die Zwischentitel kommen
+ * aus dem Inhalt, weil Schritt 4 je Seite eigene Ueberschriften nennt.
+ *
+ * `pruefeFlaechen` prueft die zugewiesene Folge weiterhin; die Abschnitte 2, 3
+ * und 5 tragen seit dem Umbau eine eigene Flaeche.
  */
 
 /**
@@ -50,6 +59,14 @@ import styles from './Leistungsseite.module.css'
 function flaechenFolge(anzahl: number): Surface[] {
   return Array.from({ length: anzahl }, (_, i) => (i % 2 === 0 ? 'weiss' : 'hell'))
 }
+
+/**
+ * Die Nummernkreise des Ablaufs. Es sind die Dateien, die Ricardo fuer den
+ * Ablauf auf `/treuhand` geliefert hat — dieselbe Gestaltung, nicht neu
+ * gezeichnet. Mehr als vier gibt es nicht; ein fuenfter Schritt traegt seine
+ * Nummer als Text.
+ */
+const NUMMERN = ['01_schritt_01', '02_schritt_02', '03_schritt_03', '04_schritt_04'] as const
 
 type Props = {
   inhalt: Leistungsseite
@@ -65,16 +82,26 @@ export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
 
   pruefeFlaechen(['dominant', ...flaechen, fAbschluss], String(inhalt.slug))
 
-  const [fLeistungen, fAblauf, fDrei, fVier] = flaechen as [
-    Surface,
-    Surface,
-    Surface,
-    Surface | undefined,
-  ]
-  const fVertiefung = inhalt.vertiefung ? fDrei : undefined
-  const fFragen = inhalt.vertiefung ? (fVier ?? 'hell') : fDrei
+  const fVertiefung = inhalt.vertiefung ? flaechen[2] : undefined
 
   const knopf = alsText(inhalt.cta.knopf, ui.page.kontakt)
+  const bildPfad = (datei: string) => `/bilder/${inhalt.slug}/${datei}.webp`
+
+  const symbol = (bild: string | undefined, fallback: Parameters<typeof Icon>[0]['name']) =>
+    bild ? (
+      <Image
+        className={styles.symbol}
+        src={bildPfad(bild)}
+        alt=""
+        width={256}
+        height={256}
+        unoptimized
+      />
+    ) : (
+      <span className={`${styles.symbol} ${styles.symbolZeichen}`} aria-hidden="true">
+        <Icon name={fallback} size={1.5} />
+      </span>
+    )
 
   return (
     <>
@@ -87,45 +114,95 @@ export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
         bild={inhalt.bild ?? undefined}
       />
 
-      {/* ---- 2 Das übernehmen wir ---------------------------------------- */}
-      <Section surface={fLeistungen} id="leistungen" labelledBy="leistungen-titel">
-        <SectionHeader
-          id="leistungen-titel"
-          heading={<Translated value={inhalt.abschnitte.leistungen} />}
-        />
+      {/* ---- 2 und 3 auf einer gemeinsamen Flaeche ------------------------ */}
+      <div
+        className={styles.zone}
+        style={
+          inhalt.hintergrund
+            ? { backgroundImage: `url(${bildPfad(inhalt.hintergrund)})` }
+            : undefined
+        }
+      >
+        {/* ---- 2 Das übernehmen wir -------------------------------------- */}
+        <section
+          id="leistungen"
+          aria-labelledby="leistungen-titel"
+          className={styles.zonenAbschnitt}
+        >
+          <div className={`ac-container ${styles.zonenContainer}`}>
+            <h2 id="leistungen-titel" className={styles.zonenTitel}>
+              <Translated value={inhalt.abschnitte.leistungen} />
+            </h2>
 
-        <IconFeatureGrid
-          columns={3}
-          items={inhalt.leistungen.map((leistung) => ({
-            icon: leistung.icon,
-            heading: <Translated value={leistung.titel} />,
-            body:
-              leistung.chips.length > 0 ? (
-                <span className={styles.chips}>
-                  {leistung.chips.slice(0, 3).map((chip, i) => (
-                    <span key={i} className={styles.chip}>
-                      <Translated value={chip} />
-                    </span>
-                  ))}
-                </span>
-              ) : undefined,
-          }))}
-        />
-      </Section>
+            <ul className={styles.leistungsKarten} role="list">
+              {inhalt.leistungen.map((leistung, index) => (
+                <li key={index} className={styles.leistungsKarte}>
+                  {symbol(leistung.bild, leistung.icon)}
+                  <div className={styles.leistungsText}>
+                    <h3 className={styles.leistungsTitel}>
+                      <Translated value={leistung.titel} />
+                    </h3>
+                    <span className={styles.strich} aria-hidden="true" />
+                    {leistung.chips.length > 0 && (
+                      <span className={styles.chips}>
+                        {leistung.chips.slice(0, 3).map((chip, i) => (
+                          <span key={i} className={styles.chip}>
+                            <Translated value={chip} />
+                          </span>
+                        ))}
+                      </span>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
-      {/* ---- 3 Ablauf ----------------------------------------------------- */}
-      <Section surface={fAblauf} id="ablauf" labelledBy="ablauf-titel">
-        <SectionHeader
-          id="ablauf-titel"
-          heading={<Translated value={inhalt.abschnitte.ablauf} />}
-        />
-        <StepList
-          steps={inhalt.ablauf.map((schritt) => ({
-            heading: <Translated value={schritt.titel} />,
-            body: <TranslatedRich value={schritt.text} />,
-          }))}
-        />
-      </Section>
+        {/* ---- 3 Ablauf --------------------------------------------------- */}
+        <section
+          id="ablauf"
+          aria-labelledby="ablauf-titel"
+          className={`${styles.zonenAbschnitt} ${styles.ablaufAbschnitt}`}
+        >
+          <div className={`ac-container ${styles.zonenContainer}`}>
+            <h2 id="ablauf-titel" className={styles.zonenTitel}>
+              <Translated value={inhalt.abschnitte.ablauf} />
+            </h2>
+
+            <ol className={styles.ablaufKarten} role="list">
+              {inhalt.ablauf.map((schritt, index) => {
+                const nummer = NUMMERN[index]
+                return (
+                  <li key={index} className={styles.ablaufKarte}>
+                    {nummer ? (
+                      <Image
+                        className={styles.nummer}
+                        src={`/bilder/treuhand/${nummer}.svg`}
+                        alt=""
+                        width={512}
+                        height={512}
+                        unoptimized
+                      />
+                    ) : (
+                      <span className={`${styles.nummer} ${styles.nummerText}`} aria-hidden="true">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                    )}
+                    {schritt.bild && symbol(schritt.bild, 'ablauf')}
+                    <h3 className={styles.ablaufTitel}>
+                      <Translated value={schritt.titel} />
+                    </h3>
+                    <p className={styles.ablaufText}>
+                      <TranslatedRich value={schritt.text} />
+                    </p>
+                  </li>
+                )
+              })}
+            </ol>
+          </div>
+        </section>
+      </div>
 
       {/* ---- 4 Vertiefung, optional --------------------------------------- */}
       {inhalt.vertiefung && fVertiefung && (
@@ -160,19 +237,24 @@ export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
         </Section>
       )}
 
-      {/* ---- 5 Häufige Fragen --------------------------------------------- */}
-      <Section surface={fFragen} id="fragen" labelledBy="fragen-titel">
-        <SectionHeader
-          id="fragen-titel"
-          heading={<Translated value={inhalt.abschnitte.fragen} />}
-        />
-        <Accordion
-          items={inhalt.faq.map((eintrag) => ({
-            question: <Translated value={eintrag.frage} />,
-            answer: <TranslatedRich value={eintrag.antwort} />,
-          }))}
-        />
-      </Section>
+      {/* ---- 5 Häufige Fragen — derselbe Baustein wie auf jeder Seite ----- */}
+      <Fragen
+        id="fragen"
+        eyebrow={
+          inhalt.fragenZusatz ? <Translated value={inhalt.fragenZusatz.kategorie} /> : undefined
+        }
+        heading={<Translated value={inhalt.abschnitte.fragen} />}
+        lead={inhalt.fragenZusatz?.einleitung.map((satz, index) => (
+          <Translated key={index} value={satz} />
+        ))}
+        items={inhalt.faq.map((eintrag) => ({
+          question: <Translated value={eintrag.frage} />,
+          answer: <TranslatedRich value={eintrag.antwort} />,
+        }))}
+        schluss={
+          inhalt.fragenZusatz ? <Translated value={inhalt.fragenZusatz.schluss} /> : undefined
+        }
+      />
 
       {/* ---- 6 Abschluss --------------------------------------------------- */}
       <CTASection

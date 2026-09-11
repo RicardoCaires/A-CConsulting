@@ -834,8 +834,8 @@ Broker von einem Direktabschluss unterscheidet.
 > (`src/components/blocks/Fragen.tsx`), nach Ricardos Referenzgrafik: grüne
 > Kategoriezeile „Gut zu wissen", grosser Titel, zwei Einleitungssätze, eine
 > zentrierte weisse Karte mit den Fragen, darunter der Zusatz zwischen zwei
-> Linien. **Fragen und Antworten sind unverändert.** Der allgemeine
-> `Accordion` der übrigen fünf Seiten bleibt unberührt.
+> Linien. **Fragen und Antworten sind unverändert.** Seit dem 11.09.2026
+> tragen alle Seiten mit Fragen diesen Baustein — siehe `/treuhand`.
 >
 > **`<details>` statt Knopf mit `aria-expanded`.** Der Auftrag nannte Knöpfe;
 > `<details>` bringt dieselbe Zugänglichkeit ohne JavaScript mit, und die
@@ -1008,8 +1008,55 @@ Betriebe und Selbstständige in der Region.
 > sind wörtlich die der Versicherungsseite.
 >
 > Damit steht „Persönlich. Unabhängig. An Ihrer Seite." jetzt auch auf
-> `/treuhand`. Der allgemeine `Accordion` trägt die Fragen noch auf den
-> übrigen Leistungsseiten.
+> `/treuhand`.
+
+> **Seit dem 11.09.2026 tragen alle Seiten mit häufigen Fragen denselben
+> Baustein** (`src/components/blocks/Fragen.tsx`), auf Ricardos Anweisung
+> „häufige Fragen überall gleich designen": `/versicherungen`, `/treuhand`,
+> `/treuhand/buchhaltung`, `/treuhand/treuhaender-wechseln`, `/steuern` und
+> `/firmengruendung`. Überall dieselbe Kategoriezeile „Gut zu wissen", dieselben
+> zwei Einleitungssätze und derselbe Zusatz „Persönlich. Unabhängig. An Ihrer
+> Seite." — wörtlich die der Versicherungsseite. **Fragen und Antworten sind
+> auf keiner Seite verändert.** Der allgemeine `Accordion` steht nur noch im
+> Styleguide.
+>
+> Auf den Blockseiten ist der Block `fragen`, in Vorlage B der Baustein direkt
+> in der Vorlage; Kategoriezeile, Einleitung und Zusatz stehen dort im
+> optionalen Feld `fragenZusatz` je Sprache. Fehlt es (FR, PT), steht nur der
+> Titel über der Karte.
+
+> **`/treuhand/buchhaltung`: „Was wir übernehmen" und „So läuft die
+> Zusammenarbeit" seit dem 11.09.2026 nach Ricardos Referenzgrafik**, in
+> Vorlage B (`src/components/templates/Leistungsseite.tsx`). Beide Abschnitte
+> liegen auf einer gemeinsamen Fläche mit dem gelieferten Hintergrund (feine
+> grüne Bögen oben rechts und unten links); der Ablauf ist eine Spur blauer
+> abgesetzt. Leistungen als drei weisse Karten mit geliefertem Symbol, Titel
+> und grünem Strich; Ablauf als vier Karten mit Nummernkreis halb über der
+> Kante, gepunktet verbunden, Symbol, Titel und Text. Die Nummernkreise sind
+> die Dateien, die Ricardo für den Ablauf auf `/treuhand` geliefert hat.
+>
+> Die Fläche hat einen **eigenen, breiteren Container (1344 px)** — dieselbe
+> Ausnahme wie beim Modellabschnitt auf `/versicherungen`. Im Standardmass
+> brachen die Titel der Karten eine Zeile tiefer als in der Vorlage.
+>
+> Drei Punkte, auf die Ricardo hingewiesen ist:
+>
+> - **Die zweite Leistung heisst weiterhin „Abstimmung der Konten".** Die
+>   Referenzgrafik zeigt dort „Jahresabschluss". Das ist eine
+>   Leistungsbeschreibung und wird nicht ohne ausdrückliche Anweisung
+>   geändert (Abschnitt 8). Das Symbol der Grafik — das Balkendiagramm — steht
+>   an dieser Stelle.
+> - **Die zwei Zusätze der Grafik sind nicht übernommen** („Zuverlässig.
+>   Strukturiert. An Ihrer Seite.", „Klar. Persönlich. Effizient.") und auch
+>   nicht die Marke „A&C Consulting" unten rechts.
+> - **Die fünf Symbole sind auf ihren Kreis zugeschnitten.** Ricardos Dateien
+>   trugen den Kreis in verschiedenen Grössen (69 bis 82 Prozent der Datei)
+>   und lose halbtransparente Pixel daneben. Zugeschnitten ist nur der
+>   transparente Rand; Kreis und Zeichen sind unverändert.
+>
+> Vorlage B gilt heute nur für diese Seite. Die neuen Felder `bild` und
+> `hintergrund` sind optional; ohne sie fällt die Vorlage auf die Zeichen aus
+> `Icon.tsx` und den hellen Grundton zurück.
 
 ### /steuern
 

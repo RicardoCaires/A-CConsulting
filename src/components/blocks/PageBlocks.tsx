@@ -505,7 +505,10 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               eyebrow={block.eyebrow}
               heading={block.heading}
               lead={block.lead}
-              items={block.items}
+              items={block.items.map((item) => ({
+                question: item.question,
+                answer: <RichText value={item.answer} />,
+              }))}
               schluss={block.schluss}
             />
           )
