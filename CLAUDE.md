@@ -971,6 +971,28 @@ Betriebe und Selbstständige in der Region.
 > Nummern sind SVG mit Georgia als Schrift; fehlt Georgia, nimmt der Browser
 > eine ähnliche Serifenschrift.
 
+> **„Sie haben bereits einen Treuhänder?" ist seit dem 11.09.2026 ein eigener
+> Baustein** (`src/components/blocks/WechselHinweis.tsx`), nach Ricardos
+> Referenzgrafik: links Kategoriezeile „Treuhand wechseln", Titel, Absatz und
+> ein grün umrandeter Link auf `/treuhand/treuhaender-wechseln`; rechts eine
+> Karte mit drei Schritten — gelieferte Nummer, geliefertes Symbol, Titel und
+> Satz, die Nummern senkrecht verbunden. **Titel, Absatz und Link sind
+> unverändert.** Der Link ist kein `Button`; die allgemeinen Knöpfe bleiben
+> unberührt.
+>
+> **Kategoriezeile und die drei Schritte stammen aus der Referenzgrafik**
+> (`content/source/treuhand_wechsel_de.md`). Ricardo ist auf den Ton
+> hingewiesen: „Reibungslos", „idealen Zeitpunkt" und „sichere Übernahme"
+> klingen verbindlicher als der Absatz daneben, der vom „geeigneten Zeitpunkt"
+> spricht.
+>
+> **Der Grund bleibt weiss** (Flächenfolge): Darüber steht der Ablauf
+> hellblau, darunter die Fragen auf `background_light`. Die Referenz zeigt
+> dahinter feine Bögen — dafür lag keine Datei bei, nachgezeichnet wird nichts.
+>
+> Die Symbole und Nummern tragen ein Grün, das weder `accent_green` noch dem
+> Grün der Leistungssymbole entspricht. Auf Ricardos Regel hin unverändert.
+
 ### /steuern
 
 Getrennt für Privatpersonen und Firmen. Enthält zusätzlich:
