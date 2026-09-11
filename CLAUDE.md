@@ -992,6 +992,24 @@ Betriebe und Selbstständige in der Region.
 >
 > Die Symbole und Nummern tragen ein Grün, das weder `accent_green` noch dem
 > Grün der Leistungssymbole entspricht. Auf Ricardos Regel hin unverändert.
+>
+> **Das Handschlag-Symbol ist seit dem 11.09.2026 Ricardos zweite Lieferung**,
+> ein PNG statt des SVG (`03_handschlag.webp`). Sein Kreis nimmt 72.8 Prozent
+> der Datei ein, bei den beiden anderen Symbolen 62.5; der Baustein rechnet die
+> Grösse je Datei um, damit alle drei Kreise gleich gross stehen.
+> `03_reibungslos_uebernehmen.svg` bleibt liegen, steht aber auf keiner Seite
+> mehr.
+
+> **„Häufige Fragen" auf `/treuhand` läuft seit dem 11.09.2026 über denselben
+> Baustein wie auf `/versicherungen`** (`fragen`), auf Ricardos Anweisung
+> „gleich wie bei Versicherungen": Kategoriezeile „Gut zu wissen", zwei
+> Einleitungssätze, weisse Karte, Zusatz darunter, hellblauer Grund. **Fragen
+> und Antworten sind unverändert.** Kategoriezeile, Einleitung und Zusatz
+> sind wörtlich die der Versicherungsseite.
+>
+> Damit steht „Persönlich. Unabhängig. An Ihrer Seite." jetzt auch auf
+> `/treuhand`. Der allgemeine `Accordion` trägt die Fragen noch auf den
+> übrigen Leistungsseiten.
 
 ### /steuern
 

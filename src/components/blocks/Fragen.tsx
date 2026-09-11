@@ -77,8 +77,10 @@ export function Fragen({ id, eyebrow, heading, lead, items, schluss }: Props) {
           ))}
         </div>
 
-        {/* Der Zusatz steht auf dieser Seite zum zweiten Mal — auch im
-            Modellabschnitt. Ricardo hat ihn hier ausdruecklich verlangt. */}
+        {/* Auf `/versicherungen` steht der Zusatz zum zweiten Mal — auch im
+            Modellabschnitt. Ricardo hat ihn dort ausdruecklich verlangt und
+            am 11.09.2026 fuer `/treuhand` uebernommen („gleich wie bei
+            Versicherungen"). */}
         <p className={styles.schluss}>{schluss}</p>
       </div>
     </section>

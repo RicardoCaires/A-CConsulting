@@ -185,11 +185,18 @@
   margin-top: calc(var(--nr) * -0.162 + var(--versatz));
 }
 
+/* Die Datei wird so gross gesetzt, dass ihr Kreis genau `--symbol` misst —
+   bei den SVG ist er 62.5 Prozent der Datei, beim gelieferten Handschlag 72.8.
+   Der ueberstehende Rand wird mit einem negativen Aussenabstand ausgeglichen,
+   nicht beschnitten. */
 .icon {
+  --anteil: 0.625;
+  --kante: calc(var(--symbol) / var(--anteil));
+
   grid-area: icon;
-  width: var(--icon);
-  height: var(--icon);
-  margin: calc(var(--icon) * -0.1875);
+  width: var(--kante);
+  height: var(--kante);
+  margin: calc((var(--symbol) - var(--kante)) / 2);
 }
 
 .schrittText {

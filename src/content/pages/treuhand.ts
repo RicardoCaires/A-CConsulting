@@ -156,18 +156,30 @@ export const treuhand: PageContent = {
         },
         {
           nummer: '06_schritt_3',
-          bild: '03_reibungslos_uebernehmen',
+          // Seit dem 11.09.2026 Ricardos Handschlag als Bilddatei. Ihr Kreis
+          // nimmt 72.8 Prozent der Datei ein, bei den SVG sind es 62.5.
+          bild: '03_handschlag',
+          bildFormat: 'webp',
+          kreisAnteil: 0.728,
           titel: 'Reibungslos übernehmen',
           satz: 'Wir sorgen für eine strukturierte und sichere Übernahme.',
         },
       ],
     },
 
-    // 10 Häufige Fragen
+    // 10 Häufige Fragen — seit dem 11.09.2026 im Baustein der
+    // Versicherungsseite (`fragen`), auf Ricardos Anweisung „gleich wie bei
+    // Versicherungen". Fragen und Antworten unveraendert; Kategoriezeile,
+    // Einleitung und Zusatz wie dort (`content/source/versicherungen_fragen_de.md`).
     {
-      kind: 'faq',
+      kind: 'fragen',
       id: 'fragen',
+      eyebrow: 'Gut zu wissen',
       heading: 'Häufige Fragen',
+      lead: [
+        'Hier finden Sie kompakte Antworten auf die wichtigsten Fragen.',
+        'Sollten Sie weitere Anliegen haben, sind wir gerne persönlich für Sie da.',
+      ],
       items: [
         {
           question: 'Welche Software setzen Sie ein?',
@@ -186,6 +198,7 @@ export const treuhand: PageContent = {
           answer: 'Ihre Daten werden in der Schweiz verarbeitet und vertraulich behandelt.',
         },
       ],
+      schluss: 'Persönlich. Unabhängig. An Ihrer Seite.',
     },
   ],
 }

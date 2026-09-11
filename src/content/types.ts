@@ -369,6 +369,13 @@ export type Block =
         nummer: string
         /** Symbol unter `public/bilder/treuhand/wechsel/`, ohne Endung. */
         bild: string
+        /** Endung des Symbols. Ohne Angabe SVG. */
+        bildFormat?: 'svg' | 'webp'
+        /**
+         * Anteil des sichtbaren Kreises an der Datei. Ohne Angabe 0.625 wie
+         * bei den gelieferten SVG — damit alle Kreise gleich gross wirken.
+         */
+        kreisAnteil?: number
         titel: string
         satz: string
       }[]

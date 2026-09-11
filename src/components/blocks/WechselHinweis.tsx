@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import Image from 'next/image'
 
 import type { Locale } from '@/i18n/config'
@@ -29,6 +30,8 @@ import styles from './WechselHinweis.module.css'
 type Schritt = {
   nummer: string
   bild: string
+  bildFormat?: 'svg' | 'webp'
+  kreisAnteil?: number
   titel: string
   satz: string
 }
@@ -43,7 +46,8 @@ type Props = {
   locale: Locale
 }
 
-const bildPfad = (datei: string) => `/bilder/treuhand/wechsel/${datei}.svg`
+const bildPfad = (datei: string, format: 'svg' | 'webp' = 'svg') =>
+  `/bilder/treuhand/wechsel/${datei}.${format}`
 
 export function WechselHinweis({
   headingId,
@@ -89,13 +93,21 @@ export function WechselHinweis({
                 height={512}
                 unoptimized
               />
+              {/* Ein Symbol mit anderem Kreisanteil bringt ihn als Variable mit;
+                  das Stylesheet rechnet daraus die Dateigroesse, bei der sein
+                  Kreis so gross ist wie die der anderen. */}
               <Image
                 className={styles.icon}
-                src={bildPfad(schritt.bild)}
+                src={bildPfad(schritt.bild, schritt.bildFormat)}
                 alt=""
                 width={512}
                 height={512}
                 unoptimized
+                style={
+                  schritt.kreisAnteil
+                    ? ({ '--anteil': schritt.kreisAnteil } as CSSProperties)
+                    : undefined
+                }
               />
               <div className={styles.schrittText}>
                 <h3 className={styles.schrittTitel}>{schritt.titel}</h3>
