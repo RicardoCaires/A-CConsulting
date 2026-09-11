@@ -11,19 +11,19 @@ import styles from './Header.module.css'
 /**
  * Kopfbereich — auf jeder Seite identisch.
  *
- * Zwei Anordnungen aus **einem** Markup, gesetzt ueber ein Raster:
+ * Drei Anordnungen aus **einem** Markup, gesetzt ueber ein Raster:
  *
- *   schmal   Logo · Menue · Sprachwahl        — eine Zeile
- *   breit    Logo mittig, Sprachwahl und      — zwei Zeilen
- *            Knopf rechts; darunter die
- *            Kategorien, ebenfalls mittig
+ *   schmal            Logo · Menue · Sprachwahl     — eine Zeile
+ *   64rem bis 75rem   Logo mittig, Knopf rechts;    — zwei Zeilen
+ *                     darunter die Kategorien
+ *   ab 75rem          Logo · Kategorien · Knopf     — eine Zeile
  *
- * Die breite Fassung stammt vom 09.09.2026. Vorher stand das Logo links und
- * die Kategorien rechts daneben — mit fuenf Punkten, Sprachwahl und Knopf war
- * die Zeile voll, und die Kategorien liefen bei rund 1280 px ueber die
- * Wortmarke. Zwei Zeilen loesen das nicht durch einen Kniff, sondern weil
- * Logo und Navigation nicht mehr um dieselbe Zeile konkurrieren. Beide haben
- * die ganze Breite; das Logo darf darum groesser stehen.
+ * Die einzeilige Fassung ab 75rem stammt vom 11.09.2026 und folgt Ricardos
+ * Referenz: gruene Linie oben, Kategorien mittig, der Knopf mit Pfeil rechts.
+ * Sie passt, weil der Kopf dort einen eigenen, breiteren Container hat und
+ * seit dem 09.09.2026 nur noch vier Kategorien in der Reihe stehen. Darunter
+ * bleibt es bei zwei Zeilen — bei 1024 px liefen die Kategorien sonst wieder
+ * ueber die Wortmarke.
  *
  * Die Reihenfolge im Markup ist die des schmalen Geraets. Auf breiten Fenstern
  * ordnet das Raster um — die Navigation bleibt im Quelltext an derselben
@@ -50,6 +50,9 @@ export function Header({ locale }: Props) {
           <LanguageSwitcher locale={locale} />
           <Button href={hrefOrDefault('kontakt', locale)} className={styles.cta}>
             {ui.cta}
+            <span className={styles.pfeil} aria-hidden="true">
+              →
+            </span>
           </Button>
         </div>
       </div>

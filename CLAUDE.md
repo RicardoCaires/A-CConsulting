@@ -376,6 +376,15 @@ noch nicht gibt, bleibt sichtbar und trägt den Vermerk „folgt".
 > grösser, darunter die Kategorien, ebenfalls mittig. Sprachwahl und Knopf
 > stehen rechts. Grund: Mit fünf Kategorien war die eine Zeile voll, und die
 > Navigation lief bei rund 1280 px über das Logo.
+>
+> **Seit dem 11.09.2026 ab 75rem (1200 px) wieder einzeilig**, nach Ricardos
+> Referenz: grüne Linie oben, Logo links, Kategorien mittig, dunkler Knopf mit
+> Pfeil rechts, unten Haarlinie mit sehr weichem Schatten. Möglich, weil
+> „Wissen" aus der Navigation genommen ist — vier Kategorien passen in eine
+> Zeile. Der Kopf hat dafür ab 75rem einen eigenen, breiteren Container
+> (1440 px); im Standardmass von 1160 px blieben zwischen Logo und Navigation
+> nur 23 px Luft. **Zwischen 64rem und 75rem bleibt es zweizeilig** — dort
+> passt eine Zeile nachgemessen nicht.
 
 Seitenbaum:
 

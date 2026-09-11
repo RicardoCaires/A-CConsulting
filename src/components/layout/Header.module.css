@@ -1,14 +1,30 @@
 /* Kopfbereich.
 
-   Weiss, eine Haarlinie nach unten, sonst nichts. Er soll die Seite nicht
-   anfuehren, sondern sie halten: Was auffaellt, ist der Inhalt darunter.
+   Seit dem 11.09.2026 nach Ricardos Referenz: weiss, oben eine gruene Linie,
+   unten eine Haarlinie mit einem sehr weichen Schatten. Auf breiten Fenstern
+   eine Zeile — Logo links, Kategorien mittig, Knopf rechts.
 
-   Ein Raster, zwei Anordnungen. Schmal eine Zeile, breit zwei — siehe
-   Header.tsx. */
+   Drei Anordnungen aus einem Markup, gesetzt ueber ein Raster:
+
+     schmal            Logo · Menue · Sprachwahl             — eine Zeile
+     64rem bis 75rem   Logo mittig, Knopf rechts;            — zwei Zeilen
+                       darunter die Kategorien
+     ab 75rem          Logo · Kategorien · Knopf             — eine Zeile
+
+   Die mittlere Stufe bleibt, weil eine Zeile dort nicht passt: Logo,
+   vier Kategorien mit Untermenue-Winkel und der Knopf brauchen zusammen mehr
+   Breite, als ein Fenster von 1024 px hergibt — bis zum 09.09.2026 lief die
+   Navigation genau dort ueber die Wortmarke. */
 
 .header {
   background-color: var(--ac-surface-header);
+  /* Die gruene Linie der Referenz — der Marker aus dem Corporate Design,
+     dieselbe Staerke wie ueber dem Fussbereich. */
+  border-top: var(--ac-border-marker) solid var(--ac-color-accent-green);
   border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  /* Kaum sichtbar: Der Kopf hebt sich beim Scrollen vom Inhalt ab, statt
+     auf ihm zu liegen. */
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--ac-color-primary-navy) 5%, transparent);
   /* Bleibt beim Scrollen sichtbar — auf langen Seiten waere die Navigation
      sonst nur ganz oben erreichbar. */
   position: sticky;
@@ -23,7 +39,9 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   column-gap: var(--ac-space-2xs);
-  min-height: var(--ac-header-height);
+  /* Die gruene Linie zaehlt zur Hoehe. Ohne diesen Abzug waere der Kopf 3 px
+     hoeher als das Menue-Panel annimmt, das direkt darunter ansetzt. */
+  min-height: calc(var(--ac-header-height) - var(--ac-border-marker));
 }
 
 .logo {
@@ -50,7 +68,17 @@
   display: none;
 }
 
-/* ---- Breite Fenster: zwei Zeilen, beide mittig -------------------------- */
+/* Der Pfeil im Knopf ist ein Schriftzeichen, keine Datei. */
+.pfeil {
+  display: inline-block;
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.cta:hover .pfeil {
+  transform: translateX(3px);
+}
+
+/* ---- 64rem bis 75rem: zwei Zeilen, beide mittig ------------------------- */
 
 @media (min-width: 64rem) {
   .inner {
@@ -71,8 +99,6 @@
     justify-self: center;
   }
 
-  /* Groesser als in der schmalen Fassung: In einer eigenen Zeile hat die
-     Wortmarke den Platz dafuer, und sie traegt den Kopf jetzt allein. */
   .logo img {
     width: clamp(11rem, 8rem + 6vw, 14rem);
   }
@@ -90,14 +116,62 @@
 
   .cta {
     display: inline-flex;
-    min-height: 2.75rem;
-    padding-inline: var(--ac-space-md);
-    font-size: var(--ac-small-size);
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 3rem;
+    padding-inline: 1.5rem;
+    font-size: var(--ac-body-size);
+    border-radius: var(--ac-radius-md);
+  }
+}
+
+/* ---- Ab 75rem: eine Zeile wie in der Referenz --------------------------- */
+
+@media (min-width: 75rem) {
+  /* Eigener, breiterer Container: Im Standardmass von 1160 px blieben
+     zwischen Logo und Navigation nur 23 px Luft — gemessen am 11.09.2026 bei
+     1440 px. Die Referenz laeuft fast ueber die ganze Fensterbreite. Doppelte
+     Klasse, damit die Regel sicher ueber `.ac-container` steht. */
+  .header .inner {
+    max-width: 1440px;
+    padding-inline: clamp(1.5rem, 4vw, 3.5rem);
+  }
+
+  .inner {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 'logo nav aktionen';
+    column-gap: clamp(1.5rem, 3vw, 3rem);
+    row-gap: 0;
+    min-height: 6.25rem;
+    padding-block: 0;
+  }
+
+  .logo {
+    justify-self: start;
+  }
+
+  .logo img {
+    width: clamp(12rem, 6rem + 6vw, 14.5rem);
+  }
+
+  .nav {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pfeil {
+    transition: none;
+  }
+
+  .cta:hover .pfeil {
+    transform: none;
   }
 }
 
 @media print {
   .header {
     position: static;
+    box-shadow: none;
   }
 }
