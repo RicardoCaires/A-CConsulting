@@ -371,3 +371,15 @@ neben `04_schritt_04` des Ablaufs zu leicht zu verwechseln waere.
 Die Symbole tragen einen hellen Kreis (Radius 160), die Nummern einen Kreis
 mit Rand (Radius 170, Rand 6) und die Ziffer in Arial. Beide gruenen Toene der
 Dateien weichen von `accent_green` ab; sie bleiben, wie sie sind.
+
+**Nachlieferung Handschlag, 11.09.2026.** Ricardo hat das Symbol fuer
+„Reibungslos uebernehmen" ersetzt, als PNG unter dem Namen
+`367ab906-f35d-4d62-9ebf-bc35287bd99e.png` (1254 x 1254, weisser Grund, kein
+Alphakanal). Die Datei liegt mit diesem Namen unter `treuhand_wechsel/`,
+ausgeliefert wird sie als `03_handschlag.webp` (224 px). Nichts beschnitten,
+nichts umgefaerbt.
+
+Ihr Kreis misst 913 von 1254 px, also 72.8 Prozent; bei den SVG sind es 62.5.
+Der Baustein setzt die Datei darum etwas kleiner, damit der Kreis so gross
+steht wie die beiden anderen. `03_reibungslos_uebernehmen.svg` bleibt liegen,
+steht aber auf keiner Seite mehr.
