@@ -285,6 +285,23 @@ export type Block =
         gesellschaften: readonly { bild: string; name: string; url: string }[]
       }
     }
+  /**
+   * Die haeufigen Fragen als eigener Abschnitt: Kategoriezeile, Titel, zwei
+   * Einleitungssaetze, eine weisse Karte mit den Fragen und ein Zusatz darunter.
+   *
+   * Loest auf `/versicherungen` den allgemeinen `faq`-Block ab (11.09.2026,
+   * Referenzgrafik von Ricardo). Der `faq`-Block bleibt fuer die uebrigen
+   * Seiten unveraendert.
+   */
+  | {
+      kind: 'fragen'
+      id: string
+      eyebrow: string
+      heading: string
+      lead: readonly string[]
+      items: readonly { question: string; answer: Rich }[]
+      schluss: string
+    }
   /** Sprungmarken innerhalb der Seite. */
   | {
       kind: 'anchors'
@@ -373,6 +390,7 @@ export function pendingInPage(page: PageContent): string[] {
         block.outro?.forEach(add)
         break
       case 'faq':
+      case 'fragen':
         block.items.forEach((item) => add(item.answer))
         break
       case 'cta':

@@ -335,10 +335,21 @@ export const versicherungen: PageContent = {
 
 
     // 11 Häufige Fragen
+    //
+    // Seit dem 11.09.2026 ein eigener Abschnitt nach Ricardos Referenzgrafik
+    // statt des allgemeinen `faq`-Blocks. **Fragen und Antworten sind
+    // unveraendert.** Neu sind die Kategoriezeile, die zwei Einleitungssaetze
+    // und der Zusatz unter der Karte; sie stehen in
+    // `content/source/versicherungen_fragen_de.md`.
     {
-      kind: 'faq',
+      kind: 'fragen',
       id: 'fragen',
+      eyebrow: 'Gut zu wissen',
       heading: 'Häufige Fragen',
+      lead: [
+        'Hier finden Sie kompakte Antworten auf die wichtigsten Fragen.',
+        'Sollten Sie weitere Anliegen haben, sind wir gerne persönlich für Sie da.',
+      ],
       items: [
         {
           question: 'Kostet mich die Beratung etwas?',
@@ -363,6 +374,7 @@ export const versicherungen: PageContent = {
             'Auf Deutsch, Französisch oder Portugiesisch. Sagen Sie uns einfach, was Ihnen lieber ist.',
         },
       ],
+      schluss: 'Persönlich. Unabhängig. An Ihrer Seite.',
     },
   ],
 }

@@ -8,6 +8,7 @@ import { PageLink } from '@/components/ui/PageLink'
 import { hatSichtbarenInhalt, RichText } from '@/components/ui/RichText'
 import { Accordion } from './Accordion'
 import { Betreuung } from './Betreuung'
+import { Fragen } from './Fragen'
 import { Schadenfall } from './Schadenfall'
 import { CTASection } from './CTASection'
 import { Segmente } from './Segmente'
@@ -164,7 +165,8 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
     block.kind === 'serviceNav' ||
     block.kind === 'segmente' ||
     block.kind === 'betreuung' ||
-    block.kind === 'schadenfall'
+    block.kind === 'schadenfall' ||
+    block.kind === 'fragen'
       ? undefined
       : block.id
         ? `${block.id}-titel`
@@ -446,6 +448,23 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               heading={block.heading}
               lead={<Paragraphs items={block.paragraphs} className={styles.ctaLead} />}
               actions={<Actions actions={block.actions} locale={locale} />}
+            />
+          )
+        }
+
+        // Die haeufigen Fragen auf `/versicherungen` sind ein eigener Baustein
+        // und bringen ihre Flaeche selbst mit. Der allgemeine `faq`-Block der
+        // uebrigen Seiten bleibt davon unberuehrt.
+        if (block.kind === 'fragen') {
+          return (
+            <Fragen
+              key={index}
+              id={block.id}
+              eyebrow={block.eyebrow}
+              heading={block.heading}
+              lead={block.lead}
+              items={block.items}
+              schluss={block.schluss}
             />
           )
         }

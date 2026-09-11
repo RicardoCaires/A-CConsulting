@@ -717,16 +717,12 @@ Textabschnitt: A&C vertritt den Kunden, nicht die Versicherung.
 > Handlungsknopf steht im Seitenkopf und im Kopfbereich. **Ricardo ist darauf
 > hingewiesen.**
 >
-> **Damit sagt die Seite nichts mehr zur Vergütung.** Das betrifft drei Punkte,
-> die weiter oben in diesem Abschnitt als Inhalt von `/versicherungen` stehen:
-> was ein Maklermandat ist, **was es kostet (nichts)** und wie die Entschädigung
-> funktioniert. Der Satz „Für Sie ist die Arbeit im Rahmen des Maklermandats
-> kostenlos" stand nur dort. **Ricardo ist darauf hingewiesen; die Entscheidung
-> ist seine.**
->
-> Für einen Broker ist das keine gestalterische Frage: Wie er entschädigt wird,
-> ist die Angabe, die ihn vom Direktabschluss unterscheidet. Solange
-> `/transparenz` nicht existiert, steht sie nirgends auf der Website.
+> **Zur Vergütung steht auf der Seite nur noch die häufige Frage „Kostet mich
+> die Beratung etwas?".** Ihre Antwort sagt, dass A&C über die Courtage
+> entschädigt wird und das Maklermandat für die Kundschaft kostenlos ist. Der
+> ausführliche Abschnitt „Wie wir entschädigt werden" ist entfallen. Eine
+> frühere Fassung dieser Notiz behauptete, die Aussage stehe nirgends mehr —
+> das war falsch und ist am 11.09.2026 korrigiert.
 >
 > Die **FINMA-Registrierung** stand ebenfalls in einem der gestrichenen Texte.
 > Sie ist nicht verloren: Sie steht im Fussbereich jeder Seite und vollständig
@@ -824,6 +820,22 @@ Broker von einem Direktabschluss unterscheidet.
 > klicken.", grün unterstrichen wie die Kontaktangaben im Abschluss der
 > Startseite. Die Bewegung beim Darüberfahren ist verstärkt; sie bleibt hinter
 > `prefers-reduced-motion` abschaltbar.
+
+> **„Häufige Fragen" ist seit dem 11.09.2026 ein eigener Baustein**
+> (`src/components/blocks/Fragen.tsx`), nach Ricardos Referenzgrafik: grüne
+> Kategoriezeile „Gut zu wissen", grosser Titel, zwei Einleitungssätze, eine
+> zentrierte weisse Karte mit den Fragen, darunter der Zusatz zwischen zwei
+> Linien. **Fragen und Antworten sind unverändert.** Der allgemeine
+> `Accordion` der übrigen fünf Seiten bleibt unberührt.
+>
+> **`<details>` statt Knopf mit `aria-expanded`.** Der Auftrag nannte Knöpfe;
+> `<details>` bringt dieselbe Zugänglichkeit ohne JavaScript mit, und die
+> Hausordnung verlangt, dass Inhalte ohne Skript funktionieren. Das Aufklappen
+> ist animiert, wo der Browser es kann, und öffnet sonst sofort.
+>
+> **„Persönlich. Unabhängig. An Ihrer Seite." steht damit zweimal auf der
+> Seite** — im Modellabschnitt und unter den Fragen. Ricardo hat es hier
+> ausdrücklich verlangt und ist darauf hingewiesen.
 
 Kein Prämienrechner, keine Vergleichstabellen mit Versicherernamen.
 
