@@ -161,8 +161,13 @@ export type Leistungsseite = {
   /** Optional: der von der Startseite abgegebene Fliesstext landet hier. */
   vertiefung?: Vertiefung
   faq: readonly FaqEintrag[]
-  ctaVariante: CtaVariante
-  cta: {
+  /**
+   * Der Abschluss unter den Fragen. Optional seit dem 11.09.2026: Ricardo hat
+   * ihn auf `/treuhand/buchhaltung` streichen lassen. Ohne ihn traegt der
+   * Knopf im Seitenkopf die Beschriftung der Kopfzeile.
+   */
+  ctaVariante?: CtaVariante
+  cta?: {
     titel: Text
     text: RichText
     /** Beschriftung des Handlungsknopfs. Steht so in Schritt 4. */
@@ -226,9 +231,12 @@ export function pruefeLeistungsseite(seite: Leistungsseite): void {
   pflichtRich('nutzenSatz', seite.nutzenSatz)
   pflichtText('seoTitel', seite.seoTitel)
   pflichtText('seoBeschreibung', seite.seoBeschreibung)
-  pflichtText('cta.titel', seite.cta?.titel)
-  pflichtRich('cta.text', seite.cta?.text)
-  pflichtText('cta.knopf', seite.cta?.knopf)
+  // Der Abschluss ist optional. Steht er da, muss er vollstaendig sein.
+  if (seite.cta) {
+    pflichtText('cta.titel', seite.cta.titel)
+    pflichtRich('cta.text', seite.cta.text)
+    pflichtText('cta.knopf', seite.cta.knopf)
+  }
   pflichtText('abschnitte.leistungen', seite.abschnitte?.leistungen)
   pflichtText('abschnitte.ablauf', seite.abschnitte?.ablauf)
   pflichtText('abschnitte.fragen', seite.abschnitte?.fragen)

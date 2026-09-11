@@ -130,11 +130,7 @@ export const buchhaltungDe: Leistungsseite = {
     },
   ],
 
-  // Quelle Abschnitt 11 „Abschluss"
-  ctaVariante: 'flaeche',
-  cta: {
-    titel: 'Reden wir über Ihre Administration',
-    text: 'Im Erstgespräch schauen wir an, was heute bei Ihnen liegt und was davon zu uns kann. Danach wissen Sie, was eine Zusammenarbeit für Sie bedeuten würde.',
-    knopf: 'Erstgespräch anfragen',
-  },
+  // Der Abschluss „Reden wir über Ihre Administration" ist am 11.09.2026 auf
+  // Ricardos Anweisung entfallen. Der Knopf im Seitenkopf traegt seither die
+  // Beschriftung der Kopfzeile (`ui.cta`).
 }

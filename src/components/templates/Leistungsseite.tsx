@@ -27,7 +27,7 @@ import styles from './Leistungsseite.module.css'
  *   3 Ablauf         vier Karten, Nummern verbunden               ┘ Flaeche
  *   4 Vertiefung     optional; hier landet abgegebener Fliesstext — weiss
  *   5 Fragen         der Baustein `Fragen`, hellblau
- *   6 Abschluss      CTASection                                   — FLAECHE
+ *   6 Abschluss      CTASection, optional                         — FLAECHE
  *
  * **2 und 3 seit dem 11.09.2026 nach Ricardos Referenzgrafik** fuer
  * `/treuhand/buchhaltung`: beide auf einer gemeinsamen Flaeche mit dem
@@ -78,13 +78,23 @@ export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
 
   // Kopf und Abschluss bringen ihre Flaeche selbst mit.
   const flaechen = flaechenFolge(inhalt.vertiefung ? 4 : 3)
-  const fAbschluss: Surface = inhalt.ctaVariante === 'flaeche' ? 'flaeche' : 'hell'
+  // Der Abschluss ist optional — auf `/treuhand/buchhaltung` seit dem
+  // 11.09.2026 gestrichen.
+  const fAbschluss: Surface | undefined = inhalt.cta
+    ? inhalt.ctaVariante === 'hell'
+      ? 'hell'
+      : 'flaeche'
+    : undefined
 
-  pruefeFlaechen(['dominant', ...flaechen, fAbschluss], String(inhalt.slug))
+  pruefeFlaechen(
+    ['dominant', ...flaechen, ...(fAbschluss ? [fAbschluss] : [])],
+    String(inhalt.slug),
+  )
 
   const fVertiefung = inhalt.vertiefung ? flaechen[2] : undefined
 
-  const knopf = alsText(inhalt.cta.knopf, ui.page.kontakt)
+  // Ohne Abschluss nimmt der Knopf im Seitenkopf die Beschriftung der Kopfzeile.
+  const knopf = inhalt.cta ? alsText(inhalt.cta.knopf, ui.cta) : ui.cta
   const bildPfad = (datei: string) => `/bilder/${inhalt.slug}/${datei}.webp`
 
   const symbol = (bild: string | undefined, fallback: Parameters<typeof Icon>[0]['name']) =>
@@ -256,18 +266,20 @@ export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
         }
       />
 
-      {/* ---- 6 Abschluss --------------------------------------------------- */}
-      <CTASection
-        id="abschluss"
-        heading={<Translated value={inhalt.cta.titel} />}
-        surface={fAbschluss}
-        lead={
-          <p>
-            <TranslatedRich value={inhalt.cta.text} />
-          </p>
-        }
-        actions={<Button href={hrefOrDefault('kontakt', locale)}>{knopf}</Button>}
-      />
+      {/* ---- 6 Abschluss, optional ---------------------------------------- */}
+      {inhalt.cta && fAbschluss && (
+        <CTASection
+          id="abschluss"
+          heading={<Translated value={inhalt.cta.titel} />}
+          surface={fAbschluss}
+          lead={
+            <p>
+              <TranslatedRich value={inhalt.cta.text} />
+            </p>
+          }
+          actions={<Button href={hrefOrDefault('kontakt', locale)}>{knopf}</Button>}
+        />
+      )}
     </>
   )
 }

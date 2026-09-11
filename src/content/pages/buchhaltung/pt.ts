@@ -61,11 +61,4 @@ export const buchhaltungPt: Leistungsseite = {
     titel: { missing: 'Überschrift des vertiefenden Abschnitts' },
     absaetze: [{ missing: 'Text des vertiefenden Abschnitts samt Aufzählung' }],
   },
-
-  ctaVariante: 'flaeche',
-  cta: {
-    titel: { missing: 'Überschrift des Abschlusses' },
-    text: { missing: 'Text des Abschlusses' },
-    knopf: { missing: 'Beschriftung des Handlungsknopfs' },
-  },
 }
