@@ -3,8 +3,7 @@ import Image from 'next/image'
 import { CTASection } from '@/components/blocks/CTASection'
 import { Fragen } from '@/components/blocks/Fragen'
 import { Hero } from '@/components/blocks/Hero'
-import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
-import { SectionHeader } from '@/components/blocks/SectionHeader'
+import { pruefeFlaechen, type Surface } from '@/components/blocks/Section'
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
 import { RichText } from '@/components/ui/RichText'
@@ -91,7 +90,7 @@ export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
     String(inhalt.slug),
   )
 
-  const fVertiefung = inhalt.vertiefung ? flaechen[2] : undefined
+  const vertiefung = inhalt.vertiefung
 
   // Ohne Abschluss nimmt der Knopf im Seitenkopf die Beschriftung der Kopfzeile.
   const knopf = inhalt.cta ? alsText(inhalt.cta.knopf, ui.cta) : ui.cta
@@ -214,37 +213,95 @@ export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
         </section>
       </div>
 
-      {/* ---- 4 Vertiefung, optional --------------------------------------- */}
-      {inhalt.vertiefung && fVertiefung && (
-        <Section surface={fVertiefung} id="vertiefung" labelledBy="vertiefung-titel" measure>
-          <SectionHeader
-            id="vertiefung-titel"
-            heading={<Translated value={inhalt.vertiefung.titel} />}
-          />
-          <div className={styles.vertiefung}>
-            {inhalt.vertiefung.absaetze.map((absatz, index) => (
-              <p key={index}>
-                <TranslatedRich value={absatz} />
-              </p>
-            ))}
+      {/* ---- 4 Vertiefung, optional ---------------------------------------
 
-            {inhalt.vertiefung.liste && (
-              <ul className={styles.liste}>
-                {inhalt.vertiefung.liste.map((eintrag, index) => (
-                  <li key={index}>
-                    <RichText value={eintrag} />
-                  </li>
+          Seit dem 11.09.2026 nach Ricardos Referenzgrafik fuer „Was Sie uns
+          liefern": links Titel und Einleitung, rechts die Aufzaehlung als
+          Karte mit Symbolen, unten der Nachsatz als Leiste. Was eine Seite
+          nicht mitbringt (Liste, Symbole, Nachsatz, Hintergrund), entfaellt
+          einfach — die Vorlage bleibt fuer andere Seiten nutzbar. */}
+      {vertiefung && (
+        <section
+          id="vertiefung"
+          aria-labelledby="vertiefung-titel"
+          className={styles.liefern}
+          style={
+            vertiefung.hintergrund
+              ? { backgroundImage: `url(${bildPfad(vertiefung.hintergrund)})` }
+              : undefined
+          }
+        >
+          <div className={`ac-container ${styles.liefernContainer}`}>
+            <div className={styles.liefernRaster}>
+              <div>
+                <h2 id="vertiefung-titel" className={styles.zonenTitel}>
+                  <Translated value={vertiefung.titel} />
+                </h2>
+                {vertiefung.absaetze.map((absatz, index) => (
+                  <p key={index} className={styles.liefernLead}>
+                    <TranslatedRich value={absatz} />
+                  </p>
                 ))}
-              </ul>
-            )}
+              </div>
 
-            {inhalt.vertiefung.nachsatz?.map((absatz, index) => (
-              <p key={index}>
-                <RichText value={absatz} />
-              </p>
-            ))}
+              {vertiefung.liste && vertiefung.liste.length > 0 && (
+                <div className={styles.liefernKarte}>
+                  {vertiefung.listenTitel && (
+                    <p className={styles.liefernKartenTitel}>
+                      <Translated value={vertiefung.listenTitel} />
+                    </p>
+                  )}
+                  <ul className={styles.liefernListe} role="list">
+                    {vertiefung.liste.map((eintrag, index) => {
+                      const bild = vertiefung.listenBilder?.[index]
+                      return (
+                        <li key={index} className={styles.liefernEintrag}>
+                          {bild ? (
+                            <Image
+                              className={styles.liefernSymbol}
+                              src={bildPfad(bild)}
+                              alt=""
+                              width={256}
+                              height={256}
+                              unoptimized
+                            />
+                          ) : (
+                            <span aria-hidden="true" />
+                          )}
+                          <span className={styles.liefernEintragText}>
+                            <RichText value={eintrag} />
+                          </span>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+              )}
+
+              {vertiefung.nachsatz && vertiefung.nachsatz.length > 0 && (
+                <div className={styles.liefernHinweis}>
+                  {vertiefung.nachsatzBild && (
+                    <Image
+                      className={styles.liefernSymbol}
+                      src={bildPfad(vertiefung.nachsatzBild)}
+                      alt=""
+                      width={256}
+                      height={256}
+                      unoptimized
+                    />
+                  )}
+                  <div className={styles.liefernHinweisText}>
+                    {vertiefung.nachsatz.map((absatz, index) => (
+                      <p key={index}>
+                        <RichText value={absatz} />
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-        </Section>
+        </section>
       )}
 
       {/* ---- 5 Häufige Fragen — derselbe Baustein wie auf jeder Seite ----- */}

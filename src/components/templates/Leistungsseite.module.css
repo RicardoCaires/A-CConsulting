@@ -255,24 +255,168 @@
   border-radius: var(--ac-radius-sm);
 }
 
-/* ---- 4 Vertiefung -------------------------------------------------------- */
+/* ---- 4 Was Sie uns liefern -------------------------------------------------
 
-.vertiefung {
-  margin-top: var(--ac-space-md);
+   Nach Ricardos Referenzgrafik vom 11.09.2026 (1672 x 941), mit dem
+   gelieferten Hintergrund. Aus der Vorlage gemessen (Inhalt x 117 bis 1562):
+
+     Text links    bis x 820, Karte rechts ab x 890 — 672 px breit
+     Karte         Symbolkreis 78 px; Trennlinien nur unter dem Text
+     Leiste        unten ueber die volle Breite: Symbol, senkrechte Linie, Text
+
+   Die Trennlinie hat Ricardo als eigene Datei geliefert: eine feine Linie im
+   Ton von `border_tint`. Sie steht als Rahmen im Stylesheet, nicht als Bild —
+   das Bild einer 1-px-Linie wird beim Skalieren unscharf.
+
+   Gleicher breiter Container wie die Flaeche darueber. */
+
+.liefern {
+  padding-block: var(--ac-section-y);
+  background-color: var(--ac-color-white);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.vertiefung p + p {
+.liefern .liefernContainer {
+  max-width: 84rem;
+}
+
+.liefernRaster {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.liefernLead {
+  margin: var(--ac-space-md) 0 0;
+  max-width: 44ch;
+  font-size: var(--ac-lead-size);
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--ac-color-primary-navy) 80%, var(--ac-color-text-secondary));
+}
+
+.liefernLead + .liefernLead {
   margin-top: var(--ac-space-sm);
 }
 
-/* Aufzaehlung im vertiefenden Abschnitt. */
-.liste {
-  margin-top: var(--ac-space-sm);
-  padding-left: var(--ac-space-md);
+.liefernKarte,
+.liefernHinweis {
+  background-color: var(--ac-color-white);
+  border-radius: 16px;
+  box-shadow: 0 14px 40px color-mix(in srgb, var(--ac-color-primary-navy) 7%, transparent);
 }
 
-.liste li + li {
-  margin-top: var(--ac-space-3xs);
+.liefernKarte {
+  padding: clamp(1.5rem, 2.6vw, 2.25rem) clamp(1.25rem, 2.6vw, 2.5rem);
+}
+
+/* Blaugrau wie in der Vorlage, aber dunkel genug fuer AA auf Weiss. */
+.liefernKartenTitel {
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ac-color-primary-navy) 75%, var(--ac-color-white));
+}
+
+.liefernListe {
+  --symbol: clamp(3.25rem, 2.75rem + 1.2vw, 4.25rem);
+  --spalt: clamp(1rem, 2vw, 1.75rem);
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.liefernEintrag {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--symbol) minmax(0, 1fr);
+  column-gap: var(--spalt);
+  align-items: center;
+  padding-block: clamp(0.625rem, 1.2vw, 0.875rem);
+}
+
+/* Die Trennlinie beginnt am Text, nicht am Symbol — wie in der Vorlage. */
+.liefernEintrag + .liefernEintrag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: calc(var(--symbol) + var(--spalt));
+  right: 0;
+  height: var(--ac-border-hairline);
+  background-color: var(--ac-color-border-tint);
+}
+
+/* Die gelieferten Symbole sind auf ihren Kreis zugeschnitten. */
+.liefernSymbol {
+  display: block;
+  flex: none;
+  width: var(--symbol, 4rem);
+  max-width: none;
+  height: var(--symbol, 4rem);
+}
+
+.liefernEintragText,
+.liefernHinweisText {
+  font-size: clamp(1.0625rem, 0.95rem + 0.35vw, 1.25rem);
+  color: var(--ac-color-primary-navy);
+}
+
+.liefernEintragText {
+  line-height: 1.4;
+}
+
+.liefernHinweis {
+  --symbol: clamp(3.25rem, 2.75rem + 1vw, 4rem);
+
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.4vw, 2.5rem);
+  padding: clamp(1rem, 2vw, 1.5rem) clamp(1.25rem, 2.6vw, 2.25rem);
+}
+
+/* Die senkrechte Linie zwischen Symbol und Text. */
+.liefernHinweisText {
+  padding-left: clamp(1rem, 2.4vw, 2.5rem);
+  border-left: var(--ac-border-hairline) solid var(--ac-color-border-tint);
+  line-height: 1.5;
+}
+
+.liefernHinweisText p + p {
+  margin-top: var(--ac-space-2xs);
+}
+
+/* Auf dem Telefon stehen Symbol und Text untereinander, die Linie liegt
+   dazwischen waagrecht. Nebeneinander brach der Satz bei 375 px auf sieben
+   Zeilen — gemessen am 11.09.2026. */
+@media (max-width: 39.99rem) {
+  .liefernHinweis {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ac-space-sm);
+  }
+
+  .liefernHinweisText {
+    padding-top: var(--ac-space-sm);
+    padding-left: 0;
+    border-top: var(--ac-border-hairline) solid var(--ac-color-border-tint);
+    border-left: 0;
+  }
+}
+
+@media (min-width: 64rem) {
+  .liefernRaster {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    column-gap: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .liefernHinweis {
+    grid-column: 1 / -1;
+  }
 }
 
 /* ---- Ab Tablet: zwei Ablaufkarten je Reihe ---------------------------------- */

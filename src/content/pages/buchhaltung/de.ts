@@ -87,7 +87,17 @@ export const buchhaltungDe: Leistungsseite = {
     titel: 'Was Sie uns liefern',
     absaetze: [
       'Sie müssen keine Buchhaltungssoftware bedienen und nichts vorbuchen. Sortiert ist hilfreich, nötig ist es nicht — das Ordnen übernehmen wir.',
-      'In der Regel brauchen wir von Ihnen:',
+    ],
+    // Seit dem 11.09.2026 Titel der Karte statt zweiter Absatz — nach Ricardos
+    // Referenzgrafik. Wortlaut unveraendert.
+    listenTitel: 'In der Regel brauchen wir von Ihnen:',
+    // Gelieferte Symbole, in der Reihenfolge der Liste.
+    listenBilder: [
+      'liefern_dokument',
+      'liefern_dokument',
+      'liefern_eingang',
+      'liefern_quittung',
+      'liefern_personen',
     ],
     liste: [
       'Kontoauszüge',
@@ -99,6 +109,8 @@ export const buchhaltungDe: Leistungsseite = {
     nachsatz: [
       'In welcher Form und in welchem Rhythmus Sie das liefern, halten wir zu Beginn fest. Sie können uns die Unterlagen digital oder physisch übergeben.',
     ],
+    nachsatzBild: 'liefern_laptop',
+    hintergrund: 'liefern_hintergrund',
   },
 
   // Kategoriezeile, Einleitung und Zusatz der Fragen wie auf /versicherungen —

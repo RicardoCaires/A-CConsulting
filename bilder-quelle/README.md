@@ -411,3 +411,27 @@ Flaeche.
 
 Die Nummernkreise des Ablaufs sind keine neuen Dateien, sondern
 `01_schritt_01` bis `04_schritt_04` aus dem Ablauf der Treuhandseite.
+
+## Buchhaltung — Was Sie uns liefern
+
+Am 11.09.2026 geliefert, acht PNG. Sie liegen mit ihren Namen unter
+`buchhaltung/`; die Referenzgrafik heisst dort `was-sie-liefern_referenz.png`
+(1672 x 941, nicht ausgeliefert).
+
+| Datei (Lieferung) | ausgeliefert | Quelle | ausgeliefert |
+|---|---|---|---|
+| `… 14_43_03 (1).png` | `liefern_dokument.webp` | 1254 x 1254, RGB | 256 px, 6 KB |
+| `… 14_43_03 (2).png` | `liefern_eingang.webp` | 1254 x 1254, RGB | 256 px, 6 KB |
+| `… 14_43_04 (3).png` | `liefern_quittung.webp` | 1254 x 1254, RGB | 256 px, 7 KB |
+| `… 14_43_05 (4).png` | `liefern_personen.webp` | 1254 x 1254, RGB | 256 px, 8 KB |
+| `… 14_43_06 (5).png` | `liefern_laptop.webp` | 1254 x 1254, RGB | 256 px, 5 KB |
+| `… 14_43_07 (6).png` | `liefern_hintergrund.webp` | 1672 x 941, RGB | 1672 px, 13 KB |
+| `… 14_43_07 (7).png` | — | 1254 x 1254, RGB | nicht ausgeliefert |
+
+**Die Symbole standen auf weissem Grund** und trugen ihren Kreis in
+verschiedenen Groessen (48 bis 66 Prozent der Datei). Zugeschnitten wie bei
+den Symbolen darueber: Quadrat um den Kreis mit 2 Prozent Rand, ausserhalb des
+Kreises transparent. Kreis und Zeichen unveraendert.
+
+**Die Linie (7)** ist eine 4 px dicke Linie im Ton 190/212/236 auf Weiss. Sie
+steht als Rahmen in `border_tint` im Stylesheet, nicht als Bild.
