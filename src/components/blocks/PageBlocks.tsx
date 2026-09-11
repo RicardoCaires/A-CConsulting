@@ -14,6 +14,7 @@ import { Schadenfall } from './Schadenfall'
 import { CTASection } from './CTASection'
 import { Segmente } from './Segmente'
 import { UnserModell } from './UnserModell'
+import { Vorgehen, vorgehenFlaeche } from './Vorgehen'
 import { StepList } from './StepList'
 import type { Action, Block, Download, PageRef, Rich } from '@/content/types'
 import type { Locale } from '@/i18n/config'
@@ -269,6 +270,17 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
     // Die Leistungen auf `/treuhand` bleiben in der Flaechenfolge: Sie laufen
     // ueber den normalen Weg unten und bekommen die Flaeche, die der Abschnitt
     // vorher hatte. Nur ihr Inhalt ist ein eigener Baustein.
+    case 'vorgehen':
+      return (
+        <Vorgehen
+          headingId={headingId}
+          eyebrow={block.eyebrow}
+          heading={block.heading}
+          lead={block.lead}
+          schritte={block.schritte}
+        />
+      )
+
     case 'leistungen':
       return (
         <Leistungen
@@ -584,11 +596,16 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
         const surface = KLASSE[surfaceIndex++ % 2 === 0 ? 'weiss' : 'hell']
         letzteFlaeche = surface
 
+        // „Unser Vorgehen" auf `/treuhand` zaehlt im Wechsel mit, steht aber
+        // auf Ricardos Anweisung vom 11.09.2026 hellblau. Die Abschnitte
+        // darunter behalten damit ihren Grund.
+        const flaeche = block.kind === 'vorgehen' ? vorgehenFlaeche : surface
+
         return (
           <section
             key={index}
             id={block.id}
-            className={['ac-section', surface].filter(Boolean).join(' ')}
+            className={['ac-section', flaeche].filter(Boolean).join(' ')}
             aria-labelledby={block.id ? `${block.id}-titel` : undefined}
           >
             <div className="ac-container">

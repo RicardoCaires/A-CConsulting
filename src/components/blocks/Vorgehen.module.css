@@ -1,0 +1,191 @@
+/* „So laeuft eine Zusammenarbeit an" auf `/treuhand`.
+
+   Nach Ricardos Referenzgrafik vom 11.09.2026 (1672 x 941). Aus der Vorlage
+   gemessen:
+
+     Karten           vier, je 348 px breit, Fuge 50 px
+     Nummernkreis     64 px, 34 px vom linken und 24 px vom oberen Kartenrand
+     Verbindung       auf 84 von 420 px Kartenhoehe — knapp unter dem Kreis
+     Strich           47 px unter dem Kartentitel
+
+   Im Standardcontainer der Website sind die Karten rund 250 px breit. Die
+   Zeilenlaenge bleibt dabei wie in der Vorlage bei knapp 30 Zeichen.
+
+   Drei Anordnungen:
+
+     schmal            eine Karte je Reihe
+     48rem bis 75rem   zwei Karten je Reihe
+     ab 75rem          vier in einer Reihe, mit Verbindungslinien
+
+   Alles ist auf diesen Baustein gekapselt. */
+
+/* Hellblau, auf Ricardos Anweisung — derselbe Ton wie „So beginnt die
+   Zusammenarbeit" auf der Startseite. Gesetzt auf der Sektion. */
+.flaeche {
+  background-color: var(--ac-color-background-tint);
+}
+
+/* ---- Kopf ------------------------------------------------------------------ */
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-md);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  /* Auf dem hellblauen Grund 4.5:1 — genau die Schwelle fuer AA. Die Vorlage
+     zeigt ein helleres Gruen; das waere hier nicht mehr lesbar genug. */
+  color: var(--ac-color-accent-green);
+}
+
+/* In der Vorlage steht der Strich hinter der Zeile, nicht davor. */
+.eyebrow::after {
+  content: '';
+  flex: none;
+  width: 4.25rem;
+  height: 2px;
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 55%, transparent);
+}
+
+.titel {
+  margin: var(--ac-space-sm) 0 0;
+  font-size: clamp(2.25rem, 1.6rem + 2.2vw, 3.5rem);
+  line-height: 1.06;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.02em;
+  color: var(--ac-color-primary-navy);
+}
+
+.lead {
+  margin: var(--ac-space-sm) 0 0;
+  max-width: 62ch;
+  font-size: var(--ac-lead-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Die Schritte ---------------------------------------------------------- */
+
+.schritte {
+  /* Kantenlaenge der Nummerndatei. Der sichtbare Kreis samt Rand misst davon
+     66.8 Prozent (Radius 171 von 512) — bei 4.5rem also 48 px. */
+  --nr: 4.5rem;
+  /* Fuge zwischen den Karten. Die Verbindungslinie ueberbrueckt genau sie. */
+  --fuge: clamp(1rem, 2.6vw, 2rem);
+
+  display: grid;
+  gap: var(--fuge);
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.schritt {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.375rem 1.75rem;
+  background-color: var(--ac-color-white);
+  border-radius: var(--ac-radius-md);
+  /* Sehr weich: Die Karte hebt sich vom Grund ab, sie liegt nicht auf. */
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
+}
+
+/* Die Datei traegt rund um ihren Kreis einen transparenten Rand von 16.6
+   Prozent je Seite. Der negative Rand gleicht ihn aus: Im Layout zaehlt nur
+   der sichtbare Kreis. `max-width: none`, sonst deckelt die allgemeine Regel
+   fuer Bilder die Datei auf die Breite des Kreises. */
+.nummer {
+  display: block;
+  flex: none;
+  width: var(--nr);
+  max-width: none;
+  height: var(--nr);
+  margin: calc(var(--nr) * -0.166);
+  object-fit: contain;
+}
+
+.schrittTitel {
+  margin: clamp(1rem, 1.6vw, 1.25rem) 0 0;
+  font-family: var(--ac-font-display);
+  /* Hoechstens 22 px: Bei 1440 px und 23 px brachen „Umfang festhalten" und
+     „Laufender Betrieb" auf zwei Zeilen — gemessen am 11.09.2026. In der
+     Vorlage steht jeder Titel auf einer. */
+  font-size: clamp(1.25rem, 1.05rem + 0.45vw, 1.375rem);
+  line-height: 1.2;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.01em;
+  color: var(--ac-color-primary-navy);
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.strich {
+  display: block;
+  width: 2rem;
+  height: 2px;
+  margin-top: 0.875rem;
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 70%, transparent);
+}
+
+.satz {
+  margin: 1rem 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Ab Tablet: zwei Karten je Reihe --------------------------------------- */
+
+@media (min-width: 48rem) {
+  .schritte {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---- Ab 75rem: vier in einer Reihe, verbunden ------------------------------
+
+   Die Verbindung haengt an der Karte links davon und reicht genau ueber die
+   Fuge. Nach der letzten Karte steht keine. Die Hoehe richtet sich nach dem
+   Kreis, nicht nach der Karte: Die Karten sind je nach Text verschieden hoch,
+   die Linie soll trotzdem auf einer Hoehe laufen. */
+
+@media (min-width: 75rem) {
+  .schritte {
+    --achse: calc(1.25rem + var(--nr) * 0.6);
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .schritt:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: var(--achse);
+    left: 100%;
+    width: var(--fuge);
+    height: var(--ac-border-hairline);
+    background-color: color-mix(in srgb, var(--ac-color-primary-navy) 18%, transparent);
+  }
+
+  .schritt:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: calc(var(--achse) - 4px);
+    left: calc(100% + var(--fuge) / 2 - 4.5px);
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: color-mix(in srgb, var(--ac-color-accent-green) 55%, var(--ac-color-white));
+  }
+}
+
+@media print {
+  .schritt {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}

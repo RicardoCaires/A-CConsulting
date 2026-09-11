@@ -332,3 +332,22 @@ negativen Aussenabstand aus, statt die Datei zu beschneiden.
 ein Navy nahe `navy_deep` und ein helleres Gruen als `accent_green`. Auf
 Ricardos Anweisung bleiben sie, wie sie sind. `07_steuern_firmen` setzt das
 Paragrafenzeichen als Text in Arial.
+
+## Treuhand — So laeuft eine Zusammenarbeit an
+
+Am 11.09.2026 geliefert, als SVG. Die Quellen liegen unter
+`treuhand_vorgehen/`, ausgeliefert werden sie **unveraendert** aus
+`public/bilder/treuhand/`.
+
+| Datei | Quelle | ausgeliefert |
+|---|---|---|
+| `01_schritt_01` | SVG, 512 x 512 | unveraendert, 454 B |
+| `02_schritt_02` | SVG, 512 x 512 | unveraendert, 454 B |
+| `03_schritt_03` | SVG, 512 x 512 | unveraendert, 454 B |
+| `04_schritt_04` | SVG, 512 x 512 | unveraendert, 454 B |
+
+Zusammen 1.8 KB.
+
+Jede Datei ist ein heller gruener Kreis mit feinem Rand (Radius 168, Rand 6)
+und der Nummer als Text in Georgia. Wie bei den Leistungssymbolen gleicht das
+Stylesheet den transparenten Rand mit einem negativen Aussenabstand aus.

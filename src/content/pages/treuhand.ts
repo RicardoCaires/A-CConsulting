@@ -96,27 +96,36 @@ export const treuhand: PageContent = {
     // 09 „Was dazugehört" und 11, der Abschluss „Reden wir über Ihre
     // Administration". Ihr Wortlaut steht unverändert unter `content/source/`.
 
-    // 07 Ablauf
+    // 07 Ablauf — seit dem 11.09.2026 als vier verbundene Karten nach
+    // Ricardos Referenzgrafik, hellblau. Kategoriezeile und Satz stammen aus
+    // der Grafik (`content/source/treuhand_vorgehen_de.md`), Titel und
+    // Schritte wie bisher.
     {
-      kind: 'steps',
+      kind: 'vorgehen',
       id: 'ablauf',
+      eyebrow: 'Unser Vorgehen',
       heading: 'So läuft eine Zusammenarbeit an',
-      steps: [
+      lead: 'Klar strukturiert, persönlich begleitet – von Anfang an.',
+      schritte: [
         {
-          heading: 'Gespräch',
-          body: 'Sie schildern, wie Ihre Administration heute läuft und was Sie abgeben möchten. Wir fragen nach, wo es für die Einschätzung nötig ist. Das erste Gespräch kostet nichts.',
+          bild: '01_schritt_01',
+          titel: 'Gespräch',
+          satz: 'Sie schildern, wie Ihre Administration heute läuft und was Sie abgeben möchten. Wir fragen nach, wo es für die Einschätzung nötig ist. Das erste Gespräch kostet nichts.',
         },
         {
-          heading: 'Umfang festhalten',
-          body: 'Wir halten schriftlich fest, welche Aufgaben wir übernehmen und welche bei Ihnen bleiben — mit dem, was es kostet. Erst wenn Sie zustimmen, fangen wir an.',
+          bild: '02_schritt_02',
+          titel: 'Umfang festhalten',
+          satz: 'Wir halten schriftlich fest, welche Aufgaben wir übernehmen und welche bei Ihnen bleiben — mit dem, was es kostet. Erst wenn Sie zustimmen, fangen wir an.',
         },
         {
-          heading: 'Übernahme',
-          body: 'Wir richten die Buchhaltung ein oder übernehmen den bestehenden Stand. Bei einem Wechsel klären wir mit der bisherigen Stelle, was zu übergeben ist.',
+          bild: '03_schritt_03',
+          titel: 'Übernahme',
+          satz: 'Wir richten die Buchhaltung ein oder übernehmen den bestehenden Stand. Bei einem Wechsel klären wir mit der bisherigen Stelle, was zu übergeben ist.',
         },
         {
-          heading: 'Laufender Betrieb',
-          body: 'Sie liefern die Belege, wir verbuchen und melden uns, wenn etwas fehlt oder eine Frist ansteht. Was wir für Sie erledigt haben, sehen Sie in der Abrechnung.',
+          bild: '04_schritt_04',
+          titel: 'Laufender Betrieb',
+          satz: 'Sie liefern die Belege, wir verbuchen und melden uns, wenn etwas fehlt oder eine Frist ansteht. Was wir für Sie erledigt haben, sehen Sie in der Abrechnung.',
         },
       ],
     },
