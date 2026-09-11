@@ -238,10 +238,17 @@ export const firmengruendung: PageContent = {
     },
 
     // 08 Häufige Fragen
+    // Seit dem 11.09.2026 im Baustein der Versicherungsseite („häufige Fragen
+    // überall gleich designen", Ricardo). Fragen und Antworten unveraendert.
     {
-      kind: 'faq',
+      kind: 'fragen',
       id: 'fragen',
+      eyebrow: 'Gut zu wissen',
       heading: 'Häufige Fragen',
+      lead: [
+        'Hier finden Sie kompakte Antworten auf die wichtigsten Fragen.',
+        'Sollten Sie weitere Anliegen haben, sind wir gerne persönlich für Sie da.',
+      ],
       items: [
         {
           question: 'Wie lange dauert eine Gründung?',
@@ -283,6 +290,7 @@ export const firmengruendung: PageContent = {
             'Wenn Sie möchten. Die Unterlagen aus der Gründung liegen dann bereits vor. Eine Verpflichtung entsteht durch die Gründungsbegleitung nicht.',
         },
       ],
+      schluss: 'Persönlich. Unabhängig. An Ihrer Seite.',
     },
 
     // 09 Abschluss

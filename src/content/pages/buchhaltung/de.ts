@@ -40,6 +40,10 @@ export const buchhaltungDe: Leistungsseite = {
 
   bild: { label: 'BUCHHALTUNG / BELEGE' },
 
+  // Gemeinsamer Hintergrund von Leistungen und Ablauf, geliefert am
+  // 11.09.2026 mit Ricardos Referenzgrafik.
+  hintergrund: 'hintergrund',
+
   /**
    * Quelle Zeile 280: „Laufende Erfassung Ihrer Belege, Abstimmung der Konten,
    * Auswertungen zu vereinbarten Terminen."
@@ -49,27 +53,31 @@ export const buchhaltungDe: Leistungsseite = {
    * keine; sie bleiben darum leer statt erfunden.
    */
   leistungen: [
-    { icon: 'dokument', titel: 'Laufende Erfassung Ihrer Belege', chips: [] },
-    { icon: 'buch', titel: 'Abstimmung der Konten', chips: [] },
-    { icon: 'uhr', titel: 'Auswertungen zu vereinbarten Terminen', chips: [] },
+    { icon: 'dokument', bild: 'dokument', titel: 'Laufende Erfassung Ihrer Belege', chips: [] },
+    { icon: 'buch', bild: 'balken', titel: 'Abstimmung der Konten', chips: [] },
+    { icon: 'uhr', bild: 'uhr', titel: 'Auswertungen zu vereinbarten Terminen', chips: [] },
   ],
 
   // Quelle Abschnitt 04 „So läuft die Zusammenarbeit"
   ablauf: [
     {
       titel: 'Erstgespräch',
+      bild: 'sprechblase',
       text: 'Wir schauen an, wie Ihre Administration heute läuft und was Sie abgeben möchten.',
     },
     {
       titel: 'Offerte und Leistungsumfang',
+      bild: 'dokument',
       text: 'Sie erhalten schriftlich, welche Aufgaben wir übernehmen und welche bei Ihnen bleiben. Das ist die Grundlage der Zusammenarbeit und das Dokument, auf das wir uns später beziehen.',
     },
     {
       titel: 'Übernahme und Start',
+      bild: 'zahnrad',
       text: 'Wir richten Ihre Buchhaltung ein und übernehmen den bestehenden Stand. Den Startzeitpunkt legen wir gemeinsam fest.',
     },
     {
       titel: 'Laufender Betrieb',
+      bild: 'balken',
       text: 'Sie liefern Ihre Unterlagen im vereinbarten Rhythmus. Wir buchen, melden uns, wenn etwas fehlt, und liefern die Auswertungen zu den festgelegten Terminen.',
     },
   ],
@@ -91,6 +99,17 @@ export const buchhaltungDe: Leistungsseite = {
     nachsatz: [
       'In welcher Form und in welchem Rhythmus Sie das liefern, halten wir zu Beginn fest. Sie können uns die Unterlagen digital oder physisch übergeben.',
     ],
+  },
+
+  // Kategoriezeile, Einleitung und Zusatz der Fragen wie auf /versicherungen —
+  // „häufige Fragen überall gleich designen", Ricardo, 11.09.2026.
+  fragenZusatz: {
+    kategorie: 'Gut zu wissen',
+    einleitung: [
+      'Hier finden Sie kompakte Antworten auf die wichtigsten Fragen.',
+      'Sollten Sie weitere Anliegen haben, sind wir gerne persönlich für Sie da.',
+    ],
+    schluss: 'Persönlich. Unabhängig. An Ihrer Seite.',
   },
 
   /**

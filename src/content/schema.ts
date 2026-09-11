@@ -57,6 +57,11 @@ export function fehltUebersetzungRich(wert: RichText): wert is FehlendeUebersetz
 /** Ein Punkt aus „Das übernehmen wir“. */
 export type Leistung = {
   icon: IconName
+  /**
+   * Geliefertes Symbol unter `public/bilder/<slug>/`, ohne Endung. Steht es
+   * da, ersetzt es `icon`; sonst bleibt das Zeichen aus `Icon.tsx`.
+   */
+  bild?: string
   titel: Text
   /**
    * Hoechstens drei Stichworte; die Vorlage schneidet darueber hinaus ab.
@@ -69,6 +74,8 @@ export type Leistung = {
 export type AblaufSchritt = {
   titel: Text
   text: RichText
+  /** Geliefertes Symbol unter `public/bilder/<slug>/`, ohne Endung. Optional. */
+  bild?: string
 }
 
 /** Eine Frage mit Antwort. */
@@ -133,9 +140,24 @@ export type Leistungsseite = {
    * sonst nichts.
    */
   bild: Bildplatz | null
+  /**
+   * Hintergrund der gemeinsamen Flaeche von Leistungen und Ablauf, als
+   * Dateiname unter `public/bilder/<slug>/` ohne Endung. Optional — ohne ihn
+   * steht die Flaeche auf dem hellen Grundton.
+   */
+  hintergrund?: string
   /** „Das übernehmen wir“ als Icon-Raster. */
   leistungen: readonly Leistung[]
   ablauf: readonly AblaufSchritt[]
+  /**
+   * Kategoriezeile, Einleitung und Zusatz der haeufigen Fragen — wie auf
+   * `/versicherungen`. Optional: Ohne sie steht nur der Titel ueber der Karte.
+   */
+  fragenZusatz?: {
+    kategorie: Text
+    einleitung: readonly Text[]
+    schluss: Text
+  }
   /** Optional: der von der Startseite abgegebene Fliesstext landet hier. */
   vertiefung?: Vertiefung
   faq: readonly FaqEintrag[]

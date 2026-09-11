@@ -1,29 +1,31 @@
+import type { ReactNode } from 'react'
+
 import { Icon } from '@/components/ui/Icon'
-import { RichText } from '@/components/ui/RichText'
-import type { Rich } from '@/content/types'
 
 import styles from './Fragen.module.css'
 
 /**
- * Haeufige Fragen auf `/versicherungen` — nach Ricardos Referenzgrafik vom
- * 11.09.2026.
+ * Haeufige Fragen — der eine Baustein fuer alle Seiten.
  *
- * Kategoriezeile, Titel, zwei Einleitungssaetze, eine weisse Karte mit den
- * Fragen und ein leiser Zusatz darunter. Keine Symbole, keine zweite Spalte.
+ * Nach Ricardos Referenzgrafik vom 11.09.2026, zuerst auf `/versicherungen`.
+ * Seit demselben Tag auf seine Anweisung („häufige Fragen überall gleich
+ * designen") auf jeder Seite mit Fragen: Kategoriezeile, Titel, zwei
+ * Einleitungssaetze, eine weisse Karte mit den Fragen und ein leiser Zusatz
+ * darunter, auf hellblauem Grund.
  *
- * **Nicht** `Accordion`: Der Baustein traegt die Fragen auf fuenf anderen
- * Seiten und bleibt, wie er ist. Fragen und Antworten sind unveraendert
- * uebernommen.
+ * Kategoriezeile, Einleitung und Zusatz sind optional. Die Leistungsseiten
+ * (Vorlage B) fuehren sie je Sprache; fehlen sie, steht nur der Titel ueber
+ * der Karte — das Aussehen bleibt dasselbe.
  *
- * **`<details>` statt Knopf mit `aria-expanded`.** Der Auftrag nennt Knoepfe
- * und `aria-expanded` als Weg zur Zugaenglichkeit; `<details>` erreicht
- * dasselbe ohne eine Zeile JavaScript: Vorlesewerkzeuge melden „aufgeklappt"
- * und „zugeklappt" von selbst, die Tastatur bedient der Browser. Die
- * Hausordnung verlangt, dass Inhalte ohne Skript funktionieren — eine
- * Antwort, die ohne Skript nicht aufgeht, waere keine.
+ * Die Inhalte kommen fertig gesetzt herein (`ReactNode`): Das Blockmodell
+ * reicht Zeichenketten und `RichText`, Vorlage B uebersetzte Felder.
  *
- * Alle Fragen sind anfangs zu. Mehrere duerfen gleichzeitig offen sein; wer
- * zwei Antworten vergleicht, soll nicht zwischen ihnen hin und her klappen.
+ * **`<details>` statt Knopf mit `aria-expanded`.** `<details>` bringt dieselbe
+ * Zugaenglichkeit ohne eine Zeile JavaScript mit: Vorlesewerkzeuge melden
+ * „aufgeklappt" und „zugeklappt" von selbst, die Tastatur bedient der Browser.
+ * Die Hausordnung verlangt, dass Inhalte ohne Skript funktionieren.
+ *
+ * Alle Fragen sind anfangs zu. Mehrere duerfen gleichzeitig offen sein.
  *
  * Die Frage ist zugleich Ueberschrift, damit sie in der Gliederung und fuer
  * Vorlesewerkzeuge auffindbar bleibt, auch wenn die Antwort zu ist.
@@ -31,11 +33,11 @@ import styles from './Fragen.module.css'
 
 type Props = {
   id: string
-  eyebrow: string
-  heading: string
-  lead: readonly string[]
-  items: readonly { question: string; answer: Rich }[]
-  schluss: string
+  eyebrow?: ReactNode
+  heading: ReactNode
+  lead?: readonly ReactNode[]
+  items: readonly { question: ReactNode; answer: ReactNode }[]
+  schluss?: ReactNode
 }
 
 export function Fragen({ id, eyebrow, heading, lead, items, schluss }: Props) {
@@ -45,43 +47,43 @@ export function Fragen({ id, eyebrow, heading, lead, items, schluss }: Props) {
     <section id={id} className={styles.abschnitt} aria-labelledby={headingId}>
       <div className={styles.inner}>
         <div className={styles.kopf}>
-          <p className={styles.eyebrow}>{eyebrow}</p>
+          {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
           <h2 id={headingId} className={styles.titel}>
             {heading}
           </h2>
           {/* Zwei Saetze, je auf eigener Zeile wie in der Vorlage. Das
               Leerzeichen davor haelt sie fuer Vorlesewerkzeuge getrennt. */}
-          <p className={styles.lead}>
-            {lead.map((satz, index) => (
-              <span key={satz}>
-                {index > 0 ? ' ' : ''}
-                {satz}
-              </span>
-            ))}
-          </p>
+          {lead && lead.length > 0 && (
+            <p className={styles.lead}>
+              {lead.map((satz, index) => (
+                <span key={index}>
+                  {index > 0 ? ' ' : ''}
+                  {satz}
+                </span>
+              ))}
+            </p>
+          )}
         </div>
 
         <div className={styles.karte}>
-          {items.map((item) => (
-            <details key={item.question} className={styles.eintrag}>
+          {items.map((item, index) => (
+            <details key={index} className={styles.eintrag}>
               <summary className={styles.frage}>
                 <h3>{item.question}</h3>
                 <span className={styles.chevron} aria-hidden="true">
                   <Icon name="chevron" size={1.375} />
                 </span>
               </summary>
-              <div className={styles.antwort}>
-                <RichText value={item.answer} />
-              </div>
+              <div className={styles.antwort}>{item.answer}</div>
             </details>
           ))}
         </div>
 
-        {/* Auf `/versicherungen` steht der Zusatz zum zweiten Mal — auch im
-            Modellabschnitt. Ricardo hat ihn dort ausdruecklich verlangt und
-            am 11.09.2026 fuer `/treuhand` uebernommen („gleich wie bei
-            Versicherungen"). */}
-        <p className={styles.schluss}>{schluss}</p>
+        {/* „Persönlich. Unabhängig. An Ihrer Seite." Auf `/versicherungen`
+            steht der Zusatz zum zweiten Mal — auch im Modellabschnitt. Ricardo
+            hat ihn dort verlangt und am 11.09.2026 fuer alle Fragen
+            uebernommen. */}
+        {schluss && <p className={styles.schluss}>{schluss}</p>}
       </div>
     </section>
   )

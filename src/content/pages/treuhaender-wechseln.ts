@@ -159,10 +159,17 @@ export const treuhaenderWechseln: PageContent = {
     },
 
     // 09 Häufige Fragen
+    // Seit dem 11.09.2026 im Baustein der Versicherungsseite („häufige Fragen
+    // überall gleich designen", Ricardo). Fragen und Antworten unveraendert.
     {
-      kind: 'faq',
+      kind: 'fragen',
       id: 'fragen',
+      eyebrow: 'Gut zu wissen',
       heading: 'Häufige Fragen',
+      lead: [
+        'Hier finden Sie kompakte Antworten auf die wichtigsten Fragen.',
+        'Sollten Sie weitere Anliegen haben, sind wir gerne persönlich für Sie da.',
+      ],
       items: [
         {
           question: 'Kann ich mitten im Jahr wechseln?',
@@ -195,6 +202,7 @@ export const treuhaenderWechseln: PageContent = {
           answer: 'Die Kündigung beim bisherigen Treuhänder bereiten wir für Sie vor.',
         },
       ],
+      schluss: 'Persönlich. Unabhängig. An Ihrer Seite.',
     },
 
     // 10 Abschluss

@@ -1,7 +1,8 @@
 /* Vorlage B — Leistungsseite.
 
-   Nur was die Vorlage selbst regelt: der Seitenkopf und die Stichworte.
-   Alles andere kommt aus den Bausteinen. */
+   Was die Vorlage selbst regelt: der Seitenkopf, die gemeinsame Flaeche von
+   Leistungen und Ablauf, die Stichworte und die Vertiefung. Alles andere
+   kommt aus den Bausteinen. */
 
 /* ---- 1 Seitenkopf -------------------------------------------------------- */
 
@@ -32,28 +33,226 @@
   aspect-ratio: 16 / 10;
 }
 
-/* ---- 2 Stichworte unter einer Leistung ---------------------------------- */
+/* ---- 2 und 3: die gemeinsame Flaeche --------------------------------------
+
+   Nach Ricardos Referenzgrafik vom 11.09.2026 (1448 x 1086). Der gelieferte
+   Hintergrund hat genau das Format der Grafik und traegt beide Abschnitte
+   zusammen: feine gruene Boegen oben rechts und unten links, dazwischen ein
+   ruhiger heller Verlauf. Er deckt die Flaeche, ohne verzerrt zu werden —
+   auf schmalen Geraeten ist davon nur die Mitte zu sehen.
+
+   Aus der Vorlage gemessen (Inhalt x 84 bis 1366):
+     Leistungen    drei Karten, Symbolkreis 86 px, Titel mit Strich darunter
+     Ablauf        vier Karten, Nummernkreis 62 px halb ueber der Kartenkante,
+                   Symbolkreis 74 px, Nummern gepunktet verbunden
+     Titel         mit kurzem gruenem Strich darueber, 61 px lang */
+
+.zone {
+  background-color: var(--ac-color-background-light);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.zonenAbschnitt {
+  padding-block: var(--ac-section-y);
+}
+
+/* Eigener, breiterer Container: 1344 statt 1160 px. Die Vorlage nutzt 88.5
+   Prozent ihrer Breite; im Standardmass brachen „Auswertungen zu vereinbarten
+   Terminen" dreizeilig und „Übernahme und Start" zweizeilig — gemessen am
+   11.09.2026 bei 1440 px. Dieselbe Ausnahme wie beim Modellabschnitt auf
+   `/versicherungen`. Doppelte Klasse, damit die Regel sicher ueber
+   `.ac-container` steht. */
+.zone .zonenContainer {
+  max-width: 84rem;
+}
+
+/* Der Ablauf steht in der Vorlage eine Spur blauer. Die Toenung liegt ueber
+   dem Hintergrund, nicht an seiner Stelle. */
+.ablaufAbschnitt {
+  background-color: color-mix(in srgb, var(--ac-color-background-tint) 40%, transparent);
+}
+
+.zonenTitel {
+  font-size: clamp(2.25rem, 1.6rem + 2.2vw, 3.5rem);
+  line-height: 1.06;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.02em;
+  color: var(--ac-color-primary-navy);
+}
+
+.zonenTitel::before {
+  content: '';
+  display: block;
+  width: 3.75rem;
+  height: 3px;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 55%, transparent);
+}
+
+/* Die gelieferten Symbole sind auf ihren Kreis zugeschnitten — die Datei ist
+   der Kreis. `max-width: none`, sonst deckelt die allgemeine Bildregel. */
+.symbol {
+  display: block;
+  flex: none;
+  width: var(--symbol, 4.5rem);
+  max-width: none;
+  height: var(--symbol, 4.5rem);
+  object-fit: contain;
+}
+
+/* Rueckfall ohne gelieferte Datei: das Zeichen aus `Icon.tsx` im hellen Kreis. */
+.symbolZeichen {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-tint);
+}
+
+.strich {
+  display: block;
+  width: 2rem;
+  height: 2px;
+  margin-top: 0.75rem;
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 60%, transparent);
+}
+
+/* ---- 2 Leistungen -------------------------------------------------------- */
+
+.leistungsKarten {
+  display: grid;
+  gap: clamp(1rem, 1.6vw, 1.25rem);
+  margin: clamp(1.75rem, 3.5vw, 2.5rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Symbol, Fuge und Innenabstand sind so bemessen, dass „Laufende Erfassung"
+   in einem Drittel der Breite auf eine Zeile passt — zweizeilig wie in der
+   Vorlage. Mit 72 px Symbol und 24 px Titel brach er dreizeilig, gemessen am
+   11.09.2026 bei 1440 px. */
+.leistungsKarte {
+  --symbol: clamp(3.5rem, 3rem + 1vw, 4rem);
+
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 1.6vw, 1.25rem);
+  padding: clamp(1.25rem, 2vw, 1.5rem);
+  background-color: var(--ac-color-white);
+  border-radius: var(--ac-radius-md);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
+}
+
+.leistungsText {
+  min-width: 0;
+}
+
+.leistungsTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.25rem, 1.05rem + 0.45vw, 1.375rem);
+  line-height: 1.2;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+/* ---- 3 Ablauf ------------------------------------------------------------ */
+
+.ablaufKarten {
+  /* Sichtbarer Nummernkreis und die Kante der Datei, die ihn traegt: Der
+     Kreis samt Rand misst 66.8 Prozent der Datei. */
+  --kreis: 3.25rem;
+  --nummer: calc(var(--kreis) / 0.668);
+  --fuge: clamp(1rem, 1.6vw, 1.25rem);
+
+  position: relative;
+  display: grid;
+  gap: calc(var(--fuge) + var(--kreis) / 2) var(--fuge);
+  margin: clamp(1.75rem, 3.5vw, 2.5rem) 0 0;
+  /* Platz fuer die Haelfte des Kreises ueber der ersten Reihe. */
+  padding: calc(var(--kreis) / 2) 0 0;
+  list-style: none;
+}
+
+.ablaufKarte {
+  --symbol: clamp(3.25rem, 2.75rem + 1vw, 3.875rem);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(var(--kreis) / 2 + 1rem) clamp(1rem, 1.6vw, 1.25rem) clamp(1.5rem, 2.4vw, 2rem);
+  background-color: var(--ac-color-white);
+  border-radius: var(--ac-radius-md);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
+}
+
+/* Der Nummernkreis sitzt mittig auf der oberen Kartenkante. */
+.nummer {
+  position: absolute;
+  top: calc(var(--nummer) / -2);
+  left: 50%;
+  z-index: 1;
+  display: block;
+  width: var(--nummer);
+  max-width: none;
+  height: var(--nummer);
+  transform: translateX(-50%);
+}
+
+/* Rueckfall ab dem fuenften Schritt: dieselbe Form, Nummer als Text. */
+.nummerText {
+  top: calc(var(--kreis) / -2);
+  display: grid;
+  place-items: center;
+  width: var(--kreis);
+  height: var(--kreis);
+  font-family: var(--ac-font-display);
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 10%, var(--ac-color-white));
+  border-radius: 50%;
+}
+
+/* Hoechstens 22 px: „Übernahme und Start" steht in der Vorlage auf einer
+   Zeile; mit 23 px brach es bei 1440 px zweizeilig. */
+.ablaufTitel {
+  margin: clamp(0.875rem, 1.4vw, 1.125rem) 0 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.25rem, 1.05rem + 0.45vw, 1.375rem);
+  line-height: 1.2;
+  font-weight: var(--ac-display-weight);
+  text-align: center;
+  color: var(--ac-color-primary-navy);
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.ablaufText {
+  align-self: stretch;
+  margin: 0.875rem 0 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Stichworte unter einer Leistung -------------------------------------- */
 
 .chips {
   display: flex;
   flex-wrap: wrap;
   gap: var(--ac-space-3xs);
+  margin-top: var(--ac-space-xs);
 }
 
 .chip {
   padding: 0.15rem var(--ac-space-2xs);
-  background-color: var(--ac-color-white);
-  border-radius: var(--ac-radius-sm);
-}
-
-/* Auf weisser Flaeche braucht das Stichwort einen eigenen Grund. */
-:global(.ac-section:not(.ac-section--tint):not(.ac-section--navy)) .chip {
   background-color: var(--ac-surface-soft);
-}
-
-:global(.on-navy) .chip {
-  background-color: transparent;
-  box-shadow: inset 0 0 0 var(--ac-border-hairline) var(--ac-on-navy-muted);
+  border-radius: var(--ac-radius-sm);
 }
 
 /* ---- 4 Vertiefung -------------------------------------------------------- */
@@ -66,7 +265,25 @@
   margin-top: var(--ac-space-sm);
 }
 
-/* ---- Ab Desktop ---------------------------------------------------------- */
+/* Aufzaehlung im vertiefenden Abschnitt. */
+.liste {
+  margin-top: var(--ac-space-sm);
+  padding-left: var(--ac-space-md);
+}
+
+.liste li + li {
+  margin-top: var(--ac-space-3xs);
+}
+
+/* ---- Ab Tablet: zwei Ablaufkarten je Reihe ---------------------------------- */
+
+@media (min-width: 48rem) {
+  .ablaufKarten {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---- Ab 64rem: Seitenkopf zweispaltig ---------------------------------------- */
 
 @media (min-width: 64rem) {
   .kopf {
@@ -78,12 +295,46 @@
   }
 }
 
-/* Aufzaehlung im vertiefenden Abschnitt. */
-.liste {
-  margin-top: var(--ac-space-sm);
-  padding-left: var(--ac-space-md);
+/* ---- Ab 72rem: drei Leistungskarten in einer Reihe --------------------------
+
+   Darunter steht je Reihe eine Karte: Bei 1024 px liefe „Auswertungen zu
+   vereinbarten Terminen" in einem Drittel der Breite auf drei Zeilen. */
+
+@media (min-width: 72rem) {
+  .leistungsKarten {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
-.liste li + li {
-  margin-top: var(--ac-space-3xs);
+/* ---- Ab 75rem: vier Ablaufkarten, Nummern gepunktet verbunden ---------------
+
+   Die Linie laeuft auf Hoehe der Kreismitten von der ersten bis zur letzten
+   Nummer. Sie liegt hinter den Kreisen und endet an ihren Mitten. */
+
+@media (min-width: 75rem) {
+  .ablaufKarten {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .ablaufKarten::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc((100% - 3 * var(--fuge)) / 8);
+    right: calc((100% - 3 * var(--fuge)) / 8);
+    border-top: 2px dotted color-mix(in srgb, var(--ac-color-accent-green) 45%, transparent);
+    transform: translateY(-1px);
+  }
+}
+
+@media print {
+  .zone {
+    background-image: none !important;
+  }
+
+  .leistungsKarte,
+  .ablaufKarte {
+    box-shadow: none;
+    break-inside: avoid;
+  }
 }
