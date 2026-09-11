@@ -1098,6 +1098,27 @@ Getrennt für Privatpersonen und Firmen. Enthält zusätzlich:
 Formulierung zur Qualifikation: "Treuhand / Steuern", nie ein Titel, der einen
 eidg. Fachausweis suggeriert.
 
+> **Vier Abschnitte sind am 11.09.2026 auf Ricardos Anweisung entfallen:**
+> „So läuft es ab", „Was es kostet", „Wenn Sie nebenbei selbständig sind" und
+> der Abschluss **„Termin für Ihre Steuererklärung vereinbaren"**. Ihr Wortlaut
+> steht unverändert in `content/source/schritt4_fassung2_de.md`. Keiner der
+> Anker wurde von anderswo angesprungen.
+>
+> Die Seite läuft seither: Seitenkopf → Für Privatpersonen → Für Selbständige
+> und Firmen → Checkliste → Fristen und Fristverlängerung → häufige Fragen.
+> **Sie hat damit keinen Abschluss mehr** — wie `/versicherungen`, `/treuhand`
+> und `/treuhand/buchhaltung`.
+>
+> Die drei Pflichthinweise oben bleiben erhalten: Die Nachkontrolle der
+> Veranlagung steht im Seitenkopf und bei „Für Privatpersonen", die
+> Fristverlängerung und die Checkliste in eigenen Abschnitten.
+>
+> Zwei Folgen, auf die Ricardo hingewiesen ist: **Wovon der Aufwand abhängt,
+> steht nicht mehr auf der Seite** (Abschnitt 9, „Preisdarstellung", verlangt
+> es). Und **der Hinweis für Nebenerwerbstätige** — Aufstellung der Einnahmen
+> und Ausgaben, Anmeldung bei der Ausgleichskasse — samt den Verweisen auf
+> Treuhand und Firmengründung ist weg.
+
 ### /ueber-uns
 
 Die Inhaber mit Namen, Werdegang und Sprachen. Warum es die Firma gibt. Kein
