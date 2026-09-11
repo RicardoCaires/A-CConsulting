@@ -15,6 +15,7 @@ import { CTASection } from './CTASection'
 import { Segmente } from './Segmente'
 import { UnserModell } from './UnserModell'
 import { Vorgehen, vorgehenFlaeche } from './Vorgehen'
+import { WechselHinweis } from './WechselHinweis'
 import { StepList } from './StepList'
 import type { Action, Block, Download, PageRef, Rich } from '@/content/types'
 import type { Locale } from '@/i18n/config'
@@ -270,6 +271,19 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
     // Die Leistungen auf `/treuhand` bleiben in der Flaechenfolge: Sie laufen
     // ueber den normalen Weg unten und bekommen die Flaeche, die der Abschnitt
     // vorher hatte. Nur ihr Inhalt ist ein eigener Baustein.
+    case 'wechselHinweis':
+      return (
+        <WechselHinweis
+          headingId={headingId}
+          eyebrow={block.eyebrow}
+          heading={block.heading}
+          lead={block.lead}
+          link={block.link}
+          schritte={block.schritte}
+          locale={locale}
+        />
+      )
+
     case 'vorgehen':
       return (
         <Vorgehen

@@ -349,6 +349,30 @@ export type Block =
         satz: string
       }[]
     }
+  /**
+   * Hinweis auf den Treuhaenderwechsel: links Text und Link, rechts eine Karte
+   * mit drei verbundenen Schritten.
+   *
+   * Loest auf `/treuhand` den `prose`-Block „Sie haben bereits einen
+   * Treuhaender?" ab (11.09.2026, Referenzgrafik von Ricardo). Bleibt in der
+   * Flaechenfolge.
+   */
+  | {
+      kind: 'wechselHinweis'
+      id: string
+      eyebrow: string
+      heading: string
+      lead: string
+      link: { target: PageKey; label: string }
+      schritte: readonly {
+        /** Nummernbild unter `public/bilder/treuhand/wechsel/`, ohne Endung. */
+        nummer: string
+        /** Symbol unter `public/bilder/treuhand/wechsel/`, ohne Endung. */
+        bild: string
+        titel: string
+        satz: string
+      }[]
+    }
   /** Sprungmarken innerhalb der Seite. */
   | {
       kind: 'anchors'

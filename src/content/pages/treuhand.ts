@@ -130,15 +130,37 @@ export const treuhand: PageContent = {
       ],
     },
 
-    // 08 Wechsel-Teaser
+    // 08 Wechsel-Hinweis — seit dem 11.09.2026 nach Ricardos Referenzgrafik:
+    // links Text und Link, rechts drei verbundene Schritte. Kategoriezeile und
+    // Schritte stammen aus der Grafik (`content/source/treuhand_wechsel_de.md`),
+    // Titel, Absatz und Link wie bisher.
     {
-      kind: 'prose',
+      kind: 'wechselHinweis',
       id: 'wechsel',
+      eyebrow: 'Treuhand wechseln',
       heading: 'Sie haben bereits einen Treuhänder?',
-      paragraphs: [
-        'Ein Wechsel ist grundsätzlich möglich. Wir schauen mit Ihnen zuerst die bestehende Situation an, klären den geeigneten Zeitpunkt und welche Unterlagen für die Übernahme nötig sind.',
+      lead: 'Ein Wechsel ist grundsätzlich möglich. Wir schauen mit Ihnen zuerst die bestehende Situation an, klären den geeigneten Zeitpunkt und welche Unterlagen für die Übernahme nötig sind.',
+      link: { target: 'treuhaenderWechseln', label: 'So gehen wir bei einem Wechsel vor' },
+      schritte: [
+        {
+          nummer: '04_schritt_1',
+          bild: '01_situation_pruefen',
+          titel: 'Situation prüfen',
+          satz: 'Wir analysieren die aktuelle Ausgangslage.',
+        },
+        {
+          nummer: '05_schritt_2',
+          bild: '02_uebergabe_planen',
+          titel: 'Übergabe planen',
+          satz: 'Wir klären den idealen Zeitpunkt und die nächsten Schritte.',
+        },
+        {
+          nummer: '06_schritt_3',
+          bild: '03_reibungslos_uebernehmen',
+          titel: 'Reibungslos übernehmen',
+          satz: 'Wir sorgen für eine strukturierte und sichere Übernahme.',
+        },
       ],
-      links: [{ target: 'treuhaenderWechseln', label: 'So gehen wir bei einem Wechsel vor' }],
     },
 
     // 10 Häufige Fragen

@@ -351,3 +351,23 @@ Zusammen 1.8 KB.
 Jede Datei ist ein heller gruener Kreis mit feinem Rand (Radius 168, Rand 6)
 und der Nummer als Text in Georgia. Wie bei den Leistungssymbolen gleicht das
 Stylesheet den transparenten Rand mit einem negativen Aussenabstand aus.
+
+## Treuhand — Sie haben bereits einen Treuhaender?
+
+Am 11.09.2026 geliefert, als SVG. Die Quellen liegen unter
+`treuhand_wechsel/`, ausgeliefert werden sie **unveraendert** aus
+`public/bilder/treuhand/wechsel/` — ein eigener Ordner, weil `04_schritt_1`
+neben `04_schritt_04` des Ablaufs zu leicht zu verwechseln waere.
+
+| Datei | Quelle | ausgeliefert |
+|---|---|---|
+| `01_situation_pruefen` | SVG, 512 x 512 | unveraendert |
+| `02_uebergabe_planen` | SVG, 512 x 512 | unveraendert |
+| `03_reibungslos_uebernehmen` | SVG, 512 x 512 | unveraendert |
+| `04_schritt_1` | SVG, 512 x 512 | unveraendert |
+| `05_schritt_2` | SVG, 512 x 512 | unveraendert |
+| `06_schritt_3` | SVG, 512 x 512 | unveraendert |
+
+Die Symbole tragen einen hellen Kreis (Radius 160), die Nummern einen Kreis
+mit Rand (Radius 170, Rand 6) und die Ziffer in Arial. Beide gruenen Toene der
+Dateien weichen von `accent_green` ab; sie bleiben, wie sie sind.
