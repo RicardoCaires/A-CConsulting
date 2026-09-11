@@ -2,7 +2,8 @@
  * /de/steuern
  *
  * QUELLE: `content/source/schritt4_fassung2_de.md`, Abschnitt „Steuern".
- * Wortlaut unveraendert uebernommen. Reihenfolge der zehn Abschnitte wie dort.
+ * Wortlaut unveraendert uebernommen. Reihenfolge wie dort; vier der zehn Abschnitte
+ * sind am 11.09.2026 entfallen.
  */
 
 import type { PageContent } from '../types'
@@ -52,26 +53,10 @@ export const steuern: PageContent = {
       links: [{ target: 'treuhand', label: 'Buchhaltung und Jahresabschluss' }],
     },
 
-    // 04 So läuft es ab
-    {
-      kind: 'steps',
-      id: 'ablauf',
-      heading: 'So läuft es ab',
-      steps: [
-        {
-          heading: 'Unterlagen',
-          body: 'Sie bringen die Unterlagen vorbei oder senden sie uns digital. Was dazugehört, steht in unserer Checkliste.',
-        },
-        {
-          heading: 'Erstellung',
-          body: 'Wir erstellen die Steuererklärung und melden uns, wenn etwas fehlt oder unklar ist. Vor dem Einreichen gehen wir sie mit Ihnen durch.',
-        },
-        {
-          heading: 'Einreichung und Kontrolle',
-          body: 'Wir reichen ein und prüfen später die Veranlagung.',
-        },
-      ],
-    },
+    // Am 11.09.2026 auf Ricardos Anweisung entfallen: 04 „So läuft es ab",
+    // 07 „Was es kostet", 08 „Wenn Sie nebenbei selbständig sind" und 10, der
+    // Abschluss „Termin für Ihre Steuererklärung vereinbaren". Ihr Wortlaut steht
+    // unverändert unter `content/source/`.
 
     // 05 Checkliste
     {
@@ -100,42 +85,6 @@ export const steuern: PageContent = {
           
         ],
         'Wenn wir Ihre Steuererklärung erstellen, übernehmen wir auch die Fristverlängerung.',
-      ],
-    },
-
-    // 07 Was es kostet
-    {
-      kind: 'list',
-      id: 'kosten',
-      heading: 'Was es kostet',
-      intro: ['Der Aufwand hängt davon ab, wie Ihre Situation aussieht:'],
-      items: [
-        'Anzahl Lohnausweise und Belege',
-        'Wertschriften und Bankbeziehungen',
-        'Liegenschaften',
-        'selbständige Nebentätigkeit',
-        'ob mehrere Steuerjahre offen sind',
-      ],
-      outro: [
-        'Sagen Sie uns kurz, was auf Sie zutrifft, dann können wir den Aufwand einschätzen, bevor wir beginnen.',
-      ],
-    },
-
-    // 08 Nebenerwerb
-    {
-      kind: 'prose',
-      id: 'nebenerwerb',
-      heading: 'Wenn Sie nebenbei selbständig sind',
-      paragraphs: [
-        [
-          'Sobald Sie neben der Anstellung etwas auf eigene Rechnung machen, ändert sich die Steuererklärung. Es kommen eine Aufstellung der Einnahmen und Ausgaben dazu und die Frage der Anmeldung bei der Ausgleichskasse. ',
-          
-          ' Wir schauen das mit Ihnen an und klären, was zu tun ist.',
-        ],
-      ],
-      links: [
-        { target: 'treuhand', label: 'Treuhand' },
-        { target: 'firmengruendung', label: 'Firmengründung' },
       ],
     },
 
@@ -180,20 +129,6 @@ export const steuern: PageContent = {
         },
       ],
       schluss: 'Persönlich. Unabhängig. An Ihrer Seite.',
-    },
-
-    // 10 Abschluss
-    {
-      kind: 'cta',
-      id: 'abschluss',
-      heading: 'Termin für Ihre Steuererklärung vereinbaren',
-      paragraphs: [
-        'Melden Sie sich, dann vereinbaren wir einen Termin. Die Checkliste können Sie vorab herunterladen.',
-      ],
-      actions: [
-        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
-        { kind: 'phone' },
-      ],
     },
   ],
 }
