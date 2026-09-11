@@ -21,7 +21,7 @@ Abwicklung begleiten
 
 ## Die Partnerkarte
 
-Wir begleiten Sie persönlich
+Für die Schadenmeldung auf Ihre Gesellschaft klicken.
 
 Allianz — Schaden melden
 
@@ -82,3 +82,15 @@ Auf Ricardos Anweisung:
 - **Statt des Vermerks „folgt" steht ein grüner Knopf „Herunterladen".** Das
   PDF fehlt noch; Ricardo legt es später ab. Bis dahin führt der Knopf ins
   Leere. Der offene Punkt steht in CLAUDE.md.
+
+Noch am selben Tag nachgeschärft, ebenfalls auf seine Anweisung:
+
+- **Das Schildsymbol über der Partnerkarte ist entfallen.**
+- **„Wir begleiten Sie persönlich" ist ersetzt** durch „Für die Schadenmeldung
+  auf Ihre Gesellschaft klicken." — aus einer Überschrift ist eine Anleitung
+  geworden. Ricardo hat den Wortlaut offengelassen („oder etwas in dieser
+  Art"); dies ist die knappste Fassung in der Sie-Form.
+- Der Hinweis ist **grün unterstrichen**, wie die Kontaktangaben im
+  Abschluss der Startseite.
+- Die **Bewegung beim Darüberfahren ist verstärkt**: Die Kachel hebt sich
+  deutlicher und bekommt einen weichen Schatten.

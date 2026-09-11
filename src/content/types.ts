@@ -272,9 +272,11 @@ export type Block =
       /** Der gruene Knopf. `datei` ist null, solange das PDF fehlt. */
       download: Download
       partner: {
-        bild: string
-        /** Ueberschrift der Karte rechts. */
-        titel: string
+        /**
+         * Der Hinweis ueber den Logos. Keine Ueberschrift, sondern eine
+         * Anleitung — er sagt, was die Kacheln tun.
+         */
+        hinweis: string
         /**
          * Die neun Gesellschaften, jede mit ihrem Logo und dem Link auf ihre
          * eigene Schadenmeldung. Die Ziele sind fremde Seiten — sie oeffnen

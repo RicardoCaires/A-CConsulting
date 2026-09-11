@@ -43,8 +43,7 @@ type Props = {
   /** Der Knopf wird vom Aufrufer gebaut — er kennt die Pfade, dieser nicht. */
   aktion: ReactNode
   partner: {
-    bild: string
-    titel: string
+    hinweis: string
     gesellschaften: readonly { bild: string; name: string; url: string }[]
   }
 }
@@ -101,17 +100,14 @@ export function Schadenfall({
 
         {/* ---- Rechts: die Partnerkarte --------------------------------
 
-            Symbol ueber dem Titel, nicht daneben: So beginnt der Titel auf
-            derselben Senkrechten wie die erste Logokachel. Ricardo hat das am
-            11.09.2026 so verlangt.
+            Ueber den Logos steht seit dem 11.09.2026 ein **Hinweis**, keine
+            Ueberschrift: Er sagt, was die Kacheln tun. Das Schildsymbol
+            darueber ist auf Ricardos Anweisung entfallen.
 
-            Fuer einen Zusatztext gab es keine Vorgabe. Es wird keiner
-            erfunden — die Karte traegt Titel und Raster. */}
+            Der Hinweis beginnt auf derselben Senkrechten wie die erste
+            Kachel. */}
         <div className={styles.partner}>
-          <div className={styles.partnerKopf}>
-            <Symbol datei={partner.bild} groesse={64} />
-            <h3>{partner.titel}</h3>
-          </div>
+          <p className={styles.hinweis}>{partner.hinweis}</p>
 
           <ul className={styles.raster} role="list">
             {partner.gesellschaften.map((g) => (
