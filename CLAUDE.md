@@ -893,6 +893,36 @@ Buchhaltung, Lohnadministration, MWST-Abrechnung, Jahresabschluss,
 Gründungsberatung und Umwandlung Einzelfirma zu GmbH. Zielgruppe sind kleine
 Betriebe und Selbstständige in der Region.
 
+> **„Was wir übernehmen" ist seit dem 11.09.2026 ein Kartenraster**
+> (`src/components/blocks/Leistungen.tsx`), nach Ricardos Referenzgrafik:
+> Kategoriezeile „Unsere Leistungen", Titel, Einleitung, sieben weisse Karten
+> in zwei Spalten, je mit geliefertem Symbol. Zwei Spalten erst ab 75rem
+> (1200 px); bei 1024 px lief der Satz zur Buchhaltung in der halben Breite auf
+> sechs Zeilen. Darunter eine Karte je Reihe. Vorher ein `subsections`-Block
+> aus reinem Text. **Die Kartentexte sind unverändert**; neu sind
+> Kategoriezeile und Einleitung (`content/source/treuhand_leistungen_de.md`).
+> Der Anker `leistungen` bleibt.
+>
+> **Verlinkt ist nur, was veröffentlicht ist:** Buchhaltung, Firmengründung und
+> Steuern (dort der Abschnitt `#firmen`). Lohnbuchhaltung, Mehrwertsteuer und
+> Jahresabschluss werden von selbst zu Links, sobald ihre Seiten auf
+> `published: true` stehen. Unternehmensadministration hat keine eigene Seite
+> und bleibt ohne Pfeil. Die Referenz zeigt an allen sieben Karten einen Pfeil —
+> ein Pfeil ohne Ziel wäre ein Fake-Link, und den verbietet der Auftrag.
+>
+> **Der Abschnitt bleibt in der Flächenfolge** und steht darum auf Weiss, nicht
+> auf dem hellen Grund der Referenz: Direkt darunter folgt „Für wen wir
+> arbeiten" auf `background_light`, und zwei fast gleiche Töne hintereinander
+> hätten die Seite gestreift. Die Karten tragen dafür Kontur und einen sehr
+> weichen Schatten — dieselbe kleine Ausnahme von „keine Schlagschatten" wie
+> bei den Leistungskarten der Startseite.
+>
+> **Die sieben Symbole sind SVG und stehen unverändert da.** Sie bringen eigene
+> Farbwerte mit — ein Navy nahe `navy_deep` und ein helleres Grün als
+> `accent_green`. Auf Ricardos ausdrückliche Anweisung werden sie nicht
+> umgefärbt. `07_steuern_firmen` setzt das Paragrafenzeichen als Schrift
+> (Arial); auf Geräten ohne Arial nimmt der Browser eine ähnliche.
+
 ### /steuern
 
 Getrennt für Privatpersonen und Firmen. Enthält zusätzlich:

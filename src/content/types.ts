@@ -302,6 +302,31 @@ export type Block =
       items: readonly { question: string; answer: Rich }[]
       schluss: string
     }
+  /**
+   * Leistungen als Kartenraster: Kategoriezeile, Titel, Einleitung, Karten mit
+   * geliefertem Symbol und Pfeil.
+   *
+   * Loest auf `/treuhand` den `subsections`-Block „Was wir uebernehmen" ab
+   * (11.09.2026, Referenzgrafik von Ricardo). Anders als die uebrigen eigenen
+   * Bausteine bleibt er in der Flaechenfolge der Seite.
+   */
+  | {
+      kind: 'leistungen'
+      id: string
+      eyebrow: string
+      heading: string
+      lead: string
+      karten: readonly {
+        /** Dateiname unter `public/bilder/treuhand/`, ohne Endung. */
+        bild: string
+        titel: string
+        satz: string
+        /** Zielseite. Verlinkt wird nur, wenn sie veroeffentlicht ist. */
+        ziel?: PageKey
+        /** Anker auf der Zielseite, etwa `firmen`. */
+        anker?: string
+      }[]
+    }
   /** Sprungmarken innerhalb der Seite. */
   | {
       kind: 'anchors'

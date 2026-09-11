@@ -9,6 +9,7 @@ import { hatSichtbarenInhalt, RichText } from '@/components/ui/RichText'
 import { Accordion } from './Accordion'
 import { Betreuung } from './Betreuung'
 import { Fragen } from './Fragen'
+import { Leistungen } from './Leistungen'
 import { Schadenfall } from './Schadenfall'
 import { CTASection } from './CTASection'
 import { Segmente } from './Segmente'
@@ -263,6 +264,21 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
             }))}
           />
         </div>
+      )
+
+    // Die Leistungen auf `/treuhand` bleiben in der Flaechenfolge: Sie laufen
+    // ueber den normalen Weg unten und bekommen die Flaeche, die der Abschnitt
+    // vorher hatte. Nur ihr Inhalt ist ein eigener Baustein.
+    case 'leistungen':
+      return (
+        <Leistungen
+          headingId={headingId}
+          eyebrow={block.eyebrow}
+          heading={block.heading}
+          lead={block.lead}
+          karten={block.karten}
+          locale={locale}
+        />
       )
 
     case 'serviceNav': {
