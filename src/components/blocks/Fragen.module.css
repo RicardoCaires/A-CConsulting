@@ -9,9 +9,9 @@
    zwei Drittel; Kopf und Fragen beginnen auf derselben Senkrechten innerhalb
    der Karte. Hier begrenzt auf 1100 px, wie im Auftrag verlangt.
 
-   Ricardo hat fuer den Grund einen Farbbereich genannt. Er steht hier nicht
-   als Wert, sondern als Mischung der beiden hellen Tokens — der Pruefer
-   duldet keinen Farbwert in einer Komponente, auch nicht im Kommentar.
+   Der Grund ist `background_tint` — derselbe hellblaue Ton wie „So beginnt
+   die Zusammenarbeit" auf der Startseite. Ricardo hat das am 11.09.2026 so
+   verlangt; die erste Fassung stand auf einer helleren Mischung.
 
    Alles ist auf `.abschnitt` gekapselt. Der allgemeine `Accordion` der
    uebrigen Seiten bleibt unberuehrt. */
@@ -22,11 +22,7 @@
   --innen: clamp(1.25rem, 3vw, 2.5rem);
 
   padding-block: clamp(4rem, 8vw, 7rem);
-  background-color: color-mix(
-    in srgb,
-    var(--ac-color-background-tint) 45%,
-    var(--ac-color-background-light)
-  );
+  background-color: var(--ac-color-background-tint);
 }
 
 .inner {
