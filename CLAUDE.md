@@ -1057,6 +1057,16 @@ Betriebe und Selbstständige in der Region.
 > Vorlage B gilt heute nur für diese Seite. Die neuen Felder `bild` und
 > `hintergrund` sind optional; ohne sie fällt die Vorlage auf die Zeichen aus
 > `Icon.tsx` und den hellen Grundton zurück.
+>
+> **Der Abschluss „Reden wir über Ihre Administration" ist auf
+> `/treuhand/buchhaltung` am 11.09.2026 entfallen**, auf Ricardos Anweisung.
+> Die Seite endet damit — wie `/versicherungen` und `/treuhand` — mit den
+> häufigen Fragen. Der Wortlaut steht unverändert in
+> `content/source/schritt4_fassung2_de.md`. In Vorlage B ist der Abschluss
+> seither optional (`cta?`); FR und PT tragen ihn ebenfalls nicht mehr, damit
+> alle drei Sprachfassungen dieselbe Struktur haben. Der Knopf im Seitenkopf
+> heisst weiterhin „Erstgespräch anfragen" — er nimmt jetzt die Beschriftung
+> der Kopfzeile (`ui.cta`).
 
 ### /steuern
 
