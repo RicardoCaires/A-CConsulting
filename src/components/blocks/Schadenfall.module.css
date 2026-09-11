@@ -106,27 +106,18 @@
   box-shadow: 0 8px 28px color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
 }
 
-/* Symbol ueber dem Titel, nicht daneben: So beginnt der Titel auf derselben
-   Senkrechten wie die erste Logokachel. Stand daneben, sass er um Symbol plus
-   Abstand nach rechts versetzt. */
-.partnerKopf {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--ac-space-md);
-  margin-bottom: clamp(1.5rem, 3vw, 2rem);
-}
-
-.partnerKopf .symbol {
-  width: 4rem;
-  height: 4rem;
-}
-
-.partnerKopf h3 {
-  margin: 0;
-  font-size: var(--ac-h2-size);
-  line-height: 1.2;
+/* Der Hinweis ueber den Logos. Gruen unterstrichen wie die Kontaktangaben im
+   Abschluss der Startseite: fein, mit Abstand zur Schrift, die Schrift selbst
+   in der Textfarbe. */
+.hinweis {
+  margin: 0 0 clamp(1.5rem, 3vw, 2rem);
+  font-size: var(--ac-body-size);
+  line-height: 1.5;
   color: var(--ac-color-primary-navy);
+  text-decoration: underline;
+  text-decoration-color: var(--ac-color-accent-green);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 
 /* ---- Das Logoraster --------------------------------------------------------
@@ -144,11 +135,17 @@
   list-style: none;
 }
 
+/* Die Kachel hebt sich beim Darueberfahren deutlich — Ricardo hat die
+   Bewegung am 11.09.2026 verstaerkt verlangt. Sie ist der einzige Ort auf der
+   Seite, an dem ein Bild ein Link ist; ohne Rueckmeldung sieht man das nicht.
+
+   Trefferflaeche: Die Kachel selbst ist deutlich groesser als 44 px. */
 .kachel {
   display: block;
   border-radius: 10px;
-  /* Trefferflaeche: Die Kachel selbst ist deutlich groesser als 44 px. */
-  transition: transform 120ms ease;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .kachel img {
@@ -160,7 +157,8 @@
 
 .kachel:hover,
 .kachel:focus-visible {
-  transform: translateY(-2px);
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--ac-color-primary-navy) 16%, transparent);
 }
 
 /* Wer die Bewegung nicht will, bekommt sie nicht. */

@@ -817,6 +817,13 @@ Broker von einem Direktabschluss unterscheidet.
 >
 > **Statt des Vermerks „folgt" steht ein grüner Knopf „Herunterladen".** Das
 > PDF fehlt noch und steht als offener Punkt in Abschnitt 10.
+>
+> Noch am selben Tag nachgeschärft: **Das Schildsymbol über der Partnerkarte
+> ist entfallen**, und aus der Überschrift „Wir begleiten Sie persönlich" ist
+> ein Hinweis geworden — „Für die Schadenmeldung auf Ihre Gesellschaft
+> klicken.", grün unterstrichen wie die Kontaktangaben im Abschluss der
+> Startseite. Die Bewegung beim Darüberfahren ist verstärkt; sie bleibt hinter
+> `prefers-reduced-motion` abschaltbar.
 
 Kein Prämienrechner, keine Vergleichstabellen mit Versicherernamen.
 

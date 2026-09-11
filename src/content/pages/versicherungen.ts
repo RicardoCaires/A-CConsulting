@@ -276,8 +276,10 @@ export const versicherungen: PageContent = {
       // Punkt steht in CLAUDE.md.
       download: { label: 'Herunterladen', file: '/dokumente/schadenfall.pdf' },
       partner: {
-        bild: '01_schaden_warnung',
-        titel: 'Wir begleiten Sie persönlich',
+        // Seit dem 11.09.2026 ein Hinweis statt einer Ueberschrift: Er sagt,
+        // was die Kacheln tun. Das Schildsymbol ist auf Ricardos Anweisung
+        // entfallen.
+        hinweis: 'Für die Schadenmeldung auf Ihre Gesellschaft klicken.',
         // Die Ziele sind die Schadenmeldungen der Gesellschaften selbst,
         // uebernommen von der Uebersicht, die Ricardo genannt hat
         // (providereconcepts.ch/schadenfall). Fremde Seiten: neues Fenster.
