@@ -1,17 +1,22 @@
 /* Checkliste und Fristen auf `/steuern`.
 
-   Nach Ricardos Referenzgrafik vom 14.09.2026 (1672 x 941). Aus der Vorlage
-   gemessen:
+   Nach Ricardos zweiter Referenzgrafik vom 14.09.2026 (1672 x 941). Aus der
+   Vorlage gemessen, Anteile der Bildbreite:
 
-     Karten        x 66 bis 800 und 845 bis 1580, je 734 px, Fuge 45
-     Abbildung     oben rechts in der linken Karte, rund 140 px breit
-     Tabelle       Zeilen mit hellblauem Grund, Wert rechtsbuendig
-     Knopf         Pille in hellem Gruen, darunter ein leiser Hinweis
-     Gruppen       zwei Unterkarten mit Symbol, Titel und Zeilen
+     Inhalt        x 66 bis 1606, also 92.1 Prozent — hier 1560 px
+     Kacheln       je 47.7 Prozent des Inhalts, Fuge 22 px
+     Radius        26 px aussen, 16 px innen, 999 px am Knopf
+     Abbildung     oben rechts in der linken Kachel, 8.6 Prozent der Breite
+     Fristenbox    umrandet, zwei Zeilen, Wert in eigener Spalte
+     Unterkarten   Symbol, Titel, Untertitel, darunter die Zeilen
+     Bildstreifen  volle Inhaltsbreite, Seitenverhaeltnis 4.16 : 1
 
-   Derselbe breite Container wie die Zielgruppenkarten darueber (1344 px).
+   Der Auftrag nennt 1560 bis 1620 px Inhaltsbreite. Das ist breiter als jeder
+   andere Abschnitt der Seite (Standard 1160, Ausnahmen 1344 und 1380) und
+   steht hier auf Ricardos ausdrueckliche Vorgabe.
 
-   Das Foto der Vorlage fehlt: Die gelieferte Datei traegt ein Wasserzeichen. */
+   Zwei Symbole der Vorlage fehlen: das Kalender- und das Uhrzeichen der beiden
+   Fristenzeilen links. Sie lagen nicht bei; nachgezeichnet wird nichts. */
 
 .flaeche {
   padding-block: var(--ac-section-y);
@@ -23,22 +28,58 @@
 
 .flaeche .container {
   display: grid;
-  gap: clamp(1.25rem, 2.4vw, 2.25rem);
-  max-width: 84rem;
+  gap: clamp(1rem, 1.4vw, 1.375rem);
+  max-width: 97.5rem;
+}
+
+.raster {
+  display: grid;
+  gap: clamp(1rem, 1.4vw, 1.375rem);
 }
 
 .karte {
   display: flex;
   flex-direction: column;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.5rem, 2.6vw, 2.75rem);
   background-color: var(--ac-color-white);
   border: var(--ac-border-hairline) solid
-    color-mix(in srgb, var(--ac-color-primary-navy) 8%, transparent);
-  border-radius: 18px;
-  box-shadow: 0 16px 44px color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
+    color-mix(in srgb, var(--ac-color-primary-navy) 9%, transparent);
+  border-radius: 26px;
+  box-shadow: 0 18px 48px color-mix(in srgb, var(--ac-color-primary-navy) 5%, transparent);
 }
 
-/* ---- Kopf der linken Karte: Text links, Abbildung rechts ------------------- */
+/* ---- Kopf beider Kacheln ---------------------------------------------------- */
+
+/* Die Vorlage setzt die Zeile ohne den grünen Strich, den die übrigen
+   Kategoriezeilen der Website tragen. */
+.eyebrow {
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  line-height: var(--ac-eyebrow-line);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ac-color-accent-green);
+}
+
+.titel {
+  margin: 0.5rem 0 0;
+  font-size: clamp(2rem, 1.5rem + 1.8vw, 3rem);
+  line-height: 1.05;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.02em;
+  color: var(--ac-color-primary-navy);
+}
+
+.absatz {
+  margin: var(--ac-space-sm) 0 0;
+  max-width: 56ch;
+  font-size: var(--ac-body-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Linke Kachel: Text links, gelieferte Abbildung rechts ------------------ */
 
 .kopf {
   display: grid;
@@ -47,71 +88,110 @@
   align-items: start;
 }
 
+.kopfText {
+  min-width: 0;
+}
+
 .abbildung {
   display: block;
-  width: clamp(5.5rem, 4rem + 4vw, 7.5rem);
+  width: clamp(6rem, 4rem + 5vw, 8.75rem);
   max-width: none;
   height: auto;
 }
 
-.titel {
-  margin: 0;
-  font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.25rem);
-  line-height: 1.1;
-  font-weight: var(--ac-display-weight);
-  letter-spacing: -0.015em;
-  color: var(--ac-color-primary-navy);
-}
-
-.absatz {
-  margin: var(--ac-space-sm) 0 0;
-  max-width: 52ch;
-  font-size: var(--ac-body-size);
-  line-height: 1.6;
-  color: var(--ac-color-text-secondary);
-}
-
-/* ---- Zeilen mit Frist und Wert --------------------------------------------- */
+/* ---- Fristenbox der linken Kachel ------------------------------------------- */
 
 .tabelle {
-  margin-top: clamp(1.25rem, 2.4vw, 1.75rem);
+  margin-top: clamp(1.5rem, 2.6vw, 2.25rem);
 }
 
 .zwischentitel {
   margin: 0 0 var(--ac-space-sm);
   font-family: var(--ac-font-display);
-  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
-  line-height: 1.3;
+  font-size: clamp(1.1875rem, 1.05rem + 0.45vw, 1.4375rem);
+  line-height: 1.25;
   font-weight: var(--ac-display-weight);
   color: var(--ac-color-primary-navy);
 }
 
-.zeilen {
+.zeilenBox {
+  margin: 0;
+  overflow: hidden;
+  background-color: color-mix(in srgb, var(--ac-color-background-tint) 30%, var(--ac-color-white));
+  border: var(--ac-border-hairline) solid var(--ac-color-border-tint);
+  border-radius: 16px;
+}
+
+.zeilenBox .zeile {
   display: grid;
-  gap: 2px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+  align-items: center;
+  gap: 0;
+}
+
+.zeilenBox .zeile + .zeile {
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-tint);
+}
+
+.zeilenBox .label {
+  padding: 0.8125rem 1.125rem;
+  color: var(--ac-color-primary-navy);
+}
+
+.zeilenBox .wert {
+  padding: 0.8125rem 1.125rem;
+  border-left: var(--ac-border-hairline) solid var(--ac-color-border-tint);
+}
+
+/* ---- Zeilenliste in den Unterkarten ----------------------------------------- */
+
+.zeilenListe {
   margin: 0;
 }
 
-.zeile {
+/* Die Unterkarten sind schmal, die Beschriftungen lang. Sie laufen darum eine
+   Stufe kleiner als die Fristenbox links — sonst brechen sie dreizeilig. */
+.zeilenListe .zeile {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--ac-space-sm);
+  gap: 0.5rem;
   align-items: baseline;
-  padding: 0.625rem 0.875rem;
-  background-color: color-mix(in srgb, var(--ac-color-background-tint) 45%, var(--ac-color-white));
-  border-radius: 10px;
+  padding-block: 0.625rem;
+  font-size: var(--ac-small-size);
+}
+
+.zeilenListe .label,
+.zeilenListe .wert {
+  font-size: inherit;
+}
+
+.zeilenListe .zeile + .zeile {
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+/* Die Vorlage setzt in den Unterkarten einen Doppelpunkt hinter die
+   Beschriftung. Er ist Zeichensetzung, kein Inhalt, und steht darum hier. */
+.zeilenListe .label::after {
+  content: ':';
+}
+
+/* Die erste Zeile ist die ordentliche Frist und steht kräftiger. */
+.zeilenListe .zeile:first-child .label,
+.zeilenListe .zeile:first-child .wert {
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
 }
 
 .label {
   font-size: 1rem;
-  line-height: 1.4;
-  color: var(--ac-color-primary-navy);
+  line-height: 1.45;
+  color: var(--ac-color-text-secondary);
 }
 
 .wert {
   margin: 0;
   font-size: 1rem;
-  line-height: 1.4;
+  line-height: 1.45;
   text-align: right;
   color: var(--ac-color-text-secondary);
 }
@@ -124,6 +204,15 @@
 
 .zeileOffen .wert {
   text-align: left;
+  border-left: none;
+}
+
+.zeilenBox .zeileOffen .label {
+  padding-bottom: 0;
+}
+
+.zeilenBox .zeileOffen .wert {
+  padding-top: 0.25rem;
 }
 
 /* ---- Knopf und Hinweis ------------------------------------------------------ */
@@ -136,10 +225,10 @@
 .knopf {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  min-height: 2.875rem;
+  gap: 0.875rem;
+  min-height: 3.25rem;
   margin: 0;
-  padding: 0.625rem 1.5rem;
+  padding: 0.75rem 1.75rem;
   font-size: var(--ac-body-size);
   font-weight: 600;
   line-height: 1.3;
@@ -193,27 +282,29 @@
   color: var(--ac-color-text-secondary);
 }
 
-/* ---- Rechte Karte: zwei Gruppen -------------------------------------------- */
+/* ---- Rechte Kachel: zwei Unterkarten ---------------------------------------- */
 
 .gruppen {
   display: grid;
-  gap: clamp(0.875rem, 1.8vw, 1.25rem);
+  gap: clamp(0.875rem, 1.4vw, 1.125rem);
   margin-top: clamp(1.25rem, 2.4vw, 1.75rem);
 }
 
 .gruppe {
-  padding: clamp(1rem, 2vw, 1.375rem);
-  background-color: color-mix(in srgb, var(--ac-color-background-light) 70%, var(--ac-color-white));
+  display: flex;
+  flex-direction: column;
+  padding: clamp(0.875rem, 1.5vw, 1.375rem);
+  background-color: color-mix(in srgb, var(--ac-color-background-light) 65%, var(--ac-color-white));
   border: var(--ac-border-hairline) solid
     color-mix(in srgb, var(--ac-color-primary-navy) 7%, transparent);
-  border-radius: 14px;
+  border-radius: 18px;
 }
 
 .gruppenKopf {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: var(--ac-space-sm);
+  padding-bottom: 0.75rem;
 }
 
 /* Die gelieferten Symbole bringen ihren Kreis mit; ringsum liegt in der Datei
@@ -230,10 +321,17 @@
 .gruppenTitel {
   margin: 0;
   font-family: var(--ac-font-display);
-  font-size: clamp(1.125rem, 1rem + 0.35vw, 1.3125rem);
-  line-height: 1.25;
+  font-size: clamp(1.1875rem, 1.05rem + 0.4vw, 1.375rem);
+  line-height: 1.2;
   font-weight: var(--ac-display-weight);
   color: var(--ac-color-primary-navy);
+}
+
+.gruppenUntertitel {
+  margin: 0.125rem 0 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.35;
+  color: var(--ac-color-text-secondary);
 }
 
 .nachsatz {
@@ -243,16 +341,98 @@
   color: var(--ac-color-text-secondary);
 }
 
-/* ---- Ab 64rem: zwei Karten nebeneinander ----------------------------------- */
+/* ---- Bildstreifen unter den Kacheln ----------------------------------------- */
+
+.banner {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 26px;
+}
+
+.bannerBild {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4.16;
+  object-fit: cover;
+}
+
+.schild {
+  position: absolute;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  font-size: var(--ac-small-size);
+  line-height: 1.3;
+  color: var(--ac-color-primary-navy);
+  background-color: color-mix(in srgb, var(--ac-color-white) 92%, transparent);
+  border-radius: 999px;
+}
+
+.schildOben {
+  top: clamp(0.75rem, 1.6vw, 1.25rem);
+  left: clamp(0.75rem, 1.6vw, 1.25rem);
+}
+
+.schildUnten {
+  right: clamp(0.75rem, 1.6vw, 1.25rem);
+  bottom: clamp(0.75rem, 1.6vw, 1.25rem);
+}
+
+/* ---- Ab 64rem: die beiden Kacheln nebeneinander ----------------------------- */
 
 @media (min-width: 64rem) {
-  .flaeche .container {
+  .raster {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch;
   }
+}
 
+/* Die Unterkarten stehen erst ab 88rem nebeneinander — dort bleiben je
+   Beschriftung rund 180 px, und sie laufen zweizeilig wie in der Vorlage.
+   Bei 1280 px waren es 150 px und drei Zeilen, bei 1024 px vier. Darunter
+   stehen die beiden Karten deshalb voll breit untereinander. */
+@media (min-width: 88rem) {
   .gruppen {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---- Telefon: die Abbildung tritt unter den Text ---------------------------- */
+
+/* Ein Panorama im Verhaeltnis 4.16 : 1 waere auf dem Telefon 80 px hoch. Der
+   Streifen wird dort hoeher und zeigt dafuer den mittleren Ausschnitt. */
+@media (max-width: 47.99rem) {
+  .bannerBild {
+    aspect-ratio: 2.6;
+  }
+
+  .schild {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 29.99rem) {
+  .kopf {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .abbildung {
+    order: -1;
+  }
+
+  .zeilenBox .zeile {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .zeilenBox .wert {
+    padding-top: 0;
+    text-align: left;
+    border-left: none;
+  }
+
+  .zeilenBox .label {
+    padding-bottom: 0.25rem;
   }
 }
 

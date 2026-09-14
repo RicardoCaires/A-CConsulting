@@ -701,9 +701,11 @@ nie stillschweigend weggelassen.
 `npm run check` listet sie bei jedem Lauf auf. Vor dem Go-live muss
 `npm run check:pending -- --strict` ohne Befund durchlaufen.
 
-Stand 09.09.2026: **vier** offene Angaben — der Link auf den
+Stand 14.09.2026: **vier** offene Angaben — der Link auf den
 FINMA-Registereintrag im Impressum und drei Veröffentlichungsdaten im
-Wissensbereich, der nicht veröffentlicht ist.
+Wissensbereich, der nicht veröffentlicht ist. Die Fristen auf `/steuern`
+standen zwischenzeitlich ebenfalls offen; Ricardo hat sie am 14.09.2026
+bestätigt.
 
 Alle Bildflächen sind Platzhalter mit Formatangabe. Das spätere Foto tritt an
 dieselbe Stelle, ohne dass sich das Layout verschiebt. Kein Stockbild.
@@ -1138,38 +1140,57 @@ eidg. Fachausweis suggeriert.
 > Container wie auf `/treuhand/buchhaltung` (1344 px).
 
 > **„Checkliste" und „Fristen und Fristverlängerung" seit dem 14.09.2026 als
-> zwei Karten nebeneinander** (`src/components/blocks/ChecklisteFristen.tsx`),
-> nach Ricardos Referenzgrafik: links die Checkliste mit der gelieferten
-> Abbildung, einer kleinen Fristentabelle, dem Knopf und dem Hinweis „Ohne
-> Anmeldung. Sofort verfügbar."; rechts die Fristen in zwei Gruppen
-> (Privatpersonen, Unternehmen) mit den gelieferten Symbolen. **Titel, Absätze
-> und die Beschriftung des Knopfs sind unverändert; die Anker `checkliste` und
-> `fristen` bleiben.** Die Beschriftungen der Tabellenzeilen stammen aus der
-> Grafik (`content/source/steuern_checkliste_de.md`).
+> zwei Kacheln nebeneinander** (`src/components/blocks/ChecklisteFristen.tsx`).
+> Zuerst nach einer Referenzgrafik gebaut, am selben Tag nach Ricardos zweitem,
+> ausgeschriebenem Auftrag überarbeitet: grüne Kategoriezeile „A&C
+> Consulting", grosse Serifenüberschrift, links die Checkliste mit der
+> gelieferten Abbildung, einer umrandeten Fristenbox, dem grünen Knopf und dem
+> Hinweis „Ohne Anmeldung. Sofort verfügbar."; rechts „Fristen und Kosten" mit
+> zwei Unterkarten (Privatpersonen, Unternehmen) mit den gelieferten Symbolen.
+> **Die Anker `checkliste` und `fristen` bleiben.**
 >
-> **Die Zahlen der Grafik sind nicht übernommen.** Sie widersprechen sich dort
-> selbst — links „Reguläre Einreichfrist 31. März", rechts „Ordentliche Frist
-> 15. März" — und nennen Gebühren (CHF 20, CHF 40), die nirgends belegt sind.
-> Schritt 4 führt genau diese beiden Angaben als offen; sie stehen darum als
-> offene Angabe (`pending`) und erscheinen auf der Seite sichtbar markiert.
-> Damit steigt die Zahl der offenen Angaben; vor dem Go-live muss Ricardo
-> Einreichefrist, Verlängerung und allfällige Gebühren bestätigen.
-> 
-> **Solange die Werte fehlen, stehen die Zeilen nur in der Entwurfsansicht.**
-> Im Produktionsbau sind die Marken ausgeblendet; eine Zeile ohne bestätigten
-> Wert wäre dort eine leere Zeile. Der Baustein lässt solche Zeilen ganz weg —
-> und eine Gruppe, die keine einzige trägt, ebenfalls. Auf der Live-Vorschau
-> zeigen die beiden Karten darum heute Titel, Text, Knopf und Hinweis, aber
-> noch keine Fristentabelle. Mit den bestätigten Werten erscheint sie von
-> selbst.
+> Der Abschnitt hat einen **eigenen Container von 1560 px** — breiter als jede
+> andere Ausnahme im Projekt (Standard 1160, sonst 1344 und 1380). Das steht so
+> in Ricardos Auftrag („max-width ca. 1560–1620px").
 >
-> **Das Bern-Foto der Grafik ist nicht eingebaut.** Die gelieferte Datei
-> `04_bern_stockfoto_original.png` ist 505 x 280 px gross und trägt das
-> Wasserzeichen „shutterstock.com 2181102791" — eine unlizenzierte Vorschau.
-> Eine lizenzierte Fassung in mindestens 2000 px Breite tritt unter die beiden
-> Karten, sobald sie vorliegt. Ebenfalls nicht übernommen: die Zeile „A&C
-> CONSULTING" über den Titeln, „Fristen und Kosten im Überblick" und die
-> Bildunterschrift „Für Steuererklärungen im Kanton Bern".
+> **Die Fristen und Gebühren sind seit dem 14.09.2026 keine offene Angabe
+> mehr.** Ricardo hat sie im zweiten Auftrag ausgeschrieben. Damit stehen
+> wieder **vier** offene Angaben auf der Website, wie vor dem ersten Umbau.
+>
+> **Zwei Angaben widersprechen sich, und zwar so, wie er sie geliefert hat:**
+> Die linke Kachel nennt als reguläre Einreichfrist den 31. März des
+> Folgejahres, die rechte als ordentliche Frist den 15. März. Die Werte der
+> rechten Kachel sind untereinander schlüssig (15. März Privatpersonen,
+> 15. September Unternehmen), die linke Angabe fällt aus der Reihe. Beides
+> steht unverändert auf der Seite; Ricardo ist darauf hingewiesen und
+> entscheidet.
+>
+> **Der Titel der linken Kachel lautet „Privatpersonen".** Damit steht das Wort
+> dreimal als Überschrift auf der Seite — Zielgruppenblock, Kachel und
+> Unterkarte. Ricardo ist darauf hingewiesen.
+>
+> **Der Satz „Wenn wir Ihre Steuererklärung erstellen, übernehmen wir auch die
+> Fristverlängerung." bleibt.** Der Auftragstext führt ihn nicht mehr,
+> Abschnitt 9 verlangt den Hinweis aber ausdrücklich; er steht als Nachsatz
+> unter den Unterkarten. Die Beschreibung der linken Kachel ist dagegen neu und
+> ersetzt den Satz aus `schritt4_fassung2_de.md`.
+>
+> **Das Bern-Foto fehlt weiterhin.** Die gelieferte Datei
+> `04_bern_stockfoto_original.png` ist unverändert 505 x 280 px gross und
+> trägt das Wasserzeichen „shutterstock.com 2181102791" — eine unlizenzierte
+> Vorschau. **Das Wasserzeichen wird nicht entfernt.** Der Bildstreifen ist
+> gebaut (`banner`, mit den Schildchen „Bern" und „Für Steuererklärungen im
+> Kanton Bern") und erscheint von selbst, sobald eine lizenzierte Fassung von
+> mindestens 2000 px Breite unter `public/bilder/` liegt. Ohne Datei steht kein
+> Platzhalter.
+>
+> **Vier Zeichen des Auftrags fehlen** und werden nicht nachgezeichnet: das
+> Kalender- und das Uhrzeichen der beiden Fristenzeilen, das Pin-Zeichen im
+> Schildchen „Bern" und das Download-Zeichen im Knopf.
+>
+> Unterkarten nebeneinander erst ab 88rem (1408 px): Bei 1280 px blieben je
+> Beschriftung 150 px, und „Fristverlängerung online bis 15. November" lief
+> dreizeilig. Darunter stehen sie voll breit untereinander.
 
 ### /firmengruendung
 
@@ -1244,6 +1265,11 @@ Inhalt und Freigaben:
       11.09.2026 darauf und führt bis dahin ins Leere. Auf Ricardos Anweisung;
       er legt die Datei später ab. **Vor dem Go-live zwingend.**
 - [ ] Unterlagen-Checkliste Steuern erstellen (DE/FR/PT)
+- [ ] **Lizenzierte Bern-Aufnahme beschaffen** — mindestens 2000 px breit,
+      ohne Wasserzeichen. Der Bildstreifen unter den beiden Kacheln auf
+      `/steuern` ist gebaut und erscheint, sobald die Datei unter
+      `public/bilder/` liegt. Die gelieferte Vorschau (505 x 280 px,
+      Shutterstock-Wasserzeichen) wird nicht verwendet
 - [ ] Glossar DE/FR/PT für Fachbegriffe aufbauen (`content/glossar.md`)
 
 **Französisch — offen, blockiert alles Weitere in dieser Sprache**

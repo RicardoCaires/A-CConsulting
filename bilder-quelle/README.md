@@ -478,6 +478,14 @@ mindestens 2000 px Breite.
 Die Checklisten-Abbildung traegt laut Kommentar in der Datei bewusst **kein
 offizielles Berner Wappen**, sondern eine neutrale Form.
 
+**Zweite Lieferung am selben Tag.** Ricardo hat den Abschnitt mit einer
+zweiten Referenzgrafik und einem ausgeschriebenen Auftragstext neu bestellt.
+Die drei SVG sind unveraendert dieselben; neu ist nur der Aufbau. Der
+Bildstreifen ist gebaut und bleibt leer, bis das lizenzierte Foto vorliegt.
+Zwei im Auftrag genannte Zeichen fehlen ebenfalls — Kalender und Uhr fuer die
+Fristenzeilen, dazu das Pin- und das Download-Zeichen. Nachgezeichnet wird
+nichts.
+
 ## Firmengruendung — Einzelfirma oder GmbH?
 
 Am 14.09.2026 geliefert, vier SVG. Sie werden **unveraendert** ausgeliefert.
