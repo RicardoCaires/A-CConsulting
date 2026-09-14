@@ -16,6 +16,16 @@ Kanton Bern üblicherweise benötigt werden.
 Sie können die Liste ganz einfach herunterladen und verwenden – ob Sie die
 Steuererklärung selbst ausfüllen oder uns die Unterlagen zur Verfügung stellen.
 
+Wichtige Fristen
+
+Reguläre Einreichfrist
+
+15. März
+
+Fristverlängerung möglich bis
+
+15. November
+
 Checkliste herunterladen (PDF)
 
 Ohne Anmeldung. Sofort verfügbar.
@@ -89,11 +99,15 @@ zweiten Auftrag ausgeschrieben; sie stehen jetzt so da.
 
 **Der Widerspruch ist geklaert, noch am 14.09.2026.** Die linke Kachel nannte
 als reguläre Einreichfrist den 31. März des Folgejahres, die rechte als
-ordentliche Frist den 15. März. Auf Nachfrage gilt der **15. März**, und die
-**Fristenbox der linken Kachel entfällt ganz** („15. März und die tabelle soll
-nicht sichtbar sein"). Damit stehen die Fristen nur noch in den beiden
-Unterkarten rechts: 15. März für Privatpersonen, 15. September für
-Unternehmen.
+ordentliche Frist den 15. März. Es gilt der **15. März**, und zwar in beiden
+Kacheln.
+
+**Die Fristenzeilen links stehen ohne sichtbaren Rahmen.** Sie standen zuerst
+in einer umrandeten, leicht getoenten Box. Auf „15. März und die tabelle soll
+nicht sichtbar sein" war die Box ganz entfallen; Ricardo hat das noch am
+selben Tag präzisiert: „nur die ränder der Tabelle sollen durchsichtig sein
+der inhalt muss vorhanden sein". Inhalt, Raster und Ausrichtung sind darum
+unverändert, nur Rahmen und Füllung sind durchsichtig.
 
 **Die Kategoriezeile „A&C Consulting" ist ebenfalls entfallen**, auf Ricardos
 Anweisung vom selben Tag. Beide Kacheln beginnen mit der Überschrift.
@@ -119,6 +133,6 @@ das Wasserzeichen „shutterstock.com 2181102791" — eine unlizenzierte Vorscha
 Das Wasserzeichen wird nicht entfernt. Der Streifen ist gebaut und erscheint,
 sobald eine lizenzierte Fassung von mindestens 2000 px Breite vorliegt.
 
-**Zwei Symbole fehlen weiterhin:** das Pin-Zeichen im Schildchen „Bern" und
-das Download-Zeichen im Knopf. Nachgezeichnet wird nichts. Das Kalender- und
-das Uhrzeichen des Auftrags sind mit der Fristenbox gegenstandslos geworden.
+**Vier Symbole fehlen** und werden nicht nachgezeichnet: das Kalender- und das
+Uhrzeichen der beiden Fristenzeilen, das Pin-Zeichen im Schildchen „Bern" und
+das Download-Zeichen im Knopf.

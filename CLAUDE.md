@@ -1143,7 +1143,8 @@ eidg. Fachausweis suggeriert.
 > zwei Kacheln nebeneinander** (`src/components/blocks/ChecklisteFristen.tsx`).
 > Zuerst nach einer Referenzgrafik gebaut, am selben Tag nach Ricardos zweitem,
 > ausgeschriebenem Auftrag überarbeitet: grosse Serifenüberschrift, links die
-> Checkliste mit der gelieferten Abbildung, dem grünen Knopf und dem Hinweis
+> Checkliste mit der gelieferten Abbildung, den beiden Fristenzeilen, dem
+> grünen Knopf und dem Hinweis
 > „Ohne Anmeldung. Sofort verfügbar."; rechts „Fristen und Kosten" mit zwei
 > Unterkarten (Privatpersonen, Unternehmen) mit den gelieferten Symbolen.
 > **Die Anker `checkliste` und `fristen` bleiben.**
@@ -1156,13 +1157,17 @@ eidg. Fachausweis suggeriert.
 > mehr.** Ricardo hat sie im zweiten Auftrag ausgeschrieben. Damit stehen
 > wieder **vier** offene Angaben auf der Website, wie vor dem ersten Umbau.
 >
-> **Die Fristenbox der linken Kachel und die Kategoriezeile „A&C Consulting"
-> über beiden Titeln sind noch am 14.09.2026 entfallen**, auf Ricardos
-> Anweisung („15. März und die tabelle soll nicht sichtbar sein", „A&C
-> Consulting über den Überschriften bitte entfernen"). Die Box nannte eine
-> zweite, abweichende Einreichfrist (31. März des Folgejahres); **es gilt der
-> 15. März**. Die Fristen stehen seither nur noch in den beiden Unterkarten
-> rechts: 15. März für Privatpersonen, 15. September für Unternehmen.
+> **Die Kategoriezeile „A&C Consulting" über beiden Titeln ist noch am
+> 14.09.2026 entfallen**, auf Ricardos Anweisung.
+>
+> **Es gilt der 15. März.** Die linke Kachel nannte zuerst den 31. März des
+> Folgejahres, die rechte den 15. März; Ricardo hat den 15. März bestimmt.
+>
+> **Die Fristenzeilen links stehen ohne sichtbaren Rahmen.** Auf „15. März
+> und die tabelle soll nicht sichtbar sein" war die ganze Box entfallen; er hat
+> das am selben Tag präzisiert: „nur die ränder der Tabelle sollen durchsichtig
+> sein der inhalt muss vorhanden sein". Inhalt, Raster und Ausrichtung sind
+> darum unverändert, Rahmen und Füllung stehen auf `transparent`.
 >
 > **Der Titel der linken Kachel lautet „Privatpersonen".** Damit steht das Wort
 > dreimal als Überschrift auf der Seite — Zielgruppenblock, Kachel und
@@ -1183,9 +1188,9 @@ eidg. Fachausweis suggeriert.
 > mindestens 2000 px Breite unter `public/bilder/` liegt. Ohne Datei steht kein
 > Platzhalter.
 >
-> **Zwei Zeichen des Auftrags fehlen** und werden nicht nachgezeichnet: das
-> Pin-Zeichen im Schildchen „Bern" und das Download-Zeichen im Knopf. Das
-> Kalender- und das Uhrzeichen sind mit der Fristenbox gegenstandslos.
+> **Vier Zeichen des Auftrags fehlen** und werden nicht nachgezeichnet: das
+> Kalender- und das Uhrzeichen der beiden Fristenzeilen, das Pin-Zeichen im
+> Schildchen „Bern" und das Download-Zeichen im Knopf.
 >
 > Unterkarten nebeneinander erst ab 88rem (1408 px): Bei 1280 px blieben je
 > Beschriftung 150 px, und „Fristverlängerung online bis 15. November" lief

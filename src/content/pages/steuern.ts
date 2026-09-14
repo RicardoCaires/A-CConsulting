@@ -95,8 +95,10 @@ export const steuern: PageContent = {
     // **Die Werte stehen nicht mehr als offene Angabe.** Ricardo hat sie am
     // 14.09.2026 im Auftrag ausgeschrieben. Die beiden Kacheln nannten zuerst
     // zwei verschiedene ordentliche Fristen; auf Nachfrage gilt der
-    // 15. Maerz. Die Fristenbox der linken Kachel ist am selben Tag auf seine
-    // Anweisung entfallen, ebenso die Kategoriezeile ueber beiden Titeln.
+    // 15. Maerz — in beiden Kacheln. Die Kategoriezeile ueber den Titeln ist
+    // am selben Tag entfallen; die Fristenzeilen links stehen seither ohne
+    // sichtbaren Rahmen („nur die raender der Tabelle sollen durchsichtig sein
+    // der inhalt muss vorhanden sein").
     //
     // **Der Satz zur Fristverlaengerung bleibt** — die Hausordnung verlangt
     // den Hinweis, dass A&C sie uebernimmt. Er steht als Nachsatz unter den
@@ -114,6 +116,11 @@ export const steuern: PageContent = {
         paragraphs: [
           'Die Checkliste zeigt Ihnen, welche Unterlagen für die Steuererklärung im Kanton Bern üblicherweise benötigt werden.',
           'Sie können die Liste ganz einfach herunterladen und verwenden – ob Sie die Steuererklärung selbst ausfüllen oder uns die Unterlagen zur Verfügung stellen.',
+        ],
+        fristenTitel: 'Wichtige Fristen',
+        fristen: [
+          { label: 'Reguläre Einreichfrist', wert: '15. März' },
+          { label: 'Fristverlängerung möglich bis', wert: '15. November' },
         ],
         download: { label: 'Checkliste herunterladen (PDF)', file: null },
         hinweis: 'Ohne Anmeldung. Sofort verfügbar.',

@@ -421,6 +421,8 @@ export type Block =
         paragraphs: readonly Rich[]
         /** Gelieferte Abbildung, Dateiname unter `public/bilder/` ohne Endung. */
         bild: string
+        fristenTitel?: string
+        fristen?: readonly { label: string; wert: Rich }[]
         download: Download
         hinweis?: string
       }
