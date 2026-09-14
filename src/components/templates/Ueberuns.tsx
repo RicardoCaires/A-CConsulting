@@ -1,11 +1,7 @@
-import { CTASection } from '@/components/blocks/CTASection'
 import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
-import { Button } from '@/components/ui/Button'
 import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
 import { RichText } from '@/components/ui/RichText'
 import type { UeberunsContent } from '@/content/ueberuns'
-import type { Locale } from '@/i18n/config'
-import { hrefOrDefault } from '@/i18n/routes'
 import { direktnummern } from '@/lib/company'
 
 import styles from './Ueberuns.module.css'
@@ -38,21 +34,23 @@ import styles from './Ueberuns.module.css'
  * Die Anker `inhaber`, `arbeitsweise` und `region` bleiben erhalten.
  */
 
+/* Der Abschluss „Lernen Sie uns kennen" ist am 14.09.2026 auf Ricardos
+   Anweisung entfallen. Die Seite endet damit beim Standort — wie
+   `/versicherungen`, `/treuhand`, `/steuern` und `/firmengruendung` haben
+   auch hier die Handlungsknoepfe nur noch im Kopfbereich Platz. */
 const FLAECHEN: readonly Surface[] = [
   'weiss', // 1+2 Kopf und Inhaber — eine durchgehende Flaeche
   'hell', // 3 Arbeitsweise
   'weiss', // 4 Standort
-  'flaeche', // 5 Abschluss
 ]
 
 type Props = {
   inhalt: UeberunsContent
-  locale: Locale
 }
 
-export function UeberunsTemplate({ inhalt, locale }: Props) {
+export function UeberunsTemplate({ inhalt }: Props) {
   pruefeFlaechen(FLAECHEN, 'Ueber uns')
-  const [, fArbeitsweise, , fAbschluss] = FLAECHEN as [Surface, Surface, Surface, Surface]
+  const [, fArbeitsweise] = FLAECHEN as [Surface, Surface, Surface]
 
   return (
     <>
@@ -180,19 +178,6 @@ export function UeberunsTemplate({ inhalt, locale }: Props) {
         </div>
       </section>
 
-      {/* ---- 5 Abschluss --------------------------------------------------- */}
-      <CTASection
-        id="abschluss"
-        surface={fAbschluss}
-        heading={inhalt.abschluss.titel}
-        lead={<p>{inhalt.abschluss.satz}</p>}
-        showContact
-        actions={
-          <Button href={hrefOrDefault(inhalt.abschluss.knopf.ziel, locale)}>
-            {inhalt.abschluss.knopf.text}
-          </Button>
-        }
-      />
     </>
   )
 }

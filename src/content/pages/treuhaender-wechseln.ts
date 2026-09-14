@@ -92,48 +92,6 @@ export const treuhaenderWechseln: PageContent = {
       ],
     },
 
-    // 05 Unterlagen
-    {
-      kind: 'list',
-      id: 'unterlagen',
-      heading: 'Welche Unterlagen für die Übernahme nötig sind',
-      intro: ['Für die Weiterführung sind in der Regel folgende Unterlagen nötig:'],
-      items: [
-        'Buchhaltungsdaten des laufenden Jahres und Saldenlisten',
-        'Jahresabschlüsse der Vorjahre',
-        'Belege des laufenden Jahres',
-        'Mehrwertsteuerabrechnungen',
-        'Lohndaten, Lohnausweise und Unterlagen zu den Sozialversicherungen',
-        'bestehende Vollmachten',
-      ],
-      outro: [
-        [
-          'Welche Unterlagen Ihnen zustehen und in welcher Form sie übergeben werden, richtet sich nach Ihrer Vereinbarung und der jeweiligen Situation. ',
-          
-        ],
-      ],
-      download: { label: 'Übersicht der Unterlagen herunterladen', file: null },
-    },
-
-    // 06 Was wir übernehmen
-    {
-      kind: 'list',
-      id: 'uebernahme',
-      heading: 'Was wir dabei übernehmen',
-      intro: ['Nach Absprache und auf Ihren Auftrag hin:'],
-      items: [
-        'Kontakt und Abstimmung mit Ihrem bisherigen Treuhänder',
-        'Terminierung der Übergabe',
-        'Übernahme der Daten und Prüfung auf Vollständigkeit',
-        'Einrichtung der Buchhaltung',
-      ],
-      outro: [
-        [
-          'Die Kündigung beim bisherigen Treuhänder bereiten wir für Sie vor.',
-        ],
-      ],
-    },
-
     // 07 Diskretion
     {
       kind: 'prose',
@@ -141,20 +99,6 @@ export const treuhaenderWechseln: PageContent = {
       heading: 'Diskretion',
       paragraphs: [
         'Ein Erstgespräch verpflichtet Sie zu nichts. Wir behandeln den Inhalt vertraulich und nehmen erst dann Kontakt zu Ihrem bisherigen Treuhänder auf, wenn Sie uns damit beauftragen.',
-      ],
-    },
-
-    // 08 Kosten im Wechseljahr
-    {
-      kind: 'prose',
-      id: 'kosten',
-      heading: 'Kosten im Jahr des Wechsels',
-      paragraphs: [
-        [
-          'Im Jahr eines Wechsels können auf beiden Seiten Aufwände anfallen. Ihr bisheriger Treuhänder rechnet die Arbeiten bis zum Stichtag ab, wir übernehmen die Weiterführung. Je nach Zeitpunkt und Stand der Arbeiten fällt das unterschiedlich aus. ',
-          'Im Jahr des Wechsels rechnen wir pro rata ab.',
-        ],
-        'Wir schauen im Gespräch an, wie sich das in Ihrem Fall verteilt, und halten unseren Teil in der Offerte fest.',
       ],
     },
 
@@ -205,18 +149,5 @@ export const treuhaenderWechseln: PageContent = {
       schluss: 'Persönlich. Unabhängig. An Ihrer Seite.',
     },
 
-    // 10 Abschluss
-    {
-      kind: 'cta',
-      id: 'abschluss',
-      heading: 'Schauen wir Ihre Situation gemeinsam an',
-      paragraphs: [
-        'Erzählen Sie uns, wie Ihre Buchhaltung heute läuft. Danach wissen Sie, ob und wann ein Wechsel für Sie sinnvoll ist. Ein Gespräch verpflichtet Sie zu nichts.',
-      ],
-      actions: [
-        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
-        { kind: 'phone' },
-      ],
-    },
   ],
 }

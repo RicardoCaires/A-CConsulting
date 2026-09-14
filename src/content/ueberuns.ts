@@ -21,7 +21,6 @@
 
 import type { Rich } from '@/content/types'
 import type { Locale } from '@/i18n/config'
-import type { PageKey } from '@/i18n/routes'
 
 /** Ein Inhaber, in der Reihenfolge der Wichtigkeit fuer den Blick. */
 export type Inhaber = {
@@ -74,11 +73,6 @@ export type UeberunsContent = {
     bild: { label: string; note?: string }
   }
 
-  abschluss: {
-    titel: string
-    satz: string
-    knopf: { text: string; ziel: PageKey }
-  }
 }
 
 const de: UeberunsContent = {
@@ -167,12 +161,6 @@ const de: UeberunsContent = {
     bild: { label: 'BÜRO LYSS', note: 'Aufnahme 6 der Shootingliste' },
   },
 
-  // ---- 5 Abschluss
-  abschluss: {
-    titel: 'Lernen Sie uns kennen',
-    satz: 'Für ein erstes Gespräch rufen Sie an oder schreiben Sie uns.',
-    knopf: { text: 'Erstgespräch anfragen', ziel: 'kontakt' },
-  },
 }
 
 /* ---- Sprachen ------------------------------------------------------------ */

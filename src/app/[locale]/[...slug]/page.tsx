@@ -230,7 +230,7 @@ export default async function ContentPage({ params }: PageProps) {
     return (
       <>
         <Breadcrumb page={key} locale={locale} />
-        <UeberunsTemplate inhalt={ueberuns} locale={locale} />
+        <UeberunsTemplate inhalt={ueberuns} />
       </>
     )
   }
