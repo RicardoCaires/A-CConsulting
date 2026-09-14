@@ -7,7 +7,6 @@
      Kacheln       je 47.7 Prozent des Inhalts, Fuge 22 px
      Radius        26 px aussen, 16 px innen, 999 px am Knopf
      Abbildung     oben rechts in der linken Kachel, 8.6 Prozent der Breite
-     Fristenbox    umrandet, zwei Zeilen, Wert in eigener Spalte
      Unterkarten   Symbol, Titel, Untertitel, darunter die Zeilen
      Bildstreifen  volle Inhaltsbreite, Seitenverhaeltnis 4.16 : 1
 
@@ -15,8 +14,8 @@
    andere Abschnitt der Seite (Standard 1160, Ausnahmen 1344 und 1380) und
    steht hier auf Ricardos ausdrueckliche Vorgabe.
 
-   Zwei Symbole der Vorlage fehlen: das Kalender- und das Uhrzeichen der beiden
-   Fristenzeilen links. Sie lagen nicht bei; nachgezeichnet wird nichts. */
+   Die Fristenbox der linken Kachel und die Kategoriezeile ueber beiden Titeln
+   sind am 14.09.2026 auf Ricardos Anweisung entfallen. */
 
 .flaeche {
   padding-block: var(--ac-section-y);
@@ -50,20 +49,8 @@
 
 /* ---- Kopf beider Kacheln ---------------------------------------------------- */
 
-/* Die Vorlage setzt die Zeile ohne den grünen Strich, den die übrigen
-   Kategoriezeilen der Website tragen. */
-.eyebrow {
-  margin: 0;
-  font-size: var(--ac-eyebrow-size);
-  font-weight: var(--ac-eyebrow-weight);
-  line-height: var(--ac-eyebrow-line);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ac-color-accent-green);
-}
-
 .titel {
-  margin: 0.5rem 0 0;
+  margin: 0;
   font-size: clamp(2rem, 1.5rem + 1.8vw, 3rem);
   line-height: 1.05;
   font-weight: var(--ac-display-weight);
@@ -97,50 +84,6 @@
   width: clamp(6rem, 4rem + 5vw, 8.75rem);
   max-width: none;
   height: auto;
-}
-
-/* ---- Fristenbox der linken Kachel ------------------------------------------- */
-
-.tabelle {
-  margin-top: clamp(1.5rem, 2.6vw, 2.25rem);
-}
-
-.zwischentitel {
-  margin: 0 0 var(--ac-space-sm);
-  font-family: var(--ac-font-display);
-  font-size: clamp(1.1875rem, 1.05rem + 0.45vw, 1.4375rem);
-  line-height: 1.25;
-  font-weight: var(--ac-display-weight);
-  color: var(--ac-color-primary-navy);
-}
-
-.zeilenBox {
-  margin: 0;
-  overflow: hidden;
-  background-color: color-mix(in srgb, var(--ac-color-background-tint) 30%, var(--ac-color-white));
-  border: var(--ac-border-hairline) solid var(--ac-color-border-tint);
-  border-radius: 16px;
-}
-
-.zeilenBox .zeile {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
-  align-items: center;
-  gap: 0;
-}
-
-.zeilenBox .zeile + .zeile {
-  border-top: var(--ac-border-hairline) solid var(--ac-color-border-tint);
-}
-
-.zeilenBox .label {
-  padding: 0.8125rem 1.125rem;
-  color: var(--ac-color-primary-navy);
-}
-
-.zeilenBox .wert {
-  padding: 0.8125rem 1.125rem;
-  border-left: var(--ac-border-hairline) solid var(--ac-color-border-tint);
 }
 
 /* ---- Zeilenliste in den Unterkarten ----------------------------------------- */
@@ -204,15 +147,6 @@
 
 .zeileOffen .wert {
   text-align: left;
-  border-left: none;
-}
-
-.zeilenBox .zeileOffen .label {
-  padding-bottom: 0;
-}
-
-.zeilenBox .zeileOffen .wert {
-  padding-top: 0.25rem;
 }
 
 /* ---- Knopf und Hinweis ------------------------------------------------------ */
@@ -419,20 +353,6 @@
 
   .abbildung {
     order: -1;
-  }
-
-  .zeilenBox .zeile {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .zeilenBox .wert {
-    padding-top: 0;
-    text-align: left;
-    border-left: none;
-  }
-
-  .zeilenBox .label {
-    padding-bottom: 0.25rem;
   }
 }
 

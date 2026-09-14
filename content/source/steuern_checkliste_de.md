@@ -8,8 +8,6 @@ aus diesem Auftragstext.
 
 ## Kachel links
 
-A&C Consulting
-
 Privatpersonen
 
 Die Checkliste zeigt Ihnen, welche Unterlagen für die Steuererklärung im
@@ -18,23 +16,11 @@ Kanton Bern üblicherweise benötigt werden.
 Sie können die Liste ganz einfach herunterladen und verwenden – ob Sie die
 Steuererklärung selbst ausfüllen oder uns die Unterlagen zur Verfügung stellen.
 
-Wichtige Fristen
-
-Reguläre Einreichfrist
-
-31. März des Folgejahres
-
-Fristverlängerung möglich bis
-
-15. November
-
 Checkliste herunterladen (PDF)
 
 Ohne Anmeldung. Sofort verfügbar.
 
 ## Kachel rechts
-
-A&C Consulting
 
 Fristen und Kosten
 
@@ -101,12 +87,16 @@ standen Einreichefrist, Verlängerung und Gebühren als `pending` auf der Seite,
 weil `schritt4_fassung2_de.md` sie als zu prüfen führt. Ricardo hat sie im
 zweiten Auftrag ausgeschrieben; sie stehen jetzt so da.
 
-**Zwei Angaben widersprechen sich.** Die linke Kachel nennt als reguläre
-Einreichfrist den 31. März des Folgejahres, die rechte als ordentliche Frist
-den 15. März. Beide stehen so auf der Seite, wie Ricardo sie geschrieben hat.
-Die Werte der rechten Kachel sind untereinander schlüssig (15. März für
-Privatpersonen, 15. September für Unternehmen); die linke Angabe fällt aus der
-Reihe. Ricardo ist darauf hingewiesen und entscheidet.
+**Der Widerspruch ist geklaert, noch am 14.09.2026.** Die linke Kachel nannte
+als reguläre Einreichfrist den 31. März des Folgejahres, die rechte als
+ordentliche Frist den 15. März. Auf Nachfrage gilt der **15. März**, und die
+**Fristenbox der linken Kachel entfällt ganz** („15. März und die tabelle soll
+nicht sichtbar sein"). Damit stehen die Fristen nur noch in den beiden
+Unterkarten rechts: 15. März für Privatpersonen, 15. September für
+Unternehmen.
+
+**Die Kategoriezeile „A&C Consulting" ist ebenfalls entfallen**, auf Ricardos
+Anweisung vom selben Tag. Beide Kacheln beginnen mit der Überschrift.
 
 **Der Titel der linken Kachel lautet neu „Privatpersonen".** Damit steht das
 Wort zweimal als Überschrift auf der Seite — weiter oben trägt der Zielgruppen­-
@@ -129,7 +119,6 @@ das Wasserzeichen „shutterstock.com 2181102791" — eine unlizenzierte Vorscha
 Das Wasserzeichen wird nicht entfernt. Der Streifen ist gebaut und erscheint,
 sobald eine lizenzierte Fassung von mindestens 2000 px Breite vorliegt.
 
-**Zwei Symbole fehlen.** Der Auftrag nennt für die beiden Fristenzeilen links
-ein Kalender- und ein Uhrzeichen; beide lagen nicht bei. Die Zeilen stehen
-darum ohne Symbol. Ebenso das Pin-Zeichen im Schildchen „Bern" und das
-Download-Zeichen im Knopf. Nachgezeichnet wird nichts.
+**Zwei Symbole fehlen weiterhin:** das Pin-Zeichen im Schildchen „Bern" und
+das Download-Zeichen im Knopf. Nachgezeichnet wird nichts. Das Kalender- und
+das Uhrzeichen des Auftrags sind mit der Fristenbox gegenstandslos geworden.
