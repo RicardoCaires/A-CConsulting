@@ -1154,6 +1154,14 @@ eidg. Fachausweis suggeriert.
 > offene Angabe (`pending`) und erscheinen auf der Seite sichtbar markiert.
 > Damit steigt die Zahl der offenen Angaben; vor dem Go-live muss Ricardo
 > Einreichefrist, Verlängerung und allfällige Gebühren bestätigen.
+> 
+> **Solange die Werte fehlen, stehen die Zeilen nur in der Entwurfsansicht.**
+> Im Produktionsbau sind die Marken ausgeblendet; eine Zeile ohne bestätigten
+> Wert wäre dort eine leere Zeile. Der Baustein lässt solche Zeilen ganz weg —
+> und eine Gruppe, die keine einzige trägt, ebenfalls. Auf der Live-Vorschau
+> zeigen die beiden Karten darum heute Titel, Text, Knopf und Hinweis, aber
+> noch keine Fristentabelle. Mit den bestätigten Werten erscheint sie von
+> selbst.
 >
 > **Das Bern-Foto der Grafik ist nicht eingebaut.** Die gelieferte Datei
 > `04_bern_stockfoto_original.png` ist 505 x 280 px gross und trägt das
