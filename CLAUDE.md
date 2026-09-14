@@ -1235,6 +1235,41 @@ eidg. Fachausweis suggeriert.
 > mit einem t, auch auf `/steuern` und weiter unten auf derselben Seite. Sie
 > ist beibehalten, damit nicht zwei Schreibweisen nebeneinander stehen.
 
+> **Vier Abschnitte sind am 14.09.2026 auf Ricardos Anweisung entfallen**
+> — auf drei Seiten zugleich:
+>
+> - `/firmengruendung`: „So läuft eine Gründung ab", „Was eine Gründung
+>   kostet", „Was nach der Gründung auf Sie zukommt" und der Abschluss
+>   „Besprechen Sie Ihre Gründung mit uns". Es bleiben Seitenkopf,
+>   Rechtsformvergleich, „Wer welchen Teil übernimmt", die
+>   Gründungscheckliste und die häufigen Fragen.
+> - `/treuhand/treuhaender-wechseln`: „Welche Unterlagen für die Übernahme
+>   nötig sind", „Was wir dabei übernehmen", „Kosten im Jahr des Wechsels"
+>   und der Abschluss „Schauen wir Ihre Situation gemeinsam an".
+> - `/finanzplanung`: „Was wir nicht machen", „So läuft es ab" und der
+>   Abschluss „Sprechen wir über Ihre Situation". Die Seite trägt damit nur
+>   noch Budget und Vorsorge. **Mit dem Ablauf ist auch seine Sprungmarke
+>   entfallen** — sie hätte ins Leere gezeigt.
+> - `/ueber-uns`: der Abschluss „Lernen Sie uns kennen". Er stand nicht im
+>   Blockmodell, sondern in der eigenen Vorlage (`Ueberuns.tsx`); der Baustein
+>   ist dort samt Flächenzuweisung entfernt.
+>
+> **Der Wortlaut ist nicht widerrufen.** Er steht unverändert in
+> `content/source/schritt4_fassung2_de.md` und in `src/content/ueberuns.ts`
+> gab es ihn nur an dieser einen Stelle.
+>
+> **Vier Seiten haben damit keinen Abschluss mehr**, zusätzlich zu
+> `/versicherungen`, `/treuhand`, `/treuhand/buchhaltung` und `/steuern`.
+> Handlungsknöpfe stehen nur noch im Seitenkopf und im Kopfbereich.
+> `/kontakt` trägt als einzige Seite noch einen Abschluss. Ricardo ist darauf
+> hingewiesen.
+>
+> **Zwei Folgen, auf die Ricardo hingewiesen ist:** Wovon der Aufwand bei
+> Gründung und Wechsel abhängt, steht nicht mehr auf der Seite — Abschnitt 9,
+> „Preisdarstellung", verlangt es. Und auf `/finanzplanung` steht nicht mehr,
+> dass A&C keine Vermögensverwaltung anbietet; diese Abgrenzung stand dort
+> bewusst vorn.
+
 ### /ueber-uns
 
 Die Inhaber mit Namen, Werdegang und Sprachen. Warum es die Firma gibt. Kein

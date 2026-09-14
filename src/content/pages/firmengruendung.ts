@@ -126,48 +126,6 @@ export const firmengruendung: PageContent = {
       },
     },
 
-    // 03 Ablauf der Gründung
-    {
-      kind: 'steps',
-      id: 'ablauf',
-      heading: 'So läuft eine Gründung ab',
-      steps: [
-        {
-          heading: 'Vorbereitung',
-          body: 'Rechtsform, Firmenname, Zweck, Sitz und die Frage, wer beteiligt ist.',
-        },
-        {
-          heading: 'Unterlagen',
-          body: 'Wir stellen die nötigen Dokumente zusammen und bereiten sie vor.',
-        },
-        {
-          heading: 'Kapital',
-          body: [
-            'Bei der GmbH wird das Stammkapital auf ein Sperrkonto einbezahlt. ',
-            
-          ],
-        },
-        {
-          heading: 'Notariat',
-          body: 'Die Gründung wird öffentlich beurkundet.',
-        },
-        {
-          heading: 'Handelsregister',
-          body: 'Die Anmeldung geht ans Handelsregisteramt. Mit dem Eintrag entsteht die Gesellschaft.',
-        },
-        {
-          heading: 'Anmeldungen',
-          body: [
-            'Ausgleichskasse, je nach Situation Mehrwertsteuer, bei Personal die Unfallversicherung und die berufliche Vorsorge. ',
-            
-          ],
-        },
-      ],
-      outro: [
-        'Wie lange das dauert, hängt von Notariat, Bank und Handelsregisteramt ab. Diese Fristen liegen nicht bei uns, deshalb nennen wir hier keine Dauer. Im Gespräch sagen wir Ihnen, womit im Moment zu rechnen ist.',
-      ],
-    },
-
     // 04 Wer was macht
     {
       kind: 'subsections',
@@ -196,65 +154,6 @@ export const firmengruendung: PageContent = {
           heading: 'Ämter',
           paragraphs: ['Handelsregisteramt, Ausgleichskasse und Steuerverwaltung.'],
         },
-      ],
-    },
-
-    // 05 Was es kostet
-    {
-      kind: 'subsections',
-      id: 'kosten',
-      heading: 'Was eine Gründung kostet',
-      intro: ['Die Kosten bestehen aus zwei Teilen, die auseinandergehalten werden sollten.'],
-      items: [
-        {
-          heading: 'Unser Honorar',
-          paragraphs: [
-            [
-              'Für die Gründungsbegleitung vereinbaren wir eine Pauschale. Sie erhalten die Offerte, bevor wir beginnen.',
-            ],
-          ],
-        },
-        {
-          heading: 'Kosten von Dritten',
-          paragraphs: [
-            [
-              'Dazu kommen die Gebühren von Notariat und Handelsregisteramt, je nach Bank auch für das Sperrkonto. Diese Beträge gehen nicht an uns. Wir sagen Ihnen im Gespräch, womit zu rechnen ist.',
-            ],
-          ],
-        },
-      ],
-    },
-
-    // 06 Nach der Gründung
-    {
-      kind: 'list',
-      id: 'danach',
-      heading: 'Was nach der Gründung auf Sie zukommt',
-      intro: [
-        'Mit dem Handelsregistereintrag ist die Firma da. Danach beginnt die laufende Administration. Je nach Rechtsform und Tätigkeit können folgende Themen anstehen:',
-      ],
-      items: [
-        [
-          'Buchhaltung. Einnahmen und Ausgaben sind festzuhalten. Der Umfang der Pflicht hängt von Rechtsform und Umsatz ab. ',
-          
-        ],
-        [
-          'Ausgleichskasse. Anmeldung als selbständigerwerbend oder als Arbeitgeberin. ',
-          
-        ],
-        [
-          'Mehrwertsteuer. Ab einer bestimmten Umsatzschwelle besteht Steuerpflicht. ',
-          
-        ],
-        [
-          'Mit der ersten Anstellung. Unfallversicherung, berufliche Vorsorge, je nach Betrieb ein Krankentaggeld, dazu die monatliche Lohnabrechnung. ',
-          
-        ],
-        'Betriebsversicherungen. Je nach Tätigkeit Haftpflicht, Sachversicherung oder Fahrzeuge.',
-        'Erste Steuererklärung. Nach dem ersten Geschäftsjahr, aufbauend auf dem Abschluss.',
-      ],
-      outro: [
-        'Sie müssen sich nicht um alles gleichzeitig kümmern. Im Gründungsgespräch gehen wir durch, was in Ihrem Fall wann ansteht und was davon Zeit hat.',
       ],
     },
 
@@ -325,18 +224,5 @@ export const firmengruendung: PageContent = {
       schluss: 'Persönlich. Unabhängig. An Ihrer Seite.',
     },
 
-    // 09 Abschluss
-    {
-      kind: 'cta',
-      id: 'abschluss',
-      heading: 'Besprechen Sie Ihre Gründung mit uns',
-      paragraphs: [
-        'Im Gründungsgespräch klären wir die Rechtsform, den Ablauf und die Kosten für Ihren Fall. Danach wissen Sie, was zu tun ist, auch wenn Sie sich für einen anderen Weg entscheiden.',
-      ],
-      actions: [
-        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
-        { kind: 'phone' },
-      ],
-    },
   ],
 }

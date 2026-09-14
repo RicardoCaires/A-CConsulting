@@ -43,18 +43,6 @@ export const personalFinance: PageContent = {
       items: [
         { label: 'Budget', anchor: 'budget' },
         { label: 'Vorsorge', anchor: 'vorsorge' },
-        { label: 'Ablauf', anchor: 'ablauf' },
-      ],
-    },
-
-    // 02 Die Abgrenzung steht vorn, nicht im Kleingedruckten.
-    {
-      kind: 'prose',
-      id: 'abgrenzung',
-      heading: 'Was wir nicht machen',
-      paragraphs: [
-        'Wir sind Versicherungsbroker und Treuhänder, keine Vermögensverwalter. Wir verkaufen keine Wertschriften, empfehlen keine Anlagen und verwalten kein Depot. Wo das nötig wird, sagen wir es Ihnen und nennen Ihnen jemanden.',
-        'Was wir machen, sind die beiden Themen, bei denen die meisten Menschen den Überblick verlieren, ohne dass es ihnen auffällt.',
       ],
     },
 
@@ -92,37 +80,5 @@ export const personalFinance: PageContent = {
       ],
     },
 
-    // 05 Ablauf — drei Schritte, wie auf Versicherungen und Steuern.
-    {
-      kind: 'steps',
-      id: 'ablauf',
-      heading: 'So läuft es ab',
-      steps: [
-        {
-          heading: 'Gespräch',
-          body: 'Sie schildern Ihre Situation. Wir hören zu und fragen nach. Das erste Gespräch kostet nichts.',
-        },
-        {
-          heading: 'Übersicht',
-          body: 'Wir tragen zusammen, was vorliegt — Lohnausweis, Vorsorgeausweis, bestehende Policen — und stellen es verständlich dar.',
-        },
-        {
-          heading: 'Vorschlag',
-          body: 'Sie bekommen eine schriftliche Aufstellung mit den Möglichkeiten, die zu Ihnen passen, und mit dem, was sie kosten. Entscheiden tun Sie.',
-        },
-      ],
-    },
-
-    // 06 Abschluss
-    {
-      kind: 'cta',
-      id: 'abschluss',
-      heading: 'Sprechen wir über Ihre Situation',
-      paragraphs: ['Ein Erstgespräch kostet nichts und verpflichtet zu nichts.'],
-      actions: [
-        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
-        { kind: 'phone' },
-      ],
-    },
   ],
 }
