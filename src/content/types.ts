@@ -471,7 +471,9 @@ export type Block =
       spalten: readonly {
         bild: string
         titel: string
-        zeilen: readonly { label: string; wert: Rich }[]
+        untertitel?: string
+        /** `wert` ist die Hauptzeile, `zusatz` die hellere Erklaerung darunter. */
+        zeilen: readonly { label: string; wert: Rich; zusatz?: Rich }[]
       }[]
       /** Getoente Leiste unter den Karten. */
       hinweis?: { bild: string; titel: string; text: Rich }
