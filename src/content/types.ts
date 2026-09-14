@@ -454,6 +454,28 @@ export type Block =
       }
     }
   /**
+   * Drei gleich grosse Themenkarten, darunter eine Einladung mit Knopf.
+   *
+   * Heute auf `/treuhand/treuhaender-wechseln` (14.09.2026, HTML-Vorlage von
+   * Ricardo). Bringt die Flaeche selbst mit und zaehlt beim Flaechenwechsel
+   * nicht mit.
+   */
+  | {
+      kind: 'themenkarten'
+      id: string
+      eyebrow?: string
+      heading: string
+      lead?: readonly Rich[]
+      karten: readonly {
+        /** Geliefertes Piktogramm, Dateiname unter `public/bilder/` ohne Endung. */
+        bild: string
+        tag: string
+        titel: string
+        text: Rich
+      }[]
+      abschluss?: { text: Rich; aktion: PageRef }
+    }
+  /**
    * Die Checkliste zum Herunterladen — Karte mit Text, Knopf und Abbildung.
    *
    * Loest auf `/firmengruendung` den `prose`-Block „Gruendungscheckliste" ab
