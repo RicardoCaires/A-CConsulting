@@ -93,10 +93,10 @@ export const steuern: PageContent = {
     // (`content/source/steuern_checkliste_de.md`).
     //
     // **Die Werte stehen nicht mehr als offene Angabe.** Ricardo hat sie am
-    // 14.09.2026 im Auftrag ausgeschrieben. Sie widersprechen sich in einem
-    // Punkt: Die linke Kachel nennt den 31. Maerz des Folgejahres, die rechte
-    // den 15. Maerz. Beides steht so, wie er es geschrieben hat; er ist
-    // darauf hingewiesen.
+    // 14.09.2026 im Auftrag ausgeschrieben. Die beiden Kacheln nannten zuerst
+    // zwei verschiedene ordentliche Fristen; auf Nachfrage gilt der
+    // 15. Maerz. Die Fristenbox der linken Kachel ist am selben Tag auf seine
+    // Anweisung entfallen, ebenso die Kategoriezeile ueber beiden Titeln.
     //
     // **Der Satz zur Fristverlaengerung bleibt** — die Hausordnung verlangt
     // den Hinweis, dass A&C sie uebernimmt. Er steht als Nachsatz unter den
@@ -109,24 +109,17 @@ export const steuern: PageContent = {
       hintergrund: 'steuern_hintergrund',
       checkliste: {
         id: 'checkliste',
-        eyebrow: 'A&C Consulting',
         heading: 'Privatpersonen',
         bild: 'steuern_checkliste',
         paragraphs: [
           'Die Checkliste zeigt Ihnen, welche Unterlagen für die Steuererklärung im Kanton Bern üblicherweise benötigt werden.',
           'Sie können die Liste ganz einfach herunterladen und verwenden – ob Sie die Steuererklärung selbst ausfüllen oder uns die Unterlagen zur Verfügung stellen.',
         ],
-        fristenTitel: 'Wichtige Fristen',
-        fristen: [
-          { label: 'Reguläre Einreichfrist', wert: '31. März des Folgejahres' },
-          { label: 'Fristverlängerung möglich bis', wert: '15. November' },
-        ],
         download: { label: 'Checkliste herunterladen (PDF)', file: null },
         hinweis: 'Ohne Anmeldung. Sofort verfügbar.',
       },
       fristen: {
         id: 'fristen',
-        eyebrow: 'A&C Consulting',
         heading: 'Fristen und Kosten',
         lead: [
           'Hier finden Sie die wichtigsten Fristen und Kosten für die Steuererklärung im Kanton Bern – übersichtlich für Privatpersonen und Unternehmen.',

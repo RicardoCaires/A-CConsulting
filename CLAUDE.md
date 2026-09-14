@@ -1142,11 +1142,10 @@ eidg. Fachausweis suggeriert.
 > **„Checkliste" und „Fristen und Fristverlängerung" seit dem 14.09.2026 als
 > zwei Kacheln nebeneinander** (`src/components/blocks/ChecklisteFristen.tsx`).
 > Zuerst nach einer Referenzgrafik gebaut, am selben Tag nach Ricardos zweitem,
-> ausgeschriebenem Auftrag überarbeitet: grüne Kategoriezeile „A&C
-> Consulting", grosse Serifenüberschrift, links die Checkliste mit der
-> gelieferten Abbildung, einer umrandeten Fristenbox, dem grünen Knopf und dem
-> Hinweis „Ohne Anmeldung. Sofort verfügbar."; rechts „Fristen und Kosten" mit
-> zwei Unterkarten (Privatpersonen, Unternehmen) mit den gelieferten Symbolen.
+> ausgeschriebenem Auftrag überarbeitet: grosse Serifenüberschrift, links die
+> Checkliste mit der gelieferten Abbildung, dem grünen Knopf und dem Hinweis
+> „Ohne Anmeldung. Sofort verfügbar."; rechts „Fristen und Kosten" mit zwei
+> Unterkarten (Privatpersonen, Unternehmen) mit den gelieferten Symbolen.
 > **Die Anker `checkliste` und `fristen` bleiben.**
 >
 > Der Abschnitt hat einen **eigenen Container von 1560 px** — breiter als jede
@@ -1157,13 +1156,13 @@ eidg. Fachausweis suggeriert.
 > mehr.** Ricardo hat sie im zweiten Auftrag ausgeschrieben. Damit stehen
 > wieder **vier** offene Angaben auf der Website, wie vor dem ersten Umbau.
 >
-> **Zwei Angaben widersprechen sich, und zwar so, wie er sie geliefert hat:**
-> Die linke Kachel nennt als reguläre Einreichfrist den 31. März des
-> Folgejahres, die rechte als ordentliche Frist den 15. März. Die Werte der
-> rechten Kachel sind untereinander schlüssig (15. März Privatpersonen,
-> 15. September Unternehmen), die linke Angabe fällt aus der Reihe. Beides
-> steht unverändert auf der Seite; Ricardo ist darauf hingewiesen und
-> entscheidet.
+> **Die Fristenbox der linken Kachel und die Kategoriezeile „A&C Consulting"
+> über beiden Titeln sind noch am 14.09.2026 entfallen**, auf Ricardos
+> Anweisung („15. März und die tabelle soll nicht sichtbar sein", „A&C
+> Consulting über den Überschriften bitte entfernen"). Die Box nannte eine
+> zweite, abweichende Einreichfrist (31. März des Folgejahres); **es gilt der
+> 15. März**. Die Fristen stehen seither nur noch in den beiden Unterkarten
+> rechts: 15. März für Privatpersonen, 15. September für Unternehmen.
 >
 > **Der Titel der linken Kachel lautet „Privatpersonen".** Damit steht das Wort
 > dreimal als Überschrift auf der Seite — Zielgruppenblock, Kachel und
@@ -1184,9 +1183,9 @@ eidg. Fachausweis suggeriert.
 > mindestens 2000 px Breite unter `public/bilder/` liegt. Ohne Datei steht kein
 > Platzhalter.
 >
-> **Vier Zeichen des Auftrags fehlen** und werden nicht nachgezeichnet: das
-> Kalender- und das Uhrzeichen der beiden Fristenzeilen, das Pin-Zeichen im
-> Schildchen „Bern" und das Download-Zeichen im Knopf.
+> **Zwei Zeichen des Auftrags fehlen** und werden nicht nachgezeichnet: das
+> Pin-Zeichen im Schildchen „Bern" und das Download-Zeichen im Knopf. Das
+> Kalender- und das Uhrzeichen sind mit der Fristenbox gegenstandslos.
 >
 > Unterkarten nebeneinander erst ab 88rem (1408 px): Bei 1280 px blieben je
 > Beschriftung 150 px, und „Fristverlängerung online bis 15. November" lief

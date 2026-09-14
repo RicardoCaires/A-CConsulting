@@ -417,19 +417,15 @@ export type Block =
       hintergrund?: string
       checkliste: {
         id: string
-        eyebrow?: string
         heading: string
         paragraphs: readonly Rich[]
         /** Gelieferte Abbildung, Dateiname unter `public/bilder/` ohne Endung. */
         bild: string
-        fristenTitel?: string
-        fristen?: readonly { label: string; wert: Rich }[]
         download: Download
         hinweis?: string
       }
       fristen: {
         id: string
-        eyebrow?: string
         heading: string
         lead?: readonly Rich[]
         gruppen: readonly {

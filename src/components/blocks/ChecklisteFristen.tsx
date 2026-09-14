@@ -9,9 +9,9 @@ import styles from './ChecklisteFristen.module.css'
  * Checkliste und Fristen auf `/steuern` — zwei Kacheln und ein Bildstreifen.
  *
  * Nach Ricardos zweiter Referenzgrafik vom 14.09.2026: links die Checkliste
- * mit der gelieferten Abbildung, einer Fristenbox, dem Knopf und einem
- * Hinweis; rechts die Fristen in zwei Unterkarten mit den gelieferten
- * Symbolen; darunter ein breiter Panoramastreifen mit zwei Schildchen.
+ * mit der gelieferten Abbildung, dem Knopf und einem Hinweis; rechts die
+ * Fristen in zwei Unterkarten mit den gelieferten Symbolen; darunter ein
+ * breiter Panoramastreifen mit zwei Schildchen.
  *
  * **Die Anker `checkliste` und `fristen` bleiben** — beide Kacheln sind eigene
  * Abschnitte mit eigener Ueberschrift.
@@ -20,6 +20,11 @@ import styles from './ChecklisteFristen.module.css'
  * standen sie als offene Angabe. Die Faelle mit offener Angabe bleiben
  * unterstuetzt: Im Produktionsbau sind die Marken ausgeblendet, eine Zeile
  * ohne bestaetigten Wert waere dort leer und faellt deshalb ganz weg.
+ *
+ * **Die Fristenbox der linken Kachel und die Kategoriezeile „A&C Consulting"
+ * ueber beiden Titeln sind am 14.09.2026 auf Ricardos Anweisung entfallen.**
+ * Die Box nannte eine zweite, abweichende Einreichfrist; es gilt der 15. Maerz
+ * aus der rechten Kachel.
  *
  * **Der Bildstreifen erscheint nur mit einer lizenzierten Datei.** Die
  * gelieferte Vorschau traegt ein Wasserzeichen und misst 505 px; sie wird
@@ -37,18 +42,14 @@ type Props = {
   folgt: string
   checkliste: {
     id: string
-    eyebrow?: string
     heading: string
     paragraphs: readonly Rich[]
     bild: string
-    fristenTitel?: string
-    fristen?: readonly Zeile[]
     download: Download
     hinweis?: string
   }
   fristen: {
     id: string
-    eyebrow?: string
     heading: string
     lead?: readonly Rich[]
     gruppen: readonly {
@@ -70,19 +71,8 @@ type Props = {
 
 const bildPfad = (datei: string) => `/bilder/${datei}.svg`
 
-/**
- * Zeilen mit Beschriftung links und Wert rechts.
- *
- * `variante` unterscheidet die beiden Stellen: `box` ist die umrandete Tabelle
- * der linken Kachel, `liste` die Aufzaehlung in den Unterkarten rechts.
- */
-function Zeilen({
-  zeilen,
-  variante,
-}: {
-  zeilen: readonly Zeile[]
-  variante: 'box' | 'liste'
-}) {
+/** Zeilen der Unterkarten: Beschriftung links, Wert rechts. */
+function Zeilen({ zeilen }: { zeilen: readonly Zeile[] }) {
   // Im Produktionsbau sind die Marken ausgeblendet. Eine Zeile, deren Wert nur
   // aus einer offenen Angabe besteht, waere dort eine leere Zeile — sie faellt
   // darum ganz weg und kommt mit dem bestaetigten Wert zurueck.
@@ -90,7 +80,7 @@ function Zeilen({
   if (sichtbar.length === 0) return null
 
   return (
-    <dl className={variante === 'box' ? styles.zeilenBox : styles.zeilenListe}>
+    <dl className={styles.zeilenListe}>
       {sichtbar.map((zeile) => (
         // Eine offene Angabe ist viel breiter als ein Datum. Solche Zeilen
         // laufen zweizeilig; mit dem bestaetigten Wert stehen sie wieder
@@ -140,7 +130,6 @@ export function ChecklisteFristen({
           >
             <div className={styles.kopf}>
               <div className={styles.kopfText}>
-                {checkliste.eyebrow && <p className={styles.eyebrow}>{checkliste.eyebrow}</p>}
                 <h2 id={`${checkliste.id}-titel`} className={styles.titel}>
                   {checkliste.heading}
                 </h2>
@@ -161,15 +150,6 @@ export function ChecklisteFristen({
                 unoptimized
               />
             </div>
-
-            {checkliste.fristen?.some((zeile) => hatSichtbarenInhalt(zeile.wert)) && (
-              <div className={styles.tabelle}>
-                {checkliste.fristenTitel && (
-                  <h3 className={styles.zwischentitel}>{checkliste.fristenTitel}</h3>
-                )}
-                <Zeilen zeilen={checkliste.fristen} variante="box" />
-              </div>
-            )}
 
             <div className={styles.aktion}>
               {checkliste.download.file ? (
@@ -195,7 +175,6 @@ export function ChecklisteFristen({
             aria-labelledby={`${fristen.id}-titel`}
             className={styles.karte}
           >
-            {fristen.eyebrow && <p className={styles.eyebrow}>{fristen.eyebrow}</p>}
             <h2 id={`${fristen.id}-titel`} className={styles.titel}>
               {fristen.heading}
             </h2>
@@ -226,7 +205,7 @@ export function ChecklisteFristen({
                         )}
                       </div>
                     </div>
-                    <Zeilen zeilen={gruppe.zeilen} variante="liste" />
+                    <Zeilen zeilen={gruppe.zeilen} />
                   </div>
                 ))}
               </div>
