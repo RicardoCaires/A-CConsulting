@@ -14,8 +14,13 @@
    andere Abschnitt der Seite (Standard 1160, Ausnahmen 1344 und 1380) und
    steht hier auf Ricardos ausdrueckliche Vorgabe.
 
-   Die Fristenbox der linken Kachel und die Kategoriezeile ueber beiden Titeln
-   sind am 14.09.2026 auf Ricardos Anweisung entfallen. */
+   Die Kategoriezeile ueber beiden Titeln ist am 14.09.2026 auf Ricardos
+   Anweisung entfallen.
+
+   Die Fristenzeilen der linken Kachel standen in einer umrandeten, leicht
+   getoenten Box. Ricardo hat am selben Tag verlangt, dass **nur die Raender
+   durchsichtig** werden — der Inhalt bleibt. Rahmen und Fuellung stehen darum
+   auf `transparent`, Raster und Abstaende sind unveraendert. */
 
 .flaeche {
   padding-block: var(--ac-section-y);
@@ -86,6 +91,50 @@
   height: auto;
 }
 
+/* ---- Fristenzeilen der linken Kachel ---------------------------------------- */
+
+.tabelle {
+  margin-top: clamp(1.5rem, 2.6vw, 2.25rem);
+}
+
+.zwischentitel {
+  margin: 0 0 var(--ac-space-sm);
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.1875rem, 1.05rem + 0.45vw, 1.4375rem);
+  line-height: 1.25;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+/* Rahmen und Fuellung durchsichtig, Geometrie wie mit Rahmen. */
+.zeilenBox {
+  margin: 0;
+  background-color: transparent;
+  border: var(--ac-border-hairline) solid transparent;
+  border-radius: 16px;
+}
+
+.zeilenBox .zeile {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+  align-items: center;
+  gap: 0;
+}
+
+.zeilenBox .zeile + .zeile {
+  border-top: var(--ac-border-hairline) solid transparent;
+}
+
+.zeilenBox .label {
+  padding: 0.8125rem 1.125rem;
+  color: var(--ac-color-primary-navy);
+}
+
+.zeilenBox .wert {
+  padding: 0.8125rem 1.125rem;
+  border-left: var(--ac-border-hairline) solid transparent;
+}
+
 /* ---- Zeilenliste in den Unterkarten ----------------------------------------- */
 
 .zeilenListe {
@@ -147,6 +196,15 @@
 
 .zeileOffen .wert {
   text-align: left;
+  border-left: none;
+}
+
+.zeilenBox .zeileOffen .label {
+  padding-bottom: 0;
+}
+
+.zeilenBox .zeileOffen .wert {
+  padding-top: 0.25rem;
 }
 
 /* ---- Knopf und Hinweis ------------------------------------------------------ */
@@ -353,6 +411,20 @@
 
   .abbildung {
     order: -1;
+  }
+
+  .zeilenBox .zeile {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .zeilenBox .wert {
+    padding-top: 0;
+    text-align: left;
+    border-left: none;
+  }
+
+  .zeilenBox .label {
+    padding-bottom: 0.25rem;
   }
 }
 

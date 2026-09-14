@@ -21,10 +21,16 @@ import styles from './ChecklisteFristen.module.css'
  * unterstuetzt: Im Produktionsbau sind die Marken ausgeblendet, eine Zeile
  * ohne bestaetigten Wert waere dort leer und faellt deshalb ganz weg.
  *
- * **Die Fristenbox der linken Kachel und die Kategoriezeile „A&C Consulting"
- * ueber beiden Titeln sind am 14.09.2026 auf Ricardos Anweisung entfallen.**
- * Die Box nannte eine zweite, abweichende Einreichfrist; es gilt der 15. Maerz
- * aus der rechten Kachel.
+ * **Die Kategoriezeile „A&C Consulting" ueber beiden Titeln ist am 14.09.2026
+ * auf Ricardos Anweisung entfallen.**
+ *
+ * **Die Fristenzeilen der linken Kachel stehen ohne Rahmen.** Sie standen in
+ * einer umrandeten, leicht getoenten Box; Ricardo hat am 14.09.2026 verlangt,
+ * dass nur die Raender durchsichtig werden — der Inhalt bleibt. Geometrie und
+ * Ausrichtung sind darum unveraendert, Rahmen und Fuellung stehen auf
+ * `transparent`.
+ *
+ * Die Einreichfrist nennt seither den 15. Maerz, wie die rechte Kachel.
  *
  * **Der Bildstreifen erscheint nur mit einer lizenzierten Datei.** Die
  * gelieferte Vorschau traegt ein Wasserzeichen und misst 505 px; sie wird
@@ -45,6 +51,8 @@ type Props = {
     heading: string
     paragraphs: readonly Rich[]
     bild: string
+    fristenTitel?: string
+    fristen?: readonly Zeile[]
     download: Download
     hinweis?: string
   }
@@ -71,8 +79,19 @@ type Props = {
 
 const bildPfad = (datei: string) => `/bilder/${datei}.svg`
 
-/** Zeilen der Unterkarten: Beschriftung links, Wert rechts. */
-function Zeilen({ zeilen }: { zeilen: readonly Zeile[] }) {
+/**
+ * Zeilen mit Beschriftung links und Wert rechts.
+ *
+ * `variante` unterscheidet die beiden Stellen: `box` sind die Fristenzeilen
+ * der linken Kachel, `liste` die Aufzaehlung in den Unterkarten rechts.
+ */
+function Zeilen({
+  zeilen,
+  variante,
+}: {
+  zeilen: readonly Zeile[]
+  variante: 'box' | 'liste'
+}) {
   // Im Produktionsbau sind die Marken ausgeblendet. Eine Zeile, deren Wert nur
   // aus einer offenen Angabe besteht, waere dort eine leere Zeile — sie faellt
   // darum ganz weg und kommt mit dem bestaetigten Wert zurueck.
@@ -80,7 +99,7 @@ function Zeilen({ zeilen }: { zeilen: readonly Zeile[] }) {
   if (sichtbar.length === 0) return null
 
   return (
-    <dl className={styles.zeilenListe}>
+    <dl className={variante === 'box' ? styles.zeilenBox : styles.zeilenListe}>
       {sichtbar.map((zeile) => (
         // Eine offene Angabe ist viel breiter als ein Datum. Solche Zeilen
         // laufen zweizeilig; mit dem bestaetigten Wert stehen sie wieder
@@ -151,6 +170,15 @@ export function ChecklisteFristen({
               />
             </div>
 
+            {checkliste.fristen?.some((zeile) => hatSichtbarenInhalt(zeile.wert)) && (
+              <div className={styles.tabelle}>
+                {checkliste.fristenTitel && (
+                  <h3 className={styles.zwischentitel}>{checkliste.fristenTitel}</h3>
+                )}
+                <Zeilen zeilen={checkliste.fristen} variante="box" />
+              </div>
+            )}
+
             <div className={styles.aktion}>
               {checkliste.download.file ? (
                 <a className={styles.knopf} href={checkliste.download.file}>
@@ -205,7 +233,7 @@ export function ChecklisteFristen({
                         )}
                       </div>
                     </div>
-                    <Zeilen zeilen={gruppe.zeilen} />
+                    <Zeilen zeilen={gruppe.zeilen} variante="liste" />
                   </div>
                 ))}
               </div>
