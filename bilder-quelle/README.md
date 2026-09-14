@@ -524,3 +524,14 @@ Die Dateien tragen keine `width`- und `height`-Angaben, nur eine viewBox. Der
 Browser meldet dafuer `naturalWidth: 0`; das Stylesheet gibt die Groesse vor,
 gezeichnet werden sie normal. Nachgeprueft am 14.09.2026, indem die vier Bilder
 auf eine Leinwand gezeichnet und die Pixel gezaehlt wurden.
+
+## Firmengruendung — Gruendungscheckliste
+
+Am 14.09.2026 als fertige HTML-Vorlage geliefert; die Abbildung stand im
+Quelltext, nicht als eigene Datei. Sie ist unveraendert herausgeloest.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `gruendungscheckliste.html` | — | Vorlage, liegt als `vorlage.html` |
+| daraus das SVG | `firmengruendung_checkliste.svg` | SVG, viewBox 220 |
+

@@ -167,15 +167,26 @@ export const firmengruendung: PageContent = {
       ],
     },
 
-    // 07 Gründungscheckliste
+    // 07 Gründungscheckliste — seit dem 14.09.2026 eine Karte mit Abbildung
+    // nach Ricardos HTML-Vorlage
+    // (`content/source/firmengruendung_checkliste_de.md`). Kategoriezeile,
+    // Titel und Satz stammen von dort; der bisherige Satz steht unveraendert
+    // in `schritt4_fassung2_de.md`.
+    //
+    // **Der Knopf bleibt abgeschaltet, solange `file` auf `null` steht.**
+    // Liegt die Datei unter `public/dokumente/` , traegt man sie hier ein —
+    // dann wird der Knopf gruen und verlinkt, und der Hinweis faellt weg.
     {
-      kind: 'prose',
+      kind: 'checkliste',
       id: 'checkliste',
+      eyebrow: 'Für Ihren Start',
       heading: 'Gründungscheckliste',
+      bild: 'firmengruendung_checkliste',
       paragraphs: [
-        'Der Ablauf und die nötigen Unterlagen auf einer Seite, ohne Anmeldung. Auch nützlich, wenn Sie noch überlegen.',
+        'Welche Unterlagen brauchen Sie, und was geschieht in welcher Reihenfolge? Die Checkliste fasst die wichtigsten Schritte auf einer Seite zusammen.',
       ],
       download: { label: 'Checkliste herunterladen (PDF)', file: null },
+      hinweis: 'Die PDF-Checkliste ist in Vorbereitung.',
     },
 
     // 08 Häufige Fragen

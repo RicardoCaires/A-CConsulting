@@ -454,6 +454,26 @@ export type Block =
       }
     }
   /**
+   * Die Checkliste zum Herunterladen — Karte mit Text, Knopf und Abbildung.
+   *
+   * Loest auf `/firmengruendung` den `prose`-Block „Gruendungscheckliste" ab
+   * (14.09.2026, HTML-Vorlage von Ricardo). Der Knopf verlinkt die Datei,
+   * sobald sie vorliegt; bis dahin steht er abgeschaltet mit `hinweis`.
+   * Bringt die Flaeche selbst mit und zaehlt beim Flaechenwechsel nicht mit.
+   */
+  | {
+      kind: 'checkliste'
+      id: string
+      eyebrow?: string
+      heading: string
+      paragraphs: readonly Rich[]
+      download: Download
+      /** Steht nur, solange die Datei fehlt. */
+      hinweis?: string
+      /** Gelieferte Abbildung, Dateiname unter `public/bilder/` ohne Endung. */
+      bild?: string
+    }
+  /**
    * Vier gleich grosse Kacheln: wer welchen Teil einer Gruendung uebernimmt.
    *
    * Loest auf `/firmengruendung` den `subsections`-Block „Wer welchen Teil

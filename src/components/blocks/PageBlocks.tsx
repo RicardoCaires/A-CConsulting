@@ -8,6 +8,7 @@ import { PageLink } from '@/components/ui/PageLink'
 import { hatSichtbarenInhalt, RichText } from '@/components/ui/RichText'
 import { Accordion } from './Accordion'
 import { Betreuung } from './Betreuung'
+import { Checkliste } from './Checkliste'
 import { ChecklisteFristen } from './ChecklisteFristen'
 import { Fragen } from './Fragen'
 import { Leistungen } from './Leistungen'
@@ -175,6 +176,7 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
     block.kind === 'checklisteFristen' ||
     block.kind === 'rechtsformen' ||
     block.kind === 'rollen' ||
+    block.kind === 'checkliste' ||
     block.kind === 'betreuung' ||
     block.kind === 'schadenfall' ||
     block.kind === 'fragen'
@@ -586,6 +588,21 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               hintergrund={block.hintergrund}
               spalten={block.spalten}
               hinweis={block.hinweis}
+            />
+          )
+        }
+
+        if (block.kind === 'checkliste') {
+          return (
+            <Checkliste
+              key={index}
+              id={block.id}
+              eyebrow={block.eyebrow}
+              heading={block.heading}
+              paragraphs={block.paragraphs}
+              download={block.download}
+              hinweis={block.hinweis}
+              bild={block.bild}
             />
           )
         }

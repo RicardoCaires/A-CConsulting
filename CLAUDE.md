@@ -1235,6 +1235,31 @@ eidg. Fachausweis suggeriert.
 > mit einem t, auch auf `/steuern` und weiter unten auf derselben Seite. Sie
 > ist beibehalten, damit nicht zwei Schreibweisen nebeneinander stehen.
 
+> **Die Gründungscheckliste ist seit dem 14.09.2026 ein eigener Baustein**
+> (`src/components/blocks/Checkliste.tsx`), nach Ricardos HTML-Vorlage: eine
+> weisse Karte auf hellem Grund, links Kategoriezeile „Für Ihren Start",
+> Titel, ein Satz, der Knopf und der Hinweis, rechts die gelieferte
+> Abbildung. Der Anker `checkliste` bleibt.
+>
+> **Der Knopf hat zwei Zustände, und der Inhalt schaltet um.** Steht
+> `download.file` auf `null`, rendert der Baustein ein `<button disabled>` in
+> derselben Form, sichtbar abgeschaltet, mit dem Hinweis „Die PDF-Checkliste
+> ist in Vorbereitung." darunter — über `aria-describedby` mit dem Knopf
+> verbunden. Sobald ein Pfad eingetragen ist, wird daraus der grüne Knopf der
+> Startseite (`Button variant="akzent"`, `accent_green`) mit `download`, und
+> der Hinweis fällt weg. Beide Zustände erben ihre Form über `composes` aus
+> `Button.module.css`, damit sie nicht auseinanderlaufen.
+>
+> **Der abgeschaltete Knopf ist nicht einfach blasser.** Grün auf halber
+> Deckung trägt den weissen Text nicht mehr (unter 3:1). Die Fläche ist darum
+> hell und die Schrift navy, rund 9:1. Ricardos Vorlage setzt `opacity: 1` und
+> ändert nur den Mauszeiger; das wäre auf dem Bildschirm nicht als
+> abgeschaltet zu erkennen.
+>
+> **Der Satz stammt aus der Vorlage** und ersetzt den bisherigen aus
+> `schritt4_fassung2_de.md` (`content/source/firmengruendung_checkliste_de.md`).
+> Die Abbildung ist unverändert aus dem Quelltext der Vorlage gelöst.
+
 > **„Wer übernimmt welchen Teil?" ist seit dem 14.09.2026 ein eigener
 > Baustein** (`src/components/blocks/Rollen.tsx`), nach Ricardos
 > HTML-Vorlage: Kategoriezeile „Gut aufeinander abgestimmt", Titel, ein Satz,
@@ -1343,6 +1368,11 @@ Inhalt und Freigaben:
       11.09.2026 darauf und führt bis dahin ins Leere. Auf Ricardos Anweisung;
       er legt die Datei später ab. **Vor dem Go-live zwingend.**
 - [ ] Unterlagen-Checkliste Steuern erstellen (DE/FR/PT)
+- [ ] **Gründungscheckliste als PDF erstellen** — unter `public/dokumente/`
+      ablegen und den Pfad in `src/content/pages/firmengruendung.ts` bei
+      `download.file` eintragen. Der Knopf wird damit von selbst grün und
+      verlinkt; bis dahin steht er abgeschaltet mit dem Hinweis „Die
+      PDF-Checkliste ist in Vorbereitung."
 - [ ] **Lizenzierte Bern-Aufnahme beschaffen** — mindestens 2000 px breit,
       ohne Wasserzeichen. Der Bildstreifen unter den beiden Kacheln auf
       `/steuern` ist gebaut und erscheint, sobald die Datei unter
