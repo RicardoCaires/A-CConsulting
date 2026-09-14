@@ -505,3 +505,22 @@ Abschnitt legt darum keine zweite Flaeche darunter.
 **Zweite Lieferung am selben Tag.** Ricardo hat den Abschnitt mit einer
 zweiten Referenzgrafik und einem ausgeschriebenen Auftragstext neu bestellt.
 Die vier SVG sind unveraendert dieselben; neu sind Aufbau und Wortlaut.
+
+## Firmengruendung — Wer uebernimmt welchen Teil?
+
+Am 14.09.2026 geliefert: eine fertige HTML-Vorlage und vier Piktogramme, je
+als SVG und PNG. Die SVG werden **unveraendert** ausgeliefert; die PNG liegen
+nur als Reserve hier.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `piktogramm-ac-consulting.svg` | `firmengruendung_rolle_ac.svg` | SVG, viewBox 160 |
+| `piktogramm-notariat.svg` | `firmengruendung_rolle_notariat.svg` | SVG, viewBox 120 |
+| `piktogramm-bank.svg` | `firmengruendung_rolle_bank.svg` | SVG, viewBox 120 |
+| `piktogramm-behoerden.svg` | `firmengruendung_rolle_behoerden.svg` | SVG, viewBox 120 |
+| `gruendung-zustaendigkeiten.html` | — | Vorlage, liegt als `vorlage.html` |
+
+Die Dateien tragen keine `width`- und `height`-Angaben, nur eine viewBox. Der
+Browser meldet dafuer `naturalWidth: 0`; das Stylesheet gibt die Groesse vor,
+gezeichnet werden sie normal. Nachgeprueft am 14.09.2026, indem die vier Bilder
+auf eine Leinwand gezeichnet und die Pixel gezaehlt wurden.

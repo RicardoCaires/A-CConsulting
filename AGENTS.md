@@ -1,4 +1,4 @@
-# CLAUDE.md — A&C Consulting Website
+# AGENTS.md — A&C Consulting Website
 
 Diese Datei ist die Hausordnung für dieses Projekt. Sie gilt bei jedem Auftrag,
 ohne dass sie erwähnt werden muss.
@@ -135,7 +135,7 @@ Grün ist Akzent, nicht Fläche — Links, Hervorhebungen, kleine Marker. Navy t
 Kopf- und Fussbereich sowie Überschriften.
 
 **Zentraler Standard:** Für alle A&C-Dokumente und visuellen Artefakte gilt der Skill
-`ac-corporate-design` (`~/.claude/skills/ac-corporate-design/`) als Single Source of Truth.
+`ac-corporate-design` (`~/.Codex/skills/ac-corporate-design/`) als Single Source of Truth.
 Farben und Typografie werden dort definiert, nicht hier.
 
 Die frühere Website stand auf `#1B2A4A` / `#2F6B4F` und wich damit vom Logo ab.
@@ -151,7 +151,7 @@ bricht ab, wenn eine Paarung durchfällt. Ein Hex-Wert in einer Komponente ist
 ein ESLint-Fehler.
 
 Gestaltungsprinzipien (ergänzend gilt der hinterlegte Design-Skill unter
-`.claude/skills/`):
+`.Codex/skills/`):
 
 - Viel Weissraum, ruhige Typo-Hierarchie, wenige Schriftgrössen
 - Zurückhaltende Farbe, keine Verläufe, keine Schlagschatten
@@ -232,7 +232,7 @@ src/i18n/        Sprachen, Pfad-Registry, Oberflächentexte
 src/lib/         Firmendaten, Schrift, erzeugte Tokens
 src/styles/      erzeugte Token-CSS
 archiv/          frühere Website, unverändert aufbewahrt
-CLAUDE.md        diese Datei
+AGENTS.md        diese Datei
 ```
 
 Interne Geschäftsvorlagen (Mandatsvertrag, Honorarblatt, Checklisten)
@@ -1234,29 +1234,6 @@ eidg. Fachausweis suggeriert.
 > „selbstständigerwerbend"; auf der Website steht überall die Schweizer Form
 > mit einem t, auch auf `/steuern` und weiter unten auf derselben Seite. Sie
 > ist beibehalten, damit nicht zwei Schreibweisen nebeneinander stehen.
-
-> **„Wer übernimmt welchen Teil?" ist seit dem 14.09.2026 ein eigener
-> Baustein** (`src/components/blocks/Rollen.tsx`), nach Ricardos
-> HTML-Vorlage: Kategoriezeile „Gut aufeinander abgestimmt", Titel, ein Satz,
-> darunter **vier gleich grosse Kacheln** zwei mal zwei — A&C Consulting,
-> Notariat, Bank, Behörden. Je Kachel links eine Versalzeile mit grünem
-> Strich, die Überschrift und der Text, rechts das gelieferte Piktogramm.
-> Keine Kachel reicht über zwei Spalten; `grid-auto-rows: 1fr` hält sie auf
-> gleicher Höhe. Der Anker `zustaendigkeiten` bleibt. Der Abschnitt bringt
-> seine Fläche selbst mit und zählt beim Flächenwechsel nicht mit.
->
-> **Der Wortlaut stammt aus der Vorlage**
-> (`content/source/firmengruendung_rollen_de.md`) und ersetzt die vier
-> Absätze aus `schritt4_fassung2_de.md`. Aus „Ämter" wurde „Behörden".
->
-> **Zwei Angaben sind neu und fachlich zu prüfen:** dass die Bank ein
-> **Kapitaleinzahlungskonto** stellt — bisher hiess es „Sperrkonto" — und
-> dass neben dem Stammkapital auch **Aktienkapital** in Frage kommt; die Seite
-> behandelt sonst nur Einzelfirma und GmbH. Ricardo ist darauf hingewiesen.
->
-> Die vier Piktogramme sind unverändert übernommen. Der Kreis des
-> A&C-Piktogramms nimmt 83.8 Prozent seiner Datei ein, bei den drei anderen
-> 86.7 — bei 112 px rund 3 px Unterschied im Durchmesser.
 
 > **Vier Abschnitte sind am 14.09.2026 auf Ricardos Anweisung entfallen**
 > — auf drei Seiten zugleich:
