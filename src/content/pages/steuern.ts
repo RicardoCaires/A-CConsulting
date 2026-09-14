@@ -86,65 +86,77 @@ export const steuern: PageContent = {
     // Abschluss „Termin für Ihre Steuererklärung vereinbaren". Ihr Wortlaut steht
     // unverändert unter `content/source/`.
 
-    // 05 und 06 — seit dem 14.09.2026 zwei Karten nebeneinander nach Ricardos
-    // Referenzgrafik. Titel, Absaetze und Knopfbeschriftung unveraendert; die
-    // Beschriftungen der Tabellen stammen aus der Grafik
+    // 05 und 06 — seit dem 14.09.2026 zwei Kacheln nach Ricardos zweiter
+    // Referenzgrafik: links die Checkliste, rechts Fristen und Kosten in zwei
+    // Unterkarten. Kategoriezeile, Titel, Beschreibungen, Untertitel und alle
+    // Werte stammen aus seinem Auftragstext vom selben Tag
     // (`content/source/steuern_checkliste_de.md`).
     //
-    // **Die Zahlen der Grafik sind nicht uebernommen**: Sie widersprechen sich
-    // dort (31. Maerz gegen 15. Maerz) und nennen unbelegte Gebuehren. Die
-    // Quelle fuehrt genau diese Angaben als offen; sie stehen darum als
-    // offene Angabe und erscheinen sichtbar markiert.
+    // **Die Werte stehen nicht mehr als offene Angabe.** Ricardo hat sie am
+    // 14.09.2026 im Auftrag ausgeschrieben. Sie widersprechen sich in einem
+    // Punkt: Die linke Kachel nennt den 31. Maerz des Folgejahres, die rechte
+    // den 15. Maerz. Beides steht so, wie er es geschrieben hat; er ist
+    // darauf hingewiesen.
+    //
+    // **Der Satz zur Fristverlaengerung bleibt** — die Hausordnung verlangt
+    // den Hinweis, dass A&C sie uebernimmt. Er steht als Nachsatz unter den
+    // beiden Unterkarten.
+    //
+    // **Der Bildstreifen fehlt weiterhin.** Die gelieferte Bern-Aufnahme ist
+    // eine Vorschau mit Wasserzeichen; `banner` bleibt darum ungesetzt.
     {
       kind: 'checklisteFristen',
       hintergrund: 'steuern_hintergrund',
       checkliste: {
         id: 'checkliste',
-        heading: 'Checkliste Steuererklärung Kanton Bern',
+        eyebrow: 'A&C Consulting',
+        heading: 'Privatpersonen',
         bild: 'steuern_checkliste',
         paragraphs: [
-            'Die Liste zeigt, welche Unterlagen Sie zusammenstellen sollten. Sie können sie ohne Anmeldung herunterladen und auch dann verwenden, wenn Sie die Steuererklärung selbst ausfüllen.',
-        
+          'Die Checkliste zeigt Ihnen, welche Unterlagen für die Steuererklärung im Kanton Bern üblicherweise benötigt werden.',
+          'Sie können die Liste ganz einfach herunterladen und verwenden – ob Sie die Steuererklärung selbst ausfüllen oder uns die Unterlagen zur Verfügung stellen.',
         ],
         fristenTitel: 'Wichtige Fristen',
         fristen: [
-          { label: 'Reguläre Einreichfrist', wert: [{ pending: 'Einreichefrist für Privatpersonen und für Firmen, mit Jahresangabe' }] },
-          { label: 'Fristverlängerung möglich bis', wert: [{ pending: 'Verfahren, mögliche Dauer und allfällige Gebühren' }] },
+          { label: 'Reguläre Einreichfrist', wert: '31. März des Folgejahres' },
+          { label: 'Fristverlängerung möglich bis', wert: '15. November' },
         ],
         download: { label: 'Checkliste herunterladen (PDF)', file: null },
         hinweis: 'Ohne Anmeldung. Sofort verfügbar.',
       },
       fristen: {
         id: 'fristen',
-        heading: 'Fristen und Fristverlängerung',
+        eyebrow: 'A&C Consulting',
+        heading: 'Fristen und Kosten',
         lead: [
-            [
-              'Die Steuererklärung im Kanton Bern ist bis zu einem festen Termin einzureichen. ',
-          
-            ],
-            [
-              'Eine Verlängerung ist möglich. ',
-          
-            ],
-            'Wenn wir Ihre Steuererklärung erstellen, übernehmen wir auch die Fristverlängerung.',
+          'Hier finden Sie die wichtigsten Fristen und Kosten für die Steuererklärung im Kanton Bern – übersichtlich für Privatpersonen und Unternehmen.',
         ],
         gruppen: [
           {
             bild: 'steuern_icon_privatpersonen',
             titel: 'Privatpersonen',
+            untertitel: 'Fristen und Kosten im Überblick',
             zeilen: [
-              { label: 'Ordentliche Frist', wert: [{ pending: 'Einreichefrist für Privatpersonen und für Firmen, mit Jahresangabe' }] },
-              { label: 'Fristverlängerung', wert: [{ pending: 'Verfahren, mögliche Dauer und allfällige Gebühren' }] },
+              { label: 'Ordentliche Frist', wert: '15. März' },
+              { label: 'Fristverlängerung online bis 15. Juli', wert: 'kostenlos' },
+              { label: 'Fristverlängerung online bis 15. September', wert: 'CHF 20' },
+              { label: 'Fristverlängerung online bis 15. November', wert: 'CHF 40' },
             ],
           },
           {
             bild: 'steuern_icon_unternehmen',
             titel: 'Unternehmen',
+            untertitel: 'Fristen und Kosten im Überblick',
             zeilen: [
-              { label: 'Ordentliche Frist', wert: [{ pending: 'Einreichefrist für Privatpersonen und für Firmen, mit Jahresangabe' }] },
-              { label: 'Fristverlängerung', wert: [{ pending: 'Verfahren, mögliche Dauer und allfällige Gebühren' }] },
+              { label: 'Ordentliche Frist', wert: '15. September' },
+              { label: 'Fristverlängerung online bis 15. November', wert: 'kostenlos' },
+              { label: 'Fristverlängerung online bis 15. Januar', wert: 'CHF 20' },
+              { label: 'Fristverlängerung online bis 15. März', wert: 'CHF 40' },
             ],
           },
+        ],
+        nachsatz: [
+          'Wenn wir Ihre Steuererklärung erstellen, übernehmen wir auch die Fristverlängerung.',
         ],
       },
     },

@@ -417,6 +417,7 @@ export type Block =
       hintergrund?: string
       checkliste: {
         id: string
+        eyebrow?: string
         heading: string
         paragraphs: readonly Rich[]
         /** Gelieferte Abbildung, Dateiname unter `public/bilder/` ohne Endung. */
@@ -428,14 +429,30 @@ export type Block =
       }
       fristen: {
         id: string
+        eyebrow?: string
         heading: string
         lead?: readonly Rich[]
         gruppen: readonly {
           bild: string
           titel: string
+          untertitel?: string
           zeilen: readonly { label: string; wert: Rich }[]
         }[]
         nachsatz?: readonly Rich[]
+      }
+      /**
+       * Panoramastreifen unter den beiden Kacheln.
+       *
+       * Bleibt weg, solange keine lizenzierte Aufnahme vorliegt — ein
+       * Platzhalter oder eine Vorschau mit Wasserzeichen kommt nicht auf die
+       * Seite.
+       */
+      banner?: {
+        /** Dateiname unter `public/bilder/` ohne Endung, als WebP. */
+        bild: string
+        alt: string
+        ort: string
+        bildunterschrift?: string
       }
     }
   /**

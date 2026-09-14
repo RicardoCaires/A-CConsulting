@@ -596,6 +596,7 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               folgt={getUi(locale).pageComing.badge}
               checkliste={block.checkliste}
               fristen={block.fristen}
+              banner={block.banner}
             />
           )
         }
