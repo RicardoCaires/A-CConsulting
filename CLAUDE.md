@@ -1171,6 +1171,29 @@ eidg. Fachausweis suggeriert.
 > CONSULTING" über den Titeln, „Fristen und Kosten im Überblick" und die
 > Bildunterschrift „Für Steuererklärungen im Kanton Bern".
 
+### /firmengruendung
+
+> **„Einzelfirma oder GmbH?" ist seit dem 14.09.2026 ein eigener Baustein**
+> (`src/components/blocks/Rechtsformen.tsx`), nach Ricardos Referenzgrafik:
+> Kategoriezeile „Rechtsformen in der Schweiz", Titel, ein Satz, darunter zwei
+> Karten mit geliefertem Symbol und denselben fünf Merkmalen (Kapital,
+> Haftung, Gründungsaufwand, Sozialversicherungen, Handelsregister); unten
+> eine grün getönte Leiste mit „Weitere Überlegungen". Der Anker `rechtsform`
+> bleibt. Der Abschnitt bringt den gelieferten Hintergrund selbst mit und
+> zählt beim Flächenwechsel nicht mit.
+>
+> **Der Wortlaut ist unverändert.** Vorher stand der Vergleich als sechs
+> Absätze, die beide Rechtsformen in je einem Satz gegenüberstellen. Für die
+> zwei Spalten sind diese Absätze **an der Satzgrenze geteilt** — der Satz zur
+> Einzelfirma steht links, der zur GmbH rechts. Kein Satz ist umformuliert.
+>
+> **„CHF 20'000 Stammkapital" aus der Grafik ist nicht übernommen.** Schritt 4
+> führt die Höhe des Stammkapitals und die Einzahlungsvorschriften als
+> fachlich zu prüfen; auf der Seite steht weiterhin der geprüfte Satz „Für die
+> GmbH ist ein Stammkapital nötig, das vor der Gründung einbezahlt wird."
+> Ebenso wenig übernommen sind die Zusätze „Einfach starten" und „Stabil
+> wachsen" und die Frage „Welche Rechtsform ist die richtige für Sie?".
+
 ### /ueber-uns
 
 Die Inhaber mit Namen, Werdegang und Sprachen. Warum es die Firma gibt. Kein

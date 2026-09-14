@@ -1,0 +1,200 @@
+/* „Einzelfirma oder GmbH?" auf `/firmengruendung`.
+
+   Nach Ricardos Referenzgrafik vom 14.09.2026 (1456 x 1086). Aus der Vorlage
+   gemessen:
+
+     Inhalt        x 110 bis 1345, Karten je 600 px mit 30 px Fuge
+     Symbolkreis   84 px, links neben dem Kartentitel
+     Zeilen        Beschriftung klein und gesperrt, Wert darunter
+     Hinweis       getoente Leiste unter den Karten, Symbol links
+
+   Der gelieferte Hintergrund bringt seinen eigenen hellen Grund mit; der
+   Abschnitt setzt darum keine zweite Flaeche darunter.
+
+   Derselbe breite Container wie die Karten auf `/steuern` (1344 px). */
+
+.abschnitt {
+  padding-block: var(--ac-section-y);
+  background-color: var(--ac-color-background-light);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.abschnitt .container {
+  max-width: 84rem;
+}
+
+/* ---- Kopf ------------------------------------------------------------------ */
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-md);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+.eyebrow::before {
+  content: '';
+  flex: none;
+  width: 2.75rem;
+  height: 2px;
+  background-color: var(--ac-color-accent-green);
+}
+
+.titel {
+  margin: var(--ac-space-sm) 0 0;
+  font-size: clamp(2.25rem, 1.6rem + 2.2vw, 3.5rem);
+  line-height: 1.06;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.02em;
+  color: var(--ac-color-primary-navy);
+}
+
+.lead {
+  margin: var(--ac-space-md) 0 0;
+  max-width: 62ch;
+  font-size: var(--ac-lead-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Die beiden Karten ------------------------------------------------------ */
+
+.spalten {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.karte {
+  padding: clamp(1.25rem, 2.6vw, 2rem);
+  background-color: color-mix(in srgb, var(--ac-color-white) 92%, transparent);
+  border: var(--ac-border-hairline) solid
+    color-mix(in srgb, var(--ac-color-primary-navy) 7%, transparent);
+  border-radius: 18px;
+  box-shadow: 0 16px 44px color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
+}
+
+.kartenKopf {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.875rem, 1.8vw, 1.25rem);
+  padding-bottom: clamp(0.875rem, 1.8vw, 1.25rem);
+  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+/* Die gelieferten Symbole bringen ihren Kreis mit: 71.4 Prozent der Datei.
+   Der negative Rand gleicht den durchsichtigen Rest aus. */
+.symbol {
+  display: block;
+  flex: none;
+  width: var(--symbol, 4.5rem);
+  max-width: none;
+  height: var(--symbol, 4.5rem);
+  margin: calc(var(--symbol, 4.5rem) * -0.143);
+}
+
+.kartenTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  line-height: 1.15;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.01em;
+  color: var(--ac-color-primary-navy);
+}
+
+.zeilen {
+  margin: 0;
+}
+
+.zeile {
+  padding-block: clamp(0.75rem, 1.6vw, 1rem);
+}
+
+.zeile + .zeile {
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.label {
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ac-color-primary-navy) 72%, var(--ac-color-white));
+}
+
+.wert {
+  margin: 0.25rem 0 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ac-color-primary-navy);
+}
+
+/* ---- Hinweis unter den Karten ----------------------------------------------- */
+
+.hinweis {
+  --symbol: clamp(3.25rem, 2.75rem + 1vw, 3.75rem);
+
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.4vw, 1.75rem);
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  padding: clamp(1rem, 2vw, 1.5rem) clamp(1.25rem, 2.6vw, 2rem);
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 6%, var(--ac-color-white));
+  border: var(--ac-border-hairline) solid
+    color-mix(in srgb, var(--ac-color-accent-green) 18%, transparent);
+  border-radius: 14px;
+}
+
+.hinweisTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.125rem, 1rem + 0.35vw, 1.3125rem);
+  line-height: 1.25;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.hinweisText {
+  margin: 0.25rem 0 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Ab 64rem: die Karten nebeneinander ------------------------------------- */
+
+@media (min-width: 64rem) {
+  .spalten {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---- Telefon: Symbol und Text der Leiste untereinander ---------------------- */
+
+@media (max-width: 39.99rem) {
+  .hinweis {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ac-space-sm);
+  }
+}
+
+@media print {
+  .abschnitt {
+    background-image: none;
+  }
+
+  .karte {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}

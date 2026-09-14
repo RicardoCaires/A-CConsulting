@@ -438,6 +438,29 @@ export type Block =
         nachsatz?: readonly Rich[]
       }
     }
+  /**
+   * Zwei Rechtsformen im Vergleich, je eine Karte mit denselben Merkmalen.
+   *
+   * Loest auf `/firmengruendung` den `subsections`-Block „Einzelfirma oder
+   * GmbH?" ab (14.09.2026, Referenzgrafik von Ricardo). Bringt die Flaeche
+   * selbst mit und zaehlt beim Flaechenwechsel nicht mit.
+   */
+  | {
+      kind: 'rechtsformen'
+      id: string
+      eyebrow?: string
+      heading: string
+      lead?: readonly Rich[]
+      /** Hintergrundmuster, Dateiname unter `public/bilder/` ohne Endung. */
+      hintergrund?: string
+      spalten: readonly {
+        bild: string
+        titel: string
+        zeilen: readonly { label: string; wert: Rich }[]
+      }[]
+      /** Getoente Leiste unter den Karten. */
+      hinweis?: { bild: string; titel: string; text: Rich }
+    }
   /** Sprungmarken innerhalb der Seite. */
   | {
       kind: 'anchors'
