@@ -17,6 +17,7 @@ import { Rollen } from './Rollen'
 import { Schadenfall } from './Schadenfall'
 import { CTASection } from './CTASection'
 import { Segmente } from './Segmente'
+import { Themenkarten } from './Themenkarten'
 import { UnserModell } from './UnserModell'
 import { Vorgehen, vorgehenFlaeche } from './Vorgehen'
 import { WechselHinweis } from './WechselHinweis'
@@ -177,6 +178,7 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
     block.kind === 'rechtsformen' ||
     block.kind === 'rollen' ||
     block.kind === 'checkliste' ||
+    block.kind === 'themenkarten' ||
     block.kind === 'betreuung' ||
     block.kind === 'schadenfall' ||
     block.kind === 'fragen'
@@ -588,6 +590,21 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               hintergrund={block.hintergrund}
               spalten={block.spalten}
               hinweis={block.hinweis}
+            />
+          )
+        }
+
+        if (block.kind === 'themenkarten') {
+          return (
+            <Themenkarten
+              key={index}
+              id={block.id}
+              eyebrow={block.eyebrow}
+              heading={block.heading}
+              lead={block.lead}
+              karten={block.karten}
+              abschluss={block.abschluss}
+              locale={locale}
             />
           )
         }

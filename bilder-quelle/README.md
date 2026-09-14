@@ -535,3 +535,18 @@ Quelltext, nicht als eigene Datei. Sie ist unveraendert herausgeloest.
 | `gruendungscheckliste.html` | — | Vorlage, liegt als `vorlage.html` |
 | daraus das SVG | `firmengruendung_checkliste.svg` | SVG, viewBox 220 |
 
+## Treuhaender wechseln — Was einen Wechsel ausloesen kann
+
+Am 14.09.2026 als HTML-Vorlage geliefert, dazu drei Piktogramme als SVG und
+PNG. Die SVG werden **unveraendert** ausgeliefert.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `piktogramm-treuhaenderwechsel-betreuung.svg` | `wechsel_grund_betreuung.svg` | SVG, viewBox 96 |
+| `piktogramm-treuhaenderwechsel-ueberblick.svg` | `wechsel_grund_ueberblick.svg` | SVG, viewBox 96 |
+| `piktogramm-treuhaenderwechsel-entwicklung.svg` | `wechsel_grund_entwicklung.svg` | SVG, viewBox 96 |
+| `treuhaenderwechsel-gruende.html` | — | Vorlage, liegt als `vorlage.html` |
+
+Alle drei tragen denselben Kreisanteil: Radius 43 von 96, also 89.6 Prozent
+der Datei.
+

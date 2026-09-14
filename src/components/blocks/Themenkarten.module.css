@@ -1,0 +1,205 @@
+/* Drei gleich grosse Themenkarten mit Einladung darunter.
+
+   Nach Ricardos HTML-Vorlage vom 14.09.2026
+   (`bilder-quelle/wechsel_gruende/vorlage.html`). Aus ihr übernommen:
+
+     Inhalt        1120 px, mittig, auf hellem Grund
+     Raster        drei Spalten, gleich hohe Zeilen, Fuge 1.25rem
+     Karte         weiss, Haarlinie, Radius 12 px, Piktogramm 96 px oben
+     Einladung     Leiste in derselben Form, Text links, Knopf rechts
+     Umbruch       unter 850 px einspaltig, unter 520 px Knopf über die Breite
+
+   Übernommen ist die Gestaltung, nicht der Quelltext: Farben, Schriftgrössen
+   und Abstände kommen aus den Tokens. */
+
+.abschnitt {
+  padding-block: var(--ac-section-y-lg);
+  background-color: var(--ac-color-background-light);
+}
+
+.abschnitt .container {
+  max-width: 70rem;
+}
+
+/* ---- Kopf ------------------------------------------------------------------ */
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  line-height: var(--ac-eyebrow-line);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+.eyebrow::before {
+  content: '';
+  flex: none;
+  width: 1.75rem;
+  height: var(--ac-border-marker);
+  background-color: var(--ac-color-accent-green);
+}
+
+.titel {
+  max-width: 47.5rem;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: clamp(2.2rem, 1.6rem + 2vw, 3.35rem);
+  line-height: 1.13;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.015em;
+  color: var(--ac-color-primary-navy);
+}
+
+.lead {
+  max-width: 43rem;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: var(--ac-body-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Die drei Karten ------------------------------------------------------- */
+
+.raster {
+  display: grid;
+  gap: var(--ac-space-sm);
+  margin-top: clamp(1.75rem, 3.5vw, 2.3rem);
+}
+
+.karte {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.4rem, 2.6vw, 1.8rem);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+}
+
+/* Die gelieferten Piktogramme bringen ihren Kreis mit und füllen den Rahmen. */
+.bild {
+  display: block;
+  width: 6rem;
+  max-width: none;
+  height: 6rem;
+  margin-bottom: clamp(1rem, 2.4vw, 1.45rem);
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  line-height: var(--ac-eyebrow-line);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+.tag::before {
+  content: '';
+  flex: none;
+  width: 1.75rem;
+  height: var(--ac-border-marker);
+  background-color: var(--ac-color-accent-green);
+}
+
+.kartenTitel {
+  margin: var(--ac-space-xs) 0 0;
+  font-family: var(--ac-font-display);
+  font-size: 1.55rem;
+  line-height: 1.2;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.satz {
+  margin: var(--ac-space-xs) 0 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Einladung unter den Karten -------------------------------------------- */
+
+.einladung {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ac-space-md);
+  margin-top: var(--ac-space-sm);
+  padding: clamp(1.4rem, 2.6vw, 1.6rem) clamp(1.4rem, 2.6vw, 1.8rem);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+}
+
+.einladungText {
+  max-width: 62ch;
+  margin: 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-secondary);
+}
+
+.knopf {
+  flex: none;
+  gap: var(--ac-space-2xs);
+}
+
+.pfeil {
+  display: inline-block;
+  line-height: 1;
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.knopf:hover .pfeil {
+  transform: translateX(3px);
+}
+
+/* ---- Ab 53.125rem: drei Spalten, alle Karten gleich hoch -------------------- */
+
+@media (min-width: 53.125rem) {
+  .raster {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* Gleich hohe Zeilen: Keine Karte richtet sich nach ihrem eigenen Text. */
+    grid-auto-rows: 1fr;
+  }
+}
+
+/* ---- Darunter: einspaltig, die Leiste stapelt ------------------------------- */
+
+@media (max-width: 53.1249rem) {
+  .einladung {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 32.5rem) {
+  .knopf {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pfeil {
+    transition: none;
+  }
+
+  .knopf:hover .pfeil {
+    transform: none;
+  }
+}
+
+@media print {
+  .karte,
+  .einladung {
+    break-inside: avoid;
+  }
+}

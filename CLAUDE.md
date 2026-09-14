@@ -1090,6 +1090,33 @@ Betriebe und Selbstständige in der Region.
 > Die gelieferte Trennlinie (eigene Datei) steht als Rahmen im Stylesheet in
 > `border_tint`, nicht als Bild; sie war farblich nahezu dieser Token.
 
+### /treuhand/treuhaender-wechseln
+
+> **„Was einen Wechsel auslösen kann" ist seit dem 14.09.2026 ein eigener
+> Baustein** (`src/components/blocks/Themenkarten.tsx`), nach Ricardos
+> HTML-Vorlage: Kategoriezeile „Zusammenarbeit neu ausrichten", Titel, ein
+> Satz, darunter **drei gleich grosse Karten** — Betreuung, Überblick,
+> Entwicklung — mit dem gelieferten Piktogramm oben, kleiner Versalzeile,
+> Überschrift und Text. Darunter eine Leiste mit einem Satz und dem grünen
+> Knopf „Situation besprechen". `grid-auto-rows: 1fr` hält die Karten auf
+> gleicher Höhe. Der Anker `gruende` bleibt; der Abschnitt bringt seine
+> Fläche selbst mit und zählt beim Flächenwechsel nicht mit.
+>
+> **Die Überschrift ist neu** — der Abschnitt hiess „Weshalb Mandate
+> wechseln". **Der Wortlaut stammt aus der Vorlage**
+> (`content/source/wechsel_gruende_de.md`) und ersetzt die Aufzählung mit
+> sechs Punkten aus `schritt4_fassung2_de.md`. Die drei Karten fassen dieselben
+> sechs Punkte zu drei Themen zusammen.
+>
+> **Der Knopf ist grün** (`Button variant="akzent"`), auf Ricardos Vorgabe.
+> Sonst gilt „Grün ist Akzent, nicht Fläche"; auf dieser Seite kommt er genau
+> einmal vor. **Sein Ziel kommt über `path()` aus der Pfad-Registry** — die
+> Vorlage schreibt dort die volle Adresse der Vorschau hinein, was beim
+> Domainwechsel bräche und die Sprachfassungen ignorierte.
+>
+> Der Baustein heisst bewusst allgemein: Drei Karten mit Piktogramm, Titel und
+> Text plus Einladung sind ein Muster, das weitere Seiten brauchen können.
+
 ### /steuern
 
 Getrennt für Privatpersonen und Firmen. Enthält zusätzlich:

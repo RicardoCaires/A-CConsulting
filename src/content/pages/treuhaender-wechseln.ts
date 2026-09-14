@@ -31,21 +31,46 @@ export const treuhaenderWechseln: PageContent = {
   },
 
   blocks: [
-    // 02 Typische Gründe
+    // 02 Was einen Wechsel ausloesen kann — seit dem 14.09.2026 drei gleich
+    // grosse Themenkarten nach Ricardos HTML-Vorlage
+    // (`content/source/wechsel_gruende_de.md`). Vorher eine Aufzaehlung mit
+    // sechs Punkten aus `schritt4_fassung2_de.md`; deren Wortlaut steht dort
+    // unveraendert weiter. Der Anker `gruende` bleibt.
+    //
+    // Das Ziel des Knopfs kommt ueber `path()` aus der Pfad-Registry; die
+    // Vorlage schreibt dort die volle Adresse der Vorschau hinein.
     {
-      kind: 'list',
+      kind: 'themenkarten',
       id: 'gruende',
-      heading: 'Weshalb Mandate wechseln',
-      intro: ['Typische Gründe für einen Wechsel sind:'],
-      items: [
-        'Der Ansprechpartner hat gewechselt oder ist nicht mehr da.',
-        'Rückfragen bleiben länger offen, als es im Alltag passt.',
-        'Die Zusammensetzung der Kosten ist schwer nachvollziehbar.',
-        'Die Zusammenarbeit läuft weitgehend auf Papier, gewünscht wäre ein digitaler Ablauf.',
-        'Der Betrieb ist gewachsen und der bisherige Umfang passt nicht mehr.',
-        'Beratung in einer anderen Sprache wäre einfacher.',
+      eyebrow: 'Zusammenarbeit neu ausrichten',
+      heading: 'Was einen Wechsel auslösen kann',
+      lead: [
+        'Manchmal ändern sich die Anforderungen. Manchmal passt die Zusammenarbeit nicht mehr. Diese Fragen kommen in Gesprächen mit uns häufig zur Sprache.',
       ],
-      outro: ['Es braucht keinen dieser Gründe, um ein Gespräch zu führen.'],
+      karten: [
+        {
+          bild: 'wechsel_grund_betreuung',
+          tag: 'Betreuung',
+          titel: 'Ein fester Kontakt fehlt',
+          text: 'Ihre Ansprechperson hat gewechselt, oder Rückfragen bleiben zu lange offen. Sie wünschen sich wieder klare Zuständigkeiten und verlässliche Antworten.',
+        },
+        {
+          bild: 'wechsel_grund_ueberblick',
+          tag: 'Überblick',
+          titel: 'Kosten und Abläufe sollen klarer werden',
+          text: 'Sie möchten Leistungen und Kosten besser nachvollziehen oder Unterlagen digital austauschen, statt vorwiegend auf Papier zu arbeiten.',
+        },
+        {
+          bild: 'wechsel_grund_entwicklung',
+          tag: 'Entwicklung',
+          titel: 'Ihr Bedarf hat sich verändert',
+          text: 'Ihr Betrieb ist gewachsen, neue Aufgaben sind dazugekommen oder eine Beratung in einer anderen Sprache würde die Zusammenarbeit erleichtern.',
+        },
+      ],
+      abschluss: {
+        text: 'Sie brauchen keinen besonderen Anlass für ein Erstgespräch. Wir hören zu und besprechen mit Ihnen, ob und wie ein Wechsel sinnvoll wäre.',
+        aktion: { target: 'kontakt', label: 'Situation besprechen' },
+      },
     },
 
     // 03 So gehen wir vor
