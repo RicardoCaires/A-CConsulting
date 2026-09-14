@@ -1199,25 +1199,41 @@ eidg. Fachausweis suggeriert.
 ### /firmengruendung
 
 > **„Einzelfirma oder GmbH?" ist seit dem 14.09.2026 ein eigener Baustein**
-> (`src/components/blocks/Rechtsformen.tsx`), nach Ricardos Referenzgrafik:
-> Kategoriezeile „Rechtsformen in der Schweiz", Titel, ein Satz, darunter zwei
-> Karten mit geliefertem Symbol und denselben fünf Merkmalen (Kapital,
-> Haftung, Gründungsaufwand, Sozialversicherungen, Handelsregister); unten
-> eine grün getönte Leiste mit „Weitere Überlegungen". Der Anker `rechtsform`
-> bleibt. Der Abschnitt bringt den gelieferten Hintergrund selbst mit und
-> zählt beim Flächenwechsel nicht mit.
+> (`src/components/blocks/Rechtsformen.tsx`). Zuerst nach einer Referenzgrafik
+> gebaut, am selben Tag nach Ricardos zweiter Grafik samt ausgeschriebenem
+> Auftragstext überarbeitet: Kategoriezeile „Rechtsformen in der Schweiz",
+> Titel, ein Satz, darunter zwei Karten mit geliefertem Symbol, Titel und
+> Unterzeile; je sechs Merkmale (Kapital, Haftung, Gründungsaufwand,
+> Sozialversicherungen, Handelsregister, Wirkung / Auftreten) mit der
+> Kategorie links und dem Inhalt rechts — eine Hauptzeile in Navy, darunter
+> eine hellere Erklärung. Unten eine breite Hinweisleiste. Der Anker
+> `rechtsform` bleibt. Der Abschnitt bringt den gelieferten Hintergrund selbst
+> mit und zählt beim Flächenwechsel nicht mit. Container 1560 px, dasselbe
+> Mass wie Checkliste und Fristen auf `/steuern`.
 >
-> **Der Wortlaut ist unverändert.** Vorher stand der Vergleich als sechs
-> Absätze, die beide Rechtsformen in je einem Satz gegenüberstellen. Für die
-> zwei Spalten sind diese Absätze **an der Satzgrenze geteilt** — der Satz zur
-> Einzelfirma steht links, der zur GmbH rechts. Kein Satz ist umformuliert.
+> **Der Wortlaut stammt aus Ricardos Auftragstext**
+> (`content/source/firmengruendung_rechtsformen_de.md`). Die erste Fassung
+> trug die sechs Sätze aus `schritt4_fassung2_de.md`, an der Satzgrenze
+> geteilt. Sie stehen dort unverändert weiter, aber nicht mehr auf der Seite.
+> Dass das Stammkapital vor der Gründung einbezahlt wird, steht weiterhin im
+> Abschnitt „So läuft eine Gründung ab".
 >
-> **„CHF 20'000 Stammkapital" aus der Grafik ist nicht übernommen.** Schritt 4
-> führt die Höhe des Stammkapitals und die Einzahlungsvorschriften als
-> fachlich zu prüfen; auf der Seite steht weiterhin der geprüfte Satz „Für die
-> GmbH ist ein Stammkapital nötig, das vor der Gründung einbezahlt wird."
-> Ebenso wenig übernommen sind die Zusätze „Einfach starten" und „Stabil
-> wachsen" und die Frage „Welche Rechtsform ist die richtige für Sie?".
+> **„CHF 20'000 Stammkapital" steht seit dem zweiten Auftrag auf der Seite.**
+> Schritt 4 führt die Höhe des Stammkapitals und die Einzahlungsvorschriften
+> als fachlich zu prüfen; die Zahl war zweimal ausdrücklich nicht übernommen.
+> Ricardo hat sie im Auftragstext ausgeschrieben und ist auf den Vorbehalt
+> hingewiesen. Schreibweise nach Corporate Design, mit geradem Apostroph.
+>
+> **„Einfach starten" und „Stabil wachsen" stehen jetzt ebenfalls da.** Auch
+> sie waren aus der ersten Grafik bewusst weggelassen. Sie gehören zur
+> jeweiligen Rechtsform, sind also keine Firmenzusätze; es bleiben die drei
+> von A&C: „Kompetenz schafft Klarheit", „Perspektiven für morgen" und
+> „Persönlich. Unabhängig. An Ihrer Seite.".
+>
+> **Schreibweise „selbständigerwerbend".** Der Auftragstext schreibt
+> „selbstständigerwerbend"; auf der Website steht überall die Schweizer Form
+> mit einem t, auch auf `/steuern` und weiter unten auf derselben Seite. Sie
+> ist beibehalten, damit nicht zwei Schreibweisen nebeneinander stehen.
 
 ### /ueber-uns
 

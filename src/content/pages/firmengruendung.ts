@@ -31,48 +31,98 @@ export const firmengruendung: PageContent = {
   },
 
   blocks: [
-    // 02 Einzelfirma oder GmbH — seit dem 14.09.2026 zwei Karten im Vergleich
-    // nach Ricardos Referenzgrafik. Der Wortlaut ist unveraendert: Die sechs
-    // Absaetze stellten beide Rechtsformen in je einem Satz gegenueber; fuer
-    // die Spalten sind sie an der Satzgrenze geteilt.
+    // 02 Einzelfirma oder GmbH — seit dem 14.09.2026 zwei Karten im Vergleich,
+    // am selben Tag nach Ricardos zweiter Referenzgrafik samt ausgeschriebenem
+    // Auftragstext ueberarbeitet (`content/source/firmengruendung_rechtsformen_de.md`).
     //
-    // **„CHF 20'000 Stammkapital" aus der Grafik ist nicht uebernommen** —
-    // Schritt 4 fuehrt die Hoehe des Stammkapitals als fachlich zu pruefen.
+    // **Der Wortlaut stammt aus diesem Auftragstext.** Die erste Fassung trug
+    // die Saetze aus `schritt4_fassung2_de.md`; sie stehen dort unveraendert
+    // weiter, aber nicht mehr auf der Seite.
+    //
+    // **Die Zahl CHF 20'000 steht jetzt da.** Schritt 4 fuehrt die Hoehe des
+    // Stammkapitals als fachlich zu pruefen; Ricardo hat sie im Auftrag
+    // ausgeschrieben und ist zweimal auf den Vorbehalt hingewiesen.
     {
       kind: 'rechtsformen',
       id: 'rechtsform',
       eyebrow: 'Rechtsformen in der Schweiz',
       heading: 'Einzelfirma oder GmbH?',
-      lead: ['Das ist die erste Frage, und sie lässt sich nicht allgemein beantworten. Für die Wahl sind vor allem die folgenden Punkte massgebend.'],
+      lead: [
+        'Die passende Rechtsform hängt von Kapital, Haftung, Aufwand und Ihrer Situation ab. Hier sehen Sie die wichtigsten Unterschiede auf einen Blick.',
+      ],
       hintergrund: 'firmengruendung_muster',
       spalten: [
         {
           bild: 'firmengruendung_einzelfirma',
           titel: 'Einzelfirma',
+          untertitel: 'Einfach starten',
           zeilen: [
-          { label: 'Kapital', wert: 'Die Einzelfirma braucht kein Mindestkapital.' },
-          { label: 'Haftung', wert: 'Bei der Einzelfirma haften Sie mit Ihrem Privatvermögen.' },
-          { label: 'Gründungsaufwand', wert: 'Die Einzelfirma ist einfacher und günstiger zu gründen.' },
-          { label: 'Sozialversicherungen', wert: 'Als Inhaberin oder Inhaber einer Einzelfirma gelten Sie als selbständigerwerbend.' },
-          { label: 'Handelsregister', wert: 'Für die Einzelfirma besteht die Eintragungspflicht ab einem bestimmten Jahresumsatz, vorher ist der Eintrag freiwillig.' },
+            { label: 'Kapital', wert: 'Kein Mindestkapital' },
+            {
+              label: 'Haftung',
+              wert: 'Mit dem Privatvermögen',
+              zusatz: 'Unbeschränkte Haftung',
+            },
+            {
+              label: 'Gründungsaufwand',
+              wert: 'Einfach und günstig',
+              zusatz: 'Schnell gegründet',
+            },
+            {
+              label: 'Sozialversicherungen',
+              wert: 'Inhaber/in als selbständigerwerbend',
+              zusatz: 'Selbst für Sozialversicherungen zuständig',
+            },
+            {
+              label: 'Handelsregister',
+              wert: 'Kein Eintrag erforderlich',
+              zusatz: 'Nur bei bestimmtem Umsatz verpflichtend',
+            },
+            {
+              label: 'Wirkung / Auftreten',
+              wert: 'Einfach und flexibel',
+              zusatz: 'Ideal für den Start und kleinere Projekte',
+            },
           ],
         },
         {
           bild: 'firmengruendung_gmbh',
           titel: 'GmbH',
+          untertitel: 'Stabil wachsen',
           zeilen: [
-          { label: 'Kapital', wert: 'Für die GmbH ist ein Stammkapital nötig, das vor der Gründung einbezahlt wird.' },
-          { label: 'Haftung', wert: 'Bei der GmbH haftet grundsätzlich das Gesellschaftsvermögen.' },
-          { label: 'Gründungsaufwand', wert: 'Für die GmbH braucht es eine öffentliche Beurkundung beim Notariat und den Eintrag im Handelsregister.' },
-          { label: 'Sozialversicherungen', wert: 'Bei einer GmbH sind Sie in der eigenen Firma angestellt, mit den entsprechenden Beiträgen und Versicherungen.' },
-          { label: 'Handelsregister', wert: 'Die GmbH wird eingetragen.' },
+            { label: 'Kapital', wert: 'CHF 20\'000 Stammkapital' },
+            {
+              label: 'Haftung',
+              wert: 'Auf die Gesellschaft beschränkt',
+              zusatz: 'Kein Zugriff auf das Privatvermögen',
+            },
+            {
+              label: 'Gründungsaufwand',
+              wert: 'Höherer Aufwand',
+              zusatz: 'Notariat und Handelsregister nötig',
+            },
+            {
+              label: 'Sozialversicherungen',
+              wert: 'In der eigenen Firma angestellt',
+              zusatz: 'Lohn und Sozialversicherungen über die GmbH',
+            },
+            {
+              label: 'Handelsregister',
+              wert: 'Eintrag obligatorisch',
+              zusatz: 'Öffentliche Eintragung',
+            },
+            {
+              label: 'Wirkung / Auftreten',
+              wert: 'Professionell und vertrauenswürdig',
+              zusatz: 'Geeignet für Wachstum und Zusammenarbeit mit Partnern',
+            },
           ],
         },
       ],
       hinweis: {
         bild: 'firmengruendung_beratung',
-        titel: 'Weitere Überlegungen',
-        text: 'Wie hoch das Risiko im Geschäft ist, ob Sie mit Partnern gründen, wie die Rechtsform gegenüber Kundinnen und Kunden wirkt und mit welchem Ergebnis Sie rechnen. Im Gespräch gehen wir das für Ihren Fall durch.',
+        titel: 'Welche Rechtsform ist die richtige für Sie?',
+        text: 'Das hängt von Ihren individuellen Zielen, Risiken und Plänen ab. Gerne beraten wir Sie persönlich.',
       },
     },
 

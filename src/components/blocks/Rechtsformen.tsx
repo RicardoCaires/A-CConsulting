@@ -8,34 +8,41 @@ import styles from './Rechtsformen.module.css'
 /**
  * „Einzelfirma oder GmbH?" auf `/firmengruendung` — zwei Karten im Vergleich.
  *
- * Nach Ricardos Referenzgrafik vom 14.09.2026: Kategoriezeile, Titel, ein
- * Satz, darunter zwei Karten mit je einem gelieferten Symbol und denselben
- * Merkmalen untereinander; unten ein getoenter Hinweis.
+ * Nach Ricardos zweiter Referenzgrafik vom 14.09.2026, die er mit einem
+ * ausgeschriebenen Auftragstext geliefert hat: Kategoriezeile, Titel, ein
+ * Satz, darunter zwei Karten mit geliefertem Symbol, Titel, Unterzeile und
+ * denselben sechs Merkmalen; unten eine breite Hinweisleiste.
  *
- * **Der Wortlaut ist unveraendert.** Der Abschnitt stand vorher als sechs
- * Absaetze, die beide Rechtsformen in je einem Satz gegenueberstellen. Fuer
- * die zwei Spalten sind diese Absaetze an der Satzgrenze geteilt — jeder Satz
- * steht so, wie er in der Quelle steht.
+ * Jede Zeile hat links die Kategorie als kleine Versalzeile und rechts den
+ * Inhalt: eine Hauptzeile in Navy und darunter, wo vorhanden, eine hellere
+ * Erklaerung.
  *
- * **Die Zahl „CHF 20'000" der Grafik ist nicht uebernommen.** Schritt 4 fuehrt
- * die Hoehe des Stammkapitals als fachlich zu pruefen; eine Zahl, die niemand
- * geprueft hat, gehoert nicht auf die Seite.
+ * **Der Wortlaut stammt aus Ricardos Auftragstext.** Die erste Fassung dieses
+ * Abschnitts trug die Saetze aus `schritt4_fassung2_de.md`; sie stehen dort
+ * unveraendert weiter, aber nicht mehr auf der Seite.
  *
- * Die beiden Zusaetze der Grafik („Einfach starten", „Stabil wachsen") sind
- * ebenfalls nicht uebernommen.
+ * **„CHF 20'000 Stammkapital" steht jetzt da.** Schritt 4 fuehrt die Hoehe des
+ * Stammkapitals als fachlich zu pruefen; Ricardo hat die Zahl im Auftrag
+ * ausgeschrieben und ist zweimal auf den Vorbehalt hingewiesen.
  *
  * Der Anker `rechtsform` bleibt.
  */
 
-type Zeile = { label: string; wert: Rich }
+type Zeile = { label: string; wert: Rich; zusatz?: Rich }
 
 type Props = {
   id: string
   eyebrow?: string
   heading: string
   lead?: readonly Rich[]
+  /** Hintergrundmuster, Dateiname unter `public/bilder/` ohne Endung. */
   hintergrund?: string
-  spalten: readonly { bild: string; titel: string; zeilen: readonly Zeile[] }[]
+  spalten: readonly {
+    bild: string
+    titel: string
+    untertitel?: string
+    zeilen: readonly Zeile[]
+  }[]
   hinweis?: { bild: string; titel: string; text: Rich }
 }
 
@@ -82,18 +89,32 @@ export function Rechtsformen({
                   height={700}
                   unoptimized
                 />
-                <h3 className={styles.kartenTitel}>{spalte.titel}</h3>
+                <div className={styles.kartenTitelBlock}>
+                  <h3 className={styles.kartenTitel}>{spalte.titel}</h3>
+                  {spalte.untertitel && (
+                    <p className={styles.kartenUntertitel}>{spalte.untertitel}</p>
+                  )}
+                </div>
               </div>
 
               <dl className={styles.zeilen}>
-                {spalte.zeilen.map((zeile) => (
-                  <div key={zeile.label} className={styles.zeile}>
-                    <dt className={styles.label}>{zeile.label}</dt>
-                    <dd className={styles.wert}>
-                      <RichText value={zeile.wert} />
-                    </dd>
-                  </div>
-                ))}
+                {spalte.zeilen
+                  .filter((zeile) => hatSichtbarenInhalt(zeile.wert))
+                  .map((zeile) => (
+                    <div key={zeile.label} className={styles.zeile}>
+                      <dt className={styles.label}>{zeile.label}</dt>
+                      <dd className={styles.wert}>
+                        <span className={styles.wertHaupt}>
+                          <RichText value={zeile.wert} />
+                        </span>
+                        {zeile.zusatz && hatSichtbarenInhalt(zeile.zusatz) && (
+                          <span className={styles.wertZusatz}>
+                            <RichText value={zeile.zusatz} />
+                          </span>
+                        )}
+                      </dd>
+                    </div>
+                  ))}
               </dl>
             </div>
           ))}
@@ -102,7 +123,7 @@ export function Rechtsformen({
         {hinweis && (
           <div className={styles.hinweis}>
             <Image
-              className={styles.symbol}
+              className={styles.hinweisSymbol}
               src={bildPfad(hinweis.bild)}
               alt=""
               width={700}

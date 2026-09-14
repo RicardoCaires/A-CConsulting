@@ -501,3 +501,7 @@ Die drei Symbole bringen ihren Kreis mit (Radius 250 von 700, also 71.4
 Prozent); den durchsichtigen Rest gleicht das Stylesheet mit einem negativen
 Aussenabstand aus. Das Muster bringt seinen eigenen hellen Grund mit — der
 Abschnitt legt darum keine zweite Flaeche darunter.
+
+**Zweite Lieferung am selben Tag.** Ricardo hat den Abschnitt mit einer
+zweiten Referenzgrafik und einem ausgeschriebenen Auftragstext neu bestellt.
+Die vier SVG sind unveraendert dieselben; neu sind Aufbau und Wortlaut.
