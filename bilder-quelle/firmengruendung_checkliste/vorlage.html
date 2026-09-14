@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gründungscheckliste – A&C Consulting</title>
+<style>
+:root{--navy:#1A3A5C;--green:#207730;--text:#222222;--secondary:#555555;--line:#CCCCCC;--pale:#F2F4F6;--tint:#E2E8EF;--white:#FFFFFF}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;color:var(--text);background:var(--white);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.checklist{padding:clamp(4rem,7vw,6.25rem) 1.5rem;background:var(--pale)}
+.checklist__wrap{max-width:1120px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 220px;align-items:center;gap:2rem;padding:clamp(2rem,5vw,3.5rem);border:1px solid var(--line);border-radius:12px;background:var(--white)}
+.checklist__eyebrow{display:flex;align-items:center;gap:.65rem;margin:0 0 1rem;color:var(--secondary);font-size:.76rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase}.checklist__eyebrow::before{content:"";width:29px;height:3px;background:var(--green)}
+.checklist h2{margin:0 0 .8rem;color:var(--navy);font:600 clamp(2rem,3.6vw,3rem)/1.15 "Source Serif 4",Georgia,serif}
+.checklist__text{max-width:58ch;margin:0 0 1.6rem;color:var(--secondary);font-size:1.05rem;line-height:1.65}
+.checklist__button{display:inline-flex;align-items:center;justify-content:center;gap:.8rem;min-height:48px;padding:.75rem 1.25rem;border:0;border-radius:9px;background:var(--green);color:var(--white);font:700 .98rem/1.3 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.checklist__button[disabled]{opacity:1;cursor:not-allowed}.checklist__status{margin:.65rem 0 0;color:var(--secondary);font-size:.82rem;line-height:1.5}
+.checklist__art{width:100%;max-width:220px;justify-self:center}.checklist__art svg{display:block;width:100%;height:auto}
+@media(max-width:650px){.checklist__wrap{grid-template-columns:1fr}.checklist__art{grid-row:1;max-width:135px;justify-self:start}}
+@media print{@page{size:A4;margin:2.3cm}body{print-color-adjust:exact;-webkit-print-color-adjust:exact}.checklist{padding:0}}
+</style>
+</head>
+<body>
+<section class="checklist" aria-labelledby="checklist-title"><div class="checklist__wrap"><div>
+<p class="checklist__eyebrow">Für Ihren Start</p>
+<h2 id="checklist-title">Gründungscheckliste</h2>
+<p class="checklist__text">Welche Unterlagen brauchen Sie, und was geschieht in welcher Reihenfolge? Die Checkliste fasst die wichtigsten Schritte auf einer Seite zusammen.</p>
+<button class="checklist__button" type="button" disabled>Checkliste herunterladen (PDF) <span aria-hidden="true">↓</span></button>
+<p class="checklist__status">Die PDF-Checkliste ist in Vorbereitung.</p>
+</div><div class="checklist__art" aria-hidden="true"><svg viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="110" cy="110" r="93" fill="#E2E8EF"/><rect x="56" y="42" width="113" height="145" rx="4" fill="#FFFFFF" stroke="#1A3A5C" stroke-width="4"/><path d="M89 42v-9h48v9" stroke="#1A3A5C" stroke-width="4" stroke-linecap="round"/><path d="m75 84 7 7 13-16m-20 38 7 7 13-16m-20 38 7 7 13-16" stroke="#207730" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M105 85h42m-42 29h42m-42 29h34" stroke="#1A3A5C" stroke-width="4" stroke-linecap="round"/></svg></div></div></section>
+</body></html>

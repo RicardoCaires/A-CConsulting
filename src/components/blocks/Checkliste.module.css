@@ -1,0 +1,147 @@
+/* „Gründungscheckliste" auf `/firmengruendung`.
+
+   Nach Ricardos HTML-Vorlage vom 14.09.2026
+   (`bilder-quelle/firmengruendung_checkliste/vorlage.html`). Aus ihr
+   übernommen:
+
+     Inhalt        1120 px, mittig, auf hellem Grund
+     Karte         weiss, Haarlinie, Radius 12 px
+     Raster        Text links, Abbildung rechts 220 px, mittig ausgerichtet
+     Umbruch       unter 650 px einspaltig, Abbildung zuerst und kleiner
+
+   Übernommen ist die Gestaltung, nicht der Quelltext: Farben und Grössen
+   kommen aus den Tokens. */
+
+.abschnitt {
+  padding-block: var(--ac-section-y-lg);
+  background-color: var(--ac-color-background-light);
+}
+
+.abschnitt .container {
+  max-width: 70rem;
+}
+
+.karte {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 13.75rem;
+  align-items: center;
+  gap: var(--ac-space-lg);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+}
+
+.text {
+  min-width: 0;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  line-height: var(--ac-eyebrow-line);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+.eyebrow::before {
+  content: '';
+  flex: none;
+  width: 1.75rem;
+  height: var(--ac-border-marker);
+  background-color: var(--ac-color-accent-green);
+}
+
+.titel {
+  margin: var(--ac-space-sm) 0 0;
+  font-size: clamp(2rem, 1.5rem + 1.8vw, 3rem);
+  line-height: 1.15;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.015em;
+  color: var(--ac-color-primary-navy);
+}
+
+.satz {
+  max-width: 58ch;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: var(--ac-body-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Der Knopf --------------------------------------------------------- */
+
+/* Gleiche Form und gleiches Gruen wie „Erstgespräch anfragen" auf der
+   Startseite: Beide Zustände erben aus derselben Quelle, damit sie nicht
+   auseinanderlaufen können. */
+.knopf {
+  composes: button akzent from '../ui/Button.module.css';
+
+  gap: var(--ac-space-2xs);
+  margin-top: clamp(1.25rem, 2.6vw, 1.6rem);
+}
+
+/* Solange die Datei fehlt: dieselbe Form, sichtbar abgeschaltet.
+   Gruen auf halber Deckung truege den weissen Text nicht mehr (unter 3:1) —
+   darum helle Flaeche und Navy-Schrift, rund 9:1. */
+.knopfAus {
+  color: var(--ac-color-primary-navy);
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 16%, var(--ac-color-white));
+  border: var(--ac-border-hairline) solid
+    color-mix(in srgb, var(--ac-color-accent-green) 34%, transparent);
+  cursor: not-allowed;
+}
+
+.knopfAus:hover {
+  color: var(--ac-color-primary-navy);
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 16%, var(--ac-color-white));
+}
+
+.pfeil {
+  display: inline-block;
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.hinweis {
+  margin: var(--ac-space-2xs) 0 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Die gelieferte Abbildung ------------------------------------------ */
+
+.bild {
+  display: block;
+  justify-self: center;
+  width: 100%;
+  max-width: 13.75rem;
+  height: auto;
+}
+
+/* ---- Unter 650 px: einspaltig, Abbildung zuerst ------------------------ */
+
+@media (max-width: 40.625rem) {
+  .karte {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--ac-space-md);
+  }
+
+  .bild {
+    grid-row: 1;
+    justify-self: start;
+    max-width: 8.4375rem;
+  }
+}
+
+@media print {
+  .karte {
+    break-inside: avoid;
+  }
+}
