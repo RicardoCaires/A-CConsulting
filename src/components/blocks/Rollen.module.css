@@ -1,0 +1,157 @@
+/* „Wer übernimmt welchen Teil?" auf `/firmengruendung`.
+
+   Nach Ricardos HTML-Vorlage vom 14.09.2026
+   (`bilder-quelle/firmengruendung_rollen/vorlage.html`). Aus ihr übernommen:
+
+     Inhalt        1120 px, mittig
+     Raster        zwei Spalten, gleich hohe Zeilen, Fuge 1.25rem
+     Kachel        Text links, Piktogramm rechts 112 px
+     Kontur        Haarlinie, Radius 12 px, weisse Fläche auf hellem Grund
+     Versalzeile   grüner Strich davor, wie auf der Startseite
+
+   Übernommen ist die Gestaltung, nicht der Quelltext: Die Vorlage schreibt
+   Farbwerte und Grössen direkt hinein, hier stehen dafür die Tokens. */
+
+.abschnitt {
+  padding-block: var(--ac-section-y-lg);
+  background-color: var(--ac-color-background-light);
+}
+
+.abschnitt .container {
+  max-width: 70rem;
+}
+
+/* ---- Kopf ------------------------------------------------------------------ */
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  line-height: var(--ac-eyebrow-line);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+.eyebrow::before {
+  content: '';
+  flex: none;
+  width: 1.75rem;
+  height: var(--ac-border-marker);
+  background-color: var(--ac-color-accent-green);
+}
+
+.titel {
+  max-width: 44rem;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: clamp(2.2rem, 1.6rem + 2vw, 3.35rem);
+  line-height: 1.13;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.015em;
+  color: var(--ac-color-primary-navy);
+}
+
+.lead {
+  max-width: 43rem;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: var(--ac-body-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Vier gleich grosse Kacheln -------------------------------------------- */
+
+.raster {
+  display: grid;
+  gap: var(--ac-space-sm);
+  margin-top: clamp(1.75rem, 3.5vw, 2.35rem);
+}
+
+.karte {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 7rem;
+  gap: var(--ac-space-md);
+  align-items: start;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+}
+
+.text {
+  min-width: 0;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  line-height: var(--ac-eyebrow-line);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+.tag::before {
+  content: '';
+  flex: none;
+  width: 1.75rem;
+  height: var(--ac-border-marker);
+  background-color: var(--ac-color-accent-green);
+}
+
+.kartenTitel {
+  margin: var(--ac-space-xs) 0 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.55rem, 1.3rem + 0.9vw, 1.85rem);
+  line-height: 1.2;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.satz {
+  max-width: 54ch;
+  margin: var(--ac-space-xs) 0 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
+}
+
+/* Die gelieferten Piktogramme bringen ihren Kreis mit und fuellen den Rahmen. */
+.bild {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+/* ---- Ab 48rem: zwei Spalten, alle Kacheln gleich hoch ----------------------- */
+
+@media (min-width: 48rem) {
+  .raster {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* Gleich hohe Zeilen: Keine Kachel richtet sich nach ihrem eigenen Text. */
+    grid-auto-rows: 1fr;
+  }
+}
+
+/* ---- Telefon: das Piktogramm schrumpft mit --------------------------------- */
+
+@media (max-width: 32.5rem) {
+  .karte {
+    grid-template-columns: minmax(0, 1fr) 4.75rem;
+    gap: var(--ac-space-sm);
+  }
+}
+
+@media print {
+  .karte {
+    break-inside: avoid;
+  }
+}

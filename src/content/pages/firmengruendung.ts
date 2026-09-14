@@ -126,33 +126,43 @@ export const firmengruendung: PageContent = {
       },
     },
 
-    // 04 Wer was macht
+    // 04 Wer welchen Teil uebernimmt — seit dem 14.09.2026 vier gleich grosse
+    // Kacheln nach Ricardos HTML-Vorlage
+    // (`content/source/firmengruendung_rollen_de.md`). Vorher vier Absaetze
+    // aus `schritt4_fassung2_de.md`; deren Wortlaut steht dort unveraendert
+    // weiter, aber nicht mehr auf der Seite. Der Anker bleibt.
     {
-      kind: 'subsections',
+      kind: 'rollen',
       id: 'zustaendigkeiten',
-      heading: 'Wer welchen Teil übernimmt',
-      items: [
+      eyebrow: 'Gut aufeinander abgestimmt',
+      heading: 'Wer übernimmt welchen Teil?',
+      lead: [
+        'Eine Gründung bringt mehrere Stellen zusammen. Wir koordinieren den Ablauf und zeigen Ihnen, wer wofür zuständig ist.',
+      ],
+      karten: [
         {
-          heading: 'A&C',
-          paragraphs: [
-            [
-              'Beratung zur Rechtsform, Vorbereitung der Unterlagen, Koordination mit Notariat und Handelsregister, Anmeldungen bei den Sozialversicherungen und bei der Mehrwertsteuer, Aufbau der Buchhaltung. Alles, was beglaubigt oder notariell beurkundet werden muss, erledigt das Notariat. Die übrigen Schritte begleiten wir.',
-            ],
-          ],
+          bild: 'firmengruendung_rolle_ac',
+          tag: 'Ihr Ansprechpartner',
+          titel: 'A&C Consulting',
+          text: 'Wir klären mit Ihnen die Rechtsform, bereiten die Unterlagen vor und koordinieren die nächsten Schritte mit Bank und Notariat. Anmeldungen und den Aufbau der Buchhaltung begleiten wir ebenfalls.',
         },
         {
-          heading: 'Notariat',
-          paragraphs: [
-            'Öffentliche Beurkundung der Gründung und Anmeldung beim Handelsregister.',
-          ],
+          bild: 'firmengruendung_rolle_notariat',
+          tag: 'Beurkundung',
+          titel: 'Notariat',
+          text: 'Wo eine öffentliche Beurkundung nötig ist, übernimmt sie das Notariat. Es erstellt die erforderlichen Urkunden und reicht die Anmeldung beim Handelsregister ein.',
         },
         {
-          heading: 'Bank',
-          paragraphs: ['Sperrkonto für die Kapitaleinzahlung und später das Geschäftskonto.'],
+          bild: 'firmengruendung_rolle_bank',
+          tag: 'Kapitaleinzahlung',
+          titel: 'Bank',
+          text: 'Ist Stamm- oder Aktienkapital erforderlich, stellt die Bank das Kapitaleinzahlungskonto bereit. Nach der Eintragung kann das Geschäftskonto eingerichtet werden.',
         },
         {
-          heading: 'Ämter',
-          paragraphs: ['Handelsregisteramt, Ausgleichskasse und Steuerverwaltung.'],
+          bild: 'firmengruendung_rolle_behoerden',
+          tag: 'Eintrag und Anmeldung',
+          titel: 'Behörden',
+          text: 'Je nach Rechtsform und Tätigkeit folgen Einträge und Anmeldungen beim Handelsregisteramt, bei der Ausgleichskasse und bei der Steuerverwaltung.',
         },
       ],
     },

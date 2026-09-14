@@ -454,6 +454,27 @@ export type Block =
       }
     }
   /**
+   * Vier gleich grosse Kacheln: wer welchen Teil einer Gruendung uebernimmt.
+   *
+   * Loest auf `/firmengruendung` den `subsections`-Block „Wer welchen Teil
+   * uebernimmt" ab (14.09.2026, HTML-Vorlage von Ricardo). Bringt die Flaeche
+   * selbst mit und zaehlt beim Flaechenwechsel nicht mit.
+   */
+  | {
+      kind: 'rollen'
+      id: string
+      eyebrow?: string
+      heading: string
+      lead?: readonly Rich[]
+      karten: readonly {
+        /** Geliefertes Piktogramm, Dateiname unter `public/bilder/` ohne Endung. */
+        bild: string
+        tag: string
+        titel: string
+        text: Rich
+      }[]
+    }
+  /**
    * Zwei Rechtsformen im Vergleich, je eine Karte mit denselben Merkmalen.
    *
    * Loest auf `/firmengruendung` den `subsections`-Block „Einzelfirma oder
