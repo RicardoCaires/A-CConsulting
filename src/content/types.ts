@@ -404,6 +404,40 @@ export type Block =
         hinweis?: { bild: string; titel: string; satz: string }
       }[]
     }
+  /**
+   * Checkliste und Fristen als zwei Karten nebeneinander.
+   *
+   * Loest auf `/steuern` die beiden `prose`-Bloecke ab (14.09.2026,
+   * Referenzgrafik von Ricardo). Bringt die Flaeche selbst mit und zaehlt beim
+   * Flaechenwechsel nicht mit. Die Anker `checkliste` und `fristen` bleiben.
+   */
+  | {
+      kind: 'checklisteFristen'
+      /** Hintergrund, Dateiname unter `public/bilder/` ohne Endung. */
+      hintergrund?: string
+      checkliste: {
+        id: string
+        heading: string
+        paragraphs: readonly Rich[]
+        /** Gelieferte Abbildung, Dateiname unter `public/bilder/` ohne Endung. */
+        bild: string
+        fristenTitel?: string
+        fristen?: readonly { label: string; wert: Rich }[]
+        download: Download
+        hinweis?: string
+      }
+      fristen: {
+        id: string
+        heading: string
+        lead?: readonly Rich[]
+        gruppen: readonly {
+          bild: string
+          titel: string
+          zeilen: readonly { label: string; wert: Rich }[]
+        }[]
+        nachsatz?: readonly Rich[]
+      }
+    }
   /** Sprungmarken innerhalb der Seite. */
   | {
       kind: 'anchors'

@@ -86,34 +86,67 @@ export const steuern: PageContent = {
     // Abschluss „Termin für Ihre Steuererklärung vereinbaren". Ihr Wortlaut steht
     // unverändert unter `content/source/`.
 
-    // 05 Checkliste
+    // 05 und 06 — seit dem 14.09.2026 zwei Karten nebeneinander nach Ricardos
+    // Referenzgrafik. Titel, Absaetze und Knopfbeschriftung unveraendert; die
+    // Beschriftungen der Tabellen stammen aus der Grafik
+    // (`content/source/steuern_checkliste_de.md`).
+    //
+    // **Die Zahlen der Grafik sind nicht uebernommen**: Sie widersprechen sich
+    // dort (31. Maerz gegen 15. Maerz) und nennen unbelegte Gebuehren. Die
+    // Quelle fuehrt genau diese Angaben als offen; sie stehen darum als
+    // offene Angabe und erscheinen sichtbar markiert.
     {
-      kind: 'prose',
-      id: 'checkliste',
-      heading: 'Checkliste Steuererklärung Kanton Bern',
-      paragraphs: [
-        'Die Liste zeigt, welche Unterlagen Sie zusammenstellen sollten. Sie können sie ohne Anmeldung herunterladen und auch dann verwenden, wenn Sie die Steuererklärung selbst ausfüllen.',
+      kind: 'checklisteFristen',
+      hintergrund: 'steuern_hintergrund',
+      checkliste: {
+        id: 'checkliste',
+        heading: 'Checkliste Steuererklärung Kanton Bern',
+        bild: 'steuern_checkliste',
+        paragraphs: [
+            'Die Liste zeigt, welche Unterlagen Sie zusammenstellen sollten. Sie können sie ohne Anmeldung herunterladen und auch dann verwenden, wenn Sie die Steuererklärung selbst ausfüllen.',
         
-      ],
-      download: { label: 'Checkliste herunterladen (PDF)', file: null },
-    },
-
-    // 06 Fristen
-    {
-      kind: 'prose',
-      id: 'fristen',
-      heading: 'Fristen und Fristverlängerung',
-      paragraphs: [
-        [
-          'Die Steuererklärung im Kanton Bern ist bis zu einem festen Termin einzureichen. ',
-          
         ],
-        [
-          'Eine Verlängerung ist möglich. ',
-          
+        fristenTitel: 'Wichtige Fristen',
+        fristen: [
+          { label: 'Reguläre Einreichfrist', wert: [{ pending: 'Einreichefrist für Privatpersonen und für Firmen, mit Jahresangabe' }] },
+          { label: 'Fristverlängerung möglich bis', wert: [{ pending: 'Verfahren, mögliche Dauer und allfällige Gebühren' }] },
         ],
-        'Wenn wir Ihre Steuererklärung erstellen, übernehmen wir auch die Fristverlängerung.',
-      ],
+        download: { label: 'Checkliste herunterladen (PDF)', file: null },
+        hinweis: 'Ohne Anmeldung. Sofort verfügbar.',
+      },
+      fristen: {
+        id: 'fristen',
+        heading: 'Fristen und Fristverlängerung',
+        lead: [
+            [
+              'Die Steuererklärung im Kanton Bern ist bis zu einem festen Termin einzureichen. ',
+          
+            ],
+            [
+              'Eine Verlängerung ist möglich. ',
+          
+            ],
+            'Wenn wir Ihre Steuererklärung erstellen, übernehmen wir auch die Fristverlängerung.',
+        ],
+        gruppen: [
+          {
+            bild: 'steuern_icon_privatpersonen',
+            titel: 'Privatpersonen',
+            zeilen: [
+              { label: 'Ordentliche Frist', wert: [{ pending: 'Einreichefrist für Privatpersonen und für Firmen, mit Jahresangabe' }] },
+              { label: 'Fristverlängerung', wert: [{ pending: 'Verfahren, mögliche Dauer und allfällige Gebühren' }] },
+            ],
+          },
+          {
+            bild: 'steuern_icon_unternehmen',
+            titel: 'Unternehmen',
+            zeilen: [
+              { label: 'Ordentliche Frist', wert: [{ pending: 'Einreichefrist für Privatpersonen und für Firmen, mit Jahresangabe' }] },
+              { label: 'Fristverlängerung', wert: [{ pending: 'Verfahren, mögliche Dauer und allfällige Gebühren' }] },
+            ],
+          },
+        ],
+      },
     },
 
     // 09 Häufige Fragen

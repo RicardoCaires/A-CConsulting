@@ -1137,6 +1137,32 @@ eidg. Fachausweis suggeriert.
 > nicht mit; die Abschnitte darunter behalten ihren Grund. Derselbe breite
 > Container wie auf `/treuhand/buchhaltung` (1344 px).
 
+> **„Checkliste" und „Fristen und Fristverlängerung" seit dem 14.09.2026 als
+> zwei Karten nebeneinander** (`src/components/blocks/ChecklisteFristen.tsx`),
+> nach Ricardos Referenzgrafik: links die Checkliste mit der gelieferten
+> Abbildung, einer kleinen Fristentabelle, dem Knopf und dem Hinweis „Ohne
+> Anmeldung. Sofort verfügbar."; rechts die Fristen in zwei Gruppen
+> (Privatpersonen, Unternehmen) mit den gelieferten Symbolen. **Titel, Absätze
+> und die Beschriftung des Knopfs sind unverändert; die Anker `checkliste` und
+> `fristen` bleiben.** Die Beschriftungen der Tabellenzeilen stammen aus der
+> Grafik (`content/source/steuern_checkliste_de.md`).
+>
+> **Die Zahlen der Grafik sind nicht übernommen.** Sie widersprechen sich dort
+> selbst — links „Reguläre Einreichfrist 31. März", rechts „Ordentliche Frist
+> 15. März" — und nennen Gebühren (CHF 20, CHF 40), die nirgends belegt sind.
+> Schritt 4 führt genau diese beiden Angaben als offen; sie stehen darum als
+> offene Angabe (`pending`) und erscheinen auf der Seite sichtbar markiert.
+> Damit steigt die Zahl der offenen Angaben; vor dem Go-live muss Ricardo
+> Einreichefrist, Verlängerung und allfällige Gebühren bestätigen.
+>
+> **Das Bern-Foto der Grafik ist nicht eingebaut.** Die gelieferte Datei
+> `04_bern_stockfoto_original.png` ist 505 x 280 px gross und trägt das
+> Wasserzeichen „shutterstock.com 2181102791" — eine unlizenzierte Vorschau.
+> Eine lizenzierte Fassung in mindestens 2000 px Breite tritt unter die beiden
+> Karten, sobald sie vorliegt. Ebenfalls nicht übernommen: die Zeile „A&C
+> CONSULTING" über den Titeln, „Fristen und Kosten im Überblick" und die
+> Bildunterschrift „Für Steuererklärungen im Kanton Bern".
+
 ### /ueber-uns
 
 Die Inhaber mit Namen, Werdegang und Sprachen. Warum es die Firma gibt. Kein

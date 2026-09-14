@@ -8,6 +8,7 @@ import { PageLink } from '@/components/ui/PageLink'
 import { hatSichtbarenInhalt, RichText } from '@/components/ui/RichText'
 import { Accordion } from './Accordion'
 import { Betreuung } from './Betreuung'
+import { ChecklisteFristen } from './ChecklisteFristen'
 import { Fragen } from './Fragen'
 import { Leistungen } from './Leistungen'
 import { Schadenfall } from './Schadenfall'
@@ -169,6 +170,7 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
     block.kind === 'serviceNav' ||
     block.kind === 'segmente' ||
     block.kind === 'zielgruppenKarten' ||
+    block.kind === 'checklisteFristen' ||
     block.kind === 'betreuung' ||
     block.kind === 'schadenfall' ||
     block.kind === 'fragen'
@@ -564,6 +566,21 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
         // Die Zielgruppen auf `/steuern` sind ein eigener Baustein mit eigener
         // Flaeche. Sie zaehlen beim Flaechenwechsel nicht mit: Sie ersetzen
         // zwei Abschnitte, der Wechsel darunter bleibt damit, wie er war.
+        // Checkliste und Fristen auf `/steuern` liegen seit dem 14.09.2026 als
+        // zwei Karten auf einer gemeinsamen Flaeche. Sie zaehlen beim
+        // Flaechenwechsel nicht mit — sie ersetzen zwei Abschnitte.
+        if (block.kind === 'checklisteFristen') {
+          return (
+            <ChecklisteFristen
+              key={index}
+              hintergrund={block.hintergrund}
+              folgt={getUi(locale).pageComing.badge}
+              checkliste={block.checkliste}
+              fristen={block.fristen}
+            />
+          )
+        }
+
         if (block.kind === 'zielgruppenKarten') {
           return (
             <ZielgruppenKarten
