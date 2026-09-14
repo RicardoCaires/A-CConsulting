@@ -1,0 +1,279 @@
+/* Checkliste und Fristen auf `/steuern`.
+
+   Nach Ricardos Referenzgrafik vom 14.09.2026 (1672 x 941). Aus der Vorlage
+   gemessen:
+
+     Karten        x 66 bis 800 und 845 bis 1580, je 734 px, Fuge 45
+     Abbildung     oben rechts in der linken Karte, rund 140 px breit
+     Tabelle       Zeilen mit hellblauem Grund, Wert rechtsbuendig
+     Knopf         Pille in hellem Gruen, darunter ein leiser Hinweis
+     Gruppen       zwei Unterkarten mit Symbol, Titel und Zeilen
+
+   Derselbe breite Container wie die Zielgruppenkarten darueber (1344 px).
+
+   Das Foto der Vorlage fehlt: Die gelieferte Datei traegt ein Wasserzeichen. */
+
+.flaeche {
+  padding-block: var(--ac-section-y);
+  background-color: var(--ac-color-background-light);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.flaeche .container {
+  display: grid;
+  gap: clamp(1.25rem, 2.4vw, 2.25rem);
+  max-width: 84rem;
+}
+
+.karte {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid
+    color-mix(in srgb, var(--ac-color-primary-navy) 8%, transparent);
+  border-radius: 18px;
+  box-shadow: 0 16px 44px color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
+}
+
+/* ---- Kopf der linken Karte: Text links, Abbildung rechts ------------------- */
+
+.kopf {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  align-items: start;
+}
+
+.abbildung {
+  display: block;
+  width: clamp(5.5rem, 4rem + 4vw, 7.5rem);
+  max-width: none;
+  height: auto;
+}
+
+.titel {
+  margin: 0;
+  font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.25rem);
+  line-height: 1.1;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.015em;
+  color: var(--ac-color-primary-navy);
+}
+
+.absatz {
+  margin: var(--ac-space-sm) 0 0;
+  max-width: 52ch;
+  font-size: var(--ac-body-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Zeilen mit Frist und Wert --------------------------------------------- */
+
+.tabelle {
+  margin-top: clamp(1.25rem, 2.4vw, 1.75rem);
+}
+
+.zwischentitel {
+  margin: 0 0 var(--ac-space-sm);
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  line-height: 1.3;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.zeilen {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+}
+
+.zeile {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--ac-space-sm);
+  align-items: baseline;
+  padding: 0.625rem 0.875rem;
+  background-color: color-mix(in srgb, var(--ac-color-background-tint) 45%, var(--ac-color-white));
+  border-radius: 10px;
+}
+
+.label {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--ac-color-primary-navy);
+}
+
+.wert {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: right;
+  color: var(--ac-color-text-secondary);
+}
+
+/* Zeile mit offener Angabe: Beschriftung oben, Vermerk darunter. */
+.zeileOffen {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.25rem;
+}
+
+.zeileOffen .wert {
+  text-align: left;
+}
+
+/* ---- Knopf und Hinweis ------------------------------------------------------ */
+
+.aktion {
+  margin-top: auto;
+  padding-top: clamp(1.25rem, 2.4vw, 1.75rem);
+}
+
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.875rem;
+  margin: 0;
+  padding: 0.625rem 1.5rem;
+  font-size: var(--ac-body-size);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ac-color-accent-green);
+  text-decoration: none;
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 12%, var(--ac-color-white));
+  border-radius: 999px;
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.knopf:hover {
+  color: var(--ac-color-accent-green);
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 18%, var(--ac-color-white));
+}
+
+.knopf:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+.pfeil {
+  display: inline-block;
+  font-size: 1.125rem;
+  line-height: 1;
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.knopf:hover .pfeil {
+  transform: translateX(3px);
+}
+
+/* Ohne Datei ist es kein Knopf, sondern eine Beschriftung mit Vermerk. */
+.knopfOhneDatei {
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-background-light);
+}
+
+.folgt {
+  padding: 0.125rem 0.5rem;
+  font-size: var(--ac-small-size);
+  font-weight: 500;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-white);
+  border-radius: 999px;
+}
+
+.hinweis {
+  margin: var(--ac-space-sm) 0 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Rechte Karte: zwei Gruppen -------------------------------------------- */
+
+.gruppen {
+  display: grid;
+  gap: clamp(0.875rem, 1.8vw, 1.25rem);
+  margin-top: clamp(1.25rem, 2.4vw, 1.75rem);
+}
+
+.gruppe {
+  padding: clamp(1rem, 2vw, 1.375rem);
+  background-color: color-mix(in srgb, var(--ac-color-background-light) 70%, var(--ac-color-white));
+  border: var(--ac-border-hairline) solid
+    color-mix(in srgb, var(--ac-color-primary-navy) 7%, transparent);
+  border-radius: 14px;
+}
+
+.gruppenKopf {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--ac-space-sm);
+}
+
+/* Die gelieferten Symbole bringen ihren Kreis mit; ringsum liegt in der Datei
+   ein transparenter Rand von 12.9 Prozent, den der negative Rand ausgleicht. */
+.symbol {
+  display: block;
+  flex: none;
+  width: 3.25rem;
+  max-width: none;
+  height: 3.25rem;
+  margin: calc(3.25rem * -0.129);
+}
+
+.gruppenTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.125rem, 1rem + 0.35vw, 1.3125rem);
+  line-height: 1.25;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.nachsatz {
+  margin: clamp(1rem, 2vw, 1.25rem) 0 0;
+  font-size: var(--ac-body-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Ab 64rem: zwei Karten nebeneinander ----------------------------------- */
+
+@media (min-width: 64rem) {
+  .flaeche .container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .gruppen {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .knopf,
+  .pfeil {
+    transition: none;
+  }
+
+  .knopf:hover .pfeil {
+    transform: none;
+  }
+}
+
+@media print {
+  .flaeche {
+    background-image: none;
+  }
+
+  .karte {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}

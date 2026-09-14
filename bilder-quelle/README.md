@@ -454,3 +454,26 @@ Am 11.09.2026 geliefert, sechs PNG. Sie liegen mit ihren Namen unter
 Die Symbole sind wie die der Buchhaltungsseite auf ihren Kreis zugeschnitten
 (Quadrat mit 2 Prozent Rand, ausserhalb des Kreises transparent); Kreis und
 Zeichen unverändert.
+
+## Steuern — Checkliste und Fristen
+
+Am 14.09.2026 geliefert: drei SVG, ein PNG und die Referenzgrafik. Die SVG
+werden **unveraendert** ausgeliefert.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `01_checkliste_kanton_bern.svg` | `steuern_checkliste.svg` | SVG, 900 x 1100 |
+| `02_icon_privatpersonen.svg` | `steuern_icon_privatpersonen.svg` | SVG, 700 x 700 |
+| `03_icon_unternehmen.svg` | `steuern_icon_unternehmen.svg` | SVG, 700 x 700 |
+| `04_bern_stockfoto_original.png` | — | PNG, 505 x 280, **nicht im Repository** |
+| `321eb36b-…png` | — | Referenz, 1672 x 941 |
+
+**Das Bern-Foto ist nicht ausgeliefert.** Die Datei misst 505 x 280 px und
+traegt am unteren Rand das Wasserzeichen „shutterstock.com 2181102791". Eine
+unlizenzierte Vorschau wird weder veroeffentlicht noch ins Repository
+uebernommen; ausserdem waere sie fuer ein
+Bild ueber die volle Breite zu klein. Noetig ist eine lizenzierte Fassung mit
+mindestens 2000 px Breite.
+
+Die Checklisten-Abbildung traegt laut Kommentar in der Datei bewusst **kein
+offizielles Berner Wappen**, sondern eine neutrale Form.
