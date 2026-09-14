@@ -57,9 +57,15 @@ type Props = {
 const bildPfad = (datei: string) => `/bilder/${datei}.svg`
 
 function Zeilen({ zeilen }: { zeilen: readonly Zeile[] }) {
+  // Im Produktionsbau sind die Marken ausgeblendet. Eine Zeile, deren Wert nur
+  // aus einer offenen Angabe besteht, waere dort eine leere Zeile — sie faellt
+  // darum ganz weg und kommt mit dem bestaetigten Wert zurueck.
+  const sichtbar = zeilen.filter((zeile) => hatSichtbarenInhalt(zeile.wert))
+  if (sichtbar.length === 0) return null
+
   return (
     <dl className={styles.zeilen}>
-      {zeilen.map((zeile) => (
+      {sichtbar.map((zeile) => (
         // Eine offene Angabe ist viel breiter als ein Datum. Solche Zeilen
         // laufen zweizeilig; mit dem bestaetigten Wert stehen sie wieder
         // nebeneinander.
@@ -82,6 +88,12 @@ function Zeilen({ zeilen }: { zeilen: readonly Zeile[] }) {
 }
 
 export function ChecklisteFristen({ hintergrund, folgt, checkliste, fristen }: Props) {
+  // Eine Gruppe ohne bestaetigten Wert waere im Produktionsbau eine leere
+  // Kachel mit Symbol und Titel. Sie faellt darum weg, bis die Werte stehen.
+  const gruppen = fristen.gruppen.filter((gruppe) =>
+    gruppe.zeilen.some((zeile) => hatSichtbarenInhalt(zeile.wert)),
+  )
+
   return (
     <div
       className={styles.flaeche}
@@ -116,7 +128,7 @@ export function ChecklisteFristen({ hintergrund, folgt, checkliste, fristen }: P
             />
           </div>
 
-          {checkliste.fristen && checkliste.fristen.length > 0 && (
+          {checkliste.fristen?.some((zeile) => hatSichtbarenInhalt(zeile.wert)) && (
             <div className={styles.tabelle}>
               {checkliste.fristenTitel && (
                 <h3 className={styles.zwischentitel}>{checkliste.fristenTitel}</h3>
@@ -159,24 +171,26 @@ export function ChecklisteFristen({ hintergrund, folgt, checkliste, fristen }: P
             </p>
           ))}
 
-          <div className={styles.gruppen}>
-            {fristen.gruppen.map((gruppe) => (
-              <div key={gruppe.titel} className={styles.gruppe}>
-                <div className={styles.gruppenKopf}>
-                  <Image
-                    className={styles.symbol}
-                    src={bildPfad(gruppe.bild)}
-                    alt=""
-                    width={700}
-                    height={700}
-                    unoptimized
-                  />
-                  <h3 className={styles.gruppenTitel}>{gruppe.titel}</h3>
+          {gruppen.length > 0 && (
+            <div className={styles.gruppen}>
+              {gruppen.map((gruppe) => (
+                <div key={gruppe.titel} className={styles.gruppe}>
+                  <div className={styles.gruppenKopf}>
+                    <Image
+                      className={styles.symbol}
+                      src={bildPfad(gruppe.bild)}
+                      alt=""
+                      width={700}
+                      height={700}
+                      unoptimized
+                    />
+                    <h3 className={styles.gruppenTitel}>{gruppe.titel}</h3>
+                  </div>
+                  <Zeilen zeilen={gruppe.zeilen} />
                 </div>
-                <Zeilen zeilen={gruppe.zeilen} />
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           {fristen.nachsatz?.filter(hatSichtbarenInhalt).map((absatz, index) => (
             <p key={index} className={styles.nachsatz}>
