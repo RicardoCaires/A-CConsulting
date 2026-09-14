@@ -477,3 +477,19 @@ mindestens 2000 px Breite.
 
 Die Checklisten-Abbildung traegt laut Kommentar in der Datei bewusst **kein
 offizielles Berner Wappen**, sondern eine neutrale Form.
+
+## Firmengruendung — Einzelfirma oder GmbH?
+
+Am 14.09.2026 geliefert, vier SVG. Sie werden **unveraendert** ausgeliefert.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `01_icon_einzelfirma.svg` | `firmengruendung_einzelfirma.svg` | SVG, 700 x 700 |
+| `02_icon_gmbh.svg` | `firmengruendung_gmbh.svg` | SVG, 700 x 700 |
+| `03_icon_beratung.svg` | `firmengruendung_beratung.svg` | SVG, 700 x 700 |
+| `04_hintergrundmuster.svg` | `firmengruendung_muster.svg` | SVG, 1920 x 1200 |
+
+Die drei Symbole bringen ihren Kreis mit (Radius 250 von 700, also 71.4
+Prozent); den durchsichtigen Rest gleicht das Stylesheet mit einem negativen
+Aussenabstand aus. Das Muster bringt seinen eigenen hellen Grund mit — der
+Abschnitt legt darum keine zweite Flaeche darunter.

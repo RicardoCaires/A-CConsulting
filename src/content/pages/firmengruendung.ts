@@ -31,67 +31,49 @@ export const firmengruendung: PageContent = {
   },
 
   blocks: [
-    // 02 Einzelfirma oder GmbH
+    // 02 Einzelfirma oder GmbH — seit dem 14.09.2026 zwei Karten im Vergleich
+    // nach Ricardos Referenzgrafik. Der Wortlaut ist unveraendert: Die sechs
+    // Absaetze stellten beide Rechtsformen in je einem Satz gegenueber; fuer
+    // die Spalten sind sie an der Satzgrenze geteilt.
+    //
+    // **„CHF 20'000 Stammkapital" aus der Grafik ist nicht uebernommen** —
+    // Schritt 4 fuehrt die Hoehe des Stammkapitals als fachlich zu pruefen.
     {
-      kind: 'subsections',
+      kind: 'rechtsformen',
       id: 'rechtsform',
+      eyebrow: 'Rechtsformen in der Schweiz',
       heading: 'Einzelfirma oder GmbH?',
-      intro: [
-        'Das ist die erste Frage, und sie lässt sich nicht allgemein beantworten. Für die Wahl sind vor allem die folgenden Punkte massgebend.',
-      ],
-      items: [
+      lead: ['Das ist die erste Frage, und sie lässt sich nicht allgemein beantworten. Für die Wahl sind vor allem die folgenden Punkte massgebend.'],
+      hintergrund: 'firmengruendung_muster',
+      spalten: [
         {
-          heading: 'Kapital',
-          paragraphs: [
-            [
-              'Die Einzelfirma braucht kein Mindestkapital. Für die GmbH ist ein Stammkapital nötig, das vor der Gründung einbezahlt wird. ',
-              
-            ],
+          bild: 'firmengruendung_einzelfirma',
+          titel: 'Einzelfirma',
+          zeilen: [
+          { label: 'Kapital', wert: 'Die Einzelfirma braucht kein Mindestkapital.' },
+          { label: 'Haftung', wert: 'Bei der Einzelfirma haften Sie mit Ihrem Privatvermögen.' },
+          { label: 'Gründungsaufwand', wert: 'Die Einzelfirma ist einfacher und günstiger zu gründen.' },
+          { label: 'Sozialversicherungen', wert: 'Als Inhaberin oder Inhaber einer Einzelfirma gelten Sie als selbständigerwerbend.' },
+          { label: 'Handelsregister', wert: 'Für die Einzelfirma besteht die Eintragungspflicht ab einem bestimmten Jahresumsatz, vorher ist der Eintrag freiwillig.' },
           ],
         },
         {
-          heading: 'Haftung',
-          paragraphs: [
-            [
-              'Bei der Einzelfirma haften Sie mit Ihrem Privatvermögen. Bei der GmbH haftet grundsätzlich das Gesellschaftsvermögen. ',
-              
-            ],
-          ],
-        },
-        {
-          heading: 'Gründungsaufwand',
-          paragraphs: [
-            'Die Einzelfirma ist einfacher und günstiger zu gründen. Für die GmbH braucht es eine öffentliche Beurkundung beim Notariat und den Eintrag im Handelsregister.',
-          ],
-        },
-        {
-          heading: 'Handelsregister',
-          paragraphs: [
-            [
-              'Die GmbH wird eingetragen. Für die Einzelfirma besteht die Eintragungspflicht ab einem bestimmten Jahresumsatz, vorher ist der Eintrag freiwillig. ',
-              
-            ],
-          ],
-        },
-        {
-          heading: 'Sozialversicherungen',
-          paragraphs: [
-            [
-              'Als Inhaberin oder Inhaber einer Einzelfirma gelten Sie als selbständigerwerbend. Bei einer GmbH sind Sie in der eigenen Firma angestellt, mit den entsprechenden Beiträgen und Versicherungen. ',
-              
-            ],
-          ],
-        },
-        {
-          heading: 'Weitere Überlegungen',
-          paragraphs: [
-            'Wie hoch das Risiko im Geschäft ist, ob Sie mit Partnern gründen, wie die Rechtsform gegenüber Kundinnen und Kunden wirkt und mit welchem Ergebnis Sie rechnen. Im Gespräch gehen wir das für Ihren Fall durch.',
+          bild: 'firmengruendung_gmbh',
+          titel: 'GmbH',
+          zeilen: [
+          { label: 'Kapital', wert: 'Für die GmbH ist ein Stammkapital nötig, das vor der Gründung einbezahlt wird.' },
+          { label: 'Haftung', wert: 'Bei der GmbH haftet grundsätzlich das Gesellschaftsvermögen.' },
+          { label: 'Gründungsaufwand', wert: 'Für die GmbH braucht es eine öffentliche Beurkundung beim Notariat und den Eintrag im Handelsregister.' },
+          { label: 'Sozialversicherungen', wert: 'Bei einer GmbH sind Sie in der eigenen Firma angestellt, mit den entsprechenden Beiträgen und Versicherungen.' },
+          { label: 'Handelsregister', wert: 'Die GmbH wird eingetragen.' },
           ],
         },
       ],
-      outro: [
-        [],
-      ],
+      hinweis: {
+        bild: 'firmengruendung_beratung',
+        titel: 'Weitere Überlegungen',
+        text: 'Wie hoch das Risiko im Geschäft ist, ob Sie mit Partnern gründen, wie die Rechtsform gegenüber Kundinnen und Kunden wirkt und mit welchem Ergebnis Sie rechnen. Im Gespräch gehen wir das für Ihren Fall durch.',
+      },
     },
 
     // 03 Ablauf der Gründung

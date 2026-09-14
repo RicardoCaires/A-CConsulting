@@ -11,6 +11,7 @@ import { Betreuung } from './Betreuung'
 import { ChecklisteFristen } from './ChecklisteFristen'
 import { Fragen } from './Fragen'
 import { Leistungen } from './Leistungen'
+import { Rechtsformen } from './Rechtsformen'
 import { Schadenfall } from './Schadenfall'
 import { CTASection } from './CTASection'
 import { Segmente } from './Segmente'
@@ -171,6 +172,7 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
     block.kind === 'segmente' ||
     block.kind === 'zielgruppenKarten' ||
     block.kind === 'checklisteFristen' ||
+    block.kind === 'rechtsformen' ||
     block.kind === 'betreuung' ||
     block.kind === 'schadenfall' ||
     block.kind === 'fragen'
@@ -569,6 +571,23 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
         // Checkliste und Fristen auf `/steuern` liegen seit dem 14.09.2026 als
         // zwei Karten auf einer gemeinsamen Flaeche. Sie zaehlen beim
         // Flaechenwechsel nicht mit — sie ersetzen zwei Abschnitte.
+        // Der Rechtsformvergleich auf `/firmengruendung` bringt seine Flaeche
+        // selbst mit und zaehlt beim Flaechenwechsel nicht mit.
+        if (block.kind === 'rechtsformen') {
+          return (
+            <Rechtsformen
+              key={index}
+              id={block.id}
+              eyebrow={block.eyebrow}
+              heading={block.heading}
+              lead={block.lead}
+              hintergrund={block.hintergrund}
+              spalten={block.spalten}
+              hinweis={block.hinweis}
+            />
+          )
+        }
+
         if (block.kind === 'checklisteFristen') {
           return (
             <ChecklisteFristen
