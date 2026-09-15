@@ -566,3 +566,14 @@ vorigen lagen bei 71.4. Das Stylesheet rechnet den durchsichtigen Rand
 entsprechend heraus. `firmengruendung_beratung.svg` bleibt liegen — die neue
 Vorlage zeigt in der Hinweisleiste kein Symbol mehr.
 
+## Treuhaender wechseln — Wann ist ein Wechsel sinnvoll?
+
+Am 15.09.2026 als HTML-Vorlage geliefert, dazu zwei Piktogramme als SVG und
+PNG. Die SVG werden **unveraendert** ausgeliefert.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `piktogramm-wechselzeitpunkt-geschaeftsjahr.svg` | `wechsel_zeitpunkt_geschaeftsjahr.svg` | SVG, viewBox 112 |
+| `piktogramm-wechselzeitpunkt-unterjaehrig.svg` | `wechsel_zeitpunkt_unterjaehrig.svg` | SVG, viewBox 112 |
+| `treuhaenderwechsel-zeitpunkt.html` | — | Vorlage, liegt als `vorlage.html` |
+

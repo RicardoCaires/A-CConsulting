@@ -105,15 +105,47 @@ export const treuhaenderWechseln: PageContent = {
       ],
     },
 
-    // 04 Der geeignete Zeitpunkt
+    // 04 Wann ist ein Wechsel sinnvoll — seit dem 15.09.2026 zwei gleich grosse
+    // Kacheln nach Ricardos HTML-Vorlage
+    // (`content/source/wechsel_zeitpunkt_de.md`). Vorher drei Absaetze aus
+    // `schritt4_fassung2_de.md`; deren Wortlaut steht dort unveraendert
+    // weiter. Der Anker `zeitpunkt` bleibt.
+    //
+    // **Die Vorlage bringt keine Beratungsbox und keinen Knopf mit.** Beides
+    // war im Auftrag genannt, steht aber nicht in der Datei; erfunden wird
+    // nichts. Zwei Abschnitte weiter oben traegt die Seite bereits eine
+    // Einladung mit gruenem Knopf.
     {
-      kind: 'prose',
+      kind: 'rollen',
       id: 'zeitpunkt',
-      heading: 'Wann ein Wechsel sinnvoll ist',
-      paragraphs: [
-        'Am einfachsten ist ein Wechsel auf den Beginn eines neuen Geschäftsjahres, weil dann ein abgeschlossener Stand übergeben wird.',
-        'Ein unterjähriger Wechsel ist grundsätzlich ebenfalls möglich. Er verlangt etwas mehr Abstimmung, vor allem bei der Mehrwertsteuer und bei den Löhnen, weil dort die Zahlen des ganzen Jahres zusammenpassen müssen.',
-        'Welcher Zeitpunkt für Sie sinnvoll ist, hängt von Ihrem Vertrag und vom Stand der laufenden Arbeiten ab. Das schauen wir im Gespräch an.',
+      eyebrow: 'Den Übergang gut planen',
+      heading: 'Wann ist ein Wechsel sinnvoll?',
+      lead: [
+        'Ein Wechsel ist zum Jahresbeginn besonders übersichtlich. Er kann aber auch während des Geschäftsjahres gut gelingen, wenn die Übergabe sorgfältig abgestimmt wird.',
+      ],
+      karten: [
+        {
+          bild: 'wechsel_zeitpunkt_geschaeftsjahr',
+          tag: 'Klarer Schnitt',
+          titel: 'Zum neuen Geschäftsjahr',
+          text: 'Der bisherige Jahresabschluss bildet einen sauberen Übergabepunkt. Neue Prozesse und Zuständigkeiten starten gemeinsam mit dem neuen Geschäftsjahr.',
+          punkte: [
+            'Abgeschlossener Buchungsstand',
+            'Klare Abgrenzung der Zuständigkeiten',
+            'Einfacher Start mit neuen Abläufen',
+          ],
+        },
+        {
+          bild: 'wechsel_zeitpunkt_unterjaehrig',
+          tag: 'Flexibel möglich',
+          titel: 'Während des Geschäftsjahres',
+          text: 'Ein unterjähriger Wechsel ist ebenfalls möglich. Wichtig ist, dass der aktuelle Stand vollständig übergeben und offene Arbeiten eindeutig zugeteilt werden.',
+          punkte: [
+            'Buchhaltung bis zum Stichtag abgestimmt',
+            'Löhne und Mehrwertsteuer vollständig übergeben',
+            'Offene Fristen und Aufgaben dokumentiert',
+          ],
+        },
       ],
     },
 

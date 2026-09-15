@@ -28,7 +28,14 @@ type Karte = {
   tag: string
   titel: string
   text: Rich
+  /** Kurze Stichpunkte unter dem Text, mit gruenem Haken. */
+  punkte?: readonly string[]
 }
+
+/* Die gelieferten Piktogramme messen je nach Lieferung 96, 112 oder 160
+   Einheiten. Der Wert dient nur dem Seitenverhaeltnis; die Groesse gibt das
+   Stylesheet vor. */
+const bildMasse = 160
 
 type Props = {
   id: string
@@ -63,6 +70,14 @@ export function Rollen({ id, eyebrow, heading, lead, karten }: Props) {
                 <p className={styles.satz}>
                   <RichText value={karte.text} />
                 </p>
+
+                {karte.punkte && karte.punkte.length > 0 && (
+                  <ul className={styles.punkte} role="list">
+                    {karte.punkte.map((punkt) => (
+                      <li key={punkt}>{punkt}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
 
               {/* Das Piktogramm ist Gestaltung, kein Inhalt. */}
@@ -70,8 +85,8 @@ export function Rollen({ id, eyebrow, heading, lead, karten }: Props) {
                 className={styles.bild}
                 src={`/bilder/${karte.bild}.svg`}
                 alt=""
-                width={160}
-                height={160}
+                width={bildMasse}
+                height={bildMasse}
                 unoptimized
               />
             </article>

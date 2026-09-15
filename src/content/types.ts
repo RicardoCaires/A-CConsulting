@@ -514,6 +514,8 @@ export type Block =
         tag: string
         titel: string
         text: Rich
+        /** Kurze Stichpunkte unter dem Text, mit gruenem Haken. */
+        punkte?: readonly string[]
       }[]
     }
   /**
