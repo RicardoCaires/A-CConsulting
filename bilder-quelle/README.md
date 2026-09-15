@@ -651,3 +651,17 @@ Der helle Kreis fuellt bei allen fuenf Dateien denselben Anteil (r = 43 von
 96). Sie stehen darum ohne Umrechnung gleich gross. Die PNG-Fassungen liegen
 als Quelle daneben und werden nicht ausgeliefert.
 
+## Ueber uns — Standort
+
+Am 15.09.2026 als HTML-Vorlage geliefert. Bilddateien lagen keine bei; das
+Ortsschild traegt ein kleines Pin-Zeichen, das im Quelltext der Vorlage stand
+und unveraendert herausgeloest ist.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `ueber-uns-standort.html` | — | Vorlage, liegt als `vorlage.html` |
+| daraus das Pin-SVG | `standort_pin.svg` | SVG, viewBox 24 |
+
+Die Aufnahme des Standorts in Aegerten fehlt weiterhin; die Flaeche ist bis
+dahin ein ruhiger getoenter Platzhalter ohne Hinweis auf interne Listen.
+

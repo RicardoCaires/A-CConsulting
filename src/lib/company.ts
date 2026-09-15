@@ -15,10 +15,29 @@ export const company = {
   legalName: 'A&C Consulting GmbH',
   shortName: 'A&C Consulting',
 
+  /**
+   * **Adresse seit dem 15.09.2026: Bielstrasse 10, 2556 Aegerten.**
+   *
+   * Auf Ricardos ausdrueckliche Anweisung („Die Geschaeftsadresse hat
+   * geaendert und lautet neu"). Bis dahin stand hier Bielstrasse 22,
+   * 3250 Lyss, und der Umzug war auf den 01.11.2026 vorgemerkt. Der Wechsel
+   * gilt jetzt, und die alte Adresse steht an keiner Stelle mehr.
+   *
+   * **Zwei Punkte sind offen und liegen bei Ricardo**, nicht bei diesem
+   * Projekt:
+   *
+   * 1. Die Postleitzahl. Sein Auftrag nennt dreimal **2556**; bis zum
+   *    15.09.2026 war in CLAUDE.md und hier **2558** vermerkt. Es gilt sein
+   *    geschriebener Wortlaut. Bestaetigt er 2558, ist es diese eine Zeile.
+   * 2. Handelsregister und FINMA-Register. Sie fuehren den Sitz; solange sie
+   *    nicht nachgefuehrt sind, nennt die Website eine andere Adresse als das
+   *    oeffentliche Register. Der Auftrag verlangt die Aenderung
+   *    ausdruecklich auch im Impressum.
+   */
   address: {
-    street: 'Bielstrasse 22',
-    postalCode: '3250',
-    city: 'Lyss',
+    street: 'Bielstrasse 10',
+    postalCode: '2556',
+    city: 'Aegerten',
     region: 'Kanton Bern',
     countryCode: 'CH',
   },
@@ -105,51 +124,38 @@ export const addressLines: readonly string[] = [
   `${company.address.postalCode} ${company.address.city}`,
 ]
 
-/* ---- Umzug nach Aegerten, wirksam 01.11.2026 --------------------------- */
+/* ---- Buero und Sitz ------------------------------------------------------ */
 
 /**
- * Zwei Adressen, bewusst getrennt.
+ * Buero und Sitz sind seit dem 15.09.2026 dieselbe Adresse.
  *
- * `sitz` ist der Sitz laut Handelsregister und FINMA-Register. Er aendert sich
- * **erst**, wenn die Register nachgefuehrt sind — eine Website, die einen
- * anderen Sitz nennt als das oeffentliche Register, widerspricht sich selbst.
- * Bis dahin bleibt hier Lyss stehen.
- *
- * `buero` ist der Ort, an dem Kundinnen und Kunden empfangen werden. Er
- * wechselt am **01.11.2026** von Lyss nach Aegerten.
- *
- * Der Wechsel geschieht beim naechsten Bau nach dem Stichtag von selbst — die
- * Seiten werden statisch erzeugt, und `Date.now()` wird dabei ausgewertet. Es
- * ist an keiner anderen Stelle etwas von Hand zu aendern.
- *
- * Wenn die Register nachgefuehrt sind: `registerNachgefuehrt` auf `true` —
- * dann folgt der Sitz dem Buero.
+ * Bis dahin standen sie bewusst getrennt: `buero` waere am 01.11.2026 nach
+ * Aegerten gewechselt, `sitz` erst nach der Registeraenderung. Ricardo hat den
+ * Wechsel vorgezogen und ausdruecklich verlangt, dass die Adresse „an
+ * saemtlichen weiteren Stellen" gilt — auch im Impressum. Die beiden Namen
+ * bleiben, damit die Unterscheidung wieder greifen kann, sobald sie noetig ist.
  */
-
-const UMZUG_AB = Date.UTC(2026, 10, 1) // 01.11.2026
-
-/** Sobald Handelsregister und FINMA die neue Adresse fuehren: auf true. */
-const registerNachgefuehrt = false
-
-const bueroAegerten = {
-  street: 'Bielstrasse 10',
-  postalCode: '2558',
-  city: 'Aegerten',
-  region: 'Kanton Bern',
-  countryCode: 'CH',
-} as const
-
-/** Buero-Adresse zum Zeitpunkt des Baus. */
-export const buero = Date.now() >= UMZUG_AB ? bueroAegerten : company.address
-
-/** Sitz laut Register. Folgt dem Buero erst nach der Registeraenderung. */
-export const sitz = registerNachgefuehrt ? buero : company.address
+export const buero = company.address
+export const sitz = company.address
 
 /** Buero-Adresse einzeilig — fuer Kontaktseite und Standortangaben. */
 export const bueroOneLine = `${buero.street}, ${buero.postalCode} ${buero.city}`
 
+/** Buero-Adresse als Satzteil — „Bielstrasse 10 in 2556 Aegerten". */
+export const bueroImSatz = `${buero.street} in ${buero.postalCode} ${buero.city}`
+
 /** Sitz einzeilig — fuer Impressum und die Angabe zum Unternehmen. */
 export const sitzOneLine = `${sitz.street}, ${sitz.postalCode} ${sitz.city}`
+
+/**
+ * Routenplanung zum Buero, als Adresse statt als Koordinate.
+ *
+ * Google Maps bestimmt den Ausgangspunkt selbst; uebergeben wird nur das Ziel.
+ * Die Adresse kommt aus `company.address` — ein Umzug aendert den Link mit.
+ */
+export const mapsRoute = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+  `${buero.street}, ${buero.postalCode} ${buero.city}, Schweiz`,
+)}`
 
 /**
  * Direktnummern der beiden Inhaber.

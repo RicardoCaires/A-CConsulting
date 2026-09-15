@@ -27,7 +27,7 @@ export const personalFinance: PageContent = {
   meta: {
     title: 'Budget und Vorsorge — Finanzplanung',
     description:
-      'Übersicht über Einnahmen und Ausgaben, und eine Vorsorge, die zu Ihrer Situation passt. A&C Consulting in Lyss.',
+      'Übersicht über Einnahmen und Ausgaben, und eine Vorsorge, die zu Ihrer Situation passt. A&C Consulting in Aegerten.',
   },
 
   // 01 Seitenkopf
