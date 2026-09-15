@@ -1,23 +1,29 @@
 /* Der Banner — ein Layout fuer alle zwoelf Seiten.
 
-   Masse aus Ricardos `banner-shared.css`, Fassung vom 15.09.2026, 15:42 Uhr:
-   Hoehe 360 bis 600 px, Innenbreite 1360 px, Polster 48 bis 88 px, Textblock
-   690 px oder 54 Prozent, Ueberschrift 44 bis 76 px bei Zeilenhoehe 0.98,
-   Themenzeile 13 px mit gruenem Strich 54 x 4 px.
+   Masse aus Ricardos `banner-shared.css` vom 15.09.2026, mit zwei
+   Aenderungen auf seine Anweisung („das Stadtbild muss sichtbar sein und
+   schrift groesser machen"):
 
-   Der Bildausschnitt steht auf `center 8%` — so raeumt die Aufnahme oben den
-   Himmel frei, vor dem die weisse Schrift steht.
+   **Der Banner hat das Seitenverhaeltnis der Aufnahme**, 1774 : 887 und damit
+   glatt 2 : 1. Bei `cover` wird sie so ueberhaupt nicht beschnitten — See,
+   Himmel, Bergmarke **und die Stadtlichter unten links** stehen vollstaendig
+   da. Die Fassung davor war flacher und schnitt genau den unteren Streifen
+   weg, in dem die Stadt liegt.
 
-   **Keine Abdunklung.** Kein Verlauf, keine farbige Schicht, kein Schatten.
-   Ricardos Vorlage fuehrt dafuer ein `banner__shade` ohne Breite und ohne
-   Farbe; hier steht es gar nicht erst. */
+   **Die Schrift ist eine Stufe groesser**: Ueberschrift 52 bis 104 statt 44
+   bis 76 px, Themenzeile 15 statt 13 px.
+
+   Sonst unveraendert: Innenbreite 1360 px, Textblock 690 px oder 54 Prozent,
+   Zeilenhoehe 0.98, gruener Strich 54 x 4 px.
+
+   **Keine Abdunklung.** Kein Verlauf, keine farbige Schicht, kein Schatten. */
 
 .banner {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: clamp(22.5rem, 38vw, 37.5rem);
+  aspect-ratio: 1774 / 887;
   overflow: hidden;
   isolation: isolate;
   background-color: var(--ac-color-navy-deep);
@@ -30,7 +36,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 8%;
+  object-position: center;
 }
 
 /* Innenabstand und Textposition, auf jedem Banner gleich. */
@@ -52,7 +58,7 @@
   align-items: center;
   margin: 0 0 1.375rem;
   font-family: var(--ac-font-sans);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   line-height: 1.4;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -73,7 +79,7 @@
   max-width: 13ch;
   margin: 0;
   font-family: var(--ac-font-display);
-  font-size: clamp(2.75rem, 5vw, 4.75rem);
+  font-size: clamp(3.25rem, 6.2vw, 6.5rem);
   line-height: 0.98;
   font-weight: var(--ac-display-weight);
   letter-spacing: -0.035em;
@@ -126,9 +132,18 @@
 /* ---- Schmale Geraete, Masse aus der Vorlage ------------------------------ */
 
 @media (max-width: 47.5rem) {
+  /* Bei 2 : 1 waere der Banner auf dem Telefon 187 px hoch — Ueberschrift und
+     Knopf faenden darin keinen Platz. Die Mindesthoehe haelt beides
+     vollstaendig sichtbar; `cover` schneidet dafuer seitlich, und der
+     Ausschnitt haelt die Stadtlichter im Bild. */
   .banner {
     align-items: flex-end;
-    min-height: 27.5rem;
+    aspect-ratio: auto;
+    min-height: 30rem;
+  }
+
+  .bild {
+    object-position: 28% center;
   }
 
   .inner {
@@ -142,12 +157,13 @@
 
   .ueberschrift {
     max-width: 16ch;
-    font-size: clamp(2.625rem, 12vw, 4rem);
+    font-size: clamp(2.875rem, 13vw, 4.5rem);
   }
 }
 
 @media print {
   .banner {
+    aspect-ratio: auto;
     min-height: 0;
   }
 
