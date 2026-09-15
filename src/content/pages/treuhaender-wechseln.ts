@@ -22,11 +22,8 @@ export const treuhaenderWechseln: PageContent = {
 
   // 01 Seitenkopf
   hero: {
-    banner: {
-      themenzeile: 'TREUHÄNDERWECHSEL',
-      ueberschrift: 'Klar wechseln. Sicher weiter.',
-    },
-    heading: 'Klar wechseln. Sicher weiter.',
+    heading: 'Den Treuhänder wechseln',
+    lead: 'Wir begleiten den Wechsel strukturiert und diskret. Zuerst klären wir mit Ihnen die bestehende Situation, den geeigneten Zeitpunkt und die Unterlagen, die für die Übernahme nötig sind.',
     actions: [
       { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
       { kind: 'phone' },
@@ -90,10 +87,6 @@ export const treuhaenderWechseln: PageContent = {
     {
       kind: 'prozessreihe',
       id: 'vorgehen',
-      banner: {
-        themenzeile: 'DER WECHSEL',
-        ueberschrift: 'Geordnet übergeben. Direkt starten.',
-      },
       eyebrow: 'Strukturiert übergeben',
       heading: 'So läuft der Wechsel ab',
       bereichsname: 'Fünf Schritte des Treuhänderwechsels',

@@ -38,12 +38,6 @@ type Schritt = {
 type Props = {
   id: string
   eyebrow?: string
-  /**
-   * Traegt ein Banner ueber dem Abschnitt Themenzeile und Ueberschrift, steht
-   * hier dessen Ueberschriften-Id. Der Abschnitt laesst seinen eigenen Kopf
-   * dann weg und nennt den Banner als seinen Namen.
-   */
-  bannerTitelId?: string
   heading: string
   lead?: readonly Rich[]
   /** Name des Scrollbereichs fuer Vorlesewerkzeuge. */
@@ -55,7 +49,6 @@ type Props = {
 export function Prozessreihe({
   id,
   eyebrow,
-  bannerTitelId,
   heading,
   lead,
   bereichsname,
@@ -63,15 +56,13 @@ export function Prozessreihe({
   hinweis,
 }: Props) {
   return (
-    <section id={id} aria-labelledby={bannerTitelId ?? `${id}-titel`} className={styles.abschnitt}>
+    <section id={id} aria-labelledby={`${id}-titel`} className={styles.abschnitt}>
       <div className={`ac-container ${styles.container}`}>
         <div className={styles.kopf}>
-          {!bannerTitelId && eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
-          {!bannerTitelId && (
-            <h2 id={`${id}-titel`} className={styles.titel}>
-              {heading}
-            </h2>
-          )}
+          {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
+          <h2 id={`${id}-titel`} className={styles.titel}>
+            {heading}
+          </h2>
           {lead?.filter(hatSichtbarenInhalt).map((absatz, index) => (
             <p key={index} className={styles.lead}>
               <RichText value={absatz} />

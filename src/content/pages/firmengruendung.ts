@@ -22,11 +22,8 @@ export const firmengruendung: PageContent = {
 
   // 01 Seitenkopf
   hero: {
-    banner: {
-      themenzeile: 'UNTERNEHMENSGRÜNDUNG',
-      ueberschrift: 'Klar gründen. Sicher starten.',
-    },
-    heading: 'Klar gründen. Sicher starten.',
+    heading: 'Firma gründen im Kanton Bern',
+    lead: 'Wir begleiten Sie von der Wahl der Rechtsform bis zur ersten Buchhaltung und sagen Ihnen vorher, was auf Sie zukommt.',
     actions: [
       { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
       { kind: 'phone' },
@@ -47,10 +44,6 @@ export const firmengruendung: PageContent = {
     {
       kind: 'rechtsformen',
       id: 'rechtsform',
-      banner: {
-        themenzeile: 'RECHTSFORM',
-        ueberschrift: 'Einzelfirma oder GmbH?',
-      },
       eyebrow: 'Rechtsformen in der Schweiz',
       heading: 'Einzelfirma oder GmbH?',
       lead: [

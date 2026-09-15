@@ -94,20 +94,6 @@ export type Action =
   | { kind: 'mail'; label: string; variant?: 'primary' | 'ghost' }
   | { kind: 'phone'; label?: string }
 
-/**
- * Ein Abschnittsbanner.
- *
- * Seit dem 15.09.2026 traegt ein Teil der Abschnitte statt einer
- * Textueberschrift den Banner aus `Banner.tsx` — dieselbe Aufnahme, dieselbe
- * Groesse, derselbe Aufbau wie die Seitenbanner. Der Abschnitt laesst seinen
- * eigenen Kopf dann weg; sein Einleitungssatz bleibt.
- */
-export type Bannerkopf = {
-  /** Kleine Themenzeile in Versalien. */
-  themenzeile: string
-  ueberschrift: string
-}
-
 export type Block =
   /** Fliesstext unter einer Ueberschrift. */
   | {
@@ -519,8 +505,6 @@ export type Block =
   | {
       kind: 'systemuebersicht'
       id: string
-      /** Steht hier ein Banner, ersetzt er Themenzeile und Ueberschrift. */
-      banner?: Bannerkopf
       eyebrow?: string
       heading: string
       lead?: readonly Rich[]
@@ -553,8 +537,6 @@ export type Block =
   | {
       kind: 'prozessreihe'
       id: string
-      /** Steht hier ein Banner, ersetzt er Themenzeile und Ueberschrift. */
-      banner?: Bannerkopf
       eyebrow?: string
       heading: string
       lead?: readonly Rich[]
@@ -597,8 +579,6 @@ export type Block =
   | {
       kind: 'rechtsformen'
       id: string
-      /** Steht hier ein Banner, ersetzt er Themenzeile und Ueberschrift. */
-      banner?: Bannerkopf
       eyebrow?: string
       heading: string
       lead?: readonly Rich[]
@@ -659,16 +639,6 @@ export type PageContent = {
     description: string
   }
   hero: {
-    /**
-     * Der Banner des Seitenkopfs.
-     *
-     * Steht er, traegt die Seite den Banner aus `Banner.tsx` — dieselbe
-     * Aufnahme, dieselbe Groesse, derselbe Aufbau wie ueberall. Fehlt er,
-     * bleibt der bisherige Seitenkopf mit Kategoriezeile, Titel und Satz.
-     */
-    banner?: Bannerkopf
-    /** Kategoriezeile des bisherigen Seitenkopfs. */
-    eyebrow?: string
     heading: string
     lead?: Rich
     actions?: readonly Action[]

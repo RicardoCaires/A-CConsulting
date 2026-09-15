@@ -88,28 +88,26 @@ export function Hero({
       <div className={styles.deckung} aria-hidden="true" />
       <div className={styles.verlauf} aria-hidden="true" />
 
-      <div className={styles.inhalt}>
-        <div className={styles.textblock}>
-          {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
+      <div className={`ac-container ${styles.inhalt}`}>
+        {eyebrow && <p className={`ac-eyebrow ${styles.eyebrow}`}>{eyebrow}</p>}
 
-          <Heading id={id} className={titelKlasse}>
-            {titel}
-          </Heading>
+        <Heading id={id} className={titelKlasse}>
+          {titel}
+        </Heading>
 
-          {satz && <p className={styles.satz}>{satz}</p>}
-          {aktion && <div className={styles.aktion}>{aktion}</div>}
+        {satz && <p className={styles.satz}>{satz}</p>}
+        {aktion && <div className={styles.aktion}>{aktion}</div>}
 
-          {belege && belege.length > 0 && (
-            <ul className={styles.belege} role="list">
-              {belege.map((beleg) => (
-                <li key={beleg}>
-                  <Icon name="haken" size={1.125} className={styles.belegZeichen} />
-                  {beleg}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+        {belege && belege.length > 0 && (
+          <ul className={styles.belege} role="list">
+            {belege.map((beleg) => (
+              <li key={beleg}>
+                <Icon name="haken" size={1.125} className={styles.belegZeichen} />
+                {beleg}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </section>
   )
