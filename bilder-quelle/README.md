@@ -704,3 +704,20 @@ A&C-Bildmarke oben rechts bereits im Bild.
 `wide_cinematic_vector_3d_illustration_style_insu.webp` (der bisherige
 Seitenkopf von `/versicherungen`) und die Platzhalterflaechen aus
 `PAGE_VISUAL`.
+
+## Bannerserie
+
+Am 15.09.2026 als zwoelf HTML-Vorlagen mit gemeinsamem Stylesheet geliefert,
+dazu je ein PNG der fertigen Ansicht. Alle zwoelf binden dieselbe Aufnahme
+ein, die bereits als `seitenkopf-banner.webp` ausgeliefert wird — **es war
+keine neue Bilddatei einzusetzen.**
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `banner-shared.css` | — | gemeinsames Stylesheet, Masse uebernommen |
+| `banner-uebersicht.html` | — | Uebersicht ueber alle zwoelf |
+| `banner-versicherungen.html` und elf weitere | — | Vorlagen, liegen unveraendert daneben |
+| die zwoelf `banner-*.png` | — | Ansichten, nicht ausgeliefert |
+
+Fuenf davon sind als Seitenkopf gesetzt, sieben sind offen — siehe CLAUDE.md,
+Abschnitt 9, und `content/source/banner_serie_de.md`.

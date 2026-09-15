@@ -15,7 +15,9 @@
 .hero {
   position: relative;
   display: flex;
-  align-items: flex-end;
+  /* Der Text steht mittig, nicht am unteren Rand — so zeigt es Ricardos
+     Bannerserie vom 15.09.2026 (`banner-shared.css`, `align-items: center`). */
+  align-items: center;
   overflow: hidden;
   isolation: isolate;
 
@@ -23,9 +25,8 @@
      statt unten abgeschnitten zu werden. Der Wert ist bewusst knapp — die
      Hoehe soll aus dem Inhalt kommen. */
   width: 100%;
-  /* Mass aus Ricardos Vorlage vom 15.09.2026: 560 bis 760 px. Vorher trug der
-     Kopf kein Bild und war entsprechend flach. */
-  min-height: clamp(35rem, 67vw, 47.5rem);
+  /* Mass aus `banner-shared.css`: 430 bis 680 px. */
+  min-height: clamp(26.875rem, 50vw, 42.5rem);
 }
 
 .bild {
@@ -75,39 +76,68 @@
    am unteren Rand, der Kopf behaelt seine Hoehe. */
 .inhalt {
   position: relative;
-  /* Oben nur so viel, wie die Beschriftung der Bildflaeche braucht — frueher
-     standen hier 112 bis 144 px, und der Titel begann erst auf halber Hoehe. */
-  padding-block: clamp(3.5rem, 9vw, 4.5rem) clamp(1.75rem, 4vw, 2.75rem);
+  /* Masse aus `banner-shared.css`: Innenbreite 1360 px, Polster 64 bis 120 px
+     oben wie unten. Der Textblock selbst bleibt schmal — 690 px oder
+     54 Prozent, je nachdem, was kleiner ist. */
+  width: min(85rem, calc(100% - 3rem));
+  margin-inline: auto;
+  padding-block: clamp(4rem, 8vw, 7.5rem);
 }
 
+.textblock {
+  width: min(43.125rem, 54%);
+}
+
+/* Weiss statt hellgruen, wie die Bannerserie sie zeigt: Der gruene Strich
+   davor traegt die Farbe, die Schrift bleibt weiss. */
 .eyebrow {
-  color: var(--ac-color-accent-green-light);
+  display: flex;
+  gap: 0.875rem;
+  align-items: center;
+  margin: 0 0 1.375rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ac-color-white);
 }
 
+.eyebrow::before {
+  content: '';
+  flex: none;
+  width: 3.375rem;
+  height: 0.25rem;
+  background-color: var(--ac-color-accent-green);
+}
+
+/* Masse aus `banner-shared.css`: 48 bis 92 px, Zeilenhoehe 0.98,
+   Laufweite -0.035em, hoechstens 13 Zeichen je Zeile. */
 .titel {
-  /* Kurz halten: Das Versprechen soll in zwei Zeilen stehen, nicht in fünf. */
-  max-width: 16ch;
-  font-size: var(--ac-display-size);
-  line-height: var(--ac-display-line);
+  max-width: 13ch;
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(3rem, 6vw, 5.75rem);
+  line-height: 0.98;
   font-weight: var(--ac-display-weight);
-  letter-spacing: var(--ac-display-tracking);
+  letter-spacing: -0.035em;
   color: var(--ac-color-white);
+  text-wrap: balance;
 }
 
 /* Langer Titel.
 
-   Die Seitentitel aus Schritt 4 sind ganze Saetze („Buchhaltung, Loehne und
-   Abschluss fuer Selbstaendige und KMU"). In der Display-Groesse hiessen das
-   fuenf Zeilen. Sie laufen darum in der H1-Groesse — dieselbe Schrift,
-   dieselbe Skala, nur die naechste Stufe darunter.
+   Die Seitentitel der Seiten ohne gelieferten Banner sind ganze Saetze
+   („Buchhaltung, Loehne und Abschluss fuer Selbstaendige und KMU"). In der
+   Bannergroesse waeren das fuenf Zeilen. Sie laufen darum eine Stufe kleiner.
 
-   Das ist ein Zugestaendnis an vorhandene Texte, keine zweite Gestaltung:
-   Werden die Titel spaeter gekuerzt, faellt diese Variante ersatzlos weg. */
+   Werden auch diese Titel auf Bannerlaenge gekuerzt, faellt die Variante
+   ersatzlos weg. */
 .titelLang {
-  max-width: 22ch;
-  font-size: var(--ac-h1-size);
-  line-height: var(--ac-h1-line);
-  letter-spacing: var(--ac-h1-tracking);
+  max-width: 20ch;
+  font-size: clamp(2.25rem, 4.2vw, 4rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
 }
 
 .satz {
@@ -125,16 +155,8 @@
 /* ---- Ab Desktop: Querformat 16:9 wie Aufnahme 1 -------------------------- */
 
 @media (min-width: 64rem) {
-  .hero {
-    min-height: clamp(35rem, 40vw, 47.5rem);
-  }
-
-  .titel {
-    max-width: 18ch;
-  }
-
   .titelLang {
-    max-width: 24ch;
+    max-width: 22ch;
   }
 }
 
@@ -185,5 +207,31 @@
 @media (max-width: 43.75rem) {
   .deckung {
     background-color: color-mix(in srgb, var(--ac-color-navy-deep) 52%, transparent);
+  }
+}
+
+/* ---- Bis 47.5rem: Masse der Bannerserie fuer schmale Geraete -------------- */
+
+@media (max-width: 47.5rem) {
+  .hero {
+    align-items: flex-end;
+    min-height: 32.5rem;
+  }
+
+  .inhalt {
+    width: min(85rem, calc(100% - 2rem));
+    padding-block: 3.75rem;
+  }
+
+  .textblock {
+    width: 100%;
+  }
+
+  .titel {
+    font-size: clamp(2.625rem, 12vw, 4rem);
+  }
+
+  .titelLang {
+    font-size: clamp(2rem, 8vw, 2.75rem);
   }
 }

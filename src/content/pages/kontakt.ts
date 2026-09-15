@@ -24,8 +24,8 @@ export const kontakt: PageContent = {
   },
 
   hero: {
-    heading: 'So erreichen Sie uns',
-    lead: 'Beratung auf Deutsch, Französisch und Portugiesisch.',
+    eyebrow: 'Kontakt',
+    heading: 'Ihr Anliegen. Unser nächster Schritt.',
   },
 
   blocks: [

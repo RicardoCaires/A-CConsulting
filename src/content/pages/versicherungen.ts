@@ -29,8 +29,8 @@ export const versicherungen: PageContent = {
 
   // 01 Seitenkopf
   hero: {
+    eyebrow: 'Versicherungen',
     heading: 'Versicherungen für Privatpersonen und Unternehmen',
-    lead: 'Wir prüfen Ihre bestehenden Verträge, vergleichen passende Lösungen aus den uns zugänglichen Angeboten und Gesellschaften und bleiben Ihr Ansprechpartner, auch wenn ein Schaden eintritt.',
     actions: [{ kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' }],
     // Von Ricardo am 10.09.2026 vorgegeben, Wortlaut unveraendert.
     // Quelle: `content/source/versicherungen_seitenkopf_de.md`.
