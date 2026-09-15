@@ -1117,6 +1117,38 @@ Betriebe und Selbstständige in der Region.
 > Der Baustein heisst bewusst allgemein: Drei Karten mit Piktogramm, Titel und
 > Text plus Einladung sind ein Muster, das weitere Seiten brauchen können.
 
+> **„So läuft der Wechsel ab" ist seit dem 15.09.2026 eine waagrechte
+> Reihe** (`src/components/blocks/Prozessreihe.tsx`), nach Ricardos
+> HTML-Vorlage: Kategoriezeile „Strukturiert übergeben", Titel, ein Satz,
+> darunter fünf gleich grosse Karten nebeneinander mit nummeriertem Kreis auf
+> einer durchgehenden Linie, Piktogramm, Überschrift und Text; darunter der
+> Hinweis „Sie behalten die Kontrolle:" mit grünem Strich. Der letzte Kreis
+> ist grün — er markiert das Ziel. Der Anker `vorgehen` bleibt; der Abschnitt
+> hiess vorher „So gehen wir vor".
+>
+> **Die Reihe bricht nie in eine senkrechte Liste um.** Auf schmalen Geräten
+> wird sie waagrecht gescrollt, mit Einrasten (`scroll-snap-type: x
+> proximity`, `scroll-snap-align: start`). Das verlangt der Auftrag
+> ausdrücklich. Bei 1440 px stehen alle fünf in einer Reihe ohne Scrollen.
+>
+> **Der Scrollbereich ist mit der Tastatur erreichbar:** eine `region` mit dem
+> Namen „Fünf Schritte des Treuhänderwechsels" und `tabindex="0"`, wie in der
+> Vorlage. Ohne das käme man ohne Maus nicht an die hinteren Schritte. Die
+> Reihenfolge steht in einer `<ol>`, die Nummernkreise sind für
+> Vorlesewerkzeuge ausgeblendet.
+>
+> **Der Satz zur Kontaktaufnahme bleibt** — er stand vorher im vierten Schritt
+> und steht jetzt als eigener Hinweis unter der Reihe. Damit ersetzt er
+> zugleich den Abschnitt „Diskretion", der am selben Tag entfallen ist.
+>
+> **Die fünf Piktogramme stehen in den Karten, obwohl die Vorlage nur die
+> Nummernkreise zeigt.** Ricardo hat sie zwanzig Minuten nach der Vorlage
+> geliefert, benannt nach genau diesen fünf Schritten. Ohne `bild` fallen sie
+> weg.
+>
+> Damit gibt es sechs Prozessdarstellungen im Projekt. Der Baustein heisst
+> bewusst allgemein; er kann die übrigen später aufnehmen.
+
 > **„Wann ist ein Wechsel sinnvoll?" ist seit dem 15.09.2026 ein zweiter
 > `rollen`-Block**, nach Ricardos HTML-Vorlage: Kategoriezeile „Den Übergang
 > gut planen", Titel, ein Satz, darunter zwei gleich grosse Kacheln — „Zum

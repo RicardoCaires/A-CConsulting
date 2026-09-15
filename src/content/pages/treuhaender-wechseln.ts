@@ -73,36 +73,57 @@ export const treuhaenderWechseln: PageContent = {
       },
     },
 
-    // 03 So gehen wir vor
+    // 03 So laeuft der Wechsel ab — seit dem 15.09.2026 eine waagrechte Reihe
+    // nach Ricardos HTML-Vorlage (`content/source/wechsel_ablauf_de.md`).
+    // Vorher eine senkrechte `steps`-Liste; deren Wortlaut steht unveraendert
+    // in `schritt4_fassung2_de.md`. Der Anker `vorgehen` bleibt.
+    //
+    // **Die Reihe bricht nie in eine Liste um** — auf schmalen Geraeten wird
+    // sie gescrollt, mit Einrasten. Das verlangt der Auftrag ausdruecklich.
+    //
+    // Die fuenf Piktogramme hat Ricardo zusammen mit der Vorlage geliefert,
+    // benannt nach genau diesen fuenf Schritten. Die Vorlage selbst zeigt nur
+    // die Nummernkreise; ohne `bild` faellt das Piktogramm weg.
     {
-      kind: 'steps',
+      kind: 'prozessreihe',
       id: 'vorgehen',
-      heading: 'So gehen wir vor',
-      steps: [
+      eyebrow: 'Strukturiert übergeben',
+      heading: 'So läuft der Wechsel ab',
+      bereichsname: 'Fünf Schritte des Treuhänderwechsels',
+      lead: [
+        'Wir klären zuerst die Ausgangslage und führen die Übergabe danach Schritt für Schritt durch. Sie wissen jederzeit, was als Nächstes geschieht.',
+      ],
+      schritte: [
         {
-          heading: 'Gespräch über die heutige Situation',
-          body: 'Welche Aufgaben laufen, in welchem Rhythmus, mit welcher Software, und was im laufenden Jahr bereits erledigt ist.',
+          bild: 'wechsel_ablauf_situation',
+          titel: 'Situation klären',
+          text: 'Wir erfassen die heutigen Aufgaben, Termine, Systeme und den Stand der laufenden Arbeiten.',
         },
         {
-          heading: 'Übersicht und Offerte',
-          body: 'Sie erhalten schriftlich, welche Aufgaben wir übernehmen würden und was bei Ihnen bleibt.',
+          bild: 'wechsel_ablauf_leistungen',
+          titel: 'Leistungen festlegen',
+          text: 'Sie erhalten eine klare Übersicht: Was übernehmen wir, was bleibt bei Ihnen und welche Kosten entstehen?',
         },
         {
-          heading: 'Zeitpunkt und Vertragliches',
-          body: [
-            'Wir schauen gemeinsam Ihre bestehende Vereinbarung an und legen einen Termin fest. Kündigungsfristen und Bedingungen ergeben sich aus Ihrem Vertrag. ',
-            
-          ],
+          bild: 'wechsel_ablauf_zeitpunkt',
+          titel: 'Zeitpunkt bestimmen',
+          text: 'Wir prüfen Vertrag, Kündigungsfristen und offene Arbeiten und legen einen passenden Übergabetermin fest.',
         },
         {
-          heading: 'Übernahme der Unterlagen',
-          body: 'Auf Ihren Auftrag hin nehmen wir Kontakt mit Ihrem bisherigen Treuhänder auf und stimmen die Übergabe ab. Ohne Ihre Beauftragung nehmen wir keinen Kontakt auf.',
+          bild: 'wechsel_ablauf_uebergabe',
+          titel: 'Übergabe koordinieren',
+          text: 'Nach Ihrem Auftrag stimmen wir die Übergabe mit dem bisherigen Treuhänder ab und übernehmen die Unterlagen.',
         },
         {
-          heading: 'Start',
-          body: 'Wir richten die Buchhaltung ein, übernehmen die Daten und prüfen sie auf Vollständigkeit. Fehlt etwas, melden wir uns bei Ihnen.',
+          bild: 'wechsel_ablauf_start',
+          titel: 'Zusammenarbeit starten',
+          text: 'Wir richten die Abläufe ein, prüfen die übernommenen Daten und melden uns, falls etwas ergänzt werden muss.',
         },
       ],
+      hinweis: {
+        titel: 'Sie behalten die Kontrolle:',
+        text: 'Ohne Ihren ausdrücklichen Auftrag nehmen wir keinen Kontakt zu Ihrem bisherigen Treuhänder auf.',
+      },
     },
 
     // 04 Wann ist ein Wechsel sinnvoll — seit dem 15.09.2026 zwei gleich grosse

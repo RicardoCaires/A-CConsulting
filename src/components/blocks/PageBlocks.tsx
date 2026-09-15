@@ -12,6 +12,7 @@ import { Checkliste } from './Checkliste'
 import { ChecklisteFristen } from './ChecklisteFristen'
 import { Fragen } from './Fragen'
 import { Leistungen } from './Leistungen'
+import { Prozessreihe } from './Prozessreihe'
 import { Rechtsformen } from './Rechtsformen'
 import { Rollen } from './Rollen'
 import { Schadenfall } from './Schadenfall'
@@ -179,6 +180,7 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
     block.kind === 'rollen' ||
     block.kind === 'checkliste' ||
     block.kind === 'themenkarten' ||
+    block.kind === 'prozessreihe' ||
     block.kind === 'betreuung' ||
     block.kind === 'schadenfall' ||
     block.kind === 'fragen'
@@ -591,6 +593,21 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               spalten={block.spalten}
               hinweis={block.hinweis}
               locale={locale}
+            />
+          )
+        }
+
+        if (block.kind === 'prozessreihe') {
+          return (
+            <Prozessreihe
+              key={index}
+              id={block.id}
+              eyebrow={block.eyebrow}
+              heading={block.heading}
+              lead={block.lead}
+              bereichsname={block.bereichsname}
+              schritte={block.schritte}
+              hinweis={block.hinweis}
             />
           )
         }
