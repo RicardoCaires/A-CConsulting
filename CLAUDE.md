@@ -974,17 +974,31 @@ rechts. Dazu die HTML-Vorlage `bilder-quelle/seitenkopf_banner/vorlage.html`.
 > | `/impressum` | IMPRESSUM | Angaben. Verantwortung. Transparenz. |
 > | `/datenschutz` | DATENSCHUTZ | Ihre Daten. Vertraulich geschützt. |
 >
-> - **Ein Baustein, ein Satz Masse**, aus `banner-shared.css`: Höhe 360 bis
->   600 px, Innenbreite 1360 px, Polster 48 bis 88 px, Textblock 690 px oder
->   54 Prozent, Überschrift 44 bis 76 px bei Zeilenhöhe 0.98, Themenzeile
->   13 px mit grünem Strich 54 x 4 px, Bildausschnitt `center 8%`. Höhe,
->   Ausschnitt und Anordnung sind nicht einstellbar.
+> - **Ein Baustein, ein Satz Masse**, aus `banner-shared.css`: Innenbreite
+>   1360 px, Polster 48 bis 88 px, Textblock 690 px oder 54 Prozent,
+>   Zeilenhöhe 0.98, grüner Strich 54 x 4 px. Höhe, Ausschnitt und Anordnung
+>   sind nicht einstellbar.
+> - **Zwei Änderungen daran, am 15.09.2026 auf Ricardos Anweisung** („das
+>   Stadtbild muss sichtbar sein und schrift grösser machen"):
+>   - **Der Banner hat das Seitenverhältnis der Aufnahme**, 1774 : 887 und
+>     damit glatt 2 : 1. Bei `cover` wird sie so **gar nicht beschnitten** —
+>     nachgemessen null Pixel waagrecht wie senkrecht. See, Himmel, Bergmarke
+>     **und die Stadtlichter unten links** stehen vollständig da. Die Fassung
+>     davor war 360 bis 600 px hoch und schnitt genau den unteren Streifen
+>     weg, in dem die Stadt liegt.
+>   - **Die Schrift ist eine Stufe grösser**: Überschrift 52 bis 104 statt 44
+>     bis 76 px, Themenzeile 15 statt 13 px.
+> - **Alle zwölf sind damit exakt gleich gross** — nachgemessen 1410 x 705 px
+>   bei gleicher Textposition und gleicher Schriftgrösse. Vorher wuchs
+>   `/versicherungen` als einzige Seite über die anderen hinaus, weil ihre
+>   Überschrift mehr Zeilen braucht; mit dem festen Seitenverhältnis liegen
+>   auch ihre fünf Zeilen samt Knopf innerhalb des Banners (562 von 713 px).
 > - **Ohne Abdunklung** — kein Verlauf, keine farbige Schicht, kein Schatten.
 >   Nachgemessen trägt die weisse Schrift trotzdem: Themenzeile 8.3:1, die
->   Zeilen der Überschrift 7.6 bis 10.7:1 im Flächenmittel.
-> - **Elf Banner sind 542 px hoch, `/versicherungen` 642 px** — seine
->   Überschrift ist die einzige, die auf vier Zeilen läuft. Ricardos eigene
->   Ansicht zeigt dasselbe.
+>   Zeilen der Überschrift 7.7 bis 15.6:1 im Flächenmittel.
+> - **Auf schmalen Geräten** greift eine Mindesthöhe von 30rem — bei 2 : 1
+>   wäre der Banner dort 187 px hoch. `cover` schneidet dafür seitlich; der
+>   Ausschnitt steht auf `28%`, damit die Stadtlichter im Bild bleiben.
 > - **Keine Abschnittsbanner.** Die sechs Vorlagen für Rechtsform,
 >   Wechselablauf, Vorsorge, Arbeitsweise, Inhaber und Standort bleiben
 >   liegen; die Überschriften dieser Abschnitte sind weiterhin Text.
