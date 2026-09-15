@@ -1417,6 +1417,36 @@ eidg. Fachausweis suggeriert.
 > dass A&C keine Vermögensverwaltung anbietet; diese Abgrenzung stand dort
 > bewusst vorn.
 
+### /finanzplanung
+
+> **„Ein Budget zeigt, was möglich ist." ist seit dem 15.09.2026 ein eigener
+> Baustein** (`src/components/blocks/Bereich.tsx`), nach Ricardos
+> HTML-Vorlage: eine weisse Karte auf hellem Grund mit Kategoriezeile
+> „Klarheit im Alltag", Titel, einem grösseren Satz in Navy und einem
+> Erklärungsabsatz, rechts die gelieferte Illustration; darunter die Zeile
+> „Besonders hilfreich bei Veränderungen" und fünf gleich grosse
+> Situationsfelder mit Nummernkreis. Der letzte Kreis ist grün. Der Anker
+> `budget` bleibt — die Sprungmarke zeigt darauf.
+>
+> **Die Illustration steht auf dem Desktop rechts, unter 40.625rem über dem
+> Text.** Im Quelltext steht der Text zuerst, damit Vorlesewerkzeuge ihn
+> zuerst bekommen; das Raster dreht die Reihenfolge nur optisch um. Sie ist
+> unverändert aus dem Quelltext der Vorlage gelöst und liegt als
+> `public/bilder/finanzplanung_budget.svg`.
+>
+> **Die Zeile „Besonders hilfreich bei Veränderungen" ist ein Absatz, keine
+> Überschrift** — so wie in der Vorlage. Die fünf Felder sind `h3` unter der
+> `h2` des Abschnitts. Damit die Gruppe dennoch benannt ist, verweist die
+> Liste über `aria-labelledby` auf diese Zeile.
+>
+> **Der Wortlaut stammt aus der Vorlage**
+> (`content/source/finanzplanung_budget_de.md`) und ersetzt die drei Absätze
+> und die Aufzählung aus `schritt4_fassung2_de.md`. Die fünf Situationen
+> sagen dasselbe in knapperer Form.
+>
+> Die Seite trägt seit dem 14.09.2026 nur noch Budget und Vorsorge; der
+> Vorsorgeabschnitt steht weiterhin als Fliesstext.
+
 ### /ueber-uns
 
 Die Inhaber mit Namen, Werdegang und Sprachen. Warum es die Firma gibt. Kein
