@@ -7,7 +7,6 @@ import { SectionHeader } from '@/components/blocks/SectionHeader'
 import { Banner } from '@/components/blocks/Banner'
 import { Team, type Mitglied } from '@/components/blocks/Team'
 import { Button } from '@/components/ui/Button'
-import { Zonenmuster } from '@/components/ui/Zonenmuster'
 import type { Locale } from '@/i18n/config'
 import { hrefOrDefault, type PageKey } from '@/i18n/routes'
 
@@ -149,7 +148,6 @@ export function StartseiteTemplate({
           ab. `background_tint` ist keine neue Farbe, sondern die zweite Stufe
           derselben. */}
       <div className={styles.kartenzone}>
-        <Zonenmuster />
 
       {/* ---- 2 Leistungen -------------------------------------------------- */}
       <Section

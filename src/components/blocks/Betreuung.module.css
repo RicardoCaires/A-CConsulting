@@ -20,7 +20,9 @@
   isolation: isolate;
   overflow: hidden;
   padding-block: var(--ac-section-y-lg);
-  background-color: var(--ac-color-background-light);
+  /* Einfach hellblau, seit dem 15.09.2026 auf Ricardos Anweisung. Das
+     gelieferte Muster ist entfallen; die Datei bleibt liegen. */
+  background-color: var(--ac-color-background-tint);
 }
 
 /* ---- Der Hintergrund ------------------------------------------------------- */

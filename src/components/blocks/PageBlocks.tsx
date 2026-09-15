@@ -738,7 +738,6 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               markt={block.markt}
               ergebnis={block.ergebnis}
               nutzen={block.nutzen}
-              schluss={block.schluss}
             />
           )
         }

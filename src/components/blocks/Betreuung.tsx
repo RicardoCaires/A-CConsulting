@@ -56,18 +56,6 @@ export function Betreuung({ id, eyebrow, heading, lead, karten, schluss }: Props
 
   return (
     <section id={id} className={styles.abschnitt} aria-labelledby={headingId}>
-      {/* Dasselbe geliefente Muster wie im Modellabschnitt weiter oben: feine
-          Boegen, grosse helle Kreise an den Raendern, in der Mitte ruhig. */}
-      <div className={styles.muster} aria-hidden="true">
-        <Image
-          className={styles.musterBild}
-          src="/bilder/wide_minimal_abstract_background_design_a_clean.webp"
-          alt=""
-          width={1672}
-          height={941}
-          sizes="100vw"
-        />
-      </div>
 
       <div className={styles.inner}>
         <div className={styles.kopf}>

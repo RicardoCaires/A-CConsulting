@@ -490,6 +490,15 @@ Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
 > - Der Merksatz **„Ein Ansprechpartner. Mehr Überblick. Langfristige
 >   Sicherheit."** neben den Leistungen ist entfallen. Damit trägt die
 >   Startseite keinen Merksatz mehr.
+> - **Drei Flächen sind jetzt einfach hellblau** (`background_tint`), ohne
+>   Muster und ohne Hintergrundbild: die Kartenzone der Startseite (die acht
+>   organischen Formen aus `Zonenmuster.tsx` sind weg), der Modellabschnitt
+>   und die Betreuung auf `/versicherungen` (die gelieferte Datei
+>   `wide_minimal_abstract_background_design_a_clean` steht auf keiner Seite
+>   mehr). Beide Dateien bleiben liegen.
+> - Die **Schlusszeile des Modellabschnitts** ist entfallen — „A&C Consulting
+>   GmbH" links, „Persönlich. Unabhängig. An Ihrer Seite." rechts. Der Zusatz
+>   steht damit nur noch unter den häufigen Fragen.
 
 > **Am 15.09.2026 von sieben auf fünf verkürzt** auf Ricardos Anweisung, per
 > Screenshot. Weggefallen sind **„Eine Stelle für Ihre Administration"** — die

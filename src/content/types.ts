@@ -221,8 +221,6 @@ export type Block =
       ergebnis: { titel: string; satz: string }
       /** Die Nutzenleiste unten. */
       nutzen: readonly { bild: string; titel: string; satz: string }[]
-      /** Die Schlusszeile. */
-      schluss: { links: string; rechts: string }
     }
   /**
    * Zwei Zielgruppen als je ein Block: Privatpersonen und Unternehmen.
