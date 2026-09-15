@@ -24,7 +24,10 @@ export const kontakt: PageContent = {
   },
 
   hero: {
-    eyebrow: 'Kontakt',
+    banner: {
+      themenzeile: 'KONTAKT',
+      ueberschrift: 'Ihr Anliegen. Unser nächster Schritt.',
+    },
     heading: 'Ihr Anliegen. Unser nächster Schritt.',
   },
 

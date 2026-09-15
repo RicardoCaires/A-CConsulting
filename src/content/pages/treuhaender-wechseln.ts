@@ -22,7 +22,10 @@ export const treuhaenderWechseln: PageContent = {
 
   // 01 Seitenkopf
   hero: {
-    eyebrow: 'Treuhänderwechsel',
+    banner: {
+      themenzeile: 'TREUHÄNDERWECHSEL',
+      ueberschrift: 'Klar wechseln. Sicher weiter.',
+    },
     heading: 'Klar wechseln. Sicher weiter.',
     actions: [
       { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
@@ -87,6 +90,10 @@ export const treuhaenderWechseln: PageContent = {
     {
       kind: 'prozessreihe',
       id: 'vorgehen',
+      banner: {
+        themenzeile: 'DER WECHSEL',
+        ueberschrift: 'Geordnet übergeben. Direkt starten.',
+      },
       eyebrow: 'Strukturiert übergeben',
       heading: 'So läuft der Wechsel ab',
       bereichsname: 'Fünf Schritte des Treuhänderwechsels',

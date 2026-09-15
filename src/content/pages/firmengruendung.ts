@@ -22,7 +22,10 @@ export const firmengruendung: PageContent = {
 
   // 01 Seitenkopf
   hero: {
-    eyebrow: 'Unternehmensgründung',
+    banner: {
+      themenzeile: 'UNTERNEHMENSGRÜNDUNG',
+      ueberschrift: 'Klar gründen. Sicher starten.',
+    },
     heading: 'Klar gründen. Sicher starten.',
     actions: [
       { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
@@ -44,6 +47,10 @@ export const firmengruendung: PageContent = {
     {
       kind: 'rechtsformen',
       id: 'rechtsform',
+      banner: {
+        themenzeile: 'RECHTSFORM',
+        ueberschrift: 'Einzelfirma oder GmbH?',
+      },
       eyebrow: 'Rechtsformen in der Schweiz',
       heading: 'Einzelfirma oder GmbH?',
       lead: [

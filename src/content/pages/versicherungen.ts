@@ -29,7 +29,10 @@ export const versicherungen: PageContent = {
 
   // 01 Seitenkopf
   hero: {
-    eyebrow: 'Versicherungen',
+    banner: {
+      themenzeile: 'VERSICHERUNGEN',
+      ueberschrift: 'Versicherungen für Privatpersonen und Unternehmen',
+    },
     heading: 'Versicherungen für Privatpersonen und Unternehmen',
     actions: [{ kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' }],
     // Von Ricardo am 10.09.2026 vorgegeben, Wortlaut unveraendert.

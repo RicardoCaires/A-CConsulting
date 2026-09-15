@@ -2,96 +2,125 @@
 
 Ricardo hat zwölf Banner als HTML-Vorlagen samt gemeinsamem Stylesheet
 geliefert (`bilder-quelle/banner_serie/`, Übersicht in
-`banner-uebersicht.html`). Alle tragen dieselbe Aufnahme, dieselbe
-Kategoriezeile-Form, dieselbe Überschriftengrösse und denselben grünen Knopf
-auf die deutsche Kontaktseite.
+`banner-uebersicht.html`) und am selben Tag den Auftrag nachgeschoben, daraus
+**eine zentrale, wiederverwendbare Banner-Komponente** zu bauen und damit
+**alle dreizehn** Seiten- und Abschnittsbanner umzusetzen. Der Wortlaut unten
+ist seiner: «Verwende exakt diese Inhalte.»
 
-## Eingesetzt als Seitenkopf
+## Die dreizehn Banner
 
-Versicherungen
+VERSICHERUNGEN · TREUHAND
+
+Verwurzelt im Seeland. Blick auf mehr.
+
+VERSICHERUNGEN
 
 Versicherungen für Privatpersonen und Unternehmen
 
-Unternehmensgründung
+UNTERNEHMENSGRÜNDUNG
 
 Klar gründen. Sicher starten.
 
-Treuhänderwechsel
-
-Klar wechseln. Sicher weiter.
-
-Finanzplanung
-
-Überblick. Spielraum. Sicherheit.
-
-Kontakt
-
-Ihr Anliegen. Unser nächster Schritt.
-
-## Noch nicht eingesetzt
-
-Sechs weitere Banner nennen **Abschnitte**, nicht Seiten, und einer nennt den
-Einstieg von «Über uns». Sie sind bewusst noch nicht gesetzt — siehe die
-Anmerkung unten.
-
-Über A&C
-
-Persönlich. Verlässlich. Nah.
-
-Rechtsform
+RECHTSFORM
 
 Einzelfirma oder GmbH?
 
-Der Wechsel
+TREUHÄNDERWECHSEL
+
+Klar wechseln. Sicher weiter.
+
+DER WECHSEL
 
 Geordnet übergeben. Direkt starten.
 
-Vorsorge
+FINANZPLANUNG
+
+Überblick. Spielraum. Sicherheit.
+
+VORSORGE
 
 Heute planen. Morgen vorsorgen.
 
-Unsere Arbeitsweise
+ÜBER A&C
+
+Persönlich. Verlässlich. Nah.
+
+UNSERE ARBEITSWEISE
 
 Klar geregelt. Persönlich betreut.
 
-Die Inhaber
+DIE INHABER
 
 Zwei Ansprechpartner. Ein Team.
 
-Standort Aegerten
+STANDORT AEGERTEN
 
 Regional verankert. Persönlich erreichbar.
 
+KONTAKT
+
+Ihr Anliegen. Unser nächster Schritt.
+
+## Wo sie stehen
+
+| Banner | Ort |
+|---|---|
+| Versicherungen · Treuhand | Startseite, Seitenkopf |
+| Versicherungen | `/versicherungen`, Seitenkopf |
+| Unternehmensgründung | `/firmengruendung`, Seitenkopf |
+| Rechtsform | `/firmengruendung`, Abschnitt `#rechtsform` |
+| Treuhänderwechsel | `/treuhand/treuhaender-wechseln`, Seitenkopf |
+| Der Wechsel | `/treuhand/treuhaender-wechseln`, Abschnitt `#vorgehen` |
+| Finanzplanung | `/finanzplanung`, Seitenkopf |
+| Vorsorge | `/finanzplanung`, Abschnitt `#vorsorge` |
+| Über A&C | `/ueber-uns`, Seitenkopf |
+| Die Inhaber | `/ueber-uns`, Abschnitt `#inhaber` |
+| Unsere Arbeitsweise | `/ueber-uns`, Abschnitt `#arbeitsweise` |
+| Standort Aegerten | `/ueber-uns`, Abschnitt `#region` |
+| Kontakt | `/kontakt`, Seitenkopf |
+
 ## Anmerkungen
 
-**Fünf Seitentitel sind ersetzt.** «Firma gründen im Kanton Bern», «Wenn Sie
-Ihren Treuhänder wechseln möchten», «Überblick über Ihre Finanzen» und «So
-erreichen Sie uns» stehen nicht mehr auf der Seite; ihr Wortlaut bleibt
-unverändert in `content/source/schritt4_fassung2_de.md`. Der Titel von
-`/versicherungen` ist derselbe geblieben — die Vorlage nennt ihn wörtlich.
+**Alle dreizehn laufen über denselben Baustein**
+(`src/components/blocks/Banner.tsx`). Er hat bewusst keine Eigenschaft für
+Höhe, Bildausschnitt oder Anordnung — nur Themenzeile, Überschrift, Anker,
+Überschriftenebene und die Knopfbeschriftung. Eine abweichende Abmessung je
+Seite ist damit nicht möglich.
 
-**Der Fliesstext im Kopf ist auf diesen fünf Seiten entfallen.** Die
-Bannerserie zeigt Kategoriezeile, Überschrift und Knopf, sonst nichts. Die
-Sätze stehen unverändert in den Quelldateien. Die Seiten ohne gelieferten
-Banner — Treuhand, Buchhaltung, Steuern, Impressum, Datenschutz — behalten
-ihren Satz und laufen im Titel eine Stufe kleiner, weil ihre Titel ganze
-Sätze sind.
+**Ohne Abdunklung.** Kein Verlauf, keine farbige Schicht, kein Schatten. Die
+Aufnahme steht so da, wie sie geliefert wurde.
 
-**Die Kategoriezeile ist weiss statt hellgrün.** So zeigt es die Vorlage: Der
-grüne Strich davor trägt die Farbe, die Schrift bleibt weiss. Er ist mit
-54 x 4 px auch deutlich länger als der bisherige.
+**Seitenverhältnis 1774 : 887**, also glatt 2 : 1, auf jedem Banner. Auf
+schmalen Geräten greift eine gemeinsame Mindesthöhe, damit Überschrift und
+Knopf vollständig sichtbar bleiben — auch sie gilt für alle dreizehn gleich.
 
-**Der Knopf bleibt der Knopf der Website.** Die Vorlage unterstreicht seine
-Beschriftung und setzt einen zweiten Rahmen darum; beides wäre eine dritte
-Knopfform neben den zwei bestehenden. Ricardo ist darauf hingewiesen.
+**Diese Überschriften ersetzen vorherige.** Weggefallen sind die Seitentitel
+«Firma gründen im Kanton Bern», «Überblick über Ihre Finanzen» und «So
+erreichen Sie uns» sowie die Abschnittsüberschriften «Einzelfirma oder GmbH?»
+(unverändert), «So läuft der Wechsel ab», «Vorsorge beginnt mit einem
+Gesamtbild.», «Die beiden Inhaber», «Verlässlich im Alltag. Klar in der
+Verantwortung.» und «Persönlich für Sie da in Aegerten». Ihr Wortlaut bleibt
+in den Quelldateien.
 
-**Sieben Banner sind offen und liegen bei Ricardo.** Sechs von ihnen nennen
-Abschnitte, die es auf der Website bereits gibt — Rechtsform auf
-`/firmengruendung`, Der Wechsel und Vorsorge auf den beiden anderen Seiten,
-Arbeitsweise, Die Inhaber und Standort auf `/ueber-uns`. Sie einzusetzen
-hiesse, die Überschriften dieser Abschnitte zu ersetzen und dieselbe Aufnahme
-auf `/ueber-uns` viermal zu zeigen — einmal als Kopf und dreimal als
-Abschnittsbanner. Der siebte, «Über A&C», wäre der neue Einstieg von
-`/ueber-uns` und würde den am selben Tag gebauten zweispaltigen Einstieg mit
-Pillen, Bildfläche und grünem Eckmarker ersetzen. Beides ist eine Entscheidung
-über bestehende Arbeit und wird nicht geraten.
+**Der Einstieg von «Über uns» ist entfallen.** Der zweispaltige Block vom
+selben Tag — Beschreibungsabsatz, die drei Fachgebiete als Pillen, die
+Bildfläche mit grünem Eckmarker und der Legende — weicht dem Banner. **Damit
+hat die gemeinsame Aufnahme von Ricardo und Octavio auf der Seite keinen Platz
+mehr**; der offene Punkt in CLAUDE.md, Abschnitt 10, ist gegenstandslos,
+solange kein neuer Ort dafür bestimmt ist. **Ricardo ist darauf hingewiesen.**
+
+**Der Einstieg der Startseite ist entfallen.** Der Satz «Wir unterstützen
+Selbständige, KMU und Privatpersonen bei Buchhaltung, Versicherungen und
+Finanzfragen – mit festen Ansprechpartnern in Aegerten.» stand dort als
+Fliesstext; der Banner trägt keinen. Der Wortlaut bleibt in
+`content/source/startseite_de.md`.
+
+**Fünf Seiten haben keinen gelieferten Banner** — Treuhand, Buchhaltung,
+Steuern, Impressum und Datenschutz. Sie behalten ihren bisherigen Seitenkopf,
+weil für sie keine Themenzeile und keine Überschrift vorliegen und beides
+nicht erfunden wird. **Ricardo ist darauf hingewiesen.**
+
+**Der Knopf trägt weisse, fette und unterstrichene Schrift** auf A&C-Grün und
+wechselt beim Zeigen und bei Tastaturfokus auf Navy — so verlangt es der
+Auftrag ausdrücklich. Er ist damit eine dritte Knopfform neben den beiden
+bestehenden und kommt nur im Banner vor.
