@@ -683,3 +683,24 @@ auf Navy wechselt — gruen auf Navy waere nicht lesbar.
 **Damit stehen drei Dateien der Fassung vom 10.09.2026 auf keiner Seite mehr:**
 `03_kontakt_hintergrundmuster.webp`, `01_telefon.webp` und `02_email.webp`.
 Sie bleiben liegen.
+
+## Seitenkopf — der Banner aller Seiten
+
+Am 15.09.2026 als HTML-Vorlage mit zwei Bildfassungen geliefert. Verwendet
+wird die Fassung, die die Vorlage selbst einbindet.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `versicherungen-hero.html` | — | Vorlage, liegt als `vorlage.html` |
+| `hero-versicherungen-seeland-lichter-v2.png` | `seitenkopf-banner.webp` | PNG 1774 x 887, umgewandelt (128 KB) |
+| `hero-versicherungen-seeland.png` | — | zweite Fassung, nicht eingesetzt |
+
+Die Aufnahme ist unveraendert uebernommen: kein Beschnitt, keine Umfaerbung,
+nur die Umwandlung nach WebP bei Qualitaet 82. Sie traegt die helle
+A&C-Bildmarke oben rechts bereits im Bild.
+
+**Drei Dateien stehen damit auf keiner Seite mehr** und bleiben liegen:
+`startseite-seeland.webp` (die Fassung mit eingebrannter Ueberschrift),
+`wide_cinematic_vector_3d_illustration_style_insu.webp` (der bisherige
+Seitenkopf von `/versicherungen`) und die Platzhalterflaechen aus
+`PAGE_VISUAL`.

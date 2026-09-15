@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import { BildHero } from '@/components/blocks/BildHero'
 import { Hero } from '@/components/blocks/Hero'
 import { PageBlocks } from '@/components/blocks/PageBlocks'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
@@ -25,42 +24,9 @@ import {
   parentPage,
   path,
   publishedPages,
-  type PageKey,
 } from '@/i18n/routes'
 import { company } from '@/lib/company'
 
-/**
- * Platz fuer ein Bild im Seitenkopf, je Seite.
- *
- * Die Beschriftungen sind Hinweise an uns, keine Website-Texte — darum stehen
- * sie hier und nicht im Inhalt. Sobald eine Aufnahme vorliegt, tritt sie an
- * dieselbe Stelle, ohne dass sich das Layout aendert.
- *
- * Wo kein Eintrag steht, traegt die dunkle Flaeche den Kopf allein. Das ist
- * kein Mangel: lieber keine Aufnahme als eine beliebige.
- */
-const PAGE_VISUAL: Partial<Record<PageKey, { label: string; note?: string }>> = {
-  versicherungen: {
-    label: 'BERATUNGSSITUATION',
-    note: 'Privatkundschaft oder Betrieb — echte Aufnahme',
-  },
-  treuhand: {
-    label: 'ARBEITS- / DOKUMENTENSITUATION',
-    note: 'Buchhaltung im Büro Aegerten — echte Aufnahme',
-  },
-  firmengruendung: {
-    label: 'GRÜNDUNGSSITUATION',
-    note: 'Beratungsgespräch oder Unterlagen — echte Aufnahme',
-  },
-  ueberUns: {
-    label: 'RICARDO & OCTAVIO',
-    note: 'Gemeinsame Aufnahme der beiden Inhaber',
-  },
-  kontakt: {
-    label: 'BÜRO / LYSS',
-    note: 'Aussen- oder Innenaufnahme Bielstrasse 10',
-  },
-}
 
 /**
  * Gelieferte Seitenkopfbilder, je Seite.
@@ -72,12 +38,6 @@ const PAGE_VISUAL: Partial<Record<PageKey, { label: string; note?: string }>> = 
  * Ricardo hat am 10.09.2026 das erste dieser Bilder geliefert. Kommen weitere,
  * treten sie hier dazu; am Baustein aendert sich nichts.
  */
-const PAGE_HERO_BILD: Partial<Record<PageKey, { src: string; alt: string }>> = {
-  versicherungen: {
-    src: '/bilder/wide_cinematic_vector_3d_illustration_style_insu.webp',
-    alt: '',
-  },
-}
 
 /**
  * Alle Inhaltsseiten ausser der Startseite.
@@ -280,48 +240,33 @@ export default async function ContentPage({ params }: PageProps) {
   const knopf = content.hero.actions?.find((action) => action.kind === 'page')
 
   /* Liegt ein geliefertes Bild vor, traegt der Kopf es und laeuft zweispaltig. */
-  const heroBild = PAGE_HERO_BILD[key]
 
   return (
     <>
       <Breadcrumb page={key} locale={locale} />
 
-      {heroBild ? (
-        <BildHero
-          /* Ohne uebergeordnete Seite traegt die Kategoriezeile den eigenen
-             Namen der Seite — der Kopf mit Bild braucht sie, der bisherige
-             kam ohne aus. */
-          eyebrow={bereich ? ui.page[bereich] : ui.page[key]}
-          titel={content.hero.heading}
-          satz={content.hero.lead ? <RichText value={content.hero.lead} /> : undefined}
-          aktion={
-            knopf ? (
-              /* Gruen, auf Ricardos Vorgabe vom 10.09.2026 („A&C-Grün für CTA").
-                 Sonst gilt „Gruen ist Akzent, nicht Flaeche"; ein Knopf ist die
-                 kleinste Flaeche, auf der das noch traegt, und er kommt auf
-                 dieser Seite genau einmal vor. */
-              <Button href={hrefOrDefault(knopf.target, locale)} variant="akzent">
-                {knopf.label}
-              </Button>
-            ) : undefined
-          }
-          belege={content.hero.belege}
-          bild={heroBild}
-        />
-      ) : (
-        <Hero
-          eyebrow={bereich ? ui.page[bereich] : undefined}
-          titel={content.hero.heading}
-          titelLaenge="lang"
-          satz={content.hero.lead ? <RichText value={content.hero.lead} /> : undefined}
-          aktion={
-            knopf ? (
-              <Button href={hrefOrDefault(knopf.target, locale)}>{knopf.label}</Button>
-            ) : undefined
-          }
-          bild={PAGE_VISUAL[key]}
-        />
-      )}
+      {/* Ein Seitenkopf fuer alle Seiten. Bis zum 15.09.2026 trug
+          `/versicherungen` als einzige Seite den zweispaltigen `BildHero`;
+          seit Ricardos Anweisung, den Hintergrund des Banners ueberall durch
+          dieselbe Aufnahme zu ersetzen, laeuft sie ueber denselben Baustein
+          wie die uebrigen. Ihre Belege und der gruene Knopf bleiben. */}
+      <Hero
+        eyebrow={bereich ? ui.page[bereich] : ui.page[key]}
+        titel={content.hero.heading}
+        titelLaenge="lang"
+        satz={content.hero.lead ? <RichText value={content.hero.lead} /> : undefined}
+        aktion={
+          knopf ? (
+            <Button
+              href={hrefOrDefault(knopf.target, locale)}
+              variant={key === 'versicherungen' ? 'akzent' : undefined}
+            >
+              {knopf.label}
+            </Button>
+          ) : undefined
+        }
+        belege={content.hero.belege}
+      />
       <PageBlocks blocks={content.blocks} locale={locale} />
     </>
   )
