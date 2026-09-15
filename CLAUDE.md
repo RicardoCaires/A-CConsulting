@@ -952,103 +952,20 @@ rechts. Dazu die HTML-Vorlage `bilder-quelle/seitenkopf_banner/vorlage.html`.
   Eckmarker. Dort gibt es keinen dunklen Bannergrund zu ersetzen. **Ricardo
   ist darauf hingewiesen.**
 
-**Am selben Tag hat Ricardo eine ganze Bannerserie nachgeliefert** — zwölf
-HTML-Vorlagen mit gemeinsamem Stylesheet (`bilder-quelle/banner_serie/`,
-Übersicht in `banner-uebersicht.html`) und dem Auftrag „Bitte diese Banner
-alle einsetzen". Sie tragen alle dieselbe Aufnahme, eine eigene
-Kategoriezeile, eine kurze Überschrift und den grünen Knopf auf die deutsche
-Kontaktseite.
-
-**Fünf sind als Seitenkopf gesetzt** (`content/source/banner_serie_de.md`):
-
-| Seite | Kategoriezeile | Überschrift |
-|---|---|---|
-| `/versicherungen` | Versicherungen | Versicherungen für Privatpersonen und Unternehmen |
-| `/firmengruendung` | Unternehmensgründung | Klar gründen. Sicher starten. |
-| `/treuhand/treuhaender-wechseln` | Treuhänderwechsel | Klar wechseln. Sicher weiter. |
-| `/finanzplanung` | Finanzplanung | Überblick. Spielraum. Sicherheit. |
-| `/kontakt` | Kontakt | Ihr Anliegen. Unser nächster Schritt. |
-
-- **Die Masse stammen aus `banner-shared.css`:** Kopfhöhe 430 bis 680 px, Text
-  mittig statt am unteren Rand, Innenbreite 1360 px, Textblock 690 px oder
-  54 Prozent, Überschrift 48 bis 92 px bei Zeilenhöhe 0.98 und höchstens
-  13 Zeichen je Zeile, Kategoriezeile 13 px mit grünem Strich 54 x 4 px.
-- **Die Kategoriezeile ist weiss**, nicht hellgrün wie sonst auf Navy. Der
-  grüne Strich trägt die Farbe. Sie läuft darum nicht mehr über die globale
-  Klasse `ac-eyebrow`.
-- **Der Knopf ist auf jeder Seite grün.** Bis dahin war er das nur auf
-  `/versicherungen`.
-- **Der Fliesstext im Kopf ist auf diesen fünf Seiten entfallen** — die
-  Vorlage zeigt Kategoriezeile, Überschrift und Knopf, sonst nichts. Der
-  Wortlaut steht unverändert in den Quelldateien. Die Seiten ohne gelieferten
-  Banner (Treuhand, Buchhaltung, Steuern, Impressum, Datenschutz) behalten
-  ihren Satz und laufen im Titel eine Stufe kleiner, weil ihre Titel ganze
-  Sätze sind.
-- **Vier Seitentitel sind ersetzt.** „Firma gründen im Kanton Bern", der Titel
-  der Wechselseite, „Überblick über Ihre Finanzen" und „So erreichen Sie uns"
-  stehen nicht mehr auf der Seite; der Titel von `/versicherungen` ist
-  derselbe geblieben. **Die Angaben in `meta.title` sind unverändert** —
-  Browserreiter und Überschrift tragen auf diesen Seiten jetzt verschiedene
-  Texte. Ricardo entscheidet, ob sie nachgezogen werden.
-- **Der Knopf der Vorlage ist unterstrichen und trägt einen zweiten Rahmen.**
-  Beides wäre eine dritte Knopfform neben den zwei bestehenden; es bleibt beim
-  Knopf der Website. Ricardo ist darauf hingewiesen.
-
-**Am selben Tag hat Ricardo alle dreizehn Banner bestellt** und dazu eine
-zentrale, wiederverwendbare Komponente verlangt. Sie steht als
-`src/components/blocks/Banner.tsx`; die Texte stehen in
-`content/source/banner_serie_de.md`.
-
-| Banner | Ort |
-|---|---|
-| VERSICHERUNGEN · TREUHAND | Startseite, Seitenkopf |
-| VERSICHERUNGEN | `/versicherungen`, Seitenkopf |
-| UNTERNEHMENSGRÜNDUNG | `/firmengruendung`, Seitenkopf |
-| RECHTSFORM | `/firmengruendung`, Abschnitt `#rechtsform` |
-| TREUHÄNDERWECHSEL | `/treuhand/treuhaender-wechseln`, Seitenkopf |
-| DER WECHSEL | `/treuhand/treuhaender-wechseln`, Abschnitt `#vorgehen` |
-| FINANZPLANUNG | `/finanzplanung`, Seitenkopf |
-| VORSORGE | `/finanzplanung`, Abschnitt `#vorsorge` |
-| ÜBER A&C | `/ueber-uns`, Seitenkopf |
-| DIE INHABER | `/ueber-uns`, Abschnitt `#inhaber` |
-| UNSERE ARBEITSWEISE | `/ueber-uns`, Abschnitt `#arbeitsweise` |
-| STANDORT AEGERTEN | `/ueber-uns`, Abschnitt `#region` |
-| KONTAKT | `/kontakt`, Seitenkopf |
-
-- **Ein Baustein, ein Satz Masse.** `Banner.tsx` nimmt nur Themenzeile,
-  Überschrift, Anker, Überschriftenebene und Knopfbeschriftung. Höhe,
-  Bildausschnitt und Anordnung sind nicht einstellbar — eine abweichende
-  Abmessung je Seite ist damit unmöglich. Nachgemessen bei 1440 px: alle
-  dreizehn 1425 x 713 px, Verhältnis exakt 2.000, Textblock 690 px ab 33 px.
-- **Seitenverhältnis 1774 : 887**, also 2 : 1 — dasselbe wie die Aufnahme.
-  Sie wird darum bei `cover` **gar nicht beschnitten**: Landschaft, See,
-  Stadtlichter und Bergmarke stehen vollständig da.
-- **Ohne jede Abdunklung**, auf Ricardos ausdrückliche Vorgabe: kein Verlauf,
-  keine farbige Schicht, kein Schatten. Nachgemessen trägt die weisse Schrift
-  trotzdem — der Textblock steht links über dem dunklen Himmel und dem Hang:
-  Themenzeile 8.1:1, die Zeilen der Überschrift im Flächenmittel 8.0, 10.2 und
-  15.3:1. Nur einzelne Strassenlichter erreichen unter einer Glyphe punktuell
-  2.4:1; das ist die Natur einer Nachtaufnahme und keine Fläche.
-- **Der Knopf ist die dritte Knopfform im Projekt** und kommt nur im Banner
-  vor: A&C-Grün, weisse fette **unterstrichene** Schrift, beim Zeigen und bei
-  Tastaturfokus Navy (`#08234E`, nachgemessen), dazu ein weisser Fokusring.
-  Ziel immer `/de/kontakt/` über `path()`.
-- **Der Einstieg von `/ueber-uns` ist entfallen** — der zweispaltige Block vom
-  selben Tag mit Pillen, Bildfläche, grünem Eckmarker und Legende. **Damit hat
-  die gemeinsame Aufnahme von Ricardo und Octavio auf der Seite keinen Platz
-  mehr**; der offene Punkt in Abschnitt 10 ist gegenstandslos, solange kein
-  neuer Ort dafür bestimmt ist. **Ricardo ist darauf hingewiesen.**
-- **Der Einstiegssatz der Startseite ist entfallen.** Der Banner trägt keinen
-  Fliesstext. `StartHero.tsx` ist damit nicht mehr im Einsatz und bleibt
-  liegen.
-- **Fünf Seiten haben keinen Banner** — Treuhand, Buchhaltung, Steuern,
-  Impressum und Datenschutz. Für sie liegt weder Themenzeile noch Überschrift
-  vor, und beides wird nicht erfunden; sie behalten den bisherigen
-  Seitenkopf. **Ricardo ist darauf hingewiesen.**
-- **Abschnittsbanner ersetzen die Überschrift des Abschnitts**, nicht seinen
-  Einleitungssatz. Der Banner nimmt den Anker (`#rechtsform`, `#vorsorge`,
-  `#vorgehen`, `#inhaber`, `#arbeitsweise`, `#region`), der Abschnitt darunter
-  trägt `-inhalt`; die Sprungmarken landen damit auf dem Banner.
+> **Die Bannerserie ist am 15.09.2026 zurückgenommen worden.** Ricardo hatte
+> am selben Tag zwölf Bannervorlagen geliefert und daraus eine zentrale
+> Komponente bauen lassen, die dreizehn Seiten- und Abschnittsbanner trug;
+> kurz darauf hat er das rückgängig machen lassen. Der Stand ist damit wieder
+> der von oben: ein Seitenkopf mit der Aufnahme im Hintergrund, die
+> ursprünglichen Titel und Sätze, die Abschnittsüberschriften als Text und der
+> zweispaltige Einstieg auf `/ueber-uns`.
+>
+> **Die gelieferten Vorlagen bleiben liegen** unter
+> `bilder-quelle/banner_serie/` — zwölf HTML-Dateien, das gemeinsame
+> Stylesheet und die Übersicht. Sie sind nicht im Einsatz.
+>
+> Was ein neuer Anlauf braucht, steht in `bilder-quelle/banner_serie/`
+> daneben: **welche Seiten und Abschnitte einen Banner brauchen.**
 
 Die **Sprungmarken** unter dem Kopf sind neu gestaltet: mittig, weisse Pillen
 mit feiner Kontur, alle gleich. Sie stehen auf mehreren Seiten, die Änderung

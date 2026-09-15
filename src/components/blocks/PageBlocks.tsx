@@ -1,4 +1,4 @@
-import { Fragment, type CSSProperties } from 'react'
+import type { CSSProperties } from 'react'
 import Image from 'next/image'
 
 import { Button } from '@/components/ui/Button'
@@ -13,7 +13,6 @@ import { Checkliste } from './Checkliste'
 import { ChecklisteFristen } from './ChecklisteFristen'
 import { Fragen } from './Fragen'
 import { Leistungen } from './Leistungen'
-import { Banner } from './Banner'
 import { Prozessreihe } from './Prozessreihe'
 import { Rechtsformen } from './Rechtsformen'
 import { Rollen } from './Rollen'
@@ -469,16 +468,7 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
 
 /* ---- Alle Abschnitte ---------------------------------------------------- */
 
-export function PageBlocks({
-  blocks,
-  locale,
-  bannerKnopf,
-}: {
-  blocks: readonly Block[]
-  locale: Locale
-  /** Beschriftung des Knopfes in den Abschnittsbannern. */
-  bannerKnopf: string
-}) {
+export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; locale: Locale }) {
   // Baender zaehlen beim Flaechenwechsel nicht mit, sonst verschiebt sich der
   // Rhythmus je nachdem, ob eine Seite eine Bereichsnavigation hat.
   let surfaceIndex = 0
@@ -596,14 +586,10 @@ export function PageBlocks({
         // Der Rechtsformvergleich auf `/firmengruendung` bringt seine Flaeche
         // selbst mit und zaehlt beim Flaechenwechsel nicht mit.
         if (block.kind === 'rechtsformen') {
-          /* Seit dem 15.09.2026 kann der Abschnitt statt einer
-             Textueberschrift den Banner tragen. Er steht davor, in voller
-             Breite, und nimmt den Anker des Abschnitts. */
-          const inhalt = (
+          return (
             <Rechtsformen
               key={index}
-              id={block.banner ? `${block.id}-inhalt` : block.id}
-              bannerTitelId={block.banner ? `${block.id}-titel` : undefined}
+              id={block.id}
               eyebrow={block.eyebrow}
               heading={block.heading}
               lead={block.lead}
@@ -613,33 +599,13 @@ export function PageBlocks({
               locale={locale}
             />
           )
-
-          if (!block.banner) return inhalt
-
-          return (
-            <Fragment key={index}>
-              <Banner
-                themenzeile={block.banner.themenzeile}
-                ueberschrift={block.banner.ueberschrift}
-                id={block.id}
-                ebene={2}
-                knopf={bannerKnopf}
-                locale={locale}
-              />
-              {inhalt}
-            </Fragment>
-          )
         }
 
         if (block.kind === 'systemuebersicht') {
-          /* Seit dem 15.09.2026 kann der Abschnitt statt einer
-             Textueberschrift den Banner tragen. Er steht davor, in voller
-             Breite, und nimmt den Anker des Abschnitts. */
-          const inhalt = (
+          return (
             <Systemuebersicht
               key={index}
-              id={block.banner ? `${block.id}-inhalt` : block.id}
-              bannerTitelId={block.banner ? `${block.id}-titel` : undefined}
+              id={block.id}
               eyebrow={block.eyebrow}
               heading={block.heading}
               lead={block.lead}
@@ -649,22 +615,6 @@ export function PageBlocks({
               pruefung={block.pruefung}
               grundsatz={block.grundsatz}
             />
-          )
-
-          if (!block.banner) return inhalt
-
-          return (
-            <Fragment key={index}>
-              <Banner
-                themenzeile={block.banner.themenzeile}
-                ueberschrift={block.banner.ueberschrift}
-                id={block.id}
-                ebene={2}
-                knopf={bannerKnopf}
-                locale={locale}
-              />
-              {inhalt}
-            </Fragment>
           )
         }
 
@@ -684,14 +634,10 @@ export function PageBlocks({
         }
 
         if (block.kind === 'prozessreihe') {
-          /* Seit dem 15.09.2026 kann der Abschnitt statt einer
-             Textueberschrift den Banner tragen. Er steht davor, in voller
-             Breite, und nimmt den Anker des Abschnitts. */
-          const inhalt = (
+          return (
             <Prozessreihe
               key={index}
-              id={block.banner ? `${block.id}-inhalt` : block.id}
-              bannerTitelId={block.banner ? `${block.id}-titel` : undefined}
+              id={block.id}
               eyebrow={block.eyebrow}
               heading={block.heading}
               lead={block.lead}
@@ -699,22 +645,6 @@ export function PageBlocks({
               schritte={block.schritte}
               hinweis={block.hinweis}
             />
-          )
-
-          if (!block.banner) return inhalt
-
-          return (
-            <Fragment key={index}>
-              <Banner
-                themenzeile={block.banner.themenzeile}
-                ueberschrift={block.banner.ueberschrift}
-                id={block.id}
-                ebene={2}
-                knopf={bannerKnopf}
-                locale={locale}
-              />
-              {inhalt}
-            </Fragment>
           )
         }
 

@@ -705,19 +705,15 @@ A&C-Bildmarke oben rechts bereits im Bild.
 Seitenkopf von `/versicherungen`) und die Platzhalterflaechen aus
 `PAGE_VISUAL`.
 
-## Bannerserie
+## Bannerserie — geliefert, nicht eingesetzt
 
-Am 15.09.2026 als zwoelf HTML-Vorlagen mit gemeinsamem Stylesheet geliefert,
-dazu je ein PNG der fertigen Ansicht. Alle zwoelf binden dieselbe Aufnahme
-ein, die bereits als `seitenkopf-banner.webp` ausgeliefert wird — **es war
-keine neue Bilddatei einzusetzen.**
+Am 15.09.2026 als zwoelf HTML-Vorlagen mit gemeinsamem Stylesheet und einer
+Uebersicht geliefert (`banner_serie/`). Alle binden dieselbe Aufnahme ein, die
+bereits als `seitenkopf-banner.webp` ausgeliefert wird.
 
-| Datei (Lieferung) | ausgeliefert | Quelle |
-|---|---|---|
-| `banner-shared.css` | — | gemeinsames Stylesheet, Masse uebernommen |
-| `banner-uebersicht.html` | — | Uebersicht ueber alle zwoelf |
-| `banner-versicherungen.html` und elf weitere | — | Vorlagen, liegen unveraendert daneben |
-| die zwoelf `banner-*.png` | — | Ansichten, nicht ausgeliefert |
+Sie waren kurzzeitig als dreizehn Seiten- und Abschnittsbanner umgesetzt;
+Ricardo hat das am selben Tag zurueckgenommen. Die Dateien bleiben
+unveraendert liegen, damit ein neuer Anlauf nicht bei null beginnt.
 
-Fuenf davon sind als Seitenkopf gesetzt, sieben sind offen — siehe CLAUDE.md,
-Abschnitt 9, und `content/source/banner_serie_de.md`.
+Welche Seiten und Abschnitte dafuer einen Banner braeuchten, steht in
+`banner_serie/offene-banner.md`.

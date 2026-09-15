@@ -1,11 +1,9 @@
 import Image from 'next/image'
 
-import { Banner } from '@/components/blocks/Banner'
 import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
 import { RichText } from '@/components/ui/RichText'
 import { Standortkarte } from '@/components/ui/Standortkarte'
 import type { UeberunsContent } from '@/content/ueberuns'
-import type { Locale } from '@/i18n/config'
 import {
   buero,
   bueroImSatz,
@@ -57,43 +55,60 @@ const FLAECHEN: readonly Surface[] = [
 
 type Props = {
   inhalt: UeberunsContent
-  locale: Locale
-  /** Beschriftung des Knopfes in den Bannern. */
-  bannerKnopf: string
 }
 
-export function UeberunsTemplate({ inhalt, locale, bannerKnopf }: Props) {
+export function UeberunsTemplate({ inhalt }: Props) {
   pruefeFlaechen(FLAECHEN, 'Ueber uns')
   const [, fArbeitsweise] = FLAECHEN as [Surface, Surface, Surface]
 
   return (
     <>
-      {/* ---- 1 Der Seitenbanner ------------------------------------------
-          Seit dem 15.09.2026 traegt „Ueber uns" denselben Banner wie jede
-          andere Seite. Der zweispaltige Einstieg vom selben Tag — Pillen,
-          Bildflaeche mit gruenem Eckmarker und Legende — ist damit entfallen;
-          die gemeinsame Aufnahme hat auf der Seite keinen Platz mehr. */}
-      <Banner
-        themenzeile={inhalt.kopf.themenzeile}
-        ueberschrift={inhalt.kopf.ueberschrift}
-        id="seitenkopf"
-        knopf={bannerKnopf}
-        locale={locale}
-        vorrang
-      />
-
-      {/* ---- 2 Die beiden Inhaber ---------------------------------------- */}
-      <Banner
-        themenzeile={inhalt.inhaber.banner.themenzeile}
-        ueberschrift={inhalt.inhaber.banner.ueberschrift}
-        id="inhaber"
-        ebene={2}
-        knopf={bannerKnopf}
-        locale={locale}
-      />
-
+      {/* ---- 1 Kopf und 2 Inhaber auf einer durchgehenden Flaeche --------- */}
       <div className={styles.oben}>
         <div className="ac-container">
+          {/* Kopf: Text schmal links, Bild gross rechts. */}
+          <header className={styles.kopf}>
+            <div className={styles.kopfText}>
+              <p className="ac-eyebrow">{inhalt.kopf.eyebrow}</p>
+              <h1 id="seitenkopf" className={styles.titel}>
+                {inhalt.kopf.titel}
+              </h1>
+              <p className={styles.kopfLead}>{inhalt.kopf.lead}</p>
+              <p className={styles.kopfSatz}>{inhalt.kopf.satz}</p>
+
+              <ul className={styles.bereiche} role="list">
+                {inhalt.kopf.bereiche.map((bereich) => (
+                  <li key={bereich}>{bereich}</li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Die Legende steht unter der Flaeche, nie darueber: Ein Name
+                quer ueber dem Bild verdeckt sonst ein Gesicht. */}
+            <figure className={styles.kopfBildFeld}>
+              {inhalt.kopf.bild.foto ? (
+                <Image
+                  className={styles.kopfFoto}
+                  src={`/bilder/${inhalt.kopf.bild.foto}.webp`}
+                  alt={inhalt.kopf.bild.alt ?? ''}
+                  width={880}
+                  height={1100}
+                  unoptimized
+                />
+              ) : (
+                <div
+                  className={styles.kopfPlatzhalter}
+                  role="img"
+                  aria-label={inhalt.kopf.bild.label}
+                />
+              )}
+
+              <figcaption className={styles.kopfLegende}>
+                {inhalt.kopf.bild.legende}
+              </figcaption>
+            </figure>
+          </header>
+
           {/* Zwei gleich grosse Profilkarten, seit dem 15.09.2026 nach
               Ricardos Vorlage. `grid-auto-rows: 1fr` haelt sie auf einer
               Hoehe; der Block mit den Sprachen schiebt sich mit
@@ -102,7 +117,11 @@ export function UeberunsTemplate({ inhalt, locale, bannerKnopf }: Props) {
           {/* `inhaber` ist das Sprungziel, `inhaber-titel` benennt den
               Abschnitt. Zwei Rollen, zwei Kennungen — dieselbe zweimal waere
               ungueltiges HTML und fuer Hilfstechnik mehrdeutig. */}
-          <section aria-labelledby="inhaber-titel" className={styles.inhaber}>
+          <section aria-labelledby="inhaber-titel" id="inhaber" className={styles.inhaber}>
+            <p className="ac-eyebrow">{inhalt.inhaber.eyebrow}</p>
+            <h2 id="inhaber-titel" className={styles.inhaberTitel}>
+              {inhalt.inhaber.titel}
+            </h2>
             <p className={styles.inhaberEinleitung}>{inhalt.inhaber.einleitung}</p>
 
             <div className={styles.profile}>
@@ -189,16 +208,11 @@ export function UeberunsTemplate({ inhalt, locale, bannerKnopf }: Props) {
           Die Karten tragen `tabIndex={0}`, weil sie keinen Link enthalten und
           sonst gar nicht anspringbar waeren — den Fokuszustand verlangt der
           Auftrag ausdruecklich. */}
-      <Banner
-        themenzeile={inhalt.arbeitsweise.banner.themenzeile}
-        ueberschrift={inhalt.arbeitsweise.banner.ueberschrift}
-        id="arbeitsweise"
-        ebene={2}
-        knopf={bannerKnopf}
-        locale={locale}
-      />
-
-      <Section surface={fArbeitsweise} labelledBy="arbeitsweise-titel">
+      <Section surface={fArbeitsweise} id="arbeitsweise" labelledBy="arbeitsweise-titel">
+        <p className="ac-eyebrow">{inhalt.arbeitsweise.eyebrow}</p>
+        <h2 id="arbeitsweise-titel" className={styles.prinzipienTitel}>
+          {inhalt.arbeitsweise.titel}
+        </h2>
         <p className={styles.prinzipienEinleitung}>{inhalt.arbeitsweise.einleitung}</p>
 
         <div className={styles.prinzipien}>
@@ -230,19 +244,14 @@ export function UeberunsTemplate({ inhalt, locale, bannerKnopf }: Props) {
           Nach Ricardos Vorlage vom 15.09.2026, mit der neuen Adresse in
           Aegerten. Adresse, Ortsschild und Ziel der Routenplanung kommen aus
           `company.ts`; ein Umzug aendert alle drei auf einmal. */}
-      <Banner
-        themenzeile={inhalt.standort.banner.themenzeile}
-        ueberschrift={inhalt.standort.banner.ueberschrift}
-        id="region"
-        ebene={2}
-        knopf={bannerKnopf}
-        locale={locale}
-      />
-
-      <section className={styles.standort} aria-labelledby="region-titel">
+      <section className={styles.standort} id="region" aria-labelledby="region-titel">
         <div className="ac-container">
           <div className={styles.standortKarte}>
             <div className={styles.standortText}>
+              <p className="ac-eyebrow">{inhalt.standort.eyebrow}</p>
+              <h2 id="region-titel" className={styles.standortTitel}>
+                {inhalt.standort.titel}
+              </h2>
               <address className={styles.adresse}>
                 <RichText value={inhalt.standort.adresse} />
               </address>
