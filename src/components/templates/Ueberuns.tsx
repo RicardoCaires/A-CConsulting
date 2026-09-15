@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
 import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
 import { RichText } from '@/components/ui/RichText'
@@ -64,14 +66,40 @@ export function UeberunsTemplate({ inhalt }: Props) {
               <h1 id="seitenkopf" className={styles.titel}>
                 {inhalt.kopf.titel}
               </h1>
+              <p className={styles.kopfLead}>{inhalt.kopf.lead}</p>
               <p className={styles.kopfSatz}>{inhalt.kopf.satz}</p>
+
+              <ul className={styles.bereiche} role="list">
+                {inhalt.kopf.bereiche.map((bereich) => (
+                  <li key={bereich}>{bereich}</li>
+                ))}
+              </ul>
             </div>
 
-            <ImagePlaceholder
-              className={styles.kopfBild}
-              label={inhalt.kopf.bild.label}
-              note={inhalt.kopf.bild.note}
-            />
+            {/* Die Legende steht unter der Flaeche, nie darueber: Ein Name
+                quer ueber dem Bild verdeckt sonst ein Gesicht. */}
+            <figure className={styles.kopfBildFeld}>
+              {inhalt.kopf.bild.foto ? (
+                <Image
+                  className={styles.kopfFoto}
+                  src={`/bilder/${inhalt.kopf.bild.foto}.webp`}
+                  alt={inhalt.kopf.bild.alt ?? ''}
+                  width={880}
+                  height={1100}
+                  unoptimized
+                />
+              ) : (
+                <div
+                  className={styles.kopfPlatzhalter}
+                  role="img"
+                  aria-label={inhalt.kopf.bild.label}
+                />
+              )}
+
+              <figcaption className={styles.kopfLegende}>
+                {inhalt.kopf.bild.legende}
+              </figcaption>
+            </figure>
           </header>
 
           {/* Profile: abwechselnd, damit zwei Personen nicht zweimal
