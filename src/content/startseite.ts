@@ -77,12 +77,9 @@ export type StartseiteContent = {
   cta: string
 
   einstieg: {
-    /** Steht unter der Ueberschrift und ordnet den Leitsatz ein. */
-    eyebrow: string
+    /** Kleine Themenzeile ueber der Ueberschrift, in Versalien. */
+    themenzeile: string
     titel: string
-    satz: string
-    /** Echte Aufnahme oder Platzhalter mit Formatangabe. */
-    bild: { src: string; alt: string } | { label: string; note?: string }
   }
 
   situationen: {
@@ -146,18 +143,11 @@ const de: StartseiteContent = {
   cta: 'Erstgespräch anfragen',
 
   // ---- 1 Einstieg
+  // Seit dem 15.09.2026 traegt der Einstieg den Banner, wie jede andere
+  // Seite auch (`content/source/banner_serie_de.md`).
   einstieg: {
-    eyebrow: 'Versicherungen · Treuhand',
+    themenzeile: 'VERSICHERUNGEN · TREUHAND',
     titel: 'Verwurzelt im Seeland. Blick auf mehr.',
-    satz: 'Wir unterstützen Selbständige, KMU und Privatpersonen bei Buchhaltung, Versicherungen und Finanzfragen – mit festen Ansprechpartnern in Aegerten.',
-    // Seit dem 15.09.2026 dieselbe Aufnahme wie in allen anderen
-    // Seitenkoepfen, auf Ricardos Anweisung. Sie traegt keinen eingebrannten
-    // Text mehr; Ueberschrift, Vorzeile und Satz stehen auf jeder Breite als
-    // HTML-Text darauf.  bleibt liegen.
-    bild: {
-      src: '/bilder/seitenkopf-banner.webp',
-      alt: 'Blick über das Seeland bei Dämmerung: Lichter der Stadt, der See und die Hügelkette im Abendhimmel.',
-    },
   },
 
   // ---- 3 Situationen — vor den Leistungen, weil Kunden im Problem denken

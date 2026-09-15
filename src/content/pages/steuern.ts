@@ -19,8 +19,11 @@ export const steuern: PageContent = {
 
   // 01 Seitenkopf
   hero: {
+    banner: {
+      themenzeile: 'STEUERN',
+      ueberschrift: 'Klar deklariert. Sicher geplant.',
+    },
     heading: 'Steuererklärung für Privatpersonen, Selbständige und Firmen',
-    lead: 'Sie bringen die Unterlagen, wir erstellen die Steuererklärung, reichen sie ein und prüfen später die Veranlagung.',
     actions: [
       { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
     ],

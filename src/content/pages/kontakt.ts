@@ -24,8 +24,11 @@ export const kontakt: PageContent = {
   },
 
   hero: {
+    banner: {
+      themenzeile: 'KONTAKT',
+      ueberschrift: 'Ihr Anliegen. Unser nächster Schritt.',
+    },
     heading: 'So erreichen Sie uns',
-    lead: 'Beratung auf Deutsch, Französisch und Portugiesisch.',
   },
 
   blocks: [

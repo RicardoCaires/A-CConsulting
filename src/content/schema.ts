@@ -126,7 +126,9 @@ export type Leistungsseite = {
   /** Seitenschluessel aus `i18n/routes.ts`. Der Pfad kommt von dort. */
   slug: PageKey
   locale: Locale
-  /** Ueberschrift der Seite. */
+  /** Der Banner des Seitenkopfs. */
+  banner: { themenzeile: string; ueberschrift: string }
+  /** Ueberschrift der Seite. Steht seit dem 15.09.2026 nicht mehr im Kopf. */
   titel: Text
   /** Der Nutzen in einem Satz. Steht unter dem Titel. */
   nutzenSatz: RichText

@@ -35,8 +35,11 @@ export const impressum: PageContent = {
   },
 
   hero: {
+    banner: {
+      themenzeile: 'IMPRESSUM',
+      ueberschrift: 'Angaben. Verantwortung. Transparenz.',
+    },
     heading: 'Impressum',
-    lead: 'Angaben nach Artikel 3 des Bundesgesetzes gegen den unlauteren Wettbewerb.',
   },
 
   blocks: [

@@ -4,7 +4,7 @@ import { Kontaktabschluss } from '@/components/blocks/Kontaktabschluss'
 import { Faelle, type Fall } from '@/components/blocks/Faelle'
 import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
 import { SectionHeader } from '@/components/blocks/SectionHeader'
-import { StartHero, type HeroBild } from '@/components/blocks/StartHero'
+import { Banner } from '@/components/blocks/Banner'
 import { Team, type Mitglied } from '@/components/blocks/Team'
 import { Button } from '@/components/ui/Button'
 import { Zonenmuster } from '@/components/ui/Zonenmuster'
@@ -68,12 +68,11 @@ const FLAECHEN: readonly Surface[] = [
 
 export type StartseiteInhalt = {
   einstieg: {
-    eyebrow?: string
-    titel: ReactNode
-    satz: ReactNode
-    /** Genau einer. Der Kopf traegt keinen zweiten Knopf und keinen Textlink. */
+    /** Kleine Themenzeile ueber der Ueberschrift, in Versalien. */
+    themenzeile: string
+    titel: string
+    /** Genau einer. Der Banner traegt keinen zweiten Knopf. */
     knopf: { text: string; ziel: PageKey }
-    bild: HeroBild
   }
   situationen: {
     eyebrow: string
@@ -131,22 +130,16 @@ export function StartseiteTemplate({
 
   return (
     <>
-      {/* ---- 1 Einstieg — die dominante Flaeche der Seite ----------------- */}
-      <StartHero
-        eyebrow={inhalt.einstieg.eyebrow}
-        titel={inhalt.einstieg.titel}
-        satz={inhalt.einstieg.satz}
-        aktion={
-          /* Gruen, auf Ricardos Anweisung vom 15.09.2026. Der zweite Weg
-             „Unsere Leistungen" ist am selben Tag entfallen. */
-          <Button
-            href={hrefOrDefault(inhalt.einstieg.knopf.ziel, locale)}
-            variant="akzent"
-          >
-            {inhalt.einstieg.knopf.text}
-          </Button>
-        }
-        bild={inhalt.einstieg.bild}
+      {/* ---- 1 Einstieg — der Banner, wie auf jeder Seite ----------------
+          Seit dem 15.09.2026 traegt die Startseite denselben Baustein wie
+          alle uebrigen Banner. `StartHero` ist damit nicht mehr im Einsatz. */}
+      <Banner
+        themenzeile={inhalt.einstieg.themenzeile}
+        ueberschrift={inhalt.einstieg.titel}
+        id="einstieg"
+        knopf={inhalt.einstieg.knopf.text}
+        locale={locale}
+        vorrang
       />
 
       {/* ---- 2 und 3: eine gemeinsame Kartenzone ---------------------------

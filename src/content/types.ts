@@ -94,6 +94,18 @@ export type Action =
   | { kind: 'mail'; label: string; variant?: 'primary' | 'ghost' }
   | { kind: 'phone'; label?: string }
 
+/**
+ * Der Banner eines Seitenkopfs.
+ *
+ * Ricardo hat am 15.09.2026 fuer jede veroeffentlichte Seite einen geliefert:
+ * eine Themenzeile in Versalien und eine kurze Ueberschrift. Alles andere —
+ * Bild, Groesse, Abstaende, Knopf — ist in `Banner.tsx` fuer alle gleich.
+ */
+export type Bannerkopf = {
+  themenzeile: string
+  ueberschrift: string
+}
+
 export type Block =
   /** Fliesstext unter einer Ueberschrift. */
   | {
@@ -639,6 +651,8 @@ export type PageContent = {
     description: string
   }
   hero: {
+    /** Der Banner des Seitenkopfs. Steht er, traegt die Seite ihn. */
+    banner?: Bannerkopf
     heading: string
     lead?: Rich
     actions?: readonly Action[]

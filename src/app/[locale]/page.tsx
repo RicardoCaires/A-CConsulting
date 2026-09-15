@@ -56,13 +56,11 @@ export default async function HomePage({ params }: PageProps) {
   if (!content) notFound()
 
   const inhalt: StartseiteInhalt = {
-    // 1 — Einstieg. Eine Aussage, ein Satz, ein Knopf, ein Textlink.
+    // 1 — Einstieg. Der Banner: Themenzeile, Ueberschrift, ein Knopf.
     einstieg: {
-      eyebrow: content.einstieg.eyebrow,
+      themenzeile: content.einstieg.themenzeile,
       titel: content.einstieg.titel,
-      satz: content.einstieg.satz,
       knopf: { text: content.cta, ziel: 'kontakt' },
-      bild: content.einstieg.bild,
     },
 
     // 3 — Situationen. Stehen vor den Leistungen: Wer herkommt, denkt in

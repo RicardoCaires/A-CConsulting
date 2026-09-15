@@ -33,8 +33,11 @@ export const datenschutz: PageContent = {
   },
 
   hero: {
+    banner: {
+      themenzeile: 'DATENSCHUTZ',
+      ueberschrift: 'Ihre Daten. Vertraulich geschützt.',
+    },
     heading: 'Datenschutzerklärung',
-    lead: 'Wie wir mit Ihren Daten umgehen, nach dem revidierten Bundesgesetz über den Datenschutz.',
   },
 
   blocks: [

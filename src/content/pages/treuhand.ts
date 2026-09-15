@@ -19,8 +19,11 @@ export const treuhand: PageContent = {
 
   // 01 Seitenkopf
   hero: {
+    banner: {
+      themenzeile: 'TREUHAND',
+      ueberschrift: 'Klar geführt. Persönlich begleitet.',
+    },
     heading: 'Buchhaltung, Löhne und Abschluss für Selbständige und KMU',
-    lead: 'Sie liefern die Unterlagen, wir führen die Buchhaltung laufend. Sie haben einen festen Ansprechpartner und wissen jederzeit, was als Nächstes ansteht.',
     actions: [{ kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' }],
   },
 

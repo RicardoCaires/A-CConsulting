@@ -1,9 +1,11 @@
 import Image from 'next/image'
 
+import { Banner } from '@/components/blocks/Banner'
 import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
 import { RichText } from '@/components/ui/RichText'
 import { Standortkarte } from '@/components/ui/Standortkarte'
 import type { UeberunsContent } from '@/content/ueberuns'
+import type { Locale } from '@/i18n/config'
 import {
   buero,
   bueroImSatz,
@@ -55,60 +57,34 @@ const FLAECHEN: readonly Surface[] = [
 
 type Props = {
   inhalt: UeberunsContent
+  locale: Locale
+  /** Beschriftung des Knopfes im Banner. */
+  bannerKnopf: string
 }
 
-export function UeberunsTemplate({ inhalt }: Props) {
+export function UeberunsTemplate({ inhalt, locale, bannerKnopf }: Props) {
   pruefeFlaechen(FLAECHEN, 'Ueber uns')
   const [, fArbeitsweise] = FLAECHEN as [Surface, Surface, Surface]
 
   return (
     <>
-      {/* ---- 1 Kopf und 2 Inhaber auf einer durchgehenden Flaeche --------- */}
+      {/* ---- 1 Der Seitenbanner ------------------------------------------
+          Seit dem 15.09.2026 traegt „Ueber uns" denselben Banner wie jede
+          andere Seite. Der zweispaltige Einstieg — Pillen, Bildflaeche mit
+          gruenem Eckmarker und Legende — ist damit entfallen; die gemeinsame
+          Aufnahme hat auf der Seite keinen Platz mehr. */}
+      <Banner
+        themenzeile={inhalt.kopf.themenzeile}
+        ueberschrift={inhalt.kopf.ueberschrift}
+        id="seitenkopf"
+        knopf={bannerKnopf}
+        locale={locale}
+        vorrang
+      />
+
+      {/* ---- 2 Die beiden Inhaber ---------------------------------------- */}
       <div className={styles.oben}>
         <div className="ac-container">
-          {/* Kopf: Text schmal links, Bild gross rechts. */}
-          <header className={styles.kopf}>
-            <div className={styles.kopfText}>
-              <p className="ac-eyebrow">{inhalt.kopf.eyebrow}</p>
-              <h1 id="seitenkopf" className={styles.titel}>
-                {inhalt.kopf.titel}
-              </h1>
-              <p className={styles.kopfLead}>{inhalt.kopf.lead}</p>
-              <p className={styles.kopfSatz}>{inhalt.kopf.satz}</p>
-
-              <ul className={styles.bereiche} role="list">
-                {inhalt.kopf.bereiche.map((bereich) => (
-                  <li key={bereich}>{bereich}</li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Die Legende steht unter der Flaeche, nie darueber: Ein Name
-                quer ueber dem Bild verdeckt sonst ein Gesicht. */}
-            <figure className={styles.kopfBildFeld}>
-              {inhalt.kopf.bild.foto ? (
-                <Image
-                  className={styles.kopfFoto}
-                  src={`/bilder/${inhalt.kopf.bild.foto}.webp`}
-                  alt={inhalt.kopf.bild.alt ?? ''}
-                  width={880}
-                  height={1100}
-                  unoptimized
-                />
-              ) : (
-                <div
-                  className={styles.kopfPlatzhalter}
-                  role="img"
-                  aria-label={inhalt.kopf.bild.label}
-                />
-              )}
-
-              <figcaption className={styles.kopfLegende}>
-                {inhalt.kopf.bild.legende}
-              </figcaption>
-            </figure>
-          </header>
-
           {/* Zwei gleich grosse Profilkarten, seit dem 15.09.2026 nach
               Ricardos Vorlage. `grid-auto-rows: 1fr` haelt sie auf einer
               Hoehe; der Block mit den Sprachen schiebt sich mit

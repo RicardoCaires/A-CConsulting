@@ -18,10 +18,9 @@ import type { Leistungsseite } from '@/content/schema'
 
 export const beispielStartseite: StartseiteInhalt = {
   einstieg: {
+    themenzeile: 'BEISPIEL-THEMENZEILE',
     titel: 'Beispielüberschrift für den Einstieg',
-    satz: 'Beispielsatz, der in einer Zeile sagt, für wen die Seite gemacht ist.',
     knopf: { text: 'Beispielknopf', ziel: 'kontakt' },
-    bild: { label: 'BEISPIELBILD EINSTIEG', note: 'Beispielhinweis zum Motiv' },
   },
   situationen: {
     eyebrow: 'Beispiel-Vorzeile',
@@ -119,6 +118,10 @@ export const beispielStartseite: StartseiteInhalt = {
 export const beispielLeistungsseite: Leistungsseite = {
   slug: 'buchhaltung',
   locale: 'de',
+  banner: {
+    themenzeile: 'BEISPIEL-THEMENZEILE',
+    ueberschrift: 'Beispielüberschrift des Banners',
+  },
   bereich: 'treuhand',
   titel: 'Beispielleistung',
   nutzenSatz: 'Beispielsatz, der den Nutzen dieser Leistung in einer Zeile nennt.',

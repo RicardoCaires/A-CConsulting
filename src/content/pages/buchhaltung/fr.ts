@@ -20,6 +20,10 @@ import type { Leistungsseite } from '../../schema'
  */
 export const buchhaltungFr: Leistungsseite = {
   slug: 'buchhaltung',
+  banner: {
+    themenzeile: 'BUCHHALTUNG',
+    ueberschrift: 'Zahlen im Griff. Zeit fürs Geschäft.',
+  },
   locale: 'fr',
   bereich: 'treuhand',
 
