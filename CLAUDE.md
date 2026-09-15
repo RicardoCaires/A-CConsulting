@@ -1444,8 +1444,32 @@ eidg. Fachausweis suggeriert.
 > und die Aufzählung aus `schritt4_fassung2_de.md`. Die fünf Situationen
 > sagen dasselbe in knapperer Form.
 >
-> Die Seite trägt seit dem 14.09.2026 nur noch Budget und Vorsorge; der
-> Vorsorgeabschnitt steht weiterhin als Fliesstext.
+> Die Seite trägt seit dem 14.09.2026 nur noch Budget und Vorsorge.
+
+> **„Vorsorge beginnt mit einem Gesamtbild." ist seit dem 15.09.2026 ein
+> eigener Baustein** (`src/components/blocks/Systemuebersicht.tsx`), nach
+> Ricardos HTML-Vorlage: Kategoriezeile „Heute verstehen. Morgen planen.",
+> Titel, ein Satz; darunter links die gelieferte Dreisäulenillustration in
+> einer getönten Karte, rechts drei Karten mit Nummernkreis, Versalzeile,
+> Titel und Satz — AHV und IV, Pensionskasse, Säule 3a und freie Vorsorge.
+> Darunter die Prüfliste „Was wir mit Ihnen anschauen" mit drei Haken und der
+> Grundsatz „Zuerst die Ausgangslage, dann die Lösung." mit grünem Strich.
+> Unter 50rem steht alles untereinander. Der Anker `vorsorge` bleibt.
+>
+> **Die vorsichtigen Formulierungen sind unverändert:** „voraussichtlich",
+> „könnte", „hängt ab". **Keine Grenzbeträge, keine Renditeangaben, keine
+> Leistungsversprechen** — so verlangt es der Auftrag, und Abschnitt 3 der
+> Hausordnung verbietet sie ohnehin.
+>
+> **Diese Illustration hat als einzige im Projekt einen Alternativtext**
+> („Die drei Säulen der Vorsorge, unterschiedlich hoch gefüllt."). Sie
+> nummeriert die drei Säulen und trägt damit Inhalt; die übrigen Piktogramme
+> sind reine Gestaltung und bleiben `alt=""`. Die Ziffern in der Datei sind
+> Schrift (Arial); fehlt Arial, nimmt der Browser eine ähnliche.
+>
+> **Der Grundsatz bleibt inhaltlich erhalten**, genauer formuliert als bisher
+> („bevor Ziele, bestehende Vorsorge und finanzieller Spielraum geklärt
+> sind" statt „bevor wir Ihre Ausgangslage kennen").
 
 ### /ueber-uns
 

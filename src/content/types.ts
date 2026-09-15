@@ -503,6 +503,23 @@ export type Block =
    * selbst mit und zaehlt beim Flaechenwechsel nicht mit.
    */
   | {
+      kind: 'systemuebersicht'
+      id: string
+      eyebrow?: string
+      heading: string
+      lead?: readonly Rich[]
+      /** Gelieferte Illustration, Dateiname unter `public/bilder/` ohne Endung. */
+      bild?: string
+      bildBeschreibung?: string
+      karten: readonly { tag?: string; titel: string; text: Rich }[]
+      pruefung?: { titel: string; punkte: readonly string[] }
+      grundsatz?: { titel: string; text: Rich }
+    }
+  /**
+   * Ein Leistungsbereich: Text und Illustration in einer Karte, darunter eine
+   * nummerierte Reihe von Situationen.
+   */
+  | {
       kind: 'bereich'
       id: string
       eyebrow?: string

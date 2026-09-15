@@ -604,3 +604,17 @@ nicht als eigene Datei. Sie ist unveraendert herausgeloest.
 | `finanzplanung-budget.html` | — | Vorlage, liegt als `vorlage.html` |
 | daraus das SVG | `finanzplanung_budget.svg` | SVG, viewBox 360 x 300 |
 
+## Finanzplanung — Vorsorge
+
+Am 15.09.2026 als HTML-Vorlage geliefert; die Dreisaeulenillustration stand im
+Quelltext. Sie ist unveraendert herausgeloest.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `finanzplanung-vorsorge.html` | — | Vorlage, liegt als `vorlage.html` |
+| daraus das SVG | `finanzplanung_vorsorge.svg` | SVG, viewBox 420 x 360 |
+
+Die Ziffern 1, 2 und 3 stehen in der Datei als Schrift (Arial). Diese
+Illustration traegt als einzige einen Alternativtext, weil sie die drei
+Saeulen nummeriert.
+

@@ -19,6 +19,7 @@ import { Rollen } from './Rollen'
 import { Schadenfall } from './Schadenfall'
 import { CTASection } from './CTASection'
 import { Segmente } from './Segmente'
+import { Systemuebersicht } from './Systemuebersicht'
 import { Themenkarten } from './Themenkarten'
 import { UnserModell } from './UnserModell'
 import { Vorgehen, vorgehenFlaeche } from './Vorgehen'
@@ -183,6 +184,7 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
     block.kind === 'themenkarten' ||
     block.kind === 'prozessreihe' ||
     block.kind === 'bereich' ||
+    block.kind === 'systemuebersicht' ||
     block.kind === 'betreuung' ||
     block.kind === 'schadenfall' ||
     block.kind === 'fragen'
@@ -595,6 +597,23 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               spalten={block.spalten}
               hinweis={block.hinweis}
               locale={locale}
+            />
+          )
+        }
+
+        if (block.kind === 'systemuebersicht') {
+          return (
+            <Systemuebersicht
+              key={index}
+              id={block.id}
+              eyebrow={block.eyebrow}
+              heading={block.heading}
+              lead={block.lead}
+              bild={block.bild}
+              bildBeschreibung={block.bildBeschreibung}
+              karten={block.karten}
+              pruefung={block.pruefung}
+              grundsatz={block.grundsatz}
             />
           )
         }

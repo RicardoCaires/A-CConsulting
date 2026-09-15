@@ -1,0 +1,284 @@
+/* Ein System in Teilen erklärt — heute „Vorsorge beginnt mit einem Gesamtbild."
+
+   Nach Ricardos HTML-Vorlage vom 15.09.2026
+   (`bilder-quelle/finanzplanung_vorsorge/vorlage.html`). Aus ihr übernommen:
+
+     Inhalt        1120 px, mittig, weisser Grund
+     Raster        Illustration 0.82fr, Karten 1.18fr, Fuge 1.25rem
+     Bildfeld      getönt, Haarlinie, mindestens 410 px hoch
+     Karte         Nummernkreis 48 px, daneben Versalzeile, Titel und Satz
+     Prüfliste     getönte Karte, Titel links, Haken rechts
+     Grundsatz     weisse Leiste mit grünem Strich links
+
+   Keine neuen Farben, keine Verläufe, keine Schatten. */
+
+.abschnitt {
+  padding-block: var(--ac-section-y-lg);
+  background-color: var(--ac-color-white);
+}
+
+.abschnitt .container {
+  max-width: 70rem;
+}
+
+/* ---- Kopf ------------------------------------------------------------------ */
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  line-height: var(--ac-eyebrow-line);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+.eyebrow::before {
+  content: '';
+  flex: none;
+  width: 1.75rem;
+  height: var(--ac-border-marker);
+  background-color: var(--ac-color-accent-green);
+}
+
+.titel {
+  max-width: 50rem;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: clamp(2.2rem, 1.6rem + 2vw, 3.35rem);
+  line-height: 1.13;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.015em;
+  color: var(--ac-color-primary-navy);
+}
+
+.lead {
+  max-width: 46.25rem;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: var(--ac-body-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Illustration und Karten ------------------------------------------------ */
+
+.system {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: var(--ac-space-sm);
+  align-items: stretch;
+  margin-top: clamp(1.75rem, 3.5vw, 2.4rem);
+}
+
+/* Die Zeichnung steht in einer eigenen getönten Karte, damit sie nicht frei
+   im Weissraum hängt. */
+.bildFeld {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 25.625rem;
+  padding: var(--ac-space-lg);
+  background-color: var(--ac-color-background-light);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+}
+
+.bild {
+  display: block;
+  width: 100%;
+  max-width: 24.375rem;
+  height: auto;
+}
+
+.karten {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.karte {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: var(--ac-space-sm);
+  align-items: start;
+  padding: 1.25rem 1.4rem;
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+}
+
+.nummer {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-tint);
+  border-radius: 50%;
+}
+
+/* Die dritte Säule ist die, die man selbst in der Hand hat. */
+.karte:last-child .nummer {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-accent-green);
+}
+
+.kartenText {
+  min-width: 0;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  margin: 0 0 var(--ac-space-2xs);
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  line-height: var(--ac-eyebrow-line);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+.tag::before {
+  content: '';
+  flex: none;
+  width: 1.75rem;
+  height: var(--ac-border-marker);
+  background-color: var(--ac-color-accent-green);
+}
+
+.kartenTitel {
+  margin: 0 0 0.35rem;
+  font-family: var(--ac-font-display);
+  font-size: 1.2rem;
+  line-height: 1.3;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.satz {
+  margin: 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.55;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Prüfliste --------------------------------------------------------------- */
+
+.pruefung {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: var(--ac-space-lg);
+  align-items: start;
+  margin-top: var(--ac-space-sm);
+  padding: 1.7rem 1.8rem;
+  background-color: var(--ac-color-background-light);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+}
+
+.pruefungTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: 1.4rem;
+  line-height: 1.25;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.liste {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.liste li {
+  position: relative;
+  padding-left: 1.55rem;
+  font-size: var(--ac-small-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
+/* Der Haken der Vorlage, als Zeichen statt als Bilddatei. */
+.liste li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--ac-color-accent-green);
+}
+
+/* ---- Grundsatz --------------------------------------------------------------- */
+
+.grundsatz {
+  display: block;
+  margin: var(--ac-space-sm) 0 0;
+  padding: 1.1rem 1.3rem;
+  background-color: var(--ac-color-white);
+  border-left: var(--ac-border-marker) solid var(--ac-color-accent-green);
+}
+
+.grundsatzTitel {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-family: var(--ac-font-display);
+  font-size: var(--ac-body-size);
+  font-weight: var(--ac-display-weight);
+  line-height: 1.3;
+  color: var(--ac-color-primary-navy);
+}
+
+.grundsatzText {
+  display: block;
+  font-size: var(--ac-small-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Unter 50rem: alles untereinander ---------------------------------------- */
+
+@media (max-width: 50rem) {
+  .system,
+  .pruefung {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bildFeld {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 32.5rem) {
+  .bildFeld {
+    padding: 1.4rem;
+  }
+
+  .karte {
+    grid-template-columns: 2.625rem minmax(0, 1fr);
+    padding: 1.2rem;
+  }
+
+  .nummer {
+    width: 2.375rem;
+    height: 2.375rem;
+  }
+
+  .pruefung {
+    padding: 1.4rem;
+  }
+}
+
+@media print {
+  .bildFeld,
+  .karte,
+  .pruefung {
+    break-inside: avoid;
+  }
+}
