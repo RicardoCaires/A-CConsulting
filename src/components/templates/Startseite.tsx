@@ -71,10 +71,8 @@ export type StartseiteInhalt = {
     eyebrow?: string
     titel: ReactNode
     satz: ReactNode
-    /** Genau einer. Der Kopf traegt keinen zweiten Knopf. */
+    /** Genau einer. Der Kopf traegt keinen zweiten Knopf und keinen Textlink. */
     knopf: { text: string; ziel: PageKey }
-    /** Zurueckhaltender zweiter Weg, als Textlink. */
-    weiter?: { text: string; ziel: PageKey }
     bild: HeroBild
   }
   situationen: {
@@ -104,8 +102,10 @@ export type StartseiteInhalt = {
     link?: ReactNode
   }
   abschluss: {
+    eyebrow?: string
     titel: ReactNode
     satz?: ReactNode
+    felder: { telefon: string; email: string }
     knopf: { text: string; ziel: PageKey }
   }
 }
@@ -137,16 +137,14 @@ export function StartseiteTemplate({
         titel={inhalt.einstieg.titel}
         satz={inhalt.einstieg.satz}
         aktion={
-          <Button href={hrefOrDefault(inhalt.einstieg.knopf.ziel, locale)}>
+          /* Gruen, auf Ricardos Anweisung vom 15.09.2026. Der zweite Weg
+             „Unsere Leistungen" ist am selben Tag entfallen. */
+          <Button
+            href={hrefOrDefault(inhalt.einstieg.knopf.ziel, locale)}
+            variant="akzent"
+          >
             {inhalt.einstieg.knopf.text}
           </Button>
-        }
-        weiter={
-          inhalt.einstieg.weiter && (
-            <a href={hrefOrDefault(inhalt.einstieg.weiter.ziel, locale)}>
-              {inhalt.einstieg.weiter.text}
-            </a>
-          )
         }
         bild={inhalt.einstieg.bild}
       />
@@ -256,8 +254,10 @@ export function StartseiteTemplate({
           wieder zusammengefuehrt. */}
       <Kontaktabschluss
         id="abschluss"
+        eyebrow={inhalt.abschluss.eyebrow}
         titel={inhalt.abschluss.titel}
         satz={inhalt.abschluss.satz}
+        felder={inhalt.abschluss.felder}
         aktion={
           <Button
             href={hrefOrDefault(inhalt.abschluss.knopf.ziel, locale)}

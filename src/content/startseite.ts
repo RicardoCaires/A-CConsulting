@@ -81,8 +81,6 @@ export type StartseiteContent = {
     eyebrow: string
     titel: string
     satz: string
-    /** Zweiter, ruhiger Verweis neben dem Knopf. */
-    weiter: { text: string; ziel: PageKey }
     /** Echte Aufnahme oder Platzhalter mit Formatangabe. */
     bild: { src: string; alt: string } | { label: string; note?: string }
   }
@@ -130,8 +128,11 @@ export type StartseiteContent = {
   }
 
   abschluss: {
+    eyebrow: string
     titel: string
     satz: string
+    /** Beschriftung der beiden Felder. Die Angabe kommt aus `company.ts`. */
+    felder: { telefon: string; email: string }
   }
 }
 
@@ -149,7 +150,6 @@ const de: StartseiteContent = {
     eyebrow: 'Versicherungen · Treuhand',
     titel: 'Verwurzelt im Seeland. Blick auf mehr.',
     satz: 'Wir unterstützen Selbständige, KMU und Privatpersonen bei Buchhaltung, Versicherungen und Finanzfragen – mit festen Ansprechpartnern in Aegerten.',
-    weiter: { text: 'Unsere Leistungen', ziel: 'treuhand' },
     // Die Aufnahme traegt Ueberschrift und Vorzeile bereits eingebrannt.
     // Darum blendet der Kopf seinen eigenen Text aus, sobald das Bild lesbar
     // gross ist — sonst stuende beides doppelt. Auf schmalen Geraeten ist es
@@ -281,9 +281,14 @@ const de: StartseiteContent = {
   },
 
   // ---- 9 Abschluss
+  // Seit dem 15.09.2026 nach Ricardos HTML-Vorlage
+  // (`content/source/abschluss_kontakt_de.md`). Die Ueberschrift lautet jetzt
+  // gleich wie die von Abschnitt 3 — Ricardo ist darauf hingewiesen.
   abschluss: {
-    titel: 'Erzählen Sie uns, wobei wir Sie entlasten können.',
-    satz: 'Schildern Sie uns kurz Ihr Anliegen. Wir melden uns persönlich bei Ihnen.',
+    eyebrow: 'Direkt und persönlich',
+    titel: 'Wobei können wir Sie unterstützen?',
+    satz: 'Schildern Sie uns kurz Ihre Situation. Wir melden uns persönlich bei Ihnen und besprechen, welche nächsten Schritte sinnvoll sind.',
+    felder: { telefon: 'Telefon', email: 'E-Mail' },
   },
 }
 
