@@ -120,7 +120,6 @@ export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
         titel={<Translated value={inhalt.titel} fallback={ui.page[inhalt.slug]} />}
         satz={<TranslatedRich value={inhalt.nutzenSatz} />}
         aktion={<Button href={hrefOrDefault('kontakt', locale)}>{knopf}</Button>}
-        bild={inhalt.bild ?? undefined}
       />
 
       {/* ---- 2 und 3 auf einer gemeinsamen Flaeche ------------------------ */}

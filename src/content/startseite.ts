@@ -150,13 +150,12 @@ const de: StartseiteContent = {
     eyebrow: 'Versicherungen · Treuhand',
     titel: 'Verwurzelt im Seeland. Blick auf mehr.',
     satz: 'Wir unterstützen Selbständige, KMU und Privatpersonen bei Buchhaltung, Versicherungen und Finanzfragen – mit festen Ansprechpartnern in Aegerten.',
-    // Die Aufnahme traegt Ueberschrift und Vorzeile bereits eingebrannt.
-    // Darum blendet der Kopf seinen eigenen Text aus, sobald das Bild lesbar
-    // gross ist — sonst stuende beides doppelt. Auf schmalen Geraeten ist es
-    // umgekehrt: Dort ist der eingebrannte Text zu klein, und der HTML-Text
-    // traegt. Je Fenstergroesse steht die Aussage genau einmal.
+    // Seit dem 15.09.2026 dieselbe Aufnahme wie in allen anderen
+    // Seitenkoepfen, auf Ricardos Anweisung. Sie traegt keinen eingebrannten
+    // Text mehr; Ueberschrift, Vorzeile und Satz stehen auf jeder Breite als
+    // HTML-Text darauf.  bleibt liegen.
     bild: {
-      src: '/bilder/startseite-seeland.webp',
+      src: '/bilder/seitenkopf-banner.webp',
       alt: 'Blick über das Seeland bei Dämmerung: Lichter der Stadt, der See und die Hügelkette im Abendhimmel.',
     },
   },

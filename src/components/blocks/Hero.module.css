@@ -23,23 +23,35 @@
      statt unten abgeschnitten zu werden. Der Wert ist bewusst knapp — die
      Hoehe soll aus dem Inhalt kommen. */
   width: 100%;
-  min-height: 19rem;
+  /* Mass aus Ricardos Vorlage vom 15.09.2026: 560 bis 760 px. Vorher trug der
+     Kopf kein Bild und war entsprechend flach. */
+  min-height: clamp(35rem, 67vw, 47.5rem);
 }
 
 .bild {
   position: absolute;
   inset: 0;
-  z-index: -2;
-  /* Die Flaeche fuellt den Kopf; das Seitenverhaeltnis gibt der Kopf vor. */
-  aspect-ratio: auto;
-  border-radius: 0;
-  /* Die Beschriftung sitzt oben, damit sie dem Text unten nicht ins Gehege kommt. */
-  justify-content: flex-start;
-  padding-top: var(--ac-space-md);
+  z-index: -3;
+  object-fit: cover;
+  object-position: center;
 }
 
-/* Verlauf von unten. Auf dem Platzhalter kaum sichtbar, unter dem spaeteren
-   Foto der Grund dafuer, dass die Ueberschrift lesbar bleibt. */
+/* Flaechige Deckung. Die Vorlage setzt 32 Prozent `navy_deep`; sie traegt
+   dort eine einzelne grosse Ueberschrift. Unser Kopf traegt zusaetzlich
+   Vorzeile, Fliesstext und Knopf, und die Vorzeile steht bei 74 Prozent der
+   Kopfhoehe — ueber dem hellsten Teil des Himmels. Nachgemessen ergaben
+   32 Prozent dort nur 3.1:1. Mit 42 Prozent und dem Verlauf darueber sind es
+   5.5:1 und mehr. */
+.deckung {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-color: color-mix(in srgb, var(--ac-color-navy-deep) 42%, transparent);
+  pointer-events: none;
+}
+
+/* Verlauf von unten. Er ist der Grund dafuer, dass die Ueberschrift ueber der
+   hellsten Stelle des Bildes lesbar bleibt. */
 .verlauf {
   position: absolute;
   inset: 0;
@@ -47,8 +59,9 @@
   background: linear-gradient(
     to top,
     var(--ac-color-navy-deep) 0%,
-    color-mix(in srgb, var(--ac-color-navy-deep) 72%, transparent) 34%,
-    transparent 68%
+    color-mix(in srgb, var(--ac-color-navy-deep) 72%, transparent) 30%,
+    color-mix(in srgb, var(--ac-color-navy-deep) 45%, transparent) 62%,
+    color-mix(in srgb, var(--ac-color-navy-deep) 30%, transparent) 100%
   );
   pointer-events: none;
 }
@@ -113,8 +126,7 @@
 
 @media (min-width: 64rem) {
   .hero {
-    /* Knapp die Haelfte des Fensters, nicht mehr. */
-    min-height: min(24rem, 52vh);
+    min-height: clamp(35rem, 40vw, 47.5rem);
   }
 
   .titel {
@@ -129,7 +141,7 @@
 /* Wo `color-mix` fehlt, traegt ein einfacher Verlauf. */
 @supports not (background: color-mix(in srgb, red 50%, blue)) {
   .verlauf {
-    background: linear-gradient(to top, var(--ac-color-navy-deep) 0%, transparent 70%);
+    background: linear-gradient(to top, var(--ac-color-navy-deep) 0%, transparent 100%);
   }
 }
 
@@ -139,7 +151,39 @@
   }
 
   .bild,
+  .deckung,
   .verlauf {
     display: none;
+  }
+}
+
+/* Drei Belege unter dem Knopf — heute nur auf `/versicherungen`. */
+.belege {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ac-space-2xs) var(--ac-space-md);
+  margin: var(--ac-space-md) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--ac-small-size);
+  line-height: var(--ac-small-line);
+  color: var(--ac-color-white);
+}
+
+.belege li {
+  display: inline-flex;
+  gap: var(--ac-space-2xs);
+  align-items: center;
+}
+
+.belegZeichen {
+  flex: none;
+  color: var(--ac-color-accent-green-light);
+}
+
+/* Auf schmalen Geraeten deckt die Vorlage staerker ab. */
+@media (max-width: 43.75rem) {
+  .deckung {
+    background-color: color-mix(in srgb, var(--ac-color-navy-deep) 52%, transparent);
   }
 }

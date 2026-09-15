@@ -911,34 +911,46 @@ Broker von einem Direktabschluss unterscheidet.
 
 Kein Prämienrechner, keine Vergleichstabellen mit Versicherernamen.
 
-#### Seitenkopf mit Bild, seit dem 10.09.2026
+#### Seitenkopf — seit dem 15.09.2026 auf allen Seiten derselbe
 
-Ricardo hat für `/versicherungen` ein Kopfbild und eine Referenzgrafik
-geliefert. Der Kopf läuft dort über den eigenen Baustein
-`src/components/blocks/BildHero.tsx`: links Kategorie, Titel, Satz, grüner
-Knopf und drei Belege, rechts das Bild bis an die Fensterkante.
+Ricardo hat eine Aufnahme geliefert und angeordnet: „bitte bei allen seiten
+den Hintergrund des Banners mit diesem Bild ersetzen die überschiften sollen
+bleiben". Der Seitenkopf trägt seither auf **jeder** Seite dasselbe Bild —
+Blick über das Seeland bei Dämmerung, mit der hellen A&C-Bildmarke oben
+rechts. Dazu die HTML-Vorlage `bilder-quelle/seitenkopf_banner/vorlage.html`.
 
-**`Hero.tsx` bleibt unverändert.** Er trägt acht andere Seitenköpfe. Welche
-Seite ein Bild bekommt, steht in `PAGE_HERO_BILD` in
-`src/app/[locale]/[...slug]/page.tsx` — heute genau eine. Kommen weitere
-Bilder, treten sie dort dazu.
-
-Masse aus der Vorlage: Kopfhöhe 29.5 Prozent der Breite, helles Motiv ab
-58.5 Prozent. Nachgemessen bei 1900 px: 30.4 Prozent und 57.6 Prozent.
-
-Drei Punkte, die man wissen muss:
-
-- **Der Knopf ist grün** (`variant="akzent"`), auf Ricardos Vorgabe. Sonst gilt
-  „Grün ist Akzent, nicht Fläche". Er kommt auf der Seite genau einmal vor.
-- **Der Titel läuft in der H1-Grösse**, nicht in der Display-Grösse. In der
-  Display-Grösse brach „Versicherungen für Privatpersonen und Unternehmen" in
-  fünf Zeilen und der Kopf wurde 840 px hoch. Dieselbe Entscheidung trifft
-  `Hero` als `titelLaenge="lang"`.
-- **Die Kategoriezeile heisst „Versicherungen", nicht „[BERATUNGSSITUATION]".**
-  Der Auftrag nannte Letzteres; das ist aber die interne Regieanweisung für das
-  fehlende Foto aus `PAGE_VISUAL` und kein Website-Text. Die Referenzgrafik hat
-  sie aus der bestehenden Seite übernommen. Ricardo entscheidet, ob es so
-  bleibt.
+- **Ein Baustein für alle.** `Hero.tsx` trägt jetzt jede Inhaltsseite. Der
+  zweispaltige `BildHero` von `/versicherungen` ist damit nicht mehr im
+  Einsatz; **Titel, Vorzeile, Satz, der grüne Knopf und die drei Belege
+  bleiben** und stehen im neuen Kopf. Die Komponente und ihre Illustration
+  `wide_cinematic_vector_3d_illustration_style_insu.webp` bleiben liegen.
+- **Kopfhöhe 560 bis 760 px**, wie die Vorlage sie angibt. Vorher trug der
+  Kopf kein Bild und war 304 bis 384 px flach.
+- **`PAGE_VISUAL` ist entfallen.** Die Platzhalterflächen mit den
+  Regieanweisungen („BERATUNGSSITUATION", „Aufnahme 1 der Shootingliste")
+  gibt es nicht mehr — an ihrer Stelle steht das Bild.
+- **Die Startseite trägt dieselbe Aufnahme.** Ihr bisheriges Bild
+  `startseite-seeland.webp` hatte Überschrift, Strich und Vorzeile
+  **eingebrannt**; darum versteckte `StartHero` ab 40rem den HTML-Text und
+  setzte den Knopf prozentual unter den ersten Buchstaben. Die neue Aufnahme
+  trägt keinen Text — die ganze Mechanik ist ersatzlos gestrichen, und
+  Überschrift, Vorzeile, Satz und Knopf stehen auf jeder Breite als Text da.
+  Die alte Datei bleibt liegen.
+- **Die Deckung ist stärker als in der Vorlage: 42 statt 32 Prozent**
+  (mobil 52 statt 46), dazu ein Verlauf über die volle Höhe. Die Vorlage
+  trägt eine einzelne grosse Überschrift; unser Kopf trägt zusätzlich
+  Vorzeile, Fliesstext und Knopf, und die Vorzeile steht bei 74 Prozent der
+  Kopfhöhe — über dem hellsten Teil des Himmels. Nachgemessen ergaben
+  32 Prozent dort **3.1:1**. Mit 42 Prozent sind es 6.9:1 an der Vorzeile,
+  9.4:1 an der Überschrift und 10.3:1 am Fliesstext.
+- **`alt=""`.** Dasselbe Bild auf zehn Seiten zu beschreiben wäre für
+  Vorlesewerkzeuge Rauschen; die Aussage der Seite steht in der Überschrift.
+  Die Startseite behält ihren Alt-Text, dort ist es das eine Kopfbild.
+- **`/ueber-uns` hat den Banner nicht.** Die Seite läuft über die eigene
+  Vorlage, und ihr Einstieg ist am selben Tag nach Ricardos Vorlage als
+  heller zweispaltiger Block gebaut — mit Pillen, Bildfläche und grünem
+  Eckmarker. Dort gibt es keinen dunklen Bannergrund zu ersetzen. **Ricardo
+  ist darauf hingewiesen.**
 
 Die **Sprungmarken** unter dem Kopf sind neu gestaltet: mittig, weisse Pillen
 mit feiner Kontur, alle gleich. Sie stehen auf mehreren Seiten, die Änderung

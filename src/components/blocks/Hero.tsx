@@ -1,8 +1,22 @@
 import type { ReactNode } from 'react'
+import Image from 'next/image'
 
-import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
+import { Icon } from '@/components/ui/Icon'
 
 import styles from './Hero.module.css'
+
+/**
+ * Die Aufnahme hinter jedem Seitenkopf.
+ *
+ * Seit dem 15.09.2026 auf Ricardos Anweisung („bitte bei allen seiten den
+ * Hintergrund des Banners mit diesem Bild ersetzen") auf **allen** Seiten
+ * dieselbe. Sie steht darum hier und nicht je Seite im Inhalt.
+ *
+ * `alt=""`: Die Aussage der Seite steht in der Ueberschrift darueber. Eine
+ * Beschreibung desselben Bildes auf zehn Seiten waere fuer Vorlesewerkzeuge
+ * Rauschen, nicht Information.
+ */
+const BANNER = '/bilder/seitenkopf-banner.webp'
 
 /**
  * Seitenkopf — einspaltig, mit dem Bild als Flaeche.
@@ -34,13 +48,8 @@ type Props = {
   satz?: ReactNode
   /** Genau ein Knopf. Ein zweiter macht die Entscheidung schwerer, nicht leichter. */
   aktion?: ReactNode
-  /**
-   * Bild im Kopf. Faellt es weg, traegt die dunkle Flaeche den Kopf allein.
-   *
-   * Es wird nie zwoelf verschiedene echte Aufnahmen geben, und Stockfotos sind
-   * ausgeschlossen. Lieber kein Bild als ein beliebiges.
-   */
-  bild?: { label: string; note?: string }
+  /** Drei kurze Belege unter dem Knopf. Heute nur auf `/versicherungen`. */
+  belege?: readonly string[]
   /** Ueberschriftenebene. Auf Inhaltsseiten 1, im Styleguide auch 2. */
   level?: 1 | 2
   /**
@@ -61,7 +70,7 @@ export function Hero({
   titel,
   satz,
   aktion,
-  bild,
+  belege,
   level = 1,
   titelLaenge = 'kurz',
   id = 'seitenkopf',
@@ -71,14 +80,12 @@ export function Hero({
 
   return (
     <section className={`ac-section--navy on-navy ${styles.hero}`} aria-labelledby={id}>
-      {/* Im Kopf steht nur die kurze Beschriftung, nicht der Motivhinweis:
-          Der Hinweis ist eine Regieanweisung an uns, er laeuft ueber zwei
-          Zeilen und geriet damit bei langen Titeln in die Ueberschrift. Er
-          bleibt im Inhalt stehen und dient der Shootingliste. */}
-      {bild && <ImagePlaceholder className={styles.bild} label={bild.label} tone="dunkel" />}
+      <Image className={styles.bild} src={BANNER} alt="" fill priority sizes="100vw" />
 
-      {/* Verlauf von unten: haelt die Ueberschrift lesbar, sobald das echte
-          Foto an die Stelle des Platzhalters tritt. */}
+      {/* Zwei Schichten: die flaechige Deckung der Vorlage und der Verlauf von
+          unten. Zusammen tragen sie die weisse Schrift auch ueber dem hellsten
+          Teil des Himmels. */}
+      <div className={styles.deckung} aria-hidden="true" />
       <div className={styles.verlauf} aria-hidden="true" />
 
       <div className={`ac-container ${styles.inhalt}`}>
@@ -90,6 +97,17 @@ export function Hero({
 
         {satz && <p className={styles.satz}>{satz}</p>}
         {aktion && <div className={styles.aktion}>{aktion}</div>}
+
+        {belege && belege.length > 0 && (
+          <ul className={styles.belege} role="list">
+            {belege.map((beleg) => (
+              <li key={beleg}>
+                <Icon name="haken" size={1.125} className={styles.belegZeichen} />
+                {beleg}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </section>
   )

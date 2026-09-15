@@ -135,120 +135,29 @@
 
 /* ---- Ab Desktop ---------------------------------------------------------- */
 
-/* Ab 40rem traegt das Bild den Text.
+/* Seit dem 15.09.2026 traegt das Bild **keinen** eingebrannten Text mehr:
+   Ricardo hat fuer alle Seitenkoepfe dieselbe Aufnahme geliefert, und sie
+   zeigt nur die Landschaft mit der hellen Bildmarke oben rechts.
 
-   Frueher stand die Grenze bei 64rem. Dazwischen lief die Seite in beide
-   Fallen zugleich: Der Ausschnitt war zu breit, um die eingebrannte Schrift
-   auszusparen, und der HTML-Text stand trotzdem da — auf jedem Tablet zweimal
-   dieselbe Ueberschrift. 40rem ist die Breite, ab der die Rechnung unten
-   aufgeht (0.292w + 8rem bleibt unter w/2, also wird seitlich nichts mehr
-   abgeschnitten). */
+   Damit faellt die ganze Mechanik weg, die den HTML-Text ab 40rem versteckte
+   und den Knopf prozentual unter den ersten Buchstaben der eingebrannten
+   Ueberschrift setzte. Ueberschrift, Strich, Vorzeile, Satz und Knopf stehen
+   jetzt auf jeder Breite als Text da — so, wie es auf allen anderen Seiten
+   auch ist. */
 @media (min-width: 40rem) {
-  /* Die Hoehe folgt hier dem Bild, nicht dem Fenster.
-
-     Das Bild ist doppelt so breit wie hoch und traegt seine Aussage in der
-     oberen Haelfte — die Ueberschrift, den gruenen Strich, die Vorzeile. Bei
-     fester Hoehe schneidet `cover` mit wachsender Fensterbreite immer mehr
-     davon weg; bei 1920 fehlte die halbe Ueberschrift.
-
-     Die eingebrannte Aussage endet bei 58.3 Prozent der Bildhoehe, also bei
-     0.292 der Fensterbreite. 8rem darunter tragen den Knopf — bei jeder
-     Breite gleich viel, weil der Knopf nicht mitwaechst.
-
-     Ohne Untergrenze: Eine feste Mindesthoehe waere unterhalb von rund
-     1100 px hoeher als die halbe Fensterbreite, und dann schneidet `cover`
-     seitlich ab — mitten in die Ueberschrift. */
   .hero {
-    min-height: calc(29.2vw + 8rem);
-    /* Text nach unten: Ueber ihm steht die eingebrannte Ueberschrift des
-       Bildes. */
+    min-height: clamp(35rem, 67vw, 47.5rem);
     align-items: flex-end;
   }
 
   .titel {
-    max-width: 13ch;
+    max-width: 18ch;
   }
 
-  /* Oben verankert statt mittig. Das Bild ist doppelt so breit wie hoch; der
-     Kopf ist es nicht. `cover` schneidet darum ab — und bei mittiger Lage
-     wandert der Schnitt mit der Fensterbreite nach oben in die eingebrannte
-     Ueberschrift hinein. Bei 1920 fehlte die obere Haelfte von „Verwurzelt".
-     Von oben her gerechnet steht sie bei jeder Breite vollstaendig da;
-     abgeschnitten wird der Seegrund unten, wo nichts steht. */
+  /* Von oben gerechnet: Das Bild ist doppelt so breit wie hoch, der Kopf ist
+     es nicht. `cover` schneidet unten den Seegrund weg, wo nichts steht. */
   .foto {
-    object-position: 50% 0%;
-  }
-
-  /* Ueberschrift, Marker und Vorzeile stehen bereits im Bild. Ab hier ist das
-     Bild gross genug, um sie zu tragen — der HTML-Text daneben waere dieselbe
-     Aussage ein zweites Mal.
-
-     Sie bleiben im Dokument: Suchmaschinen und Vorlesewerkzeuge brauchen die
-     Ueberschrift, und `visibility: hidden` nimmt sie nur dem Auge. */
-  /* Das Bild bringt seinen eigenen Kontrast mit — der Verlauf legte sich
-     ueber die eingebrannte Schrift und machte sie grau. Ab hier nur noch so
-     viel, wie der Satz und der Knopf unten links brauchen. */
-  .verlauf {
-    background: linear-gradient(
-      to top,
-      color-mix(in srgb, var(--ac-color-navy-deep) 82%, transparent) 0%,
-      color-mix(in srgb, var(--ac-color-navy-deep) 45%, transparent) 26%,
-      transparent 52%
-    );
-  }
-
-  .titel,
-  .marker,
-  .eyebrow {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-
-  /* Auch der Fliesstext weicht. Er kollidierte mit der eingebrannten Vorzeile
-     des Bildes, und zwar nicht bei einer Breite, sondern staerker je breiter
-     das Fenster: Der eingebrannte Text skaliert mit dem Bild, mein Text haengt
-     am unteren Rand. Gemessen 39 px bei 1280, 69 px bei 1920.
-
-     Jede Positionierung dagegen waere geraten. Die Vorlage traegt an dieser
-     Stelle ohnehin keinen Fliesstext — sie hat Ueberschrift, Strich, Vorzeile.
-     Also bleibt hier der Knopf, und der Satz steht auf schmalen Geraeten, wo
-     das Bild ihn nicht ersetzt.
-
-     Faellt der eingebrannte Text im Bild spaeter weg, wird aus diesem Block
-     wieder normaler Text — es ist nur diese eine Regel zu loeschen. */
-  .satz {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-
-  /* Der Knopf richtet sich hier nach dem Bild, nicht nach dem Textcontainer.
-
-     Die eingebrannte Ueberschrift beginnt bei 11.84 Prozent der Bildbreite.
-     Das Bild laeuft ueber die volle Fensterbreite, der Container dagegen ist
-     mittig begrenzt — bei 1920 stand der Knopf darum 190 px rechts neben der
-     Ueberschrift, ohne erkennbaren Bezug. Prozentual gerechnet steht er bei
-     jeder Breite unter dem ersten Buchstaben. */
-  .inner {
-    max-width: none;
-    margin-inline: 0;
-    padding-inline: 11.84vw var(--ac-gutter);
-    padding-block-end: clamp(1.75rem, 3.5vw, 2.75rem);
-  }
-
-  .aktionen {
-    margin-top: 0;
+    object-position: 50% 30%;
   }
 }
 
