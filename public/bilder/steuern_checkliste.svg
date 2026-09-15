@@ -1,25 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1100" viewBox="0 0 900 1100">
-<rect width="900" height="1100" fill="none"/>
-<g transform="translate(95,70) rotate(3 355 450)">
-  <rect x="0" y="0" width="710" height="900" rx="26" fill="#FFFFFF" stroke="#DCE8F2" stroke-width="4"/>
-  <text x="70" y="115" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" fill="#0B2D57">Checkliste</text>
-  <text x="70" y="168" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="#0B2D57">Kanton Bern</text>
-  <g fill="none" stroke="#1FB879" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M90 270 l25 25 l45 -55"/>
-    <path d="M90 390 l25 25 l45 -55"/>
-    <path d="M90 510 l25 25 l45 -55"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+  <circle cx="256" cy="256" r="168" fill="#E2E8EF"/>
+  <g transform="translate(128 128) scale(10.6666667)" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect width="8" height="4" x="8" y="2" rx="1" ry="1" stroke="#1A3A5C"/>
+    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" stroke="#1A3A5C"/>
+    <path d="m9 14 2 2 4-4" stroke="#207730"/>
   </g>
-  <g stroke="#DCE8F2" stroke-width="22" stroke-linecap="round">
-    <line x1="210" y1="275" x2="525" y2="275"/>
-    <line x1="210" y1="325" x2="450" y2="325"/>
-    <line x1="210" y1="395" x2="550" y2="395"/>
-    <line x1="210" y1="445" x2="465" y2="445"/>
-    <line x1="210" y1="515" x2="500" y2="515"/>
-    <line x1="210" y1="565" x2="430" y2="565"/>
-  </g>
-  <!-- Neutral Bern reference block; no official coat of arms reproduced -->
-  <rect x="470" y="660" width="155" height="155" rx="22" fill="#F3F7FB"/>
-  <path d="M515 765 c20-70 85-75 95-22 c-18-12-32-8-43 7 c10 10 18 21 20 35 c-24 8-50 7-72-20z"
-        fill="#0B2D57" opacity=".72"/>
-</g>
 </svg>

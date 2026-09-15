@@ -1,0 +1,786 @@
+[
+  {
+    "page": "01-startseite",
+    "slug": "kranken-zusatzversicherung",
+    "label": "Kranken- und Zusatzversicherung",
+    "icon": "HeartPulse",
+    "svg": "01-startseite\\kranken-zusatzversicherung.svg",
+    "png": "01-startseite\\kranken-zusatzversicherung.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "hausrat-haftpflicht-motorfahrzeug",
+    "label": "Hausrat, Haftpflicht und Motorfahrzeug",
+    "icon": "House",
+    "svg": "01-startseite\\hausrat-haftpflicht-motorfahrzeug.svg",
+    "png": "01-startseite\\hausrat-haftpflicht-motorfahrzeug.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "bvg-uvg-krankentaggeld",
+    "label": "BVG, UVG und Krankentaggeld",
+    "icon": "UsersRound",
+    "svg": "01-startseite\\bvg-uvg-krankentaggeld.svg",
+    "png": "01-startseite\\bvg-uvg-krankentaggeld.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "betriebshaftpflicht-sachversicherung",
+    "label": "Betriebshaftpflicht und Sachversicherung",
+    "icon": "Building2",
+    "svg": "01-startseite\\betriebshaftpflicht-sachversicherung.svg",
+    "png": "01-startseite\\betriebshaftpflicht-sachversicherung.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "buchhaltung",
+    "label": "Buchhaltung",
+    "icon": "FileSpreadsheet",
+    "svg": "01-startseite\\buchhaltung.svg",
+    "png": "01-startseite\\buchhaltung.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "mehrwertsteuer-jahresabschluss",
+    "label": "Mehrwertsteuer und Jahresabschluss",
+    "icon": "ChartNoAxesColumnIncreasing",
+    "svg": "01-startseite\\mehrwertsteuer-jahresabschluss.svg",
+    "png": "01-startseite\\mehrwertsteuer-jahresabschluss.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "lohnadministration-sozialversicherungen",
+    "label": "Lohnadministration und Sozialversicherungen",
+    "icon": "UserRoundCog",
+    "svg": "01-startseite\\lohnadministration-sozialversicherungen.svg",
+    "png": "01-startseite\\lohnadministration-sozialversicherungen.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "firmengruendung-treuhaenderwechsel",
+    "label": "Firmengründung und Treuhänderwechsel",
+    "icon": "Building2",
+    "svg": "01-startseite\\firmengruendung-treuhaenderwechsel.svg",
+    "png": "01-startseite\\firmengruendung-treuhaenderwechsel.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "budget",
+    "label": "Budget",
+    "icon": "Coins",
+    "svg": "01-startseite\\budget.svg",
+    "png": "01-startseite\\budget.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "analyse-optimierung",
+    "label": "Analyse und Optimierung",
+    "icon": "ChartSpline",
+    "svg": "01-startseite\\analyse-optimierung.svg",
+    "png": "01-startseite\\analyse-optimierung.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "vorsorge",
+    "label": "Vorsorge",
+    "icon": "Sprout",
+    "svg": "01-startseite\\vorsorge.svg",
+    "png": "01-startseite\\vorsorge.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "persoenliche-begleitung",
+    "label": "Persönliche Begleitung",
+    "icon": "Compass",
+    "svg": "01-startseite\\persoenliche-begleitung.svg",
+    "png": "01-startseite\\persoenliche-begleitung.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "ich-gruende-ein-unternehmen",
+    "label": "Ich gründe ein Unternehmen",
+    "icon": "Building2",
+    "svg": "01-startseite\\ich-gruende-ein-unternehmen.svg",
+    "png": "01-startseite\\ich-gruende-ein-unternehmen.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "ich-stelle-mitarbeitende-ein",
+    "label": "Ich stelle Mitarbeitende ein",
+    "icon": "UserPlus",
+    "svg": "01-startseite\\ich-stelle-mitarbeitende-ein.svg",
+    "png": "01-startseite\\ich-stelle-mitarbeitende-ein.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "ich-gebe-buchhaltung-ab",
+    "label": "Ich möchte meine Buchhaltung abgeben",
+    "icon": "Calculator",
+    "svg": "01-startseite\\ich-gebe-buchhaltung-ab.svg",
+    "png": "01-startseite\\ich-gebe-buchhaltung-ab.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "ich-wechsle-treuhaender",
+    "label": "Ich möchte meinen Treuhänder wechseln",
+    "icon": "RefreshCw",
+    "svg": "01-startseite\\ich-wechsle-treuhaender.svg",
+    "png": "01-startseite\\ich-wechsle-treuhaender.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "ich-pruefe-versicherungen",
+    "label": "Ich möchte meine Versicherungen prüfen",
+    "icon": "ShieldQuestion",
+    "svg": "01-startseite\\ich-pruefe-versicherungen.svg",
+    "png": "01-startseite\\ich-pruefe-versicherungen.png"
+  },
+  {
+    "page": "01-startseite",
+    "slug": "ich-habe-schadenfall",
+    "label": "Ich habe einen Schadenfall",
+    "icon": "ShieldAlert",
+    "svg": "01-startseite\\ich-habe-schadenfall.svg",
+    "png": "01-startseite\\ich-habe-schadenfall.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "unabhaengige-beratung",
+    "label": "Unabhängige Beratung",
+    "icon": "Scale",
+    "svg": "02-versicherungen\\unabhaengige-beratung.svg",
+    "png": "02-versicherungen\\unabhaengige-beratung.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "objektiver-vergleich",
+    "label": "Objektiver Vergleich",
+    "icon": "SearchCheck",
+    "svg": "02-versicherungen\\objektiver-vergleich.svg",
+    "png": "02-versicherungen\\objektiver-vergleich.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "interessen-im-fokus",
+    "label": "Ihre Interessen im Fokus",
+    "icon": "BadgeCheck",
+    "svg": "02-versicherungen\\interessen-im-fokus.svg",
+    "png": "02-versicherungen\\interessen-im-fokus.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "kunde-im-zentrum",
+    "label": "Kunde im Zentrum",
+    "icon": "UserRoundCheck",
+    "svg": "02-versicherungen\\kunde-im-zentrum.svg",
+    "png": "02-versicherungen\\kunde-im-zentrum.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "sparpotenzial",
+    "label": "Sparpotenzial",
+    "icon": "PiggyBank",
+    "svg": "02-versicherungen\\sparpotenzial.svg",
+    "png": "02-versicherungen\\sparpotenzial.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "qualitaet",
+    "label": "Qualität",
+    "icon": "Gem",
+    "svg": "02-versicherungen\\qualitaet.svg",
+    "png": "02-versicherungen\\qualitaet.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "schutz",
+    "label": "Schutz",
+    "icon": "ShieldCheck",
+    "svg": "02-versicherungen\\schutz.svg",
+    "png": "02-versicherungen\\schutz.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "langfristige-begleitung",
+    "label": "Langfristige Begleitung",
+    "icon": "Handshake",
+    "svg": "02-versicherungen\\langfristige-begleitung.svg",
+    "png": "02-versicherungen\\langfristige-begleitung.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "privathaushalt",
+    "label": "Privathaushalt",
+    "icon": "House",
+    "svg": "02-versicherungen\\privathaushalt.svg",
+    "png": "02-versicherungen\\privathaushalt.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "mitarbeitende",
+    "label": "Mitarbeitende",
+    "icon": "UsersRound",
+    "svg": "02-versicherungen\\mitarbeitende.svg",
+    "png": "02-versicherungen\\mitarbeitende.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "betrieb-gebaeude",
+    "label": "Betrieb und Gebäude",
+    "icon": "Building2",
+    "svg": "02-versicherungen\\betrieb-gebaeude.svg",
+    "png": "02-versicherungen\\betrieb-gebaeude.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "betreuung-wohnort",
+    "label": "Betreuung bei Wohnortwechsel",
+    "icon": "MapPinHouse",
+    "svg": "02-versicherungen\\betreuung-wohnort.svg",
+    "png": "02-versicherungen\\betreuung-wohnort.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "betreuung-familie",
+    "label": "Betreuung bei Familienänderung",
+    "icon": "UsersRound",
+    "svg": "02-versicherungen\\betreuung-familie.svg",
+    "png": "02-versicherungen\\betreuung-familie.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "betreuung-praemie",
+    "label": "Prämien prüfen",
+    "icon": "BadgeDollarSign",
+    "svg": "02-versicherungen\\betreuung-praemie.svg",
+    "png": "02-versicherungen\\betreuung-praemie.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "fester-ansprechpartner",
+    "label": "Fester Ansprechpartner",
+    "icon": "ContactRound",
+    "svg": "02-versicherungen\\fester-ansprechpartner.svg",
+    "png": "02-versicherungen\\fester-ansprechpartner.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "persoenliche-betreuung",
+    "label": "Persönliche Betreuung",
+    "icon": "MessageCircleHeart",
+    "svg": "02-versicherungen\\persoenliche-betreuung.svg",
+    "png": "02-versicherungen\\persoenliche-betreuung.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "schaden-telefon",
+    "label": "Schaden telefonisch melden",
+    "icon": "PhoneCall",
+    "svg": "02-versicherungen\\schaden-telefon.svg",
+    "png": "02-versicherungen\\schaden-telefon.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "schaden-unterlagen",
+    "label": "Schadenunterlagen",
+    "icon": "FileText",
+    "svg": "02-versicherungen\\schaden-unterlagen.svg",
+    "png": "02-versicherungen\\schaden-unterlagen.png"
+  },
+  {
+    "page": "02-versicherungen",
+    "slug": "schaden-begleitung",
+    "label": "Begleitung im Schadenfall",
+    "icon": "Handshake",
+    "svg": "02-versicherungen\\schaden-begleitung.svg",
+    "png": "02-versicherungen\\schaden-begleitung.png"
+  },
+  {
+    "page": "03-treuhand",
+    "slug": "buchhaltung",
+    "label": "Buchhaltung",
+    "icon": "FileSpreadsheet",
+    "svg": "03-treuhand\\buchhaltung.svg",
+    "png": "03-treuhand\\buchhaltung.png"
+  },
+  {
+    "page": "03-treuhand",
+    "slug": "lohnbuchhaltung",
+    "label": "Lohnbuchhaltung",
+    "icon": "UsersRound",
+    "svg": "03-treuhand\\lohnbuchhaltung.svg",
+    "png": "03-treuhand\\lohnbuchhaltung.png"
+  },
+  {
+    "page": "03-treuhand",
+    "slug": "mehrwertsteuer",
+    "label": "Mehrwertsteuer",
+    "icon": "Percent",
+    "svg": "03-treuhand\\mehrwertsteuer.svg",
+    "png": "03-treuhand\\mehrwertsteuer.png"
+  },
+  {
+    "page": "03-treuhand",
+    "slug": "jahresabschluss",
+    "label": "Jahresabschluss",
+    "icon": "ChartNoAxesColumnIncreasing",
+    "svg": "03-treuhand\\jahresabschluss.svg",
+    "png": "03-treuhand\\jahresabschluss.png"
+  },
+  {
+    "page": "03-treuhand",
+    "slug": "unternehmensadministration",
+    "label": "Unternehmensadministration",
+    "icon": "FolderCog",
+    "svg": "03-treuhand\\unternehmensadministration.svg",
+    "png": "03-treuhand\\unternehmensadministration.png"
+  },
+  {
+    "page": "03-treuhand",
+    "slug": "firmengruendung",
+    "label": "Firmengründung",
+    "icon": "Building2",
+    "svg": "03-treuhand\\firmengruendung.svg",
+    "png": "03-treuhand\\firmengruendung.png"
+  },
+  {
+    "page": "03-treuhand",
+    "slug": "steuern-firmen",
+    "label": "Steuern für Firmen",
+    "icon": "ReceiptText",
+    "svg": "03-treuhand\\steuern-firmen.svg",
+    "png": "03-treuhand\\steuern-firmen.png"
+  },
+  {
+    "page": "03-treuhand",
+    "slug": "situation-pruefen",
+    "label": "Situation prüfen",
+    "icon": "ClipboardCheck",
+    "svg": "03-treuhand\\situation-pruefen.svg",
+    "png": "03-treuhand\\situation-pruefen.png"
+  },
+  {
+    "page": "03-treuhand",
+    "slug": "uebergabe-planen",
+    "label": "Übergabe planen",
+    "icon": "FolderSync",
+    "svg": "03-treuhand\\uebergabe-planen.svg",
+    "png": "03-treuhand\\uebergabe-planen.png"
+  },
+  {
+    "page": "03-treuhand",
+    "slug": "reibungslos-uebernehmen",
+    "label": "Reibungslos übernehmen",
+    "icon": "Handshake",
+    "svg": "03-treuhand\\reibungslos-uebernehmen.svg",
+    "png": "03-treuhand\\reibungslos-uebernehmen.png"
+  },
+  {
+    "page": "03-treuhand",
+    "slug": "zusammenarbeit-kennenlernen",
+    "label": "Kennenlernen",
+    "icon": "MessagesSquare",
+    "svg": "03-treuhand\\zusammenarbeit-kennenlernen.svg",
+    "png": "03-treuhand\\zusammenarbeit-kennenlernen.png"
+  },
+  {
+    "page": "03-treuhand",
+    "slug": "zusammenarbeit-offerte",
+    "label": "Übersicht und Offerte",
+    "icon": "ClipboardList",
+    "svg": "03-treuhand\\zusammenarbeit-offerte.svg",
+    "png": "03-treuhand\\zusammenarbeit-offerte.png"
+  },
+  {
+    "page": "03-treuhand",
+    "slug": "zusammenarbeit-einrichten",
+    "label": "Zusammenarbeit einrichten",
+    "icon": "Settings2",
+    "svg": "03-treuhand\\zusammenarbeit-einrichten.svg",
+    "png": "03-treuhand\\zusammenarbeit-einrichten.png"
+  },
+  {
+    "page": "03-treuhand",
+    "slug": "zusammenarbeit-laufend",
+    "label": "Laufende Zusammenarbeit",
+    "icon": "CircleCheckBig",
+    "svg": "03-treuhand\\zusammenarbeit-laufend.svg",
+    "png": "03-treuhand\\zusammenarbeit-laufend.png"
+  },
+  {
+    "page": "04-buchhaltung",
+    "slug": "dokumente",
+    "label": "Dokumente",
+    "icon": "FileText",
+    "svg": "04-buchhaltung\\dokumente.svg",
+    "png": "04-buchhaltung\\dokumente.png"
+  },
+  {
+    "page": "04-buchhaltung",
+    "slug": "kennzahlen",
+    "label": "Kennzahlen",
+    "icon": "ChartNoAxesColumnIncreasing",
+    "svg": "04-buchhaltung\\kennzahlen.svg",
+    "png": "04-buchhaltung\\kennzahlen.png"
+  },
+  {
+    "page": "04-buchhaltung",
+    "slug": "termine-fristen",
+    "label": "Termine und Fristen",
+    "icon": "Clock3",
+    "svg": "04-buchhaltung\\termine-fristen.svg",
+    "png": "04-buchhaltung\\termine-fristen.png"
+  },
+  {
+    "page": "04-buchhaltung",
+    "slug": "schritt-gespraech",
+    "label": "Gespräch",
+    "icon": "MessageCircleMore",
+    "svg": "04-buchhaltung\\schritt-gespraech.svg",
+    "png": "04-buchhaltung\\schritt-gespraech.png"
+  },
+  {
+    "page": "04-buchhaltung",
+    "slug": "schritt-umfang",
+    "label": "Umfang festlegen",
+    "icon": "ClipboardList",
+    "svg": "04-buchhaltung\\schritt-umfang.svg",
+    "png": "04-buchhaltung\\schritt-umfang.png"
+  },
+  {
+    "page": "04-buchhaltung",
+    "slug": "schritt-unterlagen",
+    "label": "Unterlagen übernehmen",
+    "icon": "FolderInput",
+    "svg": "04-buchhaltung\\schritt-unterlagen.svg",
+    "png": "04-buchhaltung\\schritt-unterlagen.png"
+  },
+  {
+    "page": "04-buchhaltung",
+    "slug": "schritt-einrichtung",
+    "label": "Ablauf einrichten",
+    "icon": "Cog",
+    "svg": "04-buchhaltung\\schritt-einrichtung.svg",
+    "png": "04-buchhaltung\\schritt-einrichtung.png"
+  },
+  {
+    "page": "04-buchhaltung",
+    "slug": "schritt-start",
+    "label": "Start",
+    "icon": "CircleCheckBig",
+    "svg": "04-buchhaltung\\schritt-start.svg",
+    "png": "04-buchhaltung\\schritt-start.png"
+  },
+  {
+    "page": "04-buchhaltung",
+    "slug": "lieferung-dokument",
+    "label": "Dokument",
+    "icon": "Files",
+    "svg": "04-buchhaltung\\lieferung-dokument.svg",
+    "png": "04-buchhaltung\\lieferung-dokument.png"
+  },
+  {
+    "page": "04-buchhaltung",
+    "slug": "lieferung-eingang",
+    "label": "Posteingang",
+    "icon": "Inbox",
+    "svg": "04-buchhaltung\\lieferung-eingang.svg",
+    "png": "04-buchhaltung\\lieferung-eingang.png"
+  },
+  {
+    "page": "04-buchhaltung",
+    "slug": "lieferung-quittung",
+    "label": "Quittung",
+    "icon": "Receipt",
+    "svg": "04-buchhaltung\\lieferung-quittung.svg",
+    "png": "04-buchhaltung\\lieferung-quittung.png"
+  },
+  {
+    "page": "04-buchhaltung",
+    "slug": "lieferung-personen",
+    "label": "Personen",
+    "icon": "UsersRound",
+    "svg": "04-buchhaltung\\lieferung-personen.svg",
+    "png": "04-buchhaltung\\lieferung-personen.png"
+  },
+  {
+    "page": "04-buchhaltung",
+    "slug": "lieferung-laptop",
+    "label": "Digital",
+    "icon": "Laptop",
+    "svg": "04-buchhaltung\\lieferung-laptop.svg",
+    "png": "04-buchhaltung\\lieferung-laptop.png"
+  },
+  {
+    "page": "05-treuhaenderwechsel",
+    "slug": "grund-betreuung",
+    "label": "Betreuung",
+    "icon": "UserRoundX",
+    "svg": "05-treuhaenderwechsel\\grund-betreuung.svg",
+    "png": "05-treuhaenderwechsel\\grund-betreuung.png"
+  },
+  {
+    "page": "05-treuhaenderwechsel",
+    "slug": "grund-ueberblick",
+    "label": "Überblick",
+    "icon": "ScanSearch",
+    "svg": "05-treuhaenderwechsel\\grund-ueberblick.svg",
+    "png": "05-treuhaenderwechsel\\grund-ueberblick.png"
+  },
+  {
+    "page": "05-treuhaenderwechsel",
+    "slug": "grund-entwicklung",
+    "label": "Entwicklung",
+    "icon": "TrendingUp",
+    "svg": "05-treuhaenderwechsel\\grund-entwicklung.svg",
+    "png": "05-treuhaenderwechsel\\grund-entwicklung.png"
+  },
+  {
+    "page": "05-treuhaenderwechsel",
+    "slug": "ablauf-situation",
+    "label": "Situation besprechen",
+    "icon": "MessagesSquare",
+    "svg": "05-treuhaenderwechsel\\ablauf-situation.svg",
+    "png": "05-treuhaenderwechsel\\ablauf-situation.png"
+  },
+  {
+    "page": "05-treuhaenderwechsel",
+    "slug": "ablauf-leistungen",
+    "label": "Leistungen und Offerte",
+    "icon": "ClipboardList",
+    "svg": "05-treuhaenderwechsel\\ablauf-leistungen.svg",
+    "png": "05-treuhaenderwechsel\\ablauf-leistungen.png"
+  },
+  {
+    "page": "05-treuhaenderwechsel",
+    "slug": "ablauf-zeitpunkt",
+    "label": "Zeitpunkt festlegen",
+    "icon": "CalendarCheck",
+    "svg": "05-treuhaenderwechsel\\ablauf-zeitpunkt.svg",
+    "png": "05-treuhaenderwechsel\\ablauf-zeitpunkt.png"
+  },
+  {
+    "page": "05-treuhaenderwechsel",
+    "slug": "ablauf-uebergabe",
+    "label": "Unterlagen übernehmen",
+    "icon": "FolderSync",
+    "svg": "05-treuhaenderwechsel\\ablauf-uebergabe.svg",
+    "png": "05-treuhaenderwechsel\\ablauf-uebergabe.png"
+  },
+  {
+    "page": "05-treuhaenderwechsel",
+    "slug": "ablauf-start",
+    "label": "Start",
+    "icon": "CircleCheckBig",
+    "svg": "05-treuhaenderwechsel\\ablauf-start.svg",
+    "png": "05-treuhaenderwechsel\\ablauf-start.png"
+  },
+  {
+    "page": "05-treuhaenderwechsel",
+    "slug": "zeitpunkt-geschaeftsjahr",
+    "label": "Geschäftsjahreswechsel",
+    "icon": "CalendarDays",
+    "svg": "05-treuhaenderwechsel\\zeitpunkt-geschaeftsjahr.svg",
+    "png": "05-treuhaenderwechsel\\zeitpunkt-geschaeftsjahr.png"
+  },
+  {
+    "page": "05-treuhaenderwechsel",
+    "slug": "zeitpunkt-unterjaehrig",
+    "label": "Unterjähriger Wechsel",
+    "icon": "CalendarClock",
+    "svg": "05-treuhaenderwechsel\\zeitpunkt-unterjaehrig.svg",
+    "png": "05-treuhaenderwechsel\\zeitpunkt-unterjaehrig.png"
+  },
+  {
+    "page": "06-steuern",
+    "slug": "fristen",
+    "label": "Fristen",
+    "icon": "CalendarDays",
+    "svg": "06-steuern\\fristen.svg",
+    "png": "06-steuern\\fristen.png"
+  },
+  {
+    "page": "06-steuern",
+    "slug": "abzuege",
+    "label": "Abzüge",
+    "icon": "ListChecks",
+    "svg": "06-steuern\\abzuege.svg",
+    "png": "06-steuern\\abzuege.png"
+  },
+  {
+    "page": "06-steuern",
+    "slug": "veranlagung",
+    "label": "Veranlagung",
+    "icon": "FileCheck2",
+    "svg": "06-steuern\\veranlagung.svg",
+    "png": "06-steuern\\veranlagung.png"
+  },
+  {
+    "page": "06-steuern",
+    "slug": "einreichung",
+    "label": "Einreichung",
+    "icon": "Send",
+    "svg": "06-steuern\\einreichung.svg",
+    "png": "06-steuern\\einreichung.png"
+  },
+  {
+    "page": "06-steuern",
+    "slug": "checkliste-kanton-bern",
+    "label": "Checkliste Kanton Bern",
+    "icon": "ClipboardCheck",
+    "svg": "06-steuern\\checkliste-kanton-bern.svg",
+    "png": "06-steuern\\checkliste-kanton-bern.png"
+  },
+  {
+    "page": "06-steuern",
+    "slug": "privatpersonen",
+    "label": "Privatpersonen",
+    "icon": "UserRound",
+    "svg": "06-steuern\\privatpersonen.svg",
+    "png": "06-steuern\\privatpersonen.png"
+  },
+  {
+    "page": "06-steuern",
+    "slug": "unternehmen",
+    "label": "Unternehmen",
+    "icon": "Building2",
+    "svg": "06-steuern\\unternehmen.svg",
+    "png": "06-steuern\\unternehmen.png"
+  },
+  {
+    "page": "07-firmengruendung",
+    "slug": "einzelfirma",
+    "label": "Einzelfirma",
+    "icon": "UserRound",
+    "svg": "07-firmengruendung\\einzelfirma.svg",
+    "png": "07-firmengruendung\\einzelfirma.png"
+  },
+  {
+    "page": "07-firmengruendung",
+    "slug": "gmbh",
+    "label": "GmbH",
+    "icon": "Building2",
+    "svg": "07-firmengruendung\\gmbh.svg",
+    "png": "07-firmengruendung\\gmbh.png"
+  },
+  {
+    "page": "07-firmengruendung",
+    "slug": "rolle-ac-consulting",
+    "label": "A&C Consulting",
+    "icon": "BriefcaseBusiness",
+    "svg": "07-firmengruendung\\rolle-ac-consulting.svg",
+    "png": "07-firmengruendung\\rolle-ac-consulting.png"
+  },
+  {
+    "page": "07-firmengruendung",
+    "slug": "rolle-notariat",
+    "label": "Notariat",
+    "icon": "Stamp",
+    "svg": "07-firmengruendung\\rolle-notariat.svg",
+    "png": "07-firmengruendung\\rolle-notariat.png"
+  },
+  {
+    "page": "07-firmengruendung",
+    "slug": "rolle-bank",
+    "label": "Bank",
+    "icon": "Landmark",
+    "svg": "07-firmengruendung\\rolle-bank.svg",
+    "png": "07-firmengruendung\\rolle-bank.png"
+  },
+  {
+    "page": "07-firmengruendung",
+    "slug": "rolle-behoerden",
+    "label": "Behörden",
+    "icon": "Building",
+    "svg": "07-firmengruendung\\rolle-behoerden.svg",
+    "png": "07-firmengruendung\\rolle-behoerden.png"
+  },
+  {
+    "page": "07-firmengruendung",
+    "slug": "gruendungscheckliste",
+    "label": "Gründungscheckliste",
+    "icon": "ClipboardCheck",
+    "svg": "07-firmengruendung\\gruendungscheckliste.svg",
+    "png": "07-firmengruendung\\gruendungscheckliste.png"
+  },
+  {
+    "page": "08-finanzplanung",
+    "slug": "budget",
+    "label": "Budget",
+    "icon": "WalletCards",
+    "svg": "08-finanzplanung\\budget.svg",
+    "png": "08-finanzplanung\\budget.png"
+  },
+  {
+    "page": "08-finanzplanung",
+    "slug": "vorsorge",
+    "label": "Vorsorge",
+    "icon": "Columns3",
+    "svg": "08-finanzplanung\\vorsorge.svg",
+    "png": "08-finanzplanung\\vorsorge.png"
+  },
+  {
+    "page": "09-ueber-uns",
+    "slug": "persoenlich",
+    "label": "Persönlich",
+    "icon": "UserRound",
+    "svg": "09-ueber-uns\\persoenlich.svg",
+    "png": "09-ueber-uns\\persoenlich.png"
+  },
+  {
+    "page": "09-ueber-uns",
+    "slug": "nachvollziehbar",
+    "label": "Nachvollziehbar",
+    "icon": "ListChecks",
+    "svg": "09-ueber-uns\\nachvollziehbar.svg",
+    "png": "09-ueber-uns\\nachvollziehbar.png"
+  },
+  {
+    "page": "09-ueber-uns",
+    "slug": "digital",
+    "label": "Digital",
+    "icon": "Laptop2",
+    "svg": "09-ueber-uns\\digital.svg",
+    "png": "09-ueber-uns\\digital.png"
+  },
+  {
+    "page": "09-ueber-uns",
+    "slug": "vertraulich",
+    "label": "Vertraulich",
+    "icon": "ShieldCheck",
+    "svg": "09-ueber-uns\\vertraulich.svg",
+    "png": "09-ueber-uns\\vertraulich.png"
+  },
+  {
+    "page": "09-ueber-uns",
+    "slug": "klare-grenzen",
+    "label": "Klare Grenzen",
+    "icon": "CircleOff",
+    "svg": "09-ueber-uns\\klare-grenzen.svg",
+    "png": "09-ueber-uns\\klare-grenzen.png"
+  },
+  {
+    "page": "09-ueber-uns",
+    "slug": "standort",
+    "label": "Standort",
+    "icon": "MapPin",
+    "svg": "09-ueber-uns\\standort.svg",
+    "png": "09-ueber-uns\\standort.png"
+  },
+  {
+    "page": "10-kontakt",
+    "slug": "telefon",
+    "label": "Telefon",
+    "icon": "PhoneCall",
+    "svg": "10-kontakt\\telefon.svg",
+    "png": "10-kontakt\\telefon.png"
+  },
+  {
+    "page": "10-kontakt",
+    "slug": "email",
+    "label": "E-Mail",
+    "icon": "MailCheck",
+    "svg": "10-kontakt\\email.svg",
+    "png": "10-kontakt\\email.png"
+  }
+]

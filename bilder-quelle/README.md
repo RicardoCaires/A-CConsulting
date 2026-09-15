@@ -718,3 +718,45 @@ eingesetzt. Die sechs Abschnittsvorlagen bleiben unbenutzt liegen.
 
 Welche Seite welchen Banner traegt, steht in
 `content/source/banner_serie_de.md`.
+
+## Piktogramm-Bibliothek, 15.09.2026
+
+Ricardo hat **alle** inhaltlichen Piktogramme der deutschen Website
+ueberarbeitet und als ein Archiv geliefert
+(`AC-Website-Piktogramme-komplett.zip`, entpackt unter `piktogramme/`):
+98 Motive, je als SVG (512 x 512) und PNG (1024 x 1024), geordnet nach Seite,
+dazu `manifest.json` und `README.md`.
+
+Gestaltung laut seiner Liesmich: Navy `#1A3A5C`, Gruen `#207730`, hellblauer
+Kreis `#E2E8EF`, einheitliche Linienenden, Strichstaerken und optische
+Zentrierung.
+
+**Eingesetzt ist die ganze Bibliothek.** Die bestehenden Dateinamen sind
+geblieben, damit kein Verweis bricht:
+
+- Wo die Seite bisher ein **SVG** zeigte, steht jetzt sein SVG — 43 Dateien,
+  unveraendert kopiert.
+- Wo sie ein **WebP** zeigte, ist sein PNG nach WebP umgewandelt (512 px,
+  Qualitaet 90) — 55 Dateien. Nichts beschnitten, nichts umgefaerbt.
+- **15 Dateien sind neu**: die zwoelf Leistungszeichen der Startseite
+  (`leistung_*.webp`) und drei Schritte auf `/treuhand/buchhaltung`
+  (`schritt_umfang`, `schritt_unterlagen`, `schritt_start`).
+
+**Die zwoelf Leistungszeichen der Startseite waren bis dahin keine Bilder**,
+sondern Konturen aus `src/components/ui/Icon.tsx`. Sie laufen jetzt wie alle
+uebrigen Piktogramme als geliefertes Bild. `Icon.tsx` bleibt fuer die
+Haken, Pfeile und Marker im Text.
+
+**Die Motive stammen aus der Lucide-Bibliothek** — das nennt Ricardos
+`manifest.json` je Eintrag beim Namen (`HeartPulse`, `House`, `Building2`
+und so weiter). Bis dahin galt hier: nichts aus einer Bibliothek, nur
+geliefertes Material. Beides trifft jetzt zu — geliefert hat er sie, und die
+Bibliothek ist die Quelle. Lucide steht unter der ISC-Lizenz und ist damit
+auch kommerziell frei verwendbar.
+
+**Zwei Motive der Lieferung stehen auf keiner Seite:**
+`04-buchhaltung/schritt-unterlagen` (die Seite hat vier Schritte, nicht
+fuenf) — es liegt trotzdem als `buchhaltung/schritt_unterlagen.webp` bereit.
+Und `03-treuhand/reibungslos-uebernehmen` ersetzt das PNG
+`treuhand/wechsel/03_handschlag.webp`; das aeltere
+`03_reibungslos_uebernehmen.svg` daneben bleibt unbenutzt liegen.
