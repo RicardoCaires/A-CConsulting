@@ -1117,6 +1117,12 @@ Betriebe und Selbstständige in der Region.
 > Der Baustein heisst bewusst allgemein: Drei Karten mit Piktogramm, Titel und
 > Text plus Einladung sind ein Muster, das weitere Seiten brauchen können.
 
+> **„Diskretion" ist am 15.09.2026 auf Ricardos Anweisung entfallen.** Der
+> Absatz sagte, dass ein Erstgespräch zu nichts verpflichtet und A&C den
+> bisherigen Treuhänder erst auf Auftrag kontaktiert. Sein Wortlaut steht
+> unverändert in `content/source/schritt4_fassung2_de.md`; der Anker
+> `diskretion` war von nirgends verlinkt.
+
 ### /steuern
 
 Getrennt für Privatpersonen und Firmen. Enthält zusätzlich:
@@ -1225,6 +1231,22 @@ eidg. Fachausweis suggeriert.
 
 ### /firmengruendung
 
+> **Dritte Fassung seit dem 15.09.2026.** Ricardo hat eine ausgeschriebene
+> HTML-Vorlage geliefert. Neu: unter jedem Merkmal eine hellere Erklärung,
+> am Fuss jeder Karte die Einordnung „Passt häufig, wenn …" mit grünem
+> Strich, und in der Leiste darunter ein grüner Knopf „Rechtsform besprechen"
+> auf `/de/kontakt/` (über `path()`, nicht als Adresse). Die Leiste steht
+> seither **ohne Symbol**; die Unterzeilen heissen „Direkt starten" und
+> „Getrennt aufbauen", die Merkmalzeile „Wirkung / Auftreten" ist entfallen.
+> Zwei neue Piktogramme ersetzen die vom 14.09.2026; ihr Kreis nimmt 89.6
+> statt 71.4 Prozent der Datei ein, der negative Rand ist entsprechend
+> angepasst.
+>
+> **Drei Angaben sind neu und fachlich zu prüfen:** die Umsatzschwelle
+> CHF 100'000 für den obligatorischen Handelsregistereintrag, die Sacheinlage
+> als Deckung des Stammkapitals und statutarische Nachschusspflichten.
+> Ricardo ist darauf hingewiesen.
+>
 > **„Einzelfirma oder GmbH?" ist seit dem 14.09.2026 ein eigener Baustein**
 > (`src/components/blocks/Rechtsformen.tsx`). Zuerst nach einer Referenzgrafik
 > gebaut, am selben Tag nach Ricardos zweiter Grafik samt ausgeschriebenem

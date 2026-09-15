@@ -77,6 +77,8 @@
 }
 
 .karte {
+  display: flex;
+  flex-direction: column;
   padding: clamp(1.25rem, 2.4vw, 2.25rem);
   background-color: color-mix(in srgb, var(--ac-color-white) 88%, transparent);
   border: var(--ac-border-hairline) solid
@@ -93,15 +95,16 @@
   border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
 }
 
-/* Die gelieferten Symbole bringen ihren Kreis mit: 71.4 Prozent der Datei.
-   Der negative Rand gleicht den durchsichtigen Rest aus. */
+/* Die gelieferten Piktogramme bringen ihren Kreis mit: Radius 43 von 96, also
+   89.6 Prozent der Datei. Der negative Rand gleicht den durchsichtigen Rest
+   aus, damit im Layout nur der Kreis zaehlt. */
 .symbol {
   display: block;
   flex: none;
   width: var(--symbol, 4.5rem);
   max-width: none;
   height: var(--symbol, 4.5rem);
-  margin: calc(var(--symbol, 4.5rem) * -0.143);
+  margin: calc(var(--symbol, 4.5rem) * -0.052);
 }
 
 .kartenTitelBlock {
@@ -174,6 +177,36 @@
   color: var(--ac-color-text-secondary);
 }
 
+/* ---- Einordnung am Fuss der Karte ------------------------------------------- */
+
+/* „Passt häufig, wenn …" — grüner Strich links, wie die Infoboxen des
+   Corporate Designs. `margin-top: auto` hält sie am Fuss, damit sie in beiden
+   Karten auf derselben Linie steht. */
+.passt {
+  display: block;
+  margin: auto 0 0;
+  padding: clamp(0.875rem, 1.8vw, 1.1rem) clamp(1rem, 2vw, 1.2rem);
+  background-color: var(--ac-color-background-light);
+  border-left: var(--ac-border-marker) solid var(--ac-color-accent-green);
+}
+
+.passtTitel {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: var(--ac-font-display);
+  font-size: var(--ac-body-size);
+  font-weight: var(--ac-display-weight);
+  line-height: 1.3;
+  color: var(--ac-color-primary-navy);
+}
+
+.passtText {
+  display: block;
+  font-size: var(--ac-small-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
 /* ---- Hinweis unter den Karten ----------------------------------------------- */
 
 .hinweis {
@@ -181,6 +214,7 @@
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: clamp(1rem, 2.4vw, 1.75rem);
   margin-top: clamp(1rem, 2vw, 1.75rem);
   padding: clamp(1rem, 2vw, 1.5rem) clamp(1.25rem, 2.4vw, 2.25rem);
@@ -196,23 +230,44 @@
   width: var(--symbol);
   max-width: none;
   height: var(--symbol);
-  margin: calc(var(--symbol) * -0.143);
+  margin: calc(var(--symbol) * -0.052);
+}
+
+.hinweisText {
+  min-width: 0;
+  max-width: 43rem;
 }
 
 .hinweisTitel {
   margin: 0;
   font-family: var(--ac-font-display);
   font-size: clamp(1.125rem, 1rem + 0.35vw, 1.3125rem);
-  line-height: 1.25;
+  line-height: 1.3;
   font-weight: var(--ac-display-weight);
   color: var(--ac-color-primary-navy);
 }
 
-.hinweisText {
-  margin: 0.25rem 0 0;
-  font-size: 1rem;
+.hinweisSatz {
+  margin: 0.3rem 0 0;
+  font-size: var(--ac-small-size);
   line-height: 1.55;
   color: var(--ac-color-text-secondary);
+}
+
+.knopf {
+  flex: none;
+  gap: var(--ac-space-2xs);
+  white-space: nowrap;
+}
+
+.pfeil {
+  display: inline-block;
+  line-height: 1;
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.knopf:hover .pfeil {
+  transform: translateX(3px);
 }
 
 /* ---- Ab 64rem: die Karten nebeneinander ------------------------------------- */
@@ -235,6 +290,20 @@
     flex-direction: column;
     align-items: flex-start;
     gap: var(--ac-space-sm);
+  }
+
+  .knopf {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pfeil {
+    transition: none;
+  }
+
+  .knopf:hover .pfeil {
+    transform: none;
   }
 }
 

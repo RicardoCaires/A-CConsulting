@@ -550,3 +550,19 @@ PNG. Die SVG werden **unveraendert** ausgeliefert.
 Alle drei tragen denselben Kreisanteil: Radius 43 von 96, also 89.6 Prozent
 der Datei.
 
+## Firmengruendung — Rechtsformvergleich, dritte Fassung
+
+Am 15.09.2026 als HTML-Vorlage geliefert, dazu zwei Piktogramme als SVG und
+PNG. Sie ersetzen die vom 14.09.2026 und werden **unveraendert** ausgeliefert.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `piktogramm-rechtsform-einzelfirma.svg` | `firmengruendung_einzelfirma.svg` | SVG, viewBox 96 |
+| `piktogramm-rechtsform-gmbh.svg` | `firmengruendung_gmbh.svg` | SVG, viewBox 96 |
+| `rechtsformvergleich.html` | — | Vorlage, liegt als `vorlage.html` |
+
+Beide tragen ihren Kreis auf 89.6 Prozent der Datei (Radius 43 von 96); die
+vorigen lagen bei 71.4. Das Stylesheet rechnet den durchsichtigen Rand
+entsprechend heraus. `firmengruendung_beratung.svg` bleibt liegen — die neue
+Vorlage zeigt in der Hinweisleiste kein Symbol mehr.
+

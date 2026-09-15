@@ -117,16 +117,6 @@ export const treuhaenderWechseln: PageContent = {
       ],
     },
 
-    // 07 Diskretion
-    {
-      kind: 'prose',
-      id: 'diskretion',
-      heading: 'Diskretion',
-      paragraphs: [
-        'Ein Erstgespräch verpflichtet Sie zu nichts. Wir behandeln den Inhalt vertraulich und nehmen erst dann Kontakt zu Ihrem bisherigen Treuhänder auf, wenn Sie uns damit beauftragen.',
-      ],
-    },
-
     // 09 Häufige Fragen
     // Seit dem 11.09.2026 im Baustein der Versicherungsseite („häufige Fragen
     // überall gleich designen", Ricardo). Fragen und Antworten unveraendert.

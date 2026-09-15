@@ -537,9 +537,11 @@ export type Block =
         untertitel?: string
         /** `wert` ist die Hauptzeile, `zusatz` die hellere Erklaerung darunter. */
         zeilen: readonly { label: string; wert: Rich; zusatz?: Rich }[]
+        /** Die Einordnung am Fuss der Karte: fuer wen die Rechtsform passt. */
+        passt?: { titel: string; text: Rich }
       }[]
-      /** Getoente Leiste unter den Karten. */
-      hinweis?: { bild: string; titel: string; text: Rich }
+      /** Leiste unter den Karten. Ohne `bild` steht sie ohne Symbol. */
+      hinweis?: { bild?: string; titel: string; text: Rich; aktion?: PageRef }
     }
   /** Sprungmarken innerhalb der Seite. */
   | {
