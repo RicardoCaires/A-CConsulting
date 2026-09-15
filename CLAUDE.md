@@ -1546,6 +1546,37 @@ Fliesstext über Werte — konkrete Sätze über konkrete Menschen.
 > ganze Fassung `/fr/` abhängt. Der Wortlaut des Auftrags gilt; Ricardo ist
 > darauf hingewiesen.
 
+> **„Wie wir arbeiten" ist seit dem 15.09.2026 ein Bentoraster** nach Ricardos
+> HTML-Vorlage (`content/source/ueberuns_arbeitsweise_de.md`): Kategoriezeile
+> „Unsere Zusammenarbeit", der neue Titel „Verlässlich im Alltag. Klar in der
+> Verantwortung.", eine Einleitung und darunter **fünf Karten** — zwei grosse
+> oben (Text links, Piktogramm rechts), drei kompakte darunter (Piktogramm
+> oben, Text darunter). Ab 36.875rem zwei Karten je Reihe, darunter eine. Der
+> Anker `arbeitsweise` bleibt. Die frühere nummerierte Liste mit der klebenden
+> Überschrift ist entfallen.
+>
+> **Beim Darüberfahren und bei Tastaturfokus wird die ganze Karte navy**,
+> Kategorie, Überschrift und Text weiss (9.4:1); **der grüne Strich vor der
+> Kategorie bleibt grün**. Übergang nur auf Farbe, abgeschaltet unter
+> `prefers-reduced-motion: reduce`. Keine Schatten, keine Verläufe, keine
+> neuen Farben.
+>
+> **Die Karten tragen `tabindex="0"`.** Sie enthalten keinen Link; ohne das
+> gäbe es den verlangten Fokuszustand nicht. Zusätzlich zum Farbwechsel steht
+> der grüne Fokusring der Website — der Farbwechsel allein ist im Umriss nicht
+> eindeutig.
+>
+> **Die fünf Piktogramme sind unverändert übernommen** (heller Kreis,
+> Navy-Linien, grüner Akzent). Auf der navy Karte trägt der helle Kreis das
+> Zeichen weiter; nachgemessen bleibt es klar lesbar.
+>
+> **Zwei Aussagen sind mit dem Umbau verschwunden**, Ricardo ist darauf
+> hingewiesen: „Ihre Daten werden in der Schweiz verarbeitet." — die Vorlage
+> sagt „mit angemessenen organisatorischen Massnahmen"; die Schweizer
+> Verarbeitung steht weiterhin in den häufigen Fragen auf `/treuhand`. Und
+> „Tätigkeitsbereiche: Versicherungen, Treuhand und Steuern." — die drei
+> Bereiche stehen seit dem 15.09.2026 als Pillen im Einstieg derselben Seite.
+
 
 ### /kontakt
 

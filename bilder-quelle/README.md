@@ -633,3 +633,21 @@ Die beiden Profilkarten zeigen `portrait_ricardo.webp` und
 `public/bilder/` und sind unveraendert; die Vorlage sah dort Platzhalter vor.
 Fuer die gemeinsame Aufnahme im Einstieg fehlt die Datei weiterhin.
 
+## Ueber uns — Wie wir arbeiten
+
+Am 15.09.2026 als HTML-Vorlage mit fuenf Piktogrammen geliefert, je als SVG
+und PNG. Ausgeliefert wird das SVG; die Dateien sind unveraendert.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `ueber-uns-arbeitsweise.html` | — | Vorlage, liegt als `vorlage.html` |
+| `piktogramm-arbeitsweise-persoenlich.svg` | `arbeitsweise_persoenlich.svg` | SVG, viewBox 96 |
+| `piktogramm-arbeitsweise-nachvollziehbar.svg` | `arbeitsweise_nachvollziehbar.svg` | SVG, viewBox 96 |
+| `piktogramm-arbeitsweise-digital.svg` | `arbeitsweise_digital.svg` | SVG, viewBox 96 |
+| `piktogramm-arbeitsweise-vertraulich.svg` | `arbeitsweise_vertraulich.svg` | SVG, viewBox 96 |
+| `piktogramm-arbeitsweise-klare-grenzen.svg` | `arbeitsweise_grenzen.svg` | SVG, viewBox 96 |
+
+Der helle Kreis fuellt bei allen fuenf Dateien denselben Anteil (r = 43 von
+96). Sie stehen darum ohne Umrechnung gleich gross. Die PNG-Fassungen liegen
+als Quelle daneben und werden nicht ausgeliefert.
+

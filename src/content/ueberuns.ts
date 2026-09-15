@@ -44,10 +44,14 @@ export type Inhaber = {
   }
 }
 
-/** Ein Grundsatz. Die Nummer setzt die Vorlage, nicht der Inhalt. */
+/** Ein Grundsatz. Als Karte gesetzt, mit geliefertem Piktogramm. */
 export type Prinzip = {
+  /** Kleine Versalzeile ueber der Ueberschrift, mit gruenem Strich davor. */
+  kategorie: string
   titel: string
   satz: Rich
+  /** Dateiname des gelieferten Piktogramms unter `public/bilder/`, ohne Endung. */
+  bild: string
 }
 
 export type UeberunsContent = {
@@ -81,7 +85,9 @@ export type UeberunsContent = {
   }
 
   arbeitsweise: {
+    eyebrow: string
     titel: string
+    einleitung: string
     prinzipien: readonly Prinzip[]
   }
 
@@ -191,31 +197,50 @@ const de: UeberunsContent = {
 
   // ---- 3 Wie wir arbeiten
   //
-  // Das dritte Prinzip hiess „Digital, wo es etwas bringt", der Text darunter
-  // sagte aber nichts Digitales — ein Rest der am 07.09.2026 gestrichenen
-  // Automatisierung. Ueberschrift und Text passen jetzt zusammen.
+  // Seit dem 15.09.2026 nach Ricardos HTML-Vorlage
+  // (`content/source/ueberuns_arbeitsweise_de.md`). Fuenf Karten in einem
+  // Bentoraster; die ersten beiden sind die grossen. Die Reihenfolge der
+  // Vorlage ist die des bisherigen Abschnitts.
+  //
+  // **„Ihre Daten werden in der Schweiz verarbeitet" steht nicht mehr hier.**
+  // Die Vorlage sagt stattdessen „mit angemessenen organisatorischen
+  // Massnahmen". Die Schweizer Verarbeitung steht weiterhin in den haeufigen
+  // Fragen auf `/treuhand`.
   arbeitsweise: {
-    titel: 'Wie wir arbeiten',
+    eyebrow: 'Unsere Zusammenarbeit',
+    titel: 'Verlässlich im Alltag. Klar in der Verantwortung.',
+    einleitung:
+      'Sie sollen wissen, wer Ihr Dossier betreut, was wir übernehmen und wie Entscheidungen zustande kommen. Diese Grundsätze prägen unsere tägliche Arbeit.',
     prinzipien: [
       {
-        titel: 'Persönlich',
-        satz: 'Sie sprechen mit der Person, die Ihr Dossier bearbeitet. Wer für Sie zuständig ist, wissen Sie ab dem ersten Gespräch.',
+        kategorie: 'Direkter Kontakt',
+        titel: 'Persönlich betreut',
+        satz: 'Sie sprechen mit der Person, die Ihr Dossier kennt und bearbeitet. Ihre Zuständigkeit ist ab dem ersten Gespräch klar.',
+        bild: 'arbeitsweise_persoenlich',
       },
       {
-        titel: 'Nachvollziehbar',
-        satz: 'Zu Beginn halten wir schriftlich fest, welche Aufgaben wir übernehmen und welche bei Ihnen bleiben. Ändert sich etwas am Umfang, sprechen wir vorher darüber.',
+        kategorie: 'Klare Vereinbarung',
+        titel: 'Nachvollziehbar geregelt',
+        satz: 'Aufgaben, Zuständigkeiten und Kosten halten wir zu Beginn fest. Ändert sich der Umfang, besprechen wir das vorgängig mit Ihnen.',
+        bild: 'arbeitsweise_nachvollziehbar',
       },
       {
-        titel: 'Digital',
-        satz: 'Moderne Prozesse dort, wo sie Administration vereinfachen. Die fachliche Prüfung und die Verantwortung bleiben bei uns.',
+        kategorie: 'Sinnvoll digital',
+        titel: 'Einfachere Abläufe',
+        satz: 'Digitale Prozesse reduzieren administrative Umwege. Die fachliche Prüfung und Verantwortung bleiben bei uns.',
+        bild: 'arbeitsweise_digital',
       },
       {
-        titel: 'Vertraulich',
-        satz: 'Ihre Daten werden in der Schweiz verarbeitet und vertraulich behandelt.',
+        kategorie: 'Mit Sorgfalt',
+        titel: 'Vertraulich behandelt',
+        satz: 'Wir behandeln Ihre Angaben und Unterlagen vertraulich und schützen sie mit angemessenen organisatorischen Massnahmen.',
+        bild: 'arbeitsweise_vertraulich',
       },
       {
-        titel: 'Mit klaren Grenzen',
-        satz: 'Tätigkeitsbereiche: Versicherungen, Treuhand und Steuern. Nicht zu unseren Leistungen gehören die aktienrechtliche Revision und die Rechtsberatung. Wo das nötig wird, arbeiten wir mit Fachpersonen zusammen.',
+        kategorie: 'Passende Fachkompetenz',
+        titel: 'Klare Grenzen',
+        satz: 'Rechtsberatung und aktienrechtliche Revision gehören nicht zu unseren Leistungen. Bei Bedarf beziehen wir geeignete Fachpersonen ein.',
+        bild: 'arbeitsweise_grenzen',
       },
     ],
   },
