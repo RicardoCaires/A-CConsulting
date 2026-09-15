@@ -503,6 +503,25 @@ export type Block =
    * selbst mit und zaehlt beim Flaechenwechsel nicht mit.
    */
   | {
+      kind: 'prozessreihe'
+      id: string
+      eyebrow?: string
+      heading: string
+      lead?: readonly Rich[]
+      /** Name des Scrollbereichs fuer Vorlesewerkzeuge. */
+      bereichsname: string
+      schritte: readonly {
+        /** Geliefertes Piktogramm, Dateiname unter `public/bilder/` ohne Endung. */
+        bild?: string
+        titel: string
+        text: Rich
+      }[]
+      hinweis?: { titel: string; text: Rich }
+    }
+  /**
+   * Vier gleich grosse Kacheln: wer welchen Teil einer Gruendung uebernimmt.
+   */
+  | {
       kind: 'rollen'
       id: string
       eyebrow?: string

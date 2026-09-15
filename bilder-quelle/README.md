@@ -577,3 +577,20 @@ PNG. Die SVG werden **unveraendert** ausgeliefert.
 | `piktogramm-wechselzeitpunkt-unterjaehrig.svg` | `wechsel_zeitpunkt_unterjaehrig.svg` | SVG, viewBox 112 |
 | `treuhaenderwechsel-zeitpunkt.html` | — | Vorlage, liegt als `vorlage.html` |
 
+## Treuhaender wechseln — So laeuft der Wechsel ab
+
+Am 15.09.2026 als HTML-Vorlage geliefert, zwanzig Minuten spaeter fuenf
+Piktogramme als SVG und PNG. Die SVG werden **unveraendert** ausgeliefert.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `piktogramm-wechselablauf-situation.svg` | `wechsel_ablauf_situation.svg` | SVG, viewBox 96 |
+| `piktogramm-wechselablauf-leistungen.svg` | `wechsel_ablauf_leistungen.svg` | SVG, viewBox 96 |
+| `piktogramm-wechselablauf-zeitpunkt.svg` | `wechsel_ablauf_zeitpunkt.svg` | SVG, viewBox 96 |
+| `piktogramm-wechselablauf-uebergabe.svg` | `wechsel_ablauf_uebergabe.svg` | SVG, viewBox 96 |
+| `piktogramm-wechselablauf-start.svg` | `wechsel_ablauf_start.svg` | SVG, viewBox 96 |
+| `treuhaenderwechsel-ablauf-horizontal.html` | — | Vorlage, liegt als `vorlage.html` |
+
+Die Vorlage selbst zeigt nur die Nummernkreise. Die Piktogramme sind trotzdem
+eingesetzt, weil sie nach genau diesen fuenf Schritten benannt sind.
+

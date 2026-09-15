@@ -1,0 +1,224 @@
+/* Ablauf als waagrechte Reihe — „So läuft der Wechsel ab".
+
+   Nach Ricardos HTML-Vorlage vom 15.09.2026
+   (`bilder-quelle/wechsel_ablauf/vorlage.html`). Aus ihr übernommen:
+
+     Inhalt        1180 px, mittig, weisser Grund
+     Reihe         fünf Spalten, mindestens 190 px, Fuge 1rem, min. 1030 px
+     Linie         2 px in `background_tint`, auf Höhe der Kreismitte
+     Kreis         58 px, Navy, weisser Ring von 5 px, der letzte grün
+     Karte         Haarlinie, Radius 12 px, mindestens 285 px hoch
+     Umbruch       ab 780 px feste Spalten und Scrollen, ab 520 px 82vw
+
+   Keine Schatten und keine zusätzlichen Farben — so verlangt es der Auftrag
+   und die Hausordnung. */
+
+.abschnitt {
+  padding-block: var(--ac-section-y-lg);
+  background-color: var(--ac-color-white);
+}
+
+.abschnitt .container {
+  max-width: 73.75rem;
+}
+
+/* ---- Kopf ------------------------------------------------------------------ */
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  line-height: var(--ac-eyebrow-line);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+.eyebrow::before {
+  content: '';
+  flex: none;
+  width: 1.75rem;
+  height: var(--ac-border-marker);
+  background-color: var(--ac-color-accent-green);
+}
+
+.titel {
+  margin: var(--ac-space-sm) 0 0;
+  font-size: clamp(2.2rem, 1.6rem + 2vw, 3.35rem);
+  line-height: 1.13;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.015em;
+  color: var(--ac-color-primary-navy);
+}
+
+.lead {
+  max-width: 45rem;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: var(--ac-body-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Die Reihe ------------------------------------------------------------- */
+
+/* Der Scrollbereich ist mit der Tabulatortaste erreichbar; ohne das käme man
+   ohne Maus nicht an die hinteren Schritte. */
+.scroller {
+  margin-top: clamp(1.75rem, 3.5vw, 2.6rem);
+  padding: 0.2rem 0.1rem 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  overscroll-behavior-x: contain;
+}
+
+.scroller:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 4px;
+}
+
+.liste {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(11.875rem, 1fr));
+  gap: var(--ac-space-sm);
+  min-width: 64.375rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Die Linie verbindet die Kreise und endet innerhalb der Reihe, damit sie
+   nicht aus der ersten und letzten Karte herausläuft. */
+.liste::before {
+  content: '';
+  position: absolute;
+  top: 1.8125rem;
+  right: 7%;
+  left: 7%;
+  height: 2px;
+  background-color: var(--ac-color-background-tint);
+}
+
+.schritt {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 17.8125rem;
+  padding: 0 1.2rem 1.45rem;
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+  scroll-snap-align: start;
+}
+
+.nummer {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 3.625rem;
+  height: 3.625rem;
+  margin: -1px 0 var(--ac-space-sm);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-primary-navy);
+  border: 5px solid var(--ac-color-white);
+  border-radius: 50%;
+}
+
+/* Der letzte Kreis markiert das Ziel, nicht einen weiteren Zwischenschritt. */
+.schritt:last-child .nummer {
+  background-color: var(--ac-color-accent-green);
+}
+
+/* Die gelieferten Piktogramme bringen ihren Kreis mit. */
+.bild {
+  display: block;
+  width: 3.5rem;
+  max-width: none;
+  height: 3.5rem;
+  margin-bottom: var(--ac-space-2xs);
+}
+
+.schrittTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: 1.32rem;
+  line-height: 1.25;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.satz {
+  margin: var(--ac-space-2xs) 0 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.58;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Hinweis unter der Reihe ------------------------------------------------ */
+
+.hinweis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin: var(--ac-space-sm) 0 0;
+  padding: 1rem 1.2rem;
+  background-color: var(--ac-color-background-light);
+  border-left: var(--ac-border-marker) solid var(--ac-color-accent-green);
+}
+
+.hinweisTitel {
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
+}
+
+.hinweisText {
+  font-size: var(--ac-small-size);
+  line-height: 1.55;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Schmale Geräte: feste Spaltenbreiten, die Reihe läuft über den Rand ---- */
+
+@media (max-width: 48.75rem) {
+  .scroller {
+    margin-right: calc(var(--ac-gutter) * -1);
+    padding-right: var(--ac-gutter);
+  }
+
+  .liste {
+    grid-template-columns: repeat(5, 16.25rem);
+    min-width: max-content;
+  }
+
+  .schritt {
+    min-height: 16.5625rem;
+  }
+}
+
+@media (max-width: 32.5rem) {
+  .liste {
+    grid-template-columns: repeat(5, 82vw);
+  }
+}
+
+@media print {
+  .scroller {
+    overflow: visible;
+  }
+
+  .liste {
+    min-width: 0;
+  }
+
+  .schritt {
+    break-inside: avoid;
+  }
+}
