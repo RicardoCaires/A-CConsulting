@@ -1,0 +1,58 @@
+/* Die Karte liegt in der Bildflaeche des Standortabschnitts und fuellt sie
+   ganz. Vor dem Klick steht dort der Knopf mit seinem Hinweis. */
+
+.karte {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.vorschau {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ac-space-xs);
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: var(--ac-space-md);
+  text-align: center;
+}
+
+.knopf {
+  min-height: 2.75rem;
+  padding: 0.7rem 1.15rem;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ac-color-white);
+  cursor: pointer;
+  background-color: var(--ac-color-primary-navy);
+  border: 0;
+  border-radius: var(--ac-radius-md);
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.knopf:hover {
+  background-color: var(--ac-color-navy-deep);
+}
+
+.knopf:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+.hinweis {
+  max-width: 24rem;
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .knopf {
+    transition: none;
+  }
+}

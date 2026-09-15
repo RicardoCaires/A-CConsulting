@@ -16,27 +16,26 @@ export const company = {
   shortName: 'A&C Consulting',
 
   /**
-   * **Adresse seit dem 15.09.2026: Bielstrasse 10, 2556 Aegerten.**
+   * **Adresse seit dem 15.09.2026: Bielstrasse 10, 2558 Aegerten.**
    *
    * Auf Ricardos ausdrueckliche Anweisung („Die Geschaeftsadresse hat
    * geaendert und lautet neu"). Bis dahin stand hier Bielstrasse 22,
    * 3250 Lyss, und der Umzug war auf den 01.11.2026 vorgemerkt. Der Wechsel
    * gilt jetzt, und die alte Adresse steht an keiner Stelle mehr.
    *
-   * **Zwei Punkte sind offen und liegen bei Ricardo**, nicht bei diesem
-   * Projekt:
+   * **Die Postleitzahl ist 2558.** Ricardos Auftrag nannte zuerst dreimal
+   * 2556; er hat das noch am selben Tag korrigiert („2558 Aegertn nicht
+   * 2556"). Die Zahl steht nur hier — Anschrift, Ortsschild, Karte und der
+   * Google-Maps-Link lesen sie von hier.
    *
-   * 1. Die Postleitzahl. Sein Auftrag nennt dreimal **2556**; bis zum
-   *    15.09.2026 war in CLAUDE.md und hier **2558** vermerkt. Es gilt sein
-   *    geschriebener Wortlaut. Bestaetigt er 2558, ist es diese eine Zeile.
-   * 2. Handelsregister und FINMA-Register. Sie fuehren den Sitz; solange sie
-   *    nicht nachgefuehrt sind, nennt die Website eine andere Adresse als das
-   *    oeffentliche Register. Der Auftrag verlangt die Aenderung
-   *    ausdruecklich auch im Impressum.
+   * **Offen und bei Ricardo**: Handelsregister und FINMA-Register fuehren den
+   * Sitz; solange sie nicht nachgefuehrt sind, nennt die Website eine andere
+   * Adresse als das oeffentliche Register. Der Auftrag verlangt die Aenderung
+   * ausdruecklich auch im Impressum.
    */
   address: {
     street: 'Bielstrasse 10',
-    postalCode: '2556',
+    postalCode: '2558',
     city: 'Aegerten',
     region: 'Kanton Bern',
     countryCode: 'CH',
@@ -100,10 +99,23 @@ export const company = {
    * Kurzform „Octavio Andrade" stand bis dahin an achtzehn Stellen,
    * einschliesslich Impressum und Fussbereich, und ist ersetzt.
    */
+  /**
+   * **Die Geschaeftsfuehrung liegt seit dem 15.09.2026 bei Octavio.**
+   *
+   * Ricardo hat es an diesem Tag ausdruecklich festgehalten: „octavio ist
+   * inhaber und Geschaeftsfuehrer ich bin nur inhaber". Bis dahin stand hier
+   * — und in CLAUDE.md, Abschnitt 2 — Ricardo als Geschaeftsfuehrer; noch am
+   * selben Tag hatte ein Auftrag von ihm dasselbe gesagt. Es gilt die
+   * juengere, ausdrueckliche Anweisung.
+   *
+   * Die Angabe steht im Impressum unter „Vertretungsberechtigte Personen"
+   * und ist damit eine Pflichtangabe. **Ricardo ist darauf hingewiesen, dass
+   * sie mit dem Handelsregistereintrag uebereinstimmen muss.**
+   */
   people: {
-    managingDirector: 'Ricardo Caires Cerqueira',
-    managingDirectorShort: 'Ricardo Caires',
-    coOwner: 'Octavio Nuno Gouveia Andrade',
+    managingDirector: 'Octavio Nuno Gouveia Andrade',
+    coOwner: 'Ricardo Caires Cerqueira',
+    coOwnerShort: 'Ricardo Caires',
   },
 
   /**
@@ -141,7 +153,22 @@ export const sitz = company.address
 /** Buero-Adresse einzeilig — fuer Kontaktseite und Standortangaben. */
 export const bueroOneLine = `${buero.street}, ${buero.postalCode} ${buero.city}`
 
-/** Buero-Adresse als Satzteil — „Bielstrasse 10 in 2556 Aegerten". */
+/**
+ * Lage des Bueros, fuer die Karte.
+ *
+ * Nachgeschlagen am 15.09.2026 bei Nominatim (OpenStreetMap) fuer
+ * "Bielstrasse 10, 2558 Aegerten, Schweiz" — die Abfrage loeste die Adresse
+ * als bestehendes Gebaeude auf und bestaetigt damit die Postleitzahl 2558.
+ * Nicht geschaetzt und nicht gerundet.
+ */
+export const bueroLage = {
+  breite: 47.1222112,
+  laenge: 7.2868003,
+  /** Ausschnitt der Karte: links, unten, rechts, oben. */
+  bbox: [7.2828, 47.1202, 7.2908, 47.1242],
+} as const
+
+/** Buero-Adresse als Satzteil — „Bielstrasse 10 in 2558 Aegerten". */
 export const bueroImSatz = `${buero.street} in ${buero.postalCode} ${buero.city}`
 
 /** Sitz einzeilig — fuer Impressum und die Angabe zum Unternehmen. */
@@ -164,4 +191,14 @@ export const mapsRoute = `https://www.google.com/maps/dir/?api=1&destination=${e
 export const direktnummern = {
   ricardo: { anzeige: '078 625 53 85', e164: '+41786255385' },
   octavio: { anzeige: '078 679 56 37', e164: '+41786795637' },
+} as const
+
+/**
+ * Persoenliche E-Mail-Adressen der beiden Inhaber.
+ * Von Ricardo am 15.09.2026 in dieser Schreibweise zur oeffentlichen
+ * Verwendung freigegeben. `info@ac-co.ch` bleibt die Firmenadresse.
+ */
+export const direktadressen = {
+  ricardo: 'Ricardo.caires@ac-co.ch',
+  octavio: 'Octavio.andrade@ac-co.ch',
 } as const

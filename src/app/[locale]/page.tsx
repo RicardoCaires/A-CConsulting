@@ -86,16 +86,6 @@ export default async function HomePage({ params }: PageProps) {
       weitere: content.leistungen.weitere,
     },
 
-    // 5 — Eine Stelle fuer Ihre Administration.
-    eineStelle: {
-      eyebrow: content.eineStelle.eyebrow,
-      titel: content.eineStelle.titel,
-      kette: content.eineStelle.kette,
-      text: content.eineStelle.text,
-      nachsatz: content.eineStelle.nachsatz,
-      knopf: content.eineStelle.knopf,
-    },
-
     // 7 — Ansprechpartner.
     personen: {
       eyebrow: content.personen.eyebrow,
@@ -110,16 +100,6 @@ export default async function HomePage({ params }: PageProps) {
           locale={locale}
         />
       ),
-    },
-
-    // 8 — Ablauf.
-    ablauf: {
-      eyebrow: content.ablauf.eyebrow,
-      einleitung: content.ablauf.einleitung,
-      nachsatzBild: content.ablauf.nachsatzBild,
-      titel: content.ablauf.titel,
-      schritte: content.ablauf.schritte,
-      nachsatz: content.ablauf.nachsatz,
     },
 
     // 9 — Kontaktabschluss.

@@ -18,7 +18,7 @@ wir sind, was wir tun und wie man uns erreicht.
 ## 2. Firmenangaben (Pflichtangaben — nie eigenmächtig ändern)
 
 - Firma: A&C Consulting GmbH
-- Adresse: **Bielstrasse 10, 2556 Aegerten**, Kanton Bern
+- Adresse: **Bielstrasse 10, 2558 Aegerten**, Kanton Bern
   > **Geändert am 15.09.2026 auf Ricardos ausdrückliche Anweisung** („Die
   > Geschäftsadresse hat geändert und lautet neu"). Bis dahin galt öffentlich
   > Bielstrasse 22, 3250 Lyss, und der Umzug war auf den 01.11.2026
@@ -27,10 +27,10 @@ wir sind, was wir tun und wie man uns erreicht.
   > Seitentitel sind nachgezogen. Sie wird wie bisher ausschliesslich in
   > `src/lib/company.ts` gepflegt.
   >
-  > **Die Postleitzahl ist zu bestätigen.** Ricardos Auftrag nennt dreimal
-  > **2556** — Adressblock, Google-Maps-Link und Knopfbeschriftung. Bis zum
-  > 15.09.2026 stand hier **2558**. Es gilt sein geschriebener Wortlaut; die
-  > Korrektur wäre eine Zeile in `company.ts`.
+  > **Die Postleitzahl ist 2558.** Ricardos Auftrag nannte zuerst dreimal
+  > 2556; er hat das am selben Tag korrigiert („2558 Aegertn nicht 2556").
+  > Eine Abfrage bei Nominatim löst „Bielstrasse 10, 2558 Aegerten" als
+  > bestehendes Gebäude auf und bestätigt die Zahl.
   >
   > **Handelsregister und FINMA sind nicht nachgeführt.** Der Auftrag verlangt
   > die neue Adresse ausdrücklich auch im Impressum; bis zur Nachführung nennt
@@ -45,8 +45,17 @@ wir sind, was wir tun und wie man uns erreicht.
   > nicht auf die Website. Dieselbe Lage wie beim Telefonwechsel vom
   > 10.09.2026.
 - FINMA-Registernummer Unternehmen: **F01568855**
-- Geschäftsführung: **Ricardo Caires Cerqueira**
-- Mitinhaber: Octavio Nuno Gouveia Andrade
+- Geschäftsführung: **Octavio Nuno Gouveia Andrade**
+- Mitinhaber: Ricardo Caires Cerqueira
+  > **Getauscht am 15.09.2026 auf Ricardos ausdrückliche Anweisung:**
+  > „octavio ist inhaber und Geschäftsführer ich bin nur inhaber". Bis dahin
+  > stand hier Ricardo als Geschäftsführer — so auch in einem Auftrag vom
+  > selben Tag, der ausdrücklich verlangte, Octavio **nicht** als
+  > Geschäftsführer zu bezeichnen. Es gilt die jüngere Anweisung. Die Angabe
+  > steht im Impressum unter „Vertretungsberechtigte Personen" und muss mit
+  > dem Handelsregistereintrag übereinstimmen; **Ricardo ist darauf
+  > hingewiesen.** Der Corporate-Design-Skill führt weiterhin die alte
+  > Zuordnung und wird von hier aus nicht geändert.
 
 > Öffentlich auf der Website gilt die vollständige Form „Ricardo Caires Cerqueira"
 > (Festlegung Ricardo, 04.09.2026). Die Kurzform „Ricardo Caires" ist in knappen

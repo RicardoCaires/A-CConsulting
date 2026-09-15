@@ -30,7 +30,6 @@ import type { Rich } from '@/content/types'
 import type { IconName } from '@/components/ui/Icon'
 import type { Motiv } from '@/components/ui/Illustration'
 import type { PiktogrammName } from '@/components/ui/Piktogramm'
-import type { SchrittName } from '@/components/ui/Schrittbild'
 import type { Locale } from '@/i18n/config'
 import type { PageKey } from '@/i18n/routes'
 
@@ -108,16 +107,6 @@ export type StartseiteContent = {
     weitere: readonly Bereich[]
   }
 
-  eineStelle: {
-    eyebrow: string
-    titel: string
-    /** Die Kette. Nur Leistungen, die es wirklich gibt — je Glied ein Bild. */
-    kette: readonly { text: string; bild: SchrittName }[]
-    text: string
-    nachsatz: string
-    knopf: { text: string; ziel: PageKey }
-  }
-
   personen: {
     eyebrow: string
     titel: string
@@ -138,17 +127,6 @@ export type StartseiteContent = {
     /** Beschriftung des Verweises. Bei beiden dieselbe. */
     linkedinText: string
     link: { text: string; ziel: PageKey }
-  }
-
-  ablauf: {
-    eyebrow: string
-    titel: string
-    einleitung: string
-    schritte: readonly Schritt[]
-    /** Der flache Hinweiskasten unter den Karten. */
-    nachsatz: string
-    /** Symbol im Hinweiskasten. */
-    nachsatzBild: string
   }
 
   abschluss: {
@@ -267,26 +245,6 @@ const de: StartseiteContent = {
     ],
   },
 
-  // ---- 5 Eine Stelle für Ihre Administration
-  //
-  // Die Kette nennt fuenf Leistungen, die A&C tatsaechlich erbringt. Sie ist
-  // keine Aufzaehlung dessen, was ein Unternehmen alles braucht.
-  eineStelle: {
-    eyebrow: 'Alles aus einer Hand',
-    titel: 'Eine Stelle für Ihre Administration',
-    kette: [
-      { text: 'Gründung', bild: 'gruendung' },
-      { text: 'Buchhaltung', bild: 'buchhaltung' },
-      { text: 'Lohn', bild: 'lohn' },
-      { text: 'Versicherungen', bild: 'versicherungen' },
-      { text: 'Steuern', bild: 'steuern' },
-    ],
-    text: 'Wir koordinieren die Themen, die zusammengehören – mit einem festen Ansprechpartner.',
-    nachsatz:
-      'Statt mehrere Stellen zu koordinieren, haben Sie bei uns einen zentralen Ansprechpartner.',
-    knopf: { text: 'Mehr über unseren Ansatz', ziel: 'ueberUns' },
-  },
-
   // ---- 6 Digital
   //
   // ---- 7 Ansprechpartner
@@ -320,39 +278,6 @@ const de: StartseiteContent = {
     ],
     linkedinText: 'Auf LinkedIn vernetzen',
     link: { text: 'Mehr über uns', ziel: 'ueberUns' },
-  },
-
-  // ---- 8 Ablauf
-  ablauf: {
-    eyebrow: 'So funktioniert es',
-    titel: 'So beginnt die Zusammenarbeit',
-    einleitung:
-      'Transparent, strukturiert und auf Augenhöhe – in vier einfachen Schritten zu einer verlässlichen Zusammenarbeit.',
-    schritte: [
-      {
-        titel: 'Kennenlernen',
-        satz: 'Sie schildern Ihre Situation, wir sagen Ihnen, was wir davon übernehmen können.',
-        bild: '01_kennenlernen',
-      },
-      {
-        titel: 'Situation prüfen',
-        satz: 'Wir sehen uns Unterlagen und Verträge an, bevor wir etwas empfehlen.',
-        bild: '02_situation_pruefen',
-      },
-      {
-        titel: 'Vorschlag erhalten',
-        satz: 'Sie bekommen schriftlich, welche Aufgaben zu uns kommen und was das kostet.',
-        bild: '03_vorschlag_erhalten',
-      },
-      {
-        titel: 'Wir übernehmen',
-        satz: 'Ab dem vereinbarten Zeitpunkt läuft es über uns.',
-        bild: '04_wir_uebernehmen',
-      },
-    ],
-    nachsatz:
-      'Wir erklären Optionen, Kosten und die nächsten Schritte verständlich. Auch dann, wenn daraus kein Auftrag wird.',
-    nachsatzBild: '05_info',
   },
 
   // ---- 9 Abschluss

@@ -46,9 +46,17 @@ Telefon und E-Mail stehen im Fussbereich jeder Seite und auf der Kontaktseite.
 
 ## 03 Vertretungsberechtigte Personen
 
-Geschäftsführer und Mitinhaber: Ricardo Caires Cerqueira
+Geschäftsführer und Mitinhaber: Octavio Nuno Gouveia Andrade
 
-Mitinhaber: Octavio Nuno Gouveia Andrade
+Mitinhaber: Ricardo Caires Cerqueira
+
+> **Getauscht am 15.09.2026 auf Ricardos ausdrückliche Anweisung:** «octavio
+> ist inhaber und Geschäftsführer ich bin nur inhaber». Bis dahin stand hier
+> «Geschäftsführer und Mitinhaber: Ricardo Caires Cerqueira» und «Mitinhaber:
+> Octavio Nuno Gouveia Andrade» — so auch in CLAUDE.md, Abschnitt 2, und in
+> einem Auftrag vom selben Tag. Es gilt die jüngere Anweisung. Die Angabe ist
+> eine Pflichtangabe und muss mit dem Handelsregistereintrag übereinstimmen;
+> **Ricardo ist darauf hingewiesen.**
 
 ---
 

@@ -66,8 +66,8 @@ export const impressum: PageContent = {
       id: 'vertretung',
       heading: 'Vertretungsberechtigte Personen',
       paragraphs: [
-        'Geschäftsführer und Mitinhaber: Ricardo Caires Cerqueira',
-        'Mitinhaber: Octavio Nuno Gouveia Andrade',
+        'Geschäftsführer und Mitinhaber: Octavio Nuno Gouveia Andrade',
+        'Mitinhaber: Ricardo Caires Cerqueira',
       ],
     },
 

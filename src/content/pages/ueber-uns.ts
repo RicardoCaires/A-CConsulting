@@ -37,7 +37,7 @@ export const ueberUns: PageContent = {
         {
           heading: 'Ricardo Caires Cerqueira',
           paragraphs: [
-            'Geschäftsführer und Mitinhaber. Zuständig für Treuhand, Steuern und Versicherungen. Als Versicherungsvermittler bei der FINMA registriert.',
+            'Mitinhaber. Zuständig für Treuhand, Steuern und Versicherungen. Als Versicherungsvermittler bei der FINMA registriert.',
             'Beruflicher Weg: Kaufmann EFZ, danach im Finanz- und Rechnungswesen der Creabeton Matériaux AG in Lyss verantwortlich für Kreditoren, Debitoren und Anlagebuchhaltung sowie Leiter der Berufsbildung. Abschlüsse: Sachbearbeiter Rechnungswesen VSK am Feusi Bildungszentrum Bern und Versicherungsvermittler VBV.',
             'Beratungssprachen: Deutsch, Französisch, Portugiesisch und Englisch.',
             ['Direkt erreichbar unter ', { company: 'ricardo' }],

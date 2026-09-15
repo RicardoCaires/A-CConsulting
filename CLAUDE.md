@@ -18,7 +18,7 @@ wir sind, was wir tun und wie man uns erreicht.
 ## 2. Firmenangaben (Pflichtangaben — nie eigenmächtig ändern)
 
 - Firma: A&C Consulting GmbH
-- Adresse: **Bielstrasse 10, 2556 Aegerten**, Kanton Bern
+- Adresse: **Bielstrasse 10, 2558 Aegerten**, Kanton Bern
   > **Geändert am 15.09.2026 auf Ricardos ausdrückliche Anweisung** („Die
   > Geschäftsadresse hat geändert und lautet neu"). Bis dahin galt öffentlich
   > Bielstrasse 22, 3250 Lyss, und der Umzug war auf den 01.11.2026
@@ -27,10 +27,10 @@ wir sind, was wir tun und wie man uns erreicht.
   > Seitentitel sind nachgezogen. Sie wird wie bisher ausschliesslich in
   > `src/lib/company.ts` gepflegt.
   >
-  > **Die Postleitzahl ist zu bestätigen.** Ricardos Auftrag nennt dreimal
-  > **2556** — Adressblock, Google-Maps-Link und Knopfbeschriftung. Bis zum
-  > 15.09.2026 stand hier **2558**. Es gilt sein geschriebener Wortlaut; die
-  > Korrektur wäre eine Zeile in `company.ts`.
+  > **Die Postleitzahl ist 2558.** Ricardos Auftrag nannte zuerst dreimal
+  > 2556; er hat das am selben Tag korrigiert („2558 Aegertn nicht 2556").
+  > Eine Abfrage bei Nominatim löst „Bielstrasse 10, 2558 Aegerten" als
+  > bestehendes Gebäude auf und bestätigt die Zahl.
   >
   > **Handelsregister und FINMA sind nicht nachgeführt.** Der Auftrag verlangt
   > die neue Adresse ausdrücklich auch im Impressum; bis zur Nachführung nennt
@@ -45,8 +45,17 @@ wir sind, was wir tun und wie man uns erreicht.
   > nicht auf die Website. Dieselbe Lage wie beim Telefonwechsel vom
   > 10.09.2026.
 - FINMA-Registernummer Unternehmen: **F01568855**
-- Geschäftsführung: **Ricardo Caires Cerqueira**
-- Mitinhaber: Octavio Nuno Gouveia Andrade
+- Geschäftsführung: **Octavio Nuno Gouveia Andrade**
+- Mitinhaber: Ricardo Caires Cerqueira
+  > **Getauscht am 15.09.2026 auf Ricardos ausdrückliche Anweisung:**
+  > „octavio ist inhaber und Geschäftsführer ich bin nur inhaber". Bis dahin
+  > stand hier Ricardo als Geschäftsführer — so auch in einem Auftrag vom
+  > selben Tag, der ausdrücklich verlangte, Octavio **nicht** als
+  > Geschäftsführer zu bezeichnen. Es gilt die jüngere Anweisung. Die Angabe
+  > steht im Impressum unter „Vertretungsberechtigte Personen" und muss mit
+  > dem Handelsregistereintrag übereinstimmen; **Ricardo ist darauf
+  > hingewiesen.** Der Corporate-Design-Skill führt weiterhin die alte
+  > Zuordnung und wird von hier aus nicht geändert.
 
 > Öffentlich auf der Website gilt die vollständige Form „Ricardo Caires Cerqueira"
 > (Festlegung Ricardo, 04.09.2026). Die Kurzform „Ricardo Caires" ist in knappen
@@ -439,10 +448,21 @@ Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
 | 1 | Einstieg | Verwurzelt im Seeland. Blick auf mehr. | DOMINANT |
 | 2 | Leistungen | Was wir für Sie übernehmen. | hell (getönt) |
 | 3 | Situationen | Wobei können wir Sie unterstützen? | weiss |
-| 4 | Eine Stelle | Eine Stelle für Ihre Administration | FLÄCHE |
-| 5 | Ansprechpartner | Zwei Ansprechpartner | hell |
-| 6 | Ablauf | So beginnt die Zusammenarbeit | weiss |
-| 7 | Abschluss | Erzählen Sie uns, wobei wir Sie entlasten können. | weiss |
+| 4 | Ansprechpartner | Zwei Ansprechpartner | hell |
+| 5 | Abschluss | Erzählen Sie uns, wobei wir Sie entlasten können. | weiss |
+
+> **Am 15.09.2026 von sieben auf fünf verkürzt** auf Ricardos Anweisung, per
+> Screenshot. Weggefallen sind **„Eine Stelle für Ihre Administration"** — die
+> Kette Gründung → Buchhaltung → Lohn → Versicherungen → Steuern mit dem
+> Bürobild — und **„So beginnt die Zusammenarbeit"** mit den vier Schritten
+> auf der Zeitachse. Ihr Wortlaut steht unverändert in
+> `content/source/startseite_de.md`.
+>
+> **Damit ist auch der letzte grüne Knopf aus der Seitenmitte verschwunden**
+> („Mehr über unseren Ansatz"); der einzige Handlungsknopf steht im
+> Kopfbereich und im Abschluss. Die Bausteine `Ablauf` und `Schrittbild`
+> bleiben liegen — `StepList` trägt denselben Ablauf weiter auf den
+> Leistungsseiten. Ricardo ist darauf hingewiesen.
 
 > **Am 10.09.2026 von neun auf sieben verkürzt** auf Anweisung von Ricardo.
 > Weggefallen sind **„Unsere Rolle"** („Wir vertreten Sie, nicht die
@@ -1540,9 +1560,11 @@ Fliesstext über Werte — konkrete Sätze über konkrete Menschen.
 > die Sprachzeile schiebt sich an den Fuss, damit die Knöpfe auf einer Linie
 > stehen. Der Anker `inhaber` bleibt.
 >
-> **Octavio heisst neu nur noch „Mitinhaber".** Bis dahin trugen beide
-> „Geschäftsführer und Mitinhaber" — das widersprach Abschnitt 2, wo die
-> Geschäftsführung allein bei Ricardo liegt. Der Auftrag sagt es ausdrücklich.
+> **Die Rollen sind seit dem 15.09.2026 vertauscht:** Octavio ist
+> „Geschäftsführer und Mitinhaber", Ricardo „Mitinhaber". Am selben Tag hatte
+> ein Auftrag noch das Gegenteil verlangt; Ricardos spätere Anweisung
+> („octavio ist inhaber und Geschäftsführer ich bin nur inhaber") gilt. Siehe
+> Abschnitt 2.
 >
 > **Die Porträts sind eingesetzt.** `portrait_ricardo.webp` und
 > `portrait_octavio.webp` lagen längst unter `public/bilder/`; die Alt-Texte
@@ -1552,11 +1574,12 @@ Fliesstext über Werte — konkrete Sätze über konkrete Menschen.
 > Mass der Dateien (560 x 420). 16/10 nähme oben rund 17 Prozent weg, also
 > dort, wo die Köpfe sind.
 >
-> **Die E-Mail-Knöpfe der Vorlage sind nicht gebaut.** Sie zeigen auf
-> persönliche Adressen, die in `src/lib/company.ts` nicht erfasst sind;
-> Firmenangaben werden nur dort gepflegt, und der Auftrag verlangt
-> ausdrücklich die Telefonnummer-Knöpfe. **Die Nummer ist die Beschriftung**
-> statt des Wortes „Anrufen" der Vorlage; sie kommt aus `direktnummern`.
+> **Die E-Mail-Knöpfe stehen seit dem 15.09.2026 neben den Telefonknöpfen.**
+> Ricardo hat die beiden Adressen an diesem Tag freigegeben; sie stehen als
+> `direktadressen` in `src/lib/company.ts` und nirgends sonst. **Die Nummer
+> ist die Beschriftung** des ersten Knopfes statt des Wortes „Anrufen" der
+> Vorlage. Unter 30rem stehen die beiden Knöpfe untereinander und füllen die
+> Breite.
 >
 > **Die Beratungssprachen unterscheiden sich neu je Person** — Ricardo
 > Deutsch, Portugiesisch, Englisch; Octavio Deutsch, Französisch,
@@ -1619,6 +1642,27 @@ Fliesstext über Werte — konkrete Sätze über konkrete Menschen.
 >
 > **Strukturierte Daten gibt es auf der Website nicht** — kein JSON-LD, keine
 > Schema.org-Auszeichnung. Bei der Adressänderung war dort nichts zu tun.
+>
+> **Seit dem 15.09.2026 zeigt die Fläche eine Karte** (`Standortkarte.tsx`,
+> die einzige neue Client-Komponente). **Sie lädt erst auf Klick:** Ein
+> eingebetteter Kartendienst holt beim Aufruf der Seite Daten von einem fremden
+> Server und übermittelt dabei die IP-Adresse der Besucherin; Abschnitt 6 und 7
+> verlangen, dass ohne Rücksprache kein fremder Dienst mitläuft, und die
+> Datenschutzerklärung wird nicht selbständig geändert. Bis zum Klick steht in
+> der Fläche ein Knopf „Karte anzeigen" mit dem Hinweis, woher die Karte kommt.
+> Danach erscheint die Karte von **OpenStreetMap**, mit Stecknadel auf dem
+> Büro. Anschrift und Routenknopf funktionieren ohne Skript und ohne fremden
+> Dienst. **Soll die Karte sofort erscheinen**, ist das eine Zeile — dann
+> gehört aber ein Satz zum Kartendienst in die Datenschutzerklärung, und den
+> ändert nur Ricardo.
+>
+> **Die Koordinaten stehen in `company.ts`** (`bueroLage`), nachgeschlagen bei
+> Nominatim. Die Abfrage löst „Bielstrasse 10, 2558 Aegerten" als bestehendes
+> Gebäude auf — damit ist die Postleitzahl belegt.
+>
+> **Die Randzeile unter dem Abschnitt ist entfallen** („Seeland · Kanton Bern ·
+> Deutsch · Französisch · Portugiesisch"), auf Ricardos Anweisung vom
+> 15.09.2026.
 
 
 ### /kontakt
@@ -1683,10 +1727,19 @@ Inhalt und Freigaben:
 
 **Französisch — offen, blockiert alles Weitere in dieser Sprache**
 
-Stand 07.09.2026: Keiner der beiden Inhaber führt Französisch als
-Beratungssprache. Ricardo und Octavio beraten auf Deutsch, Portugiesisch und
-Englisch. Ob A&C Französisch in der bisherigen Form überhaupt anbietet, klärt
-Ricardo mit Octavio.
+**Teilweise geklärt am 15.09.2026.** Ricardo hat die Beratungssprachen der
+beiden Profile auf `/ueber-uns` ausdrücklich bestätigt („Beratungssprachen
+stimmen so"): **Ricardo** berät auf Deutsch, Portugiesisch und Englisch,
+**Octavio** auf Deutsch, Französisch und Portugiesisch. Damit stimmt die Zeile
+„Beratung auf Deutsch, Französisch und Portugiesisch" im Fussbereich wieder.
+
+Offen bleibt, **ob `/fr/` aufgeschaltet wird** — das ist eine Entscheidung
+über ein Drittel der Übersetzungsarbeit und nicht dasselbe wie die Frage nach
+der Beratungssprache. Bis Ricardo das sagt, bleibt `/fr/` auf
+`published: false`.
+
+Der bisherige Stand vom 07.09.2026 lautete: Keiner der beiden Inhaber führt
+Französisch als Beratungssprache; Ricardo klärt das mit Octavio.
 
 Davon hängt ab:
 
