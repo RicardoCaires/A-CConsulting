@@ -73,19 +73,55 @@ export const personalFinance: PageContent = {
       },
     },
 
-    // 04 Vorsorge
+    // 04 Vorsorge — seit dem 15.09.2026 Illustration, drei Saeulenkarten,
+    // Pruefliste und Grundsatz nach Ricardos HTML-Vorlage
+    // (`content/source/finanzplanung_vorsorge_de.md`). Vorher drei Absaetze
+    // aus `schritt4_fassung2_de.md`. Der Anker `vorsorge` bleibt — die
+    // Sprungmarke zeigt darauf.
+    //
+    // **Die vorsichtigen Formulierungen bleiben:** voraussichtlich, koennte,
+    // haengt ab. Keine Grenzbetraege, keine Renditeangaben,
+    // keine Leistungsversprechen — so verlangt es der Auftrag und Abschnitt 3
+    // der Hausordnung.
     {
-      kind: 'prose',
+      kind: 'systemuebersicht',
       id: 'vorsorge',
-      heading: 'Vorsorge',
-      paragraphs: [
-        'Die dritte Säule ist für viele die einzige Vorsorge, die sie selbst in der Hand haben — und oft die, um die sie sich am wenigsten kümmern.',
-        [
-          'Wir schauen mit Ihnen an, was aus AHV und Pensionskasse zu erwarten ist, wo eine Lücke entsteht und was die Säule 3a in Ihrer Situation leisten kann. Ob eine Bank- oder eine Versicherungslösung besser passt, hängt davon ab, wie fest Sie sich binden wollen; wir sagen Ihnen, was der Unterschied für Sie bedeutet.',
-          
-        ],
-        'Wir empfehlen kein Produkt, bevor wir Ihre Ausgangslage kennen.',
+      eyebrow: 'Heute verstehen. Morgen planen.',
+      heading: 'Vorsorge beginnt mit einem Gesamtbild.',
+      bild: 'finanzplanung_vorsorge',
+      bildBeschreibung: 'Die drei Säulen der Vorsorge, unterschiedlich hoch gefüllt.',
+      lead: [
+        'AHV, Pensionskasse und private Vorsorge erfüllen unterschiedliche Aufgaben. Erst gemeinsam zeigen sie, womit Sie später rechnen können und wo zusätzlicher Handlungsbedarf bestehen könnte.',
       ],
+      karten: [
+        {
+          tag: 'Staatliche Vorsorge',
+          titel: 'AHV und IV',
+          text: 'Die erste Säule dient der Existenzsicherung. Beitragsjahre und Einkommen beeinflussen die späteren Leistungen.',
+        },
+        {
+          tag: 'Berufliche Vorsorge',
+          titel: 'Pensionskasse',
+          text: 'Die zweite Säule ergänzt die staatliche Vorsorge. Entscheidend sind unter anderem versicherter Lohn, Guthaben und Vorsorgeplan.',
+        },
+        {
+          tag: 'Private Vorsorge',
+          titel: 'Säule 3a und freie Vorsorge',
+          text: 'Die private Vorsorge ergänzt die ersten beiden Säulen. Welche Lösung passt, hängt von Zielen, Zeithorizont und gewünschter Flexibilität ab.',
+        },
+      ],
+      pruefung: {
+        titel: 'Was wir mit Ihnen anschauen',
+        punkte: [
+          'Welche Leistungen aus AHV und Pensionskasse voraussichtlich zusammenkommen',
+          'Ob sich aus Ihren Zielen und Verpflichtungen eine Vorsorgelücke ergibt',
+          'Wie sich Bank- und Versicherungslösungen bei Bindung, Risiko und Flexibilität unterscheiden',
+        ],
+      },
+      grundsatz: {
+        titel: 'Zuerst die Ausgangslage, dann die Lösung.',
+        text: 'Wir empfehlen kein Produkt, bevor Ziele, bestehende Vorsorge und finanzieller Spielraum geklärt sind.',
+      },
     },
 
   ],
