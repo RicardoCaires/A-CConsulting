@@ -46,23 +46,31 @@ export const personalFinance: PageContent = {
       ],
     },
 
-    // 03 Budget
+    // 03 Budget — seit dem 15.09.2026 eine Karte mit Illustration und fünf
+    // Situationsfeldern nach Ricardos HTML-Vorlage
+    // (`content/source/finanzplanung_budget_de.md`). Vorher eine Aufzaehlung
+    // aus `schritt4_fassung2_de.md`; deren Wortlaut steht dort unveraendert
+    // weiter. Der Anker `budget` bleibt — die Sprungmarke zeigt darauf.
     {
-      kind: 'list',
+      kind: 'bereich',
       id: 'budget',
-      heading: 'Budget',
-      intro: [
-        'Ein Budget ist keine Verzichtsübung. Es ist eine Übersicht: Was kommt herein, was geht heraus, und was bleibt.',
-        'Wir sehen uns mit Ihnen an, wie sich Ihre Ausgaben verteilen, welche Fixkosten fest stehen und welche Sie beeinflussen können. Am Ende haben Sie eine Aufstellung, mit der Sie weiterarbeiten können — auch ohne uns.',
-        'Sinnvoll ist das besonders dann:',
+      eyebrow: 'Klarheit im Alltag',
+      heading: 'Ein Budget zeigt, was möglich ist.',
+      bild: 'finanzplanung_budget',
+      lead: 'Es geht nicht darum, auf alles zu verzichten. Es geht darum, Einnahmen, feste Verpflichtungen und persönliche Wünsche miteinander in Einklang zu bringen.',
+      paragraphs: [
+        'Gemeinsam ordnen wir Ihre Einnahmen und Ausgaben, unterscheiden fixe und veränderbare Kosten und machen sichtbar, welcher Spielraum bleibt. Sie erhalten eine verständliche Übersicht, die Sie selbst weiterführen können.',
       ],
-      items: [
-        'vor oder nach einem Wechsel der Anstellung',
-        'wenn Sie sich selbständig machen',
-        'bei einer Trennung, einer Heirat oder Nachwuchs',
-        'wenn Sie eine grössere Anschaffung planen',
-        'wenn am Monatsende regelmässig weniger übrig bleibt als gedacht',
-      ],
+      situationen: {
+        titel: 'Besonders hilfreich bei Veränderungen',
+        punkte: [
+          'Neue Stelle oder verändertes Einkommen',
+          'Schritt in die Selbstständigkeit',
+          'Neue familiäre Situation',
+          'Grössere Anschaffung oder neues Ziel',
+          'Weniger übrig als erwartet',
+        ],
+      },
     },
 
     // 04 Vorsorge

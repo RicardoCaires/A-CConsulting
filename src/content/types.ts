@@ -503,6 +503,21 @@ export type Block =
    * selbst mit und zaehlt beim Flaechenwechsel nicht mit.
    */
   | {
+      kind: 'bereich'
+      id: string
+      eyebrow?: string
+      heading: string
+      /** Der erste Absatz, eine Spur groesser und in Navy. */
+      lead?: Rich
+      paragraphs?: readonly Rich[]
+      /** Gelieferte Illustration, Dateiname unter `public/bilder/` ohne Endung. */
+      bild?: string
+      situationen?: { titel: string; punkte: readonly string[] }
+    }
+  /**
+   * Ein Ablauf als waagrechte Reihe, auf schmalen Geraeten scrollbar.
+   */
+  | {
       kind: 'prozessreihe'
       id: string
       eyebrow?: string

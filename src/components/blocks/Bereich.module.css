@@ -1,0 +1,220 @@
+/* Ein Leistungsbereich — heute „Ein Budget zeigt, was möglich ist."
+
+   Nach Ricardos HTML-Vorlage vom 15.09.2026
+   (`bilder-quelle/finanzplanung_budget/vorlage.html`). Aus ihr übernommen:
+
+     Inhalt        1120 px, mittig, auf hellem Grund
+     Karte         weiss, Haarlinie, Radius 12 px
+     Raster        Text 1.25fr, Illustration 0.75fr, mindestens 280 px
+     Situationen   fünf Felder, Nummernkreis 34 px, Radius 10 px
+     Umbruch       ab 900 px drei Spalten, ab 650 px zwei, ab 440 px eine
+
+   Keine neuen Farben, keine Verläufe, keine Schatten — so verlangt es der
+   Auftrag und die Hausordnung. */
+
+.abschnitt {
+  padding-block: var(--ac-section-y-lg);
+  background-color: var(--ac-color-background-light);
+}
+
+.abschnitt .container {
+  max-width: 70rem;
+}
+
+/* ---- Karte mit Text und Illustration ---------------------------------------- */
+
+.karte {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(17.5rem, 0.75fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+}
+
+.text {
+  min-width: 0;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  line-height: var(--ac-eyebrow-line);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+.eyebrow::before {
+  content: '';
+  flex: none;
+  width: 1.75rem;
+  height: var(--ac-border-marker);
+  background-color: var(--ac-color-accent-green);
+}
+
+.titel {
+  margin: var(--ac-space-sm) 0 0;
+  font-size: clamp(2.2rem, 1.6rem + 2vw, 3.35rem);
+  line-height: 1.13;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.015em;
+  color: var(--ac-color-primary-navy);
+}
+
+/* Der erste Absatz trägt die Aussage und steht darum in Navy. */
+.lead {
+  max-width: 38.75rem;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--ac-color-primary-navy);
+}
+
+.satz {
+  max-width: 38.75rem;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.7;
+  color: var(--ac-color-text-secondary);
+}
+
+.bild {
+  display: block;
+  justify-self: center;
+  width: 100%;
+  max-width: 22.5rem;
+  height: auto;
+}
+
+/* ---- Die fünf Situationen --------------------------------------------------- */
+
+.situationen {
+  margin-top: var(--ac-space-lg);
+}
+
+.situationenTitel {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  margin: 0 0 var(--ac-space-sm);
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  line-height: var(--ac-eyebrow-line);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+.situationenTitel::before {
+  content: '';
+  flex: none;
+  width: 1.75rem;
+  height: var(--ac-border-marker);
+  background-color: var(--ac-color-accent-green);
+}
+
+.raster {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  /* Gleich hohe Zeilen: Kein Feld richtet sich nach seinem eigenen Titel. */
+  grid-auto-rows: 1fr;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feld {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ac-space-sm);
+  min-height: 9.6875rem;
+  padding: 1.25rem;
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+}
+
+.nummer {
+  display: grid;
+  place-items: center;
+  width: 2.125rem;
+  height: 2.125rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-tint);
+  border-radius: 50%;
+}
+
+/* Der letzte Kreis markiert das Ende der Aufzählung. */
+.feld:last-child .nummer {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-accent-green);
+}
+
+.feldTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: 1.05rem;
+  line-height: 1.35;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+/* ---- Umbrüche --------------------------------------------------------------- */
+
+@media (max-width: 56.25rem) {
+  .karte {
+    grid-template-columns: minmax(0, 1fr) 14.375rem;
+  }
+
+  .raster {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Unter 40.625rem steht die Illustration über dem Text. */
+@media (max-width: 40.625rem) {
+  .karte {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bild {
+    grid-row: 1;
+    justify-self: start;
+    max-width: 13.125rem;
+  }
+
+  .raster {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 27.5rem) {
+  .karte {
+    padding: 1.4rem;
+  }
+
+  .raster {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .feld {
+    min-height: 0;
+  }
+}
+
+@media print {
+  .karte,
+  .feld {
+    break-inside: avoid;
+  }
+}

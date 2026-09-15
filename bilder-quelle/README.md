@@ -594,3 +594,13 @@ Piktogramme als SVG und PNG. Die SVG werden **unveraendert** ausgeliefert.
 Die Vorlage selbst zeigt nur die Nummernkreise. Die Piktogramme sind trotzdem
 eingesetzt, weil sie nach genau diesen fuenf Schritten benannt sind.
 
+## Finanzplanung — Budget
+
+Am 15.09.2026 als HTML-Vorlage geliefert; die Illustration stand im Quelltext,
+nicht als eigene Datei. Sie ist unveraendert herausgeloest.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `finanzplanung-budget.html` | — | Vorlage, liegt als `vorlage.html` |
+| daraus das SVG | `finanzplanung_budget.svg` | SVG, viewBox 360 x 300 |
+

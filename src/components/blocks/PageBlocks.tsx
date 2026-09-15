@@ -7,6 +7,7 @@ import { KLASSE, type Surface } from './Section'
 import { PageLink } from '@/components/ui/PageLink'
 import { hatSichtbarenInhalt, RichText } from '@/components/ui/RichText'
 import { Accordion } from './Accordion'
+import { Bereich } from './Bereich'
 import { Betreuung } from './Betreuung'
 import { Checkliste } from './Checkliste'
 import { ChecklisteFristen } from './ChecklisteFristen'
@@ -181,6 +182,7 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
     block.kind === 'checkliste' ||
     block.kind === 'themenkarten' ||
     block.kind === 'prozessreihe' ||
+    block.kind === 'bereich' ||
     block.kind === 'betreuung' ||
     block.kind === 'schadenfall' ||
     block.kind === 'fragen'
@@ -593,6 +595,21 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               spalten={block.spalten}
               hinweis={block.hinweis}
               locale={locale}
+            />
+          )
+        }
+
+        if (block.kind === 'bereich') {
+          return (
+            <Bereich
+              key={index}
+              id={block.id}
+              eyebrow={block.eyebrow}
+              heading={block.heading}
+              lead={block.lead}
+              paragraphs={block.paragraphs}
+              bild={block.bild}
+              situationen={block.situationen}
             />
           )
         }
