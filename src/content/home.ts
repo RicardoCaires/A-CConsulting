@@ -127,7 +127,7 @@ const de: HomeContent = {
   meta: {
     title: 'Versicherungen, Treuhand und Steuern',
     description:
-      'A&C Consulting betreut Privatpersonen, Selbständige und KMU im Seeland und im Kanton Bern. Sie erreichen uns in Lyss, auf Deutsch, Französisch und Portugiesisch.',
+      'A&C Consulting betreut Privatpersonen, Selbständige und KMU im Seeland und im Kanton Bern. Sie erreichen uns in Aegerten, auf Deutsch, Französisch und Portugiesisch.',
   },
 
   primaryCta: 'Erstgespräch anfragen',

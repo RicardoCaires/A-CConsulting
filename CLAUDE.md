@@ -18,12 +18,32 @@ wir sind, was wir tun und wie man uns erreicht.
 ## 2. Firmenangaben (Pflichtangaben — nie eigenmächtig ändern)
 
 - Firma: A&C Consulting GmbH
-- Adresse: Bielstrasse 22, 3250 Lyss, Kanton Bern
-  > Umzug nach **Bielstrasse 10, 2558 Aegerten** ab **01.11.2026**. Bis dahin
-  > gilt öffentlich Lyss. Handelsregister und FINMA sind noch nicht
-  > nachgeführt — der **Sitz** wechselt erst danach. Beide Adressen stehen in
-  > `src/lib/company.ts`; der Wechsel geschieht beim ersten Bau nach dem
-  > Stichtag von selbst. Kein Livegang vor dem 01.11.2026.
+- Adresse: **Bielstrasse 10, 2556 Aegerten**, Kanton Bern
+  > **Geändert am 15.09.2026 auf Ricardos ausdrückliche Anweisung** („Die
+  > Geschäftsadresse hat geändert und lautet neu"). Bis dahin galt öffentlich
+  > Bielstrasse 22, 3250 Lyss, und der Umzug war auf den 01.11.2026
+  > vorgemerkt. Die alte Adresse steht an keiner Stelle der Website mehr —
+  > Fussbereich, Kontaktseite, Impressum, Datenschutz, Metadaten und
+  > Seitentitel sind nachgezogen. Sie wird wie bisher ausschliesslich in
+  > `src/lib/company.ts` gepflegt.
+  >
+  > **Die Postleitzahl ist zu bestätigen.** Ricardos Auftrag nennt dreimal
+  > **2556** — Adressblock, Google-Maps-Link und Knopfbeschriftung. Bis zum
+  > 15.09.2026 stand hier **2558**. Es gilt sein geschriebener Wortlaut; die
+  > Korrektur wäre eine Zeile in `company.ts`.
+  >
+  > **Handelsregister und FINMA sind nicht nachgeführt.** Der Auftrag verlangt
+  > die neue Adresse ausdrücklich auch im Impressum; bis zur Nachführung nennt
+  > die Website damit eine andere Adresse als das öffentliche Register.
+  > `buero` und `sitz` in `company.ts` zeigen seither auf dieselbe Adresse,
+  > die Unterscheidung bleibt aber bestehen.
+  >
+  > **Zwei Stellen ausserhalb dieses Projekts führen weiterhin Lyss**: der
+  > Skill `ac-corporate-design` (Fusszeile aller Geschäftsdokumente) und
+  > `00_Shared/Stammdaten.md`. `design/ac-corporate-design.tokens.json` ist die
+  > Kopie der Skill-Tokens und wird hier nicht von Hand geändert; sie fliesst
+  > nicht auf die Website. Dieselbe Lage wie beim Telefonwechsel vom
+  > 10.09.2026.
 - FINMA-Registernummer Unternehmen: **F01568855**
 - Geschäftsführung: **Ricardo Caires Cerqueira**
 - Mitinhaber: Octavio Nuno Gouveia Andrade
@@ -1576,6 +1596,29 @@ Fliesstext über Werte — konkrete Sätze über konkrete Menschen.
 > Verarbeitung steht weiterhin in den häufigen Fragen auf `/treuhand`. Und
 > „Tätigkeitsbereiche: Versicherungen, Treuhand und Steuern." — die drei
 > Bereiche stehen seit dem 15.09.2026 als Pillen im Einstieg derselben Seite.
+
+> **Der Standortabschnitt ist seit dem 15.09.2026 eine Karte** nach Ricardos
+> HTML-Vorlage (`content/source/ueberuns_standort_de.md`): links Kategoriezeile
+> „Unser Standort", der neue Titel „Persönlich für Sie da in Aegerten", die
+> Anschrift als `<address>`, ein Satz und der grüne Knopf „Route mit Google
+> Maps planen"; rechts die schlichte getönte Bildfläche mit dem navy
+> Ortsschild unten rechts. Ab 48.75rem nebeneinander, darunter steht die
+> Fläche oben. Der Anker `region` bleibt.
+>
+> **Der Knopf öffnet Google Maps in einem neuen Fenster** (`target="_blank"`,
+> `rel="noopener noreferrer"`) und startet die Routenplanung zum Büro. Das
+> Ziel baut `company.ts` aus der Adresse — ein Umzug ändert Link, Anschrift
+> und Ortsschild auf einmal. Google Maps bestimmt den Ausgangspunkt selbst.
+> Die zugängliche Beschriftung nennt die vollständige Adresse; `{adresse}` im
+> Inhalt wird beim Rendern eingesetzt, damit keine Strasse im Text steht.
+>
+> **„Aufnahme 6 der Shootingliste" ist verschwunden.** Die Fläche trägt
+> `role="img"` mit dem Namen „Bildplatzhalter"; das Ortsschild wiederholt nur
+> die Adresse und ist für Vorlesewerkzeuge ausgeblendet. Damit steht auf
+> `/ueber-uns` kein interner Vermerk mehr.
+>
+> **Strukturierte Daten gibt es auf der Website nicht** — kein JSON-LD, keine
+> Schema.org-Auszeichnung. Bei der Adressänderung war dort nichts zu tun.
 
 
 ### /kontakt

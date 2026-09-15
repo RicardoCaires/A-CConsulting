@@ -58,7 +58,7 @@ const de: WissenContent = {
   meta: {
     title: 'Wissen — Beiträge zu Versicherung, Treuhand und Vorsorge',
     description:
-      'Kurze Beiträge zu Fragen, die im Erstgespräch immer wieder kommen. A&C Consulting in Lyss.',
+      'Kurze Beiträge zu Fragen, die im Erstgespräch immer wieder kommen. A&C Consulting in Aegerten.',
   },
 
   hero: {

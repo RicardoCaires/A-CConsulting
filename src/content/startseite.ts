@@ -159,9 +159,9 @@ export type StartseiteContent = {
 
 const de: StartseiteContent = {
   meta: {
-    title: 'Treuhand und Versicherungen in Lyss',
+    title: 'Treuhand und Versicherungen in Aegerten',
     description:
-      'Buchhaltung, Versicherungen und Finanzplanung für Selbständige, KMU und Privatpersonen. Feste Ansprechpartner in Lyss, Kanton Bern.',
+      'Buchhaltung, Versicherungen und Finanzplanung für Selbständige, KMU und Privatpersonen. Feste Ansprechpartner in Aegerten, Kanton Bern.',
   },
 
   cta: 'Erstgespräch anfragen',
@@ -170,7 +170,7 @@ const de: StartseiteContent = {
   einstieg: {
     eyebrow: 'Versicherungen · Treuhand',
     titel: 'Verwurzelt im Seeland. Blick auf mehr.',
-    satz: 'Wir unterstützen Selbständige, KMU und Privatpersonen bei Buchhaltung, Versicherungen und Finanzfragen – mit festen Ansprechpartnern in Lyss.',
+    satz: 'Wir unterstützen Selbständige, KMU und Privatpersonen bei Buchhaltung, Versicherungen und Finanzfragen – mit festen Ansprechpartnern in Aegerten.',
     weiter: { text: 'Unsere Leistungen', ziel: 'treuhand' },
     // Die Aufnahme traegt Ueberschrift und Vorzeile bereits eingebrannt.
     // Darum blendet der Kopf seinen eigenen Text aus, sobald das Bild lesbar

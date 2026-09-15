@@ -103,7 +103,7 @@ export const ueberUns: PageContent = {
       id: 'region',
       heading: 'Wo Sie uns finden',
       paragraphs: [
-        'Unser Büro liegt an der Bielstrasse in Lyss, wenige Minuten vom Bahnhof. Termine finden bei uns statt oder bei Ihnen — wie es Ihnen besser passt.',
+        'Unser Büro liegt an der Bielstrasse in Aegerten. Termine finden bei uns statt oder bei Ihnen — wie es Ihnen besser passt.',
         'Wir betreuen Kundinnen und Kunden im Seeland und im Kanton Bern.',
         'Beraten wird auf Deutsch, Französisch und Portugiesisch. Das gilt für das Gespräch, für die Korrespondenz und für die Unterlagen.',
       ],

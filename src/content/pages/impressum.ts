@@ -12,9 +12,11 @@
  * anderswo: Eine Registernummer, die im Impressum von der tatsaechlichen
  * abweicht, ist keine Unschoenheit, sondern eine falsche Pflichtangabe.
  *
- * Der Sitz ist bewusst `sitz` und nicht `buero`: Im Impressum steht, was das
- * Handelsregister fuehrt. Nach dem Umzug des Bueros nach Aegerten bleibt hier
- * so lange Lyss, bis `registerNachgefuehrt` in `company.ts` auf `true` steht.
+ * Der Sitz steht als `sitz` und nicht als Text. **Seit dem 15.09.2026 sind
+ * Buero und Sitz dieselbe Adresse in Aegerten**, auf Ricardos ausdrueckliche
+ * Anweisung, die das Impressum eigens nennt. Vorher stand hier so lange Lyss,
+ * bis die Register nachgefuehrt sind. Dass sie es noch nicht sind, liegt bei
+ * Ricardo — siehe den Kommentar zur Adresse in `company.ts`.
  *
  * Der Link auf den FINMA-Registereintrag fehlt absichtlich. Er kommt erst,
  * wenn Ricardo den Eintrag von Hand geprueft hat — bis dahin steht die Nummer

@@ -92,13 +92,25 @@ export type UeberunsContent = {
   }
 
   standort: {
+    eyebrow: string
     titel: string
     /** Die Anschrift kommt aus `company.ts`, nicht aus dem Text. */
     adresse: Rich
     satz: string
+    /**
+     * Der gruene Knopf auf die Routenplanung. Ziel und Adresse baut
+     * `company.ts`; `{adresse}` in `ariaLabel` wird dort eingesetzt.
+     */
+    aktion: { label: string; ariaLabel: string }
     /** Kurzangaben unter der Komposition. Keine Saetze. */
     meta: readonly string[]
-    bild: { label: string; note?: string }
+    bild: {
+      /** Beschriftung der Platzhalterflaeche, solange die Aufnahme fehlt. */
+      label: string
+      /** Liegt eine Aufnahme vor, steht hier ihr Dateiname ohne Endung. */
+      foto?: string
+      alt?: string
+    }
   }
 
 }
@@ -246,12 +258,22 @@ const de: UeberunsContent = {
   },
 
   // ---- 4 Standort
+  //
+  // Seit dem 15.09.2026 nach Ricardos HTML-Vorlage
+  // (`content/source/ueberuns_standort_de.md`) und mit der neuen Adresse.
+  // Adresse, Ortsangabe im Bild und Ziel der Routenplanung kommen aus
+  // `company.ts`; hier steht kein Strassenname.
   standort: {
-    titel: 'Wo Sie uns finden',
+    eyebrow: 'Unser Standort',
+    titel: 'Persönlich für Sie da in Aegerten',
     adresse: [{ company: 'buero' }],
-    satz: 'Unser Büro liegt an der Bielstrasse in Lyss, wenige Minuten vom Bahnhof. Termine finden bei uns statt oder bei Ihnen — wie es Ihnen besser passt.',
+    satz: 'Besprechungen sind bei uns vor Ort oder nach Vereinbarung bei Ihnen möglich. Planen Sie Ihre Anreise direkt über Google Maps.',
+    aktion: {
+      label: 'Route mit Google Maps planen',
+      ariaLabel: 'Route zur {adresse} mit Google Maps planen',
+    },
     meta: ['Seeland', 'Kanton Bern', 'Deutsch', 'Französisch', 'Portugiesisch'],
-    bild: { label: 'BÜRO LYSS', note: 'Aufnahme 6 der Shootingliste' },
+    bild: { label: 'Bildplatzhalter' },
   },
 
 }

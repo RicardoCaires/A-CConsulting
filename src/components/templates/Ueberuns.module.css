@@ -300,38 +300,111 @@
 }
 
 /* ---- 4  Standort --------------------------------------------------------- */
+/* Eine Karte nach Ricardos Vorlage vom 15.09.2026: Text links, Bildflaeche
+   rechts, beide in derselben Kontur. Unter 48.75rem steht das Bild oben. */
 
 .standort {
   padding-block: clamp(2.25rem, 4vw, 3.25rem);
 }
 
-.standortRaster {
+.standortKarte {
   display: grid;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  overflow: hidden;
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
 }
 
+/* Einspaltig steht die Flaeche oben, wie in der Vorlage — sobald die
+   Aufnahme vorliegt, ist sie dort das Erste, was man sieht. */
 .standortText {
-  max-width: 34rem;
+  display: flex;
+  grid-row: 2;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.standortTitel {
+  margin: var(--ac-space-sm) 0 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(2.2rem, 1.6rem + 2vw, 3.25rem);
+  line-height: 1.13;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
 }
 
 /* Die Anschrift traegt den Block — groesser als der Satz darunter. */
 .adresse {
-  margin-top: var(--ac-space-sm);
-  font-size: var(--ac-lead-size);
-  line-height: var(--ac-lead-line);
+  margin: var(--ac-space-sm) 0 0;
+  font-size: 1.15rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5;
   font-variant-numeric: tabular-nums;
+  color: var(--ac-color-primary-navy);
 }
 
 .standortSatz {
-  margin-top: var(--ac-space-xs);
+  max-width: 48ch;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.68;
   color: var(--ac-color-text-secondary);
-  max-width: 46ch;
 }
 
-/* Breites Querformat — der Gegenpol zu den beiden Hochformaten darueber. */
+.routeKnopf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  align-self: flex-start;
+  min-height: 3rem;
+  margin-top: var(--ac-space-md);
+  padding: 0.75rem 1.15rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ac-color-white);
+  text-decoration: none;
+  background-color: var(--ac-color-accent-green);
+  border-radius: var(--ac-radius-md);
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.routeKnopf:hover {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-navy-deep);
+}
+
+.routeKnopf:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Schlichte Flaeche, solange keine Aufnahme vorliegt — kein Muster, kein
+   Hinweis auf interne Listen. */
 .standortBild {
-  aspect-ratio: 3 / 2;
+  position: relative;
+  grid-row: 1;
+  min-height: 19.375rem;
+  background-color: var(--ac-color-background-tint);
+}
+
+.ortsschild {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  margin: 0;
+  padding: 0.8rem 1rem;
+  font-size: 0.8rem;
+  line-height: 1.2;
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-primary-navy);
+  border-radius: var(--ac-radius-sm, 0.5rem);
 }
 
 /* Randangaben: Region und Beratungssprachen, durch Mittelpunkte getrennt. */
@@ -357,6 +430,30 @@
   color: var(--ac-color-border-light);
 }
 
+/* Ab 48.75rem nebeneinander — Text schmaler als die Flaeche. */
+@media (min-width: 48.75rem) {
+  .standortKarte {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+
+  .standortText {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .standortBild {
+    grid-row: 1;
+    grid-column: 2;
+    min-height: 29.375rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .routeKnopf {
+    align-self: stretch;
+  }
+}
+
 /* ---- Ab Tablet ----------------------------------------------------------- */
 
 @media (min-width: 48rem) {
@@ -375,10 +472,6 @@
     aspect-ratio: 1 / 1;
   }
 
-  /* Standort: Text links, breites Bild rechts. */
-  .standortRaster {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

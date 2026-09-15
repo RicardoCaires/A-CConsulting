@@ -1,10 +1,9 @@
 import Image from 'next/image'
 
 import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
-import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
 import { RichText } from '@/components/ui/RichText'
 import type { UeberunsContent } from '@/content/ueberuns'
-import { direktnummern } from '@/lib/company'
+import { buero, bueroImSatz, direktnummern, mapsRoute } from '@/lib/company'
 
 import styles from './Ueberuns.module.css'
 
@@ -222,23 +221,51 @@ export function UeberunsTemplate({ inhalt }: Props) {
         </div>
       </Section>
 
-      {/* ---- 4 Standort — Text links, breites Bild rechts ------------------ */}
+      {/* ---- 4 Standort — eine Karte: Text links, Bildflaeche rechts -------
+          Nach Ricardos Vorlage vom 15.09.2026, mit der neuen Adresse in
+          Aegerten. Adresse, Ortsschild und Ziel der Routenplanung kommen aus
+          `company.ts`; ein Umzug aendert alle drei auf einmal. */}
       <section className={styles.standort} id="region" aria-labelledby="region-titel">
         <div className="ac-container">
-          <div className={styles.standortRaster}>
+          <div className={styles.standortKarte}>
             <div className={styles.standortText}>
-              <h2 id="region-titel">{inhalt.standort.titel}</h2>
-              <p className={styles.adresse}>
+              <p className="ac-eyebrow">{inhalt.standort.eyebrow}</p>
+              <h2 id="region-titel" className={styles.standortTitel}>
+                {inhalt.standort.titel}
+              </h2>
+              <address className={styles.adresse}>
                 <RichText value={inhalt.standort.adresse} />
-              </p>
+              </address>
               <p className={styles.standortSatz}>{inhalt.standort.satz}</p>
+
+              {/* Neues Fenster, weil die Routenplanung die Seite sonst
+                  verlaesst. `noopener noreferrer` gehoert dazu. */}
+              <a
+                className={styles.routeKnopf}
+                href={mapsRoute}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={inhalt.standort.aktion.ariaLabel.replace('{adresse}', bueroImSatz)}
+              >
+                {inhalt.standort.aktion.label}
+                <span className={styles.pfeil} aria-hidden="true">
+                  →
+                </span>
+              </a>
             </div>
 
-            <ImagePlaceholder
+            <div
               className={styles.standortBild}
-              label={inhalt.standort.bild.label}
-              note={inhalt.standort.bild.note}
-            />
+              role="img"
+              aria-label={inhalt.standort.bild.label}
+            >
+              {/* Das Ortsschild wiederholt die Adresse nur; fuer
+                  Vorlesewerkzeuge steht sie eine Zeile hoeher. */}
+              <p className={styles.ortsschild} aria-hidden="true">
+                <Image src="/bilder/standort_pin.svg" alt="" width={21} height={21} unoptimized />
+                {`${buero.street} · ${buero.city}`}
+              </p>
+            </div>
           </div>
 
           {/* Randangaben: Region und Beratungssprachen, keine Saetze. */}

@@ -46,7 +46,7 @@ const PAGE_VISUAL: Partial<Record<PageKey, { label: string; note?: string }>> = 
   },
   treuhand: {
     label: 'ARBEITS- / DOKUMENTENSITUATION',
-    note: 'Buchhaltung im Büro Lyss — echte Aufnahme',
+    note: 'Buchhaltung im Büro Aegerten — echte Aufnahme',
   },
   firmengruendung: {
     label: 'GRÜNDUNGSSITUATION',
@@ -58,7 +58,7 @@ const PAGE_VISUAL: Partial<Record<PageKey, { label: string; note?: string }>> = 
   },
   kontakt: {
     label: 'BÜRO / LYSS',
-    note: 'Aussen- oder Innenaufnahme Bielstrasse 22',
+    note: 'Aussen- oder Innenaufnahme Bielstrasse 10',
   },
 }
 
