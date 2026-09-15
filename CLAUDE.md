@@ -994,15 +994,61 @@ Kontaktseite.
   Beides wäre eine dritte Knopfform neben den zwei bestehenden; es bleibt beim
   Knopf der Website. Ricardo ist darauf hingewiesen.
 
-**Sieben Banner sind offen und liegen bei Ricardo.** Sechs nennen Abschnitte,
-die es bereits gibt — Rechtsform auf `/firmengruendung`, Der Wechsel auf der
-Wechselseite, Vorsorge auf `/finanzplanung`, Arbeitsweise, Die Inhaber und
-Standort auf `/ueber-uns`. Sie einzusetzen hiesse, die Überschriften dieser
-Abschnitte zu ersetzen und dieselbe Aufnahme auf `/ueber-uns` viermal zu
-zeigen. Der siebte, „Über A&C", wäre der neue Einstieg von `/ueber-uns` und
-würde den am selben Tag gebauten zweispaltigen Einstieg mit Pillen,
-Bildfläche und grünem Eckmarker ersetzen. Beides ist eine Entscheidung über
-bestehende Arbeit und wird nicht geraten.
+**Am selben Tag hat Ricardo alle dreizehn Banner bestellt** und dazu eine
+zentrale, wiederverwendbare Komponente verlangt. Sie steht als
+`src/components/blocks/Banner.tsx`; die Texte stehen in
+`content/source/banner_serie_de.md`.
+
+| Banner | Ort |
+|---|---|
+| VERSICHERUNGEN · TREUHAND | Startseite, Seitenkopf |
+| VERSICHERUNGEN | `/versicherungen`, Seitenkopf |
+| UNTERNEHMENSGRÜNDUNG | `/firmengruendung`, Seitenkopf |
+| RECHTSFORM | `/firmengruendung`, Abschnitt `#rechtsform` |
+| TREUHÄNDERWECHSEL | `/treuhand/treuhaender-wechseln`, Seitenkopf |
+| DER WECHSEL | `/treuhand/treuhaender-wechseln`, Abschnitt `#vorgehen` |
+| FINANZPLANUNG | `/finanzplanung`, Seitenkopf |
+| VORSORGE | `/finanzplanung`, Abschnitt `#vorsorge` |
+| ÜBER A&C | `/ueber-uns`, Seitenkopf |
+| DIE INHABER | `/ueber-uns`, Abschnitt `#inhaber` |
+| UNSERE ARBEITSWEISE | `/ueber-uns`, Abschnitt `#arbeitsweise` |
+| STANDORT AEGERTEN | `/ueber-uns`, Abschnitt `#region` |
+| KONTAKT | `/kontakt`, Seitenkopf |
+
+- **Ein Baustein, ein Satz Masse.** `Banner.tsx` nimmt nur Themenzeile,
+  Überschrift, Anker, Überschriftenebene und Knopfbeschriftung. Höhe,
+  Bildausschnitt und Anordnung sind nicht einstellbar — eine abweichende
+  Abmessung je Seite ist damit unmöglich. Nachgemessen bei 1440 px: alle
+  dreizehn 1425 x 713 px, Verhältnis exakt 2.000, Textblock 690 px ab 33 px.
+- **Seitenverhältnis 1774 : 887**, also 2 : 1 — dasselbe wie die Aufnahme.
+  Sie wird darum bei `cover` **gar nicht beschnitten**: Landschaft, See,
+  Stadtlichter und Bergmarke stehen vollständig da.
+- **Ohne jede Abdunklung**, auf Ricardos ausdrückliche Vorgabe: kein Verlauf,
+  keine farbige Schicht, kein Schatten. Nachgemessen trägt die weisse Schrift
+  trotzdem — der Textblock steht links über dem dunklen Himmel und dem Hang:
+  Themenzeile 8.1:1, die Zeilen der Überschrift im Flächenmittel 8.0, 10.2 und
+  15.3:1. Nur einzelne Strassenlichter erreichen unter einer Glyphe punktuell
+  2.4:1; das ist die Natur einer Nachtaufnahme und keine Fläche.
+- **Der Knopf ist die dritte Knopfform im Projekt** und kommt nur im Banner
+  vor: A&C-Grün, weisse fette **unterstrichene** Schrift, beim Zeigen und bei
+  Tastaturfokus Navy (`#08234E`, nachgemessen), dazu ein weisser Fokusring.
+  Ziel immer `/de/kontakt/` über `path()`.
+- **Der Einstieg von `/ueber-uns` ist entfallen** — der zweispaltige Block vom
+  selben Tag mit Pillen, Bildfläche, grünem Eckmarker und Legende. **Damit hat
+  die gemeinsame Aufnahme von Ricardo und Octavio auf der Seite keinen Platz
+  mehr**; der offene Punkt in Abschnitt 10 ist gegenstandslos, solange kein
+  neuer Ort dafür bestimmt ist. **Ricardo ist darauf hingewiesen.**
+- **Der Einstiegssatz der Startseite ist entfallen.** Der Banner trägt keinen
+  Fliesstext. `StartHero.tsx` ist damit nicht mehr im Einsatz und bleibt
+  liegen.
+- **Fünf Seiten haben keinen Banner** — Treuhand, Buchhaltung, Steuern,
+  Impressum und Datenschutz. Für sie liegt weder Themenzeile noch Überschrift
+  vor, und beides wird nicht erfunden; sie behalten den bisherigen
+  Seitenkopf. **Ricardo ist darauf hingewiesen.**
+- **Abschnittsbanner ersetzen die Überschrift des Abschnitts**, nicht seinen
+  Einleitungssatz. Der Banner nimmt den Anker (`#rechtsform`, `#vorsorge`,
+  `#vorgehen`, `#inhaber`, `#arbeitsweise`, `#region`), der Abschnitt darunter
+  trägt `-inhalt`; die Sprungmarken landen damit auf dem Banner.
 
 Die **Sprungmarken** unter dem Kopf sind neu gestaltet: mittig, weisse Pillen
 mit feiner Kontur, alle gleich. Sie stehen auf mehreren Seiten, die Änderung

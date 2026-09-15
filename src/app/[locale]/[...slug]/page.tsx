@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { Banner } from '@/components/blocks/Banner'
 import { Hero } from '@/components/blocks/Hero'
 import { PageBlocks } from '@/components/blocks/PageBlocks'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
@@ -186,11 +187,16 @@ export default async function ContentPage({ params }: PageProps) {
   if (key === 'ueberUns') {
     const ueberuns = getUeberuns(locale)
     if (!ueberuns) notFound()
+    const oberflaeche = getUi(locale)
 
     return (
       <>
         <Breadcrumb page={key} locale={locale} />
-        <UeberunsTemplate inhalt={ueberuns} />
+        <UeberunsTemplate
+          inhalt={ueberuns}
+          locale={locale}
+          bannerKnopf={oberflaeche.cta}
+        />
       </>
     )
   }
@@ -245,34 +251,34 @@ export default async function ContentPage({ params }: PageProps) {
     <>
       <Breadcrumb page={key} locale={locale} />
 
-      {/* Ein Seitenkopf fuer alle Seiten. Bis zum 15.09.2026 trug
-          `/versicherungen` als einzige Seite den zweispaltigen `BildHero`;
-          seit Ricardos Anweisung, den Hintergrund des Banners ueberall durch
-          dieselbe Aufnahme zu ersetzen, laeuft sie ueber denselben Baustein
-          wie die uebrigen. Ihre Belege und der gruene Knopf bleiben. */}
-      <Hero
-        /* Ricardos Bannerserie vom 15.09.2026 nennt eigene
-           Kategoriezeilen. Wo eine steht, gilt sie. */
-        eyebrow={content.hero.eyebrow ?? (bereich ? ui.page[bereich] : ui.page[key])}
-        titel={content.hero.heading}
-        /* Die Titel der Bannerserie sind kurz und laufen gross. Die Titel der
-           uebrigen Seiten sind ganze Saetze und eine Stufe kleiner. */
-        titelLaenge={content.hero.eyebrow ? 'kurz' : 'lang'}
-        satz={content.hero.lead ? <RichText value={content.hero.lead} /> : undefined}
-        aktion={
-          knopf ? (
-            /* Gruen auf jeder Seite — so zeigt es Ricardos Bannerserie vom
-               15.09.2026, und so steht der Knopf auch im Abschluss. Sonst
-               gilt „Gruen ist Akzent, nicht Flaeche"; ein Knopf ist die
-               kleinste Flaeche, auf der das noch traegt. */
-            <Button href={hrefOrDefault(knopf.target, locale)} variant="akzent">
-              {knopf.label}
-            </Button>
-          ) : undefined
-        }
-        belege={content.hero.belege}
-      />
-      <PageBlocks blocks={content.blocks} locale={locale} />
+      {/* Seiten mit geliefertem Banner tragen ihn; die uebrigen behalten den
+          bisherigen Seitenkopf, bis Ricardo auch fuer sie einen liefert. */}
+      {content.hero.banner ? (
+        <Banner
+          themenzeile={content.hero.banner.themenzeile}
+          ueberschrift={content.hero.banner.ueberschrift}
+          id="seitenkopf"
+          knopf={ui.cta}
+          locale={locale}
+        />
+      ) : (
+        <Hero
+          eyebrow={bereich ? ui.page[bereich] : ui.page[key]}
+          titel={content.hero.heading}
+          titelLaenge="lang"
+          satz={content.hero.lead ? <RichText value={content.hero.lead} /> : undefined}
+          aktion={
+            knopf ? (
+              <Button href={hrefOrDefault(knopf.target, locale)} variant="akzent">
+                {knopf.label}
+              </Button>
+            ) : undefined
+          }
+          belege={content.hero.belege}
+        />
+      )}
+
+      <PageBlocks blocks={content.blocks} locale={locale} bannerKnopf={ui.cta} />
     </>
   )
 }

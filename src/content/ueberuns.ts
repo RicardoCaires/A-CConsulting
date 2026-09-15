@@ -19,7 +19,7 @@
  * verweisen Navigation und andere Seiten.
  */
 
-import type { Rich } from '@/content/types'
+import type { Bannerkopf, Rich } from '@/content/types'
 import type { Locale } from '@/i18n/config'
 
 /** Ein Inhaber, in der Reihenfolge der Wichtigkeit fuer den Blick. */
@@ -59,43 +59,23 @@ export type Prinzip = {
 export type UeberunsContent = {
   meta: { title: string; description: string }
 
-  kopf: {
-    eyebrow: string
-    titel: string
-    /** Der groessere Satz in Navy, direkt unter dem Titel. */
-    lead: string
-    satz: string
-    /** Die drei Fachgebiete, in der Reihenfolge der Hausordnung. */
-    bereiche: readonly string[]
-    bild: {
-      /** Beschriftung der Platzhalterflaeche, solange das Foto fehlt. */
-      label: string
-      /** Liegt eine Aufnahme vor, steht hier ihr Dateiname ohne Endung. */
-      foto?: string
-      /** Was auf der Aufnahme zu sehen ist — fuer Vorlesewerkzeuge. */
-      alt?: string
-      /** Bildlegende unter der Flaeche. */
-      legende: string
-    }
-  }
+  /** Der Banner des Seitenkopfs. */
+  kopf: Bannerkopf
 
   inhaber: {
-    titel: string
-    eyebrow: string
+    banner: Bannerkopf
     einleitung: string
     leute: readonly Inhaber[]
   }
 
   arbeitsweise: {
-    eyebrow: string
-    titel: string
+    banner: Bannerkopf
     einleitung: string
     prinzipien: readonly Prinzip[]
   }
 
   standort: {
-    eyebrow: string
-    titel: string
+    banner: Bannerkopf
     /** Die Anschrift kommt aus `company.ts`, nicht aus dem Text. */
     adresse: Rich
     satz: string
@@ -134,15 +114,8 @@ const de: UeberunsContent = {
   // „Aufnahme 2 der Shootingliste" steht nicht mehr auf der Seite; die fehlende
   // Aufnahme ist als offener Punkt in CLAUDE.md vermerkt.
   kopf: {
-    eyebrow: 'Über A&C',
-    titel: 'Zwei Ansprechpartner. Ihre Themen an einer Stelle.',
-    lead: 'Bei uns sprechen Sie direkt mit der Person, die Ihr Dossier kennt und bearbeitet.',
-    satz: 'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade geführt. Wir betreuen unsere Mandate persönlich und verbinden Versicherungsbroking, Treuhand und Steuern dort, wo die Themen zusammengehören.',
-    bereiche: ['Versicherungsbroking', 'Treuhand', 'Steuern'],
-    bild: {
-      label: 'Ricardo und Octavio',
-      legende: 'Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade',
-    },
+    themenzeile: 'ÜBER A&C',
+    ueberschrift: 'Persönlich. Verlässlich. Nah.',
   },
 
   // ---- 2 Die beiden Inhaber
@@ -155,8 +128,10 @@ const de: UeberunsContent = {
   // „Geschaeftsfuehrer und Mitinhaber" — das widersprach Abschnitt 2 der
   // Hausordnung, wo die Geschaeftsfuehrung allein bei Ricardo liegt.
   inhaber: {
-    titel: 'Die beiden Inhaber',
-    eyebrow: 'Persönlich für Sie da',
+    banner: {
+      themenzeile: 'DIE INHABER',
+      ueberschrift: 'Zwei Ansprechpartner. Ein Team.',
+    },
     einleitung:
       'Ihre Ansprechperson kennt Ihr Dossier und begleitet Sie direkt. So bleiben Wege kurz und Zuständigkeiten klar.',
     leute: [
@@ -223,8 +198,10 @@ const de: UeberunsContent = {
   // Massnahmen". Die Schweizer Verarbeitung steht weiterhin in den haeufigen
   // Fragen auf `/treuhand`.
   arbeitsweise: {
-    eyebrow: 'Unsere Zusammenarbeit',
-    titel: 'Verlässlich im Alltag. Klar in der Verantwortung.',
+    banner: {
+      themenzeile: 'UNSERE ARBEITSWEISE',
+      ueberschrift: 'Klar geregelt. Persönlich betreut.',
+    },
     einleitung:
       'Sie sollen wissen, wer Ihr Dossier betreut, was wir übernehmen und wie Entscheidungen zustande kommen. Diese Grundsätze prägen unsere tägliche Arbeit.',
     prinzipien: [
@@ -268,8 +245,10 @@ const de: UeberunsContent = {
   // Adresse, Ortsangabe im Bild und Ziel der Routenplanung kommen aus
   // `company.ts`; hier steht kein Strassenname.
   standort: {
-    eyebrow: 'Unser Standort',
-    titel: 'Persönlich für Sie da in Aegerten',
+    banner: {
+      themenzeile: 'STANDORT AEGERTEN',
+      ueberschrift: 'Regional verankert. Persönlich erreichbar.',
+    },
     adresse: [{ company: 'buero' }],
     satz: 'Besprechungen sind bei uns vor Ort oder nach Vereinbarung bei Ihnen möglich. Planen Sie Ihre Anreise direkt über Google Maps.',
     aktion: {
