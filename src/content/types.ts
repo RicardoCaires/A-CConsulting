@@ -639,6 +639,14 @@ export type PageContent = {
     description: string
   }
   hero: {
+    /**
+     * Kategoriezeile ueber dem Titel.
+     *
+     * Fehlt sie, nimmt der Kopf den Namen des Bereichs aus `ui.page`. Seit
+     * dem 15.09.2026 steht sie dort ausgeschrieben, wo Ricardo einen Banner
+     * geliefert hat — seine Bannerserie nennt eigene Kategoriezeilen.
+     */
+    eyebrow?: string
     heading: string
     lead?: Rich
     actions?: readonly Action[]

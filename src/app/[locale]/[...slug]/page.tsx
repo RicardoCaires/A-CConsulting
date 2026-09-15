@@ -251,16 +251,21 @@ export default async function ContentPage({ params }: PageProps) {
           dieselbe Aufnahme zu ersetzen, laeuft sie ueber denselben Baustein
           wie die uebrigen. Ihre Belege und der gruene Knopf bleiben. */}
       <Hero
-        eyebrow={bereich ? ui.page[bereich] : ui.page[key]}
+        /* Ricardos Bannerserie vom 15.09.2026 nennt eigene
+           Kategoriezeilen. Wo eine steht, gilt sie. */
+        eyebrow={content.hero.eyebrow ?? (bereich ? ui.page[bereich] : ui.page[key])}
         titel={content.hero.heading}
-        titelLaenge="lang"
+        /* Die Titel der Bannerserie sind kurz und laufen gross. Die Titel der
+           uebrigen Seiten sind ganze Saetze und eine Stufe kleiner. */
+        titelLaenge={content.hero.eyebrow ? 'kurz' : 'lang'}
         satz={content.hero.lead ? <RichText value={content.hero.lead} /> : undefined}
         aktion={
           knopf ? (
-            <Button
-              href={hrefOrDefault(knopf.target, locale)}
-              variant={key === 'versicherungen' ? 'akzent' : undefined}
-            >
+            /* Gruen auf jeder Seite — so zeigt es Ricardos Bannerserie vom
+               15.09.2026, und so steht der Knopf auch im Abschluss. Sonst
+               gilt „Gruen ist Akzent, nicht Flaeche"; ein Knopf ist die
+               kleinste Flaeche, auf der das noch traegt. */
+            <Button href={hrefOrDefault(knopf.target, locale)} variant="akzent">
               {knopf.label}
             </Button>
           ) : undefined

@@ -32,8 +32,8 @@ export const personalFinance: PageContent = {
 
   // 01 Seitenkopf
   hero: {
-    heading: 'Zwei Fragen, die im Alltag untergehen',
-    lead: 'Wohin fliesst Ihr Geld, und was bleibt für später. Wir gehen beides mit Ihnen durch — in Ruhe und ohne dass Sie etwas abschliessen müssen.',
+    eyebrow: 'Finanzplanung',
+    heading: 'Überblick. Spielraum. Sicherheit.',
     actions: [{ kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' }],
   },
 

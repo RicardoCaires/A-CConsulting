@@ -952,6 +952,58 @@ rechts. Dazu die HTML-Vorlage `bilder-quelle/seitenkopf_banner/vorlage.html`.
   Eckmarker. Dort gibt es keinen dunklen Bannergrund zu ersetzen. **Ricardo
   ist darauf hingewiesen.**
 
+**Am selben Tag hat Ricardo eine ganze Bannerserie nachgeliefert** — zwölf
+HTML-Vorlagen mit gemeinsamem Stylesheet (`bilder-quelle/banner_serie/`,
+Übersicht in `banner-uebersicht.html`) und dem Auftrag „Bitte diese Banner
+alle einsetzen". Sie tragen alle dieselbe Aufnahme, eine eigene
+Kategoriezeile, eine kurze Überschrift und den grünen Knopf auf die deutsche
+Kontaktseite.
+
+**Fünf sind als Seitenkopf gesetzt** (`content/source/banner_serie_de.md`):
+
+| Seite | Kategoriezeile | Überschrift |
+|---|---|---|
+| `/versicherungen` | Versicherungen | Versicherungen für Privatpersonen und Unternehmen |
+| `/firmengruendung` | Unternehmensgründung | Klar gründen. Sicher starten. |
+| `/treuhand/treuhaender-wechseln` | Treuhänderwechsel | Klar wechseln. Sicher weiter. |
+| `/finanzplanung` | Finanzplanung | Überblick. Spielraum. Sicherheit. |
+| `/kontakt` | Kontakt | Ihr Anliegen. Unser nächster Schritt. |
+
+- **Die Masse stammen aus `banner-shared.css`:** Kopfhöhe 430 bis 680 px, Text
+  mittig statt am unteren Rand, Innenbreite 1360 px, Textblock 690 px oder
+  54 Prozent, Überschrift 48 bis 92 px bei Zeilenhöhe 0.98 und höchstens
+  13 Zeichen je Zeile, Kategoriezeile 13 px mit grünem Strich 54 x 4 px.
+- **Die Kategoriezeile ist weiss**, nicht hellgrün wie sonst auf Navy. Der
+  grüne Strich trägt die Farbe. Sie läuft darum nicht mehr über die globale
+  Klasse `ac-eyebrow`.
+- **Der Knopf ist auf jeder Seite grün.** Bis dahin war er das nur auf
+  `/versicherungen`.
+- **Der Fliesstext im Kopf ist auf diesen fünf Seiten entfallen** — die
+  Vorlage zeigt Kategoriezeile, Überschrift und Knopf, sonst nichts. Der
+  Wortlaut steht unverändert in den Quelldateien. Die Seiten ohne gelieferten
+  Banner (Treuhand, Buchhaltung, Steuern, Impressum, Datenschutz) behalten
+  ihren Satz und laufen im Titel eine Stufe kleiner, weil ihre Titel ganze
+  Sätze sind.
+- **Vier Seitentitel sind ersetzt.** „Firma gründen im Kanton Bern", der Titel
+  der Wechselseite, „Überblick über Ihre Finanzen" und „So erreichen Sie uns"
+  stehen nicht mehr auf der Seite; der Titel von `/versicherungen` ist
+  derselbe geblieben. **Die Angaben in `meta.title` sind unverändert** —
+  Browserreiter und Überschrift tragen auf diesen Seiten jetzt verschiedene
+  Texte. Ricardo entscheidet, ob sie nachgezogen werden.
+- **Der Knopf der Vorlage ist unterstrichen und trägt einen zweiten Rahmen.**
+  Beides wäre eine dritte Knopfform neben den zwei bestehenden; es bleibt beim
+  Knopf der Website. Ricardo ist darauf hingewiesen.
+
+**Sieben Banner sind offen und liegen bei Ricardo.** Sechs nennen Abschnitte,
+die es bereits gibt — Rechtsform auf `/firmengruendung`, Der Wechsel auf der
+Wechselseite, Vorsorge auf `/finanzplanung`, Arbeitsweise, Die Inhaber und
+Standort auf `/ueber-uns`. Sie einzusetzen hiesse, die Überschriften dieser
+Abschnitte zu ersetzen und dieselbe Aufnahme auf `/ueber-uns` viermal zu
+zeigen. Der siebte, „Über A&C", wäre der neue Einstieg von `/ueber-uns` und
+würde den am selben Tag gebauten zweispaltigen Einstieg mit Pillen,
+Bildfläche und grünem Eckmarker ersetzen. Beides ist eine Entscheidung über
+bestehende Arbeit und wird nicht geraten.
+
 Die **Sprungmarken** unter dem Kopf sind neu gestaltet: mittig, weisse Pillen
 mit feiner Kontur, alle gleich. Sie stehen auf mehreren Seiten, die Änderung
 gilt darum überall.

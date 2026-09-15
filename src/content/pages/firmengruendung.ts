@@ -22,8 +22,8 @@ export const firmengruendung: PageContent = {
 
   // 01 Seitenkopf
   hero: {
-    heading: 'Firma gründen im Kanton Bern',
-    lead: 'Wir begleiten Sie von der Wahl der Rechtsform bis zur ersten Buchhaltung und sagen Ihnen vorher, was auf Sie zukommt.',
+    eyebrow: 'Unternehmensgründung',
+    heading: 'Klar gründen. Sicher starten.',
     actions: [
       { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
       { kind: 'phone' },

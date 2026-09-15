@@ -22,8 +22,8 @@ export const treuhaenderWechseln: PageContent = {
 
   // 01 Seitenkopf
   hero: {
-    heading: 'Den Treuhänder wechseln',
-    lead: 'Wir begleiten den Wechsel strukturiert und diskret. Zuerst klären wir mit Ihnen die bestehende Situation, den geeigneten Zeitpunkt und die Unterlagen, die für die Übernahme nötig sind.',
+    eyebrow: 'Treuhänderwechsel',
+    heading: 'Klar wechseln. Sicher weiter.',
     actions: [
       { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
       { kind: 'phone' },
