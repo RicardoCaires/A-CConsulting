@@ -1,7 +1,4 @@
 import type { ReactNode } from 'react'
-import Image from 'next/image'
-
-import { Ablauf } from '@/components/blocks/Ablauf'
 import { Bereiche, type Bereich, type LeitBereich } from '@/components/blocks/Bereiche'
 import { Kontaktabschluss } from '@/components/blocks/Kontaktabschluss'
 import { Faelle, type Fall } from '@/components/blocks/Faelle'
@@ -10,7 +7,6 @@ import { SectionHeader } from '@/components/blocks/SectionHeader'
 import { StartHero, type HeroBild } from '@/components/blocks/StartHero'
 import { Team, type Mitglied } from '@/components/blocks/Team'
 import { Button } from '@/components/ui/Button'
-import { Schrittbild, type SchrittName } from '@/components/ui/Schrittbild'
 import { Zonenmuster } from '@/components/ui/Zonenmuster'
 import type { Locale } from '@/i18n/config'
 import { hrefOrDefault, type PageKey } from '@/i18n/routes'
@@ -26,9 +22,8 @@ import styles from './Startseite.module.css'
  *   2 Leistungen      Leitbereich gross, zwei darunter     — hell
  *   3 Situationen     sechs nummerierte Einstiege          — weiss
  *   4 Eine Stelle     die Kette, ein Satz                  — FLAECHE
- *   5 Ansprechpartner zwei Portraets                       — hell
- *   6 Ablauf          vier Schritte                        — weiss
- *   7 Abschluss       eine Aussage, ein Knopf              — FLAECHE
+ *   4 Ansprechpartner zwei Portraets                       — hell
+ *   5 Abschluss       eine Aussage, ein Knopf              — FLAECHE
  *
  * Am 10.09.2026 auf Anweisung von Ricardo von neun auf sieben verkuerzt.
  * Weggefallen sind „Unsere Rolle" („Wir vertreten Sie, nicht die
@@ -60,14 +55,15 @@ import styles from './Startseite.module.css'
  * Fliesstext.** Was mehr braucht, gehoert auf eine Bereichsseite.
  */
 
+/* Am 15.09.2026 sind auf Ricardos Anweisung zwei Abschnitte entfallen:
+   „Eine Stelle fuer Ihre Administration" und „So beginnt die
+   Zusammenarbeit". Die Startseite traegt seither fuenf Abschnitte. */
 const FLAECHEN: readonly Surface[] = [
   'dominant', // 1 Einstieg
   'hell', // 2 Leistungen
   'weiss', // 3 Situationen
-  'flaeche', // 4 Eine Stelle
-  'hell', // 5 Ansprechpartner
-  'weiss', // 6 Ablauf
-  'flaeche', // 7 Abschluss
+  'hell', // 4 Ansprechpartner
+  'flaeche', // 5 Abschluss
 ]
 
 export type StartseiteInhalt = {
@@ -98,14 +94,6 @@ export type StartseiteInhalt = {
     leit: LeitBereich
     weitere: readonly Bereich[]
   }
-  eineStelle: {
-    eyebrow: string
-    titel: ReactNode
-    kette: readonly { text: string; bild: SchrittName }[]
-    text: ReactNode
-    nachsatz?: ReactNode
-    knopf: { text: string; ziel: PageKey }
-  }
   personen: {
     eyebrow: string
     titel: ReactNode
@@ -114,14 +102,6 @@ export type StartseiteInhalt = {
     linkedinText: string
     /** Weiterfuehrender Verweis, als fertiges Element. */
     link?: ReactNode
-  }
-  ablauf: {
-    eyebrow: string
-    titel: ReactNode
-    einleitung?: ReactNode
-    schritte: readonly { titel: string; satz: string; bild: string }[]
-    nachsatz?: ReactNode
-    nachsatzBild: string
   }
   abschluss: {
     titel: ReactNode
@@ -141,9 +121,7 @@ export function StartseiteTemplate({
   // Der Abschluss traegt seine Flaeche seit dem 10.09.2026 selbst und wird
   // darum nicht mehr aus der Folge bedient — der letzte Eintrag bleibt in
   // FLAECHEN stehen, damit die Reihe vollstaendig dokumentiert ist.
-  const [, fLeistungen, fSituationen, fStelle, fPersonen, fAblauf] = FLAECHEN as [
-    Surface,
-    Surface,
+  const [, fLeistungen, fSituationen, fPersonen] = FLAECHEN as [
     Surface,
     Surface,
     Surface,
@@ -250,79 +228,6 @@ export function StartseiteTemplate({
       </Section>
       </div>
 
-      {/* ---- 4 Eine Stelle — der eigentliche Nutzen, als Kette -------------
-
-          Nach Ricardos Referenzgrafik vom 10.09.2026: Kopf und Prozessleiste
-          links, drei Zeilen und das Buerobild rechts. Das Bild laeuft bis an
-          die rechte und untere Kante des Abschnitts — darum traegt die
-          Sektion `position: relative` und `overflow: hidden`. */}
-      <Section
-        surface={fStelle}
-        className={styles.stelleFlaeche}
-        labelledBy="einestelle"
-        id="einestelle"
-      >
-        <div className={styles.stelleRaster}>
-          <div className={styles.stelleHaupt}>
-            <SectionHeader
-              id="einestelle"
-              eyebrow={inhalt.eineStelle.eyebrow}
-              heading={inhalt.eineStelle.titel}
-            />
-
-            {/* Eine geordnete Liste, weil die Reihenfolge etwas bedeutet: So
-                laeuft ein Betrieb durch das Jahr. Die Pfeile stehen im CSS
-                und werden Hilfstechnik nicht vorgelesen. */}
-            <ol className={styles.kette}>
-              {inhalt.eineStelle.kette.map((glied) => (
-                <li key={glied.text}>
-                  <Schrittbild className={styles.ketteBild} name={glied.bild} />
-                  <span className={styles.ketteText}>{glied.text}</span>
-                </li>
-              ))}
-            </ol>
-
-            <div className={styles.stelleText}>
-              <p>{inhalt.eineStelle.text}</p>
-              {inhalt.eineStelle.nachsatz && <p>{inhalt.eineStelle.nachsatz}</p>}
-            </div>
-
-            <Button
-              className={styles.stelleKnopf}
-              href={hrefOrDefault(inhalt.eineStelle.knopf.ziel, locale)}
-              variant="akzent"
-            >
-              {inhalt.eineStelle.knopf.text}
-              <span className={styles.knopfPfeil} aria-hidden="true">
-                →
-              </span>
-            </Button>
-          </div>
-        </div>
-
-        {/* Der Grund: zwei grosse Boegen Ton in Ton und eine feine gruene
-            Linie. Sie stehen tief im Hintergrund und tragen keine Aussage —
-            sie nehmen der Flaeche nur das Flache. Alle drei sind Kreise; der
-            Abschnitt schneidet sie an seinen Kanten ab. */}
-        <div className={styles.muster} aria-hidden="true">
-          <span className={styles.bogenGross} />
-          <span className={styles.bogenKlein} />
-          <span className={styles.linie} />
-        </div>
-
-        {/* Der Bildplatz. Dekorativ — was der Abschnitt sagt, steht im Text. */}
-        <div className={styles.buero} aria-hidden="true">
-          <Image
-            className={styles.bueroBild}
-            src="/bilder/06_buero_visual.webp"
-            alt=""
-            width={1400}
-            height={788}
-            sizes="(min-width: 64rem) 640px, 100vw"
-          />
-        </div>
-      </Section>
-
       {/* ---- 5 Ansprechpartner ---------------------------------------------- */}
       <Section
         surface={fPersonen}
@@ -340,38 +245,6 @@ export function StartseiteTemplate({
         </div>
         <Team mitglieder={inhalt.personen.leute} linkedinText={inhalt.personen.linkedinText} />
         {inhalt.personen.link && <p className={styles.personenLink}>{inhalt.personen.link}</p>}
-      </Section>
-
-      {/* ---- 6 Ablauf ---------------------------------------------------------
-
-          Vier Karten auf einer Zeitachse, nach Ricardos Referenz vom
-          10.09.2026. Eigener Baustein: `StepList` traegt denselben Ablauf auf
-          fuenf Leistungsseiten und bleibt, wie er ist — nur die Startseite
-          bekommt Symbole, Karten und die Achse. */}
-      <Section
-        surface={fAblauf}
-        className={styles.ablaufFlaeche}
-        labelledBy="ablauf"
-        id="ablauf"
-      >
-        <div className={styles.leistungenKopf}>
-          <SectionHeader
-            id="ablauf"
-            eyebrow={inhalt.ablauf.eyebrow}
-            heading={inhalt.ablauf.titel}
-            lead={inhalt.ablauf.einleitung}
-          />
-        </div>
-
-        <Ablauf
-          schritte={inhalt.ablauf.schritte.map((schritt) => ({
-            titel: schritt.titel,
-            satz: schritt.satz,
-            bild: schritt.bild,
-          }))}
-          hinweis={inhalt.ablauf.nachsatz}
-          hinweisBild={inhalt.ablauf.nachsatzBild}
-        />
       </Section>
 
       {/* ---- 7 Abschluss ------------------------------------------------------

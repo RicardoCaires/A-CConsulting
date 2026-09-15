@@ -33,8 +33,10 @@ export type Inhaber = {
   angaben: readonly { label: string; text: Rich }[]
   sprachenLabel: string
   sprachen: string
-  /** Die Nummer kommt aus `company.ts`; hier steht nur, wessen. */
+  /** Nummer und Adresse kommen aus `company.ts`; hier steht nur, wessen. */
   telefon: { wer: 'ricardo' | 'octavio' }
+  /** Beschriftung des zweiten Knopfes. Die Adresse kommt aus `company.ts`. */
+  mailLabel: string
   bild: {
     /** Beschriftung der Platzhalterflaeche, solange kein Portraet vorliegt. */
     label: string
@@ -102,8 +104,8 @@ export type UeberunsContent = {
      * `company.ts`; `{adresse}` in `ariaLabel` wird dort eingesetzt.
      */
     aktion: { label: string; ariaLabel: string }
-    /** Kurzangaben unter der Komposition. Keine Saetze. */
-    meta: readonly string[]
+    /** Die Karte laedt erst auf Klick — bis dahin geht nichts nach aussen. */
+    karte: { knopf: string; hinweis: string; titel: string }
     bild: {
       /** Beschriftung der Platzhalterflaeche, solange die Aufnahme fehlt. */
       label: string
@@ -160,7 +162,7 @@ const de: UeberunsContent = {
     leute: [
       {
         name: 'Ricardo Caires Cerqueira',
-        rolle: 'Geschäftsführer und Mitinhaber',
+        rolle: 'Mitinhaber',
         kern: 'Ansprechpartner für Treuhand, Steuern und Versicherungen. Als Versicherungsvermittler bei der FINMA registriert.',
         angaben: [
           {
@@ -175,6 +177,7 @@ const de: UeberunsContent = {
         sprachenLabel: 'Beratungssprachen:',
         sprachen: 'Deutsch, Portugiesisch und Englisch',
         telefon: { wer: 'ricardo' },
+        mailLabel: 'E-Mail schreiben',
         bild: {
           label: 'Porträt Ricardo',
           foto: 'portrait_ricardo',
@@ -183,7 +186,7 @@ const de: UeberunsContent = {
       },
       {
         name: 'Octavio Nuno Gouveia Andrade',
-        rolle: 'Mitinhaber',
+        rolle: 'Geschäftsführer und Mitinhaber',
         kern: 'Ansprechpartner für Versicherungsbroking und die persönliche Betreuung von Versicherungskundinnen und -kunden. Als Versicherungsvermittler bei der FINMA registriert.',
         angaben: [
           {
@@ -198,6 +201,7 @@ const de: UeberunsContent = {
         sprachenLabel: 'Beratungssprachen:',
         sprachen: 'Deutsch, Französisch und Portugiesisch',
         telefon: { wer: 'octavio' },
+        mailLabel: 'E-Mail schreiben',
         bild: {
           label: 'Porträt Octavio',
           foto: 'portrait_octavio',
@@ -272,7 +276,11 @@ const de: UeberunsContent = {
       label: 'Route mit Google Maps planen',
       ariaLabel: 'Route zur {adresse} mit Google Maps planen',
     },
-    meta: ['Seeland', 'Kanton Bern', 'Deutsch', 'Französisch', 'Portugiesisch'],
+    karte: {
+      knopf: 'Karte anzeigen',
+      hinweis: 'Beim Anzeigen wird die Karte von OpenStreetMap geladen.',
+      titel: 'Karte mit dem Standort von A&C Consulting in Aegerten',
+    },
     bild: { label: 'Bildplatzhalter' },
   },
 

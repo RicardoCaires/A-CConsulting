@@ -5,7 +5,7 @@ Ricardo hat den Abschnitt als HTML-Vorlage geliefert
 **neue Geschäftsadresse** bestimmt:
 
 > Die Geschäftsadresse hat geändert und lautet neu:
-> A&C Consulting GmbH, Bielstrasse 10, 2556 Aegerten
+> A&C Consulting GmbH, Bielstrasse 10, 2558 Aegerten
 
 ## Der Abschnitt
 
@@ -14,7 +14,7 @@ Unser Standort
 Persönlich für Sie da in Aegerten
 
 Bielstrasse 10
-2556 Aegerten
+2558 Aegerten
 
 Besprechungen sind bei uns vor Ort oder nach Vereinbarung bei Ihnen möglich.
 Planen Sie Ihre Anreise direkt über Google Maps.
@@ -48,7 +48,7 @@ Kanton Bern. Sie erreichen uns in Aegerten, auf Deutsch, Französisch und
 Portugiesisch.
 
 Beratung auf Deutsch, Französisch und Portugiesisch. A&C Consulting GmbH,
-Bielstrasse 10, 2556 Aegerten
+Bielstrasse 10, 2558 Aegerten
 
 Übersicht über Einnahmen und Ausgaben, und eine Vorsorge, die zu Ihrer
 Situation passt. A&C Consulting in Aegerten.
@@ -61,12 +61,10 @@ oder bei Ihnen - wie es Ihnen besser passt.
 
 ## Anmerkungen
 
-**Die Postleitzahl ist zu bestätigen.** Der Auftrag nennt dreimal **2556** -
-im Adressblock, im Google-Maps-Link und in der Beschriftung des Knopfes.
-CLAUDE.md und `src/lib/company.ts` fuehrten bis zum 15.09.2026 **2558**
-Aegerten. Es gilt Ricardos geschriebener Wortlaut; die Zahl steht an genau
-einer Stelle im Code und ist mit einer Zeile korrigiert, falls 2558 richtig
-ist. **Ricardo ist darauf hingewiesen.**
+**Die Postleitzahl ist 2558.** Der Auftrag nannte zuerst dreimal 2556; Ricardo
+hat das noch am selben Tag korrigiert («2558 Aegertn nicht 2556»). Eine Abfrage
+bei Nominatim löst «Bielstrasse 10, 2558 Aegerten» als bestehendes Gebäude auf
+und bestätigt die Zahl. Sie steht an genau einer Stelle im Code.
 
 **Der Umzug war auf den 01.11.2026 vorgemerkt.** CLAUDE.md, Abschnitt 2, hielt
 fest, dass bis dahin öffentlich Lyss gilt und der Sitz erst nach der
@@ -101,3 +99,28 @@ Umzug aendert den Link mit. Google Maps bestimmt den Ausgangspunkt selbst -
 Bildfläche ist jetzt eine schlichte getönte Fläche mit `role="img"`; das
 Ortsschild darin wiederholt nur die Adresse und ist für Vorlesewerkzeuge
 ausgeblendet.
+
+## Nachtrag vom 15.09.2026 — Karte und gelöschte Zeile
+
+Karte anzeigen
+
+Beim Anzeigen wird die Karte von OpenStreetMap geladen.
+
+Karte mit dem Standort von A&C Consulting in Aegerten
+
+**Die Karte lädt erst auf Klick.** Ricardo hat verlangt, den Standort auf
+einer Karte zu zeigen. Ein eingebetteter Kartendienst holt beim Aufruf der
+Seite Daten von einem fremden Server und übermittelt dabei die IP-Adresse der
+Besucherin; Abschnitt 6 und 7 der Hausordnung verlangen, dass ohne Rücksprache
+kein fremder Dienst mitläuft, und die Datenschutzerklärung wird nicht
+selbständig geändert. Darum steht in der Fläche zuerst ein Knopf mit dem
+Hinweis, und erst der Klick lädt die Karte von OpenStreetMap. Anschrift und
+Routenknopf daneben funktionieren ohne Skript und ohne fremden Dienst.
+
+**Soll die Karte sofort erscheinen**, ist das eine Zeile — dann gehört aber
+ein Satz zum Kartendienst in die Datenschutzerklärung, und den aendert nur
+Ricardo.
+
+**Die Randzeile unter der Karte ist gelöscht.** Sie nannte «Seeland ·
+Kanton Bern · Deutsch · Französisch · Portugiesisch»; Ricardo hat sie am
+15.09.2026 per Screenshot streichen lassen.

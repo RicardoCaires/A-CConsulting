@@ -88,20 +88,6 @@ export const beispielStartseite: StartseiteInhalt = {
       },
     ],
   },
-  eineStelle: {
-    eyebrow: 'Beispiel-Vorzeile',
-    titel: 'Beispielüberschrift zur Bündelung',
-    kette: [
-      { text: 'Erstes Glied', bild: 'gruendung' },
-      { text: 'Zweites Glied', bild: 'buchhaltung' },
-      { text: 'Drittes Glied', bild: 'lohn' },
-      { text: 'Viertes Glied', bild: 'versicherungen' },
-      { text: 'Fünftes Glied', bild: 'steuern' },
-    ],
-    text: 'Beispielsatz darüber, weshalb die Themen zusammenhängen.',
-    nachsatz: 'Beispielnachsatz mit einem zweiten Gedanken.',
-    knopf: { text: 'Beispielknopf', ziel: 'ueberUns' },
-  },
   personen: {
     eyebrow: 'Beispiel-Vorzeile',
     titel: 'Beispielüberschrift der Ansprechpartner',
@@ -119,31 +105,6 @@ export const beispielStartseite: StartseiteInhalt = {
       },
     ],
     linkedinText: 'Beispielverweis',
-  },
-  ablauf: {
-    eyebrow: 'Beispiel-Vorzeile',
-    titel: 'Beispielüberschrift des Ablaufs',
-    einleitung: 'Beispielsatz über die vier Schritte.',
-    schritte: [
-      { titel: 'Erster Schritt', satz: 'Beispielsatz zum ersten Schritt.', bild: '01_kennenlernen' },
-      {
-        titel: 'Zweiter Schritt',
-        satz: 'Beispielsatz zum zweiten Schritt.',
-        bild: '02_situation_pruefen',
-      },
-      {
-        titel: 'Dritter Schritt',
-        satz: 'Beispielsatz zum dritten Schritt.',
-        bild: '03_vorschlag_erhalten',
-      },
-      {
-        titel: 'Vierter Schritt',
-        satz: 'Beispielsatz zum vierten Schritt.',
-        bild: '04_wir_uebernehmen',
-      },
-    ],
-    nachsatz: 'Beispielnachsatz unter den Schritten.',
-    nachsatzBild: '05_info',
   },
   abschluss: {
     titel: 'Beispielüberschrift des Abschlusses',

@@ -2,8 +2,16 @@ import Image from 'next/image'
 
 import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
 import { RichText } from '@/components/ui/RichText'
+import { Standortkarte } from '@/components/ui/Standortkarte'
 import type { UeberunsContent } from '@/content/ueberuns'
-import { buero, bueroImSatz, direktnummern, mapsRoute } from '@/lib/company'
+import {
+  buero,
+  bueroImSatz,
+  bueroLage,
+  direktadressen,
+  direktnummern,
+  mapsRoute,
+} from '@/lib/company'
 
 import styles from './Ueberuns.module.css'
 
@@ -164,15 +172,26 @@ export function UeberunsTemplate({ inhalt }: Props) {
 
                     {/* Die Nummer steht auf dem Knopf, nicht nur dahinter:
                         Wer anruft, will sie sehen und notieren koennen. */}
-                    <a
-                      className={styles.knopf}
-                      href={`tel:${direktnummern[person.telefon.wer].e164}`}
-                    >
-                      {direktnummern[person.telefon.wer].anzeige}
-                      <span className={styles.pfeil} aria-hidden="true">
-                        →
-                      </span>
-                    </a>
+                    <div className={styles.knoepfe}>
+                      <a
+                        className={styles.knopf}
+                        href={`tel:${direktnummern[person.telefon.wer].e164}`}
+                      >
+                        {direktnummern[person.telefon.wer].anzeige}
+                        <span className={styles.pfeil} aria-hidden="true">
+                          →
+                        </span>
+                      </a>
+                      <a
+                        className={styles.knopf}
+                        href={`mailto:${direktadressen[person.telefon.wer]}`}
+                      >
+                        {person.mailLabel}
+                        <span className={styles.pfeil} aria-hidden="true">
+                          →
+                        </span>
+                      </a>
+                    </div>
                   </div>
                 </article>
               ))}
@@ -254,13 +273,16 @@ export function UeberunsTemplate({ inhalt }: Props) {
               </a>
             </div>
 
-            <div
-              className={styles.standortBild}
-              role="img"
-              aria-label={inhalt.standort.bild.label}
-            >
-              {/* Das Ortsschild wiederholt die Adresse nur; fuer
-                  Vorlesewerkzeuge steht sie eine Zeile hoeher. */}
+            {/* Die Karte laedt erst auf Klick — vorher geht nichts an einen
+                fremden Server. Das Ortsschild bleibt darueber stehen. */}
+            <div className={styles.standortBild}>
+              <Standortkarte
+                bbox={bueroLage.bbox}
+                marker={[bueroLage.breite, bueroLage.laenge]}
+                knopf={inhalt.standort.karte.knopf}
+                hinweis={inhalt.standort.karte.hinweis}
+                titel={inhalt.standort.karte.titel}
+              />
               <p className={styles.ortsschild} aria-hidden="true">
                 <Image src="/bilder/standort_pin.svg" alt="" width={21} height={21} unoptimized />
                 {`${buero.street} · ${buero.city}`}
@@ -268,12 +290,6 @@ export function UeberunsTemplate({ inhalt }: Props) {
             </div>
           </div>
 
-          {/* Randangaben: Region und Beratungssprachen, keine Saetze. */}
-          <ul className={styles.standortMeta} role="list">
-            {inhalt.standort.meta.map((angabe) => (
-              <li key={angabe}>{angabe}</li>
-            ))}
-          </ul>
         </div>
       </section>
 

@@ -386,6 +386,7 @@
    Hinweis auf interne Listen. */
 .standortBild {
   position: relative;
+  display: grid;
   grid-row: 1;
   min-height: 19.375rem;
   background-color: var(--ac-color-background-tint);
@@ -393,6 +394,7 @@
 
 .ortsschild {
   position: absolute;
+  z-index: 1;
   right: 1.2rem;
   bottom: 1.2rem;
   display: flex;
@@ -629,14 +631,20 @@
   color: var(--ac-color-primary-navy);
 }
 
+/* Telefon und E-Mail nebeneinander, auf schmalen Geraeten untereinander. */
+.knoepfe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: var(--ac-space-sm);
+}
+
 .knopf {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  align-self: flex-start;
   min-height: 2.875rem;
-  margin-top: var(--ac-space-sm);
   padding: 0.7rem 1rem;
   font-size: 0.87rem;
   font-weight: 600;
@@ -670,7 +678,11 @@
 }
 
 @media (max-width: 30rem) {
+  .knoepfe {
+    flex-direction: column;
+  }
+
   .knopf {
-    align-self: stretch;
+    width: 100%;
   }
 }

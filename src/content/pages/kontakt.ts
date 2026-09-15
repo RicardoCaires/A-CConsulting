@@ -20,7 +20,7 @@ export const kontakt: PageContent = {
   meta: {
     title: 'So erreichen Sie uns',
     description:
-      'Beratung auf Deutsch, Französisch und Portugiesisch. A&C Consulting GmbH, Bielstrasse 10, 2556 Aegerten',
+      'Beratung auf Deutsch, Französisch und Portugiesisch. A&C Consulting GmbH, Bielstrasse 10, 2558 Aegerten',
   },
 
   hero: {
