@@ -31,98 +31,91 @@ export const firmengruendung: PageContent = {
   },
 
   blocks: [
-    // 02 Einzelfirma oder GmbH — seit dem 14.09.2026 zwei Karten im Vergleich,
-    // am selben Tag nach Ricardos zweiter Referenzgrafik samt ausgeschriebenem
-    // Auftragstext ueberarbeitet (`content/source/firmengruendung_rechtsformen_de.md`).
+    // 02 Einzelfirma oder GmbH — seit dem 15.09.2026 nach Ricardos dritter
+    // Fassung, einer ausgeschriebenen HTML-Vorlage
+    // (`content/source/firmengruendung_rechtsformen_de.md`). Neu sind die
+    // Erklaerungen unter den Merkmalen, die Einordnung am Fuss jeder Karte
+    // und der gruene Knopf in der Leiste darunter.
     //
-    // **Der Wortlaut stammt aus diesem Auftragstext.** Die erste Fassung trug
-    // die Saetze aus `schritt4_fassung2_de.md`; sie stehen dort unveraendert
-    // weiter, aber nicht mehr auf der Seite.
-    //
-    // **Die Zahl CHF 20'000 steht jetzt da.** Schritt 4 fuehrt die Hoehe des
-    // Stammkapitals als fachlich zu pruefen; Ricardo hat sie im Auftrag
-    // ausgeschrieben und ist zweimal auf den Vorbehalt hingewiesen.
+    // **Drei Angaben sind fachlich zu pruefen** und standen vorher nicht so
+    // auf der Seite: die Umsatzschwelle von CHF 100'000 fuer den
+    // Handelsregistereintrag, die Sacheinlage als Deckung des Stammkapitals
+    // und die Nachschusspflichten. Ricardo ist darauf hingewiesen.
     {
       kind: 'rechtsformen',
       id: 'rechtsform',
       eyebrow: 'Rechtsformen in der Schweiz',
       heading: 'Einzelfirma oder GmbH?',
       lead: [
-        'Die passende Rechtsform hängt von Kapital, Haftung, Aufwand und Ihrer Situation ab. Hier sehen Sie die wichtigsten Unterschiede auf einen Blick.',
+        'Beide Rechtsformen können ein guter Start sein. Entscheidend sind Ihre Risiken, das verfügbare Kapital und die Frage, wie Sie Ihr Unternehmen entwickeln möchten.',
       ],
       hintergrund: 'firmengruendung_muster',
       spalten: [
         {
           bild: 'firmengruendung_einzelfirma',
           titel: 'Einzelfirma',
-          untertitel: 'Einfach starten',
+          untertitel: 'Direkt starten',
           zeilen: [
-            { label: 'Kapital', wert: 'Kein Mindestkapital' },
+            { label: 'Mindestkapital', wert: 'Keines vorgeschrieben' },
             {
               label: 'Haftung',
-              wert: 'Mit dem Privatvermögen',
-              zusatz: 'Unbeschränkte Haftung',
+              wert: 'Persönlich und unbeschränkt',
+              zusatz: 'Geschäfts- und Privatvermögen sind rechtlich nicht getrennt.',
             },
-            {
-              label: 'Gründungsaufwand',
-              wert: 'Einfach und günstig',
-              zusatz: 'Schnell gegründet',
-            },
+            { label: 'Gründung', wert: 'Einfach und ohne öffentliche Beurkundung' },
             {
               label: 'Sozialversicherungen',
-              wert: 'Inhaber/in als selbständigerwerbend',
-              zusatz: 'Selbst für Sozialversicherungen zuständig',
+              wert: 'Status als selbständigerwerbend',
+              zusatz: 'Die Anerkennung erfolgt durch die zuständige Ausgleichskasse.',
             },
             {
               label: 'Handelsregister',
-              wert: 'Kein Eintrag erforderlich',
-              zusatz: 'Nur bei bestimmtem Umsatz verpflichtend',
-            },
-            {
-              label: 'Wirkung / Auftreten',
-              wert: 'Einfach und flexibel',
-              zusatz: 'Ideal für den Start und kleinere Projekte',
+              wert: 'Je nach Tätigkeit freiwillig oder obligatorisch',
+              zusatz: 'Bei einem kaufmännisch geführten Gewerbe ab CHF 100\'000 Jahresumsatz obligatorisch.',
             },
           ],
+          passt: {
+            titel: 'Passt häufig, wenn …',
+            text: 'Sie allein starten, wenig formalen Aufwand möchten und das persönliche Haftungsrisiko überschaubar ist.',
+          },
         },
         {
           bild: 'firmengruendung_gmbh',
           titel: 'GmbH',
-          untertitel: 'Stabil wachsen',
+          untertitel: 'Getrennt aufbauen',
           zeilen: [
-            { label: 'Kapital', wert: 'CHF 20\'000 Stammkapital' },
+            {
+              label: 'Mindestkapital',
+              wert: 'CHF 20\'000',
+              zusatz: 'Bei der Gründung vollständig einbezahlt oder durch Sacheinlagen gedeckt.',
+            },
             {
               label: 'Haftung',
-              wert: 'Auf die Gesellschaft beschränkt',
-              zusatz: 'Kein Zugriff auf das Privatvermögen',
+              wert: 'Grundsätzlich mit dem Gesellschaftsvermögen',
+              zusatz: 'Statutarische Nachschusspflichten und persönliche Garantien bleiben möglich.',
             },
-            {
-              label: 'Gründungsaufwand',
-              wert: 'Höherer Aufwand',
-              zusatz: 'Notariat und Handelsregister nötig',
-            },
+            { label: 'Gründung', wert: 'Öffentliche Beurkundung und Statuten erforderlich' },
             {
               label: 'Sozialversicherungen',
-              wert: 'In der eigenen Firma angestellt',
-              zusatz: 'Lohn und Sozialversicherungen über die GmbH',
+              wert: 'In der eigenen GmbH angestellt',
+              zusatz: 'Lohn und Sozialversicherungen laufen über die Gesellschaft.',
             },
             {
               label: 'Handelsregister',
               wert: 'Eintrag obligatorisch',
-              zusatz: 'Öffentliche Eintragung',
-            },
-            {
-              label: 'Wirkung / Auftreten',
-              wert: 'Professionell und vertrauenswürdig',
-              zusatz: 'Geeignet für Wachstum und Zusammenarbeit mit Partnern',
+              zusatz: 'Die GmbH entsteht rechtlich erst mit der Eintragung.',
             },
           ],
+          passt: {
+            titel: 'Passt häufig, wenn …',
+            text: 'Sie Privat- und Geschäftsvermögen trennen, mit mehreren Personen gründen oder eine eigenständige Gesellschaft aufbauen möchten.',
+          },
         },
       ],
       hinweis: {
-        bild: 'firmengruendung_beratung',
-        titel: 'Welche Rechtsform ist die richtige für Sie?',
-        text: 'Das hängt von Ihren individuellen Zielen, Risiken und Plänen ab. Gerne beraten wir Sie persönlich.',
+        titel: 'Welche Rechtsform passt zu Ihrem Vorhaben?',
+        text: 'Neben Haftung und Kapital zählen auch Steuern, Vorsorge und Ihre weiteren Pläne. Wir vergleichen die Varianten anhand Ihrer Situation.',
+        aktion: { target: 'kontakt', label: 'Rechtsform besprechen' },
       },
     },
 

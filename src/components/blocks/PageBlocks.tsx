@@ -590,6 +590,7 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               hintergrund={block.hintergrund}
               spalten={block.spalten}
               hinweis={block.hinweis}
+              locale={locale}
             />
           )
         }

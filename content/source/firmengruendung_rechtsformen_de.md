@@ -1,10 +1,10 @@
-# Firmengründung — Einzelfirma oder GmbH?, Referenz Ricardo, 14.09.2026
+# Firmengründung — Einzelfirma oder GmbH?, Vorlage Ricardo, 15.09.2026
 
-Zwei Aufträge am selben Tag. Der erste („bitte nachbauen") brachte die vier
-SVG und eine Referenzgrafik; die Karten trugen damals noch die Sätze aus
-`schritt4_fassung2_de.md`. Der zweite brachte eine zweite Grafik **und einen
-ausgeschriebenen Auftragstext**. Der Wortlaut unten stammt aus diesem
-Auftragstext.
+Dritte Fassung dieses Abschnitts. Am 14.09.2026 zuerst nach einer
+Referenzgrafik gebaut, am selben Tag nach einem ausgeschriebenen Auftragstext
+überarbeitet; am 15.09.2026 hat Ricardo eine fertige HTML-Vorlage geliefert
+(`bilder-quelle/firmengruendung_rechtsformen/vorlage.html`) samt zwei neuen
+Piktogrammen. Der Wortlaut unten stammt aus dieser Vorlage.
 
 ## Kopf
 
@@ -12,77 +12,87 @@ Rechtsformen in der Schweiz
 
 Einzelfirma oder GmbH?
 
-Die passende Rechtsform hängt von Kapital, Haftung, Aufwand und Ihrer
-Situation ab. Hier sehen Sie die wichtigsten Unterschiede auf einen Blick.
+Beide Rechtsformen können ein guter Start sein. Entscheidend sind Ihre
+Risiken, das verfügbare Kapital und die Frage, wie Sie Ihr Unternehmen
+entwickeln möchten.
 
 ## Karte links
 
+Direkt starten
+
 Einzelfirma
 
-Einfach starten
-
-| Kategorie | Hauptzeile | Erklärung |
+| Merkmal | Hauptzeile | Erklärung |
 |---|---|---|
-| Kapital | Kein Mindestkapital | — |
-| Haftung | Mit dem Privatvermögen | Unbeschränkte Haftung |
-| Gründungsaufwand | Einfach und günstig | Schnell gegründet |
-| Sozialversicherungen | Inhaber/in als selbständigerwerbend | Selbst für Sozialversicherungen zuständig |
-| Handelsregister | Kein Eintrag erforderlich | Nur bei bestimmtem Umsatz verpflichtend |
-| Wirkung / Auftreten | Einfach und flexibel | Ideal für den Start und kleinere Projekte |
+| Mindestkapital | Keines vorgeschrieben | — |
+| Haftung | Persönlich und unbeschränkt | Geschäfts- und Privatvermögen sind rechtlich nicht getrennt. |
+| Gründung | Einfach und ohne öffentliche Beurkundung | — |
+| Sozialversicherungen | Status als selbständigerwerbend | Die Anerkennung erfolgt durch die zuständige Ausgleichskasse. |
+| Handelsregister | Je nach Tätigkeit freiwillig oder obligatorisch | Bei einem kaufmännisch geführten Gewerbe ab CHF 100'000 Jahresumsatz obligatorisch. |
+
+Passt häufig, wenn …
+
+Sie allein starten, wenig formalen Aufwand möchten und das persönliche
+Haftungsrisiko überschaubar ist.
 
 ## Karte rechts
 
+Getrennt aufbauen
+
 GmbH
 
-Stabil wachsen
-
-| Kategorie | Hauptzeile | Erklärung |
+| Merkmal | Hauptzeile | Erklärung |
 |---|---|---|
-| Kapital | CHF 20'000 Stammkapital | — |
-| Haftung | Auf die Gesellschaft beschränkt | Kein Zugriff auf das Privatvermögen |
-| Gründungsaufwand | Höherer Aufwand | Notariat und Handelsregister nötig |
-| Sozialversicherungen | In der eigenen Firma angestellt | Lohn und Sozialversicherungen über die GmbH |
-| Handelsregister | Eintrag obligatorisch | Öffentliche Eintragung |
-| Wirkung / Auftreten | Professionell und vertrauenswürdig | Geeignet für Wachstum und Zusammenarbeit mit Partnern |
+| Mindestkapital | CHF 20'000 | Bei der Gründung vollständig einbezahlt oder durch Sacheinlagen gedeckt. |
+| Haftung | Grundsätzlich mit dem Gesellschaftsvermögen | Statutarische Nachschusspflichten und persönliche Garantien bleiben möglich. |
+| Gründung | Öffentliche Beurkundung und Statuten erforderlich | — |
+| Sozialversicherungen | In der eigenen GmbH angestellt | Lohn und Sozialversicherungen laufen über die Gesellschaft. |
+| Handelsregister | Eintrag obligatorisch | Die GmbH entsteht rechtlich erst mit der Eintragung. |
 
-## Hinweisleiste
+Passt häufig, wenn …
 
-Welche Rechtsform ist die richtige für Sie?
+Sie Privat- und Geschäftsvermögen trennen, mit mehreren Personen gründen oder
+eine eigenständige Gesellschaft aufbauen möchten.
 
-Das hängt von Ihren individuellen Zielen, Risiken und Plänen ab. Gerne beraten
-wir Sie persönlich.
+## Leiste darunter
+
+Welche Rechtsform passt zu Ihrem Vorhaben?
+
+Neben Haftung und Kapital zählen auch Steuern, Vorsorge und Ihre weiteren
+Pläne. Wir vergleichen die Varianten anhand Ihrer Situation.
+
+Rechtsform besprechen
 
 ## Anmerkungen
 
-**Der bisherige Wortlaut ist ersetzt.** Die Karten trugen bis zum zweiten
-Auftrag die sechs Sätze aus `schritt4_fassung2_de.md`, an der Satzgrenze
-geteilt („Die Einzelfirma braucht kein Mindestkapital.", „Für die GmbH ist ein
-Stammkapital nötig, das vor der Gründung einbezahlt wird." und so fort). Sie
-stehen dort unverändert weiter und sind nicht widerrufen — sie stehen nur
-nicht mehr auf der Seite. Dass das Stammkapital vor der Gründung einbezahlt
-wird, steht weiterhin im Abschnitt „So läuft eine Gründung ab".
+**Drei Angaben sind neu und fachlich zu prüfen.** Sie standen vorher nicht auf
+der Seite, und `schritt4_fassung2_de.md` führt das Umfeld ausdrücklich als zu
+prüfen:
 
-**„CHF 20'000 Stammkapital" steht jetzt auf der Seite.** Schritt 4 führt die
-Höhe des Stammkapitals und die Einzahlungsvorschriften als fachlich zu prüfen;
-die Zahl war bis zum zweiten Auftrag zweimal ausdrücklich nicht übernommen.
-Ricardo hat sie im Auftragstext ausgeschrieben und ist auf den Vorbehalt
-hingewiesen. Die Schreibweise folgt dem Corporate Design (gerader Apostroph),
-nicht dem typografischen aus dem Auftrag.
+- die Umsatzschwelle **CHF 100'000** für den obligatorischen
+  Handelsregistereintrag,
+- dass das Stammkapital auch **durch Sacheinlagen** gedeckt sein kann,
+- **statutarische Nachschusspflichten** als Einschränkung der Haftungstrennung.
 
-**„Einfach starten" und „Stabil wachsen" stehen jetzt ebenfalls da.** Auch sie
-waren aus der ersten Grafik bewusst weggelassen. Sie sind Zusätze zur
-jeweiligen Rechtsform, keine Firmenzusätze — „Kompetenz schafft Klarheit",
-„Perspektiven für morgen" und „Persönlich. Unabhängig. An Ihrer Seite."
-bleiben die drei Zusätze von A&C.
+Ricardo ist darauf hingewiesen. **CHF 20'000** hatte er bereits am 14.09.2026
+ausgeschrieben.
 
-**Schreibweise „selbständigerwerbend".** Der Auftragstext schreibt
-„selbstständigerwerbend". Auf der Website steht überall die Schweizer Form mit
-einem t — auch auf `/steuern` und weiter unten auf dieser Seite. Sie ist
+**Die Fassung vom 14.09.2026 ist ersetzt.** Sie trug sechs Merkmale ohne
+Erklärungen (darunter «Wirkung / Auftreten»), die Unterzeilen «Einfach
+starten» und «Stabil wachsen» und eine Hinweisleiste ohne Knopf. Der
+Wortlaut steht in der Versionsgeschichte, nicht mehr auf der Seite.
+
+**Schreibweise «selbständigerwerbend».** Die Vorlage schreibt «selbstständig
+erwerbend» in zwei Wörtern; auf der Website steht überall die Schweizer Form
+mit einem t und zusammengeschrieben — auch auf `/steuern`. Sie ist
 beibehalten, damit nicht zwei Schreibweisen nebeneinander stehen.
 
-**Die neue Zeile „Wirkung / Auftreten"** kommt aus dem Auftragstext. Sie ist
-die einzige der sechs Kategorien, die keine Rechtsfrage beschreibt, sondern
-eine Einschätzung.
+**Der Knopf ist grün** (`Button variant="akzent"`), wie in der Vorlage. Sein
+Ziel kommt über `path()` aus der Pfad-Registry; die Vorlage schreibt dort die
+volle Adresse der Vorschau hinein.
 
-**Keine Zusätze aus der Grafik übernommen**, die nicht im Auftragstext stehen.
-Der Auftrag verlangt das ausdrücklich („keine zusätzlichen Claims").
+**Die zwei Piktogramme sind unverändert übernommen** und ersetzen die vom
+14.09.2026. Beide tragen ihren Kreis auf 89.6 Prozent der Datei (Radius 43 von
+96); der negative Rand im Stylesheet ist entsprechend von 14.3 auf 5.2 Prozent
+angepasst. Die Hinweisleiste steht neu **ohne Symbol** — die Vorlage zeigt
+dort keines; `03_icon_beratung.svg` bleibt im Repository liegen.

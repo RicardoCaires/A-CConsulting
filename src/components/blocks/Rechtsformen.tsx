@@ -1,7 +1,10 @@
 import Image from 'next/image'
 
+import { Button } from '@/components/ui/Button'
 import { hatSichtbarenInhalt, RichText } from '@/components/ui/RichText'
-import type { Rich } from '@/content/types'
+import type { PageRef, Rich } from '@/content/types'
+import type { Locale } from '@/i18n/config'
+import { path } from '@/i18n/routes'
 
 import styles from './Rechtsformen.module.css'
 
@@ -42,8 +45,12 @@ type Props = {
     titel: string
     untertitel?: string
     zeilen: readonly Zeile[]
+    /** Die Einordnung unten in der Karte: fuer wen die Rechtsform passt. */
+    passt?: { titel: string; text: Rich }
   }[]
-  hinweis?: { bild: string; titel: string; text: Rich }
+  /** Leiste unter den Karten. Ohne `bild` steht sie ohne Symbol. */
+  hinweis?: { bild?: string; titel: string; text: Rich; aktion?: PageRef }
+  locale: Locale
 }
 
 const bildPfad = (datei: string) => `/bilder/${datei}.svg`
@@ -56,6 +63,7 @@ export function Rechtsformen({
   hintergrund,
   spalten,
   hinweis,
+  locale,
 }: Props) {
   return (
     <section
@@ -85,8 +93,8 @@ export function Rechtsformen({
                   className={styles.symbol}
                   src={bildPfad(spalte.bild)}
                   alt=""
-                  width={700}
-                  height={700}
+                  width={96}
+                  height={96}
                   unoptimized
                 />
                 <div className={styles.kartenTitelBlock}>
@@ -116,26 +124,50 @@ export function Rechtsformen({
                     </div>
                   ))}
               </dl>
+
+              {spalte.passt && hatSichtbarenInhalt(spalte.passt.text) && (
+                <p className={styles.passt}>
+                  <strong className={styles.passtTitel}>{spalte.passt.titel}</strong>
+                  <span className={styles.passtText}>
+                    <RichText value={spalte.passt.text} />
+                  </span>
+                </p>
+              )}
             </div>
           ))}
         </div>
 
         {hinweis && (
           <div className={styles.hinweis}>
-            <Image
-              className={styles.hinweisSymbol}
-              src={bildPfad(hinweis.bild)}
-              alt=""
-              width={700}
-              height={700}
-              unoptimized
-            />
-            <div>
+            {hinweis.bild && (
+              <Image
+                className={styles.hinweisSymbol}
+                src={bildPfad(hinweis.bild)}
+                alt=""
+                width={96}
+                height={96}
+                unoptimized
+              />
+            )}
+            <div className={styles.hinweisText}>
               <h3 className={styles.hinweisTitel}>{hinweis.titel}</h3>
-              <p className={styles.hinweisText}>
+              <p className={styles.hinweisSatz}>
                 <RichText value={hinweis.text} />
               </p>
             </div>
+
+            {hinweis.aktion && (
+              <Button
+                className={styles.knopf}
+                variant="akzent"
+                href={path(hinweis.aktion.target, locale)}
+              >
+                {hinweis.aktion.label}
+                <span className={styles.pfeil} aria-hidden="true">
+                  →
+                </span>
+              </Button>
+            )}
           </div>
         )}
       </div>
