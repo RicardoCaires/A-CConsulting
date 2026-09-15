@@ -17,13 +17,15 @@
 /* Der Kopf: Text schmal, Bild gross. 58/42 ab Desktop. */
 .kopf {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(1.5rem, 4vw, 2.5rem);
   align-items: center;
 }
 
+
 .kopfText {
   /* Bewusst schmal — der Einstieg soll nicht ueber die halbe Seite laufen. */
-  max-width: 30rem;
+  max-width: 35.625rem;
 }
 
 .titel {
@@ -40,8 +42,96 @@
 }
 
 /* Das Bild traegt den Kopf. Hochformat 4:5 wie in der Shootingliste. */
-.kopfBild {
+/* ---- Bildflaeche mit gruenem Eckmarker und Legende ------------------------- */
+
+/* Die Flaeche ist groesser als zuvor (Vorlage: mindestens 520 px hoch) und
+   traegt oben rechts einen kurzen gruenen Winkel. Er liegt **ausserhalb** des
+   Bildes, damit er kein Gesicht ueberdeckt. */
+.kopfBildFeld {
+  position: relative;
+  margin: 0;
+}
+
+.kopfBildFeld::before,
+.kopfBildFeld::after {
+  content: '';
+  position: absolute;
+  background-color: var(--ac-color-accent-green);
+}
+
+/* Waagrechter Schenkel des Winkels. */
+.kopfBildFeld::before {
+  top: calc(var(--ac-border-marker) * -1);
+  right: 0;
+  width: 3.5rem;
+  height: var(--ac-border-marker);
+}
+
+/* Senkrechter Schenkel. */
+.kopfBildFeld::after {
+  top: calc(var(--ac-border-marker) * -1);
+  right: calc(var(--ac-border-marker) * -1);
+  width: var(--ac-border-marker);
+  height: 3.5rem;
+}
+
+.kopfFoto,
+.kopfPlatzhalter {
+  display: block;
+  width: 100%;
+  min-height: 32.5rem;
+  border-radius: var(--ac-radius-md);
+}
+
+.kopfFoto {
+  height: auto;
   aspect-ratio: 4 / 5;
+  object-fit: cover;
+  /* Zwei Personen stehen im oberen Drittel. Der Beschnitt haelt die Gesichter
+     im Bild, auch wenn die Flaeche schmaler wird. */
+  object-position: center 25%;
+}
+
+.kopfPlatzhalter {
+  background-color: var(--ac-color-background-tint);
+  aspect-ratio: 4 / 5;
+}
+
+/* Unter der Flaeche, nie darueber. */
+.kopfLegende {
+  margin: var(--ac-space-2xs) 0 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Die drei Fachgebiete --------------------------------------------------- */
+
+.bereiche {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ac-space-2xs);
+  margin: var(--ac-space-md) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bereiche li {
+  padding: 0.375rem 0.875rem;
+  font-size: var(--ac-small-size);
+  line-height: 1.4;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-light);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-pill, 999px);
+}
+
+.kopfLead {
+  max-width: 35.625rem;
+  margin: 0 0 var(--ac-space-sm);
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.38rem);
+  line-height: 1.55;
+  color: var(--ac-color-primary-navy);
 }
 
 /* ---- 2  Profile ---------------------------------------------------------- */
@@ -252,7 +342,10 @@
 @media (min-width: 48rem) {
   /* Kopf: Text schmal, Bild breiter — 58/42. */
   .kopf {
-    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    /* Vorlage vom 15.09.2026: Text 0.9fr, Bild 1.1fr — die Flaeche traegt
+       jetzt Legende und Eckmarker und darf breiter sein. */
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(2.5rem, 7vw, 6rem);
   }
 
   /* Quadratisch statt hochkant: Bei 3:4 war der Kopf 599 px hoch fuer 296 px

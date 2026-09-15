@@ -49,8 +49,21 @@ export type UeberunsContent = {
   kopf: {
     eyebrow: string
     titel: string
+    /** Der groessere Satz in Navy, direkt unter dem Titel. */
+    lead: string
     satz: string
-    bild: { label: string; note?: string }
+    /** Die drei Fachgebiete, in der Reihenfolge der Hausordnung. */
+    bereiche: readonly string[]
+    bild: {
+      /** Beschriftung der Platzhalterflaeche, solange das Foto fehlt. */
+      label: string
+      /** Liegt eine Aufnahme vor, steht hier ihr Dateiname ohne Endung. */
+      foto?: string
+      /** Was auf der Aufnahme zu sehen ist — fuer Vorlesewerkzeuge. */
+      alt?: string
+      /** Bildlegende unter der Flaeche. */
+      legende: string
+    }
   }
 
   inhaber: {
@@ -87,11 +100,20 @@ const de: UeberunsContent = {
   // Die Ueberschrift bleibt, wie Ricardo sie am 07.09.2026 gewaehlt hat
   // (Variante 4). Der Auftrag bot eine neue an — der Inhalt war aber nicht das
   // Problem, und eine getroffene Entscheidung wird nicht nebenbei umgeworfen.
+  // Seit dem 15.09.2026 nach Ricardos HTML-Vorlage
+  // (`content/source/ueberuns_einstieg_de.md`). Die interne Regieanweisung
+  // „Aufnahme 2 der Shootingliste" steht nicht mehr auf der Seite; die fehlende
+  // Aufnahme ist als offener Punkt in CLAUDE.md vermerkt.
   kopf: {
     eyebrow: 'Über A&C',
-    titel: 'Zwei Ansprechpartner, drei Bereiche',
-    satz: 'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade geführt. Beide betreuen Mandate selbst.',
-    bild: { label: 'RICARDO & OCTAVIO', note: 'Aufnahme 2 der Shootingliste' },
+    titel: 'Zwei Ansprechpartner. Ihre Themen an einer Stelle.',
+    lead: 'Bei uns sprechen Sie direkt mit der Person, die Ihr Dossier kennt und bearbeitet.',
+    satz: 'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade geführt. Wir betreuen unsere Mandate persönlich und verbinden Versicherungsbroking, Treuhand und Steuern dort, wo die Themen zusammengehören.',
+    bereiche: ['Versicherungsbroking', 'Treuhand', 'Steuern'],
+    bild: {
+      label: 'Ricardo und Octavio',
+      legende: 'Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade',
+    },
   },
 
   // ---- 2 Die beiden Inhaber

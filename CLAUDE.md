@@ -1476,6 +1476,40 @@ eidg. Fachausweis suggeriert.
 Die Inhaber mit Namen, Werdegang und Sprachen. Warum es die Firma gibt. Kein
 Fliesstext über Werte — konkrete Sätze über konkrete Menschen.
 
+> **Der Einstieg ist seit dem 15.09.2026 nach Ricardos HTML-Vorlage gebaut:**
+> Kategoriezeile „Über A&C", Titel „Zwei Ansprechpartner. Ihre Themen an
+> einer Stelle.", ein grösserer Satz in Navy, der Beschreibungsabsatz und
+> darunter die drei Fachgebiete als Pillen — Versicherungsbroking, Treuhand,
+> Steuern. Rechts die grössere Bildfläche mit grünem Eckmarker oben rechts
+> und der Legende darunter. Unter 48rem stehen Text und Bild untereinander.
+>
+> **Die interne Regieanweisung steht nicht mehr im Frontend.** Die Fläche
+> trug „[RICARDO & OCTAVIO]" und „Aufnahme 2 der Shootingliste"; beides ist
+> weg. Es bleibt eine ruhige getönte Fläche mit `role="img"` und dem Namen
+> „Ricardo und Octavio" für Vorlesewerkzeuge. **Drei weitere Flächen auf
+> derselben Seite tragen die Anweisung weiterhin** — die zwei Porträts und das
+> Büro. Sie gehörten nicht zum Auftrag; Ricardo ist darauf hingewiesen.
+>
+> **Gesichter bleiben frei.** Die Legende steht **unter** der Fläche, nie
+> darüber; der Eckmarker liegt ausserhalb der Bildkante; der Beschnitt steht
+> auf `object-position: center 25%`, damit zwei Personen im oberen Drittel im
+> Bild bleiben.
+>
+> **Sobald die gemeinsame Aufnahme vorliegt:** Datei unter `public/bilder/`
+> ablegen und in `src/content/ueberuns.ts` bei `kopf.bild.foto` eintragen,
+> dazu `alt`. Der Platzhalter weicht dann von selbst.
+>
+> **Die Reihenfolge der drei Fachgebiete** folgt dem Auftrag und dem Corporate
+> Design (Versicherungsbroking, Treuhand, Steuern), nicht der Navigation — die
+> führt seit dem 07.09.2026 an dritter Stelle Finanzplanung. Hier geht es um
+> die fachliche Herkunft der Inhaber, nicht um die Seitenstruktur.
+>
+> **Der Seitentitel lautet weiterhin „Zwei Ansprechpartner, drei Bereiche".**
+> Er steht in `meta.title` und wurde nicht geändert, weil der Auftrag nur die
+> Überschrift nennt. Damit tragen Browserreiter und Überschrift verschiedene
+> Texte; Ricardo entscheidet.
+
+
 ### /kontakt
 
 Adresse, Öffnungszeiten, Karte, Telefon, E-Mail. Sprachhinweis: Beratung auf
@@ -1512,6 +1546,9 @@ Inhalt und Freigaben:
 
 - [ ] Öffnungszeiten festlegen — bis dahin steht keine Angabe auf der Seite
 - [ ] Preisrahmen für Steuererklärung und Treuhand festlegen
+- [ ] **Gemeinsame Aufnahme von Ricardo und Octavio beschaffen** — für den
+      Einstieg auf `/ueber-uns`. Bis dahin steht dort eine getönte
+      Platzhalterfläche ohne sichtbaren Hinweis
 - [ ] Bildmaterial: Porträts der Inhaber und Regionalaufnahmen beschaffen
       (die Startseite kommt bewusst ohne Fotos aus, statt Stockbilder zu setzen)
 - [ ] Vektorlogo (SVG) beschaffen — bisher nur PNG, siehe `offene-punkte.md`
