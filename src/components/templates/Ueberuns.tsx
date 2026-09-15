@@ -93,12 +93,13 @@ export function UeberunsTemplate({ inhalt, locale, bannerKnopf }: Props) {
           {/* `inhaber` ist das Sprungziel, `inhaber-titel` benennt den
               Abschnitt. Zwei Rollen, zwei Kennungen — dieselbe zweimal waere
               ungueltiges HTML und fuer Hilfstechnik mehrdeutig. */}
+          {/* Der Banner darueber traegt Themenzeile und Ueberschrift. Die
+              Ueberschrift steht hier noch einmal fuer Vorlesewerkzeuge, damit
+              der Abschnitt einen Namen hat — sichtbar ist sie nicht. */}
           <section aria-labelledby="inhaber-titel" id="inhaber" className={styles.inhaber}>
-            <p className="ac-eyebrow">{inhalt.inhaber.eyebrow}</p>
-            <h2 id="inhaber-titel" className={styles.inhaberTitel}>
-              {inhalt.inhaber.titel}
+            <h2 id="inhaber-titel" className="ac-visually-hidden">
+              {inhalt.inhaber.banner.ueberschrift}
             </h2>
-            <p className={styles.inhaberEinleitung}>{inhalt.inhaber.einleitung}</p>
 
             <div className={styles.profile}>
               {inhalt.inhaber.leute.map((person) => (
@@ -123,10 +124,6 @@ export function UeberunsTemplate({ inhalt, locale, bannerKnopf }: Props) {
                   <div className={styles.profilText}>
                     <p className={styles.rolle}>{person.rolle}</p>
                     <h3 className={styles.name}>{person.name}</h3>
-
-                    <p className={styles.kern}>
-                      <RichText value={person.kern} />
-                    </p>
 
                     <dl className={styles.angaben}>
                       {person.angaben.map((angabe) => (
@@ -189,7 +186,6 @@ export function UeberunsTemplate({ inhalt, locale, bannerKnopf }: Props) {
         <h2 id="arbeitsweise-titel" className={styles.prinzipienTitel}>
           {inhalt.arbeitsweise.titel}
         </h2>
-        <p className={styles.prinzipienEinleitung}>{inhalt.arbeitsweise.einleitung}</p>
 
         <div className={styles.prinzipien}>
           {inhalt.arbeitsweise.prinzipien.map((prinzip) => (

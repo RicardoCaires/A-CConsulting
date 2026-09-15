@@ -18,13 +18,13 @@ export const ueberUns: PageContent = {
   meta: {
     title: 'Zwei Ansprechpartner, drei Bereiche',
     description:
-      'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade geführt. Beide betreuen Mandate selbst.',
+      'A&C Consulting wird von Ricardo Caires und Octavio Nuno Gouveia Andrade geführt. Beide betreuen Mandate selbst.',
   },
 
   // 01 Seitenkopf
   hero: {
     heading: 'Zwei Ansprechpartner, drei Bereiche',
-    lead: 'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade geführt. Beide betreuen Mandate selbst.',
+    lead: 'A&C Consulting wird von Ricardo Caires und Octavio Nuno Gouveia Andrade geführt. Beide betreuen Mandate selbst.',
   },
 
   blocks: [
@@ -35,7 +35,7 @@ export const ueberUns: PageContent = {
       heading: 'Die beiden Inhaber',
       items: [
         {
-          heading: 'Ricardo Caires Cerqueira',
+          heading: 'Ricardo Caires',
           paragraphs: [
             'Mitinhaber. Zuständig für Treuhand, Steuern und Versicherungen. Als Versicherungsvermittler bei der FINMA registriert.',
             'Beruflicher Weg: Kaufmann EFZ, danach im Finanz- und Rechnungswesen der Creabeton Matériaux AG in Lyss verantwortlich für Kreditoren, Debitoren und Anlagebuchhaltung sowie Leiter der Berufsbildung. Abschlüsse: Sachbearbeiter Rechnungswesen VSK am Feusi Bildungszentrum Bern und Versicherungsvermittler VBV.',

@@ -41,16 +41,6 @@ export const versicherungen: PageContent = {
   },
 
   blocks: [
-    // 02 Zwei Wege
-    {
-      kind: 'anchors',
-      items: [
-        { label: 'Für Privatpersonen', anchor: 'privatpersonen' },
-        { label: 'Für Unternehmen', anchor: 'unternehmen' },
-        { label: 'Betreuung', anchor: 'betreuung' },
-        { label: 'Schadenfall', anchor: 'schadenfall' },
-      ],
-    },
 
     // 03 Das Modell als Schaubild
     //

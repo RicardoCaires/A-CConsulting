@@ -28,13 +28,6 @@ export const treuhand: PageContent = {
   },
 
   blocks: [
-    // 02 Bereichsnavigation — Treuhand ist die Oberkategorie fuer alles
-    // Kaufmaennische. Sie traegt keinen eigenen Text: die Beschriftungen sind
-    // dieselben wie in der Hauptnavigation.
-    {
-      kind: 'serviceNav',
-      items: ['buchhaltung', 'steuern', 'firmengruendung', 'treuhaenderWechseln'],
-    },
 
     // 03 Leistungen im Überblick — seit dem 11.09.2026 als Kartenraster nach
     // Ricardos Referenzgrafik. Kategoriezeile und Einleitung stammen aus
@@ -190,7 +183,7 @@ export const treuhand: PageContent = {
         },
         {
           question: 'Wer ist mein Ansprechpartner?',
-          answer: 'Eine feste Person, die Ihr Dossier führt. Beide betreuen Versicherungskunden; Treuhandmandate führt Ricardo Caires Cerqueira.',
+          answer: 'Eine feste Person, die Ihr Dossier führt. Beide betreuen Versicherungskunden; Treuhandmandate führt Ricardo Caires.',
         },
         {
           question: 'Wie oft sehen wir uns?',

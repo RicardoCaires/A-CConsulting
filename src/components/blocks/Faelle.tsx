@@ -50,9 +50,7 @@ export function Faelle({ faelle, locale }: Props) {
 
   return (
     <ol className={styles.liste} role="list">
-      {faelle.map((fall, index) => {
-        // Zweistellig ab eins: „01" ordnet, „1" sieht aus wie ein Aufzaehlungspunkt.
-        const nummer = String(index + 1).padStart(2, '0')
+      {faelle.map((fall) => {
         const erreichbar = isPublished(fall.ziel, locale)
         const href = erreichbar
           ? `${path(fall.ziel, locale)}${fall.anker ? `#${fall.anker}` : ''}`
@@ -60,10 +58,9 @@ export function Faelle({ faelle, locale }: Props) {
 
         const inhalt = (
           <>
+            {/* Die Nummer 01 bis 06 ist am 15.09.2026 auf Ricardos Anweisung
+                entfallen. Die Reihenfolge steht weiterhin im `<ol>`. */}
             <div className={styles.kopf}>
-              <span className={styles.nummer} aria-hidden="true">
-                {nummer}
-              </span>
               <Piktogramm className={styles.bild} name={fall.bild} />
             </div>
 

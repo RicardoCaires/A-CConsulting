@@ -134,30 +134,33 @@
 .feld {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: var(--ac-space-sm);
   min-height: 9.6875rem;
   padding: 1.25rem;
   background-color: var(--ac-color-white);
   border: var(--ac-border-hairline) solid var(--ac-color-border-light);
   border-radius: var(--ac-radius-md);
+  transition:
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
+    border-color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.nummer {
-  display: grid;
-  place-items: center;
-  width: 2.125rem;
-  height: 2.125rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--ac-color-primary-navy);
-  background-color: var(--ac-color-background-tint);
-  border-radius: 50%;
+/* Beim Darueberfahren wird das ganze Feld navy, die Schrift weiss (9.4:1) —
+   wie die Karten der Ausgangslagen auf der Startseite. */
+.feld:hover {
+  background-color: var(--ac-color-primary-navy);
+  border-color: var(--ac-color-primary-navy);
 }
 
-/* Der letzte Kreis markiert das Ende der Aufzählung. */
-.feld:last-child .nummer {
+.feld:hover .feldTitel {
   color: var(--ac-color-white);
-  background-color: var(--ac-color-accent-green);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feld {
+    transition: none;
+  }
 }
 
 .feldTitel {
@@ -167,6 +170,7 @@
   line-height: 1.35;
   font-weight: var(--ac-display-weight);
   color: var(--ac-color-primary-navy);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
 /* ---- Umbrüche --------------------------------------------------------------- */

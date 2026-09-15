@@ -3,7 +3,6 @@ import type { ReactNode } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Icon, type IconName } from '@/components/ui/Icon'
 import { Illustration, type Motiv } from '@/components/ui/Illustration'
-import { PageLink } from '@/components/ui/PageLink'
 import type { Locale } from '@/i18n/config'
 import { hrefOrDefault, type PageKey } from '@/i18n/routes'
 
@@ -141,12 +140,19 @@ export function Bereiche({ leit, weitere, locale }: Props) {
 
             <Leistungen werte={bereich.leistungen} zweispaltig />
 
-            <PageLink
-              target={bereich.ziel}
-              label={bereich.linkText}
-              locale={locale}
-              className={styles.link}
-            />
+            {/* Seit dem 15.09.2026 ein Knopf wie im Leitbereich, auf Ricardos
+                Anweisung. Er wird beim Darueberfahren und bei Tastaturfokus
+                navy — das macht `variant="akzent"` von sich aus. */}
+            <Button
+              className={styles.knopf}
+              href={hrefOrDefault(bereich.ziel, locale)}
+              variant="akzent"
+            >
+              {bereich.linkText}
+              <span className={styles.knopfPfeil} aria-hidden="true">
+                →
+              </span>
+            </Button>
           </article>
         ))}
       </div>
