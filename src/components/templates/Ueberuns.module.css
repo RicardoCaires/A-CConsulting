@@ -134,149 +134,169 @@
   color: var(--ac-color-primary-navy);
 }
 
-/* ---- 2  Profile ---------------------------------------------------------- */
-
-.profile {
-  display: grid;
-  gap: clamp(2rem, 4.5vw, 3rem);
-  margin-top: clamp(2.25rem, 4.5vw, 3.5rem);
-}
-
-.profil {
-  display: grid;
-  gap: clamp(1.25rem, 4vw, 2.5rem);
-  align-items: start;
-  /* Eine Haarlinie statt eines Kastens: Sie trennt, ohne einzusperren. */
-  padding-top: clamp(1.75rem, 3.5vw, 2.5rem);
-  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
-}
-
-.profil:first-child {
-  padding-top: 0;
-  border-top: 0;
-}
-
-.profilBild {
-  aspect-ratio: 4 / 5;
-}
-
-/* Rolle steht ueber dem Namen und ist die kleinste Angabe im Block —
-   der Name faellt zuerst ins Auge, nicht die Funktion. */
-.rolle {
-  font-size: var(--ac-eyebrow-size);
-  line-height: var(--ac-eyebrow-line);
-  font-weight: var(--ac-eyebrow-weight);
-  letter-spacing: var(--ac-eyebrow-tracking);
-  text-transform: uppercase;
-  color: var(--ac-color-text-secondary);
-  margin-bottom: var(--ac-space-2xs);
-}
-
-.name {
-  font-size: var(--ac-h2-size);
-  line-height: var(--ac-h2-line);
-  font-weight: var(--ac-h2-weight);
-  letter-spacing: var(--ac-h2-tracking);
-  margin-bottom: var(--ac-space-xs);
-}
-
-/* Das Wichtigste nach dem Namen: etwas groesser als Fliesstext. */
-.kern {
-  font-size: var(--ac-lead-size);
-  line-height: var(--ac-lead-line);
-  max-width: 40ch;
-}
-
-/* Der Werdegang ist Beleg, nicht Aussage: kleiner, ruhiger, schmaler. */
-.werdegang {
-  margin-top: var(--ac-space-sm);
-  font-size: var(--ac-small-size);
-  line-height: var(--ac-small-line);
-  color: var(--ac-color-text-secondary);
-  max-width: 46ch;
-}
-
-/* Sprachen und Telefon als Randangaben, ueber einer Haarlinie. */
-.meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ac-space-2xs) var(--ac-space-md);
-  margin-top: var(--ac-space-md);
-  padding-top: var(--ac-space-xs);
-  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
-  font-size: var(--ac-small-size);
-  line-height: var(--ac-small-line);
-  color: var(--ac-color-text-secondary);
-  max-width: 46ch;
-}
-
-.meta a {
-  font-variant-numeric: tabular-nums;
-  /* Trefferflaeche, ohne den Fluss der Zeile zu stoeren. */
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.75rem;
-}
-
 /* ---- 3  Arbeitsweise ----------------------------------------------------- */
-
-.prinzipienRaster {
-  display: grid;
-  gap: clamp(1.5rem, 4vw, 3rem);
-}
+/* Bentoraster nach Ricardos Vorlage vom 15.09.2026: zwei grosse Karten oben,
+   drei kompakte darunter. Zwischenstufe zwei je Reihe, mobil eine. */
 
 .prinzipienTitel {
-  /* Bleibt beim Scrollen neben der Liste stehen — die Ueberschrift gehoert
-     zu allen fuenf Punkten, nicht nur zum ersten. */
-  align-self: start;
-  max-width: 12ch;
+  max-width: 47.5rem;
+  margin: var(--ac-space-sm) 0 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(2.2rem, 1.6rem + 2vw, 3.35rem);
+  line-height: 1.13;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.015em;
+  color: var(--ac-color-primary-navy);
+}
+
+.prinzipienEinleitung {
+  max-width: 43.75rem;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: var(--ac-body-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
 }
 
 .prinzipien {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  display: grid;
+  gap: var(--ac-space-sm);
+  margin-top: clamp(1.75rem, 3.5vw, 2.4rem);
 }
 
 .prinzip {
   display: grid;
-  grid-template-columns: 2.75rem 1fr;
-  gap: 0 var(--ac-space-sm);
-  padding-block: var(--ac-space-md);
-  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  grid-template-columns: minmax(0, 1fr) 4.375rem;
+  gap: var(--ac-space-sm);
+  align-items: start;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+  transition:
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
+    border-color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.prinzip:first-child {
-  padding-top: 0;
-  border-top: 0;
+.prinzipBild {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  height: auto;
 }
 
-.prinzip:last-child {
-  padding-bottom: 0;
+.prinzipText {
+  grid-column: 1;
+  grid-row: 1;
 }
 
-.nummer {
-  font-family: var(--ac-font-display);
-  font-size: var(--ac-h3-size);
-  line-height: 1.35;
-  font-weight: var(--ac-h3-weight);
-  font-variant-numeric: tabular-nums;
-  color: var(--ac-color-accent-green);
+.prinzipKategorie {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  line-height: var(--ac-eyebrow-line);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+/* Bleibt gruen, auch wenn die Karte auf Navy wechselt. */
+.prinzipKategorie::before {
+  content: '';
+  flex: none;
+  width: 1.5625rem;
+  height: var(--ac-border-marker);
+  background-color: var(--ac-color-accent-green);
 }
 
 .prinzipTitel {
-  font-size: var(--ac-h3-size);
-  line-height: var(--ac-h3-line);
-  font-weight: var(--ac-h3-weight);
-  letter-spacing: var(--ac-h3-tracking);
-  margin-bottom: var(--ac-space-3xs);
+  margin: var(--ac-space-xs) 0 var(--ac-space-3xs);
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.75rem);
+  line-height: 1.2;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
 }
 
 .prinzipSatz {
+  margin: 0;
   font-size: var(--ac-small-size);
-  line-height: var(--ac-small-line);
+  line-height: 1.6;
   color: var(--ac-color-text-secondary);
-  max-width: 54ch;
+}
+
+/* Darueberfahren und Tastaturfokus zeigen denselben Zustand: die ganze
+   Flaeche wird Navy, die Schrift weiss. Weiss auf Navy traegt 9.4:1. */
+.prinzip:hover,
+.prinzip:focus-visible,
+.prinzip:focus-within {
+  background-color: var(--ac-color-primary-navy);
+  border-color: var(--ac-color-primary-navy);
+}
+
+.prinzip:hover .prinzipKategorie,
+.prinzip:hover .prinzipTitel,
+.prinzip:hover .prinzipSatz,
+.prinzip:focus-visible .prinzipKategorie,
+.prinzip:focus-visible .prinzipTitel,
+.prinzip:focus-visible .prinzipSatz,
+.prinzip:focus-within .prinzipKategorie,
+.prinzip:focus-within .prinzipTitel,
+.prinzip:focus-within .prinzipSatz {
+  color: var(--ac-color-white);
+}
+
+/* Zusaetzlich ein sichtbarer Ring: Die Karte ist per Tastatur anspringbar,
+   und der Farbwechsel allein ist im Umriss nicht eindeutig. */
+.prinzip:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Ab 36.875rem zwei Karten je Reihe. */
+@media (min-width: 36.875rem) {
+  .prinzipien {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+  }
+
+  .prinzip {
+    grid-template-columns: minmax(0, 1fr) 4.875rem;
+  }
+}
+
+/* Ab 50rem das Bentoraster: zwei grosse Karten, drei kompakte. */
+@media (min-width: 50rem) {
+  .prinzipien {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-rows: auto;
+  }
+
+  .prinzip:nth-child(-n + 2) {
+    grid-column: span 6;
+    grid-template-columns: minmax(0, 1fr) 5.75rem;
+    min-height: 13.125rem;
+  }
+
+  /* Die drei kompakten stellen das Piktogramm ueber den Text. */
+  .prinzip:nth-child(n + 3) {
+    grid-column: span 4;
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 15.3125rem;
+  }
+
+  .prinzip:nth-child(n + 3) .prinzipBild {
+    grid-column: 1;
+    grid-row: 1;
+    width: 4.5rem;
+  }
+
+  .prinzip:nth-child(n + 3) .prinzipText {
+    grid-column: 1;
+    grid-row: 2;
+  }
 }
 
 /* ---- 4  Standort --------------------------------------------------------- */
@@ -355,35 +375,6 @@
     aspect-ratio: 1 / 1;
   }
 
-  /* Profile: Bild links, Text rechts — und beim zweiten umgekehrt. */
-  .profil {
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-    align-items: center;
-  }
-
-  /* Beim Umdrehen wandern **beide** mit: Sonst steht das Bild in der breiten
-     Spalte und der Text in der schmalen — die beiden Profile haetten dann
-     unterschiedlich grosse Portraets. */
-  .gedreht {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-  }
-
-  .gedreht .profilBild {
-    order: 2;
-  }
-
-  /* Ueberschrift links, Liste rechts. Die Ueberschrift bekommt bewusst
-     weniger Platz als die Liste. */
-  .prinzipienRaster {
-    grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.45fr);
-    gap: clamp(2rem, 5vw, 4rem);
-  }
-
-  .prinzipienTitel {
-    position: sticky;
-    top: 10rem;
-  }
-
   /* Standort: Text links, breites Bild rechts. */
   .standortRaster {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
@@ -391,8 +382,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .prinzipienTitel {
-    position: static;
+  .prinzip {
+    transition: none;
   }
 }
 

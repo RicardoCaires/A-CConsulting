@@ -20,7 +20,7 @@ import styles from './Ueberuns.module.css'
  *
  *   1 Kopf         asymmetrisch 58/42, Text links, grosses Bild rechts
  *   2 Inhaber      abwechselnd Bild links / Bild rechts, redaktionell
- *   3 Arbeitsweise Ueberschrift links, nummerierte Liste rechts   — hell
+ *   3 Arbeitsweise Bentoraster aus fuenf Karten                    — hell
  *   4 Standort     Text links, breites Bild rechts, Randangaben darunter
  *   5 Abschluss    dunkel, kompakt, gross                          — FLAECHE
  *
@@ -182,30 +182,43 @@ export function UeberunsTemplate({ inhalt }: Props) {
         </div>
       </div>
 
-      {/* ---- 3 Arbeitsweise — Ueberschrift links, Liste rechts ------------ */}
-      <Section surface={fArbeitsweise} id="arbeitsweise" labelledBy="arbeitsweise-titel">
-        <div className={styles.prinzipienRaster}>
-          <h2 id="arbeitsweise-titel" className={styles.prinzipienTitel}>
-            {inhalt.arbeitsweise.titel}
-          </h2>
+      {/* ---- 3 Arbeitsweise — Bentoraster aus fuenf Karten ---------------
+          Zwei grosse oben, drei kompakte darunter. Beim Darueberfahren und
+          bei Tastaturfokus wechselt die ganze Karte auf Navy; der gruene
+          Strich vor der Kategorie bleibt gruen.
 
-          {/* Nummeriert, mit Haarlinien getrennt. Keine Karten: Fuenf Karten
-              waeren wieder fuenfmal dasselbe. */}
-          <ol className={styles.prinzipien}>
-            {inhalt.arbeitsweise.prinzipien.map((prinzip, index) => (
-              <li key={prinzip.titel} className={styles.prinzip}>
-                <span className={styles.nummer} aria-hidden="true">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <div>
-                  <h3 className={styles.prinzipTitel}>{prinzip.titel}</h3>
-                  <p className={styles.prinzipSatz}>
-                    <RichText value={prinzip.satz} />
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
+          Die Karten tragen `tabIndex={0}`, weil sie keinen Link enthalten und
+          sonst gar nicht anspringbar waeren — den Fokuszustand verlangt der
+          Auftrag ausdruecklich. */}
+      <Section surface={fArbeitsweise} id="arbeitsweise" labelledBy="arbeitsweise-titel">
+        <p className="ac-eyebrow">{inhalt.arbeitsweise.eyebrow}</p>
+        <h2 id="arbeitsweise-titel" className={styles.prinzipienTitel}>
+          {inhalt.arbeitsweise.titel}
+        </h2>
+        <p className={styles.prinzipienEinleitung}>{inhalt.arbeitsweise.einleitung}</p>
+
+        <div className={styles.prinzipien}>
+          {inhalt.arbeitsweise.prinzipien.map((prinzip) => (
+            <article key={prinzip.titel} className={styles.prinzip} tabIndex={0}>
+              {/* Das Piktogramm traegt keine Aussage, die nicht daneben steht. */}
+              <Image
+                className={styles.prinzipBild}
+                src={`/bilder/${prinzip.bild}.svg`}
+                alt=""
+                aria-hidden="true"
+                width={96}
+                height={96}
+                unoptimized
+              />
+              <div className={styles.prinzipText}>
+                <p className={styles.prinzipKategorie}>{prinzip.kategorie}</p>
+                <h3 className={styles.prinzipTitel}>{prinzip.titel}</h3>
+                <p className={styles.prinzipSatz}>
+                  <RichText value={prinzip.satz} />
+                </p>
+              </div>
+            </article>
+          ))}
         </div>
       </Section>
 
