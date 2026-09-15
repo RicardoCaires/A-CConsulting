@@ -665,3 +665,21 @@ und unveraendert herausgeloest ist.
 Die Aufnahme des Standorts in Aegerten fehlt weiterhin; die Flaeche ist bis
 dahin ein ruhiger getoenter Platzhalter ohne Hinweis auf interne Listen.
 
+## Abschluss — Kontaktbereich
+
+Am 15.09.2026 als HTML-Vorlage mit zwei Piktogrammen geliefert, je als SVG und
+PNG. Ausgeliefert wird das SVG; die Dateien sind unveraendert.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `abschluss-kontakt.html` | — | Vorlage, liegt als `vorlage.html` |
+| `piktogramm-kontakt-telefon.svg` | `kontakt_telefon.svg` | SVG, viewBox 24 |
+| `piktogramm-kontakt-email.svg` | `kontakt_email.svg` | SVG, viewBox 24 |
+
+Beide Zeichen sind gruene Konturen ohne eigenen Kreis. Der helle Kreis
+dahinter kommt aus dem Stylesheet und bleibt auch dann hell, wenn die Kachel
+auf Navy wechselt — gruen auf Navy waere nicht lesbar.
+
+**Damit stehen drei Dateien der Fassung vom 10.09.2026 auf keiner Seite mehr:**
+`03_kontakt_hintergrundmuster.webp`, `01_telefon.webp` und `02_email.webp`.
+Sie bleiben liegen.

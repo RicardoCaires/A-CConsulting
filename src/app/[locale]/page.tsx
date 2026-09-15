@@ -62,7 +62,6 @@ export default async function HomePage({ params }: PageProps) {
       titel: content.einstieg.titel,
       satz: content.einstieg.satz,
       knopf: { text: content.cta, ziel: 'kontakt' },
-      weiter: content.einstieg.weiter,
       bild: content.einstieg.bild,
     },
 
@@ -104,8 +103,10 @@ export default async function HomePage({ params }: PageProps) {
 
     // 9 — Kontaktabschluss.
     abschluss: {
+      eyebrow: content.abschluss.eyebrow,
       titel: content.abschluss.titel,
       satz: content.abschluss.satz,
+      felder: content.abschluss.felder,
       knopf: { text: content.cta, ziel: 'kontakt' },
     },
   }

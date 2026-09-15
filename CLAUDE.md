@@ -449,7 +449,7 @@ Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
 | 2 | Leistungen | Was wir für Sie übernehmen. | hell (getönt) |
 | 3 | Situationen | Wobei können wir Sie unterstützen? | weiss |
 | 4 | Ansprechpartner | Zwei Ansprechpartner | hell |
-| 5 | Abschluss | Erzählen Sie uns, wobei wir Sie entlasten können. | weiss |
+| 5 | Abschluss | Wobei können wir Sie unterstützen? | hell (getönt) |
 
 > **Am 15.09.2026 von sieben auf fünf verkürzt** auf Ricardos Anweisung, per
 > Screenshot. Weggefallen sind **„Eine Stelle für Ihre Administration"** — die
@@ -463,6 +463,11 @@ Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
 > Kopfbereich und im Abschluss. Die Bausteine `Ablauf` und `Schrittbild`
 > bleiben liegen — `StepList` trägt denselben Ablauf weiter auf den
 > Leistungsseiten. Ricardo ist darauf hingewiesen.
+>
+> **Im Seitenkopf ist der Textlink „Unsere Leistungen" entfallen und der Knopf
+> „Erstgespräch anfragen" ist grün** (`Button variant="akzent"`), beides am
+> 15.09.2026 auf Ricardos Anweisung. Der Kopf trägt damit genau einen Weg
+> weiter.
 
 > **Am 10.09.2026 von neun auf sieben verkürzt** auf Anweisung von Ricardo.
 > Weggefallen sind **„Unsere Rolle"** („Wir vertreten Sie, nicht die
@@ -660,24 +665,40 @@ kommt, wird nicht eingesetzt und nicht nachgebaut. Gepflegt wird sie an einer
 Stelle: `bilder-quelle/unser-modell.png` als Quelle, `public/bilder/unser-modell.webp` als ausgelieferte Fassung, eingebunden in
 `src/content/pages/versicherungen.ts`.
 
-**Abschnitt 7, der Abschluss, seit dem 10.09.2026 nach Ricardos Referenz.**
-Er läuft **nicht** mehr über `CTASection`, sondern über den eigenen Baustein
-`src/components/blocks/Kontaktabschluss.tsx`: Titel, ein Satz, Telefon und
-E-Mail mit den gelieferten Symbolen, darunter der Knopf. Telefon und E-Mail
-kommen aus `src/lib/company.ts` und stehen nirgends sonst ausgeschrieben.
+**Der Abschluss, seit dem 15.09.2026 nach Ricardos HTML-Vorlage**
+(`content/source/abschluss_kontakt_de.md`), im eigenen Baustein
+`src/components/blocks/Kontaktabschluss.tsx` — **nicht** `CTASection`, der am
+Fuss von `/kontakt` unverändert bleibt. Links Vorzeile „Direkt und
+persönlich", der Titel, ein Satz und der grüne Knopf; rechts zwei weisse,
+**ganz anklickbare** Felder für Telefon und E-Mail mit den gelieferten
+Piktogrammen. Ab 47.5rem nebeneinander, darunter untereinander. Telefon und
+E-Mail kommen aus `src/lib/company.ts`, das Ziel des Knopfes über `path()`.
 
-Zwei Punkte, die man wissen muss:
+Vier Punkte, die man wissen muss:
 
-- **Der Grund ist weiss, nicht FLÄCHE.** Der Ablauf darüber steht auf
-  `background_tint`. Gäbe man dem Abschluss denselben Ton, stünden 1300 Pixel
-  Grundton ohne Kante untereinander — am 10.09.2026 gemessen, vorher war genau
-  das der Fall. Das gelieferte Hintergrundmuster ist ausserdem Navy bei acht
-  Prozent Deckung; auf Weiss trägt es, auf dem getönten Grund verschwände es.
-- **Der Abschluss sieht auf der Startseite jetzt anders aus als auf den fünf
-  Leistungsseiten**, die weiterhin `CTASection` tragen. Das war nicht so
-  gewollt, sondern die Folge davon, dass die Startseite als Erste umgebaut
-  wurde. Bekommen die Leistungsseiten ihren Umbau, gehört das wieder
-  zusammengeführt.
+- **Die Überschrift steht jetzt zweimal auf der Startseite.** „Wobei können
+  wir Sie unterstützen?" ist seit dem 09.09.2026 auch die Überschrift von
+  Abschnitt 3. Die Vorlage setzt denselben Satz an den Schluss. **Ricardo ist
+  darauf hingewiesen.**
+- **Der Grund ist hellblau** (`background_tint`), wie die Vorlage ihn zeigt.
+  Darüber stehen die Ansprechpartner auf `background_light` — zwei nahe Töne
+  hintereinander. Genau deswegen stand der Abschluss seit dem 10.09.2026
+  bewusst auf Weiss. Die Vorlage gibt den Ton ausdrücklich vor; **Ricardo ist
+  darauf hingewiesen.**
+- **Die Hintergrundgrafik ist entfallen**, wie der Auftrag es verlangt („keine
+  Hintergrundgrafik, Verläufe oder Schatten"). `03_kontakt_hintergrundmuster.webp`
+  bleibt liegen, steht aber auf keiner Seite mehr — dasselbe gilt für die
+  bisherigen Symbole `01_telefon.webp` und `02_email.webp`.
+- **Darüberfahren und Tastaturfokus zeigen denselben Zustand:** die ganze
+  Kachel wird navy, Beschriftung, Angabe und Pfeil weiss (9.4:1). **Der Kreis
+  hinter dem Piktogramm bleibt hell** — das gelieferte Zeichen ist grün, und
+  Grün auf Navy trägt nicht (1.4:1), auf dem hellen Kreis dagegen 4.9:1.
+  Dieselbe Lösung wie bei den Piktogrammen auf `/ueber-uns`.
+
+**Der Abschluss sieht auf der Startseite anders aus als auf `/kontakt`**, das
+weiterhin `CTASection` trägt. Das war nicht so gewollt, sondern die Folge
+davon, dass die Startseite als Erste umgebaut wurde. Bekommt `/kontakt` seinen
+Umbau, gehört das wieder zusammengeführt.
 
 **Die Flächenfolge beschreibt die Startseite nicht mehr vollständig.** Vier
 Abschnitte setzen sich über die zugewiesene Fläche hinweg und tragen eine

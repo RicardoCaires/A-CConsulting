@@ -21,7 +21,6 @@ export const beispielStartseite: StartseiteInhalt = {
     titel: 'Beispielüberschrift für den Einstieg',
     satz: 'Beispielsatz, der in einer Zeile sagt, für wen die Seite gemacht ist.',
     knopf: { text: 'Beispielknopf', ziel: 'kontakt' },
-    weiter: { text: 'Beispiel-Textlink', ziel: 'ueberUns' },
     bild: { label: 'BEISPIELBILD EINSTIEG', note: 'Beispielhinweis zum Motiv' },
   },
   situationen: {
@@ -107,8 +106,10 @@ export const beispielStartseite: StartseiteInhalt = {
     linkedinText: 'Beispielverweis',
   },
   abschluss: {
+    eyebrow: 'Beispiel-Vorzeile',
     titel: 'Beispielüberschrift des Abschlusses',
     satz: 'Beispielsatz, der zur Kontaktaufnahme führt.',
+    felder: { telefon: 'Telefon', email: 'E-Mail' },
     knopf: { text: 'Beispielknopf', ziel: 'kontakt' },
   },
 }
