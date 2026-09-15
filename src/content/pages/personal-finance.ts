@@ -41,13 +41,6 @@ export const personalFinance: PageContent = {
   },
 
   blocks: [
-    {
-      kind: 'anchors',
-      items: [
-        { label: 'Budget', anchor: 'budget' },
-        { label: 'Vorsorge', anchor: 'vorsorge' },
-      ],
-    },
 
     // 03 Budget — seit dem 15.09.2026 eine Karte mit Illustration und fünf
     // Situationsfeldern nach Ricardos HTML-Vorlage
@@ -61,9 +54,6 @@ export const personalFinance: PageContent = {
       heading: 'Ein Budget zeigt, was möglich ist.',
       bild: 'finanzplanung_budget',
       lead: 'Es geht nicht darum, auf alles zu verzichten. Es geht darum, Einnahmen, feste Verpflichtungen und persönliche Wünsche miteinander in Einklang zu bringen.',
-      paragraphs: [
-        'Gemeinsam ordnen wir Ihre Einnahmen und Ausgaben, unterscheiden fixe und veränderbare Kosten und machen sichtbar, welcher Spielraum bleibt. Sie erhalten eine verständliche Übersicht, die Sie selbst weiterführen können.',
-      ],
       situationen: {
         titel: 'Besonders hilfreich bei Veränderungen',
         punkte: [

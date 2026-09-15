@@ -89,7 +89,7 @@ export const company = {
    * Namen.
    *
    * Oeffentlich auf der Website gilt die vollstaendige Form
-   * „Ricardo Caires Cerqueira" (Festlegung Ricardo, 04.09.2026).
+   * „Ricardo Caires" (Festlegung Ricardo, 04.09.2026).
    * Die Kurzform darf in knappen Oberflaechen-Zusammenhaengen stehen —
    * Bildunterschrift, Tabellenzelle, Signatur —, aber nur, wenn der
    * vollstaendige Name auf derselben Seite bereits eindeutig zu lesen ist.
@@ -114,7 +114,7 @@ export const company = {
    */
   people: {
     managingDirector: 'Octavio Nuno Gouveia Andrade',
-    coOwner: 'Ricardo Caires Cerqueira',
+    coOwner: 'Ricardo Caires',
     coOwnerShort: 'Ricardo Caires',
   },
 

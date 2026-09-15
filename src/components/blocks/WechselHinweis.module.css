@@ -70,6 +70,9 @@
 
 /* Gruen umrandet, wie in der Vorlage. Kein `Button`: Die allgemeinen Knoepfe
    bleiben unberuehrt. */
+/* Seit dem 15.09.2026 derselbe Knopf wie ueberall: gruene Flaeche, weisse
+   Schrift, beim Darueberfahren und bei Tastaturfokus navy. Bis dahin war er
+   hier als gruen umrandeter Link gebaut. */
 .link {
   display: inline-flex;
   align-items: center;
@@ -80,17 +83,22 @@
   font-size: var(--ac-body-size);
   font-weight: 600;
   line-height: 1.3;
-  color: var(--ac-color-accent-green);
+  color: var(--ac-color-white);
   text-decoration: none;
-  border: 1.5px solid var(--ac-color-accent-green);
-  border-radius: var(--ac-radius-sm);
-  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+  background-color: var(--ac-color-accent-green);
+  border: var(--ac-border-hairline) solid var(--ac-color-accent-green);
+  border-radius: var(--ac-radius-md);
+  transition:
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
+    border-color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.link:hover {
-  color: var(--ac-color-accent-green);
+.link:hover,
+.link:focus-visible {
+  color: var(--ac-color-white);
   text-decoration: none;
-  background-color: color-mix(in srgb, var(--ac-color-accent-green) 7%, transparent);
+  background-color: var(--ac-color-navy-deep);
+  border-color: var(--ac-color-navy-deep);
 }
 
 .link:focus-visible {

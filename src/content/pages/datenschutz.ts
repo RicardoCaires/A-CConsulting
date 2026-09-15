@@ -49,7 +49,7 @@ export const datenschutz: PageContent = {
       paragraphs: [
         'Verantwortlich für die Bearbeitung von Personendaten im Zusammenhang mit dieser Website ist die A&C Consulting GmbH.',
         [{ company: 'sitz' }],
-        'Für Fragen zum Datenschutz wenden Sie sich an Ricardo Caires Cerqueira.',
+        'Für Fragen zum Datenschutz wenden Sie sich an Ricardo Caires.',
       ],
     },
 

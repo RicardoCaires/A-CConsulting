@@ -57,11 +57,15 @@ wir sind, was wir tun und wie man uns erreicht.
   > hingewiesen.** Der Corporate-Design-Skill führt weiterhin die alte
   > Zuordnung und wird von hier aus nicht geändert.
 
-> Öffentlich auf der Website gilt die vollständige Form „Ricardo Caires Cerqueira"
-> (Festlegung Ricardo, 04.09.2026). Die Kurzform „Ricardo Caires" ist in knappen
-> Oberflächen-Zusammenhängen zulässig, aber nur, wenn der vollständige Name auf
-> derselben Seite bereits eindeutig zu lesen ist. Gepflegt wird beides in
-> `src/lib/company.ts`.
+> **Öffentlich auf der Website heisst er seit dem 15.09.2026 „Ricardo Caires".**
+> Auf seine Anweisung: „bitte mein namen auf der ganzen seite auf caires statt
+> caires cerqueira wechseln". Die Festlegung vom 04.09.2026, die überall die
+> vollständige Form „Ricardo Caires Cerqueira" verlangte, ist damit aufgehoben.
+> Gepflegt wird der Name weiterhin in `src/lib/company.ts`.
+>
+> Der Corporate-Design-Skill und `00_Shared/Stammdaten.md` führen weiterhin die
+> lange Form; beide gehören nicht in dieses Projekt — dieselbe Lage wie bei
+> Telefonnummer und Adresse.
 - UID / Handelsregister-Nr.: **CHE-332.960.986**
   (BFS-Schreiben vom 23.02.2026; eingetragen am 03.09.2026 auf Anweisung von Ricardo)
 - Telefon: **032 373 22 44**
@@ -162,6 +166,13 @@ Farben:
 
 Grün ist Akzent, nicht Fläche — Links, Hervorhebungen, kleine Marker. Navy trägt
 Kopf- und Fussbereich sowie Überschriften.
+
+> **Knöpfe sind seit dem 15.09.2026 die eine Ausnahme, und zwar alle.** Ricardo
+> hat angeordnet: „alle buttons müssen so sein" — grüne Fläche, weisse Schrift,
+> beim Darüberfahren und bei Tastaturfokus navy. `Button` rendert `primary` und
+> `akzent` seither gleich; der grün umrandete Link im Wechselhinweis ist
+> ebenfalls zum Knopf geworden. Bis dahin war Grün auf einer Fläche die
+> begründete Einzelfallausnahme.
 
 **Zentraler Standard:** Für alle A&C-Dokumente und visuellen Artefakte gilt der Skill
 `ac-corporate-design` (`~/.claude/skills/ac-corporate-design/`) als Single Source of Truth.
@@ -450,6 +461,25 @@ Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
 | 3 | Situationen | Wobei können wir Sie unterstützen? | weiss |
 | 4 | Ansprechpartner | Zwei Ansprechpartner | hell |
 | 5 | Abschluss | Wobei können wir Sie unterstützen? | hell (getönt) |
+
+> **Ebenfalls am 15.09.2026 gestrichen und geändert**, alles auf Ricardos
+> Anweisung (`content/source/namensform_de.md`):
+>
+> - Abschnitt 3 trägt **keine Nummern** mehr (01 bis 06) und **keinen
+>   Merksatz** rechts oben. Die Karten werden beim Darüberfahren und bei
+>   Tastaturfokus **navy**, die Schrift weiss.
+> - „Zur Treuhand" und „Zur Finanzplanung" sind **grüne Knöpfe** wie „Zu den
+>   Versicherungen".
+> - Bei den Ansprechpartnern steht bei beiden dieselbe Zuständigkeit
+>   „Treuhand · Versicherungen"; der Einleitungssatz ist entfallen und
+>   „Mehr über uns" ist ein grüner Knopf.
+> - Die **Sprungmarken** auf `/versicherungen` und `/finanzplanung` und die
+>   **Bereichsnavigation** auf `/treuhand` sind gestrichen.
+> - Auf `/finanzplanung` tragen die fünf Situationsfelder **keine Nummern**
+>   mehr und werden beim Darüberfahren navy; die drei Nummernkreise der
+>   Vorsorge sind **alle grün**.
+> - Auf `/ueber-uns` sind drei Einleitungen und die beiden Schwerpunktsätze
+>   der Profile entfallen.
 
 > **Am 15.09.2026 von sieben auf fünf verkürzt** auf Ricardos Anweisung, per
 > Screenshot. Weggefallen sind **„Eine Stelle für Ihre Administration"** — die

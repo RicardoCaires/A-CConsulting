@@ -93,11 +93,10 @@ export function Bereich({
             </p>
 
             <ul className={styles.raster} aria-labelledby={situationenId}>
-              {situationen.punkte.map((punkt, index) => (
+              {/* Die Nummern sind am 15.09.2026 auf Ricardos Anweisung
+                  entfallen. Die Reihenfolge steht weiterhin in der Liste. */}
+              {situationen.punkte.map((punkt) => (
                 <li key={punkt} className={styles.feld}>
-                  <span className={styles.nummer} aria-hidden="true">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
                   <h3 className={styles.feldTitel}>{punkt}</h3>
                 </li>
               ))}

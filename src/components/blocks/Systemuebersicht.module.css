@@ -108,6 +108,9 @@
   border-radius: var(--ac-radius-md);
 }
 
+/* Alle drei Kreise gruen, seit dem 15.09.2026 auf Ricardos Anweisung. Vorher
+   trug nur der dritte die Farbe — die Saeule, die man selbst in der Hand hat.
+   Weiss auf `accent_green` traegt 5.4:1. */
 .nummer {
   display: grid;
   place-items: center;
@@ -115,15 +118,9 @@
   height: 3rem;
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--ac-color-primary-navy);
-  background-color: var(--ac-color-background-tint);
-  border-radius: 50%;
-}
-
-/* Die dritte Säule ist die, die man selbst in der Hand hat. */
-.karte:last-child .nummer {
   color: var(--ac-color-white);
   background-color: var(--ac-color-accent-green);
+  border-radius: 50%;
 }
 
 .kartenText {

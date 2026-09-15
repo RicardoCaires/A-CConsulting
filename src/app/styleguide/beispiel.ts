@@ -26,7 +26,6 @@ export const beispielStartseite: StartseiteInhalt = {
     eyebrow: 'Beispiel-Vorzeile',
     titel: 'Beispielüberschrift der Situationen',
     einleitung: 'Beispielsatz über die sechs Ausgangslagen.',
-    merksatz: ['Erste Zeile.', 'Zweite Zeile.', 'Dritte Zeile.'],
     eintraege: [
       { text: 'Erster Beispielfall', bild: 'firmengruendung', ziel: 'firmengruendung' },
       { text: 'Zweiter Beispielfall', bild: 'mitarbeitende', ziel: 'treuhand' },
@@ -89,7 +88,6 @@ export const beispielStartseite: StartseiteInhalt = {
   personen: {
     eyebrow: 'Beispiel-Vorzeile',
     titel: 'Beispielüberschrift der Ansprechpartner',
-    einleitung: 'Beispielsatz über die beiden Personen.',
     leute: [
       {
         name: 'Erste Beispielperson',

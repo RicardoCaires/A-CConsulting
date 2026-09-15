@@ -86,8 +86,6 @@ export type StartseiteContent = {
     eyebrow: string
     titel: string
     einleitung: string
-    /** Drei Zeilen rechts neben dem Kopf. Kein Satz, drei Aussagen. */
-    merksatz: readonly string[]
     eintraege: readonly Fall[]
   }
 
@@ -105,7 +103,6 @@ export type StartseiteContent = {
   personen: {
     eyebrow: string
     titel: string
-    einleitung: string
     leute: readonly {
       name: string
       /** Zeile fuer Zeile, damit der Umbruch sitzt wie in der Vorlage. */
@@ -155,7 +152,6 @@ const de: StartseiteContent = {
     eyebrow: 'Ausgangslagen',
     titel: 'Wobei können wir Sie unterstützen?',
     einleitung: 'Sechs Ausgangslagen, die bei uns am häufigsten am Anfang stehen.',
-    merksatz: ['Klarer Einstieg.', 'Schnelle Orientierung.', 'Direkt zur passenden Lösung.'],
     eintraege: [
       { text: 'Ich gründe ein Unternehmen', bild: 'firmengruendung', ziel: 'firmengruendung' },
       { text: 'Ich stelle Mitarbeitende ein', bild: 'mitarbeitende', ziel: 'treuhand' },
@@ -243,21 +239,19 @@ const de: StartseiteContent = {
   personen: {
     eyebrow: 'Unser Team',
     titel: 'Zwei Ansprechpartner',
-    einleitung:
-      'Keine Hotline. Ihr Dossier wird von einem von uns beiden geführt — und der geht auch ans Telefon.',
     leute: [
       {
-        name: 'Ricardo Caires Cerqueira',
-        funktion: ['Treuhand · Buchhaltung', 'Administration'],
+        name: 'Ricardo Caires',
+        funktion: ['Treuhand · Versicherungen'],
         bild: {
           datei: '/bilder/portrait_ricardo.webp',
-          alt: 'Ricardo Caires Cerqueira, Porträt vor hellem Bürohintergrund.',
+          alt: 'Ricardo Caires, Porträt vor hellem Bürohintergrund.',
         },
         linkedin: 'https://www.linkedin.com/in/ricardo-caires-84a222214/',
       },
       {
         name: 'Octavio Nuno Gouveia Andrade',
-        funktion: ['Versicherungen · Steuern'],
+        funktion: ['Treuhand · Versicherungen'],
         bild: {
           datei: '/bilder/portrait_octavio.webp',
           alt: 'Octavio Nuno Gouveia Andrade, Porträt vor hellem Bürohintergrund.',

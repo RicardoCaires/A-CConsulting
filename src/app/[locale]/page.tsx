@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { StartseiteTemplate, type StartseiteInhalt } from '@/components/templates/Startseite'
-import { PageLink } from '@/components/ui/PageLink'
 import { getStartseite } from '@/content/startseite'
 import { htmlLang, isLocale, locales } from '@/i18n/config'
 import { isPublished, path } from '@/i18n/routes'
@@ -67,7 +66,6 @@ export default async function HomePage({ params }: PageProps) {
     //     seinem Problem, nicht in unseren Bereichen.
     situationen: {
       eyebrow: content.situationen.eyebrow,
-      merksatz: content.situationen.merksatz,
       titel: content.situationen.titel,
       einleitung: content.situationen.einleitung,
       eintraege: content.situationen.eintraege,
@@ -88,15 +86,8 @@ export default async function HomePage({ params }: PageProps) {
       eyebrow: content.personen.eyebrow,
       linkedinText: content.personen.linkedinText,
       titel: content.personen.titel,
-      einleitung: content.personen.einleitung,
       leute: content.personen.leute,
-      link: (
-        <PageLink
-          target={content.personen.link.ziel}
-          label={content.personen.link.text}
-          locale={locale}
-        />
-      ),
+      link: content.personen.link,
     },
 
     // 9 — Kontaktabschluss.

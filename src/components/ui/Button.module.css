@@ -17,13 +17,26 @@
     color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.primary {
-  background-color: var(--ac-color-primary-navy);
+/* Seit dem 15.09.2026 sehen alle Knoepfe gleich aus, auf Ricardos Anweisung
+   („alle buttons muessen so sein"): gruene Flaeche, weisse Schrift, beim
+   Darueberfahren und bei Tastaturfokus navy. Damit ist `primary` dasselbe wie
+   `akzent`; die Unterscheidung bleibt im Code stehen, damit die Aufrufer
+   nicht alle angefasst werden muessen.
+
+   Das war bis dahin die Ausnahme fuer einzelne Knoepfe — „Gruen ist Akzent,
+   nicht Flaeche" (Abschnitt 5). Ricardo hat sie zur Regel gemacht. */
+.primary,
+.akzent {
+  background-color: var(--ac-color-accent-green);
   color: var(--ac-color-white);
 }
 
-.primary:hover {
+.primary:hover,
+.primary:focus-visible,
+.akzent:hover,
+.akzent:focus-visible {
   background-color: var(--ac-color-navy-deep);
+  border-color: var(--ac-color-navy-deep);
   color: var(--ac-color-white);
 }
 
@@ -39,14 +52,4 @@
   background-color: var(--ac-color-background-light);
 }
 
-/* Gruene Flaeche — die Ausnahme, siehe Button.tsx. Der dunklere Ton beim
-   Zeigen kommt aus derselben Farbe, nicht aus einer zweiten. */
-.akzent {
-  background-color: var(--ac-color-accent-green);
-  color: var(--ac-color-white);
-}
 
-.akzent:hover {
-  background-color: color-mix(in srgb, var(--ac-color-accent-green) 85%, var(--ac-color-navy-deep));
-  color: var(--ac-color-white);
-}

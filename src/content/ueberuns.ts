@@ -27,8 +27,6 @@ export type Inhaber = {
   name: string
   /** Kurz. Steht direkt unter dem Namen und wird als Vorzeile gesetzt. */
   rolle: string
-  /** Ein bis zwei Saetze. Das Wichtigste nach dem Namen. */
-  kern: Rich
   /** Gegliederte Angaben: Beschriftung und Text, in dieser Reihenfolge. */
   angaben: readonly { label: string; text: Rich }[]
   sprachenLabel: string
@@ -63,16 +61,13 @@ export type UeberunsContent = {
   kopf: Bannerkopf
 
   inhaber: {
-    titel: string
-    eyebrow: string
-    einleitung: string
+    banner: Bannerkopf
     leute: readonly Inhaber[]
   }
 
   arbeitsweise: {
     eyebrow: string
     titel: string
-    einleitung: string
     prinzipien: readonly Prinzip[]
   }
 
@@ -104,7 +99,7 @@ const de: UeberunsContent = {
   meta: {
     title: 'Zwei Ansprechpartner, drei Bereiche',
     description:
-      'A&C Consulting wird von Ricardo Caires Cerqueira und Octavio Nuno Gouveia Andrade geführt. Beide betreuen Mandate selbst.',
+      'A&C Consulting wird von Ricardo Caires und Octavio Nuno Gouveia Andrade geführt. Beide betreuen Mandate selbst.',
   },
 
   // ---- 1 Seitenkopf
@@ -131,15 +126,14 @@ const de: UeberunsContent = {
   // „Geschaeftsfuehrer und Mitinhaber" — das widersprach Abschnitt 2 der
   // Hausordnung, wo die Geschaeftsfuehrung allein bei Ricardo liegt.
   inhaber: {
-    titel: 'Die beiden Inhaber',
-    eyebrow: 'Persönlich für Sie da',
-    einleitung:
-      'Ihre Ansprechperson kennt Ihr Dossier und begleitet Sie direkt. So bleiben Wege kurz und Zuständigkeiten klar.',
+    banner: {
+      themenzeile: 'DIE INHABER',
+      ueberschrift: 'Zwei Ansprechpartner. Ein Team.',
+    },
     leute: [
       {
-        name: 'Ricardo Caires Cerqueira',
+        name: 'Ricardo Caires',
         rolle: 'Mitinhaber',
-        kern: 'Ansprechpartner für Treuhand, Steuern und Versicherungen. Als Versicherungsvermittler bei der FINMA registriert.',
         angaben: [
           {
             label: 'Beruflicher Hintergrund',
@@ -157,13 +151,12 @@ const de: UeberunsContent = {
         bild: {
           label: 'Porträt Ricardo',
           foto: 'portrait_ricardo',
-          alt: 'Ricardo Caires Cerqueira, Porträt vor hellem Bürohintergrund.',
+          alt: 'Ricardo Caires, Porträt vor hellem Bürohintergrund.',
         },
       },
       {
         name: 'Octavio Nuno Gouveia Andrade',
         rolle: 'Geschäftsführer und Mitinhaber',
-        kern: 'Ansprechpartner für Versicherungsbroking und die persönliche Betreuung von Versicherungskundinnen und -kunden. Als Versicherungsvermittler bei der FINMA registriert.',
         angaben: [
           {
             label: 'Beruflicher Hintergrund',
@@ -201,8 +194,6 @@ const de: UeberunsContent = {
   arbeitsweise: {
     eyebrow: 'Unsere Zusammenarbeit',
     titel: 'Verlässlich im Alltag. Klar in der Verantwortung.',
-    einleitung:
-      'Sie sollen wissen, wer Ihr Dossier betreut, was wir übernehmen und wie Entscheidungen zustande kommen. Diese Grundsätze prägen unsere tägliche Arbeit.',
     prinzipien: [
       {
         kategorie: 'Direkter Kontakt',

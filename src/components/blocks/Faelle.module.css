@@ -32,17 +32,37 @@
   text-decoration: none;
   transition:
     transform var(--ac-motion-base) var(--ac-motion-easing),
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
     border-color var(--ac-motion-base) var(--ac-motion-easing),
+    color var(--ac-motion-base) var(--ac-motion-easing),
     box-shadow var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-a.karte:hover {
+/* Seit dem 15.09.2026 wird die ganze Karte navy, wie die Kontaktfelder im
+   Abschluss: Flaeche, Rand, Ueberschrift und Verweis wechseln zusammen.
+   Weiss auf `primary_navy` traegt 9.4:1. Das Piktogramm bleibt, wie es ist —
+   sein heller Kreis traegt das Zeichen auch auf Navy. */
+a.karte:hover,
+a.karte:focus-visible {
   transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--ac-color-accent-green) 40%, var(--ac-color-border-light));
+  background-color: var(--ac-color-primary-navy);
+  border-color: var(--ac-color-primary-navy);
   box-shadow:
     0 1px 2px color-mix(in srgb, var(--ac-color-navy-deep) 6%, transparent),
     0 16px 30px -16px color-mix(in srgb, var(--ac-color-navy-deep) 30%, transparent);
-  color: var(--ac-color-text-primary);
+  color: var(--ac-color-white);
+}
+
+a.karte:hover .text,
+a.karte:focus-visible .text,
+a.karte:hover .weiter,
+a.karte:focus-visible .weiter {
+  color: var(--ac-color-white);
+}
+
+a.karte:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 3px;
 }
 
 /* Wer das Anheben nicht sehen will, sieht nur die Kontur. */
@@ -51,12 +71,13 @@ a.karte:hover {
     transition: border-color var(--ac-motion-base) var(--ac-motion-easing);
   }
 
-  a.karte:hover {
+  a.karte:hover,
+  a.karte:focus-visible {
     transform: none;
   }
 }
 
-/* ---- Kopf der Karte: Nummer und Piktogramm nebeneinander ------------------ */
+/* ---- Kopf der Karte: das Piktogramm ---------------------------------------- */
 
 .kopf {
   display: flex;
@@ -64,16 +85,6 @@ a.karte:hover {
   gap: var(--ac-space-sm);
 }
 
-.nummer {
-  flex: none;
-  /* Auf der Oberkante des Piktogramms, nicht auf seiner Mitte. */
-  margin-top: 0.15rem;
-  font-size: var(--ac-small-size);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
-  color: var(--ac-color-text-muted);
-}
 
 /* Alle sechs Dateien sind quadratisch — eine Breite genuegt, damit sie gleich
    gross wirken. */

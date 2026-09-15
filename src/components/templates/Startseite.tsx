@@ -78,8 +78,6 @@ export type StartseiteInhalt = {
     eyebrow: string
     titel: ReactNode
     einleitung?: ReactNode
-    /** Drei Zeilen rechts neben dem Kopf. */
-    merksatz: readonly string[]
     eintraege: readonly Fall[]
   }
   leistungen: {
@@ -94,11 +92,10 @@ export type StartseiteInhalt = {
   personen: {
     eyebrow: string
     titel: ReactNode
-    einleitung?: ReactNode
     leute: readonly Mitglied[]
     linkedinText: string
-    /** Weiterfuehrender Verweis, als fertiges Element. */
-    link?: ReactNode
+    /** Weiterfuehrender Verweis, seit dem 15.09.2026 als gruener Knopf. */
+    link?: { text: string; ziel: PageKey }
   }
   abschluss: {
     eyebrow?: string
@@ -208,11 +205,6 @@ export function StartseiteTemplate({
             lead={inhalt.situationen.einleitung}
           />
 
-          <p className={styles.merksatz}>
-            {inhalt.situationen.merksatz.map((zeile) => (
-              <span key={zeile}>{zeile}</span>
-            ))}
-          </p>
         </div>
 
         <Faelle faelle={inhalt.situationen.eintraege} locale={locale} />
@@ -231,11 +223,22 @@ export function StartseiteTemplate({
             id="personen"
             eyebrow={inhalt.personen.eyebrow}
             heading={inhalt.personen.titel}
-            lead={inhalt.personen.einleitung}
           />
         </div>
         <Team mitglieder={inhalt.personen.leute} linkedinText={inhalt.personen.linkedinText} />
-        {inhalt.personen.link && <p className={styles.personenLink}>{inhalt.personen.link}</p>}
+        {inhalt.personen.link && (
+          <div className={styles.personenLink}>
+            {/* Gruen, auf Ricardos Anweisung vom 15.09.2026. Beim
+                Darueberfahren und bei Tastaturfokus wird er navy — das macht
+                `Button variant="akzent"` von sich aus. */}
+            <Button
+              href={hrefOrDefault(inhalt.personen.link.ziel, locale)}
+              variant="akzent"
+            >
+              {inhalt.personen.link.text}
+            </Button>
+          </div>
+        )}
       </Section>
 
       {/* ---- 7 Abschluss ------------------------------------------------------
