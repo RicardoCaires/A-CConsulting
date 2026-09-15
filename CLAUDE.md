@@ -485,6 +485,11 @@ Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
 >   liegen. Der Weg zurück führt jetzt über Kopfbereich und Fussbereich.
 > - Der Abschnitt **Vorsorge auf `/finanzplanung` steht auf hellblauem Grund**
 >   (`background_tint`) statt auf Weiss.
+> - **Kein Knopf ist unterstrichen.** Ricardos Bannervorlage sah eine
+>   Unterstreichung vor; er hat sie am selben Tag streichen lassen.
+> - Der Merksatz **„Ein Ansprechpartner. Mehr Überblick. Langfristige
+>   Sicherheit."** neben den Leistungen ist entfallen. Damit trägt die
+>   Startseite keinen Merksatz mehr.
 
 > **Am 15.09.2026 von sieben auf fünf verkürzt** auf Ricardos Anweisung, per
 > Screenshot. Weggefallen sind **„Eine Stelle für Ihre Administration"** — die

@@ -87,8 +87,10 @@
   text-wrap: balance;
 }
 
-/* Der Knopf: gruen, weisse fette und unterstrichene Schrift. Beim Zeigen und
-   bei Tastaturfokus wechselt er auf Navy. */
+/* Der Knopf: gruen, weisse fette Schrift, beim Zeigen und bei Tastaturfokus
+   navy. **Ohne Unterstreichung** — Ricardos Vorlage sah eine vor, er hat sie
+   am 15.09.2026 wieder streichen lassen: „kein Button soll unterstrichen
+   sein". */
 .knopf {
   display: inline-flex;
   align-items: center;
@@ -101,8 +103,7 @@
   line-height: 1;
   font-weight: 700;
   color: var(--ac-color-white);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration: none;
   background-color: var(--ac-color-accent-green);
   border: var(--ac-border-marker) solid var(--ac-color-accent-green);
   border-radius: var(--ac-radius-md);

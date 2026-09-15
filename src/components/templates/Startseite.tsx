@@ -84,8 +84,6 @@ export type StartseiteInhalt = {
     eyebrow: string
     titel: ReactNode
     einleitung?: ReactNode
-    /** Drei Zeilen rechts neben dem Kopf. */
-    merksatz: readonly string[]
     leit: LeitBereich
     weitere: readonly Bereich[]
   }
@@ -171,11 +169,6 @@ export function StartseiteTemplate({
             lead={inhalt.leistungen.einleitung}
           />
 
-          <p className={styles.merksatz}>
-            {inhalt.leistungen.merksatz.map((zeile) => (
-              <span key={zeile}>{zeile}</span>
-            ))}
-          </p>
         </div>
         <Bereiche
           leit={inhalt.leistungen.leit}

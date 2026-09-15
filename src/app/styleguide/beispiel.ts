@@ -39,7 +39,6 @@ export const beispielStartseite: StartseiteInhalt = {
     eyebrow: 'Beispiel-Vorzeile',
     titel: 'Beispielüberschrift der Leistungen',
     einleitung: 'Beispielsatz über die drei Bereiche.',
-    merksatz: ['Erste Zeile.', 'Zweite Zeile.', 'Dritte Zeile.'],
     leit: {
       kategorie: 'Erster Bereich',
       titel: 'Beispielaussage des führenden Bereichs.',

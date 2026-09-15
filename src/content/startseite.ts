@@ -93,8 +93,6 @@ export type StartseiteContent = {
     eyebrow: string
     titel: string
     einleitung: string
-    /** Drei Zeilen rechts neben dem Kopf. Kein Satz, drei Aussagen. */
-    merksatz: readonly string[]
     /** Versicherungsbroking fuehrt — darum steht es allein und gross. */
     leit: LeitBereich
     weitere: readonly Bereich[]
@@ -181,7 +179,6 @@ const de: StartseiteContent = {
     titel: 'Was wir für Sie übernehmen.',
     einleitung:
       'Drei Bereiche, die sich in Ihrer Situation oft überschneiden – und bei A&C sinnvoll zusammen gedacht werden.',
-    merksatz: ['Ein Ansprechpartner.', 'Mehr Überblick.', 'Langfristige Sicherheit.'],
 
     leit: {
       kategorie: 'Versicherungen',
