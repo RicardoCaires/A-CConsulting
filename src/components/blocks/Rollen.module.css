@@ -131,6 +131,33 @@
   aspect-ratio: 1;
 }
 
+/* ---- Stichpunkte in der Kachel ---------------------------------------------- */
+
+.punkte {
+  display: grid;
+  gap: 0.6rem;
+  margin: var(--ac-space-xs) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.punkte li {
+  position: relative;
+  padding-left: 1.45rem;
+  font-size: var(--ac-small-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
+/* Der Haken der Vorlage, als Zeichen statt als Bilddatei. */
+.punkte li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--ac-color-accent-green);
+}
+
 /* ---- Ab 48rem: zwei Spalten, alle Kacheln gleich hoch ----------------------- */
 
 @media (min-width: 48rem) {

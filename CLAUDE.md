@@ -1117,6 +1117,24 @@ Betriebe und Selbstständige in der Region.
 > Der Baustein heisst bewusst allgemein: Drei Karten mit Piktogramm, Titel und
 > Text plus Einladung sind ein Muster, das weitere Seiten brauchen können.
 
+> **„Wann ist ein Wechsel sinnvoll?" ist seit dem 15.09.2026 ein zweiter
+> `rollen`-Block**, nach Ricardos HTML-Vorlage: Kategoriezeile „Den Übergang
+> gut planen", Titel, ein Satz, darunter zwei gleich grosse Kacheln — „Zum
+> neuen Geschäftsjahr" und „Während des Geschäftsjahres" — mit Versalzeile,
+> Überschrift, Text und drei Stichpunkten mit grünem Haken. Der Baustein hat
+> dafür das optionale Feld `punkte` bekommen; der Haken ist ein Zeichen, keine
+> Bilddatei. Der Anker `zeitpunkt` bleibt. Vorher drei Absätze aus
+> `schritt4_fassung2_de.md` (`content/source/wechsel_zeitpunkt_de.md`).
+>
+> **Der unterjährige Wechsel bleibt eine Möglichkeit**, nicht die Ausnahme —
+> so verlangt es der Auftrag, und die Vorlage hält es ein.
+>
+> **Die Vorlage enthält keine Beratungsbox und keinen Knopf.** Der Auftrag
+> nennt beides; in der gelieferten Datei steht weder das eine noch das andere,
+> und ein Text dafür wird nicht erfunden. Dazu kommt: Zwei Abschnitte weiter
+> oben trägt die Seite bereits eine Einladung mit grünem Knopf auf die
+> Kontaktseite. Ricardo entscheidet, ob eine zweite dazukommt.
+
 > **„Diskretion" ist am 15.09.2026 auf Ricardos Anweisung entfallen.** Der
 > Absatz sagte, dass ein Erstgespräch zu nichts verpflichtet und A&C den
 > bisherigen Treuhänder erst auf Auftrag kontaktiert. Sein Wortlaut steht
