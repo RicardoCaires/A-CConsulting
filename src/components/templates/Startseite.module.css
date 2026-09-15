@@ -160,10 +160,11 @@
 
    `overflow: hidden` schneidet die Formen im Grund an den Kanten ab,
    `isolation` haelt sie unter den Abschnitten. */
+/* Einfach hellblau, seit dem 15.09.2026 auf Ricardos Anweisung. Die acht
+   organischen Formen im Grund (`Zonenmuster.tsx`) sind entfallen; die
+   Komponente bleibt liegen. */
 .kartenzone {
   position: relative;
-  overflow: hidden;
-  isolation: isolate;
   background-color: var(--ac-color-background-tint);
 }
 

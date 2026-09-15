@@ -19,12 +19,15 @@
    Schrift der Website. Ein Hex-Wert in einer Komponente ist in diesem Projekt
    ein Fehler, und eine zweite Schriftfamilie waere eine zweite Marke. */
 
+/* Einfach hellblau, seit dem 15.09.2026 auf Ricardos Anweisung. Die
+   gelieferte Hintergrunddatei mit den grossen Kreisen und feinen Boegen ist
+   entfallen; sie bleibt unter `public/bilder/` liegen. */
 .abschnitt {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   padding-block: var(--ac-section-y-lg) var(--ac-section-y);
-  background-color: var(--ac-color-background-light);
+  background-color: var(--ac-color-background-tint);
 }
 
 /* ---- Der Hintergrund -------------------------------------------------------

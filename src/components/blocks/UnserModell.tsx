@@ -23,7 +23,6 @@ import styles from './UnserModell.module.css'
  *   2 der Ablauf: Kunde → Mandat → A&C → Preisvergleich → Gesellschaften
  *   3 die Rueckfuehrung: eine Klammer von rechts unten zurueck nach links oben
  *   4 die Nutzenleiste, vier Spalten
- *   5 die Schlusszeile
  *
  * **Die Rueckfuehrung ist der Teil, der bisher fehlte.** In der Vorlage ist es
  * eine U-Klammer aus drei Raendern mit einer Spitze oben links; in ihrer Mitte
@@ -52,7 +51,6 @@ type Props = {
   markt: { bild: string; alt: string }
   ergebnis: { titel: string; satz: string }
   nutzen: readonly Nutzen[]
-  schluss: { links: string; rechts: string }
 }
 
 /** Ein geliefertes Symbol. Immer quadratisch, nie eingefaerbt. */
@@ -106,30 +104,11 @@ export function UnserModell({
   markt,
   ergebnis,
   nutzen,
-  schluss,
 }: Props) {
   const headingId = `${id}-titel`
 
   return (
     <section id={id} className={styles.abschnitt} aria-labelledby={headingId}>
-      {/* Der gelieferte Hintergrund. Seit dem 10.09.2026 die zweite Datei:
-          grosse helle Kreise in den Ecken, feine Boegen, vereinzelte Punkte —
-          und in der Mitte bewusst ruhig, damit die Karten davor stehen.
-
-          Er deckt den Abschnitt und wird oben und unten beschnitten. Auf
-          schmalen Geraeten bleibt davon fast nur der Grundton uebrig; das ist
-          gewollt, dort soll kein Kreis hinter einem Text liegen. */}
-      <div className={styles.muster} aria-hidden="true">
-        <Image
-          className={styles.musterBild}
-          src="/bilder/wide_minimal_abstract_background_design_a_clean.webp"
-          alt=""
-          width={1672}
-          height={941}
-          sizes="100vw"
-          priority={false}
-        />
-      </div>
 
       <div className={styles.inner}>
         {/* ---- 1 Einleitung und Grundsaetze ----------------------------- */}
@@ -222,11 +201,6 @@ export function UnserModell({
           ))}
         </ul>
 
-        {/* ---- 5 Die Schlusszeile --------------------------------------- */}
-        <div className={styles.schluss}>
-          <span>{schluss.links}</span>
-          <span>{schluss.rechts}</span>
-        </div>
       </div>
     </section>
   )

@@ -138,10 +138,6 @@ export const versicherungen: PageContent = {
           satz: 'Ein Ansprechpartner für alle Ihre Versicherungen – auch im Schadenfall.',
         },
       ],
-      schluss: {
-        links: 'A&C Consulting GmbH',
-        rechts: 'Persönlich. Unabhängig. An Ihrer Seite.',
-      },
     },
 
     // 05 Die beiden Zielgruppen
