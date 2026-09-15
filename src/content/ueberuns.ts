@@ -29,12 +29,19 @@ export type Inhaber = {
   rolle: string
   /** Ein bis zwei Saetze. Das Wichtigste nach dem Namen. */
   kern: Rich
-  /** Der berufliche Weg. Bewusst sekundaer gesetzt. */
-  werdegang: Rich
+  /** Gegliederte Angaben: Beschriftung und Text, in dieser Reihenfolge. */
+  angaben: readonly { label: string; text: Rich }[]
+  sprachenLabel: string
   sprachen: string
-  /** Beschriftung und Nummer; die Nummer kommt aus `company.ts`. */
-  telefon: { label: string; wer: 'ricardo' | 'octavio' }
-  bild: { label: string; note?: string }
+  /** Die Nummer kommt aus `company.ts`; hier steht nur, wessen. */
+  telefon: { wer: 'ricardo' | 'octavio' }
+  bild: {
+    /** Beschriftung der Platzhalterflaeche, solange kein Portraet vorliegt. */
+    label: string
+    /** Liegt ein Portraet vor, steht hier sein Dateiname ohne Endung. */
+    foto?: string
+    alt?: string
+  }
 }
 
 /** Ein Grundsatz. Die Nummer setzt die Vorlage, nicht der Inhalt. */
@@ -68,6 +75,8 @@ export type UeberunsContent = {
 
   inhaber: {
     titel: string
+    eyebrow: string
+    einleitung: string
     leute: readonly Inhaber[]
   }
 
@@ -117,28 +126,65 @@ const de: UeberunsContent = {
   },
 
   // ---- 2 Die beiden Inhaber
+  // Seit dem 15.09.2026 nach Ricardos HTML-Vorlage
+  // (`content/source/ueberuns_inhaber_de.md`). Zwei gleich grosse Karten mit
+  // demselben Aufbau: Portraet, Rolle, Name, Schwerpunkt, gegliederte
+  // Angaben, Beratungssprachen, Telefonknopf.
+  //
+  // **Octavio heisst jetzt nur noch „Mitinhaber".** Bis dahin stand bei beiden
+  // „Geschaeftsfuehrer und Mitinhaber" — das widersprach Abschnitt 2 der
+  // Hausordnung, wo die Geschaeftsfuehrung allein bei Ricardo liegt.
   inhaber: {
     titel: 'Die beiden Inhaber',
+    eyebrow: 'Persönlich für Sie da',
+    einleitung:
+      'Ihre Ansprechperson kennt Ihr Dossier und begleitet Sie direkt. So bleiben Wege kurz und Zuständigkeiten klar.',
     leute: [
       {
         name: 'Ricardo Caires Cerqueira',
         rolle: 'Geschäftsführer und Mitinhaber',
-        kern: 'Zuständig für Treuhand, Steuern und Versicherungen. Als Versicherungsvermittler bei der FINMA registriert.',
-        werdegang:
-          'Beruflicher Weg: Kaufmann EFZ, danach im Finanz- und Rechnungswesen der Creabeton Matériaux AG in Lyss verantwortlich für Kreditoren, Debitoren und Anlagebuchhaltung sowie Leiter der Berufsbildung. Abschlüsse: Sachbearbeiter Rechnungswesen VSK am Feusi Bildungszentrum Bern und Versicherungsvermittler VBV.',
-        sprachen: 'Beratungssprachen: Deutsch, Französisch, Portugiesisch und Englisch.',
-        telefon: { label: 'Direkt erreichbar unter ', wer: 'ricardo' },
-        bild: { label: 'PORTRÄT RICARDO', note: 'Aufnahme 4 der Shootingliste' },
+        kern: 'Ansprechpartner für Treuhand, Steuern und Versicherungen. Als Versicherungsvermittler bei der FINMA registriert.',
+        angaben: [
+          {
+            label: 'Beruflicher Hintergrund',
+            text: 'Kaufmann EFZ. Im Finanz- und Rechnungswesen der Creabeton Matériaux AG in Lyss verantwortlich für Kreditoren, Debitoren und Anlagebuchhaltung sowie Leiter der Berufsbildung.',
+          },
+          {
+            label: 'Qualifikationen',
+            text: 'Sachbearbeiter Rechnungswesen VSK, Feusi Bildungszentrum Bern, und Versicherungsvermittler VBV.',
+          },
+        ],
+        sprachenLabel: 'Beratungssprachen:',
+        sprachen: 'Deutsch, Portugiesisch und Englisch',
+        telefon: { wer: 'ricardo' },
+        bild: {
+          label: 'Porträt Ricardo',
+          foto: 'portrait_ricardo',
+          alt: 'Ricardo Caires Cerqueira, Porträt vor hellem Bürohintergrund.',
+        },
       },
       {
         name: 'Octavio Nuno Gouveia Andrade',
-        rolle: 'Geschäftsführer und Mitinhaber',
-        kern: 'Zuständig für Versicherungen.',
-        werdegang:
-          'Beruflicher Weg: Kundenberater und Verkaufsleiter bei der Allianz Suisse in Biel, danach Hauptagent der Zurich Versicherungen in Biel, seither selbstständiger Versicherungsbroker. Abschluss: Versicherungsvermittler VBV.',
-        sprachen: 'Beratungssprachen: Deutsch, Französisch, Portugiesisch und Englisch.',
-        telefon: { label: 'Direkt erreichbar unter ', wer: 'octavio' },
-        bild: { label: 'PORTRÄT OCTAVIO', note: 'Aufnahme 5 der Shootingliste' },
+        rolle: 'Mitinhaber',
+        kern: 'Ansprechpartner für Versicherungsbroking und die persönliche Betreuung von Versicherungskundinnen und -kunden. Als Versicherungsvermittler bei der FINMA registriert.',
+        angaben: [
+          {
+            label: 'Beruflicher Hintergrund',
+            text: 'Kundenberater und Verkaufsleiter bei Allianz Suisse in Biel, danach Hauptagent der Zurich Versicherungen in Biel und heute selbstständiger Versicherungsbroker.',
+          },
+          {
+            label: 'Qualifikation',
+            text: 'Versicherungsvermittler VBV.',
+          },
+        ],
+        sprachenLabel: 'Beratungssprachen:',
+        sprachen: 'Deutsch, Französisch und Portugiesisch',
+        telefon: { wer: 'octavio' },
+        bild: {
+          label: 'Porträt Octavio',
+          foto: 'portrait_octavio',
+          alt: 'Octavio Nuno Gouveia Andrade, Porträt vor hellem Bürohintergrund.',
+        },
       },
     ],
   },
