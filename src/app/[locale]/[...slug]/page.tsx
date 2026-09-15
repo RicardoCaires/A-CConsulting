@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation'
 import { Banner } from '@/components/blocks/Banner'
 import { Hero } from '@/components/blocks/Hero'
 import { PageBlocks } from '@/components/blocks/PageBlocks'
-import { Breadcrumb } from '@/components/layout/Breadcrumb'
 import { LeistungsseiteTemplate } from '@/components/templates/Leistungsseite'
 import { UeberunsTemplate } from '@/components/templates/Ueberuns'
 import { WissensseiteTemplate } from '@/components/templates/Wissensseite'
@@ -191,7 +190,6 @@ export default async function ContentPage({ params }: PageProps) {
 
     return (
       <>
-        <Breadcrumb page={key} locale={locale} />
         <UeberunsTemplate
           inhalt={ueberuns}
           locale={locale}
@@ -209,7 +207,6 @@ export default async function ContentPage({ params }: PageProps) {
 
     return (
       <>
-        <Breadcrumb page={key} locale={locale} />
         <WissensseiteTemplate inhalt={wissen} locale={locale} />
       </>
     )
@@ -222,7 +219,6 @@ export default async function ContentPage({ params }: PageProps) {
   if (leistung) {
     return (
       <>
-        <Breadcrumb page={key} locale={locale} />
         <LeistungsseiteTemplate inhalt={leistung} locale={locale} />
       </>
     )
@@ -249,7 +245,6 @@ export default async function ContentPage({ params }: PageProps) {
 
   return (
     <>
-      <Breadcrumb page={key} locale={locale} />
 
       {/* Jede veroeffentlichte Seite traegt seit dem 15.09.2026 ihren Banner.
           `Hero` bleibt fuer den Fall, dass eine Seite ohne Banner dazukommt. */}

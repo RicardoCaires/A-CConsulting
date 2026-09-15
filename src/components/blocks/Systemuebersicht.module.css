@@ -12,9 +12,11 @@
 
    Keine neuen Farben, keine Verläufe, keine Schatten. */
 
+/* Hellblauer Grund seit dem 15.09.2026, auf Ricardos Anweisung. Bis dahin
+   stand der Abschnitt auf Weiss. */
 .abschnitt {
   padding-block: var(--ac-section-y-lg);
-  background-color: var(--ac-color-white);
+  background-color: var(--ac-color-background-tint);
 }
 
 .abschnitt .container {

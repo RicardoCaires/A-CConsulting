@@ -480,6 +480,11 @@ Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
 >   Vorsorge sind **alle grün**.
 > - Auf `/ueber-uns` sind drei Einleitungen und die beiden Schwerpunktsätze
 >   der Profile entfallen.
+> - Die **Brotkrumennavigation ist auf allen Seiten entfernt** („Startseite ›
+>   Steuern"). Sie stand über jedem Seitenkopf; `Breadcrumb.tsx` bleibt
+>   liegen. Der Weg zurück führt jetzt über Kopfbereich und Fussbereich.
+> - Der Abschnitt **Vorsorge auf `/finanzplanung` steht auf hellblauem Grund**
+>   (`background_tint`) statt auf Weiss.
 
 > **Am 15.09.2026 von sieben auf fünf verkürzt** auf Ricardos Anweisung, per
 > Screenshot. Weggefallen sind **„Eine Stelle für Ihre Administration"** — die
