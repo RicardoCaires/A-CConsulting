@@ -71,7 +71,7 @@ export const buchhaltungDe: Leistungsseite = {
     },
     {
       titel: 'Offerte und Leistungsumfang',
-      bild: 'dokument',
+      bild: 'schritt_umfang',
       text: 'Sie erhalten schriftlich, welche Aufgaben wir übernehmen und welche bei Ihnen bleiben. Das ist die Grundlage der Zusammenarbeit und das Dokument, auf das wir uns später beziehen.',
     },
     {
@@ -81,7 +81,7 @@ export const buchhaltungDe: Leistungsseite = {
     },
     {
       titel: 'Laufender Betrieb',
-      bild: 'balken',
+      bild: 'schritt_start',
       text: 'Sie liefern Ihre Unterlagen im vereinbarten Rhythmus. Wir buchen, melden uns, wenn etwas fehlt, und liefern die Auswertungen zu den festgelegten Terminen.',
     },
   ],

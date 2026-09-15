@@ -483,6 +483,17 @@ Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
 > - Die **Brotkrumennavigation ist auf allen Seiten entfernt** („Startseite ›
 >   Steuern"). Sie stand über jedem Seitenkopf; `Breadcrumb.tsx` bleibt
 >   liegen. Der Weg zurück führt jetzt über Kopfbereich und Fussbereich.
+> - **Alle Piktogramme sind am 15.09.2026 ersetzt.** Ricardo hat die ganze
+>   Bibliothek überarbeitet geliefert — 98 Motive als SVG und PNG, geordnet
+>   nach Seite (`bilder-quelle/piktogramme/`). Die Dateinamen im Projekt sind
+>   geblieben; wo die Seite ein SVG zeigte, steht sein SVG, wo sie ein WebP
+>   zeigte, sein nach WebP umgewandeltes PNG. **Die zwölf Leistungszeichen
+>   der Startseite waren bis dahin Konturen aus `Icon.tsx`** und sind jetzt
+>   ebenfalls gelieferte Bilder.
+> - **Die Motive stammen aus Lucide** — so nennt es sein `manifest.json`.
+>   Die Regel „nichts aus einer Bibliothek" galt für Zeichen, die *wir*
+>   sonst hätten erfinden müssen; geliefertes Material geht vor. Lucide steht
+>   unter der ISC-Lizenz.
 > - Der Abschnitt **Vorsorge auf `/finanzplanung` steht auf hellblauem Grund**
 >   (`background_tint`) statt auf Weiss.
 > - **Kein Knopf ist unterstrichen.** Ricardos Bannervorlage sah eine

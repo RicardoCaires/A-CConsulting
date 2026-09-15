@@ -27,7 +27,6 @@
  */
 
 import type { Rich } from '@/content/types'
-import type { IconName } from '@/components/ui/Icon'
 import type { Motiv } from '@/components/ui/Illustration'
 import type { PiktogrammName } from '@/components/ui/Piktogramm'
 import type { Locale } from '@/i18n/config'
@@ -41,7 +40,7 @@ export type Bereich = {
   titel: string
   text: string
   /** Genau vier. Weniger laesst die Karte leer aussehen, mehr ueberfuellt sie. */
-  leistungen: readonly { icon: IconName; text: string }[]
+  leistungen: readonly { bild: string; text: string }[]
   ziel: PageKey
   linkText: string
   motiv: Motiv
@@ -185,10 +184,10 @@ const de: StartseiteContent = {
       titel: 'Wir vertreten Sie, nicht die Versicherung.',
       text: 'Wir prüfen Ihre Verträge, vergleichen Angebote unabhängig und finden die passende Lösung für Ihre Situation – transparent, verständlich und auch im Schadenfall an Ihrer Seite.',
       leistungen: [
-        { icon: 'schildPlus', text: 'Krankenversicherung und Zusatzversicherung' },
-        { icon: 'fahrzeug', text: 'Hausrat, Haftpflicht und Motorfahrzeug' },
-        { icon: 'personen', text: 'BVG, UVG und Krankentaggeld' },
-        { icon: 'gebaeude', text: 'Betriebshaftpflicht und Sachversicherung' },
+        { bild: 'leistung_kranken', text: 'Krankenversicherung und Zusatzversicherung' },
+        { bild: 'leistung_hausrat', text: 'Hausrat, Haftpflicht und Motorfahrzeug' },
+        { bild: 'leistung_bvg', text: 'BVG, UVG und Krankentaggeld' },
+        { bild: 'leistung_betrieb', text: 'Betriebshaftpflicht und Sachversicherung' },
       ],
       ziel: 'versicherungen',
       linkText: 'Zu den Versicherungen',
@@ -201,10 +200,10 @@ const de: StartseiteContent = {
         titel: 'Zahlen, die für Sie arbeiten.',
         text: 'Buchhaltung, Löhne und Abschluss für Selbständige und KMU – klar, zuverlässig und mit einem festen Ansprechpartner.',
         leistungen: [
-          { icon: 'dokument', text: 'Buchhaltung' },
-          { icon: 'diagramm', text: 'Mehrwertsteuer und Jahresabschluss' },
-          { icon: 'personen', text: 'Lohnadministration und Sozialversicherungen' },
-          { icon: 'gebaeude', text: 'Firmengründung und Treuhänderwechsel' },
+          { bild: 'leistung_buchhaltung', text: 'Buchhaltung' },
+          { bild: 'leistung_mwst', text: 'Mehrwertsteuer und Jahresabschluss' },
+          { bild: 'leistung_lohn', text: 'Lohnadministration und Sozialversicherungen' },
+          { bild: 'leistung_gruendung', text: 'Firmengründung und Treuhänderwechsel' },
         ],
         ziel: 'treuhand',
         linkText: 'Zur Treuhand',
@@ -215,10 +214,10 @@ const de: StartseiteContent = {
         titel: 'Heute planen. Morgen freier sein.',
         text: 'Zwei Fragen, die im Alltag untergehen: Wohin fliesst Ihr Geld, und was bleibt für später? Wir schaffen Klarheit.',
         leistungen: [
-          { icon: 'muenzen', text: 'Budget' },
-          { icon: 'diagramm', text: 'Analyse und Optimierung' },
-          { icon: 'pflanze', text: 'Vorsorge' },
-          { icon: 'kompass', text: 'Persönliche Begleitung' },
+          { bild: 'leistung_budget', text: 'Budget' },
+          { bild: 'leistung_analyse', text: 'Analyse und Optimierung' },
+          { bild: 'leistung_vorsorge', text: 'Vorsorge' },
+          { bild: 'leistung_begleitung', text: 'Persönliche Begleitung' },
         ],
         ziel: 'personalFinance',
         linkText: 'Zur Finanzplanung',

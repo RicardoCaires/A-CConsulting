@@ -95,10 +95,15 @@
 
 /* Das Icon steht in Gruen — das ist der Akzent, den die Liste braucht, und
    der einzige Ort in der Karte, an dem Gruen als Kontur vorkommt. */
+/* Seit dem 15.09.2026 Ricardos geliefertes Piktogramm statt des Zeichens aus
+   `Icon.tsx`. Es bringt seinen hellen Kreis mit und darf darum etwas groesser
+   stehen als die fruehere Kontur. */
 .leistungIcon {
-  color: var(--ac-color-accent-green);
+  flex: none;
+  width: 2rem;
+  height: 2rem;
   /* Auf die erste Textzeile ausgerichtet, nicht auf den Kasten. */
-  margin-top: -0.05em;
+  margin-top: -0.2rem;
 }
 
 /* ---- Knopf des Leitbereichs ------------------------------------------------ */

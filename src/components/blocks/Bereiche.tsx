@@ -1,7 +1,7 @@
+import Image from 'next/image'
 import type { ReactNode } from 'react'
 
 import { Button } from '@/components/ui/Button'
-import { Icon, type IconName } from '@/components/ui/Icon'
 import { Illustration, type Motiv } from '@/components/ui/Illustration'
 import type { Locale } from '@/i18n/config'
 import { hrefOrDefault, type PageKey } from '@/i18n/routes'
@@ -37,7 +37,8 @@ import styles from './Bereiche.module.css'
 
 /** Eine Leistung in der Liste: Icon und Begriff, mehr nicht. */
 export type Leistung = {
-  icon: IconName
+  /** Geliefertes Piktogramm, Dateiname unter `public/bilder/` ohne Endung. */
+  bild: string
   text: string
 }
 
@@ -88,7 +89,14 @@ function Leistungen({
     >
       {werte.map((leistung) => (
         <li key={leistung.text} className={styles.leistung}>
-          <Icon className={styles.leistungIcon} name={leistung.icon} />
+          <Image
+            className={styles.leistungIcon}
+            src={`/bilder/${leistung.bild}.webp`}
+            alt=""
+            width={512}
+            height={512}
+            sizes="28px"
+          />
           <span>{leistung.text}</span>
         </li>
       ))}
