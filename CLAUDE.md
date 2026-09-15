@@ -1509,6 +1509,43 @@ Fliesstext über Werte — konkrete Sätze über konkrete Menschen.
 > Überschrift nennt. Damit tragen Browserreiter und Überschrift verschiedene
 > Texte; Ricardo entscheidet.
 
+> **„Die beiden Inhaber" ist seit dem 15.09.2026 nach Ricardos zweiter
+> HTML-Vorlage gebaut** (`content/source/ueberuns_inhaber_de.md`):
+> Kategoriezeile „Persönlich für Sie da", Titel, eine Einleitung und darunter
+> **zwei gleich grosse Profilkarten** mit demselben Aufbau — Porträt, Rolle
+> mit grünem Strich, Name, Schwerpunktsatz, die gegliederten Angaben zu
+> beruflichem Hintergrund und Qualifikation, die Beratungssprachen und der
+> grüne Telefonknopf. Ab 47.5rem nebeneinander, darunter untereinander;
+> `grid-auto-rows: 1fr` hält sie in **beiden** Darstellungen gleich hoch, und
+> die Sprachzeile schiebt sich an den Fuss, damit die Knöpfe auf einer Linie
+> stehen. Der Anker `inhaber` bleibt.
+>
+> **Octavio heisst neu nur noch „Mitinhaber".** Bis dahin trugen beide
+> „Geschäftsführer und Mitinhaber" — das widersprach Abschnitt 2, wo die
+> Geschäftsführung allein bei Ricardo liegt. Der Auftrag sagt es ausdrücklich.
+>
+> **Die Porträts sind eingesetzt.** `portrait_ricardo.webp` und
+> `portrait_octavio.webp` lagen längst unter `public/bilder/`; die Alt-Texte
+> stammen von der Startseite. Damit sind zwei der drei verbliebenen
+> „Shootinglisten"-Vermerke verschwunden; es bleibt das Büro weiter unten.
+> Das Seitenverhältnis ist **4 / 3** statt der 16/10 der Vorlage — genau das
+> Mass der Dateien (560 x 420). 16/10 nähme oben rund 17 Prozent weg, also
+> dort, wo die Köpfe sind.
+>
+> **Die E-Mail-Knöpfe der Vorlage sind nicht gebaut.** Sie zeigen auf
+> persönliche Adressen, die in `src/lib/company.ts` nicht erfasst sind;
+> Firmenangaben werden nur dort gepflegt, und der Auftrag verlangt
+> ausdrücklich die Telefonnummer-Knöpfe. **Die Nummer ist die Beschriftung**
+> statt des Wortes „Anrufen" der Vorlage; sie kommt aus `direktnummern`.
+>
+> **Die Beratungssprachen unterscheiden sich neu je Person** — Ricardo
+> Deutsch, Portugiesisch, Englisch; Octavio Deutsch, Französisch,
+> Portugiesisch. Bis dahin stand bei beiden dieselbe Reihe. **Damit führt die
+> Website erstmals wieder Französisch als Beratungssprache einer Person**,
+> was Abschnitt 10 seit dem 07.09.2026 ausdrücklich offen hält und wovon die
+> ganze Fassung `/fr/` abhängt. Der Wortlaut des Auftrags gilt; Ricardo ist
+> darauf hingewiesen.
+
 
 ### /kontakt
 

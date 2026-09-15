@@ -102,51 +102,82 @@ export function UeberunsTemplate({ inhalt }: Props) {
             </figure>
           </header>
 
-          {/* Profile: abwechselnd, damit zwei Personen nicht zweimal
-              dasselbe Bild ergeben. */}
+          {/* Zwei gleich grosse Profilkarten, seit dem 15.09.2026 nach
+              Ricardos Vorlage. `grid-auto-rows: 1fr` haelt sie auf einer
+              Hoehe; der Block mit den Sprachen schiebt sich mit
+              `margin-top: auto` an den Fuss, damit der Knopf in beiden Karten
+              auf derselben Linie steht. */}
           {/* `inhaber` ist das Sprungziel, `inhaber-titel` benennt den
               Abschnitt. Zwei Rollen, zwei Kennungen — dieselbe zweimal waere
               ungueltiges HTML und fuer Hilfstechnik mehrdeutig. */}
-          <section aria-labelledby="inhaber-titel" id="inhaber" className={styles.profile}>
-            <h2 id="inhaber-titel" className="ac-visually-hidden">
+          <section aria-labelledby="inhaber-titel" id="inhaber" className={styles.inhaber}>
+            <p className="ac-eyebrow">{inhalt.inhaber.eyebrow}</p>
+            <h2 id="inhaber-titel" className={styles.inhaberTitel}>
               {inhalt.inhaber.titel}
             </h2>
+            <p className={styles.inhaberEinleitung}>{inhalt.inhaber.einleitung}</p>
 
-            {inhalt.inhaber.leute.map((person, index) => (
-              <article
-                key={person.name}
-                className={`${styles.profil} ${index % 2 === 1 ? styles.gedreht : ''}`}
-              >
-                <ImagePlaceholder
-                  className={styles.profilBild}
-                  label={person.bild.label}
-                  note={person.bild.note}
-                />
+            <div className={styles.profile}>
+              {inhalt.inhaber.leute.map((person) => (
+                <article key={person.name} className={styles.profil}>
+                  {person.bild.foto ? (
+                    <Image
+                      className={styles.profilBild}
+                      src={`/bilder/${person.bild.foto}.webp`}
+                      alt={person.bild.alt ?? ''}
+                      width={560}
+                      height={420}
+                      unoptimized
+                    />
+                  ) : (
+                    <div
+                      className={styles.profilBild}
+                      role="img"
+                      aria-label={person.bild.label}
+                    />
+                  )}
 
-                <div className={styles.profilText}>
-                  <p className={styles.rolle}>{person.rolle}</p>
-                  <h3 className={styles.name}>{person.name}</h3>
+                  <div className={styles.profilText}>
+                    <p className={styles.rolle}>{person.rolle}</p>
+                    <h3 className={styles.name}>{person.name}</h3>
 
-                  <p className={styles.kern}>
-                    <RichText value={person.kern} />
-                  </p>
+                    <p className={styles.kern}>
+                      <RichText value={person.kern} />
+                    </p>
 
-                  {/* Sekundaer: kleiner, ruhiger, schmaler. Der Werdegang ist
-                      Beleg, nicht Aussage — er muss lesbar sein, nicht laut. */}
-                  <p className={styles.werdegang}>
-                    <RichText value={person.werdegang} />
-                  </p>
+                    <dl className={styles.angaben}>
+                      {person.angaben.map((angabe) => (
+                        <div key={angabe.label} className={styles.angabe}>
+                          <dt className={styles.angabeLabel}>{angabe.label}</dt>
+                          <dd className={styles.angabeText}>
+                            <RichText value={angabe.text} />
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
 
-                  <p className={styles.meta}>
-                    <span>{person.sprachen}</span>
-                    <a href={`tel:${direktnummern[person.telefon.wer].e164}`}>
-                      {person.telefon.label}
+                    <p className={styles.sprachen}>
+                      <strong className={styles.sprachenLabel}>
+                        {person.sprachenLabel}
+                      </strong>{' '}
+                      {person.sprachen}
+                    </p>
+
+                    {/* Die Nummer steht auf dem Knopf, nicht nur dahinter:
+                        Wer anruft, will sie sehen und notieren koennen. */}
+                    <a
+                      className={styles.knopf}
+                      href={`tel:${direktnummern[person.telefon.wer].e164}`}
+                    >
                       {direktnummern[person.telefon.wer].anzeige}
+                      <span className={styles.pfeil} aria-hidden="true">
+                        →
+                      </span>
                     </a>
-                  </p>
-                </div>
-              </article>
-            ))}
+                  </div>
+                </article>
+              ))}
+            </div>
           </section>
         </div>
       </div>

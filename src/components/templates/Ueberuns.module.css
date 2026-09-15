@@ -403,3 +403,190 @@
     display: none;
   }
 }
+
+/* ---- Die beiden Inhaber, seit dem 15.09.2026 als zwei Karten -------------- */
+
+.inhaber {
+  margin-top: var(--ac-section-y);
+}
+
+.inhaberTitel {
+  margin: var(--ac-space-sm) 0 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(2.2rem, 1.6rem + 2vw, 3.35rem);
+  line-height: 1.13;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.015em;
+  color: var(--ac-color-primary-navy);
+}
+
+.inhaberEinleitung {
+  max-width: 43.75rem;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: var(--ac-body-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  /* Gleich hohe Karten in jeder Darstellung — nebeneinander wie untereinander. */
+  grid-auto-rows: 1fr;
+  gap: var(--ac-space-sm);
+  margin-top: clamp(1.75rem, 3.5vw, 2.4rem);
+}
+
+.profil {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
+}
+
+/* Das Seitenverhaeltnis entspricht den Dateien (560 x 420). So wird nichts
+   beschnitten und kein Gesicht angeschnitten; die Vorlage sieht 16:10 vor,
+   was oben rund 17 Prozent wegnaehme — genau dort, wo die Koepfe sind. */
+.profilBild {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center top;
+  background-color: var(--ac-color-background-tint);
+}
+
+.profilText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2rem);
+}
+
+.rolle {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  line-height: var(--ac-eyebrow-line);
+  letter-spacing: var(--ac-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+}
+
+.rolle::before {
+  content: '';
+  flex: none;
+  width: 1.75rem;
+  height: var(--ac-border-marker);
+  background-color: var(--ac-color-accent-green);
+}
+
+.name {
+  margin: var(--ac-space-xs) 0 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.65rem, 1.35rem + 1.2vw, 2.05rem);
+  line-height: 1.18;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.kern {
+  margin: var(--ac-space-2xs) 0 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--ac-color-primary-navy);
+}
+
+.angaben {
+  display: grid;
+  gap: var(--ac-space-sm);
+  margin: var(--ac-space-md) 0 0;
+}
+
+.angabe {
+  padding-top: var(--ac-space-sm);
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.angabeLabel {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: var(--ac-font-display);
+  font-size: 1rem;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.angabeText {
+  margin: 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.58;
+  color: var(--ac-color-text-secondary);
+}
+
+/* Schiebt sich an den Fuss, damit der Knopf in beiden Karten gleich hoch steht. */
+.sprachen {
+  margin: auto 0 0;
+  padding-top: var(--ac-space-sm);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ac-color-text-secondary);
+  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+}
+
+.sprachenLabel {
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
+}
+
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  align-self: flex-start;
+  min-height: 2.875rem;
+  margin-top: var(--ac-space-sm);
+  padding: 0.7rem 1rem;
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: var(--ac-color-white);
+  text-decoration: none;
+  background-color: var(--ac-color-accent-green);
+  border-radius: var(--ac-radius-md);
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.knopf:hover {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-navy-deep);
+}
+
+.knopf:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+.pfeil {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Ab 47.5rem nebeneinander und gleich hoch. */
+@media (min-width: 47.5rem) {
+  .profile {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 30rem) {
+  .knopf {
+    align-self: stretch;
+  }
+}

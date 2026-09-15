@@ -618,3 +618,18 @@ Die Ziffern 1, 2 und 3 stehen in der Datei als Schrift (Arial). Diese
 Illustration traegt als einzige einen Alternativtext, weil sie die drei
 Saeulen nummeriert.
 
+## Ueber uns — Einstieg und die beiden Inhaber
+
+Am 15.09.2026 als zwei HTML-Vorlagen geliefert. **Keine der beiden brachte
+Bilddateien mit**; die Ordner enthalten darum nur die Vorlage.
+
+| Datei (Lieferung) | ausgeliefert | Quelle |
+|---|---|---|
+| `ueber-uns-einstieg.html` | — | Vorlage, liegt als `ueberuns_einstieg/vorlage.html` |
+| `ueber-uns-inhaber.html` | — | Vorlage, liegt als `ueberuns_inhaber/vorlage.html` |
+
+Die beiden Profilkarten zeigen `portrait_ricardo.webp` und
+`portrait_octavio.webp`. Beide lagen seit dem Aufbau der Startseite unter
+`public/bilder/` und sind unveraendert; die Vorlage sah dort Platzhalter vor.
+Fuer die gemeinsame Aufnahme im Einstieg fehlt die Datei weiterhin.
+
