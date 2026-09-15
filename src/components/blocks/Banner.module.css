@@ -1,0 +1,157 @@
+/* Der Banner — ein Layout fuer alle zwoelf Seiten.
+
+   Masse aus Ricardos `banner-shared.css`, Fassung vom 15.09.2026, 15:42 Uhr:
+   Hoehe 360 bis 600 px, Innenbreite 1360 px, Polster 48 bis 88 px, Textblock
+   690 px oder 54 Prozent, Ueberschrift 44 bis 76 px bei Zeilenhoehe 0.98,
+   Themenzeile 13 px mit gruenem Strich 54 x 4 px.
+
+   Der Bildausschnitt steht auf `center 8%` — so raeumt die Aufnahme oben den
+   Himmel frei, vor dem die weisse Schrift steht.
+
+   **Keine Abdunklung.** Kein Verlauf, keine farbige Schicht, kein Schatten.
+   Ricardos Vorlage fuehrt dafuer ein `banner__shade` ohne Breite und ohne
+   Farbe; hier steht es gar nicht erst. */
+
+.banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: clamp(22.5rem, 38vw, 37.5rem);
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--ac-color-navy-deep);
+}
+
+.bild {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 8%;
+}
+
+/* Innenabstand und Textposition, auf jedem Banner gleich. */
+.inner {
+  width: min(85rem, calc(100% - 3rem));
+  margin-inline: auto;
+  padding-block: clamp(3rem, 6vw, 5.5rem);
+}
+
+/* Der Textblock steht links und bleibt schmal: Rechts liegt der
+   Sonnenuntergang der Aufnahme, dort waere weisse Schrift nicht lesbar. */
+.inhalt {
+  width: min(43.125rem, 54%);
+}
+
+.themenzeile {
+  display: flex;
+  gap: 0.875rem;
+  align-items: center;
+  margin: 0 0 1.375rem;
+  font-family: var(--ac-font-sans);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ac-color-white);
+}
+
+/* Die kurze gruene Linie vor der Themenzeile. */
+.themenzeile::before {
+  content: '';
+  flex: none;
+  width: 3.375rem;
+  height: 0.25rem;
+  background-color: var(--ac-color-accent-green);
+}
+
+.ueberschrift {
+  max-width: 13ch;
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(2.75rem, 5vw, 4.75rem);
+  line-height: 0.98;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.035em;
+  color: var(--ac-color-white);
+  text-wrap: balance;
+}
+
+/* Der Knopf: gruen, weisse fette und unterstrichene Schrift. Beim Zeigen und
+   bei Tastaturfokus wechselt er auf Navy. */
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  margin-top: 2.125rem;
+  padding: 0.8125rem 1.5rem;
+  font-family: var(--ac-font-sans);
+  font-size: 0.9375rem;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--ac-color-white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background-color: var(--ac-color-accent-green);
+  border: var(--ac-border-marker) solid var(--ac-color-accent-green);
+  border-radius: var(--ac-radius-md);
+  transition:
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
+    border-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.knopf:hover,
+.knopf:focus-visible {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-navy-deep);
+  border-color: var(--ac-color-navy-deep);
+}
+
+.knopf:focus-visible {
+  outline: 3px solid var(--ac-color-white);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .knopf {
+    transition: none;
+  }
+}
+
+/* ---- Schmale Geraete, Masse aus der Vorlage ------------------------------ */
+
+@media (max-width: 47.5rem) {
+  .banner {
+    align-items: flex-end;
+    min-height: 27.5rem;
+  }
+
+  .inner {
+    width: min(85rem, calc(100% - 2rem));
+    padding-block: 3.75rem;
+  }
+
+  .inhalt {
+    width: 100%;
+  }
+
+  .ueberschrift {
+    max-width: 16ch;
+    font-size: clamp(2.625rem, 12vw, 4rem);
+  }
+}
+
+@media print {
+  .banner {
+    min-height: 0;
+  }
+
+  .bild {
+    display: none;
+  }
+}

@@ -952,20 +952,56 @@ rechts. Dazu die HTML-Vorlage `bilder-quelle/seitenkopf_banner/vorlage.html`.
   Eckmarker. Dort gibt es keinen dunklen Bannergrund zu ersetzen. **Ricardo
   ist darauf hingewiesen.**
 
-> **Die Bannerserie ist am 15.09.2026 zurückgenommen worden.** Ricardo hatte
-> am selben Tag zwölf Bannervorlagen geliefert und daraus eine zentrale
-> Komponente bauen lassen, die dreizehn Seiten- und Abschnittsbanner trug;
-> kurz darauf hat er das rückgängig machen lassen. Der Stand ist damit wieder
-> der von oben: ein Seitenkopf mit der Aufnahme im Hintergrund, die
-> ursprünglichen Titel und Sätze, die Abschnittsüberschriften als Text und der
-> zweispaltige Einstieg auf `/ueber-uns`.
+> **Seit dem 15.09.2026 trägt jede veröffentlichte Seite einen Banner**
+> (`src/components/blocks/Banner.tsx`, Texte in
+> `content/source/banner_serie_de.md`). Ricardo hat dafür zwölf Vorlagen
+> geliefert, eine je Seite — nach einem ersten Anlauf mit dreizehn Bannern,
+> der auch sechs Abschnitte erfasste und noch am selben Tag zurückgenommen
+> wurde.
 >
-> **Die gelieferten Vorlagen bleiben liegen** unter
-> `bilder-quelle/banner_serie/` — zwölf HTML-Dateien, das gemeinsame
-> Stylesheet und die Übersicht. Sie sind nicht im Einsatz.
+> | Seite | Themenzeile | Überschrift |
+> |---|---|---|
+> | `/de/` | VERSICHERUNGEN · TREUHAND | Verwurzelt im Seeland. Blick auf mehr. |
+> | `/versicherungen` | VERSICHERUNGEN | Versicherungen für Privatpersonen und Unternehmen |
+> | `/treuhand` | TREUHAND | Klar geführt. Persönlich begleitet. |
+> | `/treuhand/buchhaltung` | BUCHHALTUNG | Zahlen im Griff. Zeit fürs Geschäft. |
+> | `/treuhand/treuhaender-wechseln` | TREUHÄNDERWECHSEL | Klar wechseln. Sicher weiter. |
+> | `/steuern` | STEUERN | Klar deklariert. Sicher geplant. |
+> | `/firmengruendung` | UNTERNEHMENSGRÜNDUNG | Klar gründen. Sicher starten. |
+> | `/finanzplanung` | FINANZPLANUNG | Überblick. Spielraum. Sicherheit. |
+> | `/ueber-uns` | ÜBER A&C | Persönlich. Verlässlich. Nah. |
+> | `/kontakt` | KONTAKT | Ihr Anliegen. Unser nächster Schritt. |
+> | `/impressum` | IMPRESSUM | Angaben. Verantwortung. Transparenz. |
+> | `/datenschutz` | DATENSCHUTZ | Ihre Daten. Vertraulich geschützt. |
 >
-> Was ein neuer Anlauf braucht, steht in `bilder-quelle/banner_serie/`
-> daneben: **welche Seiten und Abschnitte einen Banner brauchen.**
+> - **Ein Baustein, ein Satz Masse**, aus `banner-shared.css`: Höhe 360 bis
+>   600 px, Innenbreite 1360 px, Polster 48 bis 88 px, Textblock 690 px oder
+>   54 Prozent, Überschrift 44 bis 76 px bei Zeilenhöhe 0.98, Themenzeile
+>   13 px mit grünem Strich 54 x 4 px, Bildausschnitt `center 8%`. Höhe,
+>   Ausschnitt und Anordnung sind nicht einstellbar.
+> - **Ohne Abdunklung** — kein Verlauf, keine farbige Schicht, kein Schatten.
+>   Nachgemessen trägt die weisse Schrift trotzdem: Themenzeile 8.3:1, die
+>   Zeilen der Überschrift 7.6 bis 10.7:1 im Flächenmittel.
+> - **Elf Banner sind 542 px hoch, `/versicherungen` 642 px** — seine
+>   Überschrift ist die einzige, die auf vier Zeilen läuft. Ricardos eigene
+>   Ansicht zeigt dasselbe.
+> - **Keine Abschnittsbanner.** Die sechs Vorlagen für Rechtsform,
+>   Wechselablauf, Vorsorge, Arbeitsweise, Inhaber und Standort bleiben
+>   liegen; die Überschriften dieser Abschnitte sind weiterhin Text.
+> - **Der Fliesstext im Seitenkopf ist überall entfallen**, und zwölf
+>   Seitentitel sind ersetzt. Der Wortlaut bleibt in den Quelldateien; die
+>   Angaben in `meta.title` sind unverändert.
+> - **Der Einstieg von `/ueber-uns` ist entfallen** — der zweispaltige Block
+>   mit Pillen, Bildfläche und grünem Eckmarker. **Damit hat die gemeinsame
+>   Aufnahme von Ricardo und Octavio auf der Seite keinen Platz mehr**; der
+>   offene Punkt in Abschnitt 10 ist gegenstandslos, solange kein neuer Ort
+>   dafür bestimmt ist. **Ricardo ist darauf hingewiesen.**
+> - **`StartHero.tsx` und `BildHero.tsx` sind nicht mehr im Einsatz** und
+>   bleiben liegen. `Hero.tsx` trägt keine Seite mehr, bleibt aber für den
+>   Fall, dass eine Seite ohne Banner dazukommt.
+> - **Der Knopf ist die dritte Knopfform im Projekt** und kommt nur im Banner
+>   vor: A&C-Grün, weisse fette unterstrichene Schrift, beim Zeigen und bei
+>   Tastaturfokus Navy, weisser Fokusring, Ziel immer `/de/kontakt/`.
 
 Die **Sprungmarken** unter dem Kopf sind neu gestaltet: mittig, weisse Pillen
 mit feiner Kontur, alle gleich. Sie stehen auf mehreren Seiten, die Änderung

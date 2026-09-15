@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import { CTASection } from '@/components/blocks/CTASection'
 import { Fragen } from '@/components/blocks/Fragen'
-import { Hero } from '@/components/blocks/Hero'
+import { Banner } from '@/components/blocks/Banner'
 import { pruefeFlaechen, type Surface } from '@/components/blocks/Section'
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
@@ -115,11 +115,12 @@ export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
   return (
     <>
       {/* ---- 1 Seitenkopf — die dominante Flaeche der Seite -------------- */}
-      <Hero
-        eyebrow={ui.page[inhalt.bereich]}
-        titel={<Translated value={inhalt.titel} fallback={ui.page[inhalt.slug]} />}
-        satz={<TranslatedRich value={inhalt.nutzenSatz} />}
-        aktion={<Button href={hrefOrDefault('kontakt', locale)}>{knopf}</Button>}
+      <Banner
+        themenzeile={inhalt.banner.themenzeile}
+        ueberschrift={inhalt.banner.ueberschrift}
+        id="seitenkopf"
+        knopf={knopf}
+        locale={locale}
       />
 
       {/* ---- 2 und 3 auf einer gemeinsamen Flaeche ------------------------ */}
