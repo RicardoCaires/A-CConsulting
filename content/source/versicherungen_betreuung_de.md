@@ -46,3 +46,12 @@ Der Auftrag nennt den Leadtext leicht abweichend („Genau da entstehen
 Lücken."). Auf der Seite steht weiterhin der freigegebene Wortlaut aus
 `ergaenzungen_de.md` („Genau da entstehen die Lücken."), so wie ihn auch die
 Referenzgrafik zeigt.
+
+## Neue Überschrift, 16.09.2026
+
+Auch nach dem Abschluss für Sie da.
+
+**Ricardo hat sie am 16.09.2026 vorgegeben** («BITTE DIESE FORMULIERUNG
+EINSETZEN»). Sie ersetzt «Nach dem Abschluss hört es nicht auf» aus
+`content/source/ergaenzungen_de.md`; der alte Wortlaut steht dort unverändert
+weiter, aber nicht mehr auf der Seite.

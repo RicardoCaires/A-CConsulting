@@ -899,6 +899,12 @@ Broker von einem Direktabschluss unterscheidet.
 > Referenzgrafik. Vorher ein `prose`-Block mit drei Absätzen: Der Text war
 > richtig, aber niemand sah, was gemeint ist.
 >
+> **Der Abschnitt heisst seit dem 16.09.2026 „Auch nach dem Abschluss für Sie
+> da."** — Ricardos Wortlaut („BITTE DIESE FORMULIERUNG EINSETZEN"). Er
+> ersetzt „Nach dem Abschluss hört es nicht auf" aus
+> `content/source/ergaenzungen_de.md`; der alte Wortlaut steht dort
+> unverändert weiter.
+>
 > **Der Leadtext ist am 16.09.2026 auf Ricardos Anweisung entfallen** — die
 > drei Absätze rechts neben dem Titel („Die meisten Policen liegen jahrelang
 > unangetastet in einem Ordner …"). Der Kopf läuft seither einspaltig; der

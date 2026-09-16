@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from './Betreuung.module.css'
 
 /**
- * „Nach dem Abschluss hört es nicht auf" — die Betreuung als Karten.
+ * „Auch nach dem Abschluss für Sie da." — die Betreuung als Karten.
  *
  * Nach Ricardos Referenzgrafik vom 10.09.2026
  * (`bilder-quelle/versicherungen_betreuung_referenz.png`). Bis dahin war es
