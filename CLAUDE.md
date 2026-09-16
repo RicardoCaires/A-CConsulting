@@ -1494,6 +1494,14 @@ Betriebe und Selbstständige in der Region.
 > Der Baustein heisst bewusst allgemein: Drei Karten mit Piktogramm, Titel und
 > Text plus Einladung sind ein Muster, das weitere Seiten brauchen können.
 
+> **„So läuft der Wechsel ab" ist am 16.09.2026 auf Ricardos Anweisung
+> entfallen** („bitte löschen"). Der Baustein `Prozessreihe.tsx` bleibt liegen;
+> der Wortlaut steht in `content/source/wechsel_ablauf_de.md`. Mit dem Abschnitt
+> ist auch der Hinweis „Sie behalten die Kontrolle:" weg — **damit steht nicht
+> mehr auf der Seite, dass A&C den bisherigen Treuhänder erst auf ausdrücklichen
+> Auftrag kontaktiert.** Der Anker `vorgehen` war von nirgends verlinkt. Die
+> folgende Notiz beschreibt die frühere Fassung.
+
 > **„So läuft der Wechsel ab" ist seit dem 15.09.2026 eine waagrechte
 > Reihe** (`src/components/blocks/Prozessreihe.tsx`), nach Ricardos
 > HTML-Vorlage: Kategoriezeile „Strukturiert übergeben", Titel, ein Satz,
