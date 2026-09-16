@@ -12,6 +12,7 @@ import { Betreuung } from './Betreuung'
 import { Checkliste } from './Checkliste'
 import { ChecklisteFristen } from './ChecklisteFristen'
 import { Fragen } from './Fragen'
+import { Kontaktformular } from './Kontaktformular'
 import { Leistungen, leistungenFlaeche } from './Leistungen'
 import { Prozessreihe } from './Prozessreihe'
 import { Rechtsformen } from './Rechtsformen'
@@ -717,6 +718,24 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
 
         if (block.kind === 'segmente') {
           return <Segmente key={index} bloecke={block.bloecke} />
+        }
+
+        // Das Kontaktformular bringt seine Flaeche selbst mit — die grosse
+        // abgerundete Schale. Es zaehlt beim Flaechenwechsel darum nicht mit.
+        if (block.kind === 'kontaktformular') {
+          return (
+            <Kontaktformular
+              key={index}
+              id={block.id}
+              locale={locale}
+              eyebrow={block.eyebrow}
+              heading={block.heading}
+              lead={block.lead}
+              kontakt={block.kontakt}
+              zusage={block.zusage}
+              formular={block.formular}
+            />
+          )
         }
 
         // Das Modell ist ein eigener Baustein und bringt seine Flaeche selbst
