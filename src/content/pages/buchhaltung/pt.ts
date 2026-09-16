@@ -42,9 +42,9 @@ export const buchhaltungPt: Leistungsseite = {
   bild: { label: 'BUCHHALTUNG / BELEGE' },
 
   leistungen: [
-    { icon: 'dokument', titel: { missing: 'Leistung 1' }, chips: [] },
-    { icon: 'buch', titel: { missing: 'Leistung 2' }, chips: [] },
-    { icon: 'uhr', titel: { missing: 'Leistung 3' }, chips: [] },
+    { icon: 'dokument', titel: { missing: 'Leistung 1' } },
+    { icon: 'buch', titel: { missing: 'Leistung 2' } },
+    { icon: 'uhr', titel: { missing: 'Leistung 3' } },
   ],
 
   ablauf: [

@@ -37,7 +37,7 @@ export const buchhaltungDe: Leistungsseite = {
 
   // Ueberschriften wie in Schritt 4, nicht vereinheitlicht.
   abschnitte: {
-    leistungen: 'Was wir übernehmen',
+    leistungen: 'Was wir übernehmen.',
     ablauf: 'So läuft die Zusammenarbeit',
     fragen: 'Häufige Fragen',
   },
@@ -47,18 +47,53 @@ export const buchhaltungDe: Leistungsseite = {
   // Der gelieferte Hintergrund ist am 16.09.2026 entfallen: Ricardo hat alle
   // Inhaltsflaechen auf hellblau gestellt. Die Datei bleibt liegen.
 
-  /**
-   * Quelle Zeile 280: „Laufende Erfassung Ihrer Belege, Abstimmung der Konten,
-   * Auswertungen zu vereinbarten Terminen."
-   *
-   * Der Satz wird an seinen Kommas geteilt, nicht umgeschrieben — jedes
-   * Stueck steht so in der Quelle. Stichworte nennt Schritt 4 je Leistung
-   * keine; sie bleiben darum leer statt erfunden.
-   */
+  // Seit dem 16.09.2026 nach Ricardos HTML-Vorlage
+  // (`content/source/buchhaltung_leistungen_de.md`): sechs Kacheln, nur
+  // Buchhaltung. Die drei Stichworte aus Schritt 4 („Laufende Erfassung Ihrer
+  // Belege" …) stehen dort unveraendert.
+  leistungenKopf: {
+    kategorie: 'Buchhaltung',
+    einleitung:
+      'Von der laufenden Verbuchung bis zum Abschluss: Sie bestimmen, welche Aufgaben wir dauerhaft oder punktuell übernehmen.',
+  },
+
   leistungen: [
-    { icon: 'dokument', bild: 'dokument', titel: 'Laufende Erfassung Ihrer Belege', chips: [] },
-    { icon: 'buch', bild: 'balken', titel: 'Abstimmung der Konten', chips: [] },
-    { icon: 'uhr', bild: 'uhr', titel: 'Auswertungen zu vereinbarten Terminen', chips: [] },
+    {
+      icon: 'dokument',
+      bild: 'leistung_laufend.svg',
+      titel: 'Laufende Buchhaltung',
+      text: 'Belege erfassen, kontieren und nachvollziehbar verbuchen.',
+    },
+    {
+      icon: 'buch',
+      bild: 'leistung_debitoren.svg',
+      titel: 'Debitoren & Kreditoren',
+      text: 'Offene Posten, Rechnungen und Zahlungsfristen im Blick behalten.',
+    },
+    {
+      icon: 'buch',
+      bild: 'leistung_abstimmung.svg',
+      titel: 'Kontenabstimmung',
+      text: 'Bank, Kasse und relevante Bilanzkonten regelmässig abstimmen.',
+    },
+    {
+      icon: 'uhr',
+      bild: 'leistung_zahlungsverkehr.svg',
+      titel: 'Zahlungsverkehr',
+      text: 'Zahlungen vorbereiten und offene Verpflichtungen transparent führen.',
+    },
+    {
+      icon: 'dokument',
+      bild: 'leistung_mwst.svg',
+      titel: 'MWST-Abrechnungen',
+      text: 'Abrechnungen erstellen, prüfen und termingerecht einreichen.',
+    },
+    {
+      icon: 'uhr',
+      bild: 'leistung_abschluss.svg',
+      titel: 'Abschlüsse & Auswertungen',
+      text: 'Monats-, Quartals- und Jahresabschlüsse verlässlich aufbereiten.',
+    },
   ],
 
   // Quelle Abschnitt 04 „So läuft die Zusammenarbeit"

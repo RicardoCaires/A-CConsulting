@@ -86,7 +86,9 @@ export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
 
   // Ohne Abschluss nimmt der Knopf im Seitenkopf die Beschriftung der Kopfzeile.
   const knopf = inhalt.cta ? alsText(inhalt.cta.knopf, ui.cta) : ui.cta
-  const bildPfad = (datei: string) => `/bilder/${inhalt.slug}/${datei}.webp`
+  // Ohne Endung ein WebP, mit Endung die gelieferte Datei (etwa `.svg`).
+  const bildPfad = (datei: string) =>
+    `/bilder/${inhalt.slug}/${datei.includes('.') ? datei : `${datei}.webp`}`
 
   const symbol = (bild: string | undefined, fallback: Parameters<typeof Icon>[0]['name']) =>
     bild ? (
@@ -124,36 +126,49 @@ export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
             : undefined
         }
       >
-        {/* ---- 2 Das übernehmen wir -------------------------------------- */}
+        {/* ---- 2 Was wir übernehmen ----------------------------------------
+
+            Seit dem 16.09.2026 nach Ricardos HTML-Vorlage: Kategoriezeile und
+            Titel links, Einleitung rechts, darunter sechs gleich grosse
+            Kacheln. Die Kacheln tragen `tabIndex={0}` — sie enthalten keinen
+            Link, und der Auftrag verlangt denselben Zustand bei Tastaturfokus. */}
         <section
           id="leistungen"
           aria-labelledby="leistungen-titel"
           className={styles.zonenAbschnitt}
         >
-          <div className={`ac-container ${styles.zonenContainer}`}>
-            <h2 id="leistungen-titel" className={styles.zonenTitel}>
-              <Translated value={inhalt.abschnitte.leistungen} />
-            </h2>
+          <div className="ac-container">
+            <div className={styles.leistungsKopf}>
+              <div>
+                {inhalt.leistungenKopf && (
+                  <p className={styles.leistungsEyebrow}>
+                    <Translated value={inhalt.leistungenKopf.kategorie} />
+                  </p>
+                )}
+                <h2 id="leistungen-titel" className={styles.leistungsHaupttitel}>
+                  <Translated value={inhalt.abschnitte.leistungen} />
+                </h2>
+              </div>
+              {inhalt.leistungenKopf && (
+                <p className={styles.leistungsEinleitung}>
+                  <Translated value={inhalt.leistungenKopf.einleitung} />
+                </p>
+              )}
+            </div>
 
             <ul className={styles.leistungsKarten} role="list">
               {inhalt.leistungen.map((leistung, index) => (
-                <li key={index} className={styles.leistungsKarte}>
+                <li key={index} className={styles.leistungsKarte} tabIndex={0}>
                   {symbol(leistung.bild, leistung.icon)}
-                  <div className={styles.leistungsText}>
-                    <h3 className={styles.leistungsTitel}>
-                      <Translated value={leistung.titel} />
-                    </h3>
-                    <span className={styles.strich} aria-hidden="true" />
-                    {leistung.chips.length > 0 && (
-                      <span className={styles.chips}>
-                        {leistung.chips.slice(0, 3).map((chip, i) => (
-                          <span key={i} className={styles.chip}>
-                            <Translated value={chip} />
-                          </span>
-                        ))}
-                      </span>
-                    )}
-                  </div>
+                  <h3 className={styles.leistungsTitel}>
+                    <Translated value={leistung.titel} />
+                  </h3>
+                  <span className={styles.strich} aria-hidden="true" />
+                  {leistung.text && (
+                    <p className={styles.leistungsSatz}>
+                      <Translated value={leistung.text} />
+                    </p>
+                  )}
                 </li>
               ))}
             </ul>

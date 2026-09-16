@@ -58,16 +58,14 @@ export function fehltUebersetzungRich(wert: RichText): wert is FehlendeUebersetz
 export type Leistung = {
   icon: IconName
   /**
-   * Geliefertes Symbol unter `public/bilder/<slug>/`, ohne Endung. Steht es
-   * da, ersetzt es `icon`; sonst bleibt das Zeichen aus `Icon.tsx`.
+   * Geliefertes Symbol unter `public/bilder/<slug>/`. Ohne Endung ist es ein
+   * WebP; mit `.svg` die gelieferte Vektordatei. Steht es da, ersetzt es
+   * `icon`; sonst bleibt das Zeichen aus `Icon.tsx`.
    */
   bild?: string
   titel: Text
-  /**
-   * Hoechstens drei Stichworte; die Vorlage schneidet darueber hinaus ab.
-   * Darf leer sein — dann nennt Schritt 4 fuer diese Leistung keine.
-   */
-  chips: readonly Text[]
+  /** Der kurze Beschreibungstext der Kachel. Optional. */
+  text?: Text
 }
 
 /** Ein Schritt des Ablaufs. */
@@ -159,7 +157,12 @@ export type Leistungsseite = {
    * steht die Flaeche auf dem hellen Grundton.
    */
   hintergrund?: string
-  /** „Das übernehmen wir“ als Icon-Raster. */
+  /**
+   * Kategoriezeile und Einleitung ueber den Leistungskacheln, seit dem
+   * 16.09.2026. Optional — ohne sie steht nur der Titel.
+   */
+  leistungenKopf?: { kategorie: Text; einleitung: Text }
+  /** „Das übernehmen wir“ als Kachelraster. */
   leistungen: readonly Leistung[]
   ablauf: readonly AblaufSchritt[]
   /**
@@ -266,7 +269,6 @@ export function pruefeLeistungsseite(seite: Leistungsseite): void {
 
   seite.leistungen.forEach((leistung, i) => {
     pflichtText(`leistungen[${i}].titel`, leistung.titel)
-    if (!Array.isArray(leistung.chips)) fehler.push(`leistungen[${i}].chips fehlt`)
   })
 
   seite.ablauf.forEach((schritt, i) => {

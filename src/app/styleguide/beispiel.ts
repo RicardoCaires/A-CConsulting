@@ -131,13 +131,9 @@ export const beispielLeistungsseite: Leistungsseite = {
   },
   bild: { label: 'BEISPIELBILD LEISTUNG' },
   leistungen: [
-    {
-      icon: 'dokument',
-      titel: 'Erste Beispielleistung',
-      chips: ['Stichwort eins', 'Stichwort zwei'],
-    },
-    { icon: 'buch', titel: 'Zweite Beispielleistung', chips: ['Stichwort eins'] },
-    { icon: 'uhr', titel: 'Dritte Beispielleistung', chips: [] },
+    { icon: 'dokument', titel: 'Erste Beispielleistung', text: 'Ein kurzer Beispielsatz.' },
+    { icon: 'buch', titel: 'Zweite Beispielleistung', text: 'Ein kurzer Beispielsatz.' },
+    { icon: 'uhr', titel: 'Dritte Beispielleistung' },
   ],
   ablauf: [
     { titel: 'Erster Schritt', text: 'Beispieltext zum ersten Schritt.' },
