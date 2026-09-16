@@ -37,7 +37,6 @@ export const steuern: PageContent = {
     // und `firmen` bleiben — `#firmen` ist von der Treuhandseite verlinkt.
     {
       kind: 'zielgruppenKarten',
-      hintergrund: 'steuern_hintergrund',
       karten: [
         {
           id: 'privatpersonen',

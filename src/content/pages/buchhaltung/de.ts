@@ -44,9 +44,8 @@ export const buchhaltungDe: Leistungsseite = {
 
   bild: { label: 'BUCHHALTUNG / BELEGE' },
 
-  // Gemeinsamer Hintergrund von Leistungen und Ablauf, geliefert am
-  // 11.09.2026 mit Ricardos Referenzgrafik.
-  hintergrund: 'hintergrund',
+  // Der gelieferte Hintergrund ist am 16.09.2026 entfallen: Ricardo hat alle
+  // Inhaltsflaechen auf hellblau gestellt. Die Datei bleibt liegen.
 
   /**
    * Quelle Zeile 280: „Laufende Erfassung Ihrer Belege, Abstimmung der Konten,
@@ -114,7 +113,6 @@ export const buchhaltungDe: Leistungsseite = {
       'In welcher Form und in welchem Rhythmus Sie das liefern, halten wir zu Beginn fest. Sie können uns die Unterlagen digital oder physisch übergeben.',
     ],
     nachsatzBild: 'liefern_laptop',
-    hintergrund: 'liefern_hintergrund',
   },
 
   // Kategoriezeile, Einleitung und Zusatz der Fragen wie auf /versicherungen —

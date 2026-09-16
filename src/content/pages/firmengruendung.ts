@@ -52,7 +52,6 @@ export const firmengruendung: PageContent = {
       lead: [
         'Beide Rechtsformen können ein guter Start sein. Entscheidend sind Ihre Risiken, das verfügbare Kapital und die Frage, wie Sie Ihr Unternehmen entwickeln möchten.',
       ],
-      hintergrund: 'firmengruendung_muster',
       spalten: [
         {
           bild: 'firmengruendung_einzelfirma',

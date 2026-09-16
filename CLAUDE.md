@@ -167,6 +167,41 @@ Farben:
 Grün ist Akzent, nicht Fläche — Links, Hervorhebungen, kleine Marker. Navy trägt
 Kopf- und Fussbereich sowie Überschriften.
 
+> **Seit dem 16.09.2026 steht jeder Inhalt auf hellblauem Grund**
+> (`background_tint`, `#E2E8EF`), auf Ricardos Anweisung: „bitte bei den
+> inhalten alle hintergründe hellblau machen". Den Wechsel Weiss / Off-White
+> gibt es nicht mehr — was sich abheben soll, ist eine **weisse Karte** auf
+> dieser einen Fläche.
+>
+> Gesetzt ist das an einer Stelle: `body` und `.ac-section` in `globals.css`.
+> `.ac-section--tint` färbt seither dasselbe wie der Standard; die Klasse
+> bleibt, damit die Flächenfolge und `pruefeFlaechen` unverändert
+> weiterlaufen. Die elf Abschnitte, die ihre Fläche selbst mitbringen
+> (Bereich, Checkliste, Rollen, Themenkarten, Segmente, Rechtsformen,
+> ZielgruppenKarten, Prozessreihe, Schadenfall sowie `zone` und `liefern` der
+> Vorlage B), sind nachgezogen.
+>
+> **Unverändert bleiben:** der Kopfbereich (weiss), der Fussbereich (navy),
+> die Banner mit ihrer Aufnahme und die beiden dunklen Abschnitte auf
+> `/kontakt` (`ac-section--flaeche`). Ihr Text ist weiss, und hellblau trüge
+> ihn nicht — **Ricardo entscheidet, ob auch sie hellblau werden sollen;**
+> das wäre kein Farbwechsel, sondern ein Umbau dieser Abschnitte.
+>
+> **Vier Hintergrundbilder sind entfallen**, weil ein Bild über der Fläche
+> kein hellblauer Grund ist: `hintergrund` und `liefern_hintergrund` auf
+> `/treuhand/buchhaltung`, `firmengruendung_muster` und
+> `steuern_hintergrund`. Die Dateien bleiben liegen. Dieselbe Entscheidung wie
+> am 15.09.2026 bei Kartenzone, Modellabschnitt und Betreuung.
+>
+> **Vier Stellen sind nachgezogen, damit nichts unsichtbar wird:** der Vermerk
+> „folgt" (`comingBadge`) und der Rückfallkreis der Vorlage B stehen jetzt auf
+> Weiss, die Verbindungslinie der Prozessreihe in `border_soft`. Die Fläche
+> der Standortkarte auf `/ueber-uns` bleibt hellblau — sie liegt in einer
+> weissen Karte, nicht auf dem Grund. Nachgemessen über alle zwölf Seiten:
+> kein Element hat denselben Grund wie seine Umgebung.
+
+
+
 > **Knöpfe sind seit dem 15.09.2026 die eine Ausnahme, und zwar alle.** Ricardo
 > hat angeordnet: „alle buttons müssen so sein" — grüne Fläche, weisse Schrift,
 > beim Darüberfahren und bei Tastaturfokus navy. `Button` rendert `primary` und

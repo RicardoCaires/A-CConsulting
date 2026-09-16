@@ -48,7 +48,9 @@
      Titel         mit kurzem gruenem Strich darueber, 61 px lang */
 
 .zone {
-  background-color: var(--ac-color-background-light);
+  /* Hellblau wie jeder Inhaltsabschnitt, seit dem 16.09.2026 auf Ricardos
+     Anweisung. */
+  background-color: var(--ac-color-background-tint);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -108,7 +110,7 @@
   place-items: center;
   border-radius: 50%;
   color: var(--ac-color-primary-navy);
-  background-color: var(--ac-color-background-tint);
+  background-color: var(--ac-color-white);
 }
 
 .strich {
@@ -272,7 +274,9 @@
 
 .liefern {
   padding-block: var(--ac-section-y);
-  background-color: var(--ac-color-white);
+  /* Hellblau wie jeder Inhaltsabschnitt, seit dem 16.09.2026 auf Ricardos
+     Anweisung. */
+  background-color: var(--ac-color-background-tint);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

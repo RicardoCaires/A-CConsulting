@@ -76,7 +76,10 @@ body {
   font-size: var(--ac-body-size);
   line-height: var(--ac-body-line);
   color: var(--ac-color-text-primary);
-  background-color: var(--ac-color-white);
+  /* Hellblau traegt seit dem 16.09.2026 die ganze Seite, auf Ricardos
+     Anweisung („bitte bei den inhalten alle hintergruende hellblau machen").
+     Kopfbereich und Fussbereich bringen ihre Flaeche selbst mit. */
+  background-color: var(--ac-surface-blue);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 
@@ -256,6 +259,7 @@ a:hover {
    Hauptkapitel. */
 .ac-section {
   padding-block: var(--ac-section-y);
+  background-color: var(--ac-surface-blue);
 }
 
 .ac-section--eng {
@@ -273,12 +277,16 @@ a:hover {
   padding-block-start: 0;
 }
 
-/* Drei Flaechen, alle aus dem Corporate Design: Weiss, Off-White und die
-   dunkle Flaeche in zwei Toenen. Der frueher vierte, blaugraue Tint ist
-   entfallen — drei kaum unterscheidbare helle Toene haben die Seite nicht
-   gegliedert, sondern gestreift. */
+/* **Seit dem 16.09.2026 traegt jeder Inhaltsabschnitt denselben hellblauen
+   Grund**, auf Ricardos Anweisung. Weiss und Off-White im Wechsel gibt es
+   nicht mehr; was sich abheben soll, ist eine weisse Karte auf dieser Flaeche.
+   Die Klasse bleibt, damit die Flaechenfolge und `pruefeFlaechen` unveraendert
+   weiterlaufen — sie faerbt nur nichts anderes mehr als der Standard.
+
+   Dunkel bleiben die beiden Flaechen darunter: Ihr Text ist weiss, und
+   hellblau truege ihn nicht. */
 .ac-section--tint {
-  background-color: var(--ac-surface-soft);
+  background-color: var(--ac-surface-blue);
 }
 
 /* Die eine dominante Flaeche je Seite. Standard 1.1, flaechen_website.dominant */
