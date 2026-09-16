@@ -393,169 +393,217 @@
   border-radius: var(--ac-radius-sm);
 }
 
-/* ---- 4 Was Sie uns liefern -------------------------------------------------
+/* ---- 4 Was Sie uns bereitstellen -------------------------------------------
 
-   Nach Ricardos Referenzgrafik vom 11.09.2026 (1672 x 941), mit dem
-   gelieferten Hintergrund. Aus der Vorlage gemessen (Inhalt x 117 bis 1562):
+   Seit dem 16.09.2026 nach Ricardos HTML-Vorlage (`buchhaltung-unterlagen-neu.html`):
 
-     Text links    bis x 820, Karte rechts ab x 890 — 672 px breit
-     Karte         Symbolkreis 78 px; Trennlinien nur unter dem Text
-     Leiste        unten ueber die volle Breite: Symbol, senkrechte Linie, Text
+     Raster        0.86fr / 1.14fr, Fuge 28 px, beide Flaechen gleich hoch,
+                   unter 820 px untereinander
+     Flaechen      surface_field, Kontur border_line, Radius 18 px
+     Einstieg      Polster 38/42 px, Titel 39 bis 50 px, Notiz mit gruener Linie
+     Liste         Polster 24 px, Eintraege 74 px hoch, Symbol 48 px,
+                   feine Linien dazwischen
+     Uebergabe     breite Flaeche darunter, Symbol 55 px, Radius 14 px
+     Uebergang     200 ms — hier `--ac-motion-base` (180 ms)
 
-   Die Trennlinie hat Ricardo als eigene Datei geliefert: eine feine Linie im
-   Ton von `border_tint`. Sie steht als Rahmen im Stylesheet, nicht als Bild —
-   das Bild einer 1-px-Linie wird beim Skalieren unscharf.
-
-   Gleicher breiter Container wie die Flaeche darueber. */
+   Keine weissen Flaechen, keine Schatten, keine Verlaeufe. Fliesstext im Ton
+   der Website (`text_secondary`), nicht im Ton der Vorlage. */
 
 .liefern {
   padding-block: var(--ac-section-y);
-  /* Hellblau wie jeder Inhaltsabschnitt, seit dem 16.09.2026 auf Ricardos
-     Anweisung. */
-  background-color: var(--ac-color-background-tint);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.liefern .liefernContainer {
-  max-width: 84rem;
 }
 
 .liefernRaster {
   display: grid;
-  gap: clamp(2rem, 4vw, 3rem);
-  align-items: center;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.liefernEinstieg,
+.liefernKarte {
+  background-color: var(--ac-surface-field);
+  border: var(--ac-border-hairline) solid var(--ac-border-line);
+  border-radius: 18px;
+}
+
+.liefernEinstieg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.75rem, 3vw, 2.375rem) clamp(1.5rem, 3.2vw, 2.625rem);
+}
+
+.liefernTitel {
+  max-width: 27rem;
+  margin: 0 0 1.125rem;
+  font-family: var(--ac-font-display);
+  font-size: clamp(2.4375rem, 1.95rem + 1.8vw, 3.125rem);
+  line-height: 1.02;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
 }
 
 .liefernLead {
-  margin: var(--ac-space-md) 0 0;
-  max-width: 44ch;
-  font-size: var(--ac-lead-size);
-  line-height: 1.6;
-  color: color-mix(in srgb, var(--ac-color-primary-navy) 80%, var(--ac-color-text-secondary));
+  max-width: 28.75rem;
+  margin: 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
 }
 
-.liefernLead + .liefernLead {
-  margin-top: var(--ac-space-sm);
-}
-
-.liefernKarte,
-.liefernHinweis {
-  background-color: var(--ac-color-white);
-  border-radius: 16px;
-  box-shadow: 0 14px 40px color-mix(in srgb, var(--ac-color-primary-navy) 7%, transparent);
+.liefernNotiz {
+  margin: 1.75rem 0 0;
+  padding-left: 0.9375rem;
+  border-left: var(--ac-border-marker) solid var(--ac-color-accent-green);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--ac-color-text-secondary);
 }
 
 .liefernKarte {
-  padding: clamp(1.5rem, 2.6vw, 2.25rem) clamp(1.25rem, 2.6vw, 2.5rem);
+  padding: clamp(1.125rem, 2vw, 1.5rem);
 }
 
-/* Blaugrau wie in der Vorlage, aber dunkel genug fuer AA auf Weiss. */
 .liefernKartenTitel {
-  margin: 0 0 0.5rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: 0.04em;
+  margin: 0.125rem 0 0.875rem;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: 700;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--ac-color-primary-navy) 75%, var(--ac-color-white));
+  color: var(--ac-color-text-secondary);
 }
 
 .liefernListe {
-  --symbol: clamp(3.25rem, 2.75rem + 1.2vw, 4.25rem);
-  --spalt: clamp(1rem, 2vw, 1.75rem);
-
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* Beim Darueberfahren und bei Tastaturfokus wird der Eintrag navy und rueckt
+   seitlich leicht heraus — ueber negativen Rand, nicht ueber seine Groesse:
+   Die Nachbarn bleiben, wo sie sind. */
 .liefernEintrag {
-  position: relative;
   display: grid;
-  grid-template-columns: var(--symbol) minmax(0, 1fr);
-  column-gap: var(--spalt);
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 0.875rem;
   align-items: center;
-  padding-block: clamp(0.625rem, 1.2vw, 0.875rem);
+  min-height: 4.625rem;
+  padding: 0.625rem 0.8125rem;
+  border-bottom: var(--ac-border-hairline) solid var(--ac-border-line);
+  transition:
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
+    margin var(--ac-motion-base) var(--ac-motion-easing),
+    padding var(--ac-motion-base) var(--ac-motion-easing),
+    border-color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-/* Die Trennlinie beginnt am Text, nicht am Symbol — wie in der Vorlage. */
-.liefernEintrag + .liefernEintrag::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: calc(var(--symbol) + var(--spalt));
-  right: 0;
-  height: var(--ac-border-hairline);
-  background-color: var(--ac-color-border-tint);
+.liefernEintrag:last-child {
+  border-bottom-color: transparent;
 }
 
-/* Die gelieferten Symbole sind auf ihren Kreis zugeschnitten. */
+.liefernEintrag:hover,
+.liefernEintrag:focus-visible {
+  margin-inline: -0.25rem;
+  padding-inline: 1.0625rem;
+  /* Rund erst im hervorgehobenen Zustand — sonst biegt sich die Trennlinie
+     an ihren Enden. */
+  border-radius: 10px;
+  background-color: var(--ac-color-primary-navy);
+  border-bottom-color: var(--ac-color-primary-navy);
+}
+
+.liefernEintrag:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Das Piktogramm bringt seinen hellen Kreis mit und bleibt auf navy klar. */
 .liefernSymbol {
   display: block;
-  flex: none;
-  width: var(--symbol, 4rem);
+  width: 3rem;
   max-width: none;
-  height: var(--symbol, 4rem);
+  height: 3rem;
+  object-fit: contain;
 }
 
-.liefernEintragText,
-.liefernHinweisText {
-  font-size: clamp(1.0625rem, 0.95rem + 0.35vw, 1.25rem);
+.liefernEintragTitel {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-family: var(--ac-font-display);
+  font-size: 1.125rem;
+  line-height: 1.12;
+  font-weight: var(--ac-display-weight);
   color: var(--ac-color-primary-navy);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
 .liefernEintragText {
-  line-height: 1.4;
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--ac-color-text-secondary);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.liefernHinweis {
-  --symbol: clamp(3.25rem, 2.75rem + 1vw, 4rem);
+.liefernEintrag:hover .liefernEintragTitel,
+.liefernEintrag:focus-visible .liefernEintragTitel,
+.liefernEintrag:hover .liefernEintragText,
+.liefernEintrag:focus-visible .liefernEintragText {
+  color: var(--ac-color-white);
+}
 
-  display: flex;
+.liefernUebergabe {
+  display: grid;
+  grid-template-columns: 3.875rem minmax(0, 1fr);
+  gap: 1.0625rem;
   align-items: center;
-  gap: clamp(1rem, 2.4vw, 2.5rem);
-  padding: clamp(1rem, 2vw, 1.5rem) clamp(1.25rem, 2.6vw, 2.25rem);
+  margin-top: 1.125rem;
+  padding: 1.0625rem 1.375rem;
+  background-color: var(--ac-surface-field);
+  border: var(--ac-border-hairline) solid var(--ac-border-line);
+  border-radius: 14px;
 }
 
-/* Die senkrechte Linie zwischen Symbol und Text. */
-.liefernHinweisText {
-  padding-left: clamp(1rem, 2.4vw, 2.5rem);
-  border-left: var(--ac-border-hairline) solid var(--ac-color-border-tint);
+.liefernUebergabeSymbol {
+  display: block;
+  width: 3.4375rem;
+  max-width: none;
+  height: 3.4375rem;
+  object-fit: contain;
+}
+
+.liefernUebergabeTitel {
+  margin: 0 0 0.25rem;
+  font-family: var(--ac-font-display);
+  font-size: 1.125rem;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.liefernUebergabeText {
+  margin: 0;
+  font-size: 0.8125rem;
   line-height: 1.5;
+  color: var(--ac-color-text-secondary);
 }
 
-.liefernHinweisText p + p {
-  margin-top: var(--ac-space-2xs);
-}
-
-/* Auf dem Telefon stehen Symbol und Text untereinander, die Linie liegt
-   dazwischen waagrecht. Nebeneinander brach der Satz bei 375 px auf sieben
-   Zeilen — gemessen am 11.09.2026. */
-@media (max-width: 39.99rem) {
-  .liefernHinweis {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--ac-space-sm);
-  }
-
-  .liefernHinweisText {
-    padding-top: var(--ac-space-sm);
-    padding-left: 0;
-    border-top: var(--ac-border-hairline) solid var(--ac-color-border-tint);
-    border-left: 0;
-  }
-}
-
-@media (min-width: 64rem) {
+@media (min-width: 51.25rem) {
   .liefernRaster {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-    column-gap: clamp(2.5rem, 5vw, 4.5rem);
+    grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
   }
+}
 
-  .liefernHinweis {
-    grid-column: 1 / -1;
+@media (max-width: 34.99rem) {
+  .liefernUebergabe {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liefernEintrag,
+  .liefernEintragTitel,
+  .liefernEintragText {
+    transition: none;
   }
 }
 

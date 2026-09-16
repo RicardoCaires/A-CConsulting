@@ -120,34 +120,51 @@ export const buchhaltungDe: Leistungsseite = {
     },
   ],
 
-  // Quelle Abschnitt 05 „Was Sie liefern" — die offenen Angaben bleiben stehen.
+  // „Was Sie uns bereitstellen." — seit dem 16.09.2026 nach Ricardos
+  // HTML-Vorlage (`content/source/buchhaltung_unterlagen_de.md`). Der bisherige
+  // Wortlaut („Was Sie uns liefern", Kontoauszüge …) steht unveraendert in
+  // `content/source/schritt4_fassung2_de.md`.
   vertiefung: {
-    titel: 'Was Sie uns liefern',
+    kategorie: 'Ihre Unterlagen',
+    titel: 'Was Sie uns bereitstellen.',
     absaetze: [
-      'Sie müssen keine Buchhaltungssoftware bedienen und nichts vorbuchen. Sortiert ist hilfreich, nötig ist es nicht — das Ordnen übernehmen wir.',
+      'Sie liefern die Unterlagen – wir übernehmen die Erfassung, Abstimmung und saubere Ablage Ihrer Buchhaltung.',
     ],
-    // Seit dem 11.09.2026 Titel der Karte statt zweiter Absatz — nach Ricardos
-    // Referenzgrafik. Wortlaut unveraendert.
-    listenTitel: 'In der Regel brauchen wir von Ihnen:',
-    // Gelieferte Symbole, in der Reihenfolge der Liste.
-    listenBilder: [
-      'liefern_dokument',
-      'liefern_dokument',
-      'liefern_eingang',
-      'liefern_quittung',
-      'liefern_personen',
+    hinweis:
+      'Eine eigene Buchhaltungssoftware ist nicht erforderlich. Den Übergaberhythmus stimmen wir gemeinsam mit Ihnen ab.',
+    listenTitel: 'Für die laufende Buchhaltung benötigen wir',
+    eintraege: [
+      {
+        bild: 'unterlagen_bank.svg',
+        titel: 'Bank- und Kassenauszüge',
+        text: 'Kontobewegungen und Kassenunterlagen vollständig pro Periode.',
+      },
+      {
+        bild: 'unterlagen_kunden.svg',
+        titel: 'Kundenrechnungen',
+        text: 'Gestellte Rechnungen sowie Angaben zu Zahlungseingängen.',
+      },
+      {
+        bild: 'unterlagen_lieferanten.svg',
+        titel: 'Lieferantenrechnungen',
+        text: 'Erhaltene und bezahlte Rechnungen Ihrer Lieferanten.',
+      },
+      {
+        bild: 'unterlagen_spesen.svg',
+        titel: 'Spesen und Barbelege',
+        text: 'Quittungen, Spesenbelege und weitere geschäftliche Auslagen.',
+      },
+      {
+        bild: 'unterlagen_personal.svg',
+        titel: 'Personalunterlagen',
+        text: 'Falls relevant: Verträge, Änderungen, Eintritte, Austritte und Absenzen.',
+      },
     ],
-    liste: [
-      'Kontoauszüge',
-      'Rechnungen, die Sie gestellt haben',
-      'Rechnungen, die Sie bezahlt haben',
-      'Belege für Spesen und Barzahlungen',
-      'bei Mitarbeitenden: Arbeitsverträge, Änderungen, Absenzen',
-    ],
-    nachsatz: [
-      'In welcher Form und in welchem Rhythmus Sie das liefern, halten wir zu Beginn fest. Sie können uns die Unterlagen digital oder physisch übergeben.',
-    ],
-    nachsatzBild: 'liefern_laptop',
+    uebergabe: {
+      bild: 'unterlagen_uebergabe.svg',
+      titel: 'Digital oder physisch – beides ist möglich.',
+      text: 'Form, Rhythmus und Zuständigkeiten halten wir zu Beginn der Zusammenarbeit gemeinsam fest.',
+    },
   },
 
   // Kategoriezeile, Einleitung und Zusatz der Fragen wie auf /versicherungen —

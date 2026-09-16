@@ -1425,6 +1425,28 @@ Betriebe und Selbstständige in der Region.
 > Vorlage läuft auf 1180 px. **Die älteren Notizen weiter oben zu diesem
 > Abschnitt beschreiben frühere Fassungen.**
 
+> **„Was Sie uns bereitstellen." ist seit dem 16.09.2026 nach Ricardos
+> HTML-Vorlage gebaut** (`buchhaltung-unterlagen-neu.html`,
+> `content/source/buchhaltung_unterlagen_de.md`) und ersetzt „Was Sie uns
+> liefern": links auf heller Fläche Kategoriezeile „Ihre Unterlagen", Titel,
+> Einleitung und die Notiz mit grüner Linie; rechts „Für die laufende
+> Buchhaltung benötigen wir" mit fünf Einträgen (Symbol, Überschrift, Satz),
+> durch feine Linien getrennt; darunter die breite Fläche „Digital oder
+> physisch – beides ist möglich.". Beide Hauptflächen gleich hoch
+> (nachgemessen 456 px bei 1280), unter 820 px untereinander, kein Überlauf
+> bei 375. **Nur Unterlagen der laufenden Buchhaltung.**
+>
+> **Beim Darüberfahren und bei Tastaturfokus wird ein Eintrag navy**, Titel
+> und Satz weiss, und er rückt seitlich leicht heraus (negativer Rand, die
+> Nachbarn bleiben stehen). Die Einträge tragen `tabindex="0"` samt Fokusring.
+> Die Symbole sind Ricardos SVG aus `03-treuhand`, wie die Vorlage sie nennt;
+> die bisherigen `liefern_*`-Dateien bleiben liegen, stehen aber auf keiner
+> Seite mehr. Fliesstext im Ton der Website, nicht im `#445367` der Vorlage.
+> Die Felder `liste`, `listenBilder`, `nachsatz`, `nachsatzBild` und
+> `hintergrund` der Vorlage B sind durch `kategorie`, `hinweis`, `eintraege`
+> und `uebergabe` ersetzt. Die folgende Notiz beschreibt die Fassung vom
+> 11.09.2026.
+
 > **„Was Sie uns liefern" auf `/treuhand/buchhaltung` seit dem 11.09.2026 nach
 > Ricardos Referenzgrafik** (Vorlage B, Abschnitt 4): links Titel mit grünem
 > Strich und Einleitung, rechts die Aufzählung als weisse Karte mit Titel,

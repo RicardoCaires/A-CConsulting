@@ -146,7 +146,10 @@ export const beispielLeistungsseite: Leistungsseite = {
       'Beispielabsatz. Hier landet der Fliesstext, den die Startseite abgibt.',
       'Zweiter Beispielabsatz.',
     ],
-    liste: ['Erster Beispieleintrag', 'Zweiter Beispieleintrag', 'Dritter Beispieleintrag'],
+    eintraege: [
+      { titel: 'Erster Beispieleintrag' },
+      { titel: 'Zweiter Beispieleintrag' },
+    ],
   },
   faq: [
     { frage: 'Erste Beispielfrage?', antwort: 'Beispielantwort.' },
