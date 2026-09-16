@@ -50,6 +50,8 @@
 
 /* ---- Einleitung ------------------------------------------------------------ */
 
+/* Seit dem 15.09.2026 nur noch Vorzeile und Titel — der Einleitungstext
+   rechts daneben ist auf Ricardos Anweisung entfallen. */
 .kopf {
   display: grid;
   gap: clamp(1.5rem, 3vw, 3rem);
@@ -85,19 +87,6 @@
   color: var(--ac-color-primary-navy);
 }
 
-.lead {
-  display: grid;
-  gap: var(--ac-space-md);
-  max-width: 58ch;
-}
-
-.lead p {
-  margin: 0;
-  font-size: var(--ac-body-size);
-  line-height: 1.7;
-  color: var(--ac-color-text-secondary);
-}
-
 /* ---- Die vier Karten ------------------------------------------------------- */
 
 .karten {
@@ -115,6 +104,16 @@
   background-color: var(--ac-color-white);
   border-radius: 14px;
   box-shadow: 0 8px 28px color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
+  transition:
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
+    color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+/* Beim Darueberfahren wird die ganze Kachel navy, Ueberschrift und Text
+   weiss (9.4:1) — wie die Ausgangslagen auf der Startseite. Das Piktogramm
+   bringt seinen hellen Kreis mit und bleibt, wie es ist. */
+.karte:hover {
+  background-color: var(--ac-color-primary-navy);
 }
 
 .karte h3 {
@@ -122,6 +121,7 @@
   font-size: var(--ac-h3-size);
   line-height: 1.25;
   color: var(--ac-color-primary-navy);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
 .karte p {
@@ -129,6 +129,20 @@
   font-size: var(--ac-body-size);
   line-height: 1.6;
   color: var(--ac-color-text-secondary);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.karte:hover h3,
+.karte:hover p {
+  color: var(--ac-color-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .karte,
+  .karte h3,
+  .karte p {
+    transition: none;
+  }
 }
 
 /* Die Symbole bringen ihren hellgruenen Kreis mit — keine Flaeche dahinter,
@@ -186,14 +200,9 @@
   }
 }
 
-/* ---- Ab Desktop: Titel links, Lead rechts; vier Karten in einer Reihe ------- */
+/* ---- Ab Desktop: vier Karten in einer Reihe -------------------------------- */
 
 @media (min-width: 64rem) {
-  .kopf {
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
-    align-items: start;
-    gap: clamp(2.5rem, 5vw, 4.5rem);
-  }
 
   .karten {
     grid-template-columns: repeat(4, minmax(0, 1fr));

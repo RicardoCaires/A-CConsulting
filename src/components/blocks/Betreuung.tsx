@@ -32,7 +32,6 @@ type Props = {
   id: string
   eyebrow: string
   heading: string
-  lead: readonly string[]
   karten: readonly Karte[]
   schluss: Karte
 }
@@ -51,7 +50,7 @@ function Symbol({ datei, groesse }: { datei: string; groesse: number }) {
   )
 }
 
-export function Betreuung({ id, eyebrow, heading, lead, karten, schluss }: Props) {
+export function Betreuung({ id, eyebrow, heading, karten, schluss }: Props) {
   const headingId = `${id}-titel`
 
   return (
@@ -64,12 +63,6 @@ export function Betreuung({ id, eyebrow, heading, lead, karten, schluss }: Props
             <h2 id={headingId} className={styles.titel}>
               {heading}
             </h2>
-          </div>
-
-          <div className={styles.lead}>
-            {lead.map((absatz) => (
-              <p key={absatz}>{absatz}</p>
-            ))}
           </div>
         </div>
 

@@ -261,7 +261,6 @@ export type Block =
       eyebrow: string
       heading: string
       /** Der Leadtext, unveraendert aus der Quelle. */
-      lead: readonly string[]
       karten: readonly { bild: string; titel: string; satz: string }[]
       /** Die breite Karte unter dem Raster. */
       schluss: { bild: string; titel: string; satz: string }

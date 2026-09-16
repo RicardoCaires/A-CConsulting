@@ -899,9 +899,16 @@ Broker von einem Direktabschluss unterscheidet.
 > Referenzgrafik. Vorher ein `prose`-Block mit drei Absätzen: Der Text war
 > richtig, aber niemand sah, was gemeint ist.
 >
-> **Der Leadtext ist unverändert** — er stand schon vorher so da. Neu sind die
-> Kategoriezeile, vier Karten mit geliefertem Symbol und eine breite
-> Schlusskarte. Der Anker `betreuung` bleibt; die Sprungmarken zeigen darauf.
+> **Der Leadtext ist am 16.09.2026 auf Ricardos Anweisung entfallen** — die
+> drei Absätze rechts neben dem Titel („Die meisten Policen liegen jahrelang
+> unangetastet in einem Ordner …"). Der Kopf läuft seither einspaltig; der
+> Wortlaut steht unverändert in `content/source/schritt4_fassung2_de.md`.
+> **Die vier Karten werden beim Darüberfahren navy**, Überschrift und Text
+> weiss (9.4:1) — wie die Ausgangslagen auf der Startseite. Das Piktogramm
+> bringt seinen hellen Kreis mit und bleibt, wie es ist.
+>
+> Der Anker `betreuung` bleibt; die Kategoriezeile, die vier Karten mit
+> geliefertem Symbol und die breite Schlusskarte stehen weiter da.
 >
 > **„Persönlich. Vorausschauend. An Ihrer Seite." ist fast derselbe Zusatz wie
 > „Persönlich. Unabhängig. An Ihrer Seite."** im Modellabschnitt. Beide stehen
