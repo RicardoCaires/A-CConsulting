@@ -2070,6 +2070,17 @@ Deutsch, Französisch und Portugiesisch.
 > **Die Schale steht auf demselben Hellblau wie die Seite.** Die Vorlage setzt
 > die Seite auf ein helles Grau; seit dem 16.09.2026 trägt jeder Inhalt
 > hellblau. Es ist die Kontur, die die Fläche als Fläche liest.
+>
+> **Noch am 16.09.2026 nachgeschärft, auf Ricardos Anweisung:** Die Kontaktart
+> „E-Mail / Telefon" steht als **zwei Knöpfe wie alle anderen** — dunkelgrün,
+> weisse Schrift, 12 px Radius, 46 px hoch; **die gewählte Option ist navy**.
+> Und **vier Abschnitte sind entfallen**: der Direktkontakt oben (Telefon,
+> E-Mail, Adresse), „Was nach Ihrer Anfrage passiert", „Unser Büro" und
+> „Termine ausserhalb der Bürozeiten". Ihr Wortlaut steht unverändert in
+> `content/source/schritt4_fassung2_de.md`. **Damit stehen Adresse und
+> Öffnungszeiten nicht mehr auf `/kontakt`**; die Adresse bleibt im
+> Fussbereich jeder Seite und im Impressum. Die Seite trägt seither Banner,
+> Formular und den Abschluss „Am schnellsten geht es telefonisch".
 
 ### Preisdarstellung
 

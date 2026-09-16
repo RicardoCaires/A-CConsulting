@@ -33,13 +33,11 @@ export const kontakt: PageContent = {
   },
 
   blocks: [
-    // 01 Direktkontakt
-    // Die Ueberschrift dieses Abschnitts ist zugleich der Seitentitel
-    // („So erreichen Sie uns"), darum steht sie oben und nicht noch einmal hier.
-    {
-      kind: 'contact',
-      id: 'direkt',
-    },
+    // Am 16.09.2026 auf Ricardos Anweisung entfallen: 01 Direktkontakt
+    // (Telefon, E-Mail, Adresse), 03 „Was nach Ihrer Anfrage passiert",
+    // 04 „Unser Büro" und 05 „Termine ausserhalb der Bürozeiten". Der Wortlaut
+    // steht unveraendert in `content/source/schritt4_fassung2_de.md`; Telefon
+    // und E-Mail stehen weiterhin im Kontaktformular und im Fussbereich.
 
     // 02 Kontaktformular — seit dem 16.09.2026 nach Ricardos HTML-Vorlage
     // (`content/source/kontakt_formular_de.md`). Bis dahin stand hier der
@@ -91,39 +89,6 @@ export const kontakt: PageContent = {
         knopf: 'Anfrage senden →',
         vertraulich: 'Ihre Angaben werden vertraulich behandelt und nicht weitergegeben.',
       },
-    },
-
-    // 03 Was danach passiert
-    {
-      kind: 'prose',
-      id: 'ablauf',
-      heading: 'Was nach Ihrer Anfrage passiert',
-      paragraphs: [
-        'Wir melden uns telefonisch oder per E-Mail und schlagen einen Termin für ein Erstgespräch vor.',
-        'Damit das Gespräch für Sie etwas bringt, senden wir Ihnen vorher einige Fragen zu Ihrer Situation, zum Beispiel zur Rechtsform, zur Grösse Ihres Betriebs und zu den Aufgaben, um die es geht. Das Ausfüllen ist freiwillig und dauert wenige Minuten.',
-      ],
-    },
-
-    // 04 Büro und Anfahrt
-    {
-      kind: 'prose',
-      id: 'buero',
-      heading: 'Unser Büro',
-      paragraphs: [
-        [{ company: 'buero' }],
-        'Öffnungszeiten: 08:00–12:00 und 13:30–17:00 Uhr',
-        'Anfahrt: Beim Büro stehen drei Parkplätze zur Verfügung.',
-      ],
-    },
-
-    // 05 Termine ausserhalb der Bürozeiten
-    {
-      kind: 'prose',
-      id: 'randzeiten',
-      heading: 'Termine ausserhalb der Bürozeiten',
-      paragraphs: [
-        'Termine am Abend oder am Samstag bieten wir auf Anfrage an.',
-      ],
     },
 
     // 06 Abschluss
