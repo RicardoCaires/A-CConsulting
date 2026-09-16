@@ -1398,6 +1398,33 @@ Betriebe und Selbstständige in der Region.
 > heisst weiterhin „Erstgespräch anfragen" — er nimmt jetzt die Beschriftung
 > der Kopfzeile (`ui.cta`).
 
+> **„Was wir übernehmen." auf `/treuhand/buchhaltung` ist seit dem 16.09.2026
+> nach Ricardos HTML-Vorlage gebaut** (`buchhaltungsthemen-neu.html`,
+> `content/source/buchhaltung_leistungen_de.md`): Kategoriezeile
+> „Buchhaltung" und Titel links, Einleitung rechts (unter 850 px darunter),
+> darauf **sechs gleich grosse Kacheln** — Laufende Buchhaltung, Debitoren &
+> Kreditoren, Kontenabstimmung, Zahlungsverkehr, MWST-Abrechnungen,
+> Abschlüsse & Auswertungen. **Nur Buchhaltung**, wie der Auftrag verlangt.
+> Drei Spalten ab 850 px, zwei ab 560 px, eine darunter; nachgemessen alle
+> sechs 355 x 221 px bei 1280, 338 x 221 bei 768, kein Überlauf bei 375.
+>
+> **Kacheln in `surface_field` mit Kontur `border_line`**, 14 px Radius, keine
+> weissen Kacheln, keine Schatten. Beim Darüberfahren und bei Tastaturfokus
+> ganz navy, Titel und Text weiss, der grüne Strich bleibt grün, zwei Pixel
+> angehoben. Die Kacheln tragen `tabindex="0"` samt Fokusring — sie enthalten
+> keinen Link. Die sechs Piktogramme sind Ricardos SVG aus
+> `bilder-quelle/piktogramme/03-treuhand/`, wie die Vorlage sie nennt, unverändert
+> als `public/bilder/buchhaltung/leistung_*.svg` kopiert; Vorlage B nimmt seither
+> auch Dateinamen mit Endung.
+>
+> **Die drei Stichworte aus Schritt 4** („Laufende Erfassung Ihrer Belege",
+> „Abstimmung der Konten", „Auswertungen zu vereinbarten Terminen") und das
+> Feld `chips` sind entfallen; der Wortlaut steht unverändert in der Quelle.
+> **Der Fliesstext steht im Ton der Website**, nicht im `#445367` der Vorlage.
+> Der Abschnitt steht im Standardcontainer statt der früheren 1344 px — die
+> Vorlage läuft auf 1180 px. **Die älteren Notizen weiter oben zu diesem
+> Abschnitt beschreiben frühere Fassungen.**
+
 > **„Was Sie uns liefern" auf `/treuhand/buchhaltung` seit dem 11.09.2026 nach
 > Ricardos Referenzgrafik** (Vorlage B, Abschnitt 4): links Titel mit grünem
 > Strich und Einleitung, rechts die Aufzählung als weisse Karte mit Titel,
