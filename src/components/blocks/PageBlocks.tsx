@@ -12,7 +12,7 @@ import { Betreuung } from './Betreuung'
 import { Checkliste } from './Checkliste'
 import { ChecklisteFristen } from './ChecklisteFristen'
 import { Fragen } from './Fragen'
-import { Leistungen } from './Leistungen'
+import { Leistungen, leistungenFlaeche } from './Leistungen'
 import { Prozessreihe } from './Prozessreihe'
 import { Rechtsformen } from './Rechtsformen'
 import { Rollen } from './Rollen'
@@ -321,6 +321,7 @@ function BlockBody({ block, locale }: { block: Block; locale: Locale }) {
           heading={block.heading}
           lead={block.lead}
           karten={block.karten}
+          hinweis={block.hinweis}
           locale={locale}
         />
       )
@@ -767,10 +768,15 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
         const surface = KLASSE[surfaceIndex++ % 2 === 0 ? 'weiss' : 'hell']
         letzteFlaeche = surface
 
-        // „Unser Vorgehen" auf `/treuhand` zaehlt im Wechsel mit, steht aber
-        // auf Ricardos Anweisung vom 11.09.2026 hellblau. Die Abschnitte
-        // darunter behalten damit ihren Grund.
-        const flaeche = block.kind === 'vorgehen' ? vorgehenFlaeche : surface
+        // „Unser Vorgehen" (11.09.2026) und „Was wir uebernehmen" (16.09.2026)
+        // auf `/treuhand` zaehlen im Wechsel mit, stehen aber auf Ricardos
+        // Anweisung hellblau. Die Abschnitte darunter behalten ihren Grund.
+        const flaeche =
+          block.kind === 'vorgehen'
+            ? vorgehenFlaeche
+            : block.kind === 'leistungen'
+              ? leistungenFlaeche
+              : surface
 
         return (
           <section

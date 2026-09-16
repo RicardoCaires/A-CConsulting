@@ -329,12 +329,15 @@ export type Block =
         /** Dateiname unter `public/bilder/treuhand/`, ohne Endung. */
         bild: string
         titel: string
-        satz: string
+        /** Die Stichpunkte der Kachel. */
+        punkte: readonly string[]
         /** Zielseite. Verlinkt wird nur, wenn sie veroeffentlicht ist. */
         ziel?: PageKey
         /** Anker auf der Zielseite, etwa `firmen`. */
         anker?: string
       }[]
+      /** Der kompakte Hinweis unter den Kacheln. Optional. */
+      hinweis?: { titel: string; text: string }
     }
   /**
    * Der Ablauf als vier Karten mit Nummer und Verbindung: Kategoriezeile,

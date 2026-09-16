@@ -1111,6 +1111,66 @@ Buchhaltung, Lohnadministration, MWST-Abrechnung, Jahresabschluss,
 Gründungsberatung und Umwandlung Einzelfirma zu GmbH. Zielgruppe sind kleine
 Betriebe und Selbstständige in der Region.
 
+> **„Was wir übernehmen" ist seit dem 16.09.2026 ein Kachelraster aus sechs
+> gleich grossen Kacheln**, nach Ricardos Designreferenz: Piktogramm auf
+> hellblauem Kreis, Überschrift in Source Serif, kurzer grüner Strich, drei
+> Stichpunkte. Desktop drei Spalten und zwei Reihen (ab 64rem), Tablet zwei
+> (ab 40rem), Telefon eine. Darunter der Hinweis „Sie behalten den Überblick:
+> Auswertungen und Abschlüsse erhalten Sie zu den gemeinsam vereinbarten
+> Terminen." als weisse Leiste mit grünem Marker. **Der Grund ist hellblau**
+> (`background_tint`), auf seine Vorgabe — `PageBlocks` setzt dafür
+> `leistungenFlaeche` statt der zugewiesenen Fläche, wie beim Vorgehen
+> darunter; der Wechsel der Abschnitte darunter verschiebt sich nicht.
+> Nachgemessen bei 1024 px: alle sechs Kacheln 301 x 385 px, bei 768 px
+> 338 x 346, bei 375 px 335 x 346 — exakt gleich gross, wie der Auftrag es
+> verlangt.
+>
+> **Beim Darüberfahren und bei Tastaturfokus wird die ganze Kachel navy**,
+> Rahmen navy, Überschrift und Stichpunkte weiss (11.6:1), die Kachel drei
+> Pixel angehoben. Angehoben wird mit `transform` — nachgemessen verschiebt
+> sich keine Nachbarkachel um einen Pixel. Der grüne Strich und die grünen
+> Aufzählungspunkte bleiben grün, das Piktogramm bleibt unverändert auf seinem
+> hellblauen Kreis. Keine Schatten, keine Verläufe, keine weiteren Farben.
+> Abgeschaltet unter `prefers-reduced-motion: reduce`.
+>
+> **Grün auf Navy steht bei 2.1:1.** Das ist für Text zu wenig und für eine
+> Marke genug: Strich und Aufzählungspunkte tragen keinen Inhalt, der Text
+> daneben steht in Weiss. Ricardo hat beides ausdrücklich verlangt.
+>
+> **Der Rahmen `#CCD6DF` ist ein neuer Token** (`border_soft` in
+> `design/website.tokens.json`). Er stand so im Auftrag und liegt zwischen
+> `border_light` (`#CCCCCC`, zu grau) und `border_tint` (`#B0C4DE`, zu
+> kräftig). Hex-Werte stehen nie in einer Komponente.
+>
+> **Aus sieben Karten sind sechs Kacheln geworden.** Titel und Stichpunkte
+> stehen wörtlich in seinem Auftrag
+> (`content/source/treuhand_leistungen_de.md`). Die sieben Kartensätze vom
+> 11.09.2026 sind nicht widerrufen — sie stehen nur nicht mehr auf der Seite.
+> **„Firmengründung" hat kein Gegenstück** unter den sechs Kacheln;
+> `/firmengruendung` ist von `/treuhand` damit nicht mehr verlinkt. Erreichbar
+> bleibt die Seite über den Fussbereich und den Geschäftsfall „Ich gründe ein
+> Unternehmen" auf der Startseite. Ricardo ist darauf hingewiesen.
+>
+> **Verlinkt bleibt, was veröffentlicht ist:** Finanzbuchhaltung zeigt auf
+> `/treuhand/buchhaltung`, Steuerberatung auf `/steuern#firmen`. Abschlüsse,
+> Lohn und Mehrwertsteuer werden von selbst zu Links, sobald ihre Seiten auf
+> `published: true` stehen; Debitoren & Kreditoren hat keine eigene Seite und
+> bleibt ohne Pfeil. Der Link auf der Überschrift ist zugleich der Grund,
+> weshalb `:focus-within` greift.
+>
+> **Die sechs Piktogramme sind die gelieferten SVG**, unverändert und ohne
+> Umfärbung, auch im Zustand beim Darüberfahren: `01_buchhaltung`,
+> `05_unternehmensadministration`, `04_jahresabschluss`, `02_lohnbuchhaltung`,
+> `03_mehrwertsteuer`, `07_steuern_firmen`. **`06_firmengruendung` steht auf
+> dieser Seite nicht mehr**, bleibt aber liegen.
+>
+> **Die Überschrift lautet weiterhin „Was wir übernehmen".** Ricardos Auftrag
+> nennt den Abschnitt „Was wir für Sie übernehmen" — so heisst Abschnitt 2 der
+> Startseite. Ob das der neue Titel dieses Abschnitts sein soll, entscheidet
+> er; eine Leistungsüberschrift wird nicht nebenbei geändert.
+>
+> Die folgende Notiz beschreibt die Fassung vom 11.09.2026.
+
 > **„Was wir übernehmen" ist seit dem 11.09.2026 ein Kartenraster**
 > (`src/components/blocks/Leistungen.tsx`), nach Ricardos Referenzgrafik:
 > Kategoriezeile „Unsere Leistungen", Titel, Einleitung, sieben weisse Karten
