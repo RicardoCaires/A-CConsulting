@@ -1581,6 +1581,33 @@ eidg. Fachausweis suggeriert.
 > und Ausgaben, Anmeldung bei der Ausgleichskasse — samt den Verweisen auf
 > Treuhand und Firmengründung ist weg.
 
+> **„Passend zu Ihrer Situation." ist seit dem 16.09.2026 nach Ricardos
+> HTML-Vorlage gebaut** (`steuern-zielgruppen-neu.html`,
+> `content/source/steuern_zielgruppen_de.md`, Baustein
+> `ZielgruppenKarten.tsx` neu geschrieben): Kategoriezeile
+> „Steuererklärungen" und Titel links, Einleitung rechts; darunter **zwei
+> gleich grosse Karten** „Für Privatpersonen" und „Für Selbständige &
+> Unternehmen" mit grossem Zielgruppen-Piktogramm, Satz, drei Schritten mit
+> Symbol (feine Linien dazwischen) und grünem Textlink am Fuss; zentriert der
+> Hinweis zum Kanton Bern. Nachgemessen 539 x 430 px bei 1280, beide Links auf
+> derselben Höhe; bei 375 untereinander ohne Überlauf. **Die Anker
+> `privatpersonen` und `firmen` bleiben.**
+>
+> **Beim Darüberfahren und bei Tastaturfokus auf dem Link wird die Karte navy**,
+> alle Texte und der Link weiss, zwei Pixel angehoben. Karten in
+> `surface_field`, Kontur `border_line`, 18 px Radius, keine Schatten.
+>
+> **Die beiden Links:** „Checkliste für Privatpersonen" springt auf `#checkliste`
+> weiter unten auf derselben Seite; „Buchhaltung und Jahresabschluss" zeigt
+> **neu auf `/treuhand/buchhaltung`** statt auf `/treuhand` — die Vorlage nennt
+> `#buchhaltung`, und dort stehen seit heute die Abschlüsse. Der gelieferte
+> Hintergrund, die Absätze vom 11.09.2026 und der Hinweis „Alles an einem Ort"
+> sind entfallen; der Wortlaut steht oben in der Quelldatei. **Die
+> Nachkontrolle der Veranlagung** (Abschnitt 9) steht weiter da — als Schritt
+> „Veranlagung kontrolliert" und in der Einleitung. Die Schritt-Symbole
+> `steuern_schritt_*.svg` sind Ricardos SVG aus `06-steuern`. Die folgende
+> Notiz beschreibt die Fassung vom 11.09.2026.
+
 > **„Für Privatpersonen" und „Für Selbständige und Firmen" seit dem 11.09.2026
 > nach Ricardos Referenzgrafik** — ein eigener Baustein
 > (`src/components/blocks/ZielgruppenKarten.tsx`): zwei grosse weisse Karten

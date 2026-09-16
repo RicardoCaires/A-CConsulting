@@ -709,8 +709,9 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
           return (
             <ZielgruppenKarten
               key={index}
-              hintergrund={block.hintergrund}
+              kopf={block.kopf}
               karten={block.karten}
+              hinweis={block.hinweis}
               locale={locale}
             />
           )
