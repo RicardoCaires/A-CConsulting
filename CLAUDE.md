@@ -510,6 +510,11 @@ Verbindlich sind **sieben** Abschnitte. Der Wortlaut steht in
 > - Die **Schlusszeile des Modellabschnitts** ist entfallen — „A&C Consulting
 >   GmbH" links, „Persönlich. Unabhängig. An Ihrer Seite." rechts. Der Zusatz
 >   steht damit nur noch unter den häufigen Fragen.
+> - **Die Ergebniskarte und die Nutzenleiste sind eingefasst** (16.09.2026):
+>   „Die beste Lösung für Sie" steht als weisse Karte mit feinem Rand und
+>   12 px Radius mittig unter der Klammer — nachgemessen 313 px Abstand nach
+>   links wie nach rechts. Die Nutzenleiste hat statt zweier Haarlinien einen
+>   Rand rundherum und dieselben abgerundeten Ecken.
 
 > **Am 15.09.2026 von sieben auf fünf verkürzt** auf Ricardos Anweisung, per
 > Screenshot. Weggefallen sind **„Eine Stelle für Ihre Administration"** — die
