@@ -352,15 +352,19 @@
   transform: translateY(-6px);
 }
 
+/* Seit dem 16.09.2026 eine weisse Karte wie die uebrigen: abgerundet, mit
+   feinem Rand, mittig unter der Klammer. Sie deckt die Klammer an dieser
+   Stelle ab — vorher tat das eine Flaeche im Ton des Abschnittsgrunds. */
 .ergebnis {
   position: absolute;
   bottom: 0;
   left: 50%;
   min-width: 27.5rem;
-  padding-inline: var(--ac-space-md);
+  padding: var(--ac-space-sm) var(--ac-space-lg);
   text-align: center;
-  /* Stanzt die Klammer frei — dieselbe Farbe wie der Abschnittsgrund. */
-  background-color: var(--ac-color-background-light);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
   transform: translateX(-50%);
 }
 
@@ -380,14 +384,18 @@
 
 /* ---- 4 Die Nutzenleiste ---------------------------------------------------- */
 
+/* Seit dem 16.09.2026 rundherum eingefasst: Rand auf allen vier Seiten und
+   abgerundete Ecken, wie bei den uebrigen Karten. Vorher lag die Leiste nur
+   zwischen zwei Haarlinien. */
 .nutzen {
   display: grid;
   margin: 0;
   padding: 0;
+  overflow: hidden;
   list-style: none;
   background-color: color-mix(in srgb, var(--ac-color-white) 72%, transparent);
-  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
-  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  border-radius: var(--ac-radius-md);
 }
 
 .nutzenPosten {
