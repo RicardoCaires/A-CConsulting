@@ -203,7 +203,7 @@ export const versicherungen: PageContent = {
       kind: 'betreuung',
       id: 'betreuung',
       eyebrow: 'Betreuung nach dem Abschluss',
-      heading: 'Nach dem Abschluss hört es nicht auf',
+      heading: 'Auch nach dem Abschluss für Sie da.',
       karten: [
         {
           bild: '01_betreuung_adresse',
