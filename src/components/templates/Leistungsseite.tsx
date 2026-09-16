@@ -59,14 +59,6 @@ function flaechenFolge(anzahl: number): Surface[] {
   return Array.from({ length: anzahl }, (_, i) => (i % 2 === 0 ? 'weiss' : 'hell'))
 }
 
-/**
- * Die Nummernkreise des Ablaufs. Es sind die Dateien, die Ricardo fuer den
- * Ablauf auf `/treuhand` geliefert hat — dieselbe Gestaltung, nicht neu
- * gezeichnet. Mehr als vier gibt es nicht; ein fuenfter Schritt traegt seine
- * Nummer als Text.
- */
-const NUMMERN = ['01_schritt_01', '02_schritt_02', '03_schritt_03', '04_schritt_04'] as const
-
 type Props = {
   inhalt: Leistungsseite
   locale: Locale
@@ -168,49 +160,6 @@ export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
           </div>
         </section>
 
-        {/* ---- 3 Ablauf --------------------------------------------------- */}
-        <section
-          id="ablauf"
-          aria-labelledby="ablauf-titel"
-          className={`${styles.zonenAbschnitt} ${styles.ablaufAbschnitt}`}
-        >
-          <div className={`ac-container ${styles.zonenContainer}`}>
-            <h2 id="ablauf-titel" className={styles.zonenTitel}>
-              <Translated value={inhalt.abschnitte.ablauf} />
-            </h2>
-
-            <ol className={styles.ablaufKarten} role="list">
-              {inhalt.ablauf.map((schritt, index) => {
-                const nummer = NUMMERN[index]
-                return (
-                  <li key={index} className={styles.ablaufKarte}>
-                    {nummer ? (
-                      <Image
-                        className={styles.nummer}
-                        src={`/bilder/treuhand/${nummer}.svg`}
-                        alt=""
-                        width={512}
-                        height={512}
-                        unoptimized
-                      />
-                    ) : (
-                      <span className={`${styles.nummer} ${styles.nummerText}`} aria-hidden="true">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                    )}
-                    {schritt.bild && symbol(schritt.bild, 'ablauf')}
-                    <h3 className={styles.ablaufTitel}>
-                      <Translated value={schritt.titel} />
-                    </h3>
-                    <p className={styles.ablaufText}>
-                      <TranslatedRich value={schritt.text} />
-                    </p>
-                  </li>
-                )
-              })}
-            </ol>
-          </div>
-        </section>
       </div>
 
       {/* ---- 4 Vertiefung, optional ---------------------------------------

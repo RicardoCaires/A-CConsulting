@@ -162,6 +162,26 @@
   grid-template-areas: 'nr icon text';
   column-gap: clamp(0.875rem, 1.8vw, 1.5rem);
   align-items: start;
+  /* Damit die Hervorhebung Luft um den Text hat, ohne das Raster der Kreise
+     und der Verbindungslinie zu verschieben. */
+  margin-inline: calc(var(--ac-space-sm) * -1);
+  padding: var(--ac-space-2xs) var(--ac-space-sm);
+  border-radius: var(--ac-radius-md);
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+/* Beim Darueberfahren hebt sich der einzelne Schritt ab: ein sehr leichter
+   Grund in Navy, gerade genug, um ihn von den beiden anderen zu trennen.
+   Die Schrift bleibt dunkel — ein voller Navy-Grund haette den hellen Kreis
+   der Nummer und des Symbols mitten im Text stehen lassen. */
+.schritt:hover {
+  background-color: color-mix(in srgb, var(--ac-color-primary-navy) 7%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .schritt {
+    transition: none;
+  }
 }
 
 /* Die senkrechte Linie verbindet die Nummern. Sie haengt am Schritt darueber

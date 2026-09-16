@@ -1188,6 +1188,10 @@ Betriebe und Selbstständige in der Region.
 > Telefon eine. Die Verbindungslinien stehen nur in der Viererreihe. Die
 > Nummern sind SVG mit Georgia als Schrift; fehlt Georgia, nimmt der Browser
 > eine ähnliche Serifenschrift.
+>
+> **Seit dem 16.09.2026 werden die vier Karten beim Darüberfahren navy**,
+> Überschrift und Text weiss (9.4:1). Nummernkreis und grüner Strich bringen
+> ihre Farbe selbst mit und bleiben.
 
 > **„Sie haben bereits einen Treuhänder?" ist seit dem 11.09.2026 ein eigener
 > Baustein** (`src/components/blocks/WechselHinweis.tsx`), nach Ricardos
@@ -1210,6 +1214,11 @@ Betriebe und Selbstständige in der Region.
 >
 > Die Symbole und Nummern tragen ein Grün, das weder `accent_green` noch dem
 > Grün der Leistungssymbole entspricht. Auf Ricardos Regel hin unverändert.
+>
+> **Seit dem 16.09.2026 hebt sich der einzelne Schritt beim Darüberfahren
+> ab** — ein sehr leichter Grund in Navy, gerade genug, um ihn von den beiden
+> anderen zu trennen. Die Schrift bleibt dunkel: Ein voller Navy-Grund liesse
+> den hellen Kreis von Nummer und Symbol mitten im Text stehen.
 >
 > **Das Handschlag-Symbol ist seit dem 11.09.2026 Ricardos zweite Lieferung**,
 > ein PNG statt des SVG (`03_handschlag.webp`). Sein Kreis nimmt 72.8 Prozent
@@ -1275,6 +1284,14 @@ Betriebe und Selbstständige in der Region.
 > Vorlage B gilt heute nur für diese Seite. Die neuen Felder `bild` und
 > `hintergrund` sind optional; ohne sie fällt die Vorlage auf die Zeichen aus
 > `Icon.tsx` und den hellen Grundton zurück.
+>
+> **Der Abschnitt „So läuft die Zusammenarbeit" ist am 16.09.2026 entfallen**,
+> auf Ricardos Anweisung. Die Seite trägt seither Seitenkopf, „Was wir
+> übernehmen", „Was Sie uns liefern" und die häufigen Fragen. Der Wortlaut
+> der vier Schritte steht unverändert in `src/content/pages/buchhaltung/`;
+> die Nummernkreise `01_schritt_01` bis `04_schritt_04` stehen damit auf
+> `/treuhand/buchhaltung` auf keiner Seite mehr — auf `/treuhand` tragen sie
+> weiterhin den Ablauf.
 >
 > **Der Abschluss „Reden wir über Ihre Administration" ist auf
 > `/treuhand/buchhaltung` am 11.09.2026 entfallen**, auf Ricardos Anweisung.
