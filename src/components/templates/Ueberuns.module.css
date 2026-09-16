@@ -389,6 +389,8 @@
   display: grid;
   grid-row: 1;
   min-height: 19.375rem;
+  /* Hellblau — die Flaeche liegt in der weissen Standortkarte, nicht auf dem
+     Grund des Abschnitts. */
   background-color: var(--ac-color-background-tint);
 }
 

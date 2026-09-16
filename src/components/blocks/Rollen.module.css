@@ -14,7 +14,9 @@
 
 .abschnitt {
   padding-block: var(--ac-section-y-lg);
-  background-color: var(--ac-color-background-light);
+  /* Hellblau wie jeder Inhaltsabschnitt, seit dem 16.09.2026 auf Ricardos
+     Anweisung. */
+  background-color: var(--ac-color-background-tint);
 }
 
 .abschnitt .container {

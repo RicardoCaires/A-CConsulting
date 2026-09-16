@@ -96,7 +96,8 @@
   letter-spacing: var(--ac-eyebrow-tracking);
   text-transform: uppercase;
   color: var(--ac-color-text-secondary);
-  background-color: var(--ac-color-background-tint);
+  /* Weiss statt hellblau, seit die Abschnitte selbst hellblau sind. */
+  background-color: var(--ac-color-white);
   border-radius: var(--ac-radius-sm);
   padding: 0.1em 0.45em;
   white-space: nowrap;
