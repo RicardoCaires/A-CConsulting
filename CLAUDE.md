@@ -1772,6 +1772,13 @@ eidg. Fachausweis suggeriert.
 > mit einem t, auch auf `/steuern` und weiter unten auf derselben Seite. Sie
 > ist beibehalten, damit nicht zwei Schreibweisen nebeneinander stehen.
 
+> **Die Gründungscheckliste ist am 16.09.2026 auf Ricardos Anweisung von
+> `/firmengruendung` entfallen** („bitte löschen"). Der Baustein
+> `Checkliste.tsx` bleibt liegen; der Wortlaut steht in
+> `content/source/firmengruendung_checkliste_de.md`. **Damit ist auch der offene
+> Punkt „Gründungscheckliste als PDF" gegenstandslos**, solange sie nicht
+> zurückkommt. Die folgende Notiz beschreibt die frühere Fassung.
+
 > **Die Gründungscheckliste ist seit dem 14.09.2026 ein eigener Baustein**
 > (`src/components/blocks/Checkliste.tsx`), nach Ricardos HTML-Vorlage: eine
 > weisse Karte auf hellem Grund, links Kategoriezeile „Für Ihren Start",
