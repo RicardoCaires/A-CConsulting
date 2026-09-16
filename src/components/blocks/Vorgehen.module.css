@@ -92,6 +92,25 @@
   border-radius: var(--ac-radius-md);
   /* Sehr weich: Die Karte hebt sich vom Grund ab, sie liegt nicht auf. */
   box-shadow: 0 10px 30px color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+/* Beim Darueberfahren wird die ganze Karte navy, Ueberschrift und Text weiss
+   (9.4:1) — wie die Ausgangslagen auf der Startseite. Der Nummernkreis und
+   der gruene Strich bringen ihre Farbe selbst mit und bleiben. */
+.schritt:hover {
+  background-color: var(--ac-color-primary-navy);
+}
+
+.schritt:hover .schrittTitel,
+.schritt:hover .satz {
+  color: var(--ac-color-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .schritt {
+    transition: none;
+  }
 }
 
 /* Die Datei traegt rund um ihren Kreis einen transparenten Rand von 16.6
