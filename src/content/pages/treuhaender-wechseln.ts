@@ -76,58 +76,9 @@ export const treuhaenderWechseln: PageContent = {
       },
     },
 
-    // 03 So laeuft der Wechsel ab — seit dem 15.09.2026 eine waagrechte Reihe
-    // nach Ricardos HTML-Vorlage (`content/source/wechsel_ablauf_de.md`).
-    // Vorher eine senkrechte `steps`-Liste; deren Wortlaut steht unveraendert
-    // in `schritt4_fassung2_de.md`. Der Anker `vorgehen` bleibt.
-    //
-    // **Die Reihe bricht nie in eine Liste um** — auf schmalen Geraeten wird
-    // sie gescrollt, mit Einrasten. Das verlangt der Auftrag ausdruecklich.
-    //
-    // Die fuenf Piktogramme hat Ricardo zusammen mit der Vorlage geliefert,
-    // benannt nach genau diesen fuenf Schritten. Die Vorlage selbst zeigt nur
-    // die Nummernkreise; ohne `bild` faellt das Piktogramm weg.
-    {
-      kind: 'prozessreihe',
-      id: 'vorgehen',
-      eyebrow: 'Strukturiert übergeben',
-      heading: 'So läuft der Wechsel ab',
-      bereichsname: 'Fünf Schritte des Treuhänderwechsels',
-      lead: [
-        'Wir klären zuerst die Ausgangslage und führen die Übergabe danach Schritt für Schritt durch. Sie wissen jederzeit, was als Nächstes geschieht.',
-      ],
-      schritte: [
-        {
-          bild: 'wechsel_ablauf_situation',
-          titel: 'Situation klären',
-          text: 'Wir erfassen die heutigen Aufgaben, Termine, Systeme und den Stand der laufenden Arbeiten.',
-        },
-        {
-          bild: 'wechsel_ablauf_leistungen',
-          titel: 'Leistungen festlegen',
-          text: 'Sie erhalten eine klare Übersicht: Was übernehmen wir, was bleibt bei Ihnen und welche Kosten entstehen?',
-        },
-        {
-          bild: 'wechsel_ablauf_zeitpunkt',
-          titel: 'Zeitpunkt bestimmen',
-          text: 'Wir prüfen Vertrag, Kündigungsfristen und offene Arbeiten und legen einen passenden Übergabetermin fest.',
-        },
-        {
-          bild: 'wechsel_ablauf_uebergabe',
-          titel: 'Übergabe koordinieren',
-          text: 'Nach Ihrem Auftrag stimmen wir die Übergabe mit dem bisherigen Treuhänder ab und übernehmen die Unterlagen.',
-        },
-        {
-          bild: 'wechsel_ablauf_start',
-          titel: 'Zusammenarbeit starten',
-          text: 'Wir richten die Abläufe ein, prüfen die übernommenen Daten und melden uns, falls etwas ergänzt werden muss.',
-        },
-      ],
-      hinweis: {
-        titel: 'Sie behalten die Kontrolle:',
-        text: 'Ohne Ihren ausdrücklichen Auftrag nehmen wir keinen Kontakt zu Ihrem bisherigen Treuhänder auf.',
-      },
-    },
+    // 03 So laeuft der Wechsel ab — am 16.09.2026 auf Ricardos Anweisung
+    // entfallen („bitte löschen"). Wortlaut in
+    // `content/source/wechsel_ablauf_de.md`.
 
     // 04 Wann ist ein Wechsel sinnvoll — seit dem 15.09.2026 zwei gleich grosse
     // Kacheln nach Ricardos HTML-Vorlage
