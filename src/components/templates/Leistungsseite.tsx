@@ -6,7 +6,6 @@ import { Banner } from '@/components/blocks/Banner'
 import { pruefeFlaechen, type Surface } from '@/components/blocks/Section'
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
-import { RichText } from '@/components/ui/RichText'
 import { alsText, Translated, TranslatedRich } from '@/components/ui/Translated'
 import type { Leistungsseite } from '@/content/schema'
 import type { Locale } from '@/i18n/config'
@@ -189,16 +188,16 @@ export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
           id="vertiefung"
           aria-labelledby="vertiefung-titel"
           className={styles.liefern}
-          style={
-            vertiefung.hintergrund
-              ? { backgroundImage: `url(${bildPfad(vertiefung.hintergrund)})` }
-              : undefined
-          }
         >
-          <div className={`ac-container ${styles.liefernContainer}`}>
+          <div className="ac-container">
             <div className={styles.liefernRaster}>
-              <div>
-                <h2 id="vertiefung-titel" className={styles.zonenTitel}>
+              <div className={styles.liefernEinstieg}>
+                {vertiefung.kategorie && (
+                  <p className={styles.leistungsEyebrow}>
+                    <Translated value={vertiefung.kategorie} />
+                  </p>
+                )}
+                <h2 id="vertiefung-titel" className={styles.liefernTitel}>
                   <Translated value={vertiefung.titel} />
                 </h2>
                 {vertiefung.absaetze.map((absatz, index) => (
@@ -206,64 +205,80 @@ export function LeistungsseiteTemplate({ inhalt, locale }: Props) {
                     <TranslatedRich value={absatz} />
                   </p>
                 ))}
+                {vertiefung.hinweis && (
+                  <p className={styles.liefernNotiz}>
+                    <Translated value={vertiefung.hinweis} />
+                  </p>
+                )}
               </div>
 
-              {vertiefung.liste && vertiefung.liste.length > 0 && (
+              {vertiefung.eintraege && vertiefung.eintraege.length > 0 && (
                 <div className={styles.liefernKarte}>
                   {vertiefung.listenTitel && (
-                    <p className={styles.liefernKartenTitel}>
+                    <p id="vertiefung-liste" className={styles.liefernKartenTitel}>
                       <Translated value={vertiefung.listenTitel} />
                     </p>
                   )}
-                  <ul className={styles.liefernListe} role="list">
-                    {vertiefung.liste.map((eintrag, index) => {
-                      const bild = vertiefung.listenBilder?.[index]
-                      return (
-                        <li key={index} className={styles.liefernEintrag}>
-                          {bild ? (
-                            <Image
-                              className={styles.liefernSymbol}
-                              src={bildPfad(bild)}
-                              alt=""
-                              width={256}
-                              height={256}
-                              unoptimized
-                            />
-                          ) : (
-                            <span aria-hidden="true" />
-                          )}
-                          <span className={styles.liefernEintragText}>
-                            <RichText value={eintrag} />
+                  {/* Jeder Eintrag nimmt den Fokus auf — der Auftrag verlangt
+                      denselben Zustand bei Tastaturfokus wie beim Zeigen. */}
+                  <ul
+                    className={styles.liefernListe}
+                    role="list"
+                    aria-labelledby={vertiefung.listenTitel ? 'vertiefung-liste' : undefined}
+                  >
+                    {vertiefung.eintraege.map((eintrag, index) => (
+                      <li key={index} className={styles.liefernEintrag} tabIndex={0}>
+                        {eintrag.bild ? (
+                          <Image
+                            className={styles.liefernSymbol}
+                            src={bildPfad(eintrag.bild)}
+                            alt=""
+                            width={256}
+                            height={256}
+                            unoptimized
+                          />
+                        ) : (
+                          <span aria-hidden="true" />
+                        )}
+                        <span>
+                          <span className={styles.liefernEintragTitel}>
+                            <Translated value={eintrag.titel} />
                           </span>
-                        </li>
-                      )
-                    })}
+                          {eintrag.text && (
+                            <span className={styles.liefernEintragText}>
+                              <Translated value={eintrag.text} />
+                            </span>
+                          )}
+                        </span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               )}
-
-              {vertiefung.nachsatz && vertiefung.nachsatz.length > 0 && (
-                <div className={styles.liefernHinweis}>
-                  {vertiefung.nachsatzBild && (
-                    <Image
-                      className={styles.liefernSymbol}
-                      src={bildPfad(vertiefung.nachsatzBild)}
-                      alt=""
-                      width={256}
-                      height={256}
-                      unoptimized
-                    />
-                  )}
-                  <div className={styles.liefernHinweisText}>
-                    {vertiefung.nachsatz.map((absatz, index) => (
-                      <p key={index}>
-                        <RichText value={absatz} />
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
+
+            {vertiefung.uebergabe && (
+              <aside className={styles.liefernUebergabe}>
+                {vertiefung.uebergabe.bild && (
+                  <Image
+                    className={styles.liefernUebergabeSymbol}
+                    src={bildPfad(vertiefung.uebergabe.bild)}
+                    alt=""
+                    width={256}
+                    height={256}
+                    unoptimized
+                  />
+                )}
+                <div>
+                  <p className={styles.liefernUebergabeTitel}>
+                    <Translated value={vertiefung.uebergabe.titel} />
+                  </p>
+                  <p className={styles.liefernUebergabeText}>
+                    <Translated value={vertiefung.uebergabe.text} />
+                  </p>
+                </div>
+              </aside>
+            )}
           </div>
         </section>
       )}
