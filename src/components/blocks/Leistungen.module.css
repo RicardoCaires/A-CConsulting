@@ -1,29 +1,30 @@
 /* „Was wir uebernehmen" auf `/treuhand`.
 
-   Nach Ricardos Referenzgrafik vom 11.09.2026: Kategoriezeile mit gruenem
-   Strich, grosser Titel, Einleitung, darunter weisse Karten in zwei Spalten.
+   Seit dem 16.09.2026 nach Ricardos Designreferenz: Kategoriezeile mit gruenem
+   Strich, grosser Titel, Einleitung, darunter sechs gleich grosse weisse
+   Kacheln auf hellblauem Grund. Je Kachel Piktogramm, Ueberschrift, kurzer
+   gruener Strich und drei Stichpunkte.
 
-   Der Abschnitt steht im Standardcontainer der Website und auf der Flaeche,
-   die ihm die Seite zuweist. Die Referenz zeigt einen sehr hellen Grund; der
-   folgende Abschnitt „Fuer wen wir arbeiten" steht aber schon auf dem hellen
-   Grundton. Zwei fast gleiche Toene hintereinander wuerden die Seite streifen
-   statt gliedern — die Karten tragen darum Kontur und einen sehr weichen
-   Schatten, damit sie sich auch auf Weiss als Karten abheben.
+   Drei Anordnungen, wie der Auftrag sie nennt:
 
-   Drei Anordnungen:
+     Telefon           eine Spalte
+     ab 40rem          zwei Spalten
+     ab 64rem          drei Spalten, zwei Reihen
 
-     schmal            eine Spalte; Symbol und Pfeil oben, Text darunter
-     40rem bis 75rem   eine Spalte; Symbol, Text und Pfeil nebeneinander
-     ab 75rem          zwei Spalten, gleich hohe Karten je Reihe
+   `grid-auto-rows: 1fr` haelt alle Kacheln exakt gleich gross, unabhaengig von
+   der Laenge der Stichpunkte.
 
    Alles ist auf diesen Baustein gekapselt. */
 
 .leistungen {
   /* Kantenlaenge der Symboldatei. Der sichtbare Kreis misst davon 65.6 Prozent
-     (Radius 168 von 512) — bei 5.5rem also 58 px, ab Desktop bei 7rem 73 px.
-     Beides liegt in den Groessen, die der Auftrag nennt (mobil 52 bis 60,
-     Desktop 64 bis 74 px). */
+     (Radius 168 von 512) — bei 5.5rem also 58 px, ab 64rem bei 6.5rem 68 px. */
   --icon: 5.5rem;
+}
+
+/** Hellblauer Grund des Abschnitts, auf Ricardos Vorgabe. */
+.flaeche {
+  background-color: var(--ac-color-background-tint);
 }
 
 /* ---- Kopf ------------------------------------------------------------------ */
@@ -73,82 +74,134 @@
 
 .raster {
   display: grid;
+  /* Gleich grosse Kacheln, auch wenn eine kuerzere Stichpunkte traegt. */
+  grid-auto-rows: 1fr;
   gap: clamp(1rem, 2vw, 1.5rem);
   margin: clamp(2rem, 4vw, 3rem) 0 0;
   padding: 0;
   list-style: none;
 }
 
-/* ---- Karte ----------------------------------------------------------------- */
+/* ---- Kachel ----------------------------------------------------------------
+
+   Der Zustand beim Darueberfahren steht in Ricardos Auftrag ausgeschrieben:
+   die ganze Kachel navy, Rahmen navy, Schrift weiss, drei Pixel angehoben.
+   Angehoben wird mit `transform` — das veraendert keine Groesse und verschiebt
+   nichts im Raster. Der Rahmen ist im Ruhezustand schon da und wechselt nur
+   die Farbe; ohne ihn spraenge die Kachel beim Zeigen um zwei Pixel. */
 
 .karte {
   position: relative;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  grid-template-areas: 'icon inhalt pfeil';
-  align-items: center;
-  column-gap: clamp(1rem, 1.6vw, 1.25rem);
-  padding: clamp(1.25rem, 2vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(1.5rem, 2.2vw, 1.875rem);
   background-color: var(--ac-color-white);
-  border: var(--ac-border-hairline) solid
-    color-mix(in srgb, var(--ac-color-primary-navy) 11%, transparent);
+  border: var(--ac-border-hairline) solid var(--ac-border-soft);
   border-radius: var(--ac-radius-md);
-  box-shadow: 0 6px 20px color-mix(in srgb, var(--ac-color-primary-navy) 4%, transparent);
   transition:
     transform var(--ac-motion-base) var(--ac-motion-easing),
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
     border-color var(--ac-motion-base) var(--ac-motion-easing),
-    box-shadow var(--ac-motion-base) var(--ac-motion-easing);
+    color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.karte:hover,
+.karte:focus-within {
+  transform: translateY(-3px);
+  background-color: var(--ac-color-primary-navy);
+  border-color: var(--ac-color-primary-navy);
 }
 
 /* Die Datei traegt rund um ihren Kreis einen transparenten Rand von 17.2
    Prozent je Seite. Der negative Rand gleicht ihn aus: Im Layout zaehlt nur
-   der sichtbare Kreis, und nichts wird beschnitten. */
+   der sichtbare Kreis, und nichts wird beschnitten. Das Piktogramm bleibt beim
+   Darueberfahren unveraendert — es bringt seinen hellblauen Kreis selbst mit. */
 .icon {
-  grid-area: icon;
   display: block;
   width: var(--icon);
-  /* Die allgemeine Regel `img { max-width: 100% }` deckelte das Symbol auf
-     die Spaltenbreite, die wegen des negativen Randes nur den Kreis umfasst —
-     der Kreis mass 48 statt 73 px, gemessen am 11.09.2026. */
+  /* Die allgemeine Regel `img { max-width: 100% }` deckelte das Symbol auf die
+     Breite, die wegen des negativen Randes nur den Kreis umfasst. */
   max-width: none;
   height: var(--icon);
   margin: calc(var(--icon) * -0.171875);
   object-fit: contain;
 }
 
-.inhalt {
-  grid-area: inhalt;
-  min-width: 0;
-}
-
 .kartenTitel {
-  margin: 0;
+  /* Der negative Rand des Piktogramms endet an der Kreiskante — von dort aus
+     reicht 1rem. */
+  margin: 1rem 0 0;
   font-family: var(--ac-font-display);
-  font-size: clamp(1.25rem, 1.05rem + 0.55vw, 1.5rem);
+  font-size: clamp(1.25rem, 1.05rem + 0.45vw, 1.4375rem);
   line-height: 1.25;
   font-weight: var(--ac-display-weight);
   letter-spacing: -0.005em;
   color: var(--ac-color-primary-navy);
-  /* „Unternehmensadministration" ist breiter als manche Spalte. Getrennt wird
+  /* „Lohn & Sozialversicherungen" ist breiter als eine Spalte. Getrennt wird
      nach deutscher Regel, nicht mitten im Wort abgeschnitten. */
   hyphens: auto;
   overflow-wrap: break-word;
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.satz {
-  margin: 0.5rem 0 0;
-  max-width: 54ch;
-  /* Eine Stufe unter dem Fliesstext: Im Standardcontainer ist eine Karte
-     536 px breit, und in Fliesstextgroesse lief der Satz zur Buchhaltung
-     auf fuenf Zeilen — gemessen am 11.09.2026 bei 1440 px. */
+/* Der kurze gruene Strich unter der Ueberschrift. Er bleibt beim Darueberfahren
+   sichtbar, wie der Auftrag es verlangt. Gruen auf Navy steht bei 2.1:1 — als
+   Marke sichtbar, als Text waere das zu wenig. Er traegt keinen Inhalt. */
+.strich {
+  display: block;
+  width: 2.25rem;
+  height: 2px;
+  margin: 0.875rem 0 0;
+  background-color: var(--ac-color-accent-green);
+}
+
+.punkte {
+  margin: var(--ac-space-sm) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.punkt {
+  position: relative;
+  padding-left: 1.125rem;
   font-size: 1rem;
   line-height: 1.55;
   color: var(--ac-color-text-secondary);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.punkt + .punkt {
+  margin-top: 0.5rem;
+}
+
+/* Der Aufzaehlungspunkt bleibt gruen, auch auf der navy Kachel — so verlangt
+   es der Auftrag. Er ist eine Marke, kein Text: Was der Punkt sagt, steht
+   daneben in Weiss. */
+.punkt::before {
+  content: '';
+  position: absolute;
+  top: 0.6em;
+  left: 0;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background-color: var(--ac-color-accent-green);
+}
+
+/* Ueberschrift und Stichpunkte werden weiss (11.6:1 und 11.6:1). */
+.karte:hover .kartenTitel,
+.karte:focus-within .kartenTitel,
+.karte:hover .punkt,
+.karte:focus-within .punkt {
+  color: var(--ac-color-white);
 }
 
 /* ---- Link und Pfeil ---------------------------------------------------------
 
-   Der Link sitzt auf dem Titel und spannt sich ueber die ganze Karte. */
+   Der Link sitzt auf der Ueberschrift und spannt sich ueber die ganze Kachel.
+   Er ist der Grund, weshalb `:focus-within` greift: Ohne ihn gaebe es in der
+   Kachel nichts, was den Fokus aufnehmen koennte. */
 
 .link {
   color: inherit;
@@ -176,91 +229,79 @@
   outline-offset: 3px;
 }
 
+/* Der Pfeil zeigt nur an, dass die Kachel ein Ziel hat. */
 .pfeil {
-  grid-area: pfeil;
-  display: inline-grid;
-  place-items: center;
-  /* Der Pfeil zeigt nur an — Trefferflaeche ist die ganze Karte. Er darf
-     darum kleiner sein als die 44 px einer eigenen Schaltflaeche. */
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  font-size: 1.125rem;
-  line-height: 1;
+  margin-left: 0.4em;
+  font-size: 0.85em;
+  color: var(--ac-color-accent-green);
+}
+
+.karte:hover .pfeil,
+.karte:focus-within .pfeil {
+  color: var(--ac-color-white);
+}
+
+/* ---- Hinweis unter den Kacheln --------------------------------------------- */
+
+.hinweis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  align-items: baseline;
+  margin: clamp(1rem, 2vw, 1.5rem) 0 0;
+  padding: 1rem 1.25rem;
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-border-soft);
+  border-left: var(--ac-border-marker) solid var(--ac-color-accent-green);
+  border-radius: var(--ac-radius-md);
+}
+
+.hinweisTitel {
+  font-weight: 600;
   color: var(--ac-color-primary-navy);
-  background-color: var(--ac-color-background-light);
-  transition:
-    transform var(--ac-motion-base) var(--ac-motion-easing),
-    background-color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-/* Dezent: Die Karte hebt sich zwei Pixel, die Kontur wird eine Spur kraeftiger,
-   der Pfeil rueckt nach rechts. Nur verlinkte Karten reagieren — eine Karte
-   ohne Ziel soll nicht so tun, als koenne man sie anklicken. */
-.verlinkt:hover,
-.verlinkt:focus-within {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--ac-color-primary-navy) 22%, transparent);
-  box-shadow: 0 12px 28px color-mix(in srgb, var(--ac-color-primary-navy) 7%, transparent);
+.hinweisText {
+  font-size: var(--ac-small-size);
+  line-height: 1.55;
+  color: var(--ac-color-text-secondary);
 }
 
-.verlinkt:hover .pfeil,
-.verlinkt:focus-within .pfeil {
-  transform: translateX(3px);
-  background-color: var(--ac-color-background-tint);
-}
+/* ---- Ab 40rem zwei Spalten, ab 64rem drei ---------------------------------- */
 
-/* ---- Schmale Geraete: Symbol und Pfeil oben, der Text darunter --------------
-
-   Neben Symbol und Pfeil blieben bei 375 px keine 180 px fuer den Text —
-   zu wenig fuer „Unternehmensadministration". */
-
-@media (max-width: 39.99rem) {
-  .karte {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    grid-template-areas:
-      'icon . pfeil'
-      'inhalt inhalt inhalt';
-    row-gap: var(--ac-space-sm);
-  }
-}
-
-/* ---- Ab 64rem groesseres Symbol, ab 75rem zwei Spalten ----------------------
-
-   Zwei Spalten erst ab 75rem, wie beim einzeiligen Kopfbereich. Bei 1024 px
-   war eine Karte in zwei Spalten 462 px breit, und der Satz zur Buchhaltung
-   lief auf sechs Zeilen — gemessen am 11.09.2026. Darunter steht je Reihe eine
-   Karte ueber die volle Breite. */
-
-@media (min-width: 64rem) {
-  .leistungen {
-    --icon: 7rem;
-  }
-}
-
-@media (min-width: 75rem) {
+@media (min-width: 40rem) {
   .raster {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+@media (min-width: 64rem) {
+  .leistungen {
+    --icon: 6.5rem;
+  }
+
+  .raster {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .karte,
+  .kartenTitel,
+  .punkt,
   .pfeil {
     transition: none;
   }
 
-  .verlinkt:hover,
-  .verlinkt:focus-within,
-  .verlinkt:hover .pfeil,
-  .verlinkt:focus-within .pfeil {
+  .karte:hover,
+  .karte:focus-within {
     transform: none;
   }
 }
 
 @media print {
   .karte {
-    box-shadow: none;
+    border-color: var(--ac-color-border-light);
     break-inside: avoid;
   }
 

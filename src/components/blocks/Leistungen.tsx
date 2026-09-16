@@ -6,36 +6,42 @@ import { isPublished, path, type PageKey } from '@/i18n/routes'
 import styles from './Leistungen.module.css'
 
 /**
- * „Was wir uebernehmen" auf `/treuhand` — die Leistungen als Kartenraster.
+ * „Was wir uebernehmen" auf `/treuhand` — die Leistungen als Kachelraster.
  *
- * Nach Ricardos Referenzgrafik vom 11.09.2026: Kategoriezeile mit gruenem
- * Strich, grosser Titel, Einleitung, darunter zwei Spalten mit weissen Karten.
- * Je Karte links das gelieferte Symbol, daneben Titel und Satz, rechts ein
- * kleiner Pfeil. Bis dahin ein `subsections`-Block aus reinem Text.
+ * **Seit dem 16.09.2026 sechs gleich grosse Kacheln** nach Ricardos
+ * Designreferenz: Piktogramm auf hellblauem Kreis, Ueberschrift, kurzer
+ * gruener Strich, drei Stichpunkte. Desktop drei Spalten und zwei Reihen,
+ * Tablet zwei, Telefon eine. Darunter ein kompakter Hinweis. Bis dahin sieben
+ * Karten in zwei Spalten mit Symbol links und Satz daneben.
  *
- * **Der Abschnitt bleibt in der Flaechenfolge der Seite.** Er wird ueber den
- * normalen Weg in `PageBlocks` ausgegeben und bekommt dieselbe Flaeche wie
- * vorher. Die Abschnitte darunter behalten damit ihren Grund.
+ * **Alle Kacheln sind exakt gleich gross** (`grid-auto-rows: 1fr`), unabhaengig
+ * davon, wie lang die Stichpunkte sind.
  *
- * **Verlinkt wird nur, was es gibt.** Eine Karte wird zum Link, wenn ihre
+ * **Der Grund ist hellblau**, auf Ricardos Vorgabe — dafuer setzt `PageBlocks`
+ * `leistungenFlaeche` statt der zugewiesenen Flaeche, wie beim Vorgehen
+ * darunter. Der Wechsel der Abschnitte darunter verschiebt sich nicht.
+ *
+ * **Verlinkt wird nur, was es gibt.** Eine Kachel wird zum Link, wenn ihre
  * Zielseite in dieser Sprache veroeffentlicht ist — sonst steht sie ohne Pfeil
  * da. Ein Pfeil, der ins Leere zeigt, waere ein Versprechen ohne Seite
  * dahinter. Sobald eine Seite veroeffentlicht wird, erscheint ihr Pfeil von
- * selbst.
+ * selbst. Der Link sitzt auf der Ueberschrift und deckt die ganze Kachel ab;
+ * Vorlesewerkzeuge lesen als Linktext die Ueberschrift, nicht „Pfeil".
  *
- * Der Link liegt auf dem Titel und deckt die ganze Karte ab. So ist die
- * Trefferflaeche gross, und Vorlesewerkzeuge lesen als Linktext den Titel —
- * nicht „Pfeil".
- *
- * Die sieben Symbole sind geliefert und stehen unveraendert da: SVG, keine
- * Umfaerbung, kein Beschnitt. Sie bringen ihren hellen Kreis selbst mit; ringsum
- * liegt in der Datei ein transparenter Rand, den das Stylesheet ausgleicht.
+ * Die Piktogramme sind geliefert und stehen unveraendert da: SVG, keine
+ * Umfaerbung, kein Beschnitt — auch im Zustand beim Darueberfahren. Sie bringen
+ * ihren hellblauen Kreis selbst mit; ringsum liegt in der Datei ein
+ * transparenter Rand, den das Stylesheet ausgleicht.
  */
+
+/** Hellblauer Grund des Abschnitts. `PageBlocks` setzt ihn statt der Flaeche. */
+export const leistungenFlaeche = styles.flaeche
 
 type Karte = {
   bild: string
   titel: string
-  satz: string
+  /** Die Stichpunkte der Kachel. */
+  punkte: readonly string[]
   ziel?: PageKey
   anker?: string
 }
@@ -46,10 +52,20 @@ type Props = {
   heading: string
   lead: string
   karten: readonly Karte[]
+  /** Der kompakte Hinweis unter den Kacheln. Optional. */
+  hinweis?: { titel: string; text: string }
   locale: Locale
 }
 
-export function Leistungen({ headingId, eyebrow, heading, lead, karten, locale }: Props) {
+export function Leistungen({
+  headingId,
+  eyebrow,
+  heading,
+  lead,
+  karten,
+  hinweis,
+  locale,
+}: Props) {
   return (
     <div className={styles.leistungen}>
       <div className={styles.kopf}>
@@ -68,11 +84,8 @@ export function Leistungen({ headingId, eyebrow, heading, lead, karten, locale }
               : null
 
           return (
-            <li
-              key={karte.titel}
-              className={href ? `${styles.karte} ${styles.verlinkt}` : styles.karte}
-            >
-              {/* Gestaltung, kein Inhalt: Was die Karte meint, sagt ihr Titel. */}
+            <li key={karte.titel} className={styles.karte}>
+              {/* Gestaltung, kein Inhalt: Was die Kachel meint, sagt ihr Titel. */}
               <Image
                 className={styles.icon}
                 src={`/bilder/treuhand/${karte.bild}.svg`}
@@ -82,28 +95,39 @@ export function Leistungen({ headingId, eyebrow, heading, lead, karten, locale }
                 unoptimized
               />
 
-              <div className={styles.inhalt}>
-                <h3 className={styles.kartenTitel}>
-                  {href ? (
-                    <a className={styles.link} href={href}>
-                      {karte.titel}
-                    </a>
-                  ) : (
-                    karte.titel
-                  )}
-                </h3>
-                <p className={styles.satz}>{karte.satz}</p>
-              </div>
+              <h3 className={styles.kartenTitel}>
+                {href ? (
+                  <a className={styles.link} href={href}>
+                    {karte.titel}
+                    <span className={styles.pfeil} aria-hidden="true">
+                      →
+                    </span>
+                  </a>
+                ) : (
+                  karte.titel
+                )}
+              </h3>
 
-              {href && (
-                <span className={styles.pfeil} aria-hidden="true">
-                  →
-                </span>
-              )}
+              <span className={styles.strich} aria-hidden="true" />
+
+              <ul className={styles.punkte} role="list">
+                {karte.punkte.map((punkt) => (
+                  <li key={punkt} className={styles.punkt}>
+                    {punkt}
+                  </li>
+                ))}
+              </ul>
             </li>
           )
         })}
       </ul>
+
+      {hinweis && (
+        <p className={styles.hinweis}>
+          <strong className={styles.hinweisTitel}>{hinweis.titel}</strong>
+          <span className={styles.hinweisText}>{hinweis.text}</span>
+        </p>
+      )}
     </div>
   )
 }

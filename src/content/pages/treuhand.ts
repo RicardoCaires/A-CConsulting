@@ -29,9 +29,11 @@ export const treuhand: PageContent = {
 
   blocks: [
 
-    // 03 Leistungen im Überblick — seit dem 11.09.2026 als Kartenraster nach
-    // Ricardos Referenzgrafik. Kategoriezeile und Einleitung stammen aus
-    // `content/source/treuhand_leistungen_de.md`, die Karten wie bisher.
+    // 03 Leistungen im Überblick — seit dem 16.09.2026 sechs gleich grosse
+    // Kacheln nach Ricardos Designreferenz, hellblau. Titel, Stichpunkte und
+    // der Hinweis darunter stehen in seinem Auftrag ausgeschrieben
+    // (`content/source/treuhand_leistungen_de.md`); Kategoriezeile und
+    // Einleitung sind die vom 11.09.2026.
     // Verlinkt wird nur, was als Seite veroeffentlicht ist — die uebrigen
     // Ziele werden von selbst zu Links, sobald ihre Seite erscheint.
     {
@@ -43,48 +45,70 @@ export const treuhand: PageContent = {
       karten: [
         {
           bild: '01_buchhaltung',
-          titel: 'Buchhaltung',
-          satz: 'Wir führen Ihre Buchhaltung laufend oder periodisch – je nachdem, was zu Ihrem Betrieb passt. Sie liefern die Belege, wir verbuchen sie und sagen Ihnen, was fehlt.',
+          titel: 'Finanzbuchhaltung',
+          punkte: [
+            'Laufende Erfassung und Kontenabstimmung',
+            'Organisation des Rechnungswesens',
+            'Verlässliche Buchführung nach dem vereinbarten Rhythmus',
+          ],
           ziel: 'buchhaltung',
         },
         {
+          // Keine eigene Seite — die Kachel steht ohne Pfeil.
+          bild: '05_unternehmensadministration',
+          titel: 'Debitoren & Kreditoren',
+          punkte: [
+            'Verwaltung offener Kunden- und Lieferantenposten',
+            'Vorbereitung und Überwachung des Zahlungsverkehrs',
+            'Nachvollziehbare Belegorganisation',
+          ],
+        },
+        {
+          bild: '04_jahresabschluss',
+          titel: 'Abschlüsse & Planung',
+          punkte: [
+            'Monats-, Quartals- und Jahresabschlüsse',
+            'Jahresrechnung nach dem anwendbaren Standard',
+            'Liquiditäts-, Budget- und Finanzplanung',
+          ],
+          ziel: 'jahresabschluss',
+        },
+        {
           bild: '02_lohnbuchhaltung',
-          titel: 'Lohnbuchhaltung',
-          satz: 'Monatliche Lohnabrechnungen, Lohnausweise, Quellensteuer und die Meldungen an die Sozialversicherungen.',
+          titel: 'Lohn & Sozialversicherungen',
+          punkte: [
+            'Lohnabrechnungen und Jahresenddeklarationen',
+            'Abrechnungen mit AHV, IV, EO, ALV und Pensionskassen',
+            'Unterstützung bei Lohn- und Sozialversicherungsfragen',
+          ],
           ziel: 'lohnbuchhaltung',
         },
         {
           bild: '03_mehrwertsteuer',
           titel: 'Mehrwertsteuer',
-          satz: 'Abrechnungen, Einhaltung der Fristen und die Wahl der Abrechnungsmethode.',
+          punkte: [
+            'Erstellung und Einreichung der MWST-Abrechnungen',
+            'Prüfung der gewählten Abrechnungsmethode',
+            'Beratung bei MWST-Fragen und Optimierungen',
+          ],
           ziel: 'mehrwertsteuer',
         },
         {
-          bild: '04_jahresabschluss',
-          titel: 'Jahresabschluss',
-          satz: 'Abschluss Ihrer Buchhaltung am Ende des Geschäftsjahres, mit Anhang, Kontenblättern und einer Besprechung.',
-          ziel: 'jahresabschluss',
-        },
-        {
-          // Keine eigene Seite — die Karte steht ohne Pfeil.
-          bild: '05_unternehmensadministration',
-          titel: 'Unternehmensadministration',
-          satz: 'Je nach Situation übernehmen wir auch Zahlungsverkehr, Mahnwesen und die Korrespondenz mit Ämtern. Was davon sinnvoll ist, halten wir in der Offerte fest.',
-        },
-        {
-          bild: '06_firmengruendung',
-          titel: 'Firmengründung',
-          satz: 'Von der Wahl der Rechtsform bis zum Eintrag im Handelsregister. Wir sagen Ihnen vorher, was der Weg kostet und wie lange er dauert.',
-          ziel: 'firmengruendung',
-        },
-        {
           bild: '07_steuern_firmen',
-          titel: 'Steuern für Firmen',
-          satz: 'Die Steuererklärung Ihrer Gesellschaft, aufbauend auf dem Abschluss.',
+          titel: 'Steuerberatung',
+          punkte: [
+            'Steuererklärungen für natürliche und juristische Personen',
+            'Steuervertretung gegenüber den Behörden',
+            'Unterstützung bei konkreten Steuerfragen',
+          ],
           ziel: 'steuern',
           anker: 'firmen',
         },
       ],
+      hinweis: {
+        titel: 'Sie behalten den Überblick:',
+        text: 'Auswertungen und Abschlüsse erhalten Sie zu den gemeinsam vereinbarten Terminen.',
+      },
     },
 
     // Am 11.09.2026 auf Ricardos Anweisung entfallen: 04 „Für wen wir

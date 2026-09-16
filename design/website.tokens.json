@@ -2,7 +2,7 @@
   "$schema": "ac-website-tokens/1.0",
   "beschreibung": "Website-spezifische Tokens. Farben stammen AUSSCHLIESSLICH aus ac-corporate-design.tokens.json; hier stehen nur Ableitungen (Interaktionszustaende) und Groessen, die es im Dokumentstandard nicht gibt (Raster, Radien, Web-Typoskala).",
   "quelle_farben": "design/ac-corporate-design.tokens.json (Standard 1.1)",
-  "stand": "2026-09-07",
+  "stand": "2026-09-16",
   "color_derived": {
     "link": {
       "ref": "accent_green",
@@ -47,6 +47,10 @@
     "surface_recurring": {
       "ref": "primary_navy",
       "verwendung": "Flaeche wiederkehrender Elemente: Servicekarten, Abschluss - flaechen_website.wiederkehrend"
+    },
+    "border_soft": {
+      "hex": "#CCD6DF",
+      "verwendung": "dezenter Rahmen weisser Kacheln auf hellblauem Grund. Von Ricardo am 16.09.2026 fuer die Leistungskacheln der Buchhaltung ausgeschrieben; liegt zwischen border_light (#CCCCCC, zu grau) und border_tint (#B0C4DE, zu kraeftig)"
     }
   },
   "space_rem": {
