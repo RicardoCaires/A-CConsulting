@@ -594,9 +594,9 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               eyebrow={block.eyebrow}
               heading={block.heading}
               lead={block.lead}
-              hintergrund={block.hintergrund}
               spalten={block.spalten}
               hinweis={block.hinweis}
+              quelle={block.quelle}
               locale={locale}
             />
           )

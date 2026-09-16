@@ -1746,6 +1746,27 @@ eidg. Fachausweis suggeriert.
 
 ### /firmengruendung
 
+> **Vierte Fassung seit dem 16.09.2026** nach Ricardos HTML-Vorlage
+> (`rechtsformvergleich-neu.html`, `content/source/firmengruendung_rechtsformen_de.md`):
+> Kategoriezeile „Rechtsform wählen", Titel „Einzelunternehmen oder GmbH?" links,
+> Einleitung rechts; zwei exakt gleich hohe Karten (nachgemessen 539 x 670 px bei
+> 1280) mit Piktogramm, Name, grüner Kennzeichnung, **fünf Kriterien** —
+> Mindestkapital, Haftung, Gründung, Handelsregister, **neu Rechtsstellung**
+> statt Sozialversicherungen — und dem Hinweis „Passt häufig, wenn …" mit grüner
+> Linie; darunter die Fläche mit grünem Knopf „Rechtsform besprechen" und die
+> Quellenzeile „Kurzvergleich gemäss KMU-Portal des Bundes …". Kriterien als
+> `<dl>`, keine Tabelle. Karten in `surface_field`, beim Darüberfahren und bei
+> Tastaturfokus navy (`tabindex="0"`), der Hinweis leicht transparent. Der
+> gelieferte Hintergrund und der Container von 1560 px sind entfallen.
+>
+> **Die Angaben stammen wörtlich aus Ricardos Auftrag**, der sie dem KMU-Portal
+> zuschreibt. Sie decken sich mit OR und Handelsregisterverordnung, wie sie hier
+> bekannt sind (Eintragspflicht ab CHF 100'000 Umsatz, CHF 20'000 Stammkapital
+> voll liberiert oder durch Sacheinlage, Nachschusspflicht nach Statuten,
+> Entstehung mit Eintrag); **online gegen das KMU-Portal geprüft ist das nicht.**
+> Die Sozialversicherungszeile ist entfallen. Die folgenden Notizen beschreiben
+> frühere Fassungen.
+>
 > **Dritte Fassung seit dem 15.09.2026.** Ricardo hat eine ausgeschriebene
 > HTML-Vorlage geliefert. Neu: unter jedem Merkmal eine hellere Erklärung,
 > am Fuss jeder Karte die Einordnung „Passt häufig, wenn …" mit grünem
