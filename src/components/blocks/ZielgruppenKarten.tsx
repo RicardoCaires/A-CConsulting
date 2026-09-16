@@ -1,138 +1,132 @@
 import Image from 'next/image'
 
-import { PageLink } from '@/components/ui/PageLink'
-import { hatSichtbarenInhalt, RichText } from '@/components/ui/RichText'
-import type { PageRef, Rich } from '@/content/types'
 import type { Locale } from '@/i18n/config'
-import { isPublished, path } from '@/i18n/routes'
+import { isPublished, path, type PageKey } from '@/i18n/routes'
 
 import styles from './ZielgruppenKarten.module.css'
 
 /**
- * Zielgruppen als grosse Karten auf gemeinsamer Flaeche — heute auf
- * `/steuern`: „Für Privatpersonen" und „Für Selbständige und Firmen".
+ * Steuererklaerungen nach Zielgruppe — heute auf `/steuern`.
  *
- * Nach Ricardos Referenzgrafik vom 11.09.2026: je Karte links Titel mit
- * gruenem Strich, Absaetze und gegebenenfalls ein Link mit Pfeil; rechts,
- * durch eine feine Linie getrennt, entweder Merkmale mit Symbol oder ein
- * getoenter Hinweis. Beide Karten liegen auf dem gelieferten Hintergrund.
+ * **Seit dem 16.09.2026 nach Ricardos HTML-Vorlage**
+ * (`steuern-zielgruppen-neu.html`): Kategoriezeile und Titel links, Einleitung
+ * rechts, darunter zwei gleich grosse Karten — „Für Privatpersonen" und „Für
+ * Selbständige & Unternehmen". Je Karte ein grosses Zielgruppen-Piktogramm,
+ * Titel, ein Satz, drei Schritte mit eigenem Piktogramm, durch feine Linien
+ * getrennt, und ein gruener Textlink am Fuss. Darunter zentriert der Hinweis
+ * zum Kanton Bern.
  *
  * **Jede Karte behaelt ihren Anker** (`privatpersonen`, `firmen`) — `#firmen`
- * ist von der Karte „Steuern für Firmen" auf `/treuhand` verlinkt.
+ * ist von der Kachel „Steuerberatung" auf `/treuhand` verlinkt.
  *
- * Der Baustein bringt seine Flaeche selbst mit und zaehlt beim
- * Flaechenwechsel nicht mit. Er ersetzt zwei Abschnitte; der Wechsel darunter
- * bleibt damit, wie er war.
+ * **Beim Darueberfahren und bei Tastaturfokus wird die ganze Karte navy.** Der
+ * Fokus landet auf dem Textlink; `:focus-within` faerbt die Karte mit.
  *
- * Die Symbole sind geliefert und auf ihren Kreis zugeschnitten; sie liegen als
- * `/bilder/<bild>.webp`. Ein Link wird nur dann zum Link, wenn seine Zielseite
- * veroeffentlicht ist — sonst steht er mit dem Vermerk „folgt".
+ * Ein Link auf eine andere Seite wird nur dann zum Link, wenn sie
+ * veroeffentlicht ist. Ein reiner Anker zeigt auf einen Abschnitt derselben
+ * Seite.
  */
 
-type Merkmal = { bild: string; titel: string; satz: string }
+type Schritt = { bild: string; titel: string; text: string }
 
 type Karte = {
+  /** Wird zum Anker — `privatpersonen`, `firmen`. */
   id: string
+  bild: string
   heading: string
-  paragraphs: readonly Rich[]
-  links?: readonly PageRef[]
-  merkmale?: readonly Merkmal[]
-  hinweis?: Merkmal
+  einleitung: string
+  schritte: readonly Schritt[]
+  link?: { label: string; ziel?: PageKey; anker?: string }
 }
 
 type Props = {
-  hintergrund?: string
+  kopf?: { eyebrow: string; heading: string; lead: string }
   karten: readonly Karte[]
+  hinweis?: string
   locale: Locale
 }
 
-const bildPfad = (datei: string) => `/bilder/${datei}.webp`
+const bildPfad = (datei: string) => `/bilder/${datei.includes('.') ? datei : `${datei}.webp`}`
 
-function Symbol({ bild }: { bild: string }) {
-  return (
-    <Image
-      className={styles.symbol}
-      src={bildPfad(bild)}
-      alt=""
-      width={256}
-      height={256}
-      unoptimized
-    />
-  )
+function ziel(link: NonNullable<Karte['link']>, locale: Locale): string | null {
+  const anker = link.anker ? `#${link.anker}` : ''
+  if (link.ziel) return isPublished(link.ziel, locale) ? `${path(link.ziel, locale)}${anker}` : null
+  return anker || null
 }
 
-export function ZielgruppenKarten({ hintergrund, karten, locale }: Props) {
+export function ZielgruppenKarten({ kopf, karten, hinweis, locale }: Props) {
   return (
-    <div
-      className={styles.flaeche}
-      style={hintergrund ? { backgroundImage: `url(${bildPfad(hintergrund)})` } : undefined}
-    >
-      <div className={`ac-container ${styles.container}`}>
-        {karten.map((karte) => (
-          <section
-            key={karte.id}
-            id={karte.id}
-            aria-labelledby={`${karte.id}-titel`}
-            className={styles.karte}
-          >
-            <div className={styles.text}>
-              <h2 id={`${karte.id}-titel`} className={styles.titel}>
-                {karte.heading}
-              </h2>
-
-              {karte.paragraphs.filter(hatSichtbarenInhalt).map((absatz, index) => (
-                <p key={index} className={styles.absatz}>
-                  <RichText value={absatz} />
-                </p>
-              ))}
-
-              {karte.links?.map((link) =>
-                isPublished(link.target, locale) ? (
-                  <a
-                    key={`${link.target}-${link.label}`}
-                    className={styles.link}
-                    href={path(link.target, locale)}
-                  >
-                    <span className={styles.linkText}>{link.label}</span>
-                    <span className={styles.pfeil} aria-hidden="true">
-                      →
-                    </span>
-                  </a>
-                ) : (
-                  <p key={`${link.target}-${link.label}`} className={styles.absatz}>
-                    <PageLink target={link.target} label={link.label} locale={locale} />
-                  </p>
-                ),
-              )}
+    <div className={styles.flaeche}>
+      <div className="ac-container">
+        {kopf && (
+          <div className={styles.kopf}>
+            <div>
+              <p className={styles.eyebrow}>{kopf.eyebrow}</p>
+              <h2 className={styles.titel}>{kopf.heading}</h2>
             </div>
+            <p className={styles.lead}>{kopf.lead}</p>
+          </div>
+        )}
 
-            {(karte.merkmale || karte.hinweis) && (
-              <div className={styles.seite}>
-                {karte.merkmale && (
-                  <ul className={styles.merkmale} role="list">
-                    {karte.merkmale.map((merkmal) => (
-                      <li key={merkmal.titel} className={styles.merkmal}>
-                        <Symbol bild={merkmal.bild} />
-                        <div>
-                          <h3 className={styles.merkmalTitel}>{merkmal.titel}</h3>
-                          <p className={styles.merkmalSatz}>{merkmal.satz}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                {karte.hinweis && (
-                  <div className={styles.hinweis}>
-                    <Symbol bild={karte.hinweis.bild} />
-                    <h3 className={styles.hinweisTitel}>{karte.hinweis.titel}</h3>
-                    <p className={styles.merkmalSatz}>{karte.hinweis.satz}</p>
+        <div className={styles.raster}>
+          {karten.map((karte) => {
+            const href = karte.link ? ziel(karte.link, locale) : null
+            return (
+              <section
+                key={karte.id}
+                id={karte.id}
+                aria-labelledby={`${karte.id}-titel`}
+                className={styles.karte}
+              >
+                <div className={styles.kartenKopf}>
+                  {/* Gestaltung, kein Inhalt: Was die Karte meint, sagt ihr Titel. */}
+                  <Image
+                    className={styles.zielgruppe}
+                    src={bildPfad(karte.bild)}
+                    alt=""
+                    width={512}
+                    height={512}
+                    unoptimized
+                  />
+                  <div>
+                    <h3 id={`${karte.id}-titel`} className={styles.kartenTitel}>
+                      {karte.heading}
+                    </h3>
+                    <p className={styles.einleitung}>{karte.einleitung}</p>
                   </div>
+                </div>
+
+                <ul className={styles.schritte} role="list">
+                  {karte.schritte.map((schritt) => (
+                    <li key={schritt.titel} className={styles.schritt}>
+                      <Image
+                        className={styles.symbol}
+                        src={bildPfad(schritt.bild)}
+                        alt=""
+                        width={512}
+                        height={512}
+                        unoptimized
+                      />
+                      <span>
+                        <strong className={styles.schrittTitel}>{schritt.titel}</strong>
+                        <span className={styles.schrittText}>{schritt.text}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                {karte.link && href && (
+                  <a className={styles.link} href={href}>
+                    {karte.link.label}
+                    <span aria-hidden="true"> →</span>
+                  </a>
                 )}
-              </div>
-            )}
-          </section>
-        ))}
+              </section>
+            )
+          })}
+        </div>
+
+        {hinweis && <p className={styles.hinweis}>{hinweis}</p>}
       </div>
     </div>
   )

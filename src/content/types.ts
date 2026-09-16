@@ -402,19 +402,21 @@ export type Block =
    */
   | {
       kind: 'zielgruppenKarten'
-      /** Hintergrund, Dateiname unter `public/bilder/` ohne Endung. */
-      hintergrund?: string
+      /** Kategoriezeile, Titel und Einleitung ueber den Karten. Optional. */
+      kopf?: { eyebrow: string; heading: string; lead: string }
       karten: readonly {
         /** Wird zum Anker — `privatpersonen`, `firmen`. */
         id: string
+        /** Zielgruppen-Piktogramm unter `public/bilder/`, mit oder ohne Endung. */
+        bild: string
         heading: string
-        paragraphs: readonly Rich[]
-        links?: readonly PageRef[]
-        /** Merkmale rechts; Symbol als Dateiname unter `public/bilder/`. */
-        merkmale?: readonly { bild: string; titel: string; satz: string }[]
-        /** Getoenter Hinweis rechts, statt Merkmalen. */
-        hinweis?: { bild: string; titel: string; satz: string }
+        einleitung: string
+        schritte: readonly { bild: string; titel: string; text: string }[]
+        /** Textlink am Fuss: eine Seite, ein Anker auf derselben Seite oder beides. */
+        link?: { label: string; ziel?: PageKey; anker?: string }
       }[]
+      /** Zentrierter Hinweis unter den Karten. */
+      hinweis?: string
     }
   /**
    * Checkliste und Fristen als zwei Karten nebeneinander.

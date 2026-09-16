@@ -30,57 +30,69 @@ export const steuern: PageContent = {
   },
 
   blocks: [
-    // 02 und 03 — seit dem 11.09.2026 zwei Karten auf gemeinsamer Flaeche nach
-    // Ricardos Referenzgrafik. Titel, Absaetze und Link unveraendert; die
-    // Merkmale rechts stammen aus der Grafik
-    // (`content/source/steuern_zielgruppen_de.md`). Die Anker `privatpersonen`
-    // und `firmen` bleiben — `#firmen` ist von der Treuhandseite verlinkt.
+    // 02 und 03 — seit dem 16.09.2026 nach Ricardos HTML-Vorlage
+    // (`content/source/steuern_zielgruppen_de.md`): Kopf, zwei gleich grosse
+    // Karten, Hinweis zum Kanton Bern. Die Anker `privatpersonen` und `firmen`
+    // bleiben — `#firmen` ist von der Treuhandseite verlinkt.
     {
       kind: 'zielgruppenKarten',
+      kopf: {
+        eyebrow: 'Steuererklärungen',
+        heading: 'Passend zu Ihrer Situation.',
+        lead: 'Wir bereiten Ihre Steuererklärung sorgfältig vor, berücksichtigen die relevanten Abzüge und begleiten Sie bis zur Prüfung der Veranlagung.',
+      },
       karten: [
         {
           id: 'privatpersonen',
+          bild: 'steuern_icon_privatpersonen.svg',
           heading: 'Für Privatpersonen',
-          paragraphs: [
-            'Wir erstellen Ihre Steuererklärung im Kanton Bern, achten auf die Abzüge, die Ihnen zustehen, und reichen sie fristgerecht ein.',
-            [
-              'Wenn die Veranlagung kommt, prüfen wir sie und sagen Ihnen, ob sie mit dem übereinstimmt, was eingereicht wurde. Das ist wichtig, weil sich Abweichungen nur innerhalb der Einsprachefrist korrigieren lassen. ',
-          
-            ],
-            'Wir erstellen Steuererklärungen hauptsächlich im Kanton Bern.',
-          ],
-          merkmale: [
+          einleitung: 'Persönlich betreut und auf Ihre Lebenssituation abgestimmt.',
+          schritte: [
             {
-              bild: 'steuern_frist',
-              titel: 'Fristgerecht eingereicht',
-              satz: 'Ihre Steuererklärung rechtzeitig und zuverlässig.',
+              bild: 'steuern_schritt_einreichung.svg',
+              titel: 'Fristgerecht vorbereitet',
+              text: 'Vollständig aufbereitet und zuverlässig eingereicht.',
             },
             {
-              bild: 'steuern_abzuege',
-              titel: 'Abzüge im Blick',
-              satz: 'Wir achten auf die Abzüge, die Ihnen zustehen.',
+              bild: 'steuern_schritt_abzuege.svg',
+              titel: 'Abzüge berücksichtigt',
+              text: 'Relevante Abzüge werden sorgfältig geprüft.',
             },
             {
-              bild: 'steuern_veranlagung',
-              titel: 'Veranlagung geprüft',
-              satz: 'Wir prüfen die Veranlagung und sagen Ihnen, ob sie stimmt.',
+              bild: 'steuern_schritt_veranlagung.svg',
+              titel: 'Veranlagung kontrolliert',
+              text: 'Wir prüfen den Entscheid auf Abweichungen.',
             },
           ],
+          // Die Checkliste steht weiter unten auf derselben Seite.
+          link: { label: 'Checkliste für Privatpersonen', anker: 'checkliste' },
         },
         {
           id: 'firmen',
-          heading: 'Für Selbständige und Firmen',
-          paragraphs: [
-            'Bei Selbständigen und Firmen baut die Steuererklärung direkt auf der Buchhaltung auf. Liegen beide an derselben Stelle, entfällt die Abstimmung dazwischen. Führen wir Ihre Buchhaltung, sind die nötigen Unterlagen bereits vorhanden.',
+          bild: 'steuern_icon_unternehmen.svg',
+          heading: 'Für Selbständige & Unternehmen',
+          einleitung: 'Steuererklärung und Buchhaltung effizient aufeinander abgestimmt.',
+          schritte: [
+            {
+              bild: 'steuern_schritt_einreichung.svg',
+              titel: 'Abschluss als Grundlage',
+              text: 'Die Steuererklärung baut direkt auf den Abschlusszahlen auf.',
+            },
+            {
+              bild: 'steuern_schritt_abzuege.svg',
+              titel: 'Unterlagen gebündelt',
+              text: 'Vorhandene Buchhaltungsdaten werden direkt weiterverwendet.',
+            },
+            {
+              bild: 'steuern_schritt_veranlagung.svg',
+              titel: 'Durchgehend betreut',
+              text: 'Eine Ansprechperson koordiniert Buchhaltung und Steuererklärung.',
+            },
           ],
-          links: [{ target: 'treuhand', label: 'Buchhaltung und Jahresabschluss' }],
-          hinweis: {
-            bild: 'steuern_einort',
-            titel: 'Alles an einem Ort',
-            satz: 'Steuererklärung und Buchhaltung effizient aufeinander abgestimmt – für weniger Aufwand und mehr Übersicht.',
-          },
+          link: { label: 'Buchhaltung und Jahresabschluss', ziel: 'buchhaltung' },
         },
       ],
+      hinweis: 'Steuererklärungen erstellen wir hauptsächlich für Kundinnen und Kunden im Kanton Bern.',
     },
 
     // Am 11.09.2026 auf Ricardos Anweisung entfallen: 04 „So läuft es ab",
