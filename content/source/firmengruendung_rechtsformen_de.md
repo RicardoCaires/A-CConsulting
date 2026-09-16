@@ -96,3 +96,46 @@ volle Adresse der Vorschau hinein.
 96); der negative Rand im Stylesheet ist entsprechend von 14.3 auf 5.2 Prozent
 angepasst. Die Hinweisleiste steht neu **ohne Symbol** — die Vorlage zeigt
 dort keines; `03_icon_beratung.svg` bleibt im Repository liegen.
+
+---
+
+# Rechtsformvergleich — vierte Fassung, HTML-Vorlage Ricardo, 16.09.2026
+
+Aus seinem Auftrag vom 16.09.2026 samt der Datei `rechtsformvergleich-neu.html`.
+Wörtlich so in seinem Auftragstext.
+
+Kleine Überschrift: Rechtsform wählen
+
+Hauptüberschrift: Einzelunternehmen oder GmbH?
+
+Einleitung: Entscheidend sind Haftung, Kapital, Gründungsaufwand und die gewünschte Trennung zwischen Privat- und Geschäftsvermögen.
+
+## Einzelunternehmen — Einfach starten
+
+- Mindestkapital: Keines vorgeschrieben — Der tatsächliche Kapitalbedarf hängt vom Vorhaben ab.
+- Haftung: Persönlich und unbeschränkt — Die inhabende Person haftet auch mit dem Privatvermögen.
+- Gründung: Einfach und ohne Beurkundung — Die Tätigkeit kann grundsätzlich direkt aufgenommen werden.
+- Handelsregister: Je nach Tätigkeit — Bei kaufmännischem Gewerbe ab CHF 100'000 Jahresumsatz obligatorisch.
+- Rechtsstellung: Keine eigene Rechtspersönlichkeit — Unternehmen und inhabende Person sind rechtlich nicht getrennt.
+
+Passt häufig, wenn … Sie allein starten, wenig Formalitäten wünschen und das persönliche Haftungsrisiko überschaubar ist.
+
+## GmbH — Getrennt aufbauen
+
+- Mindestkapital: CHF 20'000 — Vollständig einbezahlt oder durch Sacheinlagen gedeckt.
+- Haftung: Grundsätzlich Gesellschaftsvermögen — Statutarische Nachschusspflichten können vorgesehen werden.
+- Gründung: Beurkundung und Statuten — Die Gründung muss öffentlich beurkundet werden.
+- Handelsregister: Eintrag obligatorisch — Die GmbH entsteht rechtlich erst mit der Eintragung.
+- Rechtsstellung: Eigene juristische Person — Gesellschaft und Privatpersonen sind rechtlich getrennt.
+
+Passt häufig, wenn … Sie Geschäfts- und Privatvermögen trennen oder mit mehreren Personen gründen möchten.
+
+## Abschluss
+
+Welche Rechtsform passt zu Ihrem Vorhaben?
+
+Wir vergleichen die Varianten anhand Ihrer Risiken, Pläne und finanziellen Situation.
+
+Knopf: Rechtsform besprechen
+
+Kurzvergleich gemäss KMU-Portal des Bundes. Die passende Rechtsform ist im Einzelfall zu prüfen.

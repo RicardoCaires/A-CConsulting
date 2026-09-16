@@ -604,8 +604,6 @@ export type Block =
       eyebrow?: string
       heading: string
       lead?: readonly Rich[]
-      /** Hintergrundmuster, Dateiname unter `public/bilder/` ohne Endung. */
-      hintergrund?: string
       spalten: readonly {
         bild: string
         titel: string
@@ -615,8 +613,10 @@ export type Block =
         /** Die Einordnung am Fuss der Karte: fuer wen die Rechtsform passt. */
         passt?: { titel: string; text: Rich }
       }[]
-      /** Leiste unter den Karten. Ohne `bild` steht sie ohne Symbol. */
-      hinweis?: { bild?: string; titel: string; text: Rich; aktion?: PageRef }
+      /** Breite Flaeche unter den Karten, mit gruenem Knopf. */
+      hinweis?: { titel: string; text: Rich; aktion?: PageRef }
+      /** Dezente Quellenzeile unter dem ganzen Vergleich. */
+      quelle?: string
     }
   /** Sprungmarken innerhalb der Seite. */
   | {

@@ -9,24 +9,23 @@ import { path } from '@/i18n/routes'
 import styles from './Rechtsformen.module.css'
 
 /**
- * „Einzelfirma oder GmbH?" auf `/firmengruendung` — zwei Karten im Vergleich.
+ * „Einzelunternehmen oder GmbH?" auf `/firmengruendung` — zwei Karten im
+ * Vergleich.
  *
- * Nach Ricardos zweiter Referenzgrafik vom 14.09.2026, die er mit einem
- * ausgeschriebenen Auftragstext geliefert hat: Kategoriezeile, Titel, ein
- * Satz, darunter zwei Karten mit geliefertem Symbol, Titel, Unterzeile und
- * denselben sechs Merkmalen; unten eine breite Hinweisleiste.
+ * **Seit dem 16.09.2026 nach Ricardos HTML-Vorlage**
+ * (`rechtsformvergleich-neu.html`): Kategoriezeile und Titel links,
+ * Einleitung rechts; darunter zwei exakt gleich hohe Karten mit Piktogramm,
+ * Name, gruener Kennzeichnung, fuenf Kriterien und dem Orientierungshinweis
+ * mit gruener Linie; darunter die breite Flaeche mit gruenem Knopf und
+ * dezent die Quellenzeile.
  *
- * Jede Zeile hat links die Kategorie als kleine Versalzeile und rechts den
- * Inhalt: eine Hauptzeile in Navy und darunter, wo vorhanden, eine hellere
- * Erklaerung.
+ * Jedes Kriterium ist ein Paar aus `<dt>` und `<dd>`: links die kleine
+ * Versalzeile, rechts die hervorgehobene Aussage und darunter der Zusatz.
+ * Keine Tabelle, keine Spaltenrahmen — nur feine waagrechte Linien.
  *
- * **Der Wortlaut stammt aus Ricardos Auftragstext.** Die erste Fassung dieses
- * Abschnitts trug die Saetze aus `schritt4_fassung2_de.md`; sie stehen dort
- * unveraendert weiter, aber nicht mehr auf der Seite.
- *
- * **„CHF 20'000 Stammkapital" steht jetzt da.** Schritt 4 fuehrt die Hoehe des
- * Stammkapitals als fachlich zu pruefen; Ricardo hat die Zahl im Auftrag
- * ausgeschrieben und ist zweimal auf den Vorbehalt hingewiesen.
+ * **Beim Darueberfahren und bei Tastaturfokus wird die ganze Karte navy.** Die
+ * Karten tragen `tabindex="0"`: Sie enthalten keinen Link, und der Auftrag
+ * verlangt denselben Zustand bei Tastaturfokus.
  *
  * Der Anker `rechtsform` bleibt.
  */
@@ -38,8 +37,6 @@ type Props = {
   eyebrow?: string
   heading: string
   lead?: readonly Rich[]
-  /** Hintergrundmuster, Dateiname unter `public/bilder/` ohne Endung. */
-  hintergrund?: string
   spalten: readonly {
     bild: string
     titel: string
@@ -48,8 +45,10 @@ type Props = {
     /** Die Einordnung unten in der Karte: fuer wen die Rechtsform passt. */
     passt?: { titel: string; text: Rich }
   }[]
-  /** Leiste unter den Karten. Ohne `bild` steht sie ohne Symbol. */
-  hinweis?: { bild?: string; titel: string; text: Rich; aktion?: PageRef }
+  /** Breite Flaeche unter den Karten. */
+  hinweis?: { titel: string; text: Rich; aktion?: PageRef }
+  /** Dezente Zeile unter dem ganzen Vergleich. */
+  quelle?: string
   locale: Locale
 }
 
@@ -60,24 +59,23 @@ export function Rechtsformen({
   eyebrow,
   heading,
   lead,
-  hintergrund,
   spalten,
   hinweis,
+  quelle,
   locale,
 }: Props) {
+  const titelId = `${id}-titel`
+
   return (
-    <section
-      id={id}
-      aria-labelledby={`${id}-titel`}
-      className={styles.abschnitt}
-      style={hintergrund ? { backgroundImage: `url(${bildPfad(hintergrund)})` } : undefined}
-    >
-      <div className={`ac-container ${styles.container}`}>
+    <section id={id} aria-labelledby={titelId} className={styles.abschnitt}>
+      <div className="ac-container">
         <div className={styles.kopf}>
-          {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
-          <h2 id={`${id}-titel`} className={styles.titel}>
-            {heading}
-          </h2>
+          <div>
+            {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
+            <h2 id={titelId} className={styles.titel}>
+              {heading}
+            </h2>
+          </div>
           {lead?.filter(hatSichtbarenInhalt).map((absatz, index) => (
             <p key={index} className={styles.lead}>
               <RichText value={absatz} />
@@ -85,91 +83,78 @@ export function Rechtsformen({
           ))}
         </div>
 
-        <div className={styles.spalten}>
+        <div className={styles.raster}>
           {spalten.map((spalte) => (
-            <div key={spalte.titel} className={styles.karte}>
+            <article
+              key={spalte.titel}
+              className={styles.karte}
+              tabIndex={0}
+              aria-labelledby={`${id}-${spalte.titel}`}
+            >
               <div className={styles.kartenKopf}>
                 <Image
                   className={styles.symbol}
                   src={bildPfad(spalte.bild)}
                   alt=""
-                  width={96}
-                  height={96}
+                  width={512}
+                  height={512}
                   unoptimized
                 />
-                <div className={styles.kartenTitelBlock}>
-                  <h3 className={styles.kartenTitel}>{spalte.titel}</h3>
-                  {spalte.untertitel && (
-                    <p className={styles.kartenUntertitel}>{spalte.untertitel}</p>
-                  )}
+                <div>
+                  <h3 id={`${id}-${spalte.titel}`} className={styles.kartenTitel}>
+                    {spalte.titel}
+                  </h3>
+                  {spalte.untertitel && <p className={styles.kennzeichen}>{spalte.untertitel}</p>}
                 </div>
               </div>
 
-              <dl className={styles.zeilen}>
-                {spalte.zeilen
-                  .filter((zeile) => hatSichtbarenInhalt(zeile.wert))
-                  .map((zeile) => (
-                    <div key={zeile.label} className={styles.zeile}>
-                      <dt className={styles.label}>{zeile.label}</dt>
-                      <dd className={styles.wert}>
-                        <span className={styles.wertHaupt}>
-                          <RichText value={zeile.wert} />
+              <dl className={styles.kriterien}>
+                {spalte.zeilen.map((zeile) => (
+                  <div key={zeile.label} className={styles.kriterium}>
+                    <dt className={styles.label}>{zeile.label}</dt>
+                    <dd className={styles.inhalt}>
+                      <strong className={styles.wert}>
+                        <RichText value={zeile.wert} />
+                      </strong>
+                      {zeile.zusatz && (
+                        <span className={styles.zusatz}>
+                          <RichText value={zeile.zusatz} />
                         </span>
-                        {zeile.zusatz && hatSichtbarenInhalt(zeile.zusatz) && (
-                          <span className={styles.wertZusatz}>
-                            <RichText value={zeile.zusatz} />
-                          </span>
-                        )}
-                      </dd>
-                    </div>
-                  ))}
+                      )}
+                    </dd>
+                  </div>
+                ))}
               </dl>
 
-              {spalte.passt && hatSichtbarenInhalt(spalte.passt.text) && (
-                <p className={styles.passt}>
-                  <strong className={styles.passtTitel}>{spalte.passt.titel}</strong>
-                  <span className={styles.passtText}>
+              {spalte.passt && (
+                <div className={styles.passt}>
+                  <p className={styles.passtTitel}>{spalte.passt.titel}</p>
+                  <p className={styles.passtText}>
                     <RichText value={spalte.passt.text} />
-                  </span>
-                </p>
+                  </p>
+                </div>
               )}
-            </div>
+            </article>
           ))}
         </div>
 
         {hinweis && (
-          <div className={styles.hinweis}>
-            {hinweis.bild && (
-              <Image
-                className={styles.hinweisSymbol}
-                src={bildPfad(hinweis.bild)}
-                alt=""
-                width={96}
-                height={96}
-                unoptimized
-              />
-            )}
-            <div className={styles.hinweisText}>
+          <aside className={styles.hinweis}>
+            <div>
               <h3 className={styles.hinweisTitel}>{hinweis.titel}</h3>
-              <p className={styles.hinweisSatz}>
+              <p className={styles.hinweisText}>
                 <RichText value={hinweis.text} />
               </p>
             </div>
-
             {hinweis.aktion && (
-              <Button
-                className={styles.knopf}
-                variant="akzent"
-                href={path(hinweis.aktion.target, locale)}
-              >
-                {hinweis.aktion.label}
-                <span className={styles.pfeil} aria-hidden="true">
-                  →
-                </span>
+              <Button href={path(hinweis.aktion.target, locale)} variant="akzent">
+                {hinweis.aktion.label} →
               </Button>
             )}
-          </div>
+          </aside>
         )}
+
+        {quelle && <p className={styles.quelle}>{quelle}</p>}
       </div>
     </section>
   )

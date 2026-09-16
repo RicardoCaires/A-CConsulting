@@ -34,51 +34,54 @@ export const firmengruendung: PageContent = {
   },
 
   blocks: [
-    // 02 Einzelfirma oder GmbH — seit dem 15.09.2026 nach Ricardos dritter
-    // Fassung, einer ausgeschriebenen HTML-Vorlage
-    // (`content/source/firmengruendung_rechtsformen_de.md`). Neu sind die
-    // Erklaerungen unter den Merkmalen, die Einordnung am Fuss jeder Karte
-    // und der gruene Knopf in der Leiste darunter.
-    //
-    // **Drei Angaben sind fachlich zu pruefen** und standen vorher nicht so
-    // auf der Seite: die Umsatzschwelle von CHF 100'000 fuer den
-    // Handelsregistereintrag, die Sacheinlage als Deckung des Stammkapitals
-    // und die Nachschusspflichten. Ricardo ist darauf hingewiesen.
+    // 02 Einzelunternehmen oder GmbH — seit dem 16.09.2026 nach Ricardos
+    // vierter Fassung, einer HTML-Vorlage
+    // (`content/source/firmengruendung_rechtsformen_de.md`): fuenf Kriterien je
+    // Karte, Orientierungshinweis, Abschlussflaeche mit Knopf und Quellenzeile.
+    // Der Vergleich stuetzt sich laut Auftrag auf das KMU-Portal des Bundes.
     {
       kind: 'rechtsformen',
       id: 'rechtsform',
-      eyebrow: 'Rechtsformen in der Schweiz',
-      heading: 'Einzelfirma oder GmbH?',
+      eyebrow: 'Rechtsform wählen',
+      heading: 'Einzelunternehmen oder GmbH?',
       lead: [
-        'Beide Rechtsformen können ein guter Start sein. Entscheidend sind Ihre Risiken, das verfügbare Kapital und die Frage, wie Sie Ihr Unternehmen entwickeln möchten.',
+        'Entscheidend sind Haftung, Kapital, Gründungsaufwand und die gewünschte Trennung zwischen Privat- und Geschäftsvermögen.',
       ],
       spalten: [
         {
           bild: 'firmengruendung_einzelfirma',
-          titel: 'Einzelfirma',
-          untertitel: 'Direkt starten',
+          titel: 'Einzelunternehmen',
+          untertitel: 'Einfach starten',
           zeilen: [
-            { label: 'Mindestkapital', wert: 'Keines vorgeschrieben' },
+            {
+              label: 'Mindestkapital',
+              wert: 'Keines vorgeschrieben',
+              zusatz: 'Der tatsächliche Kapitalbedarf hängt vom Vorhaben ab.',
+            },
             {
               label: 'Haftung',
               wert: 'Persönlich und unbeschränkt',
-              zusatz: 'Geschäfts- und Privatvermögen sind rechtlich nicht getrennt.',
+              zusatz: 'Die inhabende Person haftet auch mit dem Privatvermögen.',
             },
-            { label: 'Gründung', wert: 'Einfach und ohne öffentliche Beurkundung' },
             {
-              label: 'Sozialversicherungen',
-              wert: 'Status als selbständigerwerbend',
-              zusatz: 'Die Anerkennung erfolgt durch die zuständige Ausgleichskasse.',
+              label: 'Gründung',
+              wert: 'Einfach und ohne Beurkundung',
+              zusatz: 'Die Tätigkeit kann grundsätzlich direkt aufgenommen werden.',
             },
             {
               label: 'Handelsregister',
-              wert: 'Je nach Tätigkeit freiwillig oder obligatorisch',
-              zusatz: 'Bei einem kaufmännisch geführten Gewerbe ab CHF 100\'000 Jahresumsatz obligatorisch.',
+              wert: 'Je nach Tätigkeit',
+              zusatz: 'Bei kaufmännischem Gewerbe ab CHF 100\'000 Jahresumsatz obligatorisch.',
+            },
+            {
+              label: 'Rechtsstellung',
+              wert: 'Keine eigene Rechtspersönlichkeit',
+              zusatz: 'Unternehmen und inhabende Person sind rechtlich nicht getrennt.',
             },
           ],
           passt: {
             titel: 'Passt häufig, wenn …',
-            text: 'Sie allein starten, wenig formalen Aufwand möchten und das persönliche Haftungsrisiko überschaubar ist.',
+            text: 'Sie allein starten, wenig Formalitäten wünschen und das persönliche Haftungsrisiko überschaubar ist.',
           },
         },
         {
@@ -89,36 +92,42 @@ export const firmengruendung: PageContent = {
             {
               label: 'Mindestkapital',
               wert: 'CHF 20\'000',
-              zusatz: 'Bei der Gründung vollständig einbezahlt oder durch Sacheinlagen gedeckt.',
+              zusatz: 'Vollständig einbezahlt oder durch Sacheinlagen gedeckt.',
             },
             {
               label: 'Haftung',
-              wert: 'Grundsätzlich mit dem Gesellschaftsvermögen',
-              zusatz: 'Statutarische Nachschusspflichten und persönliche Garantien bleiben möglich.',
+              wert: 'Grundsätzlich Gesellschaftsvermögen',
+              zusatz: 'Statutarische Nachschusspflichten können vorgesehen werden.',
             },
-            { label: 'Gründung', wert: 'Öffentliche Beurkundung und Statuten erforderlich' },
             {
-              label: 'Sozialversicherungen',
-              wert: 'In der eigenen GmbH angestellt',
-              zusatz: 'Lohn und Sozialversicherungen laufen über die Gesellschaft.',
+              label: 'Gründung',
+              wert: 'Beurkundung und Statuten',
+              zusatz: 'Die Gründung muss öffentlich beurkundet werden.',
             },
             {
               label: 'Handelsregister',
               wert: 'Eintrag obligatorisch',
               zusatz: 'Die GmbH entsteht rechtlich erst mit der Eintragung.',
             },
+            {
+              label: 'Rechtsstellung',
+              wert: 'Eigene juristische Person',
+              zusatz: 'Gesellschaft und Privatpersonen sind rechtlich getrennt.',
+            },
           ],
           passt: {
             titel: 'Passt häufig, wenn …',
-            text: 'Sie Privat- und Geschäftsvermögen trennen, mit mehreren Personen gründen oder eine eigenständige Gesellschaft aufbauen möchten.',
+            text: 'Sie Geschäfts- und Privatvermögen trennen oder mit mehreren Personen gründen möchten.',
           },
         },
       ],
       hinweis: {
         titel: 'Welche Rechtsform passt zu Ihrem Vorhaben?',
-        text: 'Neben Haftung und Kapital zählen auch Steuern, Vorsorge und Ihre weiteren Pläne. Wir vergleichen die Varianten anhand Ihrer Situation.',
+        text: 'Wir vergleichen die Varianten anhand Ihrer Risiken, Pläne und finanziellen Situation.',
         aktion: { target: 'kontakt', label: 'Rechtsform besprechen' },
       },
+      quelle:
+        'Kurzvergleich gemäss KMU-Portal des Bundes. Die passende Rechtsform ist im Einzelfall zu prüfen.',
     },
 
     // 04 Wer welchen Teil uebernimmt — seit dem 14.09.2026 vier gleich grosse

@@ -1,321 +1,318 @@
-/* „Einzelfirma oder GmbH?" auf `/firmengruendung`.
+/* „Einzelunternehmen oder GmbH?" auf `/firmengruendung`.
 
-   Nach Ricardos zweiter Referenzgrafik vom 14.09.2026 (1456 x 1086), die er
-   mit einem ausgeschriebenen Auftragstext geliefert hat. Aus der Vorlage
-   gemessen, Anteile der Bildbreite:
+   Nach Ricardos HTML-Vorlage vom 16.09.2026 (`rechtsformvergleich-neu.html`):
 
-     Inhalt        x 108 bis 1344, also 84.9 Prozent — hier 1560 px
-     Karten        je 49 Prozent des Inhalts, Fuge 28 px
-     Symbolkreis   84 px, links neben Titel und Unterzeile
-     Trennlinie    unter dem Kartenkopf und zwischen allen Zeilen
-     Zeilen        Kategorie links 36 Prozent, Inhalt rechts 64 Prozent
-     Hinweis       Leiste unter beiden Karten, Symbol links
+     Kopf          Titel links, Einleitung rechts, unter 850 px untereinander
+     Karten        zwei, Fuge 18 px, Polster 27 px, Radius 18 px, gleich hoch
+     Kartenkopf    Piktogramm 65 px, Titel 27 px, Kennzeichnung gruen in Versalien
+     Kriterien     Bezeichnung 120 px breit, feine Linie oben, Aussage 17 px
+                   Serif, Zusatz kleiner; unter 600 px untereinander
+     Hinweis       gruene Linie links, leicht transparenter Grund
+     Abschluss     breite Flaeche mit Titel, Satz und gruenem Knopf
+     Uebergang     200 ms — hier `--ac-motion-base` (180 ms)
 
-   Der Auftrag nennt 1500 bis 1600 px Inhaltsbreite; 1560 px ist dasselbe Mass
-   wie bei Checkliste und Fristen auf `/steuern`.
-
-   Der gelieferte Hintergrund bringt seinen eigenen hellen Grund mit; der
-   Abschnitt setzt darum keine zweite Flaeche darunter. */
+   **Keine weissen Karten:** `surface_field` auf dem hellblauen Grund, Kontur
+   `border_line`. Keine Schatten, keine Verlaeufe. Fliesstext im Ton der
+   Website (`text_secondary`), nicht im Ton der Vorlage. Kleinste Schrift
+   hier 12 px statt der 10 und 11 der Vorlage — darunter ist ein Zusatz nicht
+   mehr sicher lesbar. */
 
 .abschnitt {
   padding-block: var(--ac-section-y);
   /* Hellblau wie jeder Inhaltsabschnitt, seit dem 16.09.2026 auf Ricardos
      Anweisung. */
   background-color: var(--ac-color-background-tint);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.abschnitt .container {
-  max-width: 97.5rem;
 }
 
 /* ---- Kopf ------------------------------------------------------------------ */
 
+.kopf {
+  display: grid;
+  gap: var(--ac-space-md);
+  align-items: end;
+  margin-bottom: 1.75rem;
+}
+
 .eyebrow {
   display: flex;
   align-items: center;
-  gap: var(--ac-space-md);
-  margin: 0;
+  gap: 0.6875rem;
+  margin: 0 0 0.75rem;
   font-size: var(--ac-eyebrow-size);
   font-weight: var(--ac-eyebrow-weight);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ac-color-text-secondary);
+  color: var(--ac-color-accent-green);
 }
 
 .eyebrow::before {
   content: '';
   flex: none;
-  width: 2.75rem;
+  width: 1.75rem;
   height: 2px;
-  background-color: var(--ac-color-accent-green);
+  background-color: currentcolor;
 }
 
 .titel {
-  margin: var(--ac-space-sm) 0 0;
-  font-size: clamp(2.25rem, 1.6rem + 2.2vw, 3.5rem);
-  line-height: 1.06;
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(2.375rem, 1.9rem + 1.8vw, 3.125rem);
+  line-height: 1.02;
   font-weight: var(--ac-display-weight);
-  letter-spacing: -0.02em;
   color: var(--ac-color-primary-navy);
 }
 
 .lead {
-  margin: var(--ac-space-md) 0 0;
-  max-width: 62ch;
-  font-size: var(--ac-lead-size);
-  line-height: 1.5;
+  max-width: 32.5rem;
+  margin: 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.65;
   color: var(--ac-color-text-secondary);
 }
 
-/* ---- Die beiden Karten ------------------------------------------------------ */
+/* ---- Karten ---------------------------------------------------------------- */
 
-.spalten {
+.raster {
   display: grid;
-  gap: clamp(1rem, 2vw, 1.75rem);
-  margin-top: clamp(2rem, 4vw, 3rem);
+  gap: 1.125rem;
+  /* Beide Karten exakt gleich hoch. */
+  grid-auto-rows: 1fr;
 }
 
 .karte {
   display: flex;
   flex-direction: column;
-  padding: clamp(1.25rem, 2.4vw, 2.25rem);
-  background-color: color-mix(in srgb, var(--ac-color-white) 88%, transparent);
-  border: var(--ac-border-hairline) solid
-    color-mix(in srgb, var(--ac-color-primary-navy) 7%, transparent);
-  border-radius: 26px;
-  box-shadow: 0 18px 48px color-mix(in srgb, var(--ac-color-primary-navy) 5%, transparent);
+  padding: clamp(1.375rem, 2.3vw, 1.6875rem);
+  background-color: var(--ac-surface-field);
+  border: var(--ac-border-hairline) solid var(--ac-border-line);
+  border-radius: 18px;
+  transition:
+    transform var(--ac-motion-base) var(--ac-motion-easing),
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
+    border-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.karte:hover,
+.karte:focus-visible {
+  transform: translateY(-2px);
+  background-color: var(--ac-color-primary-navy);
+  border-color: var(--ac-color-primary-navy);
+}
+
+.karte:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 3px;
 }
 
 .kartenKopf {
-  display: flex;
+  display: grid;
+  grid-template-columns: 4.0625rem minmax(0, 1fr);
+  gap: 0.9375rem;
   align-items: center;
-  gap: clamp(0.875rem, 1.8vw, 1.25rem);
-  padding-bottom: clamp(0.875rem, 1.8vw, 1.25rem);
-  border-bottom: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  margin-bottom: 1.1875rem;
 }
 
-/* Die gelieferten Piktogramme bringen ihren Kreis mit: Radius 43 von 96, also
-   89.6 Prozent der Datei. Der negative Rand gleicht den durchsichtigen Rest
-   aus, damit im Layout nur der Kreis zaehlt. */
+/* Das gelieferte Piktogramm bringt seinen hellen Kreis mit und bleibt auf
+   navy klar sichtbar. */
 .symbol {
   display: block;
-  flex: none;
-  width: var(--symbol, 4.5rem);
+  width: 4.0625rem;
   max-width: none;
-  height: var(--symbol, 4.5rem);
-  margin: calc(var(--symbol, 4.5rem) * -0.052);
-}
-
-.kartenTitelBlock {
-  min-width: 0;
+  height: 4.0625rem;
+  object-fit: contain;
 }
 
 .kartenTitel {
-  margin: 0;
+  margin: 0 0 0.25rem;
   font-family: var(--ac-font-display);
-  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
-  line-height: 1.15;
+  font-size: clamp(1.4375rem, 1.2rem + 0.8vw, 1.6875rem);
+  line-height: 1.08;
   font-weight: var(--ac-display-weight);
-  letter-spacing: -0.01em;
   color: var(--ac-color-primary-navy);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.kartenUntertitel {
-  margin: 0.25rem 0 0;
-  font-size: var(--ac-small-size);
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ac-color-text-secondary);
-}
-
-/* ---- Vergleichszeilen ------------------------------------------------------- */
-
-.zeilen {
+/* Die gruene Kennzeichnung bleibt auch auf navy gruen, wie der Auftrag es
+   erlaubt. Auf navy steht sie bei 2.1:1 — als Marke gedacht, der Name der
+   Rechtsform steht darueber in Weiss. */
+.kennzeichen {
   margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ac-color-accent-green);
 }
 
-.zeile {
+.kriterien {
+  /* Mindestabstand zum Hinweis, auch wenn `margin-top: auto` nichts schiebt. */
+  margin: 0 0 0.9375rem;
+}
+
+.kriterium {
   display: grid;
-  grid-template-columns: minmax(0, 0.56fr) minmax(0, 1fr);
-  gap: clamp(0.75rem, 1.6vw, 1.25rem);
-  align-items: start;
-  padding-block: clamp(0.75rem, 1.6vw, 1rem);
-}
-
-.zeile + .zeile {
-  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
+  gap: 0.3125rem;
+  padding: 0.75rem 0;
+  border-top: var(--ac-border-hairline) solid var(--ac-border-line);
+  transition: border-color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
 .label {
-  padding-top: 0.125rem;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: 0.12em;
+  /* 11 px und weniger Sperrung: «Handelsregister» passt sonst nicht in die
+     Spalte und stoesst an die Aussage. */
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ac-color-text-secondary);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.wert {
-  display: grid;
-  gap: 0.125rem;
+.inhalt {
   margin: 0;
 }
 
-.wertHaupt {
+.wert {
+  display: block;
+  font-family: var(--ac-font-display);
   font-size: 1.0625rem;
-  line-height: 1.4;
+  line-height: 1.3;
+  font-weight: var(--ac-display-weight);
   color: var(--ac-color-primary-navy);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.wertZusatz {
-  font-size: var(--ac-small-size);
+.zusatz {
+  display: block;
+  margin-top: 0.125rem;
+  font-size: 0.8125rem;
   line-height: 1.45;
   color: var(--ac-color-text-secondary);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-/* ---- Einordnung am Fuss der Karte ------------------------------------------- */
-
-/* „Passt häufig, wenn …" — grüner Strich links, wie die Infoboxen des
-   Corporate Designs. `margin-top: auto` hält sie am Fuss, damit sie in beiden
-   Karten auf derselben Linie steht. */
+/* Der Orientierungshinweis schiebt sich an den Fuss, damit er in beiden
+   Karten auf derselben Hoehe beginnt. */
 .passt {
-  display: block;
-  margin: auto 0 0;
-  padding: clamp(0.875rem, 1.8vw, 1.1rem) clamp(1rem, 2vw, 1.2rem);
-  background-color: var(--ac-color-background-light);
+  margin-top: auto;
+  padding: 0.9375rem;
+  background-color: color-mix(in srgb, var(--ac-color-white) 35%, transparent);
   border-left: var(--ac-border-marker) solid var(--ac-color-accent-green);
+  border-radius: 0 9px 9px 0;
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
 .passtTitel {
-  display: block;
-  margin-bottom: 0.3rem;
+  margin: 0 0 0.25rem;
   font-family: var(--ac-font-display);
-  font-size: var(--ac-body-size);
+  font-size: 1rem;
   font-weight: var(--ac-display-weight);
-  line-height: 1.3;
   color: var(--ac-color-primary-navy);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
 .passtText {
-  display: block;
-  font-size: var(--ac-small-size);
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+/* Navy: alle Texte weiss (11.6:1), Linien heller, der Hinweis leicht
+   transparent hinterlegt. */
+.karte:hover :is(.kartenTitel, .label, .wert, .zusatz, .passtTitel, .passtText),
+.karte:focus-visible :is(.kartenTitel, .label, .wert, .zusatz, .passtTitel, .passtText) {
+  color: var(--ac-color-white);
+}
+
+.karte:hover .kriterium,
+.karte:focus-visible .kriterium {
+  border-top-color: color-mix(in srgb, var(--ac-color-white) 28%, transparent);
+}
+
+.karte:hover .passt,
+.karte:focus-visible .passt {
+  background-color: color-mix(in srgb, var(--ac-color-white) 8%, transparent);
+}
+
+/* ---- Abschlussflaeche und Quelle ------------------------------------------- */
+
+.hinweis {
+  display: grid;
+  gap: var(--ac-space-sm);
+  align-items: center;
+  margin-top: 1.125rem;
+  padding: 1.25rem 1.5rem;
+  background-color: var(--ac-surface-field);
+  border: var(--ac-border-hairline) solid var(--ac-border-line);
+  border-radius: 14px;
+}
+
+.hinweisTitel {
+  margin: 0 0 0.1875rem;
+  font-family: var(--ac-font-display);
+  font-size: 1.1875rem;
+  line-height: 1.15;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.hinweisText {
+  margin: 0;
+  font-size: 0.875rem;
   line-height: 1.5;
   color: var(--ac-color-text-secondary);
 }
 
-/* ---- Hinweis unter den Karten ----------------------------------------------- */
-
-.hinweis {
-  --symbol: clamp(3.25rem, 2.75rem + 1vw, 3.75rem);
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: clamp(1rem, 2.4vw, 1.75rem);
-  margin-top: clamp(1rem, 2vw, 1.75rem);
-  padding: clamp(1rem, 2vw, 1.5rem) clamp(1.25rem, 2.4vw, 2.25rem);
-  background-color: color-mix(in srgb, var(--ac-color-accent-green) 5%, var(--ac-color-white));
-  border: var(--ac-border-hairline) solid
-    color-mix(in srgb, var(--ac-color-accent-green) 16%, transparent);
-  border-radius: 20px;
-}
-
-.hinweisSymbol {
-  display: block;
-  flex: none;
-  width: var(--symbol);
-  max-width: none;
-  height: var(--symbol);
-  margin: calc(var(--symbol) * -0.052);
-}
-
-.hinweisText {
-  min-width: 0;
-  max-width: 43rem;
-}
-
-.hinweisTitel {
-  margin: 0;
-  font-family: var(--ac-font-display);
-  font-size: clamp(1.125rem, 1rem + 0.35vw, 1.3125rem);
-  line-height: 1.3;
-  font-weight: var(--ac-display-weight);
-  color: var(--ac-color-primary-navy);
-}
-
-.hinweisSatz {
-  margin: 0.3rem 0 0;
-  font-size: var(--ac-small-size);
-  line-height: 1.55;
+.quelle {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  text-align: center;
   color: var(--ac-color-text-secondary);
 }
 
-.knopf {
-  flex: none;
-  gap: var(--ac-space-2xs);
-  white-space: nowrap;
-}
+/* ---- Breiten --------------------------------------------------------------- */
 
-.pfeil {
-  display: inline-block;
-  line-height: 1;
-  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
-}
-
-.knopf:hover .pfeil {
-  transform: translateX(3px);
-}
-
-/* ---- Ab 64rem: die Karten nebeneinander ------------------------------------- */
-
-@media (min-width: 64rem) {
-  .spalten {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-/* ---- Telefon: Kategorie ueber den Inhalt, Leiste untereinander -------------- */
-
-@media (max-width: 39.99rem) {
-  .zeile {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.25rem;
+@media (min-width: 37.5rem) {
+  .kriterium {
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+    column-gap: 1rem;
   }
 
   .hinweis {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--ac-space-sm);
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 1.5625rem;
+  }
+}
+
+@media (min-width: 53.125rem) {
+  .kopf,
+  .raster {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .knopf {
-    width: 100%;
+  .kopf {
+    column-gap: 2.5rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pfeil {
+  .karte,
+  .kartenTitel,
+  .kriterium,
+  .label,
+  .wert,
+  .zusatz,
+  .passt,
+  .passtTitel,
+  .passtText {
     transition: none;
   }
 
-  .knopf:hover .pfeil {
+  .karte:hover,
+  .karte:focus-visible {
     transform: none;
-  }
-}
-
-@media print {
-  .abschnitt {
-    background-image: none;
-  }
-
-  .karte {
-    box-shadow: none;
-    break-inside: avoid;
   }
 }
