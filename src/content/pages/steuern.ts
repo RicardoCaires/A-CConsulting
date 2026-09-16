@@ -89,76 +89,82 @@ export const steuern: PageContent = {
     // Abschluss „Termin für Ihre Steuererklärung vereinbaren". Ihr Wortlaut steht
     // unverändert unter `content/source/`.
 
-    // 05 und 06 — seit dem 14.09.2026 zwei Kacheln nach Ricardos zweiter
-    // Referenzgrafik: links die Checkliste, rechts Fristen und Kosten in zwei
-    // Unterkarten. Kategoriezeile, Titel, Beschreibungen, Untertitel und alle
-    // Werte stammen aus seinem Auftragstext vom selben Tag
-    // (`content/source/steuern_checkliste_de.md`).
+    // 05 und 06 — seit dem 16.09.2026 nach Ricardos HTML-Vorlage
+    // (`content/source/steuern_checkliste_de.md`): links die Checkliste mit
+    // Piktogramm, drei Haken-Punkten und Knopf, rechts „Die wichtigsten
+    // Termine." mit zwei Fristenkarten. Kategoriezeilen, Titel, Einleitungen,
+    // Untertitel und alle Werte stehen woertlich in seinem Auftrag.
     //
-    // **Die Werte stehen nicht mehr als offene Angabe.** Ricardo hat sie am
-    // 14.09.2026 im Auftrag ausgeschrieben. Die beiden Kacheln nannten zuerst
-    // zwei verschiedene ordentliche Fristen; auf Nachfrage gilt der
-    // 15. Maerz — in beiden Kacheln. Die Kategoriezeile ueber den Titeln ist
-    // am selben Tag entfallen; die Fristenzeilen links stehen seither ohne
-    // sichtbaren Rahmen („nur die raender der Tabelle sollen durchsichtig sein
-    // der inhalt muss vorhanden sein").
+    // **Die Fristen der Unternehmen sind neu.** Bis zum 16.09.2026 standen
+    // hier 15. September, 15. November, 15. Januar und 15. Maerz mit CHF 20
+    // und CHF 40; Ricardos Vorlage nennt stattdessen sieben Monate nach
+    // Geschaeftsabschluss und die Verlaengerung um 1½ beziehungsweise
+    // 3½ Monate. Der alte Stand steht unveraendert in der Quelldatei.
+    //
+    // **Die Fristenzeilen in der linken Kachel sind entfallen** — die Vorlage
+    // fuehrt sie nicht mehr. Beide Angaben, 15. Maerz und die Verlaengerung
+    // bis 15. November, stehen rechts in der Karte „Privatpersonen".
     //
     // **Der Satz zur Fristverlaengerung bleibt** — die Hausordnung verlangt
-    // den Hinweis, dass A&C sie uebernimmt. Er steht als Nachsatz unter den
-    // beiden Unterkarten.
+    // den Hinweis, dass A&C sie uebernimmt (Abschnitt 9). Ricardos Vorlage
+    // fuehrt ihn nicht; er steht als zweiter Nachsatz unter den Karten.
+    // Ricardo ist darauf hingewiesen.
     //
     // **Der Bildstreifen fehlt weiterhin.** Die gelieferte Bern-Aufnahme ist
     // eine Vorschau mit Wasserzeichen; `banner` bleibt darum ungesetzt.
     {
       kind: 'checklisteFristen',
-      hintergrund: 'steuern_hintergrund',
       checkliste: {
         id: 'checkliste',
-        heading: 'Privatpersonen',
+        eyebrow: 'Steuererklärung Kanton Bern',
+        heading: 'Alle Unterlagen auf einen Blick.',
         bild: 'steuern_checkliste',
         paragraphs: [
-          'Die Checkliste zeigt Ihnen, welche Unterlagen für die Steuererklärung im Kanton Bern üblicherweise benötigt werden.',
-          'Sie können die Liste ganz einfach herunterladen und verwenden – ob Sie die Steuererklärung selbst ausfüllen oder uns die Unterlagen zur Verfügung stellen.',
+          'Die Checkliste zeigt, welche Dokumente Privatpersonen für die Steuererklärung üblicherweise benötigen.',
         ],
-        fristenTitel: 'Wichtige Fristen',
-        fristen: [
-          { label: 'Reguläre Einreichfrist', wert: '15. März' },
-          { label: 'Fristverlängerung möglich bis', wert: '15. November' },
+        punkte: [
+          'Einkommen und Vermögen',
+          'Versicherungen und Vorsorge',
+          'Abzüge und besondere Ereignisse',
         ],
         download: { label: 'Checkliste herunterladen (PDF)', file: null },
-        hinweis: 'Ohne Anmeldung. Sofort verfügbar.',
+        hinweis: 'Ohne Anmeldung · sofort verfügbar',
       },
       fristen: {
         id: 'fristen',
-        heading: 'Fristen und Kosten',
-        lead: [
-          'Hier finden Sie die wichtigsten Fristen und Kosten für die Steuererklärung im Kanton Bern – übersichtlich für Privatpersonen und Unternehmen.',
-        ],
+        eyebrow: 'Fristen und Gebühren',
+        heading: 'Die wichtigsten Termine.',
+        lead: ['Massgebend ist immer das Datum auf Ihrem Schreiben der Steuerverwaltung.'],
         gruppen: [
           {
             bild: 'steuern_icon_privatpersonen',
             titel: 'Privatpersonen',
-            untertitel: 'Fristen und Kosten im Überblick',
+            untertitel: 'Natürliche Personen',
+            frist: { label: 'Übliche Einreichefrist', wert: '15. März' },
             zeilen: [
-              { label: 'Ordentliche Frist', wert: '15. März' },
-              { label: 'Fristverlängerung online bis 15. Juli', wert: 'kostenlos' },
-              { label: 'Fristverlängerung online bis 15. September', wert: 'CHF 20' },
-              { label: 'Fristverlängerung online bis 15. November', wert: 'CHF 40' },
+              { label: 'Online verlängern bis 15. Juli', wert: 'kostenlos' },
+              { label: 'bis 15. September', wert: 'CHF 20' },
+              { label: 'bis 15. November', wert: 'CHF 40' },
             ],
+            hinweis:
+              'Schriftlich eingereichte Fristverlängerungen können höhere Gebühren verursachen.',
           },
           {
             bild: 'steuern_icon_unternehmen',
             titel: 'Unternehmen',
-            untertitel: 'Fristen und Kosten im Überblick',
+            untertitel: 'Juristische Personen',
+            frist: {
+              label: 'Ordentliche Einreichefrist',
+              wert: '7 Monate nach Geschäftsabschluss',
+            },
             zeilen: [
-              { label: 'Ordentliche Frist', wert: '15. September' },
-              { label: 'Fristverlängerung online bis 15. November', wert: 'kostenlos' },
-              { label: 'Fristverlängerung online bis 15. Januar', wert: 'CHF 20' },
-              { label: 'Fristverlängerung online bis 15. März', wert: 'CHF 40' },
+              { label: 'Online: zusätzliche 1½ Monate', wert: 'kostenlos' },
+              { label: 'Online: maximal zusätzliche 3½ Monate', wert: 'CHF 20' },
             ],
           },
         ],
         nachsatz: [
+          'Die Gebühren gelten für online eingereichte Fristverlängerungen.',
           'Wenn wir Ihre Steuererklärung erstellen, übernehmen wir auch die Fristverlängerung.',
         ],
       },

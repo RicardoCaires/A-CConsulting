@@ -1,39 +1,41 @@
-/* Checkliste und Fristen auf `/steuern`.
+/* Checkliste, Fristen und Gebuehren auf `/steuern`.
 
-   Nach Ricardos zweiter Referenzgrafik vom 14.09.2026 (1672 x 941). Aus der
-   Vorlage gemessen, Anteile der Bildbreite:
+   Nach Ricardos HTML-Vorlage vom 16.09.2026
+   (`steuern-fristen-checkliste-neu.html`). Aus ihrem Quelltext uebernommen:
 
-     Inhalt        x 66 bis 1606, also 92.1 Prozent — hier 1560 px
-     Kacheln       je 47.7 Prozent des Inhalts, Fuge 22 px
-     Radius        26 px aussen, 16 px innen, 999 px am Knopf
-     Abbildung     oben rechts in der linken Kachel, 8.6 Prozent der Breite
-     Unterkarten   Symbol, Titel, Untertitel, darunter die Zeilen
-     Bildstreifen  volle Inhaltsbreite, Seitenverhaeltnis 4.16 : 1
+     Inhalt        min(1180px, 100% - 40px) — hier der Standardcontainer
+     Raster        0.72fr / 1.28fr, Fuge 22 px, unter 900 px einspaltig
+     Flaeche       Polster 34 px, Rand 1 px in border_soft, Radius 18 px
+     Titel         39 px links, 34 px rechts, Source Serif
+     Piktogramm    74 px
+     Karte         Polster 22 px, Radius 14 px, Fuge 14 px
+     Uebergang     200 ms — hier `--ac-motion-base` (180 ms)
 
-   Der Auftrag nennt 1560 bis 1620 px Inhaltsbreite. Das ist breiter als jeder
-   andere Abschnitt der Seite (Standard 1160, Ausnahmen 1344 und 1380) und
-   steht hier auf Ricardos ausdrueckliche Vorgabe.
+   **Uebernommen ist die Gestaltung, nicht der Code.** Die Vorlage schreibt
+   Farbwerte und die Schriftnamen direkt hinein; im Projekt stehen dafuer die
+   Tokens. Ein Hex-Wert in einer Komponente ist hier ein Fehler.
 
-   Die Kategoriezeile ueber beiden Titeln ist am 14.09.2026 auf Ricardos
-   Anweisung entfallen.
+   **Der Grund ist hellblau** (`background_tint`), genau der Ton, den der
+   Auftrag nennt — bis zum 16.09.2026 lag dort das gelieferte Hintergrundbild.
+   **Keine Schatten**: Die Flaechen trugen einen sehr weichen Schlagschatten,
+   der Auftrag verbietet ihn ausdruecklich.
 
-   Die Fristenzeilen der linken Kachel standen in einer umrandeten, leicht
-   getoenten Box. Ricardo hat am selben Tag verlangt, dass **nur die Raender
-   durchsichtig** werden — der Inhalt bleibt. Rahmen und Fuellung stehen darum
-   auf `transparent`, Raster und Abstaende sind unveraendert. */
+   **Der eigene Container von 1560 px ist entfallen.** Er stand seit dem
+   14.09.2026 auf Ricardos Vorgabe „max-width ca. 1560–1620px"; die neue
+   Vorlage laeuft auf 1180 px. Das sind 20 px mehr als der Standard — dafuer
+   lohnt keine vierte Containerbreite im Projekt. */
 
 .flaeche {
   padding-block: var(--ac-section-y);
-  background-color: var(--ac-color-background-light);
+  background-color: var(--ac-color-background-tint);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.flaeche .container {
+.container {
   display: grid;
   gap: clamp(1rem, 1.4vw, 1.375rem);
-  max-width: 97.5rem;
 }
 
 .raster {
@@ -41,199 +43,123 @@
   gap: clamp(1rem, 1.4vw, 1.375rem);
 }
 
+/* Die beiden weissen Flaechen: feine graublaue Kontur, abgerundete Ecken,
+   kein Schatten. */
 .karte {
   display: flex;
   flex-direction: column;
-  padding: clamp(1.5rem, 2.6vw, 2.75rem);
+  padding: clamp(1.5rem, 2.6vw, 2.125rem);
   background-color: var(--ac-color-white);
-  border: var(--ac-border-hairline) solid
-    color-mix(in srgb, var(--ac-color-primary-navy) 9%, transparent);
-  border-radius: 26px;
-  box-shadow: 0 18px 48px color-mix(in srgb, var(--ac-color-primary-navy) 5%, transparent);
+  border: var(--ac-border-hairline) solid var(--ac-border-soft);
+  border-radius: 18px;
 }
 
-/* ---- Kopf beider Kacheln ---------------------------------------------------- */
+/* ---- Kopf beider Flaechen --------------------------------------------------- */
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6875rem;
+  margin: 0 0 0.6875rem;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ac-color-accent-green);
+}
+
+.eyebrow::before {
+  content: '';
+  flex: none;
+  width: 1.6875rem;
+  height: 2px;
+  background-color: currentcolor;
+}
 
 .titel {
   margin: 0;
-  font-size: clamp(2rem, 1.5rem + 1.8vw, 3rem);
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.75rem, 1.35rem + 1.3vw, 2.4375rem);
   line-height: 1.05;
   font-weight: var(--ac-display-weight);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   color: var(--ac-color-primary-navy);
 }
 
 .absatz {
-  margin: var(--ac-space-sm) 0 0;
-  max-width: 56ch;
-  font-size: var(--ac-body-size);
-  line-height: 1.6;
-  color: var(--ac-color-text-secondary);
-}
-
-/* ---- Linke Kachel: Text links, gelieferte Abbildung rechts ------------------ */
-
-.kopf {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(1rem, 2vw, 1.75rem);
-  align-items: start;
-}
-
-.kopfText {
-  min-width: 0;
-}
-
-.abbildung {
-  display: block;
-  width: clamp(6rem, 4rem + 5vw, 8.75rem);
-  max-width: none;
-  height: auto;
-}
-
-/* ---- Fristenzeilen der linken Kachel ---------------------------------------- */
-
-.tabelle {
-  margin-top: clamp(1.5rem, 2.6vw, 2.25rem);
-}
-
-.zwischentitel {
-  margin: 0 0 var(--ac-space-sm);
-  font-family: var(--ac-font-display);
-  font-size: clamp(1.1875rem, 1.05rem + 0.45vw, 1.4375rem);
-  line-height: 1.25;
-  font-weight: var(--ac-display-weight);
-  color: var(--ac-color-primary-navy);
-}
-
-/* Rahmen und Fuellung durchsichtig, Geometrie wie mit Rahmen. */
-.zeilenBox {
-  margin: 0;
-  background-color: transparent;
-  border: var(--ac-border-hairline) solid transparent;
-  border-radius: 16px;
-}
-
-.zeilenBox .zeile {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
-  align-items: center;
-  gap: 0;
-}
-
-.zeilenBox .zeile + .zeile {
-  border-top: var(--ac-border-hairline) solid transparent;
-}
-
-.zeilenBox .label {
-  padding: 0.8125rem 1.125rem;
-  color: var(--ac-color-primary-navy);
-}
-
-.zeilenBox .wert {
-  padding: 0.8125rem 1.125rem;
-  border-left: var(--ac-border-hairline) solid transparent;
-}
-
-/* ---- Zeilenliste in den Unterkarten ----------------------------------------- */
-
-.zeilenListe {
-  margin: 0;
-}
-
-/* Die Unterkarten sind schmal, die Beschriftungen lang. Sie laufen darum eine
-   Stufe kleiner als die Fristenbox links — sonst brechen sie dreizeilig. */
-.zeilenListe .zeile {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.5rem;
-  align-items: baseline;
-  padding-block: 0.625rem;
+  margin: 0.875rem 0 0;
+  max-width: 48ch;
   font-size: var(--ac-small-size);
-}
-
-.zeilenListe .label,
-.zeilenListe .wert {
-  font-size: inherit;
-}
-
-.zeilenListe .zeile + .zeile {
-  border-top: var(--ac-border-hairline) solid var(--ac-color-border-light);
-}
-
-/* Die Vorlage setzt in den Unterkarten einen Doppelpunkt hinter die
-   Beschriftung. Er ist Zeichensetzung, kein Inhalt, und steht darum hier. */
-.zeilenListe .label::after {
-  content: ':';
-}
-
-/* Die erste Zeile ist die ordentliche Frist und steht kräftiger. */
-.zeilenListe .zeile:first-child .label,
-.zeilenListe .zeile:first-child .wert {
-  font-weight: 600;
-  color: var(--ac-color-primary-navy);
-}
-
-.label {
-  font-size: 1rem;
-  line-height: 1.45;
+  line-height: 1.58;
   color: var(--ac-color-text-secondary);
 }
 
-.wert {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.45;
-  text-align: right;
+/* ---- Links: Piktogramm, Haken-Punkte, Knopf --------------------------------- */
+
+/* Die Datei traegt rund um ihren Kreis einen transparenten Rand; im Layout
+   zaehlt der sichtbare Kreis. `max-width: none`, sonst deckelt die allgemeine
+   Bildregel. */
+.piktogramm {
+  display: block;
+  width: 4.625rem;
+  max-width: none;
+  height: 4.625rem;
+  margin: 1.6875rem 0 1.125rem;
+  object-fit: contain;
+}
+
+.punkte {
+  margin: 0 0 1.6875rem;
+  padding: 0;
+  list-style: none;
+}
+
+.punkt {
+  position: relative;
+  padding-left: 1.3125rem;
+  font-size: var(--ac-small-size);
+  line-height: 1.55;
   color: var(--ac-color-text-secondary);
 }
 
-/* Zeile mit offener Angabe: Beschriftung oben, Vermerk darunter. */
-.zeileOffen {
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0.25rem;
+.punkt + .punkt {
+  margin-top: 0.5625rem;
 }
 
-.zeileOffen .wert {
-  text-align: left;
-  border-left: none;
+.punkt::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--ac-color-accent-green);
 }
 
-.zeilenBox .zeileOffen .label {
-  padding-bottom: 0;
-}
-
-.zeilenBox .zeileOffen .wert {
-  padding-top: 0.25rem;
-}
-
-/* ---- Knopf und Hinweis ------------------------------------------------------ */
-
+/* Der Knopf schiebt sich an den Fuss, damit beide Flaechen gleich hoch enden. */
 .aktion {
   margin-top: auto;
-  padding-top: clamp(1.25rem, 2.4vw, 1.75rem);
 }
 
 .knopf {
   display: inline-flex;
   align-items: center;
-  gap: 0.875rem;
-  min-height: 3.25rem;
+  gap: var(--ac-space-2xs);
   margin: 0;
-  padding: 0.75rem 1.75rem;
-  font-size: var(--ac-body-size);
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--ac-color-accent-green);
+  padding: 0.8125rem 1.125rem;
+  font-size: var(--ac-small-size);
+  font-weight: 700;
+  line-height: 1.2;
   text-decoration: none;
-  background-color: color-mix(in srgb, var(--ac-color-accent-green) 12%, var(--ac-color-white));
-  border-radius: 999px;
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-accent-green);
+  border-radius: var(--ac-radius-md);
   transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.knopf:hover {
-  color: var(--ac-color-accent-green);
-  background-color: color-mix(in srgb, var(--ac-color-accent-green) 18%, var(--ac-color-white));
+/* Wie jeder Knopf der Website: beim Darueberfahren und bei Tastaturfokus navy. */
+.knopf:hover,
+.knopf:focus-visible {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-navy-deep);
 }
 
 .knopf:focus-visible {
@@ -241,105 +167,258 @@
   outline-offset: 3px;
 }
 
-.pfeil {
-  display: inline-block;
-  font-size: 1.125rem;
-  line-height: 1;
-  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
-}
-
-.knopf:hover .pfeil {
-  transform: translateX(3px);
-}
-
-/* Ohne Datei ist es kein Knopf, sondern eine Beschriftung mit Vermerk. */
+/* Solange das PDF fehlt, ist es kein Knopf, sondern eine Beschriftung mit
+   Vermerk. Gruen auf halber Deckung traegt den weissen Text nicht mehr. */
 .knopfOhneDatei {
-  color: var(--ac-color-text-secondary);
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-light);
+  cursor: default;
+}
+
+.knopfOhneDatei:hover {
+  color: var(--ac-color-primary-navy);
   background-color: var(--ac-color-background-light);
 }
 
 .folgt {
-  padding: 0.125rem 0.5rem;
-  font-size: var(--ac-small-size);
-  font-weight: 500;
-  color: var(--ac-color-primary-navy);
+  padding: 0.1rem 0.5rem;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
   background-color: var(--ac-color-white);
-  border-radius: 999px;
+  border-radius: var(--ac-radius-sm);
 }
 
 .hinweis {
-  margin: var(--ac-space-sm) 0 0;
-  font-size: var(--ac-small-size);
+  margin: 0.625rem 0 0;
+  font-size: var(--ac-eyebrow-size);
   line-height: 1.5;
   color: var(--ac-color-text-secondary);
 }
 
-/* ---- Rechte Kachel: zwei Unterkarten ---------------------------------------- */
+/* ---- Rechts: Kopf und die beiden Fristenkarten ------------------------------ */
+
+.fristenKopf {
+  display: grid;
+  gap: 0.625rem;
+  margin-bottom: 1.375rem;
+}
+
+.fristenLead .absatz {
+  margin-top: 0;
+  max-width: 20.625rem;
+}
 
 .gruppen {
   display: grid;
-  gap: clamp(0.875rem, 1.4vw, 1.125rem);
-  margin-top: clamp(1.25rem, 2.4vw, 1.75rem);
+  gap: 0.875rem;
+  /* Beide Karten gleich gross, unabhaengig von der Zahl der Zeilen. */
+  grid-auto-rows: 1fr;
 }
 
+/* Der Zustand beim Darueberfahren steht in Ricardos Auftrag: die ganze Karte
+   navy, jeder Text darin weiss, zwei Pixel angehoben. Angehoben wird mit
+   `transform` — das veraendert keine Groesse und verschiebt nichts. */
 .gruppe {
   display: flex;
   flex-direction: column;
-  padding: clamp(0.875rem, 1.5vw, 1.375rem);
-  background-color: color-mix(in srgb, var(--ac-color-background-light) 65%, var(--ac-color-white));
-  border: var(--ac-border-hairline) solid
-    color-mix(in srgb, var(--ac-color-primary-navy) 7%, transparent);
-  border-radius: 18px;
+  padding: 1.375rem;
+  background-color: color-mix(in srgb, var(--ac-color-background-light) 55%, var(--ac-color-white));
+  border: var(--ac-border-hairline) solid var(--ac-border-soft);
+  border-radius: 14px;
+  transition:
+    transform var(--ac-motion-base) var(--ac-motion-easing),
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
+    border-color var(--ac-motion-base) var(--ac-motion-easing),
+    color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.gruppe:hover,
+.gruppe:focus-visible,
+.gruppe:focus-within {
+  transform: translateY(-2px);
+  background-color: var(--ac-color-primary-navy);
+  border-color: var(--ac-color-primary-navy);
+}
+
+/* Der Farbwechsel allein ist im Umriss nicht eindeutig — dazu der gruene
+   Fokusring der Website. */
+.gruppe:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 3px;
 }
 
 .gruppenKopf {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
   gap: 0.75rem;
-  padding-bottom: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
-/* Die gelieferten Symbole bringen ihren Kreis mit; ringsum liegt in der Datei
-   ein transparenter Rand von 12.9 Prozent, den der negative Rand ausgleicht. */
+/* Das Piktogramm bleibt unveraendert — es bringt seinen hellen Kreis mit. */
 .symbol {
   display: block;
-  flex: none;
   width: 3.25rem;
   max-width: none;
   height: 3.25rem;
-  margin: calc(3.25rem * -0.129);
+  object-fit: contain;
 }
 
 .gruppenTitel {
-  margin: 0;
+  margin: 0 0 0.1875rem;
   font-family: var(--ac-font-display);
-  font-size: clamp(1.1875rem, 1.05rem + 0.4vw, 1.375rem);
+  font-size: 1.3125rem;
   line-height: 1.2;
   font-weight: var(--ac-display-weight);
   color: var(--ac-color-primary-navy);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
 .gruppenUntertitel {
-  margin: 0.125rem 0 0;
-  font-size: var(--ac-small-size);
-  line-height: 1.35;
+  margin: 0;
+  font-size: var(--ac-eyebrow-size);
+  line-height: 1.4;
   color: var(--ac-color-text-secondary);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+/* Die ordentliche Frist, hervorgehoben ueber den Zeilen. */
+.frist {
+  display: grid;
+  gap: 0.1875rem;
+  margin: 0 0 0.75rem;
+  padding: 0.6875rem 0.8125rem;
+  background-color: var(--ac-color-white);
+  border-radius: 10px;
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.gruppe:hover .frist,
+.gruppe:focus-visible .frist,
+.gruppe:focus-within .frist {
+  background-color: color-mix(in srgb, var(--ac-color-white) 12%, transparent);
+}
+
+.fristLabel {
+  font-size: var(--ac-eyebrow-size);
+  line-height: 1.4;
+  color: var(--ac-color-text-secondary);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.fristWert {
+  font-size: 0.9375rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.zeilenListe {
+  margin: 0;
+  border-top: var(--ac-border-hairline) solid var(--ac-border-soft);
+  transition: border-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.zeile {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.9375rem;
+  padding: 0.625rem 0;
+  border-bottom: var(--ac-border-hairline) solid var(--ac-border-soft);
+  font-size: var(--ac-eyebrow-size);
+  line-height: 1.4;
+  transition: border-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+/* Eine offene Angabe ist viel breiter als ein Datum; solche Zeilen laufen
+   zweizeilig und stehen mit dem bestaetigten Wert wieder nebeneinander. */
+.zeileOffen {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.label {
+  margin: 0;
+  color: var(--ac-color-text-secondary);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.wert {
+  margin: 0;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--ac-color-primary-navy);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.zeileOffen .wert {
+  white-space: normal;
+}
+
+.kartenHinweis {
+  margin: 0.75rem 0 0;
+  font-size: var(--ac-eyebrow-size);
+  line-height: 1.45;
+  color: var(--ac-color-text-secondary);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+/* Jeder Text in der hervorgehobenen Karte wird weiss (11.6:1). */
+.gruppe:hover .gruppenTitel,
+.gruppe:hover .gruppenUntertitel,
+.gruppe:hover .fristLabel,
+.gruppe:hover .fristWert,
+.gruppe:hover .label,
+.gruppe:hover .wert,
+.gruppe:hover .kartenHinweis,
+.gruppe:focus-visible .gruppenTitel,
+.gruppe:focus-visible .gruppenUntertitel,
+.gruppe:focus-visible .fristLabel,
+.gruppe:focus-visible .fristWert,
+.gruppe:focus-visible .label,
+.gruppe:focus-visible .wert,
+.gruppe:focus-visible .kartenHinweis,
+.gruppe:focus-within .gruppenTitel,
+.gruppe:focus-within .gruppenUntertitel,
+.gruppe:focus-within .fristLabel,
+.gruppe:focus-within .fristWert,
+.gruppe:focus-within .label,
+.gruppe:focus-within .wert,
+.gruppe:focus-within .kartenHinweis {
+  color: var(--ac-color-white);
+}
+
+.gruppe:hover .zeilenListe,
+.gruppe:hover .zeile,
+.gruppe:focus-visible .zeilenListe,
+.gruppe:focus-visible .zeile,
+.gruppe:focus-within .zeilenListe,
+.gruppe:focus-within .zeile {
+  border-color: color-mix(in srgb, var(--ac-color-white) 28%, transparent);
 }
 
 .nachsatz {
-  margin: clamp(1rem, 2vw, 1.25rem) 0 0;
-  font-size: var(--ac-body-size);
-  line-height: 1.6;
+  margin: 1rem 0 0;
+  font-size: var(--ac-eyebrow-size);
+  line-height: 1.5;
   color: var(--ac-color-text-secondary);
 }
 
-/* ---- Bildstreifen unter den Kacheln ----------------------------------------- */
+.nachsatz + .nachsatz {
+  margin-top: 0.375rem;
+}
+
+/* ---- Bildstreifen unter den beiden Flaechen --------------------------------- */
 
 .banner {
   position: relative;
   margin: 0;
   overflow: hidden;
-  border-radius: 26px;
+  border-radius: 18px;
 }
 
 .bannerBild {
@@ -371,26 +450,28 @@
   bottom: clamp(0.75rem, 1.6vw, 1.25rem);
 }
 
-/* ---- Ab 64rem: die beiden Kacheln nebeneinander ----------------------------- */
+/* ---- Ab 56.25rem (900 px): nebeneinander, wie in der Vorlage ---------------- */
 
-@media (min-width: 64rem) {
+@media (min-width: 56.25rem) {
   .raster {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(20rem, 0.72fr) minmax(0, 1.28fr);
     align-items: stretch;
   }
-}
 
-/* Die Unterkarten stehen erst ab 88rem nebeneinander — dort bleiben je
-   Beschriftung rund 180 px, und sie laufen zweizeilig wie in der Vorlage.
-   Bei 1280 px waren es 150 px und drei Zeilen, bei 1024 px vier. Darunter
-   stehen die beiden Karten deshalb voll breit untereinander. */
-@media (min-width: 88rem) {
+  .fristenKopf {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1.5rem;
+    align-items: end;
+  }
+
+  .fristenLead .absatz {
+    text-align: right;
+  }
+
   .gruppen {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-
-/* ---- Telefon: die Abbildung tritt unter den Text ---------------------------- */
 
 /* Ein Panorama im Verhaeltnis 4.16 : 1 waere auf dem Telefon 80 px hoch. Der
    Streifen wird dort hoeher und zeigt dafuer den mittleren Ausschnitt. */
@@ -398,54 +479,34 @@
   .bannerBild {
     aspect-ratio: 2.6;
   }
-
-  .schild {
-    font-size: 0.875rem;
-  }
-}
-
-@media (max-width: 29.99rem) {
-  .kopf {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .abbildung {
-    order: -1;
-  }
-
-  .zeilenBox .zeile {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .zeilenBox .wert {
-    padding-top: 0;
-    text-align: left;
-    border-left: none;
-  }
-
-  .zeilenBox .label {
-    padding-bottom: 0.25rem;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .knopf,
-  .pfeil {
+  .gruppe,
+  .gruppenTitel,
+  .gruppenUntertitel,
+  .frist,
+  .fristLabel,
+  .fristWert,
+  .zeilenListe,
+  .zeile,
+  .label,
+  .wert,
+  .kartenHinweis,
+  .knopf {
     transition: none;
   }
 
-  .knopf:hover .pfeil {
+  .gruppe:hover,
+  .gruppe:focus-visible,
+  .gruppe:focus-within {
     transform: none;
   }
 }
 
 @media print {
-  .flaeche {
-    background-image: none;
-  }
-
-  .karte {
-    box-shadow: none;
+  .karte,
+  .gruppe {
     break-inside: avoid;
   }
 }

@@ -1515,6 +1515,67 @@ eidg. Fachausweis suggeriert.
 > nicht mit; die Abschnitte darunter behalten ihren Grund. Derselbe breite
 > Container wie auf `/treuhand/buchhaltung` (1344 px).
 
+> **„Checkliste, Fristen und Gebühren" ist seit dem 16.09.2026 nach Ricardos
+> HTML-Vorlage gebaut** (`steuern-fristen-checkliste-neu.html`,
+> `content/source/steuern_checkliste_de.md`): hellblauer Grund
+> (`background_tint`), zwei weisse Flächen mit feiner Kontur in `border_soft`
+> und 18 px Radius. **Links** Kategoriezeile „Steuererklärung Kanton Bern",
+> Titel „Alle Unterlagen auf einen Blick.", ein Satz, das gelieferte
+> Piktogramm, drei Punkte mit grünem Haken, der grüne Knopf und der Hinweis
+> „Ohne Anmeldung · sofort verfügbar". **Rechts** Kategoriezeile „Fristen und
+> Gebühren", Titel „Die wichtigsten Termine.", ein Satz und zwei gleich grosse
+> Fristenkarten, darunter der Nachsatz. **Die Anker `checkliste` und `fristen`
+> bleiben.**
+>
+> Nachgemessen bei 1440 px: Flächen 387 und 689 px (das Verhältnis 0.72 : 1.28
+> der Vorlage), beide 653 px hoch, beide Fristenkarten 302 x 348 px; bei
+> 1024 px 334 / 595 px und Karten 263 x 383; bei 375 px stehen alle Bereiche
+> untereinander, Karten 285 x 366 — kein waagrechter Überlauf.
+>
+> **Beim Darüberfahren und bei Tastaturfokus wird die ganze Fristenkarte
+> navy**, jeder Text darin weiss (11.6:1), die Karte zwei Pixel angehoben
+> (`transform`, also ohne Layoutverschiebung), Übergang 180 ms. Die Karten
+> tragen `tabindex="0"` samt grünem Fokusring — sie enthalten keinen Link, und
+> ohne das gäbe es den verlangten Fokuszustand nicht. Dieselbe Lösung wie beim
+> Bentoraster auf `/ueber-uns`. Das Piktogramm bleibt unverändert auf seinem
+> hellen Kreis. Der grüne Knopf wird beim Darüberfahren navy, wie jeder Knopf
+> der Website.
+>
+> **Drei Änderungen gegenüber dem 14.09.2026, auf die Ricardo hingewiesen ist:**
+>
+> - **Die Fristen der Unternehmen sind andere.** Bis dahin galten 15. September
+>   ordentlich und Verlängerungen bis 15. November (kostenlos), 15. Januar
+>   (CHF 20) und 15. März (CHF 40). Die Vorlage nennt stattdessen **sieben
+>   Monate nach Geschäftsabschluss** und die Verlängerung um 1½ Monate
+>   (kostenlos) beziehungsweise maximal 3½ Monate (CHF 20). Der alte Stand
+>   steht unverändert in der Quelldatei.
+> - **Die Fristenzeilen der linken Kachel sind entfallen.** Sie standen seit
+>   dem 14.09.2026 ohne sichtbaren Rahmen da („nur die ränder der Tabelle
+>   sollen durchsichtig sein"). Beide Angaben — 15. März und die Verlängerung
+>   bis 15. November — stehen rechts in der Karte „Privatpersonen"; es geht
+>   nichts verloren.
+> - **Der Satz „Wenn wir Ihre Steuererklärung erstellen, übernehmen wir auch
+>   die Fristverlängerung." bleibt.** Die Vorlage führt ihn nicht; Abschnitt 9
+>   verlangt den Hinweis ausdrücklich. Er steht als zweiter Nachsatz unter den
+>   Karten.
+>
+> **Der eigene Container von 1560 px ist entfallen** — die neue Vorlage läuft
+> auf 1180 px, und für 20 px Unterschied lohnt keine vierte Containerbreite.
+> Der Abschnitt steht seither im Standardcontainer (1160 px). **Der gelieferte
+> Hintergrund `steuern_hintergrund` und der weiche Schatten sind weg**; der
+> Auftrag verlangt hellblau und „keine Schatten". Die Datei bleibt liegen.
+>
+> **Die Titel sind neu.** „Privatpersonen" heisst jetzt „Alle Unterlagen auf
+> einen Blick.", „Fristen und Kosten" heisst „Die wichtigsten Termine." — damit
+> steht „Privatpersonen" nur noch zweimal als Überschrift auf der Seite statt
+> dreimal.
+>
+> **Die drei Piktogramme sind die gelieferten SVG**, unverändert:
+> `steuern_checkliste`, `steuern_icon_privatpersonen`,
+> `steuern_icon_unternehmen` — dieselben Dateien, die seine Vorlage nennt.
+>
+> Die folgende Notiz beschreibt die Fassung vom 14.09.2026.
+
 > **„Checkliste" und „Fristen und Fristverlängerung" seit dem 14.09.2026 als
 > zwei Kacheln nebeneinander** (`src/components/blocks/ChecklisteFristen.tsx`).
 > Zuerst nach einer Referenzgrafik gebaut, am selben Tag nach Ricardos zweitem,

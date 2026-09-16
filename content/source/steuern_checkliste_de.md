@@ -136,3 +136,84 @@ sobald eine lizenzierte Fassung von mindestens 2000 px Breite vorliegt.
 **Vier Symbole fehlen** und werden nicht nachgezeichnet: das Kalender- und das
 Uhrzeichen der beiden Fristenzeilen, das Pin-Zeichen im Schildchen „Bern" und
 das Download-Zeichen im Knopf.
+
+---
+
+# Checkliste, Fristen und Gebühren — HTML-Vorlage Ricardo, 16.09.2026
+
+Aus seinem Auftrag vom 16.09.2026 samt der Datei
+`steuern-fristen-checkliste-neu.html`. Die folgenden Zeilen stehen wörtlich so
+in seinem Auftragstext.
+
+## Linke Fläche
+
+Kleine Überschrift: **Steuererklärung Kanton Bern**
+
+Hauptüberschrift: **Alle Unterlagen auf einen Blick.**
+
+Einleitung: Die Checkliste zeigt, welche Dokumente Privatpersonen für die
+Steuererklärung üblicherweise benötigen.
+
+Drei Punkte:
+
+- Einkommen und Vermögen
+- Versicherungen und Vorsorge
+- Abzüge und besondere Ereignisse
+
+Knopf: **Checkliste herunterladen (PDF)**
+
+Hinweis darunter: Ohne Anmeldung · sofort verfügbar
+
+## Rechte Fläche
+
+Kleine Überschrift: **Fristen und Gebühren**
+
+Hauptüberschrift: **Die wichtigsten Termine.**
+
+Einleitung: Massgebend ist immer das Datum auf Ihrem Schreiben der
+Steuerverwaltung.
+
+### Karte 1 — Privatpersonen / Natürliche Personen
+
+Übliche Einreichefrist: **15. März**
+
+- Online verlängern bis 15. Juli — kostenlos
+- bis 15. September — CHF 20
+- bis 15. November — CHF 40
+
+Hinweis: Schriftlich eingereichte Fristverlängerungen können höhere Gebühren
+verursachen.
+
+### Karte 2 — Unternehmen / Juristische Personen
+
+Ordentliche Einreichefrist: **7 Monate nach Geschäftsabschluss**
+
+- Online: zusätzliche 1½ Monate — kostenlos
+- Online: maximal zusätzliche 3½ Monate — CHF 20
+
+### Unter den Karten
+
+Die Gebühren gelten für online eingereichte Fristverlängerungen.
+
+## Was sich damit gegenüber dem 14.09.2026 ändert
+
+- **Die Fristen der Unternehmen sind andere.** Der Stand vom 14.09.2026 —
+  15. September ordentlich, Verlängerung online bis 15. November kostenlos, bis
+  15. Januar CHF 20, bis 15. März CHF 40 — steht oben unverändert und ist nicht
+  widerrufen; er steht nur nicht mehr auf der Seite.
+- **Die Fristenzeilen der linken Kachel entfallen** („Reguläre Einreichfrist
+  15. März", „Fristverlängerung möglich bis 15. November"). Beide Angaben
+  stehen rechts in der Karte „Privatpersonen".
+- **Die Titel sind neu:** „Privatpersonen" wird zu „Alle Unterlagen auf einen
+  Blick.", „Fristen und Kosten" zu „Die wichtigsten Termine.". Damit steht
+  „Privatpersonen" nur noch zweimal als Überschrift auf der Seite statt
+  dreimal.
+- **Der Satz „Wenn wir Ihre Steuererklärung erstellen, übernehmen wir auch die
+  Fristverlängerung." bleibt.** Die Vorlage führt ihn nicht; Abschnitt 9 der
+  Hausordnung verlangt den Hinweis ausdrücklich. Er steht als zweiter Nachsatz
+  unter den Karten.
+- **Die Quellenzeile der Vorlage ist nicht übernommen** („Angaben gemäss
+  Steuerverwaltung des Kantons Bern. Gebühren beziehen sich auf online
+  eingereichte Fristverlängerungen."). Ricardos Auftragstext nennt an dieser
+  Stelle nur den einen Satz zu den Gebühren, und sein Auftragstext gilt vor der
+  Datei.

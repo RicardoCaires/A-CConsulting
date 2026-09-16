@@ -6,31 +6,34 @@ import { collectPending, type Download, type Rich } from '@/content/types'
 import styles from './ChecklisteFristen.module.css'
 
 /**
- * Checkliste und Fristen auf `/steuern` — zwei Kacheln und ein Bildstreifen.
+ * Checkliste, Fristen und Gebuehren auf `/steuern` — zwei weisse Flaechen.
  *
- * Nach Ricardos zweiter Referenzgrafik vom 14.09.2026: links die Checkliste
- * mit der gelieferten Abbildung, dem Knopf und einem Hinweis; rechts die
- * Fristen in zwei Unterkarten mit den gelieferten Symbolen; darunter ein
- * breiter Panoramastreifen mit zwei Schildchen.
+ * **Seit dem 16.09.2026 nach Ricardos HTML-Vorlage**
+ * (`steuern-fristen-checkliste-neu.html`): hellblauer Grund, zwei weisse
+ * Flaechen mit feiner graublauer Kontur und abgerundeten Ecken. Links
+ * Kategoriezeile, Titel, Einleitung, das gelieferte Piktogramm, drei
+ * Haken-Punkte, der gruene Knopf und der Hinweis; rechts Kategoriezeile,
+ * Titel, Einleitung und zwei gleich grosse Fristenkarten, darunter der
+ * Nachsatz. Keine Schatten, keine Verlaeufe.
  *
- * **Die Anker `checkliste` und `fristen` bleiben** — beide Kacheln sind eigene
+ * **Die Anker `checkliste` und `fristen` bleiben** — beide Flaechen sind eigene
  * Abschnitte mit eigener Ueberschrift.
  *
- * **Die Werte stammen aus Ricardos Auftragstext vom 14.09.2026.** Bis dahin
- * standen sie als offene Angabe. Die Faelle mit offener Angabe bleiben
- * unterstuetzt: Im Produktionsbau sind die Marken ausgeblendet, eine Zeile
- * ohne bestaetigten Wert waere dort leer und faellt deshalb ganz weg.
+ * **Die Fristenzeilen in der linken Flaeche sind entfallen.** Die Vorlage
+ * fuehrt sie nicht mehr; beide Angaben — 15. Maerz und die Verlaengerung bis
+ * 15. November — stehen rechts in der Karte „Privatpersonen". Es geht damit
+ * nichts verloren.
  *
- * **Die Kategoriezeile „A&C Consulting" ueber beiden Titeln ist am 14.09.2026
- * auf Ricardos Anweisung entfallen.**
+ * **Beim Darueberfahren und bei Tastaturfokus wird die ganze Fristenkarte
+ * navy**, jeder Text darin weiss, die Karte zwei Pixel angehoben. Die Karten
+ * tragen `tabindex={0}`: Sie enthalten keinen Link, und ohne das gaebe es den
+ * verlangten Fokuszustand nicht. Das gelieferte Piktogramm bleibt unveraendert
+ * auf seinem hellen Kreis.
  *
- * **Die Fristenzeilen der linken Kachel stehen ohne Rahmen.** Sie standen in
- * einer umrandeten, leicht getoenten Box; Ricardo hat am 14.09.2026 verlangt,
- * dass nur die Raender durchsichtig werden — der Inhalt bleibt. Geometrie und
- * Ausrichtung sind darum unveraendert, Rahmen und Fuellung stehen auf
- * `transparent`.
- *
- * Die Einreichfrist nennt seither den 15. Maerz, wie die rechte Kachel.
+ * **Die Werte stammen aus Ricardos Auftragstext.** Die Faelle mit offener
+ * Angabe bleiben unterstuetzt: Im Produktionsbau sind die Marken ausgeblendet,
+ * eine Zeile ohne bestaetigten Wert waere dort leer und faellt deshalb ganz
+ * weg.
  *
  * **Der Bildstreifen erscheint nur mit einer lizenzierten Datei.** Die
  * gelieferte Vorschau traegt ein Wasserzeichen und misst 505 px; sie wird
@@ -48,23 +51,26 @@ type Props = {
   folgt: string
   checkliste: {
     id: string
+    eyebrow: string
     heading: string
     paragraphs: readonly Rich[]
     bild: string
-    fristenTitel?: string
-    fristen?: readonly Zeile[]
+    punkte: readonly string[]
     download: Download
     hinweis?: string
   }
   fristen: {
     id: string
+    eyebrow: string
     heading: string
     lead?: readonly Rich[]
     gruppen: readonly {
       bild: string
       titel: string
       untertitel?: string
+      frist?: Zeile
       zeilen: readonly Zeile[]
+      hinweis?: string
     }[]
     nachsatz?: readonly Rich[]
   }
@@ -79,19 +85,8 @@ type Props = {
 
 const bildPfad = (datei: string) => `/bilder/${datei}.svg`
 
-/**
- * Zeilen mit Beschriftung links und Wert rechts.
- *
- * `variante` unterscheidet die beiden Stellen: `box` sind die Fristenzeilen
- * der linken Kachel, `liste` die Aufzaehlung in den Unterkarten rechts.
- */
-function Zeilen({
-  zeilen,
-  variante,
-}: {
-  zeilen: readonly Zeile[]
-  variante: 'box' | 'liste'
-}) {
+/** Zeilen mit Beschriftung links und Wert rechts, in der Fristenkarte. */
+function Zeilen({ zeilen }: { zeilen: readonly Zeile[] }) {
   // Im Produktionsbau sind die Marken ausgeblendet. Eine Zeile, deren Wert nur
   // aus einer offenen Angabe besteht, waere dort eine leere Zeile — sie faellt
   // darum ganz weg und kommt mit dem bestaetigten Wert zurueck.
@@ -99,7 +94,7 @@ function Zeilen({
   if (sichtbar.length === 0) return null
 
   return (
-    <dl className={variante === 'box' ? styles.zeilenBox : styles.zeilenListe}>
+    <dl className={styles.zeilenListe}>
       {sichtbar.map((zeile) => (
         // Eine offene Angabe ist viel breiter als ein Datum. Solche Zeilen
         // laufen zweizeilig; mit dem bestaetigten Wert stehen sie wieder
@@ -130,9 +125,11 @@ export function ChecklisteFristen({
   banner,
 }: Props) {
   // Eine Gruppe ohne bestaetigten Wert waere im Produktionsbau eine leere
-  // Kachel mit Symbol und Titel. Sie faellt darum weg, bis die Werte stehen.
-  const gruppen = fristen.gruppen.filter((gruppe) =>
-    gruppe.zeilen.some((zeile) => hatSichtbarenInhalt(zeile.wert)),
+  // Karte mit Symbol und Titel. Sie faellt darum weg, bis die Werte stehen.
+  const gruppen = fristen.gruppen.filter(
+    (gruppe) =>
+      gruppe.zeilen.some((zeile) => hatSichtbarenInhalt(zeile.wert)) ||
+      (gruppe.frist ? hatSichtbarenInhalt(gruppe.frist.wert) : false),
   )
 
   return (
@@ -142,50 +139,46 @@ export function ChecklisteFristen({
     >
       <div className={`ac-container ${styles.container}`}>
         <div className={styles.raster}>
+          {/* ---- Links: die Checkliste ------------------------------------ */}
           <section
             id={checkliste.id}
             aria-labelledby={`${checkliste.id}-titel`}
             className={styles.karte}
           >
-            <div className={styles.kopf}>
-              <div className={styles.kopfText}>
-                <h2 id={`${checkliste.id}-titel`} className={styles.titel}>
-                  {checkliste.heading}
-                </h2>
-                {checkliste.paragraphs.filter(hatSichtbarenInhalt).map((absatz, index) => (
-                  <p key={index} className={styles.absatz}>
-                    <RichText value={absatz} />
-                  </p>
+            <p className={styles.eyebrow}>{checkliste.eyebrow}</p>
+            <h2 id={`${checkliste.id}-titel`} className={styles.titel}>
+              {checkliste.heading}
+            </h2>
+            {checkliste.paragraphs.filter(hatSichtbarenInhalt).map((absatz, index) => (
+              <p key={index} className={styles.absatz}>
+                <RichText value={absatz} />
+              </p>
+            ))}
+
+            {/* Das gelieferte Piktogramm ist Gestaltung, kein Inhalt. */}
+            <Image
+              className={styles.piktogramm}
+              src={bildPfad(checkliste.bild)}
+              alt=""
+              width={512}
+              height={512}
+              unoptimized
+            />
+
+            {checkliste.punkte.length > 0 && (
+              <ul className={styles.punkte} role="list">
+                {checkliste.punkte.map((punkt) => (
+                  <li key={punkt} className={styles.punkt}>
+                    {punkt}
+                  </li>
                 ))}
-              </div>
-
-              {/* Die gelieferte Abbildung ist Gestaltung, kein Inhalt. */}
-              <Image
-                className={styles.abbildung}
-                src={bildPfad(checkliste.bild)}
-                alt=""
-                width={900}
-                height={1100}
-                unoptimized
-              />
-            </div>
-
-            {checkliste.fristen?.some((zeile) => hatSichtbarenInhalt(zeile.wert)) && (
-              <div className={styles.tabelle}>
-                {checkliste.fristenTitel && (
-                  <h3 className={styles.zwischentitel}>{checkliste.fristenTitel}</h3>
-                )}
-                <Zeilen zeilen={checkliste.fristen} variante="box" />
-              </div>
+              </ul>
             )}
 
             <div className={styles.aktion}>
               {checkliste.download.file ? (
                 <a className={styles.knopf} href={checkliste.download.file}>
                   {checkliste.download.label}
-                  <span className={styles.pfeil} aria-hidden="true">
-                    →
-                  </span>
                 </a>
               ) : (
                 <p className={`${styles.knopf} ${styles.knopfOhneDatei}`}>
@@ -198,32 +191,44 @@ export function ChecklisteFristen({
             </div>
           </section>
 
+          {/* ---- Rechts: Fristen und Gebuehren ---------------------------- */}
           <section
             id={fristen.id}
             aria-labelledby={`${fristen.id}-titel`}
             className={styles.karte}
           >
-            <h2 id={`${fristen.id}-titel`} className={styles.titel}>
-              {fristen.heading}
-            </h2>
+            <div className={styles.fristenKopf}>
+              <div>
+                <p className={styles.eyebrow}>{fristen.eyebrow}</p>
+                <h2 id={`${fristen.id}-titel`} className={styles.titel}>
+                  {fristen.heading}
+                </h2>
+              </div>
 
-            {fristen.lead?.filter(hatSichtbarenInhalt).map((absatz, index) => (
-              <p key={index} className={styles.absatz}>
-                <RichText value={absatz} />
-              </p>
-            ))}
+              {fristen.lead && fristen.lead.filter(hatSichtbarenInhalt).length > 0 && (
+                <div className={styles.fristenLead}>
+                  {fristen.lead.filter(hatSichtbarenInhalt).map((absatz, index) => (
+                    <p key={index} className={styles.absatz}>
+                      <RichText value={absatz} />
+                    </p>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {gruppen.length > 0 && (
               <div className={styles.gruppen}>
                 {gruppen.map((gruppe) => (
-                  <div key={gruppe.titel} className={styles.gruppe}>
+                  // Ohne Link gaebe es in der Karte nichts, was den Fokus
+                  // aufnehmen koennte — und damit keinen Tastaturzustand.
+                  <article key={gruppe.titel} className={styles.gruppe} tabIndex={0}>
                     <div className={styles.gruppenKopf}>
                       <Image
                         className={styles.symbol}
                         src={bildPfad(gruppe.bild)}
                         alt=""
-                        width={700}
-                        height={700}
+                        width={512}
+                        height={512}
                         unoptimized
                       />
                       <div>
@@ -233,8 +238,20 @@ export function ChecklisteFristen({
                         )}
                       </div>
                     </div>
-                    <Zeilen zeilen={gruppe.zeilen} variante="liste" />
-                  </div>
+
+                    {gruppe.frist && hatSichtbarenInhalt(gruppe.frist.wert) && (
+                      <p className={styles.frist}>
+                        <span className={styles.fristLabel}>{gruppe.frist.label}</span>
+                        <strong className={styles.fristWert}>
+                          <RichText value={gruppe.frist.wert} />
+                        </strong>
+                      </p>
+                    )}
+
+                    <Zeilen zeilen={gruppe.zeilen} />
+
+                    {gruppe.hinweis && <p className={styles.kartenHinweis}>{gruppe.hinweis}</p>}
+                  </article>
                 ))}
               </div>
             )}
