@@ -429,24 +429,32 @@ export type Block =
       hintergrund?: string
       checkliste: {
         id: string
+        /** Kleine Ueberschrift ueber dem Titel. */
+        eyebrow: string
         heading: string
         paragraphs: readonly Rich[]
-        /** Gelieferte Abbildung, Dateiname unter `public/bilder/` ohne Endung. */
+        /** Geliefertes Piktogramm, Dateiname unter `public/bilder/` ohne Endung. */
         bild: string
-        fristenTitel?: string
-        fristen?: readonly { label: string; wert: Rich }[]
+        /** Was die Checkliste abdeckt, als Haken-Aufzaehlung. */
+        punkte: readonly string[]
         download: Download
         hinweis?: string
       }
       fristen: {
         id: string
+        /** Kleine Ueberschrift ueber dem Titel. */
+        eyebrow: string
         heading: string
         lead?: readonly Rich[]
         gruppen: readonly {
           bild: string
           titel: string
           untertitel?: string
+          /** Die ordentliche Frist, hervorgehoben ueber den Zeilen. */
+          frist?: { label: string; wert: Rich }
           zeilen: readonly { label: string; wert: Rich }[]
+          /** Nachsatz innerhalb der Karte. */
+          hinweis?: string
         }[]
         nachsatz?: readonly Rich[]
       }
