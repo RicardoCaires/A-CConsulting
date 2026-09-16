@@ -2019,6 +2019,58 @@ Fliesstext über Werte — konkrete Sätze über konkrete Menschen.
 Adresse, Öffnungszeiten, Karte, Telefon, E-Mail. Sprachhinweis: Beratung auf
 Deutsch, Französisch und Portugiesisch.
 
+> **Das Kontaktformular ist seit dem 16.09.2026 eine Eingabemaske** nach
+> Ricardos HTML-Vorlage (`content/source/kontakt_formular_de.md`,
+> `src/components/blocks/Kontaktformular.tsx`): eine grosse abgerundete
+> hellblaue Fläche mit feiner Kontur in `border_line`, darin links
+> Kategoriezeile „Persönlich erreichbar", der Titel „Schreiben Sie uns.", ein
+> Satz, zwei ganz anklickbare Kontaktflächen für Telefon und E-Mail und die
+> Zusage mit grünem Strich; rechts auf der helleren Unterfläche das Formular.
+> Ab 53.75rem (860 px) nebeneinander, darunter untereinander. Der Anker
+> `formular` bleibt. Bis dahin stand hier der Umriss `formOutline`; sein
+> Wortlaut steht unverändert in `content/source/schritt4_fassung2_de.md`.
+>
+> **Abgesendet wird noch nichts.** Der serverseitige Endpunkt aus Abschnitt 7
+> ist nicht gebaut, und die Vorlage schickt an `#`, also nirgendwohin. Der
+> Knopf steht darum sichtbar abgeschaltet, mit dem Vermerk „folgt" und
+> darunter dem bestehenden Hinweis `ui.formPending` — demselben, der bisher
+> unter dem Umriss stand. **Ein Formular, das Anfragen still verschluckt, wäre
+> schlechter als keines.** Sobald der Endpunkt steht, wird aus dem
+> abgeschalteten Knopf ein `type="submit"` und das `<form>` bekommt sein
+> `action`; sonst ändert sich nichts. **Ricardo entscheidet, ob der Endpunkt
+> jetzt gebaut wird** — er steht seit Anfang als offener Punkt in Abschnitt 10.
+>
+> **Zwei neue Tokens**, beide von Ricardo ausgeschrieben:
+> `surface_field` (`#EDF3F7`) für die Formularhälfte, die Kontaktflächen und
+> den Fokusgrund, `border_line` (`#BDCBD7`) für die Konturen. **Keine weissen
+> Flächen im Formularbereich** — der Auftrag verlangt abgestufte Hellblautöne:
+> Schale und Eingabefelder `background_tint`, Unterflächen `surface_field`.
+> Keine Schatten, keine Verläufe.
+>
+> **Zugänglichkeit:** jede Beschriftung steht als `<label>` da, nie nur als
+> Platzhalter; Pflichtfelder tragen `required`; E-Mail und Telefon haben
+> `type="email"` und `type="tel"`; Felder sind 48 px hoch; der Fokus zeigt
+> grüne Kontur und grünen Ring, die Kontaktflächen und der Knopf zusätzlich
+> den grünen Fokusring der Website.
+>
+> **Nach Abschnitt 7 ergänzt**, weil die Vorlage es nicht führt: Die
+> **Datenschutzerklärung ist verlinkt** (über `path()`), und ein
+> **Honigtopf-Feld** liegt unsichtbar im Formular. Cloudflare Turnstile kommt
+> mit dem Endpunkt dazu.
+>
+> **Der Fliesstext steht im Ton der Website** (`text_secondary`), nicht in dem
+> der Vorlage (`#445367`). Zwei Fliesstextfarben nebeneinander wären eine zu
+> viel; Ricardo entscheidet, ob der Ton der Vorlage überall gelten soll.
+>
+> **„Wobei dürfen wir Sie unterstützen?" steht als `h3`** unter der `h2`
+> „Schreiben Sie uns." — die `h1` der Seite ist der Seitentitel. Der Satz ist
+> fast der von Abschnitt 3 und vom Abschluss der Startseite („Wobei **können**
+> wir Sie unterstützen?"). Ricardo ist darauf hingewiesen.
+>
+> **Die Schale steht auf demselben Hellblau wie die Seite.** Die Vorlage setzt
+> die Seite auf ein helles Grau; seit dem 16.09.2026 trägt jeder Inhalt
+> hellblau. Es ist die Kontur, die die Fläche als Fläche liest.
+
 ### Preisdarstellung
 
 Keine Lockpreise ("Steuererklärung ab CHF 35"). Das passt nicht zur

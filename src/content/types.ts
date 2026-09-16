@@ -643,6 +643,40 @@ export type Block =
    * angekuendigten Felder mit einem klaren Vermerk.
    */
   | {
+      /**
+       * Das Kontaktformular auf `/kontakt`, seit dem 16.09.2026 nach Ricardos
+       * HTML-Vorlage. Loest den Umriss `formOutline` ab; der Baustein bleibt
+       * fuer den Fall, dass eine andere Seite ihn braucht.
+       */
+      kind: 'kontaktformular'
+      id: string
+      eyebrow: string
+      heading: string
+      lead: string
+      kontakt: { telefonLabel: string; telefonText: string; emailLabel: string }
+      zusage: { titel: string; text: string }
+      formular: {
+        heading: string
+        pflichtHinweis: string
+        name: string
+        email: string
+        telefon: string
+        anliegen: string
+        anliegenPlatzhalter: string
+        anliegenWahl: readonly string[]
+        kontaktartFrage: string
+        kontaktartEmail: string
+        kontaktartTelefon: string
+        nachricht: string
+        nachrichtPlatzhalter: string
+        zustimmungVor: string
+        zustimmungLink: string
+        zustimmungNach: string
+        knopf: string
+        vertraulich: string
+      }
+    }
+  | {
       kind: 'formOutline'
       id?: string
       heading: string

@@ -7,9 +7,10 @@
  * Telefon und E-Mail stehen bewusst ueber dem Formular, damit der telefonische
  * Weg nicht darunter verschwindet.
  *
- * Das Kurzformular ist als Umriss dargestellt, nicht als Eingabemaske: Der
- * serverseitige Endpunkt ist noch nicht gebaut, und ein Formular, das nichts
- * absendet, waere schlechter als keines.
+ * Das Formular ist seit dem 16.09.2026 eine Eingabemaske nach Ricardos
+ * HTML-Vorlage. Der serverseitige Endpunkt fehlt weiterhin; der Absendeknopf
+ * steht darum sichtbar abgeschaltet mit dem Hinweis `ui.formPending`. Ein
+ * Formular, das Anfragen still verschluckt, waere schlechter als keines.
  */
 
 import type { PageContent } from '../types'
@@ -40,22 +41,56 @@ export const kontakt: PageContent = {
       id: 'direkt',
     },
 
-    // 02 Kurzformular
+    // 02 Kontaktformular — seit dem 16.09.2026 nach Ricardos HTML-Vorlage
+    // (`content/source/kontakt_formular_de.md`). Bis dahin stand hier der
+    // Umriss `formOutline`; der Wortlaut steht dort unveraendert.
+    //
+    // **Abgesendet wird noch nichts:** Der serverseitige Endpunkt aus
+    // Abschnitt 7 der Hausordnung fehlt. Der Knopf steht darum abgeschaltet
+    // mit dem bestehenden Hinweis `ui.formPending`.
     {
-      kind: 'formOutline',
+      kind: 'kontaktformular',
       id: 'formular',
-      heading: 'Oder schreiben Sie uns',
-      intro: ['Fünf Angaben genügen. Alles Weitere klären wir im Gespräch.'],
-      fields: [
-        'Name',
-        'Telefon oder E-Mail',
-        'Sprache: Deutsch, Französisch, Portugiesisch',
-        'Anliegen: Buchhaltung · Lohn · Mehrwertsteuer · Jahresabschluss · Steuern · Versicherungen · Firmengründung · Treuhänderwechsel · Anderes',
-        'Ihre Nachricht',
-      ],
-      consentNote:
-        'Zustimmung zur Datenbearbeitung mit Verweis auf die Datenschutzerklärung, nicht vorangekreuzt.',
-      submitLabel: 'Anfrage senden',
+      eyebrow: 'Persönlich erreichbar',
+      heading: 'Schreiben Sie uns.',
+      lead: 'Schildern Sie uns kurz Ihr Anliegen. Wir melden uns persönlich bei Ihnen und klären gemeinsam den nächsten Schritt.',
+      kontakt: {
+        telefonLabel: 'Telefon',
+        telefonText: 'Jetzt anrufen',
+        emailLabel: 'E-Mail',
+      },
+      zusage: {
+        titel: 'Persönliche Rückmeldung',
+        text: 'Wir beantworten Ihre Anfrage in der Regel innerhalb eines Werktags.',
+      },
+      formular: {
+        heading: 'Wobei dürfen wir Sie unterstützen?',
+        pflichtHinweis: '* Pflichtfelder',
+        name: 'Name *',
+        email: 'E-Mail *',
+        telefon: 'Telefon',
+        anliegen: 'Anliegen *',
+        anliegenPlatzhalter: 'Bitte auswählen',
+        anliegenWahl: [
+          'Versicherungen',
+          'Treuhand und Buchhaltung',
+          'Steuern',
+          'Firmengründung',
+          'Finanzplanung',
+          'Anderes Anliegen',
+        ],
+        kontaktartFrage: 'Wie dürfen wir Sie kontaktieren?',
+        kontaktartEmail: 'E-Mail',
+        kontaktartTelefon: 'Telefon',
+        nachricht: 'Ihre Nachricht *',
+        nachrichtPlatzhalter: 'Beschreiben Sie Ihr Anliegen in wenigen Sätzen.',
+        zustimmungVor: 'Ich habe die ',
+        zustimmungLink: 'Datenschutzerklärung',
+        zustimmungNach:
+          ' gelesen und stimme der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage zu.',
+        knopf: 'Anfrage senden →',
+        vertraulich: 'Ihre Angaben werden vertraulich behandelt und nicht weitergegeben.',
+      },
     },
 
     // 03 Was danach passiert

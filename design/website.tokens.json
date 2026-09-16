@@ -51,6 +51,14 @@
     "border_soft": {
       "hex": "#CCD6DF",
       "verwendung": "dezenter Rahmen weisser Kacheln auf hellblauem Grund. Von Ricardo am 16.09.2026 fuer die Leistungskacheln der Buchhaltung ausgeschrieben; liegt zwischen border_light (#CCCCCC, zu grau) und border_tint (#B0C4DE, zu kraeftig)"
+    },
+    "surface_field": {
+      "hex": "#EDF3F7",
+      "verwendung": "helle Unterflaeche und Eingabefelder auf hellblauem Grund. Von Ricardo am 16.09.2026 fuer das Kontaktformular ausgeschrieben - eine Stufe heller als background_tint"
+    },
+    "border_line": {
+      "hex": "#BDCBD7",
+      "verwendung": "Kontur der Formularflaechen und Eingabefelder. Von Ricardo am 16.09.2026 fuer das Kontaktformular ausgeschrieben - eine Stufe kraeftiger als border_soft, damit ein Eingabefeld als Feld zu erkennen ist"
     }
   },
   "space_rem": {

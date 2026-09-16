@@ -1,0 +1,502 @@
+/* Das Kontaktformular auf `/kontakt`.
+
+   Nach Ricardos HTML-Vorlage vom 16.09.2026 (`kontaktformular-neu.html`). Aus
+   ihrem Quelltext uebernommen:
+
+     Inhalt        min(1180px, 100% - 40px) — hier der Standardcontainer
+     Schale        Raster 0.8fr / 1.2fr, Rand 1 px in border_line, Radius 20 px
+     Einstieg      Polster 46/42 px, Trennlinie rechts
+     Formular      Polster 42 px auf surface_field
+     Felder        Hoehe 48 px, Radius 9 px, Grund background_tint
+     Radien        9 bis 20 px, wie der Auftrag sie nennt
+     Uebergang     200 ms — hier `--ac-motion-base` (180 ms)
+     Umbruch       unter 860 px einspaltig
+
+   **Uebernommen ist die Gestaltung, nicht der Code.** Die Vorlage schreibt
+   Farbwerte und Schriftnamen direkt hinein; im Projekt stehen dafuer die
+   Tokens. Ein Hex-Wert in einer Komponente ist hier ein Fehler.
+
+   **Keine weissen Flaechen im Formularbereich**, wie der Auftrag verlangt:
+   drei Stufen Hellblau — `background_tint` fuer Schale und Eingabefelder,
+   `surface_field` fuer die Formularhaelfte und die Kontaktflaechen. Keine
+   Schatten, keine Verlaeufe.
+
+   **Die Schale steht auf demselben Hellblau wie die Seite.** Seit dem
+   16.09.2026 traegt jeder Inhalt diesen Grund; die Kontur in `border_line`
+   ist es, die die Flaeche als Flaeche liest. */
+
+.flaeche {
+  padding-block: var(--ac-section-y);
+}
+
+.container {
+  display: block;
+}
+
+.schale {
+  display: grid;
+  overflow: hidden;
+  background-color: var(--ac-color-background-tint);
+  border: var(--ac-border-hairline) solid var(--ac-border-line);
+  border-radius: 20px;
+}
+
+/* ---- Links: wer antwortet --------------------------------------------------- */
+
+.einstieg {
+  padding: clamp(2rem, 3.4vw, 2.875rem) clamp(1.5rem, 3vw, 2.625rem);
+  border-bottom: var(--ac-border-hairline) solid var(--ac-border-line);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6875rem;
+  margin: 0 0 0.9375rem;
+  font-size: var(--ac-eyebrow-size);
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ac-color-accent-green);
+}
+
+.eyebrow::before {
+  content: '';
+  flex: none;
+  width: 1.75rem;
+  height: 2px;
+  background-color: currentcolor;
+}
+
+.titel {
+  margin: 0 0 1.0625rem;
+  font-family: var(--ac-font-display);
+  font-size: clamp(2.25rem, 1.7rem + 1.9vw, 3.125rem);
+  line-height: 1.02;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.02em;
+  color: var(--ac-color-primary-navy);
+}
+
+.lead {
+  margin: 0;
+  max-width: 44ch;
+  font-size: var(--ac-small-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Die beiden Kontaktflaechen --------------------------------------------- */
+
+.kontakte {
+  display: grid;
+  gap: 0.75rem;
+  margin: clamp(1.5rem, 3vw, 2.125rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Ganz anklickbar: Der Link liegt um die Flaeche, nicht nur um den Text. */
+.kontakt {
+  display: grid;
+  grid-template-columns: 2.625rem minmax(0, 1fr);
+  gap: 0.8125rem;
+  align-items: center;
+  padding: 0.75rem;
+  text-decoration: none;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-surface-field);
+  border: var(--ac-border-hairline) solid var(--ac-border-line);
+  border-radius: 12px;
+  transition:
+    transform var(--ac-motion-base) var(--ac-motion-easing),
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
+    border-color var(--ac-motion-base) var(--ac-motion-easing),
+    color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+/* Sehr dezent: ein Pixel, wie die Vorlage. */
+.kontakt:hover,
+.kontakt:focus-visible {
+  transform: translateY(-1px);
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-primary-navy);
+  border-color: var(--ac-color-primary-navy);
+}
+
+.kontakt:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Das gelieferte Piktogramm bleibt unveraendert — es bringt seinen hellen
+   Kreis selbst mit und traegt auch auf der navy Flaeche. */
+.zeichen {
+  display: block;
+  width: 2.625rem;
+  max-width: none;
+  height: 2.625rem;
+  object-fit: contain;
+}
+
+.kontaktLabel {
+  display: block;
+  font-size: var(--ac-eyebrow-size);
+  line-height: 1.4;
+  color: var(--ac-color-text-secondary);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.kontaktWert {
+  display: block;
+  margin-top: 0.125rem;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.kontakt:hover .kontaktLabel,
+.kontakt:focus-visible .kontaktLabel {
+  color: var(--ac-color-white);
+}
+
+/* ---- Die Zusage ------------------------------------------------------------- */
+
+.zusage {
+  margin: clamp(1.25rem, 2.4vw, 1.75rem) 0 0;
+  padding-left: 0.875rem;
+  border-left: var(--ac-border-marker) solid var(--ac-color-accent-green);
+  font-size: var(--ac-eyebrow-size);
+  line-height: 1.55;
+  color: var(--ac-color-text-secondary);
+}
+
+.zusageTitel {
+  display: block;
+  color: var(--ac-color-primary-navy);
+}
+
+/* ---- Rechts: das Formular --------------------------------------------------- */
+
+.formular {
+  padding: clamp(1.75rem, 3.2vw, 2.625rem) clamp(1.5rem, 3vw, 2.625rem);
+  background-color: var(--ac-surface-field);
+}
+
+.formularKopf {
+  margin-bottom: 1.5rem;
+}
+
+.formularTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.5rem, 1.25rem + 0.8vw, 1.8125rem);
+  line-height: 1.1;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.pflicht {
+  margin: 0.5rem 0 0;
+  font-size: var(--ac-eyebrow-size);
+  color: var(--ac-color-text-secondary);
+}
+
+.raster {
+  display: grid;
+  gap: 1.0625rem;
+}
+
+/* Ein Feld ist ein Absatz mit Beschriftung und Eingabe — die Beschriftung
+   steht immer da, nie nur als Platzhalter. */
+.feld {
+  display: grid;
+  gap: 0.4375rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.feld label,
+.feld legend {
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.feld input,
+.feld select,
+.feld textarea {
+  width: 100%;
+  font-family: var(--ac-font-sans);
+  font-size: 0.875rem;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-tint);
+  border: var(--ac-border-hairline) solid var(--ac-border-line);
+  border-radius: 9px;
+  transition:
+    border-color var(--ac-motion-base) var(--ac-motion-easing),
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
+    box-shadow var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.feld input,
+.feld select {
+  /* 48 px — deutlich ueber den 44 px, die die Hausordnung als Trefferflaeche
+     verlangt. */
+  height: 3rem;
+  padding: 0 0.8125rem;
+}
+
+.feld textarea {
+  min-height: 7.375rem;
+  padding: 0.8125rem;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+.feld ::placeholder {
+  color: color-mix(in srgb, var(--ac-color-text-secondary) 78%, transparent);
+}
+
+/* Beim Fokus eine gruene Kontur und ein dezenter gruener Rahmen. */
+.feld input:focus,
+.feld select:focus,
+.feld textarea:focus {
+  outline: none;
+  border-color: var(--ac-color-accent-green);
+  background-color: var(--ac-surface-field);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ac-color-accent-green) 14%, transparent);
+}
+
+/* ---- Die Kontaktart --------------------------------------------------------- */
+
+.wahlReihe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.wahlFeld {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 0.9375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-tint);
+  border: var(--ac-border-hairline) solid var(--ac-border-line);
+  border-radius: 9px;
+  cursor: pointer;
+  transition:
+    border-color var(--ac-motion-base) var(--ac-motion-easing),
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
+    color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+/* Der Knopf selbst bleibt bedienbar und fuer Vorlesewerkzeuge da — er liegt
+   nur unter seiner Beschriftung. */
+.wahlFeld input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.wahlFeld:has(input:checked) {
+  color: var(--ac-color-accent-green);
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 14%, var(--ac-color-white));
+  border-color: var(--ac-color-accent-green);
+}
+
+.wahlFeld:has(input:focus-visible) {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+/* ---- Zustimmung, Knopf, Hinweise -------------------------------------------- */
+
+.zustimmung {
+  display: flex;
+  gap: 0.625rem;
+  align-items: flex-start;
+  margin-top: 1.1875rem;
+  font-size: var(--ac-eyebrow-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+  cursor: pointer;
+}
+
+.zustimmung input {
+  flex: none;
+  width: 1.0625rem;
+  height: 1.0625rem;
+  margin: 0.0625rem 0;
+  accent-color: var(--ac-color-accent-green);
+}
+
+.zustimmung input:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 2px;
+}
+
+.zustimmung a {
+  color: var(--ac-color-accent-green);
+}
+
+.absendeReihe {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.125rem;
+  margin-top: 1.375rem;
+}
+
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  min-height: 2.9375rem;
+  padding: 0 1.3125rem;
+  font-family: var(--ac-font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-accent-green);
+  border: 0;
+  border-radius: 9px;
+  cursor: pointer;
+  transition:
+    transform var(--ac-motion-base) var(--ac-motion-easing),
+    background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.knopf:hover,
+.knopf:focus-visible {
+  transform: translateY(-1px);
+  background-color: var(--ac-color-navy-deep);
+}
+
+.knopf:focus-visible {
+  outline: 2px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Solange der Endpunkt fehlt, ist der Knopf sichtbar abgeschaltet. Gruen auf
+   halber Deckung truege den weissen Text nicht mehr — die Flaeche ist darum
+   hell und die Schrift navy, wie bei der Gruendungscheckliste. */
+.knopf:disabled {
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-tint);
+  border: var(--ac-border-hairline) solid var(--ac-border-line);
+  cursor: not-allowed;
+}
+
+.knopf:disabled:hover {
+  transform: none;
+  background-color: var(--ac-color-background-tint);
+}
+
+.folgt {
+  padding: 0.1em 0.45em;
+  font-size: 0.6875rem;
+  font-weight: var(--ac-eyebrow-weight);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-surface-field);
+  border-radius: var(--ac-radius-sm);
+}
+
+.vertraulich {
+  max-width: 15.625rem;
+  margin: 0;
+  font-size: 0.625rem;
+  line-height: 1.45;
+  color: var(--ac-color-text-secondary);
+}
+
+.wartet {
+  margin: 0.875rem 0 0;
+  font-size: var(--ac-eyebrow-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
+/* Der Honigtopf: fuer Menschen unsichtbar, aber nicht `display: none` — sonst
+   fuellen ihn manche Maschinen nicht aus. Ausserhalb der Tabulatorreihenfolge
+   und fuer Vorlesewerkzeuge ausgeblendet. */
+.honigtopf {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---- Ab 53.75rem (860 px): zwei Spalten ------------------------------------- */
+
+@media (min-width: 53.75rem) {
+  .schale {
+    grid-template-columns: minmax(18.75rem, 0.8fr) minmax(0, 1.2fr);
+  }
+
+  .einstieg {
+    border-right: var(--ac-border-hairline) solid var(--ac-border-line);
+    border-bottom: 0;
+  }
+
+  .raster {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .breit {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Unter 53.75rem fuellt der Knopf die Breite, wie in der Vorlage. */
+@media (max-width: 53.74rem) {
+  .knopf {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .vertraulich {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kontakt,
+  .kontaktLabel,
+  .knopf,
+  .wahlFeld,
+  .feld input,
+  .feld select,
+  .feld textarea {
+    transition: none;
+  }
+
+  .kontakt:hover,
+  .kontakt:focus-visible,
+  .knopf:hover,
+  .knopf:focus-visible {
+    transform: none;
+  }
+}
+
+@media print {
+  .schale {
+    break-inside: avoid;
+  }
+}
