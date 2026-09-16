@@ -204,11 +204,6 @@ export const versicherungen: PageContent = {
       id: 'betreuung',
       eyebrow: 'Betreuung nach dem Abschluss',
       heading: 'Nach dem Abschluss hört es nicht auf',
-      lead: [
-        'Die meisten Policen liegen jahrelang unangetastet in einem Ordner, während sich das Leben darum herum ändert. Genau da entstehen die Lücken.',
-        'Wir behalten Ihre Verträge im Blick: Wir melden Adress- und Personenänderungen, sehen uns Prämienanpassungen an, wenn sie ins Haus kommen, und melden uns, wenn wir etwas bemerken, das Ihre Deckung betrifft.',
-        'Für Sie ändert sich damit vor allem eines: Sie haben eine Stelle, bei der Sie anrufen, statt bei jeder Gesellschaft einzeln.',
-      ],
       karten: [
         {
           bild: '01_betreuung_adresse',

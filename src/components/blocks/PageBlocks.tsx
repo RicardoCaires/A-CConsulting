@@ -568,7 +568,6 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               id={block.id}
               eyebrow={block.eyebrow}
               heading={block.heading}
-              lead={block.lead}
               karten={block.karten}
               schluss={block.schluss}
             />
