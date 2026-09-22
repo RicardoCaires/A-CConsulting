@@ -17,49 +17,64 @@
    uebrigen Seiten bleibt unberuehrt. */
 
 .abschnitt {
-  /* Innenabstand, den Kopf und Karte teilen — dadurch beginnen Titel und
-     Fragen auf derselben Senkrechten. */
-  --innen: clamp(1.25rem, 3vw, 2.5rem);
+  /* 24 px Innenabstand in der Karte, wie in jeder anderen Karte der Seite. */
+  --innen: 1.5rem;
 
-  padding-block: clamp(4rem, 8vw, 7rem);
+  /* Abstand und Breite wie jeder andere Abschnitt — der Bereich lief vorher
+     auf 112 px Polster und 1100 px Breite aus der Reihe. */
+  padding-block: var(--ac-section-y);
   background-color: var(--ac-color-background-tint);
 }
 
 .inner {
-  width: min(1100px, calc(100% - 2.5rem));
+  width: 100%;
+  max-width: var(--ac-container);
   margin-inline: auto;
+  padding-inline: var(--ac-gutter);
 }
 
 /* ---- Kopf ------------------------------------------------------------------ */
 
 .kopf {
-  padding-inline: var(--innen);
+  max-width: 62ch;
 }
 
 .eyebrow {
-  margin: 0;
-  font-size: 0.875rem;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.32em;
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin: 0 0 1.25rem;
+  font-size: var(--ac-label-size);
+  line-height: var(--ac-label-line);
+  font-weight: var(--ac-label-weight);
+  letter-spacing: var(--ac-label-tracking);
   text-transform: uppercase;
   color: var(--ac-color-accent-green);
 }
 
+/* Dieselbe gruene Linie wie vor jeder anderen Vorzeile. */
+.eyebrow::before {
+  content: '';
+  flex: none;
+  width: 2.375rem;
+  height: 2px;
+  background-color: currentcolor;
+}
+
 .titel {
-  margin: var(--ac-space-sm) 0 0;
-  font-size: clamp(2.5rem, 1.6rem + 3.4vw, 4.75rem);
-  line-height: 1.04;
-  font-weight: var(--ac-display-weight);
-  letter-spacing: -0.02em;
+  margin: 0;
+  font-size: var(--ac-section-title-size);
+  line-height: var(--ac-section-title-line);
+  font-weight: var(--ac-section-title-weight);
+  letter-spacing: var(--ac-section-title-tracking);
   color: var(--ac-color-primary-navy);
 }
 
 .lead {
-  margin: var(--ac-space-md) 0 0;
-  max-width: 64ch;
+  margin: 1.5rem 0 0;
+  max-width: 62ch;
   font-size: var(--ac-lead-size);
-  line-height: 1.5;
+  line-height: 1.65;
   color: var(--ac-color-text-secondary);
 }
 
@@ -71,13 +86,12 @@
 /* ---- Die Karte ------------------------------------------------------------- */
 
 .karte {
-  margin-top: clamp(2rem, 4vw, 3rem);
-  padding: clamp(0.25rem, 0.8vw, 0.75rem) var(--innen);
+  margin-top: clamp(2.5rem, 3.5vw, 3rem);
+  padding: 0.5rem var(--innen);
   background-color: var(--ac-color-white);
-  border: var(--ac-border-hairline) solid
-    color-mix(in srgb, var(--ac-color-primary-navy) 8%, transparent);
-  border-radius: 16px;
-  box-shadow: 0 12px 40px color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
+  border: var(--ac-border-hairline) solid var(--ac-line-soft);
+  border-radius: var(--ac-radius-card);
+  box-shadow: var(--ac-shadow-card);
   /* Erlaubt Browsern, die es koennen, die Hoehe bis `auto` zu animieren. */
   interpolate-size: allow-keywords;
 }
@@ -95,7 +109,7 @@
   justify-content: space-between;
   gap: var(--ac-space-md);
   min-height: 3.5rem;
-  padding-block: clamp(1.1rem, 2vw, 1.6rem);
+  padding-block: 1.5rem;
   cursor: pointer;
   list-style: none;
 }
@@ -112,7 +126,7 @@
 .frage h3 {
   margin: 0;
   font-family: var(--ac-font-display);
-  font-size: clamp(1.125rem, 0.95rem + 0.8vw, 1.625rem);
+  font-size: var(--ac-card-title-size);
   line-height: 1.3;
   font-weight: var(--ac-display-weight);
   letter-spacing: -0.005em;
@@ -157,8 +171,8 @@
   block-size: 0;
   overflow: hidden;
   transition:
-    block-size 280ms var(--ac-motion-easing),
-    content-visibility 280ms allow-discrete;
+    block-size 220ms var(--ac-motion-easing),
+    content-visibility 220ms allow-discrete;
 }
 
 .eintrag[open]::details-content {
@@ -174,7 +188,7 @@
 }
 
 .eintrag[open] .antwort {
-  animation: einblenden 280ms var(--ac-motion-easing) both;
+  animation: einblenden 220ms var(--ac-motion-easing) both;
 }
 
 @keyframes einblenden {
@@ -196,10 +210,10 @@
   align-items: center;
   justify-content: center;
   gap: clamp(1rem, 3vw, 2.5rem);
-  margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
-  font-size: var(--ac-eyebrow-size);
+  margin: clamp(2.5rem, 3.5vw, 3rem) 0 0;
+  font-size: var(--ac-label-size);
   line-height: 1.5;
-  letter-spacing: 0.3em;
+  letter-spacing: var(--ac-label-tracking);
   text-align: center;
   text-transform: uppercase;
   /* Blaugrau, aber dunkel genug fuer AA: rund 5:1 auf diesem Grund. */

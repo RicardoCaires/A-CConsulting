@@ -41,15 +41,19 @@
 
 /* Innenabstand und Textposition, auf jedem Banner gleich. */
 .inner {
-  width: min(85rem, calc(100% - 3rem));
+  width: 100%;
+  max-width: var(--ac-container);
   margin-inline: auto;
   padding-block: clamp(3rem, 6vw, 5.5rem);
+  padding-inline: var(--ac-gutter);
 }
 
 /* Der Textblock steht links und bleibt schmal: Rechts liegt der
    Sonnenuntergang der Aufnahme, dort waere weisse Schrift nicht lesbar. */
+/* 47.5 rem (760 px) statt 43 — der Titel brach sonst in fuenf sehr kurze
+   Zeilen, einzelne davon nur mit „für" oder „und". */
 .inhalt {
-  width: min(43.125rem, 54%);
+  width: min(47.5rem, 62%);
 }
 
 .themenzeile {
@@ -76,13 +80,16 @@
 }
 
 .ueberschrift {
-  max-width: 13ch;
+  /* 18ch statt 13ch und 52 bis 72 px statt 52 bis 104: Der laengste Titel
+     („Versicherungen für Privatpersonen und Unternehmen") lief in fuenf sehr
+     kurze Zeilen, eine davon nur mit „und". */
+  max-width: 18ch;
   margin: 0;
   font-family: var(--ac-font-display);
-  font-size: clamp(3.25rem, 6.2vw, 6.5rem);
-  line-height: 0.98;
+  font-size: clamp(3.25rem, 4.6vw, 4.5rem);
+  line-height: 1.02;
   font-weight: var(--ac-display-weight);
-  letter-spacing: -0.035em;
+  letter-spacing: -0.025em;
   color: var(--ac-color-white);
   text-wrap: balance;
 }
@@ -96,17 +103,17 @@
   align-items: center;
   justify-content: center;
   min-height: 3rem;
-  margin-top: 2.125rem;
-  padding: 0.8125rem 1.5rem;
+  margin-top: 2rem;
+  padding: var(--ac-space-2xs) var(--ac-space-md);
   font-family: var(--ac-font-sans);
-  font-size: 0.9375rem;
-  line-height: 1;
-  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 600;
   color: var(--ac-color-white);
   text-decoration: none;
   background-color: var(--ac-color-accent-green);
   border: var(--ac-border-marker) solid var(--ac-color-accent-green);
-  border-radius: var(--ac-radius-md);
+  border-radius: var(--ac-radius-button);
   transition:
     background-color var(--ac-motion-base) var(--ac-motion-easing),
     border-color var(--ac-motion-base) var(--ac-motion-easing);
@@ -148,7 +155,6 @@
   }
 
   .inner {
-    width: min(85rem, calc(100% - 2rem));
     padding-block: 3.75rem;
   }
 
@@ -158,7 +164,7 @@
 
   .ueberschrift {
     max-width: 16ch;
-    font-size: clamp(2.875rem, 13vw, 4.5rem);
+    font-size: clamp(2.5rem, 11vw, 3.25rem);
   }
 }
 

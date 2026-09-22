@@ -2,19 +2,39 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.875rem;
+  /* Ein Mass fuer jeden Knopf: 48 px hoch, 24 px Polster, 12 px Radius
+     (22.09.2026, Ricardos Auftrag zur Vereinheitlichung). */
+  min-height: 3rem;
   padding: var(--ac-space-2xs) var(--ac-space-md);
-  font-size: var(--ac-body-size);
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.2;
   text-align: center;
   text-decoration: none;
-  border-radius: var(--ac-radius-md);
+  border-radius: var(--ac-radius-button);
   border: var(--ac-border-hairline) solid transparent;
   transition:
     background-color var(--ac-motion-base) var(--ac-motion-easing),
     border-color var(--ac-motion-base) var(--ac-motion-easing),
+    box-shadow var(--ac-motion-base) var(--ac-motion-easing),
+    transform var(--ac-motion-base) var(--ac-motion-easing),
     color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+/* Dieselbe kleine Reaktion wie bei jeder Karte: ein Pixel, ein Schatten. */
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--ac-shadow-card);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .button:hover {
+    transform: none;
+  }
 }
 
 /* Seit dem 15.09.2026 sehen alle Knoepfe gleich aus, auf Ricardos Anweisung
