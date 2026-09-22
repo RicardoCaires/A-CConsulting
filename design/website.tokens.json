@@ -2,7 +2,7 @@
   "$schema": "ac-website-tokens/1.0",
   "beschreibung": "Website-spezifische Tokens. Farben stammen AUSSCHLIESSLICH aus ac-corporate-design.tokens.json; hier stehen nur Ableitungen (Interaktionszustaende) und Groessen, die es im Dokumentstandard nicht gibt (Raster, Radien, Web-Typoskala).",
   "quelle_farben": "design/ac-corporate-design.tokens.json (Standard 1.1)",
-  "stand": "2026-09-16",
+  "stand": "2026-09-22",
   "color_derived": {
     "link": {
       "ref": "accent_green",
@@ -74,7 +74,7 @@
   },
   "layout": {
     "content_max_ch": "60ch",
-    "container_max_px": 1160,
+    "container_max_px": 1240,
     "container_narrow_px": 760,
     "gutter": "clamp(1.25rem, 4vw, 2rem)",
     "section_y_sm": "clamp(1.75rem, 2.4vw, 2.5rem)",
@@ -86,7 +86,9 @@
   },
   "radius_px": {
     "sm": 4,
-    "md": 12
+    "md": 12,
+    "button": 12,
+    "card": 14
   },
   "hinweis_radius": "Zwei Radien, kein dritter. sm fuer kleine Marken (Stichwort, Fokus, Menueeintrag), md fuer alles, was als eigenes Objekt liest: Karten, Knoepfe, Bildflaechen, Klappfelder.",
   "border_width_px": {
@@ -153,6 +155,30 @@
       "line": 1.4,
       "weight": 620,
       "tracking": "0.11em"
+    },
+    "label": {
+      "size": "0.8125rem",
+      "line": 1.4,
+      "weight": 700,
+      "tracking": "0.14em"
+    },
+    "section-title": {
+      "size": "clamp(2.625rem, 1.9rem + 2.6vw, 3.75rem)",
+      "line": 1.05,
+      "weight": 600,
+      "tracking": "-0.02em"
+    },
+    "card-title": {
+      "size": "1.4375rem",
+      "line": 1.2,
+      "weight": 600,
+      "tracking": "-0.005em"
+    },
+    "card-title-lg": {
+      "size": "1.875rem",
+      "line": 1.15,
+      "weight": 600,
+      "tracking": "-0.01em"
     },
     "stat": {
       "size": "clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem)",

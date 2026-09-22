@@ -168,7 +168,9 @@ a:hover {
 /* ---- Fokus ------------------------------------------------------------- */
 
 :focus-visible {
-  outline: 2px solid var(--ac-focus-ring);
+  /* Drei Pixel, damit der Ring auf jedem Grund klar zu sehen ist
+     (22.09.2026). */
+  outline: 3px solid var(--ac-focus-ring);
   outline-offset: 2px;
   border-radius: var(--ac-radius-sm);
 }
@@ -231,6 +233,118 @@ a:hover {
 .ac-skip-link:focus-visible {
   transform: translateY(0);
   color: var(--ac-color-white);
+}
+
+/* ---- Das gemeinsame Designsystem ----------------------------------------
+
+   Am 22.09.2026 auf Ricardos Auftrag „visuelle Designsprache vereinheitlichen"
+   an einer Stelle zusammengezogen. Was hier steht, gilt fuer jeden Abschnitt;
+   die Bausteine greifen darauf zu, statt eigene Werte zu fuehren.
+
+   Abschnittsabstaende in drei Stufen (56 / 72 / 88 px, weit 64 / 80 / 104) und
+   Seitenraender in drei Stufen (20 / 24 / 32 px) — statt eines Clamps, der
+   dazwischen beliebige Zwischenwerte erzeugt. */
+
+:root {
+  --ac-gutter: 1.25rem;
+  --ac-section-y-sm: 2rem;
+  --ac-section-y: 3.5rem;
+  --ac-section-y-lg: 4rem;
+
+  /* Zwei Schatten, sonst keiner. Der zweite nur fuer hervorgehobene Karten. */
+  --ac-shadow-card: 0 8px 28px
+    color-mix(in srgb, var(--ac-color-primary-navy) 6%, transparent);
+  --ac-shadow-card-strong: 0 12px 36px
+    color-mix(in srgb, var(--ac-color-primary-navy) 9%, transparent);
+
+  /* Dezente Linien: Navy bei 8 bis 12 Prozent. */
+  --ac-line-soft: color-mix(in srgb, var(--ac-color-primary-navy) 8%, transparent);
+  --ac-line: color-mix(in srgb, var(--ac-color-primary-navy) 12%, transparent);
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --ac-gutter: 1.5rem;
+    --ac-section-y-sm: 2.5rem;
+    --ac-section-y: 4.5rem;
+    --ac-section-y-lg: 5rem;
+  }
+}
+
+@media (min-width: 75rem) {
+  :root {
+    --ac-gutter: 2rem;
+    --ac-section-y-sm: 3rem;
+    --ac-section-y: 5.5rem;
+    --ac-section-y-lg: 6.5rem;
+  }
+}
+
+/** Die Vorzeile eines Abschnitts: gruene Linie, Versalien, ueberall gleich. */
+.ac-label {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin: 0 0 1.25rem;
+  font-family: var(--ac-font-sans);
+  font-size: var(--ac-label-size);
+  line-height: var(--ac-label-line);
+  font-weight: var(--ac-label-weight);
+  letter-spacing: var(--ac-label-tracking);
+  text-transform: uppercase;
+  color: var(--ac-color-accent-green);
+}
+
+.ac-label::before {
+  content: '';
+  flex: none;
+  width: 2.375rem;
+  height: 2px;
+  background-color: currentcolor;
+}
+
+/** Die Ueberschrift eines Abschnitts. */
+.ac-section-title {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: var(--ac-section-title-size);
+  line-height: var(--ac-section-title-line);
+  font-weight: var(--ac-section-title-weight);
+  letter-spacing: var(--ac-section-title-tracking);
+  color: var(--ac-color-primary-navy);
+}
+
+/** Die Einleitung darunter: 24 px Abstand zur Ueberschrift. */
+.ac-section-lead {
+  margin: 1.5rem 0 0;
+  max-width: 62ch;
+  font-size: var(--ac-lead-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
+}
+
+/** Abstand vom Abschnittskopf zum Inhalt: 40 bis 48 px. */
+.ac-section-body {
+  margin-top: clamp(2.5rem, 3.5vw, 3rem);
+}
+
+/** Die eine Kartenform: weiss, 14 px Radius, ein Schatten, feine Kontur. */
+.ac-card {
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-line-soft);
+  border-radius: var(--ac-radius-card);
+  box-shadow: var(--ac-shadow-card);
+}
+
+/** Der Kreis hinter einem Piktogramm, ueberall 52 px. */
+.ac-icon-circle {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background-color: var(--ac-color-background-tint);
 }
 
 /* ---- Layoutbausteine --------------------------------------------------- */

@@ -209,6 +209,52 @@ Kopf- und Fussbereich sowie Überschriften.
 > ebenfalls zum Knopf geworden. Bis dahin war Grün auf einer Fläche die
 > begründete Einzelfallausnahme.
 
+> **Seit dem 22.09.2026 gibt es ein gemeinsames Designsystem**, auf Ricardos
+> Auftrag „die visuelle Designsprache vollständig vereinheitlichen"
+> (ausgelöst an `/versicherungen`, gesetzt aber zentral). Es steht in
+> `design/website.tokens.json` und im Kopf von `src/app/globals.css`; die
+> Bausteine greifen darauf zu, statt eigene Werte zu führen.
+>
+> | Was | Wert |
+> |---|---|
+> | Container | **1240 px** (vorher 1160), Seitenrand 20 / 24 / 32 px |
+> | Abschnittsabstand | **56 / 72 / 88 px**, weit 64 / 80 / 104 px |
+> | Radius | Karte **14 px** (`--ac-radius-card`), Knopf **12 px** (`--ac-radius-button`) |
+> | Schatten | `--ac-shadow-card`, hervorgehoben `--ac-shadow-card-strong` — sonst keiner |
+> | Linien | `--ac-line-soft` (8 %) und `--ac-line` (12 %) Navy |
+> | Vorzeile | `--ac-label-*`: 13 px, 700, 0.14em, grün, grüne Linie 38 x 2 px |
+> | Abschnittstitel | `--ac-section-title-*`: 42 bis 60 px, Source Serif |
+> | Kartentitel | `--ac-card-title-*` 23 px, gross `--ac-card-title-lg-*` 30 px |
+> | Knopf | 48 px hoch, 24 px Polster, Inter 16 px / 600, ein Pixel Hub beim Zeigen |
+> | Fokusring | **3 px** statt 2, überall |
+>
+> Dazu vier Klassen in `globals.css`, die jeder Abschnitt nutzen kann:
+> `.ac-label`, `.ac-section-title`, `.ac-section-lead`, `.ac-card`,
+> `.ac-icon-circle`.
+>
+> **Das wirkt auf alle Seiten**, nicht nur auf `/versicherungen`: Container,
+> Abstände, Knöpfe und Fokusring sind zentral. Nachgemessen bei 1440 px hat
+> keine Seite einen waagrechten Überlauf.
+>
+> **Auf `/versicherungen` behoben:** Die Grundsätze im Modellabschnitt liefen
+> rechts aus dem Bild (43 % + 57 % + Fuge); der Ablauf brauchte 1354 px feste
+> Spalten und schnitt die Karte mit den Gesellschaften ab — er läuft jetzt in
+> Verhältnissen. Die häufigen Fragen standen auf 1100 px Breite und 112 px
+> Polster aus der Reihe. Der Bannertitel brach in fünf sehr kurze Zeilen,
+> davon eine nur mit „und" — jetzt drei Zeilen bei 52 bis 72 px.
+>
+> **Zwei bewusste Abweichungen vom Auftrag, Ricardo ist darauf hingewiesen:**
+> Der Banner bleibt **713 px hoch** statt der gewünschten 640 bis 680 — er
+> zeigt die Aufnahme im Seitenverhältnis 2 : 1 und damit unbeschnitten, wie
+> Ricardo es am 15.09.2026 verlangt hat („das Stadtbild muss sichtbar sein").
+> Und die **Piktogramme behalten ihre gelieferte Grösse** statt einheitlicher
+> 52-px-Kreise: Sie bringen ihren Kreis in der Datei mit, und die Dateien
+> werden nicht verändert.
+>
+> **Der Abschnitt „Für Privatpersonen / Für Unternehmen" steht weiss**, die
+> übrigen hellblau — der Rhythmus, den der Auftrag empfiehlt. Mehr als diese
+> zwei hellen Flächen gibt es nicht.
+
 **Zentraler Standard:** Für alle A&C-Dokumente und visuellen Artefakte gilt der Skill
 `ac-corporate-design` (`~/.claude/skills/ac-corporate-design/`) als Single Source of Truth.
 Farben und Typografie werden dort definiert, nicht hier.
