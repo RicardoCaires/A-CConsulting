@@ -2127,6 +2127,29 @@ Fliesstext über Werte — konkrete Sätze über konkrete Menschen.
 > „Tätigkeitsbereiche: Versicherungen, Treuhand und Steuern." — die drei
 > Bereiche stehen seit dem 15.09.2026 als Pillen im Einstieg derselben Seite.
 
+> **Seit dem 22.09.2026 laeuft die Seite enger und ruhiger**, auf Ricardos
+> Auftrag: **40 px** Abschnittspolster auf dem Telefon, **48** auf dem Tablet,
+> **64** auf dem Desktop — der Standort 40 / 48 / **52**. Der Bentoraster der
+> Arbeitsweise stand auf den allgemeinen 88 px; `.oben ~ :global(.ac-section)`
+> holt ihn auf 64, **ohne andere Seiten zu beruehren**. Das `margin-top` von
+> `--ac-section-y` ueber den Profilen ist weg — zusammen mit dem Polster
+> darueber waren das zwei Abstaende. Ueberschrift zu Inhalt jetzt 32 px,
+> Kartenfugen 20 px.
+>
+> **Eine Bewegung fuer alles:** Profil- und Grundsatzkarten teilen Dauer
+> (180 ms) und Kurve, heben sich um drei Pixel und verstaerken den Schatten
+> leicht; die Grundsatzkarte wird weiterhin navy, die Profilkarte bekommt eine
+> gruenere Kontur. **Nur bei echtem Zeiger** (`hover: hover` und
+> `pointer: fine`) — auf dem Telefon blieb eine getippte Karte sonst im
+> Hover-Zustand haengen. Der Fokuszustand gilt unabhaengig davon weiter. Die
+> Pfeile in den Knoepfen ruecken drei Pixel, der Knopf selbst steht still;
+> unter `prefers-reduced-motion: reduce` bewegt sich nichts.
+>
+> **Nachgemessen bei 1440, 1280, 1024, 768, 480, 390 und 320 px**: keine
+> Ueberlappung zwischen Texten, Bildern, Karten und Bedienelementen, kein
+> waagrechter Ueberlauf, Knoepfe bei 320 px 230 px breit. Die Knoepfe tragen
+> `max-width: 100%` und duerfen umbrechen.
+
 > **Der Standortabschnitt ist seit dem 15.09.2026 eine Karte** nach Ricardos
 > HTML-Vorlage (`content/source/ueberuns_standort_de.md`): links Kategoriezeile
 > „Unser Standort", der neue Titel „Persönlich für Sie da in Aegerten", die

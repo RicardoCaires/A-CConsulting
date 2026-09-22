@@ -10,8 +10,34 @@
 
 /* ---- 1 + 2  Kopf und Profile, eine Flaeche ------------------------------- */
 
+/* Eine Staffel fuer die ganze Seite, seit dem 22.09.2026 auf Ricardos
+   Auftrag „kompakter, ruhiger": 40 px auf dem Telefon, 48 auf dem Tablet,
+   64 auf dem Desktop. Der Standort darf eine Spur enger stehen (52 px).
+
+   Der Bentoraster der Arbeitsweise laeuft ueber den allgemeinen Baustein
+   `Section` und damit ueber `--ac-section-y` (88 px). `.oben ~ .ac-section`
+   greift genau die Abschnitte dieser Seite ab — andere Seiten behalten ihren
+   Abstand. */
 .oben {
-  padding-block: clamp(1.75rem, 3.5vw, 2.75rem) clamp(2.25rem, 4.5vw, 3.5rem);
+  padding-block: 2.5rem;
+}
+
+.oben ~ :global(.ac-section) {
+  padding-block: 2.5rem;
+}
+
+@media (min-width: 48rem) {
+  .oben,
+  .oben ~ :global(.ac-section) {
+    padding-block: 3rem;
+  }
+}
+
+@media (min-width: 75rem) {
+  .oben,
+  .oben ~ :global(.ac-section) {
+    padding-block: 4rem;
+  }
 }
 
 /* Der Kopf: Text schmal, Bild gross. 58/42 ab Desktop. */
@@ -159,8 +185,8 @@
 
 .prinzipien {
   display: grid;
-  gap: var(--ac-space-sm);
-  margin-top: clamp(1.75rem, 3.5vw, 2.4rem);
+  gap: 1.25rem;
+  margin-top: 2rem;
 }
 
 .prinzip {
@@ -173,8 +199,11 @@
   border: var(--ac-border-hairline) solid var(--ac-color-border-light);
   border-radius: var(--ac-radius-md);
   transition:
+    transform var(--ac-motion-base) var(--ac-motion-easing),
+    box-shadow var(--ac-motion-base) var(--ac-motion-easing),
+    border-color var(--ac-motion-base) var(--ac-motion-easing),
     background-color var(--ac-motion-base) var(--ac-motion-easing),
-    border-color var(--ac-motion-base) var(--ac-motion-easing);
+    color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
 .prinzipBild {
@@ -228,12 +257,25 @@
 }
 
 /* Darueberfahren und Tastaturfokus zeigen denselben Zustand: die ganze
-   Flaeche wird Navy, die Schrift weiss. Weiss auf Navy traegt 9.4:1. */
-.prinzip:hover,
+   Flaeche wird Navy, die Schrift weiss. Weiss auf Navy traegt 9.4:1.
+
+   **Die Bewegung ist dieselbe wie bei den Profilkarten** (22.09.2026): drei
+   Pixel angehoben, der Schatten eine Spur staerker, 180 ms. Sie greift nur
+   auf Geraeten mit echtem Zeiger — auf dem Telefon bliebe eine getippte Karte
+   sonst im Hover-Zustand haengen. */
 .prinzip:focus-visible,
 .prinzip:focus-within {
   background-color: var(--ac-color-primary-navy);
   border-color: var(--ac-color-primary-navy);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .prinzip:hover {
+    transform: translateY(-3px);
+    background-color: var(--ac-color-primary-navy);
+    border-color: var(--ac-color-primary-navy);
+    box-shadow: var(--ac-shadow-card);
+  }
 }
 
 .prinzip:hover .prinzipKategorie,
@@ -304,7 +346,8 @@
    rechts, beide in derselben Kontur. Unter 48.75rem steht das Bild oben. */
 
 .standort {
-  padding-block: clamp(2.25rem, 4vw, 3.25rem);
+  /* 40 / 48 / 52 px — der Abschluss der Seite darf eine Spur enger stehen. */
+  padding-block: clamp(2.5rem, 4vw, 3.25rem);
 }
 
 .standortKarte {
@@ -367,12 +410,19 @@
   font-weight: 600;
   color: var(--ac-color-white);
   text-decoration: none;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   background-color: var(--ac-color-accent-green);
-  border-radius: var(--ac-radius-md);
-  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+  border: var(--ac-border-hairline) solid transparent;
+  border-radius: var(--ac-radius-button);
+  transition:
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
+    border-color var(--ac-motion-base) var(--ac-motion-easing),
+    color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.routeKnopf:hover {
+.routeKnopf:hover,
+.routeKnopf:focus-visible {
   color: var(--ac-color-white);
   background-color: var(--ac-color-navy-deep);
 }
@@ -479,6 +529,20 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .profil,
+  .prinzip,
+  .knopf,
+  .routeKnopf,
+  .pfeil {
+    transition: none;
+  }
+
+  .profil:hover,
+  .prinzip:hover,
+  .knopf:hover .pfeil {
+    transform: none;
+  }
+
   .prinzip {
     transition: none;
   }
@@ -495,7 +559,9 @@
 /* ---- Die beiden Inhaber, seit dem 15.09.2026 als zwei Karten -------------- */
 
 .inhaber {
-  margin-top: var(--ac-section-y);
+  /* Kein `--ac-section-y` mehr: Zusammen mit dem Polster von `.oben` waren
+     das zwei Abstaende uebereinander. */
+  margin-top: 0;
 }
 
 .inhaberTitel {
@@ -521,17 +587,38 @@
   grid-template-columns: minmax(0, 1fr);
   /* Gleich hohe Karten in jeder Darstellung — nebeneinander wie untereinander. */
   grid-auto-rows: 1fr;
-  gap: var(--ac-space-sm);
-  margin-top: clamp(1.75rem, 3.5vw, 2.4rem);
+  gap: 1.25rem;
+  margin-top: 2rem;
 }
 
 .profil {
   display: flex;
   flex-direction: column;
+  /* Haelt das Portraet in der abgerundeten Ecke — kein Text wird
+     abgeschnitten, die Karte waechst mit ihrem Inhalt. */
   overflow: hidden;
   background-color: var(--ac-color-white);
   border: var(--ac-border-hairline) solid var(--ac-color-border-light);
   border-radius: var(--ac-radius-md);
+  transition:
+    transform var(--ac-motion-base) var(--ac-motion-easing),
+    box-shadow var(--ac-motion-base) var(--ac-motion-easing),
+    border-color var(--ac-motion-base) var(--ac-motion-easing),
+    background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+/* Dieselbe Bewegung wie bei den Grundsatzkarten — nur die Kontur wird eine
+   Spur gruener, der Grund bleibt weiss. */
+@media (hover: hover) and (pointer: fine) {
+  .profil:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--ac-color-accent-green) 45%, transparent);
+    box-shadow: var(--ac-shadow-card);
+  }
+}
+
+.profil:focus-within {
+  border-color: color-mix(in srgb, var(--ac-color-accent-green) 45%, transparent);
 }
 
 /* Das Seitenverhaeltnis entspricht den Dateien (560 x 420). So wird nichts
@@ -646,20 +733,38 @@
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  min-height: 2.875rem;
+  /* Nie breiter als die Karte, und lange Adressen duerfen umbrechen. */
+  max-width: 100%;
+  min-height: 3rem;
   padding: 0.7rem 1rem;
   font-size: 0.87rem;
   font-weight: 600;
   color: var(--ac-color-white);
+  text-align: center;
   text-decoration: none;
+  overflow-wrap: anywhere;
   background-color: var(--ac-color-accent-green);
-  border-radius: var(--ac-radius-md);
-  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+  border: var(--ac-border-hairline) solid transparent;
+  border-radius: var(--ac-radius-button);
+  transition:
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
+    border-color var(--ac-motion-base) var(--ac-motion-easing),
+    color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-.knopf:hover {
+.knopf:hover,
+.knopf:focus-visible {
   color: var(--ac-color-white);
   background-color: var(--ac-color-navy-deep);
+  border-color: var(--ac-color-navy-deep);
+}
+
+/* Der Pfeil rueckt drei Pixel nach rechts — der Knopf selbst bleibt stehen. */
+@media (hover: hover) and (pointer: fine) {
+  .knopf:hover .pfeil {
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+    transform: translateX(3px);
+  }
 }
 
 .knopf:focus-visible {
