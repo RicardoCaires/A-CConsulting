@@ -411,10 +411,61 @@ Interaktive Werkzeuge (A&C Finance Score, Business Health Check und weitere
 Checks) rechnen **im Browser** und senden nichts, solange der Nutzer nicht
 selbst eine Kontaktaufnahme auslöst. Ergebnisse werden nicht gespeichert.
 
+> **Der Endpunkt steht seit dem 24.09.2026** — gebaut vor dem Aufschalten,
+> auf Ricardos Entscheid. Er liegt **nicht** unter `src/app/api/`, wie diese
+> Hausordnung es ursprünglich vorsah: Die Seite wird statisch exportiert, es
+> gibt keinen Next.js-Server. Er liegt in **`worker/index.js`** und läuft als
+> Cloudflare Worker unter `/api/kontakt`; `wrangler.jsonc` trägt dafür seit
+> heute ein `main`. Alles andere reicht der Worker unverändert an die Dateien
+> weiter — `_headers`, `_redirects` und die eigene 404-Seite gelten wie bisher.
+> Nachgemessen: Wurzelweiterleitung, 404-Seite und die vier Sicherheitskopf-
+> zeilen verhalten sich unverändert.
+>
+> **Versendet wird über Microsoft 365**, den Tenant von A&C selbst — Ricardos
+> Entscheid vom 24.09.2026 gegen einen externen Versanddienst. Damit kommt
+> **kein neuer Auftragsbearbeiter** dazu und die Angaben verlassen das eigene
+> System nicht; unter revDSG ist das der sauberste Weg. Der Zugang läuft über
+> eine App-Registrierung mit `Mail.Send` auf `info@ac-co.ch`. Gespeichert wird
+> nichts: keine Datenbank, kein Protokoll mit Formularinhalt — auch der
+> Fehlerpfad schreibt bewusst nichts mit.
+>
+> **Vier Secrets und eine Variable.** Secrets beim Worker:
+> `TURNSTILE_SECRET`, `MS_TENANT_ID`, `MS_CLIENT_ID`, `MS_CLIENT_SECRET`.
+> Als Variable in `wrangler.jsonc`: `MS_POSTFACH` — die Adresse ist öffentlich
+> und steht im Fussbereich jeder Seite. **Kein Zugangswert steht im
+> Repository.**
+>
+> **Die Bestätigung braucht kein JavaScript.** Der Endpunkt antwortet mit 303
+> auf `/de/kontakt/#gesendet` beziehungsweise `#nicht-gesendet`; die beiden
+> Meldungen stehen immer im Quelltext und werden über `:target` sichtbar.
+> Das 303 sorgt zugleich dafür, dass ein Neuladen die Anfrage nicht ein
+> zweites Mal abschickt.
+>
+> **Solange `src/lib/turnstile.ts` keinen Schlüssel trägt, bleibt der Knopf
+> abgeschaltet** — mit demselben Hinweis wie bisher. Ohne Spamschutz weist der
+> Endpunkt jede Anfrage ab, und ein Knopf ins Leere wäre schlimmer als ein
+> sichtbar abgeschalteter. Trägt die Datei den öffentlichen Schlüssel aus
+> Ricardos Cloudflare-Konto, schaltet sich das Formular von selbst frei.
+>
+> ⚠️ **Turnstile ist der einzige fremde Dienst, den eine Seite lädt.** Er
+> gehört damit in die Datenschutzerklärung — und die ändert nur Ricardo
+> (Abschnitt 8). **Solange das offen ist, sollte das Formular nicht
+> freigeschaltet werden.**
+>
+> ⚠️ **Die vier Rückmeldungstexte** („Ihre Anfrage ist eingegangen.", „Wir
+> haben Ihre Angaben erhalten und melden uns bei Ihnen." und die beiden
+> Fehlersätze) stehen in `src/i18n/messages/ui.ts` und stammen **nicht aus
+> einer freigegebenen Quelle** — sie sind ein Vorschlag. Ricardo bestätigt
+> oder ändert sie. Absichtlich enthalten sie **keine Frist**; die einzige
+> Zusage auf der Seite bleibt der bestehende Satz „Wir beantworten Ihre
+> Anfrage in der Regel innerhalb eines Werktags."
+>
+> **Drei versteckte Felder nennen die Herkunft** — Seite, Sprache,
+> Formulartyp —, wie dieser Abschnitt es von Anfang an verlangt.
+
 Technische Vorgaben:
 
-- Übermittlung ausschliesslich per HTTPS an einen eigenen Route Handler
-  (`src/app/api/…`), gehostet auf Vercel in einer europäischen Region. Kein
+- Übermittlung ausschliesslich per HTTPS an einen eigenen Endpunkt. Kein
   Formular-Dienst, der die Eingaben ausserhalb der Schweiz oder der EU speichert
 - Die Funktion versendet eine E-Mail an eine A&C-Firmenadresse und **speichert
   nichts** — keine Datenbank, keine Logs mit Formularinhalt
@@ -2302,7 +2353,13 @@ Technik und Infrastruktur:
 - [ ] Vercel-Projekt anlegen und mit dem Repository verbinden
 - [ ] DNS bei Hostpoint erst beim Go-live auf Vercel umstellen
 - [ ] MDX für Fliesstextseiten einrichten (mit der ersten Rechtstextseite)
-- [ ] Formular-Endpunkt und Cloudflare Turnstile einrichten
+- [x] **Formular-Endpunkt gebaut** (24.09.2026) — `worker/index.js`, Versand
+      über Microsoft 365, Bestätigung ohne JavaScript. Einzelheiten in
+      Abschnitt 7
+- [ ] **Turnstile-Schlüssel und die vier M365-Zugangswerte hinterlegen** —
+      erst damit schaltet sich das Formular frei. Dazu die Datenschutz-
+      erklärung um Turnstile ergänzen, und die vier Rückmeldungstexte
+      bestätigen. Alle drei Punkte liegen bei Ricardo
 
 Inhalt und Freigaben:
 

@@ -1,9 +1,11 @@
 import Image from 'next/image'
+import Script from 'next/script'
 
 import { company } from '@/lib/company'
 import type { Locale } from '@/i18n/config'
 import { getUi } from '@/i18n/messages/ui'
 import { path } from '@/i18n/routes'
+import { turnstileSiteKey } from '@/lib/turnstile'
 
 import styles from './Kontaktformular.module.css'
 
@@ -21,20 +23,32 @@ import styles from './Kontaktformular.module.css'
  * und die Kontaktflaechen `surface_field`, die Eingabefelder wieder
  * `background_tint`. Keine Schatten, keine Verlaeufe.
  *
- * **Abgesendet wird noch nichts.** Der serverseitige Endpunkt aus Abschnitt 7
- * der Hausordnung ist nicht gebaut; ein Formular, das Anfragen still
- * verschluckt, waere schlimmer als keines. Der Knopf steht darum sichtbar
- * abgeschaltet mit dem Vermerk und dem bestehenden Hinweis `ui.formPending`,
- * wie die Gruendungscheckliste ohne PDF. Sobald der Endpunkt steht, wird aus
- * `<button disabled>` ein `<button type="submit">` und das `<form>` bekommt
- * sein `action` — sonst aendert sich nichts.
+ * **Seit dem 24.09.2026 sendet das Formular.** Es geht als gewoehnliches
+ * `<form method="post">` an `/api/kontakt` — den Worker-Endpunkt in
+ * `worker/index.js`, der die Anfrage ueber Microsoft 365 zustellt und nichts
+ * speichert. Kein JavaScript noetig: Der Endpunkt antwortet mit einer
+ * Weiterleitung auf `#gesendet` beziehungsweise `#nicht-gesendet`, und die
+ * beiden Meldungen darueber werden ueber `:target` sichtbar. Sie stehen in
+ * jeder Seite und sind nur unsichtbar — keine Bedingung, kein Skript.
+ *
+ * **Ohne Turnstile-Schluessel bleibt alles beim Alten.** Steht in
+ * `src/lib/turnstile.ts` nichts, rendert der Knopf weiter abgeschaltet mit
+ * `ui.formPending`. Das ist Absicht: Ohne Spamschutz weist der Endpunkt jede
+ * Anfrage ab, und ein Knopf ins Leere waere schlimmer als ein sichtbar
+ * abgeschalteter. Traegt die Datei den Schluessel, schaltet sich das Formular
+ * von selbst frei.
  *
  * **Telefon und E-Mail kommen aus `company.ts`** und stehen nirgends sonst
  * ausgeschrieben. Die beiden Piktogramme sind Ricardos gelieferte Dateien.
  *
  * **Das Honigtopf-Feld** (`website`) ist fuer Menschen unsichtbar und liegt
- * ausserhalb der Tabulatorreihenfolge; Abschnitt 7 verlangt es. Cloudflare
- * Turnstile kommt mit dem Endpunkt dazu.
+ * ausserhalb der Tabulatorreihenfolge; Abschnitt 7 verlangt es. Dazu kommt
+ * **Cloudflare Turnstile** — der einzige fremde Dienst, den eine Seite laedt.
+ * Er gehoert damit in die Datenschutzerklaerung; die aendert nur Ricardo.
+ *
+ * **Drei versteckte Felder nennen die Herkunft** (Seite, Sprache,
+ * Formulartyp), wie Abschnitt 7 es von Anfang an verlangt — damit spaetere
+ * Auswertungen nicht nachtraeglich umgebaut werden muessen.
  *
  * **Die Datenschutzerklaerung ist verlinkt**, wie Abschnitt 7 es verlangt —
  * ueber `path()`, nicht als Zeichenkette.
@@ -88,6 +102,8 @@ export function Kontaktformular({
   const headingId = id ? `${id}-titel` : 'kontaktformular-titel'
   const formularTitelId = `${headingId}-formular`
   const hinweisId = `${headingId}-hinweis`
+  // Ohne Spamschutz nimmt der Endpunkt nichts an — dann bleibt der Knopf aus.
+  const sendebereit = turnstileSiteKey !== ''
 
   return (
     <div className={styles.flaeche}>
@@ -143,7 +159,30 @@ export function Kontaktformular({
           </div>
 
           {/* ---- Rechts: das Formular ---------------------------------- */}
-          <form className={styles.formular} aria-labelledby={formularTitelId}>
+          <form
+            className={styles.formular}
+            aria-labelledby={formularTitelId}
+            method="post"
+            action="/api/kontakt"
+          >
+            {/* Die beiden Rueckmeldungen. Sie stehen immer da und werden ueber
+                `:target` sichtbar — der Endpunkt leitet auf die Sprungmarke
+                weiter. Ohne JavaScript, ohne Bedingung im Code. */}
+            <div id="gesendet" className={`${styles.meldung} ${styles.meldungOk}`} role="status">
+              <strong className={styles.meldungTitel}>{ui.formResult.okTitle}</strong>
+              {ui.formResult.okBody}
+            </div>
+
+            <div id="nicht-gesendet" className={styles.meldung} role="status">
+              <strong className={styles.meldungTitel}>{ui.formResult.errorTitle}</strong>
+              {ui.formResult.errorBody}
+            </div>
+
+            {/* Herkunft der Anfrage — Abschnitt 7 verlangt sie von Anfang an. */}
+            <input type="hidden" name="sprache" value={locale} />
+            <input type="hidden" name="herkunft" value={path('kontakt', locale)} />
+            <input type="hidden" name="formular" value="kontakt" />
+
             <div className={styles.formularKopf}>
               <h3 id={formularTitelId} className={styles.formularTitel}>
                 {formular.heading}
@@ -219,18 +258,42 @@ export function Kontaktformular({
               </span>
             </label>
 
+            {sendebereit && (
+              <>
+                {/* Cloudflare Turnstile. Der einzige fremde Dienst, den eine
+                    Seite laedt — und nur diese eine. */}
+                <div
+                  className={`cf-turnstile ${styles.turnstile}`}
+                  data-sitekey={turnstileSiteKey}
+                />
+                <Script
+                  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+                  strategy="afterInteractive"
+                />
+              </>
+            )}
+
             <div className={styles.absendeReihe}>
-              {/* Abgeschaltet, solange der Endpunkt fehlt — siehe Kopf. */}
-              <button className={styles.knopf} type="submit" disabled aria-describedby={hinweisId}>
-                {formular.knopf}
-                <span className={styles.folgt}>{ui.pageComing.badge}</span>
-              </button>
+              {sendebereit ? (
+                <button className={styles.knopf} type="submit">
+                  {formular.knopf}
+                </button>
+              ) : (
+                /* Ohne Turnstile-Schluessel weist der Endpunkt jede Anfrage
+                   ab. Dann steht der Knopf sichtbar abgeschaltet da. */
+                <button className={styles.knopf} type="submit" disabled aria-describedby={hinweisId}>
+                  {formular.knopf}
+                  <span className={styles.folgt}>{ui.pageComing.badge}</span>
+                </button>
+              )}
               <p className={styles.vertraulich}>{formular.vertraulich}</p>
             </div>
 
-            <p id={hinweisId} className={styles.wartet}>
-              {ui.formPending}
-            </p>
+            {!sendebereit && (
+              <p id={hinweisId} className={styles.wartet}>
+                {ui.formPending}
+              </p>
+            )}
           </form>
         </section>
       </div>

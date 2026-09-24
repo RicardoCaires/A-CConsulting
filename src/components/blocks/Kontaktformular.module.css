@@ -505,3 +505,45 @@
     break-inside: avoid;
   }
 }
+
+/* ---- Rueckmeldung nach dem Absenden ---------------------------------------
+
+   Sie steht immer im Quelltext und ist nur unsichtbar. Sichtbar wird sie
+   ueber `:target` — der Endpunkt leitet auf `#gesendet` beziehungsweise
+   `#nicht-gesendet` weiter. Das ist der Grund, weshalb das Formular ohne
+   JavaScript bestaetigt. */
+
+.meldung {
+  display: none;
+  margin-bottom: var(--ac-space-md);
+  padding: var(--ac-space-sm) var(--ac-space-md);
+  font-size: var(--ac-small-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-background-tint);
+  border-left: var(--ac-border-marker) solid var(--ac-color-primary-navy);
+  border-radius: 0 var(--ac-radius-sm) var(--ac-radius-sm) 0;
+  scroll-margin-top: var(--ac-space-xl);
+}
+
+.meldung:target {
+  display: block;
+}
+
+.meldungOk {
+  border-left-color: var(--ac-color-accent-green);
+}
+
+.meldungTitel {
+  display: block;
+  margin-bottom: 0.125rem;
+  font-family: var(--ac-font-display);
+  font-size: 1.0625rem;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+/* Turnstile bringt seine eigene Groesse mit. */
+.turnstile {
+  margin-bottom: var(--ac-space-sm);
+}
