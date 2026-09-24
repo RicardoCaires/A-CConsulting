@@ -88,6 +88,18 @@ type UiMessages = {
   formPending: string
   /** Vermerk an einem Knopf, dessen Datei noch nicht vorliegt. */
   downloadSoon: string
+  /**
+   * Rueckmeldung nach dem Absenden des Kontaktformulars.
+   *
+   * Sie erscheint ueber die Sprungmarke und `:target`, nicht ueber ein
+   * Skript — darum steht sie in jeder Seite und ist nur unsichtbar.
+   */
+  formResult: {
+    okTitle: string
+    okBody: string
+    errorTitle: string
+    errorBody: string
+  }
   /** Verweis auf eine Seite, die es noch nicht gibt. */
   pageComing: {
     /** Kurzer sichtbarer Vermerk neben der Beschriftung. */
@@ -173,6 +185,13 @@ export const ui: Record<Locale, UiMessages> = {
     formPending:
       'Das Formular wird aufgeschaltet, sobald der serverseitige Endpunkt eingerichtet ist. Bis dahin erreichen Sie uns telefonisch oder per E-Mail.',
     downloadSoon: 'Bald verfügbar',
+    formResult: {
+      okTitle: 'Ihre Anfrage ist eingegangen.',
+      okBody: 'Wir haben Ihre Angaben erhalten und melden uns bei Ihnen.',
+      errorTitle: 'Die Anfrage konnte nicht übermittelt werden.',
+      errorBody:
+        'Bitte versuchen Sie es noch einmal. Wenn es weiterhin nicht klappt, erreichen Sie uns telefonisch oder per E-Mail.',
+    },
     pageComing: {
       badge: 'folgt',
       hint: 'Diese Seite ist noch nicht verfügbar.',
@@ -255,6 +274,13 @@ export const ui: Record<Locale, UiMessages> = {
     formPending:
       'Le formulaire sera activé dès que le point de réception côté serveur sera en place. D’ici là, vous pouvez nous joindre par téléphone ou par courriel.',
     downloadSoon: 'Bientôt disponible',
+    formResult: {
+      okTitle: 'Votre demande nous est parvenue.',
+      okBody: 'Nous avons bien reçu vos indications et vous recontactons.',
+      errorTitle: 'La demande n’a pas pu être transmise.',
+      errorBody:
+        'Merci de réessayer. Si cela ne fonctionne toujours pas, vous pouvez nous joindre par téléphone ou par courriel.',
+    },
     pageComing: {
       badge: 'à venir',
       hint: 'Cette page n’est pas encore disponible.',
@@ -337,6 +363,13 @@ export const ui: Record<Locale, UiMessages> = {
     formPending:
       'O formulário será activado assim que o ponto de recepção no servidor estiver disponível. Até lá, contacte-nos por telefone ou por e-mail.',
     downloadSoon: 'Brevemente disponível',
+    formResult: {
+      okTitle: 'O seu pedido foi recebido.',
+      okBody: 'Recebemos os seus dados e entraremos em contacto consigo.',
+      errorTitle: 'Não foi possível enviar o pedido.',
+      errorBody:
+        'Tente novamente. Se continuar a não funcionar, contacte-nos por telefone ou por e-mail.',
+    },
     pageComing: {
       badge: 'em breve',
       hint: 'Esta página ainda não está disponível.',

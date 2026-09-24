@@ -22,9 +22,25 @@
 
   "compatibility_date": "2026-09-09",
 
+  // Seit dem 24.09.2026 laeuft **ein** Stueck Code auf dem Server: der
+  // Endpunkt des Kontaktformulars (`/api/kontakt`). Alles andere reicht der
+  // Worker unveraendert an die Dateien weiter — `_headers`, `_redirects` und
+  // die eigene 404-Seite gelten damit wie bisher.
+  "main": "./worker/index.js",
+
+  // Das Postfach, an das die Anfragen gehen. Oeffentlich — es steht im
+  // Fussbereich jeder Seite. Die vier Zugangswerte dagegen sind Secrets:
+  // TURNSTILE_SECRET, MS_TENANT_ID, MS_CLIENT_ID, MS_CLIENT_SECRET.
+  "vars": {
+    "MS_POSTFACH": "info@ac-co.ch"
+  },
+
   "assets": {
     // Ergebnis von `npm run build` (next.config.mjs, output: 'export').
     "directory": "./out",
+
+    // Damit der Worker die Dateien selbst ausliefern kann.
+    "binding": "ASSETS",
 
     // Eine unbekannte Adresse liefert unsere eigene Fehlerseite mit Kopf- und
     // Fussbereich, nicht die nackte Meldung von Cloudflare.
