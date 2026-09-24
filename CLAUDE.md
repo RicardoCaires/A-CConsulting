@@ -908,11 +908,25 @@ nie stillschweigend weggelassen.
 `npm run check` listet sie bei jedem Lauf auf. Vor dem Go-live muss
 `npm run check:pending -- --strict` ohne Befund durchlaufen.
 
-Stand 14.09.2026: **vier** offene Angaben — der Link auf den
-FINMA-Registereintrag im Impressum und drei Veröffentlichungsdaten im
-Wissensbereich, der nicht veröffentlicht ist. Die Fristen auf `/steuern`
-standen zwischenzeitlich ebenfalls offen; Ricardo hat sie am 14.09.2026
-bestätigt.
+Stand 24.09.2026: **drei** offene Angaben, alle drei
+Veröffentlichungsdaten im Wissensbereich — und der ist nicht veröffentlicht.
+**Auf keiner veröffentlichten Seite steht damit noch eine offene Angabe.**
+
+> **Der FINMA-Link ist am 24.09.2026 geschlossen.** Ricardo hat vor dem
+> Aufschalten die Adresse geliefert:
+> `https://www.finma.ch/de/bewilligung/versicherungsvermittlung/registersuche/F01568855`.
+> Sie steht im Impressum unter „Aufsicht und Registrierung" und führt auf den
+> Eintrag des **Unternehmens**, nicht auf die persönliche Nummer. Nachgeprüft:
+> Die Seite antwortet und nennt A&C Consulting samt F01568855.
+>
+> Dafür gibt es seit dem 24.09.2026 eine neue Textmarke `LinkRef`
+> (`{ url, label }` in `src/content/types.ts`): ein Verweis auf eine fremde
+> Seite **mitten im Absatz**. Bisher kannte ein Absatz nur interne Verweise
+> unter sich (`links` über `path()`). Fremde Ziele öffnen immer ein neues
+> Fenster, mit `rel="noopener noreferrer"`.
+
+Die Fristen auf `/steuern` standen zwischenzeitlich ebenfalls offen; Ricardo
+hat sie am 14.09.2026 bestätigt.
 
 Alle Bildflächen sind Platzhalter mit Formatangabe. Das spätere Foto tritt an
 dieselbe Stelle, ohne dass sich das Layout verschiebt. Kein Stockbild.
@@ -2300,11 +2314,29 @@ Inhalt und Freigaben:
 - [ ] Bildmaterial: Porträts der Inhaber und Regionalaufnahmen beschaffen
       (die Startseite kommt bewusst ohne Fotos aus, statt Stockbilder zu setzen)
 - [ ] Vektorlogo (SVG) beschaffen — bisher nur PNG, siehe `offene-punkte.md`
-      des Corporate-Design-Skills. Betrifft auch das Favicon
+      des Corporate-Design-Skills.
+      **Das Favicon ist seit dem 24.09.2026 gelöst**, auch ohne SVG: Auf
+      Ricardos Anweisung („favicon soll einfach der Berg sein") steht im
+      Browserreiter nur noch die Bildmarke. Bis dahin lag dort das ganze Logo
+      mit 4.55 : 1 — der Browser quetschte es ins Quadrat. Beide Dateien sind
+      aus `public/logo/ac-logo.png` **geschnitten**, nicht neu gezeichnet:
+      `ac-bildmarke.png` (256 px, durchsichtig) für den Reiter und
+      `ac-bildmarke-apple.png` (180 px, **weisser Grund** — Apple legt hinter
+      durchsichtige Flächen sonst Schwarz) für den Startbildschirm. Gesetzt
+      wird beides an einer Stelle: `icons` in `src/app/[locale]/layout.tsx`
 - [ ] **PDF für den Schadenfall hinterlegen** — `public/dokumente/schadenfall.pdf`.
-      Der grüne Knopf im Abschnitt „Wenn ein Schaden eintritt" zeigt seit dem
-      11.09.2026 darauf und führt bis dahin ins Leere. Auf Ricardos Anweisung;
-      er legt die Datei später ab. **Vor dem Go-live zwingend.**
+      **Seit dem 24.09.2026 blockiert das den Go-live nicht mehr:** Auf
+      Ricardos Anweisung („bitte mit bald verfügbar kennzeichnen") steht
+      `file: null`, und der Knopf im Abschnitt „Wenn ein Schaden eintritt"
+      ist sichtbar abgeschaltet — dieselbe Form wie jeder Knopf (48 px hoch,
+      12 px Radius), helle Fläche und Navy-Schrift statt Grün auf Weiss, weil
+      Grün auf halber Deckung weissen Text nicht mehr trägt. Darunter der
+      Vermerk **„Bald verfügbar"**, über `aria-describedby` mit dem Knopf
+      verbunden. Bis dahin zeigte er ins Leere — es war **der einzige tote
+      Link der ganzen Website**; nachgemessen sind es jetzt null von 30.
+      Sobald die Datei unter `public/dokumente/` liegt und ihr Pfad in
+      `src/content/pages/versicherungen.ts` steht, wird von selbst wieder der
+      grüne Knopf daraus.
 - [ ] Unterlagen-Checkliste Steuern erstellen (DE/FR/PT)
 - [ ] **Gründungscheckliste als PDF erstellen** — unter `public/dokumente/`
       ablegen und den Pfad in `src/content/pages/firmengruendung.ts` bei

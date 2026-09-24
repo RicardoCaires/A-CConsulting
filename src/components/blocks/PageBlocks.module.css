@@ -90,6 +90,36 @@
   font-size: var(--ac-small-size);
 }
 
+/* Ein Knopf, dessen Datei noch fehlt.
+
+   Dieselbe Form wie der gruene Knopf, aber klar als nicht anklickbar zu
+   erkennen: Gruen auf halber Deckung truege den weissen Text nicht mehr
+   (unter 3:1), darum helle Flaeche und Navy-Schrift — rund 9:1. Dasselbe
+   Muster wie bei der frueheren Gruendungscheckliste. */
+.downloadAus {
+  composes: button from '../ui/Button.module.css';
+
+  color: var(--ac-color-primary-navy);
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 16%, var(--ac-color-white));
+  border: var(--ac-border-hairline) solid
+    color-mix(in srgb, var(--ac-color-accent-green) 34%, transparent);
+  cursor: not-allowed;
+}
+
+.downloadAus:hover {
+  transform: none;
+  color: var(--ac-color-primary-navy);
+  background-color: color-mix(in srgb, var(--ac-color-accent-green) 16%, var(--ac-color-white));
+  box-shadow: none;
+}
+
+.downloadHinweis {
+  margin: var(--ac-space-2xs) 0 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
 .comingBadge {
   font-size: var(--ac-eyebrow-size);
   font-weight: var(--ac-eyebrow-weight);

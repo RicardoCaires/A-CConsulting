@@ -1,6 +1,13 @@
 import { Fragment } from 'react'
 
-import { isCompanyRef, isLegal, isPending, type CompanyRef, type Rich } from '@/content/types'
+import {
+  isCompanyRef,
+  isLegal,
+  isLinkRef,
+  isPending,
+  type CompanyRef,
+  type Rich,
+} from '@/content/types'
 import { bueroOneLine, buero, company, direktnummern, sitzOneLine } from '@/lib/company'
 import { showDraft } from '@/lib/draft'
 
@@ -44,6 +51,11 @@ export function RichText({ value }: { value: Rich }) {
             <DraftNote kind="rechtlich">{part.legal}</DraftNote>
           ) : isCompanyRef(part) ? (
             FIRMA[part.company]
+          ) : isLinkRef(part) ? (
+            /* Fremde Seite: neues Fenster, und `rel` ist dabei Pflicht. */
+            <a href={part.url} target="_blank" rel="noopener noreferrer">
+              {part.label}
+            </a>
           ) : (
             part
           )}
@@ -68,6 +80,8 @@ export function hatSichtbarenInhalt(value: Rich): boolean {
   // Text — beide machen den Absatz nicht leer. Nur reine Platzhalter tun das.
   return value.some(
     (part) =>
-      isCompanyRef(part) || (!isPending(part) && !isLegal(part) && String(part).trim() !== ''),
+      isCompanyRef(part) ||
+      isLinkRef(part) ||
+      (!isPending(part) && !isLegal(part) && String(part).trim() !== ''),
   )
 }

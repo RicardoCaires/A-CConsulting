@@ -82,8 +82,15 @@ export const impressum: PageContent = {
       paragraphs: [
         'A&C Consulting GmbH ist als Versicherungsvermittlerin im Register der Eidgenössischen Finanzmarktaufsicht FINMA eingetragen.',
         ['Registernummer: ', { company: 'finma' }],
+        // Ricardo hat den Link am 24.09.2026 geliefert und damit die offene
+        // Angabe geschlossen. Die Adresse fuehrt direkt auf den Eintrag des
+        // Unternehmens — nicht auf seinen persoenlichen.
         [
-          { pending: 'Link auf den Registereintrag bei der FINMA, erst nach Prüfung des Eintrags von Hand' },
+          'Der Eintrag ist öffentlich einsehbar: ',
+          {
+            url: 'https://www.finma.ch/de/bewilligung/versicherungsvermittlung/registersuche/F01568855',
+            label: 'Registereintrag im FINMA-Register',
+          },
         ],
         'Zuständige Aufsichtsbehörde: Eidgenössische Finanzmarktaufsicht FINMA, Laupenstrasse 27, 3003 Bern.',
         'Als ungebundene Versicherungsvermittlerin vertreten wir die Interessen unserer Kundinnen und Kunden und nicht diejenigen einer Versicherungsgesellschaft.',

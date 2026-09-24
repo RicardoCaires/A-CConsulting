@@ -254,11 +254,16 @@ export const versicherungen: PageContent = {
         { bild: '04_schaden_begleitung', titel: 'Abwicklung begleiten' },
       ],
       // Der gruene Knopf steht auf Ricardos Anweisung vom 11.09.2026 an der
-      // Stelle des frueheren Links mit dem Vermerk „folgt". **Das PDF fehlt
-      // noch** — er legt es spaeter ab. Bis dahin fuehrt der Knopf ins Leere;
-      // die Seite geht ohnehin nicht vor dem 01.11.2026 live. Der offene
-      // Punkt steht in CLAUDE.md.
-      download: { label: 'Herunterladen', file: '/dokumente/schadenfall.pdf' },
+      // Stelle des frueheren Links mit dem Vermerk „folgt".
+      //
+      // **Das PDF fehlt weiterhin.** Bis zum 24.09.2026 zeigte der Knopf auf
+      // `/dokumente/schadenfall.pdf` und damit ins Leere — der einzige tote
+      // Link der ganzen Website. Vor dem Aufschalten hat Ricardo entschieden:
+      // „bitte mit bald verfuegbar kennzeichnen". `file: null` schaltet den
+      // Knopf sichtbar ab; der Vermerk steht darunter. Liegt die Datei
+      // spaeter unter `public/dokumente/` und ihr Pfad hier, wird daraus von
+      // selbst wieder der gruene Knopf.
+      download: { label: 'Herunterladen', file: null },
       partner: {
         // Seit dem 11.09.2026 ein Hinweis statt einer Ueberschrift: Er sagt,
         // was die Kacheln tun. Das Schildsymbol ist auf Ricardos Anweisung

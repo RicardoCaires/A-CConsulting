@@ -61,7 +61,14 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       url: path('home', locale),
     },
     icons: {
-      icon: '/logo/ac-logo.png',
+      // Nur die Bildmarke, seit dem 24.09.2026 auf Ricardos Anweisung
+      // („favicon soll einfach der Berg sein"). Das ganze Logo misst 4.55 : 1
+      // und wurde im quadratischen Reiter gequetscht. Beide Dateien sind aus
+      // `ac-logo.png` geschnitten, nicht neu gezeichnet.
+      icon: '/logo/ac-bildmarke.png',
+      // Apple legt hinter durchsichtige Flaechen Schwarz — diese Fassung
+      // bringt darum einen weissen Grund mit.
+      apple: '/logo/ac-bildmarke-apple.png',
     },
   }
 }

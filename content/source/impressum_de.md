@@ -66,7 +66,11 @@ A&C Consulting GmbH ist als Versicherungsvermittlerin im Register der Eidgenöss
 
 Registernummer: F01568855
 
-**[ZU BESTÄTIGEN: Link auf den Registereintrag bei der FINMA, erst nach Prüfung des Eintrags von Hand]**
+Der Eintrag ist öffentlich einsehbar: [Registereintrag im FINMA-Register](https://www.finma.ch/de/bewilligung/versicherungsvermittlung/registersuche/F01568855)
+
+> **Am 24.09.2026 von Ricardo geliefert und damit bestätigt.** Bis dahin stand
+> hier eine offene Angabe. Die Adresse zeigt auf den Eintrag des **Unternehmens**
+> (F01568855), nicht auf die persönliche Nummer.
 
 Zuständige Aufsichtsbehörde: Eidgenössische Finanzmarktaufsicht FINMA, Laupenstrasse 27, 3003 Bern.
 
