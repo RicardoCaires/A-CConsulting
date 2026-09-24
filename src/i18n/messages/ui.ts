@@ -86,6 +86,8 @@ type UiMessages = {
   moreLabel: string
   /** Hinweis am Formular, solange der Endpunkt fehlt. */
   formPending: string
+  /** Vermerk an einem Knopf, dessen Datei noch nicht vorliegt. */
+  downloadSoon: string
   /** Verweis auf eine Seite, die es noch nicht gibt. */
   pageComing: {
     /** Kurzer sichtbarer Vermerk neben der Beschriftung. */
@@ -170,6 +172,7 @@ export const ui: Record<Locale, UiMessages> = {
     moreLabel: 'Mehr erfahren',
     formPending:
       'Das Formular wird aufgeschaltet, sobald der serverseitige Endpunkt eingerichtet ist. Bis dahin erreichen Sie uns telefonisch oder per E-Mail.',
+    downloadSoon: 'Bald verfügbar',
     pageComing: {
       badge: 'folgt',
       hint: 'Diese Seite ist noch nicht verfügbar.',
@@ -251,6 +254,7 @@ export const ui: Record<Locale, UiMessages> = {
     moreLabel: 'En savoir plus',
     formPending:
       'Le formulaire sera activé dès que le point de réception côté serveur sera en place. D’ici là, vous pouvez nous joindre par téléphone ou par courriel.',
+    downloadSoon: 'Bientôt disponible',
     pageComing: {
       badge: 'à venir',
       hint: 'Cette page n’est pas encore disponible.',
@@ -332,6 +336,7 @@ export const ui: Record<Locale, UiMessages> = {
     moreLabel: 'Saber mais',
     formPending:
       'O formulário será activado assim que o ponto de recepção no servidor estiver disponível. Até lá, contacte-nos por telefone ou por e-mail.',
+    downloadSoon: 'Brevemente disponível',
     pageComing: {
       badge: 'em breve',
       hint: 'Esta página ainda não está disponível.',

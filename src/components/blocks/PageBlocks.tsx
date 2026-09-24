@@ -547,13 +547,31 @@ export function PageBlocks({ blocks, locale }: { blocks: readonly Block[]; local
               schritte={block.schritte}
               aktion={
                 /* Gruen, auf Ricardos Anweisung vom 11.09.2026. Vorher stand
-                   hier ein Link mit dem Vermerk „folgt". */
+                   hier ein Link mit dem Vermerk „folgt".
+
+                   Fehlt die Datei, steht seit dem 24.09.2026 derselbe Knopf
+                   sichtbar abgeschaltet da, mit dem Vermerk „Bald verfuegbar"
+                   darunter — auf Ricardos Anweisung vor dem Aufschalten. Der
+                   Vermerk haengt ueber `aria-describedby` am Knopf, damit auch
+                   Vorlesewerkzeuge den Grund nennen. */
                 block.download.file ? (
                   <Button href={block.download.file} variant="akzent">
                     {block.download.label}
                   </Button>
                 ) : (
-                  <DownloadButton download={block.download} locale={locale} />
+                  <>
+                    <button
+                      type="button"
+                      className={styles.downloadAus}
+                      disabled
+                      aria-describedby="schadenfall-download-hinweis"
+                    >
+                      {block.download.label}
+                    </button>
+                    <p id="schadenfall-download-hinweis" className={styles.downloadHinweis}>
+                      {getUi(locale).downloadSoon}
+                    </p>
+                  </>
                 )
               }
               partner={block.partner}

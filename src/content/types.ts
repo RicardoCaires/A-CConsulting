@@ -49,8 +49,17 @@ export type CompanyRef = {
   readonly company: 'buero' | 'sitz' | 'ort' | 'ricardo' | 'octavio' | 'firma' | 'uid' | 'finma'
 }
 
+/**
+ * Verweis auf eine fremde Seite, mitten im Absatz.
+ *
+ * Bis zum 24.09.2026 kannte ein Absatz nur interne Verweise (`links`, ueber
+ * `path()`). Der Registereintrag der FINMA steht aber im Satz und nicht
+ * darunter — dafuer gibt es diese Marke. Sie oeffnet immer ein neues Fenster.
+ */
+export type LinkRef = { url: string; label: string }
+
 /** Textstueck: Klartext, offene Angabe oder rechtlich zu pruefende Aussage. */
-export type Inline = string | PendingNote | LegalNote | CompanyRef
+export type Inline = string | PendingNote | LegalNote | CompanyRef | LinkRef
 
 /** Ein Absatz — einfacher Text oder Text mit eingebetteten offenen Angaben. */
 export type Rich = string | readonly Inline[]
@@ -65,6 +74,10 @@ export function isLegal(part: Inline): part is LegalNote {
 
 export function isCompanyRef(part: Inline): part is CompanyRef {
   return typeof part === 'object' && 'company' in part
+}
+
+export function isLinkRef(part: Inline): part is LinkRef {
+  return typeof part === 'object' && 'url' in part
 }
 
 export function collectPending(value: Rich): string[] {
