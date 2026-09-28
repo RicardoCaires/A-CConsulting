@@ -15,6 +15,8 @@ const config = [
       // fremden Code aus Next.js und React, den zu pruefen sinnlos waere.
       'out/**',
       'node_modules/**',
+      // Zwischenstaende von `wrangler dev`. Erzeugt, nicht geschrieben.
+      '.wrangler/**',
       'archiv/**',
       // Von Next.js bzw. vom Token-Generator erzeugt.
       'next-env.d.ts',

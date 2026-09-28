@@ -22,6 +22,13 @@
  * Alles ausser `/api/kontakt` liefert der Dateiserver aus. Der Worker reicht
  * es unveraendert an `env.ASSETS` weiter; `_headers`, `_redirects` und die
  * eigene 404-Seite gelten damit wie bisher.
+ *
+ * **Der Worker sieht nicht jede Anfrage.** Cloudflare liefert eine vorhandene
+ * Datei direkt aus und ruft ihn nur fuer das auf, was keine ist. Am 28.09.2026
+ * stand hier kurz die Weiterleitung von `ac-co.ch` auf `www.ac-co.ch` — sie
+ * lief nie, weil `/de/` eine Datei ist. Sie steht jetzt als Redirect Rule in
+ * der Zone, die vor der Dateiauslieferung greift. Was hier hineingehoert, ist
+ * nur, was **kein** Abruf einer Datei ist.
  */
 
 const TURNSTILE_PRUEFUNG = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
@@ -33,15 +40,6 @@ const SPRACHEN = new Set(['de', 'fr', 'pt'])
 const worker = {
   async fetch(request, env) {
     const url = new URL(request.url)
-
-    // `ac-co.ch` ohne www fuehrt dauerhaft auf `www.ac-co.ch`. Die Website
-    // nennt sich ueberall so — Sitemap, kanonische Adressen, Impressum —, und
-    // zwei Adressen fuer dieselbe Seite teilen bei Suchmaschinen die Bewertung.
-    // 301, damit der Umweg nur einmal noetig ist.
-    if (url.hostname === 'ac-co.ch') {
-      url.hostname = 'www.ac-co.ch'
-      return Response.redirect(url.toString(), 301)
-    }
 
     if (url.pathname === '/api/kontakt') return kontakt(request, env)
 
