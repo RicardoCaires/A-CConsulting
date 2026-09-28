@@ -294,11 +294,11 @@ Entschieden am 04.09.2026 (Schritt 5).
 | Thema | Entscheidung |
 |---|---|
 | Framework | **Next.js 15 (App Router) mit TypeScript** |
-| Hosting | **Vercel**. Domain `ac-co.ch` bleibt bei Hostpoint, DNS erst beim Go-live |
+| Hosting | **Cloudflare**. Seit dem 28.09.2026 live unter `www.ac-co.ch` |
 | Repository | `RicardoCaires/ac-website`, privat |
 | CMS | keines. Inhalte strukturiert im Repository |
 | Datenbank | keine. Score-Tools rechnen lokal im Browser |
-| Formulare | eigener serverseitiger Endpunkt auf Vercel |
+| Formulare | eigener serverseitiger Endpunkt als Cloudflare Worker |
 | Analytics | keines |
 
 Warum Next.js und nicht reines HTML: Die Seite ist heute inhaltsorientiert,
@@ -2348,10 +2348,61 @@ gibt es noch keine.
 
 Technik und Infrastruktur:
 
-- [ ] Repository auf GitHub in `ac-website` umbenennen — **erst nach der
-      lokalen Freigabe der Website.** Bis dahin wird nichts veröffentlicht
-- [ ] Vercel-Projekt anlegen und mit dem Repository verbinden
-- [ ] DNS bei Hostpoint erst beim Go-live auf Vercel umstellen
+> **Die Website ist seit dem 28.09.2026 öffentlich**, auf Ricardos Anweisung
+> („bitte website jetzt online stellen"). Sie läuft unter **`www.ac-co.ch`**;
+> `ac-co.ch` ohne www leitet dauerhaft dorthin weiter, und unverschlüsselte
+> Aufrufe werden auf HTTPS umgeleitet.
+>
+> **Der Weg dorthin, in dieser Reihenfolge:**
+>
+> 1. Die Zone `ac-co.ch` lag bei Cloudflare, die Nameserver noch bei
+>    Hostpoint. Alle elf eingelesenen Einträge wurden gegen den Bestand bei
+>    Hostpoint abgeglichen — **vollständig** — und von „Proxied" auf
+>    **„DNS only"** gestellt. Das war kein Schönheitsfehler: Ein
+>    durchgeleitetes `autodiscover` hätte die Outlook-Einrichtung auf neuen
+>    Geräten unbrauchbar gemacht, ein durchgeleiteter Platzhalter
+>    `*.ac-co.ch` hätte `imap`, `smtp`, `webmail`, `mail`, `ftp` und `cloud`
+>    abgeschnitten.
+> 2. Nameserver bei Hostpoint auf `phil.ns.cloudflare.com` und
+>    `rosa.ns.cloudflare.com` umgestellt.
+> 3. Die vier Website-Einträge (`ac-co.ch` und `www`, je A und AAAA auf
+>    Hostpoints `217.26.52.12` beziehungsweise
+>    `2a00:d70:0:b:2002:0:d91a:340c`) gelöscht — Cloudflare verlangt das,
+>    bevor ein Worker eine Domain übernimmt. Der Platzhalter blieb stehen.
+> 4. `www.ac-co.ch` und `ac-co.ch` als Custom Domains am Worker
+>    `a-cconsulting`.
+> 5. Redirect Rule `ac-co.ch/*` auf `https://www.ac-co.ch/` mit Pfad, 301,
+>    mit Übernahme der Parameter.
+> 6. **„Always Use HTTPS" eingeschaltet.** Ohne das lieferte die Seite auch
+>    unverschlüsselt aus — Abschnitt 7 verlangt HTTPS ausdrücklich.
+>
+> **Nachgemessen nach der Aufschaltung:** alle zwölf Seiten 200, Wurzel 308
+> auf `/de/`, Sitemap und robots.txt 200, unbekannte Adresse 404 mit eigener
+> Seite, alle vier Sicherheitskopfzeilen gesetzt, Zertifikat gültig für
+> `ac-co.ch`, `www.ac-co.ch` und `*.ac-co.ch`. **Und die Mail unverändert:**
+> MX auf Outlook, SPF, Microsoft-Prüfung, DMARC und `autodiscover` — alle
+> fünf korrekt, `imap` weiterhin auf Hostpoint.
+>
+> ⚠️ **Zwei Einstellungen liegen im Dashboard statt im Repository:** die
+> Redirect Rule und „Always Use HTTPS". Ein Umzug des Hostings nimmt sie
+> nicht mit.
+>
+> ⚠️ **HSTS ist bewusst nicht eingeschaltet.** Es wäre der nächste Schritt,
+> lässt sich aber kaum zurücknehmen — Browser merken sich die Vorgabe.
+> Das entscheidet Ricardo.
+
+- [ ] Repository auf GitHub in `ac-website` umbenennen
+- [x] ~~Vercel-Projekt anlegen~~ — gegenstandslos, gehostet wird auf Cloudflare
+- [x] **DNS umgestellt** (28.09.2026) — Nameserver bei Cloudflare, siehe oben
+- [ ] **DKIM für `ac-co.ch` einrichten** — fiel beim Abgleich auf: Es gibt keine
+      `selector1`/`selector2`-Einträge, Microsoft signiert also nur über die
+      `onmicrosoft.com`-Domäne. Kein Hindernis, aber gut für die Zustellbarkeit
+- [ ] **Sitemap in der Google Search Console anmelden** — sonst dauert es
+      Wochen, bis die Seite gefunden wird
+- [ ] **Hostpoint Cloud Office prüfen** — das Control Panel meldet, die Domain
+      werde „für E-Mail-Adressen der Cloud Office-Gruppe «ac-co.ch» verwendet",
+      obwohl die Post nachweislich zu Microsoft geht. Vermutlich ein
+      kostenpflichtiges Überbleibsel
 - [ ] MDX für Fliesstextseiten einrichten (mit der ersten Rechtstextseite)
 - [x] **Formular-Endpunkt gebaut** (24.09.2026) — `worker/index.js`, Versand
       über Microsoft 365, Bestätigung ohne JavaScript. Einzelheiten in
