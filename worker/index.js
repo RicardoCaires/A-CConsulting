@@ -34,6 +34,15 @@ const worker = {
   async fetch(request, env) {
     const url = new URL(request.url)
 
+    // `ac-co.ch` ohne www fuehrt dauerhaft auf `www.ac-co.ch`. Die Website
+    // nennt sich ueberall so — Sitemap, kanonische Adressen, Impressum —, und
+    // zwei Adressen fuer dieselbe Seite teilen bei Suchmaschinen die Bewertung.
+    // 301, damit der Umweg nur einmal noetig ist.
+    if (url.hostname === 'ac-co.ch') {
+      url.hostname = 'www.ac-co.ch'
+      return Response.redirect(url.toString(), 301)
+    }
+
     if (url.pathname === '/api/kontakt') return kontakt(request, env)
 
     // Alles Uebrige ist eine Datei aus `out/`.
