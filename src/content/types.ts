@@ -117,6 +117,11 @@ export type Action =
 export type Bannerkopf = {
   themenzeile: string
   ueberschrift: string
+  /**
+   * Ein Satz unter der Ueberschrift, der sagt, worum es auf der Seite geht.
+   * Optional — seit dem 01.10.2026 traegt ihn nur `/treuhand`.
+   */
+  unterzeile?: string
 }
 
 export type Block =

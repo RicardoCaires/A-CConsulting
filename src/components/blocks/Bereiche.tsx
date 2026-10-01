@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import type { ReactNode } from 'react'
 
-import { Button } from '@/components/ui/Button'
 import { Illustration, type Motiv } from '@/components/ui/Illustration'
 import type { Locale } from '@/i18n/config'
 import { hrefOrDefault, type PageKey } from '@/i18n/routes'
@@ -105,65 +104,37 @@ function Leistungen({
 }
 
 export function Bereiche({ leit, weitere, locale }: Props) {
+  /* Seit dem 01.10.2026 stehen alle drei Bereiche gleichwertig nebeneinander.
+     Bis dahin nahm der Leitbereich eine volle Zeile ein und die beiden
+     anderen teilten sich die naechste — die Rangfolge aus Abschnitt 9 der
+     Hausordnung war damit als Groessenunterschied gebaut. Sie bleibt in der
+     **Reihenfolge** erhalten: Versicherungen zuerst. */
+  const bereiche: readonly Bereich[] = [leit, ...weitere]
+
   return (
     <div className={styles.wrapper}>
-      {/* ---- Leitbereich: volle Breite, drei Spalten --------------------- */}
-      <article className={`${styles.karte} ${styles.leit}`}>
-        <div className={styles.leitText}>
-          <Kategorie text={leit.kategorie} />
-          <h3 className={styles.titelGross}>{leit.titel}</h3>
-          <p className={styles.text}>{leit.text}</p>
-          <Button className={styles.knopf} href={hrefOrDefault(leit.ziel, locale)} variant="akzent">
-            {leit.linkText}
-            <span className={styles.knopfPfeil} aria-hidden="true">
+      {bereiche.map((bereich) => (
+        <article key={bereich.kategorie} className={styles.karte}>
+          <div className={styles.bild}>
+            <Illustration motiv={bereich.motiv} />
+          </div>
+
+          <Kategorie text={bereich.kategorie} />
+          <h3 className={styles.titel}>{bereich.titel}</h3>
+          <p className={styles.text}>{bereich.text}</p>
+
+          <Leistungen werte={bereich.leistungen} />
+
+          {/* Sekundaere Aktion: Der gefuellte gruene Knopf bleibt den
+              Kontaktaktionen vorbehalten (Auftrag vom 01.10.2026). */}
+          <a className={styles.weiter} href={hrefOrDefault(bereich.ziel, locale)}>
+            {bereich.linkText}
+            <span className={styles.pfeil} aria-hidden="true">
               →
             </span>
-          </Button>
-        </div>
-
-        <div className={styles.leitListe}>
-          <Leistungen werte={leit.leistungen} />
-        </div>
-
-        <div className={styles.leitBild}>
-          <Illustration motiv={leit.motiv} />
-        </div>
-      </article>
-
-      {/* ---- Die beiden ergaenzenden Bereiche ---------------------------- */}
-      <div className={styles.weitere}>
-        {weitere.map((bereich) => (
-          <article key={bereich.kategorie} className={`${styles.karte} ${styles.spalte}`}>
-            <div className={styles.spalteKopf}>
-              <div className={styles.spalteText}>
-                <Kategorie text={bereich.kategorie} />
-                <h3 className={styles.titel}>{bereich.titel}</h3>
-                <p className={styles.text}>{bereich.text}</p>
-              </div>
-
-              <div className={styles.spalteBild}>
-                <Illustration motiv={bereich.motiv} />
-              </div>
-            </div>
-
-            <Leistungen werte={bereich.leistungen} zweispaltig />
-
-            {/* Seit dem 15.09.2026 ein Knopf wie im Leitbereich, auf Ricardos
-                Anweisung. Er wird beim Darueberfahren und bei Tastaturfokus
-                navy — das macht `variant="akzent"` von sich aus. */}
-            <Button
-              className={styles.knopf}
-              href={hrefOrDefault(bereich.ziel, locale)}
-              variant="akzent"
-            >
-              {bereich.linkText}
-              <span className={styles.knopfPfeil} aria-hidden="true">
-                →
-              </span>
-            </Button>
-          </article>
-        ))}
-      </div>
+          </a>
+        </article>
+      ))}
     </div>
   )
 }

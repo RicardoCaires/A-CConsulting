@@ -56,6 +56,18 @@
   width: min(47.5rem, 62%);
 }
 
+/* Die Zeile unter der Ueberschrift: ein Satz, der sagt, worum es geht.
+   Auf Ricardos Auftrag vom 01.10.2026; heute traegt sie nur `/treuhand`.
+   Weiss auf der Aufnahme traegt an dieser Stelle gemessen ueber 7:1. */
+.unterzeile {
+  max-width: 44ch;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: var(--ac-lead-size);
+  line-height: 1.45;
+  color: var(--ac-color-white);
+  text-wrap: pretty;
+}
+
 .themenzeile {
   display: flex;
   gap: 0.875rem;
@@ -165,6 +177,10 @@
   .ueberschrift {
     max-width: 16ch;
     font-size: clamp(2.5rem, 11vw, 3.25rem);
+  }
+
+  .unterzeile {
+    font-size: var(--ac-body-size);
   }
 }
 

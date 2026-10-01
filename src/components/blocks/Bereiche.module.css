@@ -10,11 +10,15 @@
 
 .wrapper {
   display: grid;
-  gap: clamp(1rem, 2vw, 1.5rem);
+  gap: clamp(1rem, 2vw, 1.25rem);
   margin-top: clamp(2rem, 5vw, 3rem);
+  /* Gleich hohe Karten, damit die drei Verweise auf einer Linie stehen. */
+  grid-auto-rows: 1fr;
 }
 
 .karte {
+  display: flex;
+  flex-direction: column;
   background-color: var(--ac-color-white);
   border: var(--ac-border-hairline) solid var(--ac-color-border-light);
   border-radius: var(--ac-radius-md);
@@ -49,19 +53,16 @@
    stehen zu lassen. Eine Ueberschrift aus zwei Saetzen bricht damit zwischen
    den Saetzen und nicht mitten im zweiten. Wo der Browser es nicht kann,
    traegt die Breitenbegrenzung allein. */
-.titelGross {
-  font-size: var(--ac-h2-size);
-  line-height: var(--ac-h2-line);
-  letter-spacing: var(--ac-h2-tracking);
-  max-width: 22ch;
-  text-wrap: balance;
-}
+/* Ein Titelmass fuer alle drei Karten. Seit dem 01.10.2026 gibt es keinen
+   groesseren Titel mehr fuer den Leitbereich — die Rangfolge steht in der
+   Reihenfolge, nicht in der Schriftgroesse.
 
+   **Ohne `max-width`:** In einer Spalte von rund 380 px waeren 20ch zu eng
+   und brechen „Wir vertreten Sie, nicht die Versicherung." unnoetig tief. */
 .titel {
   font-size: var(--ac-h3-size);
   line-height: var(--ac-h3-line);
   letter-spacing: var(--ac-h3-tracking);
-  max-width: 20ch;
   text-wrap: balance;
 }
 
@@ -106,158 +107,51 @@
   margin-top: -0.2rem;
 }
 
-/* ---- Knopf des Leitbereichs ------------------------------------------------ */
+/* ---- Illustration ---------------------------------------------------------
 
-.knopf {
-  margin-top: clamp(1.5rem, 3vw, 2rem);
+   Sie steht in jeder Karte an derselben Stelle: oben, mittig, gleich gross.
+   Vorher war sie im Leitbereich gross daneben und in den beiden anderen
+   klein daneben — drei Groessen fuer dasselbe Element. */
+
+.bild {
+  align-self: center;
+  width: 100%;
+  max-width: 11rem;
+  margin-bottom: var(--ac-space-md);
 }
 
-.knopfPfeil {
-  margin-left: var(--ac-space-2xs);
-}
+/* ---- Weiterfuehrender Verweis ----------------------------------------------
 
-/* ---- Weiterfuehrender Verweis ---------------------------------------------- */
+   Seit dem 01.10.2026 **kein gefuellter gruener Knopf mehr**: Der bleibt den
+   Kontaktaktionen vorbehalten („Erstgespraech anfragen"). Form, Groesse,
+   Zeigen und Tastaturfokus kommen aus `Aktion.module.css` und gelten damit
+   fuer jede sekundaere Aktion gleich.
 
-.link {
-  display: inline-flex;
-  align-items: center;
-  /* Trefferflaeche 44 px, auch wenn der Text nur eine Zeile hoch ist. */
-  min-height: 2.75rem;
-  margin-top: var(--ac-space-sm);
-  font-weight: 600;
-  text-decoration: none;
-}
+   `margin-top: auto` schiebt ihn an den Fuss — in allen drei Karten auf
+   dieselbe Hoehe, weil das Raster sie gleich hoch haelt. */
 
-.link:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
+.weiter {
+  composes: sekundaer from '../ui/Aktion.module.css';
 
-/* Der Pfeil ist ein Zeichen, keine Datei — und er rueckt beim Zeigen nach. */
-.link::after {
-  content: '→';
-  margin-left: var(--ac-space-3xs);
-  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
-}
-
-.link:hover::after {
-  transform: translateX(0.2rem);
-}
-
-/* ---- Aufbau der Karten ----------------------------------------------------- */
-
-.leit {
-  display: grid;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
-  align-items: center;
-}
-
-.spalte {
-  display: flex;
-  flex-direction: column;
-}
-
-.spalteKopf {
-  display: grid;
-  gap: var(--ac-space-md);
-  align-items: start;
-}
-
-/* Die Leistungen sitzen unten, damit beide Karten gleich hoch enden, auch
-   wenn der eine Text eine Zeile laenger ist als der andere. */
-.spalte .leistungen {
+  align-self: flex-start;
   margin-top: auto;
-  padding-top: clamp(1.25rem, 3vw, 1.75rem);
+  padding-top: var(--ac-space-md);
 }
 
-.weitere {
-  display: grid;
-  gap: clamp(1rem, 2vw, 1.5rem);
+.pfeil {
+  composes: pfeil from '../ui/Aktion.module.css';
 }
 
-/* Die Illustrationen sind quadratisch. Begrenzt wird darum die Breite; die
-   Hoehe folgt. Auf schmalen Geraeten stehen sie unter dem Text und kleiner —
-   sie sind Schmuck und duerfen den Weg zum naechsten Satz nicht verlaengern. */
-.leitBild,
-.spalteBild {
-  max-width: 17rem;
-  margin-inline: auto;
-}
+/* ---- Ab Desktop: drei Spalten ----------------------------------------------
 
-/* ---- Ab Tablet ------------------------------------------------------------- */
-
-@media (min-width: 48rem) {
-  .leit {
-    grid-template-columns: 7fr 5fr;
-  }
-
-  /* Bis zum Desktop steht die Illustration unter den beiden Textspalten und
-     darf die volle Breite nutzen. */
-  .leitBild {
-    grid-column: 1 / -1;
-    max-width: 24rem;
-  }
-
-  .spalteKopf {
-    grid-template-columns: 1fr auto;
-    gap: var(--ac-space-sm);
-  }
-
-  .spalteBild {
-    width: 10rem;
-    max-width: none;
-    margin-inline: 0;
-  }
-
-  /* Zwei Spalten mit einer Haarlinie dazwischen — dieselbe Trennung wie
-     zwischen Text und Liste in der grossen Karte. Die Linie haengt an den
-     Eintraegen der zweiten Spalte; bei vier Eintraegen sind das der zweite
-     und der vierte. */
-  .leistungenZweispaltig {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 0;
-  }
-
-  .leistungenZweispaltig .leistung:nth-child(2n) {
-    padding-left: clamp(1.25rem, 3vw, 2rem);
-    border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
-  }
-
-  .leistungenZweispaltig .leistung:nth-child(2n + 1) {
-    padding-right: clamp(1.25rem, 3vw, 2rem);
-  }
-}
-
-/* ---- Ab Desktop ------------------------------------------------------------ */
+   Erst ab 64 rem. Darunter stehen die Karten voll breit untereinander: Drei
+   Spalten waeren dort unter 300 px breit, und „Lohnadministration und
+   Sozialversicherungen" braucht mehr. Zwei Spalten liessen die dritte Karte
+   allein in der zweiten Reihe — genau die Ungleichheit, die dieser Umbau
+   beseitigt. */
 
 @media (min-width: 64rem) {
-  /* Drei Spalten: Text mit Knopf, Leistungen, Illustration. Die mittlere
-     Spalte bekommt eine Haarlinie — dieselbe Trennung wie frueher zwischen
-     den Bereichen, jetzt innerhalb der Karte. */
-  .leit {
-    grid-template-columns: 5fr 4fr 6fr;
-    gap: clamp(2rem, 4vw, 3rem);
-  }
-
-  .leitListe {
-    padding-left: clamp(1.5rem, 3vw, 2.5rem);
-    border-left: var(--ac-border-hairline) solid var(--ac-color-border-light);
-  }
-
-  /* Quadratisch und in der Spalte zentriert. Ohne Deckel waere sie so breit
-     wie die Spalte und damit hoeher als der Text daneben — die Karte wuerde
-     um die Illustration herum wachsen statt um ihren Inhalt. */
-  .leitBild {
-    grid-column: auto;
-    max-width: 23rem;
-    margin-inline: auto;
-  }
-
-  .weitere {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .spalteBild {
-    width: 12rem;
+  .wrapper {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

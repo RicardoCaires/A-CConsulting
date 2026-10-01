@@ -17,11 +17,18 @@
   list-style: none;
 }
 
+/* **Seit dem 01.10.2026 waagrecht und kompakt.** Piktogramm, Aussage und
+   Pfeil stehen in einer Zeile; der Leerraum zwischen Zeichen und Titel ist
+   von 20 bis 28 px auf eine Fuge von 16 px geschrumpft. */
 .karte {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: var(--ac-space-sm);
+  align-items: center;
   height: 100%;
-  padding: clamp(1.5rem, 4vw, 2.25rem);
+  /* Trefferflaeche: 72 px hoch, deutlich ueber den geforderten 44. */
+  min-height: 4.5rem;
+  padding: var(--ac-space-sm) var(--ac-space-md);
   background-color: var(--ac-color-white);
   border: var(--ac-border-hairline) solid var(--ac-color-border-light);
   border-radius: var(--ac-radius-md);
@@ -77,56 +84,58 @@ a.karte:focus-visible {
   }
 }
 
-/* ---- Kopf der Karte: das Piktogramm ---------------------------------------- */
+/* ---- Das Piktogramm -------------------------------------------------------
 
-.kopf {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--ac-space-sm);
-}
+   Von bis zu 112 px auf 48 px. Es bringt seinen hellen Kreis in der Datei
+   mit und bleibt darum auch auf der navy Karte sichtbar. */
 
-
-/* Alle sechs Dateien sind quadratisch — eine Breite genuegt, damit sie gleich
-   gross wirken. */
 .bild {
   flex: none;
-  width: clamp(5rem, 14vw, 7rem);
+  width: 3rem;
 }
 
 /* ---- Aussage und Verweis --------------------------------------------------- */
 
 .text {
-  margin-top: clamp(1.25rem, 3vw, 1.75rem);
-  font-size: var(--ac-h3-size);
-  line-height: var(--ac-h3-line);
-  letter-spacing: var(--ac-h3-tracking);
+  margin: 0;
+  /* Eine Stufe kleiner als der bisherige H3 — in der Zeile neben Zeichen und
+     Pfeil traegt das besser und haelt die Karte niedrig. */
+  font-size: var(--ac-card-title-size);
+  line-height: 1.25;
   color: var(--ac-color-primary-navy);
-  /* Zwei Zeilen, gleichmaessig gebrochen — wie in der Vorlage. 18ch waren zu
-     eng: „Ich moechte meine Buchhaltung abgeben" brach in drei. */
-  max-width: 22ch;
   text-wrap: balance;
 }
 
-/* Ganz unten, damit die Zeile in allen sechs Karten auf derselben Hoehe
-   steht, auch wenn die eine Aussage kuerzer ist als die andere. */
+/* Rechts in der Zeile. Sichtbar ist nur der Pfeil — die Beschriftung
+   „Mehr erfahren" steht fuer Vorlesewerkzeuge daneben. */
 .weiter {
   display: inline-flex;
+  flex: none;
   align-items: center;
-  margin-top: auto;
-  padding-top: clamp(1.25rem, 3vw, 1.75rem);
-  font-size: var(--ac-small-size);
-  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1;
   color: var(--ac-color-accent-green);
 }
 
-.weiter::after {
-  content: '→';
-  margin-left: var(--ac-space-2xs);
+.pfeil {
+  display: inline-block;
   transition: transform var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-a.karte:hover .weiter::after {
-  transform: translateX(0.2rem);
+a.karte:hover .pfeil,
+a.karte:focus-visible .pfeil {
+  transform: translateX(0.1875rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pfeil {
+    transition: none;
+  }
+
+  a.karte:hover .pfeil,
+  a.karte:focus-visible .pfeil {
+    transform: none;
+  }
 }
 
 /* ---- Fall ohne Zielseite --------------------------------------------------- */
@@ -140,9 +149,8 @@ a.karte:hover .weiter::after {
 }
 
 .badge {
-  align-self: flex-start;
-  margin-top: auto;
-  padding-top: clamp(1.25rem, 3vw, 1.75rem);
+  flex: none;
+  align-self: center;
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.04em;

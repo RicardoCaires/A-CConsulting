@@ -70,11 +70,22 @@
 }
 
 .item:hover::after,
-.item[aria-current='page']::after {
+.item[aria-current='page']::after,
+.item[data-bereich='aktiv']::after {
   transform: scaleX(1);
 }
 
-.item[aria-current='page'] {
+/* **Der aktive Zustand muss sich vom Zeigen und vom offenen Menue
+   unterscheiden** (Auftrag vom 01.10.2026). Beim Zeigen und im offenen Menue
+   erscheint derselbe Strich in 2 px bei normaler Schrift; der aktive Bereich
+   traegt ihn in 3 px, dazu Navy und 600. */
+.item[aria-current='page']::after,
+.item[data-bereich='aktiv']::after {
+  height: var(--ac-border-marker);
+}
+
+.item[aria-current='page'],
+.item[data-bereich='aktiv'] {
   color: var(--ac-color-primary-navy);
   font-weight: 600;
 }
@@ -152,6 +163,14 @@
 .childItem:hover {
   color: var(--ac-color-primary-navy);
   background-color: var(--ac-surface-soft);
+}
+
+/* Die aufgerufene Unterseite im geoeffneten Menue. Der gruene Strich links
+   unterscheidet sie vom blossen Zeigen, das nur die Flaeche einfaerbt. */
+.childItem[aria-current='page'] {
+  color: var(--ac-color-primary-navy);
+  font-weight: 600;
+  box-shadow: inset var(--ac-border-marker) 0 0 0 var(--ac-color-accent-green);
 }
 
 /* Der Bereich selbst, als erster Eintrag: dunkler gesetzt und mit einer

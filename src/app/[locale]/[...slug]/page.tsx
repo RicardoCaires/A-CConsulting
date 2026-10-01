@@ -252,6 +252,7 @@ export default async function ContentPage({ params }: PageProps) {
         <Banner
           themenzeile={content.hero.banner.themenzeile}
           ueberschrift={content.hero.banner.ueberschrift}
+          unterzeile={content.hero.banner.unterzeile}
           id="seitenkopf"
           knopf={ui.cta}
           locale={locale}
