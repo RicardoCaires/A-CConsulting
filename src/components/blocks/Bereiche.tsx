@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import type { ReactNode } from 'react'
 
+import { Button } from '@/components/ui/Button'
 import { Illustration, type Motiv } from '@/components/ui/Illustration'
 import type { Locale } from '@/i18n/config'
 import { hrefOrDefault, type PageKey } from '@/i18n/routes'
@@ -125,14 +126,19 @@ export function Bereiche({ leit, weitere, locale }: Props) {
 
           <Leistungen werte={bereich.leistungen} />
 
-          {/* Sekundaere Aktion: Der gefuellte gruene Knopf bleibt den
-              Kontaktaktionen vorbehalten (Auftrag vom 01.10.2026). */}
-          <a className={styles.weiter} href={hrefOrDefault(bereich.ziel, locale)}>
+          {/* Gruener Knopf — Ricardos Festlegung vom 15.09.2026 („alle
+              buttons muessen so sein"). Am 01.10.2026 standen sie kurz als
+              Textlinks da; er hat das noch am selben Tag zurueckgenommen. */}
+          <Button
+            className={styles.knopf}
+            href={hrefOrDefault(bereich.ziel, locale)}
+            variant="akzent"
+          >
             {bereich.linkText}
-            <span className={styles.pfeil} aria-hidden="true">
+            <span className={styles.knopfPfeil} aria-hidden="true">
               →
             </span>
-          </a>
+          </Button>
         </article>
       ))}
     </div>
