@@ -260,25 +260,28 @@ Kopf- und Fussbereich sowie Überschriften.
 > **lokal umgesetzt und nicht veröffentlicht** — er hat das ausdrücklich so
 > verlangt.
 >
-> **1. Die Einstiegsbereiche sind gedeckelt.** Der Banner lief auf
-> `aspect-ratio: 1774 / 887` und war bei 1440 px **712 px** hoch; der nächste
-> Abschnitt begann erst bei 816 px und blieb auf einem üblichen Bildschirm
-> unsichtbar. Neu: **27 rem** auf Unterseiten, **34 rem** auf der Startseite
-> (`.gross`), auf dem Telefon Mindesthöhe 24 statt 30 rem. Gemessen bei
-> 1440 px: Startseite 544 px (nächster Abschnitt ab 648), Unterseiten 432 px
-> (ab 535). Innenabstand und Titelgrösse sind mitgezogen, sonst passte der
-> Text nicht mehr hinein.
+> **1. Vom Einstiegsbereich bleibt nur die Unterzeile.** Der Banner war
+> zwischenzeitlich gedeckelt (27 rem auf Unterseiten, 34 auf der
+> Startseite) und fiel damit bei 1440 px von 712 auf 544 beziehungsweise
+> 432 px. **Noch am 01.10.2026 zurückgenommen**: Ricardo hat entschieden
+> „banneraufnahmen darf nicht beschnitten sein bitte wie vorher". Ein
+> kompakterer Banner geht nur mit Beschnitt — es gilt die Aufnahme.
 >
-> ⚠️ **Damit wird die Aufnahme beschnitten.** Am 15.09.2026 galt
-> ausdrücklich das Gegenteil („das Stadtbild muss sichtbar sein"), und das
-> Seitenverhältnis 2 : 1 war genau dafür gewählt. `object-position: center
-> 58%` hält See, Stadtlichter und Wiese im Bild; oben fällt Himmel weg, und
-> die helle Bildmarke oben rechts ist angeschnitten. **Ricardo ist darauf
-> hingewiesen.**
+> Der Banner steht damit wieder auf `aspect-ratio: 1774 / 887`,
+> `object-position: center`, ohne Deckel, mit den alten Innenabständen,
+> Titelgrössen und der Mindesthöhe von 30 rem auf dem Telefon. **Die
+> Festlegung vom 15.09.2026 gilt unverändert weiter** („das Stadtbild muss
+> sichtbar sein"): null Pixel Beschnitt, waagrecht wie senkrecht.
 >
-> **Die Unterzeile auf `/treuhand`** steht wörtlich nach seinem Auftrag
-> (`content/source/banner_unterzeile_de.md`). `Bannerkopf` hat dafür das
-> optionale Feld `unterzeile`; keine andere Seite nutzt es.
+> **Die Folge ist bekannt und in Kauf genommen:** Der nächste Abschnitt
+> beginnt auf der Startseite wieder bei 816 px und ist auf einem üblichen
+> Desktop nicht mehr im Bild. Das Ziel „kompaktere Einstiegsbereiche" ist
+> damit **nicht** erreicht; es wäre nur über einen Beschnitt oder eine
+> andere Aufnahme zu haben.
+>
+> **Die Unterzeile auf `/treuhand` bleibt** und steht wörtlich nach seinem
+> Auftrag (`content/source/banner_unterzeile_de.md`). `Bannerkopf` hat dafür
+> das optionale Feld `unterzeile`; keine andere Seite nutzt es.
 >
 > **2. Gefülltes Grün ist den Kontaktaktionen vorbehalten.** „Zu den
 > Versicherungen", „Zur Treuhand" und „Zur Finanzplanung" sind keine
@@ -318,13 +321,15 @@ Kopf- und Fussbereich sowie Überschriften.
 >
 > **Geprüft:** `npm run check` fehlerfrei. Gemessen bei 1440, 1024, 768 und
 > 390 px — kein waagrechter Überlauf, kein abgeschnittener Text, Karten
-> innerhalb einer Reihe gleich hoch.
+> innerhalb einer Reihe gleich hoch. Nach der Rücknahme des Deckels
+> nachgemessen: Banner wieder 712 px bei 1440, die Aufnahme unbeschnitten.
 >
 > ⚠️ **Zwei Vorbehalte:**
-> - Der **Produktionsbau liess sich nicht neu schreiben**: `out/` ist
+> - Der **Produktionsbau liess sich lokal nicht neu schreiben**: `out/` ist
 >   gesperrt (OneDrive hält den Ordner). Der Bau selbst läuft durch, 21 von
->   21 Seiten; nur das Ersetzen des Ordners scheitert. Gemessen wurde darum
->   gegen den Entwicklungsserver.
+>   21 Seiten; nur das Ersetzen des Ordners scheitert. Lokal gemessen wurde
+>   darum gegen den Entwicklungsserver — der Bau bei Cloudflare ist davon
+>   nicht betroffen.
 > - Dabei fiel auf, dass der **Kopfbereich bei 390 px im Entwicklungsserver
 >   anders aussieht als live**: Dort steht der Knopf „Erstgespräch anfragen"
 >   im Kopf und das Menüzeichen liegt über dem Logo. **Das ist nicht von

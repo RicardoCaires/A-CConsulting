@@ -131,7 +131,6 @@ export function StartseiteTemplate({
         themenzeile={inhalt.einstieg.themenzeile}
         ueberschrift={inhalt.einstieg.titel}
         id="einstieg"
-        gross
         knopf={inhalt.einstieg.knopf.text}
         locale={locale}
         vorrang

@@ -45,11 +45,6 @@ type Props = {
    * Optional — heute traegt sie nur `/treuhand`.
    */
   unterzeile?: string
-  /**
-   * Der Seitenkopf der Startseite darf hoeher stehen als die Unterseiten.
-   * Ueberall sonst gilt das kompakte Mass.
-   */
-  gross?: boolean
 }
 
 export function Banner({
@@ -60,16 +55,11 @@ export function Banner({
   locale,
   vorrang = false,
   unterzeile,
-  gross = false,
 }: Props) {
   const titelId = `${id}-titel`
 
   return (
-    <section
-      className={gross ? `${styles.banner} ${styles.gross}` : styles.banner}
-      id={id}
-      aria-labelledby={titelId}
-    >
+    <section className={styles.banner} id={id} aria-labelledby={titelId}>
       <Image
         className={styles.bild}
         src={BILD}
