@@ -85,7 +85,36 @@ export function Nav({ locale }: Props) {
   }, [pathname])
 
   const items = mainNavItems(locale)
-  const istAktuell = (href: string) => pathname === href || `${pathname}/` === href
+
+  /** Ein Pfad ohne Sprungmarke und mit Schraegstrich am Ende. */
+  const normiert = (wert: string) => {
+    const ohneMarke = wert.split('#')[0] ?? wert
+    return ohneMarke.endsWith('/') ? ohneMarke : `${ohneMarke}/`
+  }
+
+  const hier = normiert(pathname)
+
+  /** Genau diese Seite — davon haengt `aria-current="page"` ab. */
+  const istAktuell = (href: string) => normiert(href) === hier
+
+  /**
+   * Liegt die aufgerufene Seite in diesem Bereich?
+   *
+   * Seit dem 01.10.2026 auf Ricardos Auftrag: Auf `/treuhand/buchhaltung`
+   * soll „Treuhand" auch dann gekennzeichnet sein, wenn das Untermenue zu
+   * ist. Vorher galt nur der genaue Treffer, und der Bereich stand auf jeder
+   * Unterseite unmarkiert da.
+   *
+   * Geprueft wird der Pfad, nicht die Liste allein: Eine Unterseite, die
+   * nicht im Menue steht, gehoert trotzdem zum Bereich.
+   */
+  const imBereich = (item: NavItem) => {
+    if (item.href && hier.startsWith(normiert(item.href))) return true
+    return item.children.some((child) => {
+      const href = navChildHref(child, locale)
+      return href ? istAktuell(href) : false
+    })
+  }
 
   /** Beschriftung eines Unterpunkts. */
   const kindLabel = (child: NavChild) =>
@@ -99,7 +128,11 @@ export function Nav({ locale }: Props) {
         if (!href) return null
         return (
           <li key={index}>
-            <a className={styles.childItem} href={href}>
+            <a
+              className={styles.childItem}
+              href={href}
+              aria-current={istAktuell(href) ? 'page' : undefined}
+            >
               {kindLabel(child)}
             </a>
           </li>
@@ -127,14 +160,15 @@ export function Nav({ locale }: Props) {
     return (
       <li key={item.page} className={styles.hasChildren}>
         <details className={styles.dropdown}>
-          <summary className={styles.item}>
-            <span
-              className={
-                item.href && istAktuell(item.href) ? styles.aktuell : undefined
-              }
-            >
-              {ui.page[item.page]}
-            </span>
+          {/* `data-bereich` kennzeichnet den Bereich auch bei geschlossenem
+              Menue. Es ist bewusst nicht `aria-current`: Die Zusammenfassung
+              ist keine Seite, sondern ein Schalter. Die Seite selbst traegt
+              `aria-current="page"` im Menue darunter. */}
+          <summary
+            className={styles.item}
+            data-bereich={imBereich(item) ? 'aktiv' : undefined}
+          >
+            <span>{ui.page[item.page]}</span>
             <span className={styles.chevron} aria-hidden="true" />
           </summary>
 
@@ -144,7 +178,11 @@ export function Nav({ locale }: Props) {
             <ul className={styles.childList} role="list">
               {item.href && (
                 <li>
-                  <a className={`${styles.childItem} ${styles.childLead}`} href={item.href}>
+                  <a
+                    className={`${styles.childItem} ${styles.childLead}`}
+                    href={item.href}
+                    aria-current={istAktuell(item.href) ? 'page' : undefined}
+                  >
                     {ui.page[item.page]}
                   </a>
                 </li>
@@ -154,7 +192,11 @@ export function Nav({ locale }: Props) {
                 if (!href) return null
                 return (
                   <li key={index}>
-                    <a className={styles.childItem} href={href}>
+                    <a
+                      className={styles.childItem}
+                      href={href}
+                      aria-current={istAktuell(href) ? 'page' : undefined}
+                    >
                       {kindLabel(child)}
                     </a>
                   </li>
@@ -175,6 +217,7 @@ export function Nav({ locale }: Props) {
           className={styles.item}
           href={item.href}
           aria-current={istAktuell(item.href) ? 'page' : undefined}
+          data-bereich={!istAktuell(item.href) && imBereich(item) ? 'aktiv' : undefined}
         >
           {ui.page[item.page]}
         </a>

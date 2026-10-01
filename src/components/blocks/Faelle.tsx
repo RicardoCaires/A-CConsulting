@@ -56,19 +56,27 @@ export function Faelle({ faelle, locale }: Props) {
           ? `${path(fall.ziel, locale)}${fall.anker ? `#${fall.anker}` : ''}`
           : null
 
+        /* Seit dem 01.10.2026 eine Zeile statt einer Spalte, auf Ricardos
+           Auftrag „kompakter": Piktogramm links, Aussage in der Mitte, Pfeil
+           rechts. Vorher stand das Zeichen oben und war bis 112 px gross, die
+           Aussage 28 px darunter und „Mehr erfahren" am Fuss — zusammen weit
+           ueber 300 px je Karte fuer einen Satz.
+
+           Die Beschriftung „Mehr erfahren" bleibt fuer Vorlesewerkzeuge
+           stehen; sichtbar ist nur noch der Pfeil. Der zugaengliche Name des
+           Links bleibt die Aussage selbst. */
         const inhalt = (
           <>
-            {/* Die Nummer 01 bis 06 ist am 15.09.2026 auf Ricardos Anweisung
-                entfallen. Die Reihenfolge steht weiterhin im `<ol>`. */}
-            <div className={styles.kopf}>
-              <Piktogramm className={styles.bild} name={fall.bild} />
-            </div>
+            <Piktogramm className={styles.bild} name={fall.bild} />
 
             <h3 className={styles.text}>{fall.text}</h3>
 
             {href ? (
-              <span className={styles.weiter} aria-hidden="true">
-                {ui.moreLabel}
+              <span className={styles.weiter}>
+                <span className="ac-visually-hidden">{ui.moreLabel}</span>
+                <span className={styles.pfeil} aria-hidden="true">
+                  →
+                </span>
               </span>
             ) : (
               <>

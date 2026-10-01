@@ -255,6 +255,84 @@ Kopf- und Fussbereich sowie Überschriften.
 > übrigen hellblau — der Rhythmus, den der Auftrag empfiehlt. Mehr als diese
 > zwei hellen Flächen gibt es nicht.
 
+> **Fünf Eingriffe am 01.10.2026**, auf Ricardos Auftrag „Überarbeite das
+> Design unserer Website anhand der folgenden fünf Punkte". Sie sind
+> **lokal umgesetzt und nicht veröffentlicht** — er hat das ausdrücklich so
+> verlangt.
+>
+> **1. Die Einstiegsbereiche sind gedeckelt.** Der Banner lief auf
+> `aspect-ratio: 1774 / 887` und war bei 1440 px **712 px** hoch; der nächste
+> Abschnitt begann erst bei 816 px und blieb auf einem üblichen Bildschirm
+> unsichtbar. Neu: **27 rem** auf Unterseiten, **34 rem** auf der Startseite
+> (`.gross`), auf dem Telefon Mindesthöhe 24 statt 30 rem. Gemessen bei
+> 1440 px: Startseite 544 px (nächster Abschnitt ab 648), Unterseiten 432 px
+> (ab 535). Innenabstand und Titelgrösse sind mitgezogen, sonst passte der
+> Text nicht mehr hinein.
+>
+> ⚠️ **Damit wird die Aufnahme beschnitten.** Am 15.09.2026 galt
+> ausdrücklich das Gegenteil („das Stadtbild muss sichtbar sein"), und das
+> Seitenverhältnis 2 : 1 war genau dafür gewählt. `object-position: center
+> 58%` hält See, Stadtlichter und Wiese im Bild; oben fällt Himmel weg, und
+> die helle Bildmarke oben rechts ist angeschnitten. **Ricardo ist darauf
+> hingewiesen.**
+>
+> **Die Unterzeile auf `/treuhand`** steht wörtlich nach seinem Auftrag
+> (`content/source/banner_unterzeile_de.md`). `Bannerkopf` hat dafür das
+> optionale Feld `unterzeile`; keine andere Seite nutzt es.
+>
+> **2. Gefülltes Grün ist den Kontaktaktionen vorbehalten.** „Zu den
+> Versicherungen", „Zur Treuhand" und „Zur Finanzplanung" sind keine
+> gefüllten Knöpfe mehr, sondern Textlinks mit Pfeil. Form, Grösse, Zeigen
+> und Tastaturfokus stehen an **einer** Stelle:
+> `src/components/ui/Aktion.module.css`, geholt über `composes`.
+>
+> ⚠️ **Das hebt die Anweisung vom 15.09.2026 auf** („alle buttons müssen so
+> sein", alle drei als grüne Knöpfe). Es gilt die jüngere. **Ricardo ist
+> darauf hingewiesen.**
+>
+> **3. Die drei Bereiche stehen gleichwertig.** Bisher nahm Versicherungen
+> eine volle Zeile ein, Treuhand und Finanzplanung teilten die nächste — die
+> Rangfolge aus Abschnitt 9 war als Grössenunterschied gebaut. Jetzt ein
+> Raster aus drei gleichen Karten (ab 64 rem drei Spalten, darunter eine;
+> **keine zwei**, sonst stünde die dritte allein). Nachgemessen bei 1440 px:
+> alle drei **379 x 825 px**, die drei Verweise auf derselben Linie. Der
+> eigene grosse Titel des Leitbereichs (`titelGross`) ist entfallen, die
+> Illustrationen stehen in allen drei Karten gleich gross oben.
+> **Die Rangfolge bleibt in der Reihenfolge erhalten.**
+>
+> **4. Die sechs Situationskarten liegen waagrecht.** Piktogramm links
+> (48 statt bis 112 px), Aussage in der Mitte, Pfeil rechts. Die Höhe fällt
+> von über 300 auf **120 px** bei 1440; der Abstand zwischen Zeichen und
+> Titel ist eine Fuge von 16 px. Trefferfläche mindestens 72 px, der
+> Navy-Zustand beim Zeigen und bei Tastaturfokus bleibt. „Mehr erfahren"
+> steht weiterhin für Vorlesewerkzeuge da, sichtbar ist nur der Pfeil.
+>
+> **5. Der aktuelle Bereich bleibt gekennzeichnet.** `imBereich()` prüft den
+> Pfad, nicht nur den genauen Treffer — auf `/treuhand/buchhaltung` ist
+> „Treuhand" auch bei geschlossenem Menü markiert (`data-bereich="aktiv"`).
+> Im geöffneten Menü trägt die aufgerufene Unterseite `aria-current="page"`
+> und einen grünen Strich links. **Der aktive Zustand unterscheidet sich vom
+> Zeigen und vom offenen Menü**: dort 2 px Strich bei normaler Schrift, hier
+> 3 px, Navy und 600. Die Zusammenfassung des Aufklappmenüs bekommt bewusst
+> **kein** `aria-current` — sie ist ein Schalter, keine Seite.
+>
+> **Geprüft:** `npm run check` fehlerfrei. Gemessen bei 1440, 1024, 768 und
+> 390 px — kein waagrechter Überlauf, kein abgeschnittener Text, Karten
+> innerhalb einer Reihe gleich hoch.
+>
+> ⚠️ **Zwei Vorbehalte:**
+> - Der **Produktionsbau liess sich nicht neu schreiben**: `out/` ist
+>   gesperrt (OneDrive hält den Ordner). Der Bau selbst läuft durch, 21 von
+>   21 Seiten; nur das Ersetzen des Ordners scheitert. Gemessen wurde darum
+>   gegen den Entwicklungsserver.
+> - Dabei fiel auf, dass der **Kopfbereich bei 390 px im Entwicklungsserver
+>   anders aussieht als live**: Dort steht der Knopf „Erstgespräch anfragen"
+>   im Kopf und das Menüzeichen liegt über dem Logo. **Das ist nicht von
+>   diesem Auftrag** — mit und ohne die Änderungen identisch, und die
+>   veröffentlichte Fassung ist korrekt (Knopf ausgeblendet, Menüzeichen
+>   rechts). Es ist ein Unterschied zwischen Entwicklungs- und
+>   Produktionsbau und einen eigenen Auftrag wert.
+
 **Zentraler Standard:** Für alle A&C-Dokumente und visuellen Artefakte gilt der Skill
 `ac-corporate-design` (`~/.claude/skills/ac-corporate-design/`) als Single Source of Truth.
 Farben und Typografie werden dort definiert, nicht hier.

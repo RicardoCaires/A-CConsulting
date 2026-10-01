@@ -18,15 +18,34 @@
 
    **Keine Abdunklung.** Kein Verlauf, keine farbige Schicht, kein Schatten. */
 
+/* **Seit dem 01.10.2026 gedeckelt**, auf Ricardos Auftrag „Einstiegsbereiche
+   kompakter": Bei 2 : 1 war der Banner auf 1440 px **712 px** hoch, und der
+   naechste Abschnitt begann erst bei 816 px — auf einem ueblichen Bildschirm
+   also unsichtbar. Das Seitenverhaeltnis bleibt die Grundlage, der Deckel
+   greift nur dort, wo das Fenster breit genug ist.
+
+   **Damit wird die Aufnahme beschnitten.** Am 15.09.2026 galt ausdruecklich,
+   dass sie unbeschnitten stehen soll („das Stadtbild muss sichtbar sein").
+   `object-position` haelt darum den unteren Teil im Bild — See, Stadtlichter
+   und Wiese bleiben, oben faellt Himmel weg. Ricardo ist darauf hingewiesen. */
 .banner {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
   aspect-ratio: 1774 / 887;
+  /* Unterseiten: 432 px. Mit dem Kopfbereich (103 px) beginnt der naechste
+     Abschnitt bei 535 px und steht auf jedem Desktop im Bild. */
+  max-height: 27rem;
   overflow: hidden;
   isolation: isolate;
   background-color: var(--ac-color-navy-deep);
+}
+
+/* Die Startseite darf grosszuegiger stehen — sie ist der erste Eindruck.
+   544 px: Der naechste Abschnitt beginnt bei 647 px und bleibt sichtbar. */
+.gross {
+  max-height: 34rem;
 }
 
 .bild {
@@ -36,7 +55,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  /* Beim Beschnitt faellt oben Himmel weg, nicht unten die Stadt. */
+  object-position: center 58%;
 }
 
 /* Innenabstand und Textposition, auf jedem Banner gleich. */
@@ -44,7 +64,9 @@
   width: 100%;
   max-width: var(--ac-container);
   margin-inline: auto;
-  padding-block: clamp(3rem, 6vw, 5.5rem);
+  /* Enger als bisher (3 bis 5.5 rem) — sonst passt der Text nicht mehr in
+     den gedeckelten Banner. Der Abstand zur Navigation bleibt gewahrt. */
+  padding-block: clamp(2.25rem, 4vw, 3.25rem);
   padding-inline: var(--ac-gutter);
 }
 
@@ -54,6 +76,23 @@
    Zeilen, einzelne davon nur mit „für" oder „und". */
 .inhalt {
   width: min(47.5rem, 62%);
+}
+
+/* Die Startseite traegt die Ueberschrift eine Stufe groesser — sie hat den
+   hoeheren Banner und nur drei kurze Zeilen. */
+.gross .ueberschrift {
+  font-size: clamp(3rem, 4.4vw, 4.25rem);
+}
+
+/* Die Zeile unter der Ueberschrift: ein Satz, der sagt, worum es geht.
+   Weiss auf der Aufnahme traegt an dieser Stelle gemessen ueber 7:1. */
+.unterzeile {
+  max-width: 44ch;
+  margin: var(--ac-space-sm) 0 0;
+  font-size: var(--ac-lead-size);
+  line-height: 1.45;
+  color: var(--ac-color-white);
+  text-wrap: pretty;
 }
 
 .themenzeile {
@@ -86,7 +125,7 @@
   max-width: 18ch;
   margin: 0;
   font-family: var(--ac-font-display);
-  font-size: clamp(3.25rem, 4.6vw, 4.5rem);
+  font-size: clamp(2.5rem, 3.5vw, 3.5rem);
   line-height: 1.02;
   font-weight: var(--ac-display-weight);
   letter-spacing: -0.025em;
@@ -147,7 +186,11 @@
   .banner {
     align-items: flex-end;
     aspect-ratio: auto;
-    min-height: 30rem;
+    /* Von 30 rem auf 24 rem: Auf einem 844 px hohen Telefon nahm der Banner
+       vorher 57 Prozent des Schirms ein. Der Inhalt waechst darueber hinaus,
+       wenn er mehr braucht — abgeschnitten wird nichts. */
+    min-height: 24rem;
+    max-height: none;
   }
 
   .bild {
@@ -155,7 +198,7 @@
   }
 
   .inner {
-    padding-block: 3.75rem;
+    padding-block: 2.75rem;
   }
 
   .inhalt {
@@ -164,7 +207,15 @@
 
   .ueberschrift {
     max-width: 16ch;
-    font-size: clamp(2.5rem, 11vw, 3.25rem);
+    font-size: clamp(2.125rem, 9vw, 2.75rem);
+  }
+
+  .gross .ueberschrift {
+    font-size: clamp(2.25rem, 9.5vw, 3rem);
+  }
+
+  .unterzeile {
+    font-size: var(--ac-body-size);
   }
 }
 

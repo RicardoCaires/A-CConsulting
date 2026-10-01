@@ -40,6 +40,16 @@ type Props = {
   locale: Locale
   /** Nur der Seitenkopf der Startseite laedt das Bild vorrangig. */
   vorrang?: boolean
+  /**
+   * Eine Zeile unter der Ueberschrift, die sagt, worum es auf der Seite geht.
+   * Optional — heute traegt sie nur `/treuhand`.
+   */
+  unterzeile?: string
+  /**
+   * Der Seitenkopf der Startseite darf hoeher stehen als die Unterseiten.
+   * Ueberall sonst gilt das kompakte Mass.
+   */
+  gross?: boolean
 }
 
 export function Banner({
@@ -49,11 +59,17 @@ export function Banner({
   knopf,
   locale,
   vorrang = false,
+  unterzeile,
+  gross = false,
 }: Props) {
   const titelId = `${id}-titel`
 
   return (
-    <section className={styles.banner} id={id} aria-labelledby={titelId}>
+    <section
+      className={gross ? `${styles.banner} ${styles.gross}` : styles.banner}
+      id={id}
+      aria-labelledby={titelId}
+    >
       <Image
         className={styles.bild}
         src={BILD}
@@ -70,6 +86,8 @@ export function Banner({
           <h1 id={titelId} className={styles.ueberschrift}>
             {ueberschrift}
           </h1>
+
+          {unterzeile && <p className={styles.unterzeile}>{unterzeile}</p>}
 
           <a className={styles.knopf} href={path('kontakt', locale)}>
             {knopf}

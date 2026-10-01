@@ -22,6 +22,10 @@ export const treuhand: PageContent = {
     banner: {
       themenzeile: 'TREUHAND',
       ueberschrift: 'Klar geführt. Persönlich begleitet.',
+      // Auf Ricardos Anweisung vom 01.10.2026 woertlich so. Sie steht nahe
+      // bei `heading` darunter, das seit dem Banner nicht mehr erscheint —
+      // „Abschluss" dort, „Jahresabschluss" hier.
+      unterzeile: 'Buchhaltung, Löhne und Jahresabschluss für Selbständige und KMU',
     },
     heading: 'Buchhaltung, Löhne und Abschluss für Selbständige und KMU',
     actions: [{ kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' }],

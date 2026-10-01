@@ -1,0 +1,66 @@
+/* Die sekundaere Aktion — ein Textlink mit Pfeil.
+
+   Seit dem 01.10.2026 auf Ricardos Auftrag: **Gefuellte gruene Knoepfe sind
+   den Kontaktaktionen vorbehalten** („Erstgespraech anfragen"). Alles, was
+   nur weiterfuehrt — „Zu den Versicherungen", „Zur Treuhand", „Zur
+   Finanzplanung" —, steht als Textlink mit Pfeil.
+
+   Das hebt die frueherere Anweisung vom 15.09.2026 auf („alle buttons
+   muessen so sein"), nach der auch diese drei gefuellte gruene Knoepfe
+   waren. Es gilt die juengere.
+
+   Gruen als Schriftfarbe ist hier Akzent, nicht Flaeche — auf Weiss traegt
+   `accent_green` 5.2:1 und damit mehr als die geforderten 4.5:1.
+
+   Eine Stelle, ein Mass: Groesse, Abstand, Zeigen und Tastaturfokus stehen
+   nur hier. Wer die Aktion braucht, holt sie mit `composes`. */
+
+.sekundaer {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ac-space-2xs);
+  /* Trefferflaeche 44 px, auch wenn der Text nur eine Zeile hoch ist. */
+  min-height: 2.75rem;
+  font-size: var(--ac-body-size);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ac-color-accent-green);
+  text-decoration: none;
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.sekundaer:hover,
+.sekundaer:focus-visible {
+  color: var(--ac-color-primary-navy);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.sekundaer:focus-visible {
+  outline: var(--ac-focus-width) solid var(--ac-focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--ac-radius-sm);
+}
+
+/* Der Pfeil rueckt, der Text steht still. */
+.pfeil {
+  display: inline-block;
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.sekundaer:hover .pfeil,
+.sekundaer:focus-visible .pfeil {
+  transform: translateX(0.1875rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sekundaer,
+  .pfeil {
+    transition: none;
+  }
+
+  .sekundaer:hover .pfeil,
+  .sekundaer:focus-visible .pfeil {
+    transform: none;
+  }
+}
