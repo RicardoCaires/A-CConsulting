@@ -79,7 +79,8 @@
 .leistungen {
   display: grid;
   gap: var(--ac-space-sm);
-  margin: 0;
+  /* Der Abstand zum Knopf darunter, der an den Fuss der Karte rueckt. */
+  margin: 0 0 var(--ac-space-md);
   padding: 0;
   list-style: none;
 }
@@ -122,24 +123,22 @@
 
 /* ---- Weiterfuehrender Verweis ----------------------------------------------
 
-   Seit dem 01.10.2026 **kein gefuellter gruener Knopf mehr**: Der bleibt den
-   Kontaktaktionen vorbehalten („Erstgespraech anfragen"). Form, Groesse,
-   Zeigen und Tastaturfokus kommen aus `Aktion.module.css` und gelten damit
-   fuer jede sekundaere Aktion gleich.
+   Ein gruener Knopf, wie Ricardo es am 15.09.2026 festgelegt hat. Am
+   01.10.2026 war er kurz ein Textlink mit Pfeil; die Ruecknahme kam noch am
+   selben Tag.
 
    `margin-top: auto` schiebt ihn an den Fuss — in allen drei Karten auf
    dieselbe Hoehe, weil das Raster sie gleich hoch haelt. */
 
-.weiter {
-  composes: sekundaer from '../ui/Aktion.module.css';
-
+.knopf {
   align-self: flex-start;
+  /* An den Fuss der Karte. Den Mindestabstand nach oben gibt die Liste
+     darueber mit ihrem `margin-bottom`. */
   margin-top: auto;
-  padding-top: var(--ac-space-md);
 }
 
-.pfeil {
-  composes: pfeil from '../ui/Aktion.module.css';
+.knopfPfeil {
+  margin-left: var(--ac-space-2xs);
 }
 
 /* ---- Ab Desktop: drei Spalten ----------------------------------------------

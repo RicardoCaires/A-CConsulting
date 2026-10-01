@@ -63,8 +63,18 @@
 }
 
 /* Der Knopf erscheint erst mit der offenen Navigationsreihe — auf schmalen
-   Geraeten steht er unten im Menue, wo er die volle Breite bekommt. */
-.cta {
+   Geraeten steht er unten im Menue, wo er die volle Breite bekommt.
+
+   **Die Klasse steht doppelt, und das ist Absicht** (01.10.2026). Das
+   Element traegt zugleich `Button.module.css`, und dort setzt `.button`
+   `display: inline-flex`. Beide Regeln haben eine Klasse — bei gleicher
+   Spezifitaet entscheidet, welche Datei spaeter im Stylesheet steht, und das
+   ist im Entwicklungsbau anders als im Produktionsbau. Im `npm run dev`
+   gewann darum der Knopf: Er stand bei 390 px im Kopfbereich und das
+   Menuezeichen lag ueber dem Logo. Veroeffentlicht war es richtig — genau
+   die Art Fehler, die man erst spaet bemerkt. `.cta.cta` gewinnt in jeder
+   Reihenfolge. */
+.cta.cta {
   display: none;
 }
 
@@ -114,7 +124,8 @@
     justify-content: center;
   }
 
-  .cta {
+  /* Doppelt wie oben — sonst verliert die Medienabfrage gegen `.cta.cta`. */
+  .cta.cta {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;

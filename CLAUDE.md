@@ -283,15 +283,16 @@ Kopf- und Fussbereich sowie Überschriften.
 > Auftrag (`content/source/banner_unterzeile_de.md`). `Bannerkopf` hat dafür
 > das optionale Feld `unterzeile`; keine andere Seite nutzt es.
 >
-> **2. Gefülltes Grün ist den Kontaktaktionen vorbehalten.** „Zu den
-> Versicherungen", „Zur Treuhand" und „Zur Finanzplanung" sind keine
-> gefüllten Knöpfe mehr, sondern Textlinks mit Pfeil. Form, Grösse, Zeigen
-> und Tastaturfokus stehen an **einer** Stelle:
-> `src/components/ui/Aktion.module.css`, geholt über `composes`.
+> **2. Zurückgenommen — die Knöpfe bleiben grün.** „Zu den Versicherungen",
+> „Zur Treuhand" und „Zur Finanzplanung" standen am 01.10.2026 kurz als
+> Textlinks mit Pfeil da; gefülltes Grün wäre damit den Kontaktaktionen
+> vorbehalten gewesen. Ricardo hat das noch am selben Tag aufgehoben
+> („punkt zwei aufheben"). **Es gilt weiterhin seine Festlegung vom
+> 15.09.2026: „alle buttons müssen so sein"** — grüne Fläche, weisse
+> Schrift, navy beim Zeigen und bei Tastaturfokus.
 >
-> ⚠️ **Das hebt die Anweisung vom 15.09.2026 auf** („alle buttons müssen so
-> sein", alle drei als grüne Knöpfe). Es gilt die jüngere. **Ricardo ist
-> darauf hingewiesen.**
+> `src/components/ui/Aktion.module.css`, das die sekundäre Aktion an einer
+> Stelle gehalten hätte, ist damit gegenstandslos und wieder entfernt.
 >
 > **3. Die drei Bereiche stehen gleichwertig.** Bisher nahm Versicherungen
 > eine volle Zeile ein, Treuhand und Finanzplanung teilten die nächste — die
@@ -331,12 +332,29 @@ Kopf- und Fussbereich sowie Überschriften.
 >   darum gegen den Entwicklungsserver — der Bau bei Cloudflare ist davon
 >   nicht betroffen.
 > - Dabei fiel auf, dass der **Kopfbereich bei 390 px im Entwicklungsserver
->   anders aussieht als live**: Dort steht der Knopf „Erstgespräch anfragen"
->   im Kopf und das Menüzeichen liegt über dem Logo. **Das ist nicht von
->   diesem Auftrag** — mit und ohne die Änderungen identisch, und die
->   veröffentlichte Fassung ist korrekt (Knopf ausgeblendet, Menüzeichen
->   rechts). Es ist ein Unterschied zwischen Entwicklungs- und
->   Produktionsbau und einen eigenen Auftrag wert.
+>   anders aussah als live**: Dort stand der Knopf „Erstgespräch anfragen"
+>   im Kopf und das Menüzeichen lag über dem Logo. **Am 01.10.2026 repariert**
+>   („befund reparieren").
+>
+>   Die Ursache ist lehrreich: `.cta` in `Header.module.css` setzt
+>   `display: none`, aber dasselbe Element trägt auch `.button` aus
+>   `Button.module.css` mit `display: inline-flex`. **Beide Regeln haben
+>   genau eine Klasse** — bei gleicher Spezifität entscheidet, welche Datei
+>   später im Stylesheet steht, und diese Reihenfolge ist im
+>   Entwicklungsbau eine andere als im Produktionsbau. Veröffentlicht gewann
+>   `.cta`, lokal der Knopf.
+>
+>   Die Regel heisst jetzt **`.cta.cta`**, in der Grundform wie in der
+>   Medienabfrage. Doppelt genannt gewinnt sie in jeder Reihenfolge.
+>   Nachgemessen bei 390 px: Knopf `display: none`, Menüzeichen bei 334,
+>   Logo bis 144, keine Überlappung — **genau wie veröffentlicht**.
+>
+>   ⚠️ **Dasselbe Muster steckt an weiteren Stellen**: Überall, wo eine
+>   eigene Klasse neben `.button` dieselbe Eigenschaft setzt, hängt das
+>   Ergebnis an der Dateireihenfolge. Aufgefallen ist es nur hier, weil nur
+>   hier die beiden Bauweisen sichtbar auseinanderliefen. Wer das sauber
+>   abstellen will, holt solche Überschreibungen künftig über `composes`
+>   statt über eine zweite Klasse.
 
 **Zentraler Standard:** Für alle A&C-Dokumente und visuellen Artefakte gilt der Skill
 `ac-corporate-design` (`~/.claude/skills/ac-corporate-design/`) als Single Source of Truth.
