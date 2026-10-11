@@ -196,12 +196,9 @@ export const buchhaltungDe: Leistungsseite = {
     },
   ],
 
-  // Der Abschluss war am 11.09.2026 auf Ricardos Anweisung entfallen und ist
-  // am 11.10.2026 auf seine Anweisung zurueck. Wortlaut unveraendert aus
-  // `content/source/schritt4_fassung2_de.md`.
-  cta: {
-    titel: 'Reden wir über Ihre Administration',
-    text: 'Im Erstgespräch schauen wir an, was heute bei Ihnen liegt und was davon zu uns kann. Danach wissen Sie, was eine Zusammenarbeit für Sie bedeuten würde.',
-    knopf: 'Erstgespräch anfragen',
-  },
+  // Der Abschluss „Reden wir über Ihre Administration" ist am 11.09.2026 auf
+  // Ricardos Anweisung entfallen. Am 11.10.2026 stand er kurz wieder da und
+  // ist noch am selben Tag auf seine Anweisung wieder raus („bitte
+  // abschlüsse wieder entfernen"). Der Knopf im Seitenkopf traegt die
+  // Beschriftung der Kopfzeile (`ui.cta`).
 }
