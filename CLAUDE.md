@@ -364,15 +364,20 @@ Kopf- und Fussbereich sowie Überschriften.
 > Bild ohne Alt-Text, saubere Überschriftenhierarchie, `lang="de-CH"`,
 > Telefon und E-Mail klickbar, Bildlast moderat (grösste Datei 128 KB).
 >
-> **1. Sieben Seiten haben ihren Abschluss zurück.** `/versicherungen`,
+> **1. Die Abschlüsse sind und bleiben weg.** `/versicherungen`,
 > `/treuhand`, `/treuhand/buchhaltung`, `/steuern`, `/firmengruendung`,
-> `/treuhaender-wechseln` und `/finanzplanung` endeten mit den häufigen
-> Fragen, ohne einen Weg weiter. Entstanden war das zwischen dem 10. und
-> 14.09.2026 durch einzelne „bitte löschen" — jedes für sich nachvollziehbar,
-> zusammen hiess es: Wer sich durchgelesen hat, findet am Schluss keinen
-> Knopf. **Der Wortlaut ist unverändert der aus
-> `content/source/schritt4_fassung2_de.md`**; erfunden ist nichts. Die
-> Abschlüsse stehen wie auf `/kontakt` auf dunklem Grund.
+> `/treuhaender-wechseln` und `/finanzplanung` enden mit den häufigen
+> Fragen, ohne einen Weg weiter. Ich hatte sie am 11.10.2026 zurückgeholt,
+> weil das bei einer Seite, deren Zweck Erstkontakte sind, die grösste Lücke
+> schien; Ricardo hat sie noch am selben Tag wieder streichen lassen
+> („bitte abschlüsse wieder entfernen"). **Damit ist der Stand vom 10. bis
+> 14.09.2026 bestätigt und kein Versehen mehr.**
+>
+> Der Wortlaut steht unverändert in
+> `content/source/schritt4_fassung2_de.md`; er ist nicht widerrufen, er
+> steht nur nicht auf der Seite. **`/kontakt` trägt als einzige Seite einen
+> Abschluss.** Handlungsknöpfe stehen sonst im Kopfbereich und im
+> Seitenkopf — dort allerdings auf jeder Seite.
 >
 > **2. Strukturierte Daten** (`src/components/layout/Strukturdaten.tsx`).
 > Bis dahin hatte die Website keine — Google wusste nicht, dass hinter
