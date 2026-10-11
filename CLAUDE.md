@@ -356,6 +356,62 @@ Kopf- und Fussbereich sowie Überschriften.
 >   abstellen will, holt solche Überschreibungen künftig über `composes`
 >   statt über eine zweite Klasse.
 
+> **Durchsicht vom 11.10.2026.** Auf Ricardos Frage, was noch anzupassen
+> wäre, habe ich die veröffentlichte Seite durchgemessen und die Befunde
+> umgesetzt („ich bitte dich alle diese Punkte umzusetzen").
+>
+> **Was in Ordnung war:** eine `h1` je Seite, überall eine Beschreibung, kein
+> Bild ohne Alt-Text, saubere Überschriftenhierarchie, `lang="de-CH"`,
+> Telefon und E-Mail klickbar, Bildlast moderat (grösste Datei 128 KB).
+>
+> **1. Sieben Seiten haben ihren Abschluss zurück.** `/versicherungen`,
+> `/treuhand`, `/treuhand/buchhaltung`, `/steuern`, `/firmengruendung`,
+> `/treuhaender-wechseln` und `/finanzplanung` endeten mit den häufigen
+> Fragen, ohne einen Weg weiter. Entstanden war das zwischen dem 10. und
+> 14.09.2026 durch einzelne „bitte löschen" — jedes für sich nachvollziehbar,
+> zusammen hiess es: Wer sich durchgelesen hat, findet am Schluss keinen
+> Knopf. **Der Wortlaut ist unverändert der aus
+> `content/source/schritt4_fassung2_de.md`**; erfunden ist nichts. Die
+> Abschlüsse stehen wie auf `/kontakt` auf dunklem Grund.
+>
+> **2. Strukturierte Daten** (`src/components/layout/Strukturdaten.tsx`).
+> Bis dahin hatte die Website keine — Google wusste nicht, dass hinter
+> `ac-co.ch` ein ortsgebundenes Unternehmen in Aegerten steht. Jetzt
+> `ProfessionalService` mit Name, Adresse, Koordinaten, Telefon, E-Mail, UID
+> und FINMA-Nummer. **Jede Angabe kommt aus `company.ts`.**
+> **Ohne Öffnungszeiten** — sie sind nicht festgelegt, und eine erfundene
+> Zeit erscheint im Suchergebnis. Ohne Bewertungen, ohne `sameAs`.
+>
+> **3. Social-Vorschau.** Es gab kein `og:image`: Wer den Link in WhatsApp,
+> Teams oder LinkedIn teilte, bekam nur Text. Jetzt
+> `public/bilder/og-vorschau.jpg`, 1200 x 630. **Die Aufnahme ist nicht
+> beschnitten** — sie steht als 1200 x 600 darin, oben und unten je 15 px
+> Navy. Ricardos Festlegung gilt auch hier.
+>
+> **4. `/favicon.ico`** lieferte 404. Manche Dienste fragen weiterhin diese
+> Adresse ab. Die Datei ist aus der Bildmarke erzeugt, in 16, 32 und 48 px.
+>
+> **5. Sitemap mit `lastmod`.** Das Datum ist der Zeitpunkt des Baus und
+> damit eine Näherung — ein `lastmod` je Seite bräuchte einen
+> Inhaltsvergleich über die Zeit, den es hier nicht gibt. Es liegt nie zu
+> früh, höchstens zu spät für einzelne Seiten.
+>
+> **6. Content-Security-Policy** in `public/_headers`. Erlaubt ist alles
+> Eigene und genau zwei fremde Ziele: `challenges.cloudflare.com` (Turnstile,
+> damit das Formular beim Freischalten nicht an der Richtlinie scheitert) und
+> `www.openstreetmap.org` (die Karte auf `/ueber-uns`, erst nach Klick).
+> ⚠️ **`'unsafe-inline'` bei Skripten ist nicht zu vermeiden**: Der statische
+> Export schreibt seine Daten als Inline-Skripte, eine Nonce bräuchte einen
+> Server, Prüfsummen ändern sich bei jedem Bau. Der Nutzen bleibt: Ein
+> Skript von **fremder** Adresse wird blockiert, und `form-action 'self'`
+> verhindert ein Absenden irgendwohin sonst.
+>
+> **7. Der letzte Reihenfolge-Konflikt ist weg.** `.panelCta` im schmalen
+> Menü trug dasselbe Muster wie `.cta` — eigene Klasse neben `.button`,
+> beide setzen `display`. Jetzt `.panelCta.panelCta`. **Damit gibt es im
+> Projekt keine Stelle mehr, an der eine Knopf-Überschreibung an der
+> Dateireihenfolge hängt** — nachgeprüft über alle `<Button className=…>`.
+
 **Zentraler Standard:** Für alle A&C-Dokumente und visuellen Artefakte gilt der Skill
 `ac-corporate-design` (`~/.claude/skills/ac-corporate-design/`) als Single Source of Truth.
 Farben und Typografie werden dort definiert, nicht hier.

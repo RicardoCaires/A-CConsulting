@@ -117,5 +117,28 @@ export const personalFinance: PageContent = {
       },
     },
 
+
+    // ---- Abschluss
+    //
+    // Am 10., 11. und 14.09.2026 auf Ricardos Anweisung entfernt, am
+    // 11.10.2026 auf seine Anweisung zurueckgeholt („ich bitte dich alle
+    // diese Punkte umzusetzen"). Sieben Seiten endeten bis dahin mit den
+    // haeufigen Fragen, ohne einen Weg weiter — bei einer Seite, deren
+    // Zweck Erstkontakte sind, war das die groesste Luecke.
+    //
+    // Der Wortlaut ist unveraendert der aus
+    // `content/source/schritt4_fassung2_de.md`.
+    {
+      kind: 'cta',
+      id: 'abschluss',
+      heading: 'Sprechen wir über Ihre Situation',
+      paragraphs: [
+        'Rufen Sie an oder schreiben Sie uns. Im Erstgespräch klären wir, was Sie brauchen und wie wir Sie unterstützen können. Sie gehen damit keine Verpflichtung ein.',
+      ],
+      actions: [
+        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
+        { kind: 'phone' },
+      ],
+    },
   ],
 }

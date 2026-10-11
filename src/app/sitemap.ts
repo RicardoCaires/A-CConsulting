@@ -13,10 +13,21 @@ import { company } from '@/lib/company'
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = []
 
+  /**
+   * Der Zeitpunkt des Baus.
+   *
+   * **Das ist eine Naeherung, und sie ist als solche gemeint.** Ein `lastmod`
+   * je Seite braeuchte einen Inhaltsvergleich ueber die Zeit; den gibt es
+   * hier nicht. Der Bau laeuft nur, wenn etwas geaendert wurde — damit liegt
+   * das Datum nie zu frueh, hoechstens zu spaet fuer einzelne Seiten.
+   */
+  const gebautAm = new Date()
+
   for (const locale of locales) {
     for (const key of publishedPages(locale)) {
       entries.push({
         url: new URL(path(key, locale), company.url).toString(),
+        lastModified: gebautAm,
         priority: pages[key].sitemapPriority,
         alternates: {
           languages: Object.fromEntries(
