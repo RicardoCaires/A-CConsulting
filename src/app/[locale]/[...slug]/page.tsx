@@ -26,6 +26,7 @@ import {
   publishedPages,
 } from '@/i18n/routes'
 import { company } from '@/lib/company'
+import { ogBild } from '@/lib/social'
 
 
 /**
@@ -106,6 +107,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: ueberuns.meta.description,
       alternates: { canonical: path(key, locale) },
       openGraph: {
+        images: ogBild,
         title: `${ueberuns.meta.title} — ${company.shortName}`,
         description: ueberuns.meta.description,
         url: path(key, locale),
@@ -124,6 +126,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: wissen.meta.description,
       alternates: { canonical: path(key, locale), languages: sprachen },
       openGraph: {
+        images: ogBild,
         title: `${wissen.meta.title} — ${company.shortName}`,
         description: wissen.meta.description,
         url: path(key, locale),
@@ -149,6 +152,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: beschreibung,
       alternates: { canonical: path(key, locale), languages: sprachen },
       openGraph: {
+        images: ogBild,
         title: `${titel} — ${company.shortName}`,
         description: beschreibung,
         url: path(key, locale),
@@ -165,6 +169,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: content.meta.description,
     alternates: { canonical: path(key, locale), languages: sprachen },
     openGraph: {
+      images: ogBild,
       title: `${content.meta.title} — ${company.shortName}`,
       description: content.meta.description,
       url: path(key, locale),
