@@ -4,12 +4,34 @@
 # Sie ersetzt das, was frueher `headers()` in next.config.mjs getan hat.
 #
 # Format: ein Pfadmuster, darunter eingerueckt die Header.
+#
+# ---- Content-Security-Policy, seit dem 11.10.2026 --------------------------
+#
+# Sie sagt dem Browser, woher er ueberhaupt etwas laden darf. Alles Eigene
+# ist erlaubt, sonst genau zwei fremde Ziele:
+#
+#   challenges.cloudflare.com   Turnstile — Skript und Pruefrahmen. Steht
+#                               schon hier, damit das Formular beim
+#                               Freischalten nicht an der Richtlinie scheitert.
+#   www.openstreetmap.org       die Karte auf `/ueber-uns`, erst nach Klick.
+#
+# **`'unsafe-inline'` bei Skripten ist nicht schoen und derzeit nicht zu
+# vermeiden.** Der statische Export schreibt seine Daten als Inline-Skripte in
+# die Seite; eine Nonce braeuchte einen Server, den es hier nicht gibt, und
+# Pruefsummen aendern sich bei jedem Bau. Der Nutzen bleibt trotzdem: Ein
+# eingeschleustes Skript von einer **fremden** Adresse wird blockiert, und
+# `form-action 'self'` verhindert, dass ein Formular irgendwohin sonst
+# abgesendet wird.
+#
+# Verweise auf fremde Seiten (Versicherer, FINMA, Google Maps) sind
+# Navigationen, keine Ressourcen — sie brauchen keine Freigabe.
 
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-ancestors 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com https://www.openstreetmap.org
 
 # Der Styleguide zeigt die Bausteine mit Beispieldaten. Er ist ein
 # Arbeitsmittel, kein Inhalt — robots.txt schliesst ihn aus, dieser Header

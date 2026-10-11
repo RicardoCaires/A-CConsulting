@@ -365,5 +365,28 @@ export const versicherungen: PageContent = {
       ],
       schluss: 'Persönlich. Unabhängig. An Ihrer Seite.',
     },
+
+    // ---- Abschluss
+    //
+    // Am 10., 11. und 14.09.2026 auf Ricardos Anweisung entfernt, am
+    // 11.10.2026 auf seine Anweisung zurueckgeholt („ich bitte dich alle
+    // diese Punkte umzusetzen"). Sieben Seiten endeten bis dahin mit den
+    // haeufigen Fragen, ohne einen Weg weiter — bei einer Seite, deren
+    // Zweck Erstkontakte sind, war das die groesste Luecke.
+    //
+    // Der Wortlaut ist unveraendert der aus
+    // `content/source/schritt4_fassung2_de.md`.
+    {
+      kind: 'cta',
+      id: 'abschluss',
+      heading: 'Lassen Sie Ihre Verträge anschauen',
+      paragraphs: [
+        'Ein erstes Gespräch verpflichtet Sie zu nichts. Bringen Sie mit, was Sie haben, und wir sagen Ihnen, was uns auffällt.',
+      ],
+      actions: [
+        { kind: 'page', target: 'kontakt', label: 'Erstgespräch anfragen' },
+        { kind: 'phone' },
+      ],
+    },
   ],
 }

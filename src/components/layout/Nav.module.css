@@ -345,7 +345,13 @@
   font-weight: 600;
 }
 
-.panelCta {
+/* Doppelt genannt wie `.cta` im Kopfbereich (11.10.2026): Das Element traegt
+   zugleich `.button` aus `Button.module.css`, und dort steht
+   `display: inline-flex`. Beide Regeln haben eine Klasse — welche gewinnt,
+   haengt sonst an der Reihenfolge der Dateien, und die ist im
+   Entwicklungsbau eine andere als im Produktionsbau. Das war der letzte
+   Ort im Projekt mit diesem Muster. */
+.panelCta.panelCta {
   display: flex;
   width: 100%;
   margin-top: var(--ac-space-md);

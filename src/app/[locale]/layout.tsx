@@ -7,6 +7,7 @@ import { Header } from '@/components/layout/Header'
 import { htmlLang, isLocale, locales, type Locale } from '@/i18n/config'
 import { getUi } from '@/i18n/messages/ui'
 import { isPublished, localesWithPages, path } from '@/i18n/routes'
+import { Strukturdaten } from '@/components/layout/Strukturdaten'
 import { company } from '@/lib/company'
 import { inter, sourceSerif } from '@/lib/fonts'
 import { acColor } from '@/lib/tokens.generated'
@@ -59,6 +60,13 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       siteName: company.legalName,
       locale: htmlLang[locale].replace('-', '_'),
       url: path('home', locale),
+      // Ohne Bild zeigt WhatsApp, LinkedIn oder Teams beim Teilen nur Text.
+      // Die Aufnahme steht unbeschnitten drin, mit Navy oben und unten.
+      images: [{ url: '/bilder/og-vorschau.jpg', width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: ['/bilder/og-vorschau.jpg'],
     },
     icons: {
       // Nur die Bildmarke, seit dem 24.09.2026 auf Ricardos Anweisung
@@ -66,6 +74,8 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       // und wurde im quadratischen Reiter gequetscht. Beide Dateien sind aus
       // `ac-logo.png` geschnitten, nicht neu gezeichnet.
       icon: '/logo/ac-bildmarke.png',
+      // Manche Dienste fragen weiterhin `/favicon.ico` ab.
+      shortcut: '/favicon.ico',
       // Apple legt hinter durchsichtige Flaechen Schwarz — diese Fassung
       // bringt darum einen weissen Grund mit.
       apple: '/logo/ac-bildmarke-apple.png',
@@ -89,6 +99,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   return (
     <html lang={htmlLang[typedLocale]} className={`${inter.variable} ${sourceSerif.variable}`}>
       <body>
+        <Strukturdaten />
         <a className="ac-skip-link" href="#inhalt">
           {ui.skipToContent}
         </a>
