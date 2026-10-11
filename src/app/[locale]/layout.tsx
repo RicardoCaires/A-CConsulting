@@ -9,6 +9,7 @@ import { getUi } from '@/i18n/messages/ui'
 import { isPublished, localesWithPages, path } from '@/i18n/routes'
 import { Strukturdaten } from '@/components/layout/Strukturdaten'
 import { company } from '@/lib/company'
+import { ogBild } from '@/lib/social'
 import { inter, sourceSerif } from '@/lib/fonts'
 import { acColor } from '@/lib/tokens.generated'
 
@@ -61,12 +62,11 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       locale: htmlLang[locale].replace('-', '_'),
       url: path('home', locale),
       // Ohne Bild zeigt WhatsApp, LinkedIn oder Teams beim Teilen nur Text.
-      // Die Aufnahme steht unbeschnitten drin, mit Navy oben und unten.
-      images: [{ url: '/bilder/og-vorschau.jpg', width: 1200, height: 630 }],
+      images: ogBild,
     },
     twitter: {
       card: 'summary_large_image',
-      images: ['/bilder/og-vorschau.jpg'],
+      images: ogBild.map((b) => b.url),
     },
     icons: {
       // Nur die Bildmarke, seit dem 24.09.2026 auf Ricardos Anweisung

@@ -6,6 +6,7 @@ import { getStartseite } from '@/content/startseite'
 import { htmlLang, isLocale, locales } from '@/i18n/config'
 import { isPublished, path } from '@/i18n/routes'
 import { company } from '@/lib/company'
+import { ogBild } from '@/lib/social'
 
 /**
  * Startseite.
@@ -39,6 +40,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: content.meta.description,
     alternates: { canonical: path('home', locale) },
     openGraph: {
+      images: ogBild,
       title: `${content.meta.title} — ${company.shortName}`,
       description: content.meta.description,
       url: path('home', locale),
