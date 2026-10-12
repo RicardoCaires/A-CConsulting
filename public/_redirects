@@ -10,3 +10,13 @@
 # Die Wurzel fuehrt auf die Leitsprache. Dauerhaft (308), weil /de/ die
 # kanonische Startseite ist — es gibt bewusst kein out/index.html.
 /    /de/    308
+
+# Kundenportal. Es laeuft nicht auf dieser Website, sondern neben der
+# Brokerverwaltung auf dem eigenen Server (crm.ac-co.ch). Hier steht nur die
+# Weiterleitung: Kundendaten gehen damit nie ueber diese Website und ihren
+# Anbieter. Voruebergehend (302), damit sich das Ziel aendern laesst.
+# Gross- und Kleinschreibung werden unterschieden, darum beide Schreibweisen.
+/kundenportal     https://crm.ac-co.ch/portal    302
+/kundenportal/    https://crm.ac-co.ch/portal    302
+/Kundenportal     https://crm.ac-co.ch/portal    302
+/Kundenportal/    https://crm.ac-co.ch/portal    302
