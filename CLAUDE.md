@@ -2553,6 +2553,16 @@ Technik und Infrastruktur:
 > lässt sich aber kaum zurücknehmen — Browser merken sich die Vorgabe.
 > Das entscheidet Ricardo.
 
+> **`/kundenportal` leitet seit dem 12.10.2026 auf das Kundenportal weiter**
+> (`public/_redirects`, 302, beide Schreibweisen), auf Ricardos Anweisung:
+> «die Domain für das Kundenportal soll ac-co.ch/Kundenportal sein». Das Portal
+> selbst gehört **nicht** zu diesem Projekt; es läuft neben der Brokerverwaltung
+> unter `crm.ac-co.ch/portal` (Bereich 05). **Es ist eine Weiterleitung, kein
+> Durchleiten:** Würde der Worker die Seite ausliefern, liefen Policen- und
+> Kundendaten über diese Website und ihren Anbieter — Abschnitt 7 schliesst das
+> aus. In der Adresszeile steht nach dem Aufruf darum `crm.ac-co.ch/portal`.
+> Auf der Website selbst ist das Portal nirgends verlinkt.
+
 - [ ] Repository auf GitHub in `ac-website` umbenennen
 - [x] ~~Vercel-Projekt anlegen~~ — gegenstandslos, gehostet wird auf Cloudflare
 - [x] **DNS umgestellt** (28.09.2026) — Nameserver bei Cloudflare, siehe oben
