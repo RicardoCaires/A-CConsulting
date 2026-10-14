@@ -2561,7 +2561,17 @@ Technik und Infrastruktur:
 > Durchleiten:** Würde der Worker die Seite ausliefern, liefen Policen- und
 > Kundendaten über diese Website und ihren Anbieter — Abschnitt 7 schliesst das
 > aus. In der Adresszeile steht nach dem Aufruf darum `crm.ac-co.ch/portal`.
-> Auf der Website selbst ist das Portal nirgends verlinkt.
+>
+> **Seit dem 14.10.2026 ist das Portal gut sichtbar verlinkt**, auf Ricardos
+> Anweisung («ich will das es auf der Website ziemlich sichtbar wird»): eine
+> schmale Navy-Leiste über dem Kopfbereich auf jeder Seite, rechts ein helles
+> Feld «Kundenportal →» (ab 48rem davor «Ihre Versicherungen und Unterlagen
+> jederzeit online»), dazu ein Eintrag im Fussbereich unter der Adresse. Die
+> Adresse steht in `company.ts` (`kundenportal`) und zeigt direkt auf
+> `crm.ac-co.ch/portal/`. **Bewusst kein zweiter grüner Knopf** neben
+> «Erstgespräch anfragen»: Die Kopfzeile ist zwischen 64 und 75rem ausgereizt.
+> Die Leiste ist 44 px hoch (Trefferfläche); nachgemessen bei 390, 1024 und
+> 1440 px ohne waagrechten Überlauf. FR und PT tragen eigene Beschriftungen.
 
 - [ ] Repository auf GitHub in `ac-website` umbenennen
 - [x] ~~Vercel-Projekt anlegen~~ — gegenstandslos, gehostet wird auf Cloudflare
