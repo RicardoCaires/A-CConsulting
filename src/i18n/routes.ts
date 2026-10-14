@@ -33,6 +33,7 @@ export type PageKey =
   | 'transparenz'
   | 'schadenfall'
   | 'kontakt'
+  | 'offerte'
   | 'impressum'
   | 'datenschutz'
 
@@ -217,6 +218,18 @@ export const pages: Record<PageKey, PageDefinition> = {
     inMainNav: true,
     inLegalNav: false,
     sitemapPriority: 0.7,
+  },
+  /**
+   * Offertanfrage Frage fuer Frage (14.10.2026, Ricardos Auftrag). Nicht in der
+   * Hauptnavigation; erreichbar ueber den Fussbereich. FR und PT folgen mit den
+   * uebrigen Uebersetzungen.
+   */
+  offerte: {
+    slug: { de: 'offerte-anfragen', fr: 'demande-offre', pt: 'pedido-proposta' },
+    published: { de: true, fr: false, pt: false },
+    inMainNav: false,
+    inLegalNav: false,
+    sitemapPriority: 0.8,
   },
   impressum: {
     slug: { de: 'impressum', fr: 'mentions-legales', pt: 'informacao-legal' },

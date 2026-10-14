@@ -81,6 +81,14 @@ export const company = {
    */
   kundenportal: 'https://crm.ac-co.ch/portal/',
 
+  /**
+   * Brokerverwaltung, an die die Offertanfrage der Website direkt sendet (14.10.2026).
+   * Eigener Server in der Schweiz; die Antworten laufen nicht ueber Cloudflare.
+   * Fuer die lokale Pruefung laesst sich die Adresse beim Bauen ueberschreiben
+   * (NEXT_PUBLIC_AC_CRM_URL). Steht zugleich in `connect-src` von `public/_headers`.
+   */
+  crm: process.env.NEXT_PUBLIC_AC_CRM_URL || 'https://crm.ac-co.ch',
+
   /** UID ist zugleich die Handelsregisternummer (BFS-Schreiben vom 23.02.2026). */
   uid: 'CHE-332.960.986',
   commercialRegister: 'CHE-332.960.986',

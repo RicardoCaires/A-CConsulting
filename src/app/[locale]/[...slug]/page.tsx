@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 
 import { Banner } from '@/components/blocks/Banner'
 import { Hero } from '@/components/blocks/Hero'
+import { OffertAssistent } from '@/components/blocks/OffertAssistent'
+import assistentStyles from '@/components/blocks/OffertAssistent.module.css'
 import { PageBlocks } from '@/components/blocks/PageBlocks'
 import { LeistungsseiteTemplate } from '@/components/templates/Leistungsseite'
 import { UeberunsTemplate } from '@/components/templates/Ueberuns'
@@ -65,6 +67,12 @@ export function generateStaticParams() {
         continue
       }
 
+      // Offertanfrage: eigene Seite ohne Inhaltsdatei, nur Deutsch
+      if (key === 'offerte') {
+        params.push({ locale, slug: pages[key].slug[locale].split('/') })
+        continue
+      }
+
       if (key === 'wissen') {
         if (!getWissen(locale)) continue
         params.push({ locale, slug: pages[key].slug[locale].split('/') })
@@ -110,6 +118,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         images: ogBild,
         title: `${ueberuns.meta.title} — ${company.shortName}`,
         description: ueberuns.meta.description,
+        url: path(key, locale),
+        locale: htmlLang[locale].replace('-', '_'),
+      },
+    }
+  }
+
+  if (key === 'offerte') {
+    const titel = 'Offerte anfragen'
+    const beschreibung =
+      'Offerte für Ihre Versicherung anfragen: Frage für Frage, jede freiwillig. A&C Consulting in Aegerten meldet sich in der Regel innerhalb eines Werktags.'
+    return {
+      title: titel,
+      description: beschreibung,
+      alternates: { canonical: path(key, locale), languages: sprachen },
+      openGraph: {
+        images: ogBild,
+        title: `${titel} — ${company.shortName}`,
+        description: beschreibung,
         url: path(key, locale),
         locale: htmlLang[locale].replace('-', '_'),
       },
@@ -200,6 +226,41 @@ export default async function ContentPage({ params }: PageProps) {
           locale={locale}
           bannerKnopf={oberflaeche.cta}
         />
+      </>
+    )
+  }
+
+  // Offertanfrage Frage fuer Frage (14.10.2026). Der Assistent laeuft im
+  // Browser; ohne JavaScript stehen Telefon und E-Mail da.
+  if (key === 'offerte') {
+    const oberflaeche = getUi(locale)
+    return (
+      <>
+        <Banner
+          themenzeile="OFFERTE"
+          ueberschrift="Ihre Offerte. Frage für Frage."
+          unterzeile="Jede Frage ist freiwillig. Was offen bleibt, klären wir im Gespräch."
+          id="seitenkopf"
+          knopf={oberflaeche.cta}
+          locale={locale}
+        />
+        <section className={`ac-section ${assistentStyles.flaeche}`} aria-label="Offertanfrage">
+          <div className="ac-container">
+            <noscript>
+              <p>
+                Für die Offertanfrage braucht es JavaScript. Sie erreichen uns auch direkt: {company.phone} oder{' '}
+                {company.email}.
+              </p>
+            </noscript>
+            <OffertAssistent
+              crm={company.crm}
+              telefon={company.phone}
+              telefonHref={`tel:${company.phoneE164}`}
+              email={company.email}
+              datenschutzHref={path('datenschutz', locale)}
+            />
+          </div>
+        </section>
       </>
     )
   }

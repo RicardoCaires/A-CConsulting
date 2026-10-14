@@ -166,6 +166,7 @@ export const ui: Record<Locale, UiMessages> = {
       transparenz: 'Transparenz',
       schadenfall: 'Schadenfall',
       kontakt: 'Kontakt',
+      offerte: 'Offerte anfragen',
       impressum: 'Impressum',
       datenschutz: 'Datenschutz',
     },
@@ -258,6 +259,7 @@ export const ui: Record<Locale, UiMessages> = {
       kontakt: 'Contact',
       impressum: 'Mentions légales',
       datenschutz: 'Protection des données',
+      offerte: 'Demander une offre',
     },
     navSection: {
       privatkunden: 'Pour les particuliers',
@@ -348,6 +350,7 @@ export const ui: Record<Locale, UiMessages> = {
       kontakt: 'Contacto',
       impressum: 'Informação legal',
       datenschutz: 'Proteção de dados',
+      offerte: 'Pedir uma proposta',
     },
     navSection: {
       privatkunden: 'Para particulares',

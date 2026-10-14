@@ -132,6 +132,14 @@ export function Footer({ locale }: Props) {
               {ui.portal.label}
               <span aria-hidden="true">{' →'}</span>
             </a>
+
+            {/* Offertanfrage Frage fuer Frage (14.10.2026) */}
+            {isPublished('offerte', locale) ? (
+              <a href={path('offerte', locale)} className={styles.portalLink}>
+                {ui.page.offerte}
+                <span aria-hidden="true">{' →'}</span>
+              </a>
+            ) : null}
           </div>
 
           {/* ---- 2 Leistungen -------------------------------------------- */}
