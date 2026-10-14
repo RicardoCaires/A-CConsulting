@@ -1,262 +1,209 @@
-import type { ReactNode } from 'react'
-import { Bereiche, type Bereich, type LeitBereich } from '@/components/blocks/Bereiche'
-import { Kontaktabschluss } from '@/components/blocks/Kontaktabschluss'
-import { Faelle, type Fall } from '@/components/blocks/Faelle'
-import { pruefeFlaechen, Section, type Surface } from '@/components/blocks/Section'
-import { SectionHeader } from '@/components/blocks/SectionHeader'
+import Image from 'next/image'
+
 import { Banner } from '@/components/blocks/Banner'
-import { Team, type Mitglied } from '@/components/blocks/Team'
-import { Button } from '@/components/ui/Button'
+import { PortalBeispiel } from '@/components/ui/PortalBeispiel'
+import type { StartseiteContent, Titel, Ziel } from '@/content/startseite'
 import type { Locale } from '@/i18n/config'
-import { hrefOrDefault, type PageKey } from '@/i18n/routes'
+import { hrefOrDefault, isPublished, path } from '@/i18n/routes'
+import { addressLines, company } from '@/lib/company'
 
 import styles from './Startseite.module.css'
 
 /**
- * Vorlage A — Startseite.
+ * Startseite, Fassung vom 14.10.2026.
  *
- * Sieben Abschnitte, Fassung vom 10.09.2026:
+ * Auf Ricardos Auftrag schlanker und «weniger nach KI»: Vorbild simply.ch, übertragen
+ * auf A&C. Jeder Abschnitt ist ein weisser Block mit grossen Ecken auf dem hellblauen
+ * Grund. Überschriften zweifarbig, ohne Vorzeilen. Leistungen als Listen statt
+ * Symbolkacheln, Digital mit einer Beispielansicht samt Diagramm, Ansprechpartner mit
+ * Fotos. Abwechslung entsteht aus verschiedenen Formen, nicht aus Effekten.
  *
- *   1 Einstieg        Foto ueber die volle Breite          — DOMINANT
- *   2 Leistungen      Leitbereich gross, zwei darunter     — hell
- *   3 Situationen     sechs nummerierte Einstiege          — weiss
- *   4 Eine Stelle     die Kette, ein Satz                  — FLAECHE
- *   4 Ansprechpartner zwei Portraets                       — hell
- *   5 Abschluss       eine Aussage, ein Knopf              — FLAECHE
- *
- * Am 10.09.2026 auf Anweisung von Ricardo von neun auf sieben verkuerzt.
- * Weggefallen sind „Unsere Rolle" („Wir vertreten Sie, nicht die
- * Versicherung.") und „Persoenlich beraten. Digital effizient." — beide
- * standen zwischen den Abschnitten, die Besucher wirklich suchen.
- *
- * Die Reihenfolge folgt dem Blick eines Erstbesuchers: Was tut ihr (1, 2),
- * betrifft mich das (3), warum bei euch (4), mit wem rede ich (5), wie fange
- * ich an (6, 7).
- *
- * Die **Situationen stehen vor den Leistungen**. Wer auf die Seite kommt,
- * denkt in seinem Problem, nicht in unseren Bereichen.
- *
- * Die Vertrauenszeile ist bewusst kein Abschnitt, sondern ein schmales Band
- * direkt unter dem Kopf: vier Angaben, typografisch ruhig, keine Abzeichen.
- * Sie zaehlt darum in der Flaechenfolge nicht mit.
- *
- * Die Flaechenfolge wird beim Bauen geprueft (`pruefeFlaechen`). Ein Verstoss
- * bricht den Build — die Regel kann nicht versehentlich umgangen werden.
- *
- * **Achtung, Stand 10.09.2026:** Mit dem Umbau nach Ricardos Referenzgrafiken
- * setzen sich vier Abschnitte ueber die zugewiesene Flaeche hinweg und tragen
- * eine eigene: 2 und 3 liegen zusammen in der Kartenzone, 6 und 7 auf
- * demselben getoenten Grund. Die Folge unten beschreibt damit nicht mehr, was
- * man sieht. Sie zu bereinigen ist ein eigener Auftrag — entweder die Regel
- * anpassen oder die Zuweisungen wieder in die Folge holen.
- *
- * Regel fuer den Inhalt: **keine Sektion mit mehr als etwa fuenfzig Woertern
- * Fliesstext.** Was mehr braucht, gehoert auf eine Bereichsseite.
+ * Der Banner bleibt: Ricardos Festlegung vom 15.09.2026 («das Stadtbild muss sichtbar
+ * sein») gilt weiter.
  */
 
-/* Am 15.09.2026 sind auf Ricardos Anweisung zwei Abschnitte entfallen:
-   „Eine Stelle fuer Ihre Administration" und „So beginnt die
-   Zusammenarbeit". Die Startseite traegt seither fuenf Abschnitte. */
-const FLAECHEN: readonly Surface[] = [
-  'dominant', // 1 Einstieg
-  'hell', // 2 Leistungen
-  'weiss', // 3 Situationen
-  'hell', // 4 Ansprechpartner
-  'flaeche', // 5 Abschluss
-]
-
-export type StartseiteInhalt = {
-  einstieg: {
-    /** Kleine Themenzeile ueber der Ueberschrift, in Versalien. */
-    themenzeile: string
-    titel: string
-    /** Genau einer. Der Banner traegt keinen zweiten Knopf. */
-    knopf: { text: string; ziel: PageKey }
-  }
-  situationen: {
-    eyebrow: string
-    titel: ReactNode
-    einleitung?: ReactNode
-    eintraege: readonly Fall[]
-  }
-  leistungen: {
-    eyebrow: string
-    titel: ReactNode
-    einleitung?: ReactNode
-    leit: LeitBereich
-    weitere: readonly Bereich[]
-  }
-  personen: {
-    eyebrow: string
-    titel: ReactNode
-    leute: readonly Mitglied[]
-    linkedinText: string
-    /** Weiterfuehrender Verweis, seit dem 15.09.2026 als gruener Knopf. */
-    link?: { text: string; ziel: PageKey }
-  }
-  abschluss: {
-    eyebrow?: string
-    titel: ReactNode
-    satz?: ReactNode
-    felder: { telefon: string; email: string }
-    knopf: { text: string; ziel: PageKey }
-  }
+/** Zweifarbige Überschrift. Das mittlere Wort ist grün; Grün bleibt damit Akzent. */
+function Ueberschrift({ titel, id, als = 'h2' }: { titel: Titel; id?: string; als?: 'h2' | 'h3' }) {
+  const Tag = als
+  return (
+    <Tag id={id} className={styles.titel}>
+      {titel.vor}
+      <span className={styles.akzent}>{titel.akzent}</span>
+      {titel.nach}
+    </Tag>
+  )
 }
 
-export function StartseiteTemplate({
-  inhalt,
-  locale,
-}: {
-  inhalt: StartseiteInhalt
-  locale: Locale
-}) {
-  pruefeFlaechen(FLAECHEN, 'Startseite')
-  // Der Abschluss traegt seine Flaeche seit dem 10.09.2026 selbst und wird
-  // darum nicht mehr aus der Folge bedient — der letzte Eintrag bleibt in
-  // FLAECHEN stehen, damit die Reihe vollstaendig dokumentiert ist.
-  const [, fLeistungen, fSituationen, fPersonen] = FLAECHEN as [
-    Surface,
-    Surface,
-    Surface,
-    Surface,
-    Surface,
-  ]
+/** Ziel mit Anker – nur auf veröffentlichte Seiten. */
+function href(z: Ziel, locale: Locale) {
+  const basis = isPublished(z.ziel, locale) ? path(z.ziel, locale) : hrefOrDefault(z.ziel, locale)
+  return z.anker ? `${basis}#${z.anker}` : basis
+}
+
+const Pfeil = () => (
+  <span className={styles.pfeil} aria-hidden="true">
+    →
+  </span>
+)
+
+export function StartseiteTemplate({ inhalt, locale }: { inhalt: StartseiteContent; locale: Locale }) {
+  const { intro, leistungen, digital, personen, kontakt } = inhalt
 
   return (
     <>
-      {/* ---- 1 Einstieg — der Banner, wie auf jeder Seite ----------------
-          Seit dem 15.09.2026 traegt die Startseite denselben Baustein wie
-          alle uebrigen Banner. `StartHero` ist damit nicht mehr im Einsatz. */}
       <Banner
         themenzeile={inhalt.einstieg.themenzeile}
         ueberschrift={inhalt.einstieg.titel}
         id="einstieg"
-        knopf={inhalt.einstieg.knopf.text}
+        knopf={inhalt.cta}
         locale={locale}
         vorrang
       />
 
-      {/* ---- 2 und 3: eine gemeinsame Kartenzone ---------------------------
+      <div className={styles.seite}>
+        <div className={`ac-container ${styles.bloecke}`}>
+          {/* ---- Wer wir sind --------------------------------------------- */}
+          <section className={`${styles.block} ${styles.intro}`} aria-labelledby="intro">
+            <Ueberschrift titel={intro.titel} id="intro" />
+            <div className={styles.introText}>
+              {intro.absaetze.map((a) => (
+                <p key={a}>{a}</p>
+              ))}
+            </div>
+            <div className={styles.knoepfe}>
+              <a className={styles.knopf} href={path('offerte', locale)}>
+                {intro.offerte} <Pfeil />
+              </a>
+              <a className={`${styles.knopf} ${styles.knopfZweit}`} href={company.kundenportal}>
+                {intro.portal} <Pfeil />
+              </a>
+            </div>
+          </section>
 
-          Die beiden Abschnitte tragen Karten und liegen darum auf einer
-          durchgehenden Flaeche, nicht auf zweien. So zeigt es Ricardos
-          Referenz vom 10.09.2026, und so laufen die Formen im Grund ueber
-          beide hinweg statt an der Naht zu enden.
+          {/* ---- Leistungen als Listen ------------------------------------ */}
+          <section className={styles.block} aria-labelledby="leistungen-titel" id="leistungen">
+            <Ueberschrift titel={leistungen.titel} id="leistungen-titel" />
+            <div className={styles.listen}>
+              {leistungen.listen.map((liste) => (
+                <nav key={liste.titel} className={styles.liste} aria-label={liste.titel}>
+                  <h3 className={styles.listeTitel}>
+                    <a href={href(liste, locale)}>{liste.titel}</a>
+                  </h3>
+                  <ul>
+                    {liste.eintraege.map((e) => (
+                      <li key={e.text}>
+                        <a href={href(e, locale)}>
+                          <span>{e.text}</span>
+                          <span className={styles.chevron} aria-hidden="true">
+                            ›
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              ))}
+            </div>
+          </section>
 
-          Der Ton ist eine Stufe dunkler als die uebrigen hellen Abschnitte:
-          Die Karten sind weiss und stuenden auf dem gewohnten Off-White kaum
-          ab. `background_tint` ist keine neue Farbe, sondern die zweite Stufe
-          derselben. */}
-      <div className={styles.kartenzone}>
+          {/* ---- Digital und Kundenportal ---------------------------------- */}
+          <section className={`${styles.block} ${styles.digital}`} aria-labelledby="digital-titel" id="digital">
+            <div className={styles.digitalText}>
+              <Ueberschrift titel={digital.titel} id="digital-titel" />
+              {digital.absaetze.map((a) => (
+                <p key={a} className={styles.absatz}>
+                  {a}
+                </p>
+              ))}
+              <ul className={styles.haken}>
+                {digital.punkte.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+              <div className={styles.knoepfe}>
+                <a className={styles.knopf} href={company.kundenportal}>
+                  {digital.portal} <Pfeil />
+                </a>
+                <a className={styles.textlink} href={path('offerte', locale)}>
+                  {digital.offerte}
+                </a>
+              </div>
+            </div>
+            <div className={styles.digitalBild}>
+              <PortalBeispiel {...digital.beispiel} />
+            </div>
+          </section>
 
-      {/* ---- 2 Leistungen -------------------------------------------------- */}
-      <Section
-        surface={fLeistungen}
-        className={styles.zonenAbschnitt}
-        labelledBy="leistungen"
-        id="leistungen"
-      >
-        {/* Der Kopf steht zweispaltig: links Vorzeile, Ueberschrift und
-            Einleitung, rechts drei Zeilen, die den Nutzen zusammenfassen.
-            Sie sind kein Satz und sollen auch keiner werden. */}
-        <div className={styles.leistungenKopf}>
-          <SectionHeader
-            id="leistungen"
-            eyebrow={inhalt.leistungen.eyebrow}
-            heading={inhalt.leistungen.titel}
-            lead={inhalt.leistungen.einleitung}
-          />
+          {/* ---- Ansprechpartner ------------------------------------------- */}
+          <section className={`${styles.block} ${styles.personen}`} aria-labelledby="personen">
+            <div className={styles.personenKopf}>
+              <Ueberschrift titel={personen.titel} id="personen" />
+              <p className={styles.absatz}>{personen.satz}</p>
+              <a className={styles.textlink} href={hrefOrDefault(personen.link.ziel, locale)}>
+                {personen.link.text}
+              </a>
+            </div>
+            <ul className={styles.leute}>
+              {personen.leute.map((p) => (
+                <li key={p.name} className={styles.person}>
+                  <Image
+                    src={p.bild.datei}
+                    alt={p.bild.alt}
+                    width={560}
+                    height={420}
+                    sizes="(min-width: 64rem) 22rem, (min-width: 40rem) 45vw, 90vw"
+                    className={styles.foto}
+                  />
+                  <span className={styles.name}>{p.name}</span>
+                  <span className={styles.funktion}>{p.funktion}</span>
+                  {p.linkedin ? (
+                    <a className={styles.textlinkKlein} href={p.linkedin} target="_blank" rel="noopener noreferrer">
+                      {personen.linkedinText}
+                    </a>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          </section>
 
+          {/* ---- Kontakt -------------------------------------------------- */}
+          <section className={`${styles.block} ${styles.kontakt}`} aria-labelledby="kontakt">
+            <div>
+              <Ueberschrift titel={kontakt.titel} id="kontakt" />
+              <p className={styles.absatz}>{kontakt.satz}</p>
+              <div className={styles.knoepfe}>
+                <a className={styles.knopf} href={hrefOrDefault('kontakt', locale)}>
+                  {inhalt.cta} <Pfeil />
+                </a>
+              </div>
+            </div>
+            <dl className={styles.angaben}>
+              <div>
+                <dt>{kontakt.felder.telefon}</dt>
+                <dd>
+                  <a href={`tel:${company.phoneE164}`}>{company.phone}</a>
+                </dd>
+              </div>
+              <div>
+                <dt>{kontakt.felder.email}</dt>
+                <dd>
+                  <a href={`mailto:${company.email}`}>{company.email}</a>
+                </dd>
+              </div>
+              <div>
+                <dt>{kontakt.felder.adresse}</dt>
+                <dd>
+                  {addressLines.map((z) => (
+                    <span key={z} className={styles.zeile}>
+                      {z}
+                    </span>
+                  ))}
+                </dd>
+              </div>
+            </dl>
+          </section>
         </div>
-        <Bereiche
-          leit={inhalt.leistungen.leit}
-          weitere={inhalt.leistungen.weitere}
-          locale={locale}
-        />
-      </Section>
-
-      {/* ---- 3 Situationen — eng an die Leistungen -------------------------
-
-          Derselbe getoente Grund und derselbe zweispaltige Kopf wie im
-          Abschnitt darueber. Beide tragen weisse Karten; auf dem gewohnten
-          Off-White stuenden sie kaum ab. Die beiden Abschnitte bilden damit
-          eine zusammenhaengende Zone — getrennt werden sie von ihren
-          Ueberschriften, nicht von einem Farbwechsel. */}
-      <Section
-        surface={fSituationen}
-        className={styles.zonenAbschnitt}
-        labelledBy="situationen"
-        id="situationen"
-      >
-        <div className={styles.leistungenKopf}>
-          <SectionHeader
-            id="situationen"
-            eyebrow={inhalt.situationen.eyebrow}
-            heading={inhalt.situationen.titel}
-            lead={inhalt.situationen.einleitung}
-          />
-
-        </div>
-
-        <Faelle faelle={inhalt.situationen.eintraege} locale={locale} />
-      </Section>
       </div>
-
-      {/* ---- 5 Ansprechpartner ---------------------------------------------- */}
-      <Section
-        surface={fPersonen}
-        className={styles.personenFlaeche}
-        labelledBy="personen"
-        id="personen"
-      >
-        <div className={styles.leistungenKopf}>
-          <SectionHeader
-            id="personen"
-            eyebrow={inhalt.personen.eyebrow}
-            heading={inhalt.personen.titel}
-          />
-        </div>
-        <Team mitglieder={inhalt.personen.leute} linkedinText={inhalt.personen.linkedinText} />
-        {inhalt.personen.link && (
-          <div className={styles.personenLink}>
-            {/* Gruen, auf Ricardos Anweisung vom 15.09.2026. Beim
-                Darueberfahren und bei Tastaturfokus wird er navy — das macht
-                `Button variant="akzent"` von sich aus. */}
-            <Button
-              href={hrefOrDefault(inhalt.personen.link.ziel, locale)}
-              variant="akzent"
-            >
-              {inhalt.personen.link.text}
-            </Button>
-          </div>
-        )}
-      </Section>
-
-      {/* ---- 7 Abschluss ------------------------------------------------------
-
-          Eigener Baustein: `CTASection` steht am Fuss jeder Leistungsseite und
-          bleibt unveraendert. Der Abschluss sieht damit auf der Startseite
-          anders aus als dort — die Folge davon, dass die Startseite als Erste
-          umgebaut wurde. Bekommen die Leistungsseiten ihren Umbau, gehoert das
-          wieder zusammengefuehrt. */}
-      <Kontaktabschluss
-        id="abschluss"
-        eyebrow={inhalt.abschluss.eyebrow}
-        titel={inhalt.abschluss.titel}
-        satz={inhalt.abschluss.satz}
-        felder={inhalt.abschluss.felder}
-        aktion={
-          <Button
-            href={hrefOrDefault(inhalt.abschluss.knopf.ziel, locale)}
-            variant="akzent"
-          >
-            {inhalt.abschluss.knopf.text}
-            <span className={styles.knopfPfeil} aria-hidden="true">
-              →
-            </span>
-          </Button>
-        }
-      />
     </>
   )
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import { StartseiteTemplate, type StartseiteInhalt } from '@/components/templates/Startseite'
+import { StartseiteTemplate } from '@/components/templates/Startseite'
 import { getStartseite } from '@/content/startseite'
 import { htmlLang, isLocale, locales } from '@/i18n/config'
 import { isPublished, path } from '@/i18n/routes'
@@ -11,12 +11,9 @@ import { ogBild } from '@/lib/social'
 /**
  * Startseite.
  *
- * Diese Datei enthaelt keine Gestaltung. Sie ordnet den Inhalt aus
- * `src/content/startseite.ts` den neun Abschnitten der Vorlage zu; wie die
- * aussehen, steht in `components/templates/Startseite.tsx`.
- *
- * Nichts wird hier umformuliert. Kommt ein Text auf der Seite kuerzer vor als
- * in der Quelle, wird weggelassen, nie neu geschrieben.
+ * Diese Datei enthaelt keine Gestaltung. Seit dem 14.10.2026 reicht sie den Inhalt aus
+ * `src/content/startseite.ts` unveraendert an die Vorlage weiter
+ * (`components/templates/Startseite.tsx`).
  */
 
 type PageProps = {
@@ -56,50 +53,5 @@ export default async function HomePage({ params }: PageProps) {
   const content = getStartseite(locale)
   if (!content) notFound()
 
-  const inhalt: StartseiteInhalt = {
-    // 1 — Einstieg. Der Banner: Themenzeile, Ueberschrift, ein Knopf.
-    einstieg: {
-      themenzeile: content.einstieg.themenzeile,
-      titel: content.einstieg.titel,
-      knopf: { text: content.cta, ziel: 'kontakt' },
-    },
-
-    // 3 — Situationen. Stehen vor den Leistungen: Wer herkommt, denkt in
-    //     seinem Problem, nicht in unseren Bereichen.
-    situationen: {
-      eyebrow: content.situationen.eyebrow,
-      titel: content.situationen.titel,
-      einleitung: content.situationen.einleitung,
-      eintraege: content.situationen.eintraege,
-    },
-
-    // 4 — Leistungen. Versicherungsbroking fuehrt.
-    leistungen: {
-      eyebrow: content.leistungen.eyebrow,
-      titel: content.leistungen.titel,
-      einleitung: content.leistungen.einleitung,
-      leit: content.leistungen.leit,
-      weitere: content.leistungen.weitere,
-    },
-
-    // 7 — Ansprechpartner.
-    personen: {
-      eyebrow: content.personen.eyebrow,
-      linkedinText: content.personen.linkedinText,
-      titel: content.personen.titel,
-      leute: content.personen.leute,
-      link: content.personen.link,
-    },
-
-    // 9 — Kontaktabschluss.
-    abschluss: {
-      eyebrow: content.abschluss.eyebrow,
-      titel: content.abschluss.titel,
-      satz: content.abschluss.satz,
-      felder: content.abschluss.felder,
-      knopf: { text: content.cta, ziel: 'kontakt' },
-    },
-  }
-
-  return <StartseiteTemplate inhalt={inhalt} locale={locale} />
+  return <StartseiteTemplate inhalt={content} locale={locale} />
 }

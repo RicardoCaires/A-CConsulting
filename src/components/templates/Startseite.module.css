@@ -1,388 +1,396 @@
-/* Vorlage A — Startseite.
+/* Startseite, Fassung vom 14.10.2026.
 
-   Fast nichts: Jeder Abschnitt bringt seine Gestaltung selbst mit
-   (StartHero, Faelle, Bereiche, StepList, Team, CTASection).
-   Was hier steht, gehoert der Vorlage und keinem Baustein. */
+   Vorbild simply.ch, übertragen auf A&C: weisse Blöcke mit grossen Ecken auf dem
+   hellblauen Grund, ruhige Abstände, Überschriften zweifarbig ohne Vorzeile.
+   Abwechslung entsteht aus der Form der Blöcke (Text, Listen, Text neben Diagramm,
+   Fotos, Angaben), nicht aus Effekten. Farben nur aus den Tokens; Navy steht nie
+   als Fläche, nur als Schrift. */
 
-/* ---- 4 Eine Stelle für Ihre Administration -------------------------------
-
-   Nach Ricardos Referenzgrafik vom 10.09.2026: Kopf und Prozessleiste links,
-   drei Zeilen und das Buerobild rechts. Das Bild laeuft bis an die rechte und
-   die untere Kante des Abschnitts. */
-
-.stelleFlaeche {
-  position: relative;
-  overflow: hidden;
+.seite {
+  padding-block: clamp(1.5rem, 3vw, 2.5rem) var(--ac-section-y);
+  background-color: var(--ac-color-background-tint);
 }
 
-.stelleRaster {
-  position: relative;
-  /* Ueber dem Bild, sonst liegt der Text darunter. */
-  z-index: 1;
+.bloecke {
   display: grid;
-  gap: var(--ac-space-md);
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
-/* Die Kette. Eine geordnete Liste, weil die Reihenfolge etwas bedeutet: So
-   laeuft ein Betrieb durch das Jahr. Auf schmalen Geraeten zweispaltig, ab
-   Tablet in einer Reihe — der Pfeil dreht sich entsprechend mit. */
-.kette {
+.block {
+  padding: clamp(1.5rem, 4vw, 3.25rem);
+  background-color: var(--ac-color-white);
+  border-radius: 28px;
+}
+
+/* ---- Überschriften ---------------------------------------------------------- */
+
+.titel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+  line-height: 1.12;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.01em;
+  color: var(--ac-color-primary-navy);
+  text-wrap: balance;
+}
+
+.akzent {
+  color: var(--ac-color-accent-green);
+}
+
+.absatz {
+  margin: 1rem 0 0;
+  max-width: 60ch;
+  font-size: var(--ac-body-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Knöpfe ----------------------------------------------------------------- */
+
+.knoepfe {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.75rem;
+}
+
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-accent-green);
+  border-radius: var(--ac-radius-button);
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.knopf:hover,
+.knopf:focus-visible {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-navy-deep);
+}
+
+/* Zweiter Knopf: gleiche Form, helle Fläche mit grüner Kontur */
+.knopfZweit {
+  color: var(--ac-color-accent-green);
+  background-color: var(--ac-color-white);
+  box-shadow: inset 0 0 0 2px var(--ac-color-accent-green);
+}
+
+.knopf:focus-visible,
+.textlink:focus-visible,
+.listen a:focus-visible,
+.textlinkKlein:focus-visible,
+.angaben a:focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+.pfeil {
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.knopf:hover .pfeil {
+  transform: translateX(3px);
+}
+
+.textlink,
+.textlinkKlein {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-weight: 600;
+  color: var(--ac-color-accent-green);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.textlinkKlein {
+  min-height: 2.75rem;
+  font-size: var(--ac-small-size);
+  font-weight: 500;
+}
+
+.textlink:hover,
+.textlinkKlein:hover {
+  color: var(--ac-color-primary-navy);
+}
+
+/* ---- Einstieg ----------------------------------------------------------------- */
+
+.intro .titel {
+  max-width: 22ch;
+}
+
+.introText {
+  margin-top: 1.25rem;
+  max-width: 62ch;
+}
+
+.introText p {
+  margin: 0 0 0.75rem;
+  font-size: var(--ac-lead-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-primary);
+}
+
+/* ---- Leistungen als Listen -------------------------------------------------- */
+
+.listen {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--ac-space-md) var(--ac-space-2xs);
-  /* Abstand nach oben, sonst steht die Kette auf der Grundlinie der
-     Ueberschrift. */
-  margin: clamp(2rem, 4vw, 2.75rem) 0;
+  gap: 1rem;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+@media (min-width: 40rem) {
+  .listen {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 75rem) {
+  .listen {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.liste {
+  padding: 1.25rem 1.25rem 0.75rem;
+  border: var(--ac-border-hairline) solid var(--ac-line);
+  border-radius: 20px;
+}
+
+.listeTitel {
+  margin: 0 0 0.5rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.listeTitel a {
+  color: var(--ac-color-primary-navy);
+  text-decoration: none;
+}
+
+.listeTitel a:hover {
+  color: var(--ac-color-accent-green);
+}
+
+.liste ul {
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.kette li {
+.liste li + li {
+  border-top: var(--ac-border-hairline) solid var(--ac-line-soft);
+}
+
+.liste li a {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: var(--ac-space-xs);
-  text-align: center;
-}
-
-/* Alle fuenf Dateien sind quadratisch — eine Breite genuegt, damit sie gleich
-   gross wirken. Die helle Kreisflaeche gehoert zum Bild. */
-.ketteBild {
-  width: clamp(4rem, 12vw, 6rem);
-}
-
-/* Die Beschriftung waechst mit, aber gedeckelt: „Versicherungen" ist das
-   laengste Wort und laesst sich nicht umbrechen — es muss in seine Spalte
-   passen, sonst laufen die Glieder ineinander. */
-.ketteText {
-  font-family: var(--ac-font-display);
-  font-size: clamp(0.875rem, 1.05vw, 0.9375rem);
-  line-height: var(--ac-h3-line);
-  font-weight: var(--ac-h3-weight);
-  color: var(--ac-color-white);
-}
-
-.stelleText {
-  max-width: var(--ac-content-measure);
-}
-
-.stelleText p + p {
-  margin-top: var(--ac-space-sm);
-  color: var(--ac-on-navy-muted);
-}
-
-.stelleKnopf {
-  margin-top: clamp(1.5rem, 3vw, 2rem);
-}
-
-.knopfPfeil {
-  margin-left: var(--ac-space-2xs);
-}
-
-/* ---- Das Buerobild --------------------------------------------------------
-
-   Auf schmalen Geraeten steht es als eigener Block unter dem Text und laeuft
-   bis an die Fensterkanten. Ab Desktop liegt es in der rechten unteren Ecke
-   des Abschnitts. */
-.buero {
-  position: relative;
-  z-index: 0;
-  margin: clamp(2rem, 5vw, 3rem) calc(var(--ac-gutter) * -1) calc(var(--ac-section-y) * -1);
-}
-
-.bueroBild {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* ---- 5 Ansprechpartner ---------------------------------------------------- */
-
-
-
-.personenLink {
-  margin-top: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 600;
-}
-
-.personenLink > * {
-  display: inline-flex;
-  align-items: center;
-  /* Trefferflaeche 44 px, auch wenn es nur drei Woerter sind. */
+  justify-content: space-between;
+  gap: 0.75rem;
   min-height: 2.75rem;
+  padding-block: 0.35rem;
+  font-size: var(--ac-small-size);
+  line-height: 1.35;
+  color: var(--ac-color-text-primary);
+  text-decoration: none;
 }
 
-/* ---- 6 Ablauf -------------------------------------------------------------- */
-
-.ablaufNachsatz {
-  margin-top: clamp(1.5rem, 4vw, 2rem);
-  max-width: var(--ac-content-measure);
-  color: var(--ac-color-text-secondary);
-}
-
-/* ---- Ab Tablet ------------------------------------------------------------- */
-
-@media (min-width: 48rem) {
-  /* Die Kette laeuft in einer Zeile, mit gruenem Pfeil zwischen den Gliedern.
-     Fuenf gleiche Spalten und dazwischen je eine schmale fuer den Pfeil —
-     so stehen die Glieder gleichmaessig, unabhaengig von der Wortlaenge. */
-  .kette {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: var(--ac-space-2xs);
-    align-items: start;
-  }
-
-  .kette li {
-    position: relative;
-  }
-
-  .kette li + li::before {
-    content: '→';
-    position: absolute;
-    /* In der Mitte der Bildhoehe, auf halbem Weg zum Glied davor. */
-    top: calc(clamp(4rem, 12vw, 6rem) / 2);
-    right: calc(100% + var(--ac-space-2xs) / 2);
-    transform: translate(50%, -50%);
-    font-family: var(--ac-font-sans);
-    font-size: 1.25rem;
-    line-height: 1;
-    color: var(--ac-color-accent-green-light);
-  }
-}
-
-/* ---- 2 Leistungen ---------------------------------------------------------- */
-
-/* Die Kartenzone traegt die Flaeche fuer beide Abschnitte — Leistungen und
-   Ausgangslagen. Eine Stufe dunkler als die uebrigen hellen Abschnitte: Die
-   Karten darin sind weiss und stuenden auf dem gewohnten Off-White kaum ab.
-   `background_tint` ist die zweite Stufe derselben Farbe.
-
-   `overflow: hidden` schneidet die Formen im Grund an den Kanten ab,
-   `isolation` haelt sie unter den Abschnitten. */
-/* Einfach hellblau, seit dem 15.09.2026 auf Ricardos Anweisung. Die acht
-   organischen Formen im Grund (`Zonenmuster.tsx`) sind entfallen; die
-   Komponente bleibt liegen. */
-.kartenzone {
-  position: relative;
-  background-color: var(--ac-color-background-tint);
-}
-
-/* Die beiden Abschnitte darin bringen keine eigene Flaeche mehr mit — sie
-   liegen auf der der Zone. Ihr Platz in der Flaechenfolge bleibt, was zaehlt
-   ist der Ton, und der ist derselbe. */
-.zonenAbschnitt {
-  position: relative;
-  z-index: 1;
-  background-color: transparent;
-}
-
-.leistungenKopf {
-  display: grid;
-  gap: var(--ac-space-md);
-}
-
-/* Der gruene Strich steht in der Zeile der Vorzeile, wie auf den Karten
-   darunter — nicht als eigene Linie darueber. Ein Muster, nicht zwei. */
-.leistungenKopf :global(.ac-eyebrow),
-.stelleRaster :global(.ac-eyebrow) {
-  display: flex;
-  align-items: center;
-  gap: var(--ac-space-2xs);
-}
-
-.leistungenKopf :global(.ac-eyebrow)::before,
-.stelleRaster :global(.ac-eyebrow)::before {
-  content: '';
-  display: block;
+.chevron {
   flex: none;
-  width: 1.75rem;
-  height: var(--ac-border-marker);
-  background-color: var(--ac-color-accent-green);
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--ac-color-accent-green);
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
 }
 
-/* Der eine Abschnitt, dessen Ueberschrift traegt statt nur benennt. Sie steht
-   in der Groesse eines Seitentitels; die Karten darunter fuehren dann in zwei
-   Stufen weiter.
-
-   Der Kopf sprengt hier die Lesebreite: Sie gilt fuer Fliesstext, nicht fuer
-   eine Ueberschrift, die in einer Zeile stehen soll. Die Einleitung darunter
-   bleibt auf Lesebreite. */
-.leistungenKopf > :first-child,
-.stelleHaupt > :first-child {
-  max-width: none;
+.liste li a:hover {
+  color: var(--ac-color-accent-green);
 }
 
-.leistungenKopf h2,
-.stelleHaupt h2 {
-  font-size: var(--ac-h1-size);
-  line-height: var(--ac-h1-line);
-  letter-spacing: var(--ac-h1-tracking);
-  max-width: none;
+.liste li a:hover .chevron {
+  transform: translateX(3px);
 }
 
-/* Drei Zeilen, nicht ein Satz. Der senkrechte Strich bindet sie an den Kopf,
-   ohne sie zu einem zweiten Absatz zu machen. */
-.merksatz {
+/* ---- Digital: Text neben Beispielansicht ---------------------------------- */
+
+.digital {
   display: grid;
-  gap: var(--ac-space-3xs);
-  color: var(--ac-color-text-secondary);
-  padding-left: var(--ac-space-md);
-  border-left: var(--ac-border-hairline) solid var(--ac-color-border-tint);
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  align-items: center;
 }
-
-@media (min-width: 48rem) {
-  .leistungenKopf {
-    grid-template-columns: 1fr auto;
-    gap: clamp(2rem, 5vw, 4rem);
-    align-items: start;
-  }
-
-  .merksatz {
-    /* Auf der Grundlinie der Einleitung, nicht der Ueberschrift. */
-    margin-top: var(--ac-space-lg);
-    max-width: 16rem;
-  }
-}
-
-/* ---- Ab Desktop: Kopf und drei Zeilen nebeneinander ---------------------- */
 
 @media (min-width: 64rem) {
-  .stelleRaster {
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: clamp(2rem, 5vw, 4rem);
-    align-items: start;
-    grid-template-areas: 'haupt merksatz';
-  }
-
-  /* Die Textspalte endet, bevor das Bild beginnt. 36rem ist die Breite, in
-     der die Ueberschrift zweizeilig steht und die fuenf Glieder der Kette
-     nebeneinander Platz haben — enger als zuvor, damit rechts Raum fuer das
-     groessere Bild bleibt. */
-  .stelleHaupt {
-    grid-area: haupt;
-    max-width: 36rem;
-  }
-
-  .stelleRaster .merksatz {
-    grid-area: merksatz;
-    margin-top: var(--ac-space-2xs);
-    max-width: 14rem;
+  .digital {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   }
 }
 
-/* ---- Ab 80rem: das Bild in die rechte untere Ecke -------------------------
-
-   Erst hier, nicht schon ab 64rem. Dazwischen ist der Abschnitt zu schmal:
-   Die Textspalte braucht 40rem fuer die Kette, das Bild 33rem — zusammen
-   mehr, als bei 1024 px zur Verfuegung steht. Bis dahin steht das Bild als
-   eigener Block unter dem Text, wie auf dem Telefon. */
-@media (min-width: 80rem) {
-  /* 47 Prozent ist die Breite, bei der das Bild links gerade noch an der
-     Textspalte vorbeikommt: Die endet bei 36rem hinter dem Containerrand,
-     das Bild beginnt bei 53 Prozent des Abschnitts. Der Deckel von 52rem
-     haelt es auf sehr breiten Schirmen im Verhaeltnis. */
-  .buero {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: min(47%, 52rem);
-    margin: 0;
-  }
-
-  /* Genug Hoehe, damit das groessere Bild unten Platz hat, ohne den Text
-     nach oben zu draengen. */
-  .stelleFlaeche {
-    min-height: 38rem;
-  }
+.haken {
+  display: grid;
+  gap: 0.6rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-/* ---- Der Grund des Abschnitts ---------------------------------------------
+.haken li {
+  position: relative;
+  padding-left: 1.75rem;
+  font-size: var(--ac-body-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-primary);
+}
 
-   Zwei grosse Boegen Ton in Ton und eine feine gruene Linie. Alle drei sind
-   Kreise, die weit ueber die Kanten hinausragen; sichtbar ist nur ihr Bogen.
-   Der Abschnitt schneidet sie ab (`overflow: hidden`).
-
-   Sehr zurueckhaltend gehalten: Sie sollen der Flaeche das Flache nehmen,
-   nicht auffallen. Kein Verlauf, kein Schein, keine zweite Farbe — die
-   Fuellungen sind aus dem Navy des Abschnitts gemischt. */
-
-.muster {
+.haken li::before {
+  content: '✓';
   position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
+  left: 0;
+  top: 0;
+  font-weight: 700;
+  color: var(--ac-color-accent-green);
 }
 
-.muster span {
-  position: absolute;
+.digitalBild {
+  padding: clamp(1rem, 3vw, 2rem);
+  background-color: var(--ac-color-background-light);
+  border-radius: 24px;
+}
+
+/* ---- Ansprechpartner ------------------------------------------------------ */
+
+.personen {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@media (min-width: 64rem) {
+  .personen {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: center;
+  }
+}
+
+.leute {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 40rem) {
+  .leute {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.person {
+  display: flex;
+  flex-direction: column;
+}
+
+.foto {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.name {
+  margin-top: 0.85rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.funktion {
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Kontakt ---------------------------------------------------------------- */
+
+.kontakt {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@media (min-width: 56rem) {
+  .kontakt {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: center;
+  }
+}
+
+.angaben {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0.5rem 1.25rem;
+  background-color: var(--ac-color-background-light);
+  border-radius: 20px;
+}
+
+.angaben > div {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 0.9rem;
+}
+
+.angaben > div + div {
+  border-top: var(--ac-border-hairline) solid var(--ac-line-soft);
+}
+
+.angaben dt {
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+.angaben dd {
+  margin: 0;
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
+  overflow-wrap: anywhere;
+}
+
+.angaben a {
+  color: var(--ac-color-primary-navy);
+  text-decoration: none;
+}
+
+.angaben a:hover {
+  color: var(--ac-color-accent-green);
+  text-decoration: underline;
+}
+
+.zeile {
   display: block;
-  border-radius: 50%;
+  font-weight: 400;
+  color: var(--ac-color-text-primary);
 }
 
-/* Der grosse Bogen: heller als der Grund, aber nur um eine Spur. */
-.bogenGross {
-  top: -32%;
-  right: -14%;
-  width: 62rem;
-  height: 62rem;
-  background-color: color-mix(in srgb, var(--ac-color-white) 5%, transparent);
-}
-
-/* Der zweite sitzt darin und ist noch schwaecher. */
-.bogenKlein {
-  top: -14%;
-  right: -4%;
-  width: 42rem;
-  height: 42rem;
-  background-color: color-mix(in srgb, var(--ac-color-white) 4%, transparent);
-}
-
-/* Die gruene Linie. Ein Kreis mit Kontur statt Fuellung — dadurch ein
-   grosszuegiger Bogen ohne einen einzigen Pfad. */
-.linie {
-  top: -46%;
-  right: 4%;
-  width: 74rem;
-  height: 74rem;
-  background-color: transparent;
-  border: 2px solid color-mix(in srgb, var(--ac-color-accent-green-light) 40%, transparent);
-}
-
-/* Auf schmalen Geraeten bleibt nur der grosse Bogen. Zwei weitere Formen auf
-   375 px sind kein Grund, sondern Unruhe. */
-@media (max-width: 47.999rem) {
-  /* Mit `.muster` davor, sonst gewinnt `.muster span { display: block }` —
-     dieselbe Zahl an Klassen, aber ein Element mehr. */
-  .muster .bogenKlein,
-  .muster .linie {
-    display: none;
+@media (prefers-reduced-motion: reduce) {
+  .knopf,
+  .pfeil,
+  .chevron {
+    transition: none;
   }
-}
 
-/* Wo `color-mix` fehlt, bleibt der Grund einfarbig — das ist kein Verlust. */
-@supports not (color: color-mix(in srgb, red 50%, blue)) {
-  .muster {
-    display: none;
+  .knopf:hover .pfeil,
+  .liste li a:hover .chevron {
+    transform: none;
   }
-}
-
-/* ---- 5 Ansprechpartner ------------------------------------------------------
-
-   Sehr hell, eine Spur waermer als reines Weiss — die Karten darauf sind
-   heller als der Grund und heben sich dadurch ab, ohne einen Rahmen zu
-   brauchen. Der Ton ist aus dem System gemischt, keine neue Farbe. */
-
-.personenFlaeche {
-  background-color: color-mix(in srgb, var(--ac-color-background-light) 45%, var(--ac-color-white));
-}
-
-/* ---- 6 Ablauf ---------------------------------------------------------------
-
-   Dieselbe getoente Flaeche wie die Kartenabschnitte weiter oben: Auch hier
-   sind die Karten weiss und stuenden auf dem gewohnten Off-White kaum ab. */
-
-.ablaufFlaeche {
-  background-color: var(--ac-color-background-tint);
 }

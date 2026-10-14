@@ -1,0 +1,131 @@
+/* Beispielansicht des Kundenportals mit Ringdiagramm (14.10.2026).
+   Eine weisse Karte, wie ein Ausschnitt aus dem Portal. Farben nur aus den Tokens. */
+
+.ansicht {
+  margin: 0;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-line);
+  border-radius: 20px;
+  box-shadow: var(--ac-shadow-card);
+}
+
+.kopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: var(--ac-border-hairline) solid var(--ac-line-soft);
+}
+
+.titel {
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.marke {
+  padding: 0.2rem 0.65rem;
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-background-light);
+  border-radius: 999px;
+}
+
+.inhalt {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  padding-block: 1.5rem;
+}
+
+@media (min-width: 30rem) {
+  .inhalt {
+    grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+  }
+}
+
+.ring {
+  position: relative;
+  width: min(100%, 11rem);
+  margin-inline: auto;
+  aspect-ratio: 1;
+}
+
+.ring svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.mitte {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.mitteBetrag {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ac-color-primary-navy);
+}
+
+.mitteText {
+  max-width: 7rem;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: var(--ac-color-text-secondary);
+}
+
+.legende {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.legende li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  align-items: center;
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-primary);
+}
+
+.punkt {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+}
+
+.legendeBetrag {
+  font-variant-numeric: tabular-nums;
+  color: var(--ac-color-text-secondary);
+}
+
+.frist {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-primary);
+  background-color: var(--ac-color-background-light);
+  border-radius: 12px;
+}
+
+.frist strong {
+  color: var(--ac-color-accent-green);
+}
+
+.hinweis {
+  margin-top: 0.85rem;
+  font-size: 0.75rem;
+  color: var(--ac-color-text-secondary);
+}

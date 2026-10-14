@@ -14,3 +14,43 @@ Ricardo bestätigt oder ändert sie. Wiederverwendet ist, wo möglich, der freig
 ## Startseite
 
 - Seitenbeschreibung: Versicherungen und Treuhand für Privatpersonen, Selbständige und KMU. Feste Ansprechpartner in Aegerten, Kanton Bern.
+
+### Einstieg (unter dem Banner)
+
+- Überschrift: Ihr **unabhängiger** Versicherungsbroker im Seeland
+- Wir sind bei der FINMA als Versicherungsvermittler registriert und arbeiten in Ihrem Auftrag, nicht im Auftrag einer Versicherung.
+- Dazu übernehmen wir Buchhaltung, Löhne und Steuererklärungen – für Privatpersonen, Selbständige und kleine Unternehmen.
+- Knöpfe: Offerte anfragen · Zum Kundenportal
+
+### Leistungen als Listen
+
+- Überschrift: Was wir **für Sie** übernehmen
+- Für Privatpersonen: Kranken- und Zusatzversicherung · Hausrat und Haftpflicht · Motorfahrzeug · Leben und Säule 3a · Rechtsschutz
+- Für Unternehmen: BVG · UVG und UVG-Zusatz · Krankentaggeld · Betriebshaftpflicht · Sachversicherung
+- Treuhand und Steuern: Buchhaltung · Lohnadministration · Mehrwertsteuer und Jahresabschluss · Steuererklärung · Firmengründung
+- Ihre Situation: die Ausgangslagen aus `startseite_de.md`
+
+### Digital und Kundenportal
+
+- Überschrift: Ihre Versicherungen **jederzeit** im Blick
+- Absätze, freigegebener Wortlaut aus `startseite_de.md`:
+  Wir nutzen moderne Software dort, wo sie Administration reduziert, Abläufe vereinfacht und Fehler vermeidet. Die fachliche Prüfung, die Beratung und die Verantwortung bleiben bei uns.
+  Sie merken davon vor allem eines: weniger Papier und kürzere Wege.
+- Alle Policen und Unterlagen an einem Ort, auch auf dem Handy
+- Fristen und Kündigungstermine auf einen Blick
+- Änderungen, Fragen und Offertwünsche direkt an uns
+- Anmeldung mit Code per E-Mail, Daten auf unserem eigenen Server in der Schweiz
+- Knöpfe: Zum Kundenportal · Offerte online anfragen
+
+Beispielansicht mit Ringdiagramm (erfundene Zahlen, sichtbar als Beispiel bezeichnet):
+Meine Versicherungen · Beispielansicht · Prämien pro Jahr · Gesundheit · Fahrzeug · Wohnen · Rechtsschutz ·
+Nächste Kündigungsfrist · So fasst das Kundenportal Ihre Policen zusammen. Die Zahlen sind ein Beispiel.
+
+### Ansprechpartner
+
+- Überschrift: Zwei **Ansprechpartner** (Satz aus `startseite_de.md`)
+
+### Kontakt
+
+- Überschrift: So erreichen **Sie** uns (ersetzt die doppelte Überschrift «Wobei können wir Sie unterstützen?»)
+- Satz aus `abschluss_kontakt_de.md`; Beschriftungen: Telefon · E-Mail · Büro

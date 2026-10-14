@@ -1,129 +1,83 @@
 /**
  * Inhalt der Startseite.
  *
- * QUELLE: `content/source/startseite_de.md`. Der Wortlaut stammt von dort und
- * wird hier nicht umformuliert.
+ * Fassung vom 14.10.2026, auf Ricardos Auftrag («zu viele inhalte», «weniger nach KI
+ * aussehen», Vorbild simply.ch, Digitalisierung und Kundenportal in den Vordergrund,
+ * Finanzplanung entfernt). QUELLEN: `content/source/umbau_2026-10_de.md` für die neuen
+ * Texte (Vorschläge, Ricardo bestätigt), `startseite_de.md` für den freigegebenen
+ * Wortlaut, der weiterverwendet wird (Digital, Ansprechpartner, Abschluss).
  *
- * Fassung vom 09.09.2026 (Revisionsauftrag). Neun Abschnitte:
- *
- *   1 Einstieg          2 Vertrauenszeile   3 Situationen
- *   4 Leistungen        5 Eine Stelle       6 Digital
- *   7 Ansprechpartner   8 Ablauf            9 Abschluss
- *
- * Drei Aenderungen gegenueber der Fassung vom 07.09.2026:
- *
- *   - Der Einstieg sagt jetzt, was A&C tut, statt es anzudeuten. „Zwei
- *     Ansprechpartner statt drei Adressen" war fuer Erstbesucher zu abstrakt.
- *   - Die Situationen stehen **vor** den Leistungen. Wer auf die Seite kommt,
- *     denkt in seinem Problem, nicht in unseren Bereichen.
- *   - Der Wissensbereich ist weg. Drei angekuendigte Beitraege ohne Text sind
- *     auf der Startseite ein Versprechen, das die Seite nicht einloest. Er
- *     kommt zurueck, sobald es Beitraege gibt.
- *
- * Die vier konkreten Gruende aus dem Auftrag stehen bewusst **nicht** als
- * eigener Abschnitt: „Zwei Bereiche, eine Stelle" ist Abschnitt 5, „Digital
- * organisiert" ist Abschnitt 6, „Feste Ansprechpartner" traegt Abschnitt 7 und
- * „Verstaendliche Entscheidungen" Abschnitt 8. Jeder Gedanke steht einmal.
+ * Aufbau: Banner · Einstieg · Leistungen als Listen · Digital mit Beispielansicht ·
+ * Ansprechpartner · Kontakt. Keine Vorzeilen, keine Werbesprüche, keine
+ * Symbolkacheln, keine Illustrationen.
  */
 
-import type { Rich } from '@/content/types'
-import type { Motiv } from '@/components/ui/Illustration'
-import type { PiktogrammName } from '@/components/ui/Piktogramm'
 import type { Locale } from '@/i18n/config'
 import type { PageKey } from '@/i18n/routes'
 
-/** Ein Leistungsbereich in Abschnitt 2. */
-export type Bereich = {
-  /** Der Bereichsname, klein ueber der Ueberschrift. */
-  kategorie: string
-  /** Die eigene Aussage des Bereichs — nicht noch einmal der Bereichsname. */
+/** Zweifarbige Überschrift: das Wort in der Mitte steht in Grün. */
+export type Titel = { vor?: string; akzent: string; nach?: string }
+
+export type Ziel = { ziel: PageKey; anker?: string }
+
+/** Eine Liste in «Was wir für Sie übernehmen»: Titel und Einträge mit Pfeil. */
+export type Liste = Ziel & {
   titel: string
-  text: string
-  /** Genau vier. Weniger laesst die Karte leer aussehen, mehr ueberfuellt sie. */
-  leistungen: readonly { bild: string; text: string }[]
-  ziel: PageKey
-  linkText: string
-  motiv: Motiv
-}
-
-/**
- * Der fuehrende Bereich. Gleich gebaut wie die beiden anderen, nur groesser
- * gesetzt — das ist verbindlich: Versicherungsbroking fuehrt (CLAUDE.md,
- * Rangfolge der Bereiche).
- */
-export type LeitBereich = Bereich
-
-/** Eine Ausgangslage in Abschnitt 3. */
-export type Fall = {
-  text: string
-  /** Das gelieferte Piktogramm zur Ausgangslage. */
-  bild: PiktogrammName
-  ziel: PageKey
-  anker?: string
-}
-
-/** Ein Schritt im Ablauf. */
-export type Schritt = {
-  titel: string
-  satz: string
-  /** Das gelieferte Symbol, Dateiname ohne Pfad und Endung. */
-  bild: string
+  eintraege: readonly (Ziel & { text: string })[]
 }
 
 export type StartseiteContent = {
   meta: { title: string; description: string }
-  /** Steht im Kopf und am Ende der Seite. Immer derselbe Wortlaut. */
+  /** Knopf im Banner und im Kontakt. Immer derselbe Wortlaut. */
   cta: string
 
-  einstieg: {
-    /** Kleine Themenzeile ueber der Ueberschrift, in Versalien. */
-    themenzeile: string
-    titel: string
-  }
+  einstieg: { themenzeile: string; titel: string }
 
-  situationen: {
-    eyebrow: string
-    titel: string
-    einleitung: string
-    eintraege: readonly Fall[]
+  intro: {
+    titel: Titel
+    absaetze: readonly string[]
+    offerte: string
+    portal: string
   }
 
   leistungen: {
-    eyebrow: string
-    titel: string
-    einleitung: string
-    /** Versicherungsbroking fuehrt — darum steht es allein und gross. */
-    leit: LeitBereich
-    weitere: readonly Bereich[]
+    titel: Titel
+    listen: readonly Liste[]
+  }
+
+  digital: {
+    titel: Titel
+    absaetze: readonly string[]
+    punkte: readonly string[]
+    portal: string
+    offerte: string
+    beispiel: {
+      titel: string
+      untertitel: string
+      diagrammTitel: string
+      segmente: readonly { text: string; betrag: number }[]
+      hinweis: string
+      frist: { text: string; datum: string }
+    }
   }
 
   personen: {
-    eyebrow: string
-    titel: string
+    titel: Titel
+    satz: string
     leute: readonly {
       name: string
-      /** Zeile fuer Zeile, damit der Umbruch sitzt wie in der Vorlage. */
-      funktion: readonly string[]
+      funktion: string
       bild: { datei: string; alt: string }
-      /**
-       * Vollstaendige Adresse des LinkedIn-Profils.
-       *
-       * Fehlt sie, entfaellt der Verweis auf der Karte — ein Knopf, der
-       * nirgends hinfuehrt, ist schlimmer als keiner.
-       */
       linkedin?: string
     }[]
-    /** Beschriftung des Verweises. Bei beiden dieselbe. */
     linkedinText: string
     link: { text: string; ziel: PageKey }
   }
 
-  abschluss: {
-    eyebrow: string
-    titel: string
+  kontakt: {
+    titel: Titel
     satz: string
-    /** Beschriftung der beiden Felder. Die Angabe kommt aus `company.ts`. */
-    felder: { telefon: string; email: string }
+    felder: { telefon: string; email: string; adresse: string }
   }
 }
 
@@ -136,95 +90,110 @@ const de: StartseiteContent = {
 
   cta: 'Erstgespräch anfragen',
 
-  // ---- 1 Einstieg
-  // Seit dem 15.09.2026 traegt der Einstieg den Banner, wie jede andere
-  // Seite auch (`content/source/banner_serie_de.md`).
+  // Banner wie auf jeder Seite (`content/source/banner_serie_de.md`)
   einstieg: {
     themenzeile: 'VERSICHERUNGEN · TREUHAND',
     titel: 'Verwurzelt im Seeland. Blick auf mehr.',
   },
 
-  // ---- 3 Situationen — vor den Leistungen, weil Kunden im Problem denken
-  situationen: {
-    eyebrow: 'Ausgangslagen',
-    titel: 'Wobei können wir Sie unterstützen?',
-    einleitung: 'Sechs Ausgangslagen, die bei uns am häufigsten am Anfang stehen.',
-    eintraege: [
-      { text: 'Ich gründe ein Unternehmen', bild: 'firmengruendung', ziel: 'firmengruendung' },
-      { text: 'Ich stelle Mitarbeitende ein', bild: 'mitarbeitende', ziel: 'treuhand' },
-      { text: 'Ich möchte meine Buchhaltung abgeben', bild: 'buchhaltung', ziel: 'buchhaltung' },
-      {
-        text: 'Ich möchte meinen Treuhänder wechseln',
-        bild: 'treuhaenderwechsel',
-        ziel: 'treuhaenderWechseln',
-      },
-      {
-        text: 'Ich möchte meine Versicherungen prüfen',
-        bild: 'versicherungspruefung',
-        ziel: 'versicherungen',
-      },
-      {
-        text: 'Ich habe einen Schadenfall',
-        bild: 'schadenfall',
-        ziel: 'versicherungen',
-        anker: 'schadenfall',
-      },
+  intro: {
+    titel: { vor: 'Ihr ', akzent: 'unabhängiger', nach: ' Versicherungsbroker im Seeland' },
+    absaetze: [
+      'Wir sind bei der FINMA als Versicherungsvermittler registriert und arbeiten in Ihrem Auftrag, nicht im Auftrag einer Versicherung.',
+      'Dazu übernehmen wir Buchhaltung, Löhne und Steuererklärungen – für Privatpersonen, Selbständige und kleine Unternehmen.',
     ],
+    offerte: 'Offerte anfragen',
+    portal: 'Zum Kundenportal',
   },
 
-  // ---- 4 Leistungen
   leistungen: {
-    eyebrow: 'Unsere Leistungen',
-    titel: 'Was wir für Sie übernehmen.',
-    einleitung:
-      'Drei Bereiche, die sich in Ihrer Situation oft überschneiden – und bei A&C sinnvoll zusammen gedacht werden.',
-
-    leit: {
-      kategorie: 'Versicherungen',
-      titel: 'Wir vertreten Sie, nicht die Versicherung.',
-      text: 'Wir prüfen Ihre Verträge, vergleichen Angebote unabhängig und finden die passende Lösung für Ihre Situation – transparent, verständlich und auch im Schadenfall an Ihrer Seite.',
-      leistungen: [
-        { bild: 'leistung_kranken', text: 'Krankenversicherung und Zusatzversicherung' },
-        { bild: 'leistung_hausrat', text: 'Hausrat, Haftpflicht und Motorfahrzeug' },
-        { bild: 'leistung_bvg', text: 'BVG, UVG und Krankentaggeld' },
-        { bild: 'leistung_betrieb', text: 'Betriebshaftpflicht und Sachversicherung' },
-      ],
-      ziel: 'versicherungen',
-      linkText: 'Zu den Versicherungen',
-      motiv: 'versicherungen',
-    },
-
-    weitere: [
+    titel: { vor: 'Was wir ', akzent: 'für Sie', nach: ' übernehmen' },
+    listen: [
       {
-        kategorie: 'Treuhand',
-        titel: 'Zahlen, die für Sie arbeiten.',
-        text: 'Buchhaltung, Löhne und Abschluss für Selbständige und KMU – klar, zuverlässig und mit einem festen Ansprechpartner.',
-        leistungen: [
-          { bild: 'leistung_buchhaltung', text: 'Buchhaltung' },
-          { bild: 'leistung_mwst', text: 'Mehrwertsteuer und Jahresabschluss' },
-          { bild: 'leistung_lohn', text: 'Lohnadministration und Sozialversicherungen' },
-          { bild: 'leistung_gruendung', text: 'Firmengründung und Treuhänderwechsel' },
+        titel: 'Für Privatpersonen',
+        ziel: 'versicherungen',
+        anker: 'privatpersonen',
+        eintraege: [
+          { text: 'Kranken- und Zusatzversicherung', ziel: 'versicherungen', anker: 'privatpersonen' },
+          { text: 'Hausrat und Haftpflicht', ziel: 'versicherungen', anker: 'privatpersonen' },
+          { text: 'Motorfahrzeug', ziel: 'versicherungen', anker: 'privatpersonen' },
+          { text: 'Leben und Säule 3a', ziel: 'versicherungen', anker: 'privatpersonen' },
+          { text: 'Rechtsschutz', ziel: 'versicherungen', anker: 'privatpersonen' },
         ],
+      },
+      {
+        titel: 'Für Unternehmen',
+        ziel: 'versicherungen',
+        anker: 'unternehmen',
+        eintraege: [
+          { text: 'BVG', ziel: 'versicherungen', anker: 'unternehmen' },
+          { text: 'UVG und UVG-Zusatz', ziel: 'versicherungen', anker: 'unternehmen' },
+          { text: 'Krankentaggeld', ziel: 'versicherungen', anker: 'unternehmen' },
+          { text: 'Betriebshaftpflicht', ziel: 'versicherungen', anker: 'unternehmen' },
+          { text: 'Sachversicherung', ziel: 'versicherungen', anker: 'unternehmen' },
+        ],
+      },
+      {
+        titel: 'Treuhand und Steuern',
         ziel: 'treuhand',
-        linkText: 'Zur Treuhand',
-        motiv: 'treuhand',
+        eintraege: [
+          { text: 'Buchhaltung', ziel: 'buchhaltung' },
+          { text: 'Lohnadministration', ziel: 'treuhand' },
+          { text: 'Mehrwertsteuer und Jahresabschluss', ziel: 'treuhand' },
+          { text: 'Steuererklärung', ziel: 'steuern' },
+          { text: 'Firmengründung', ziel: 'firmengruendung' },
+        ],
+      },
+      {
+        titel: 'Ihre Situation',
+        ziel: 'kontakt',
+        eintraege: [
+          { text: 'Ich gründe ein Unternehmen', ziel: 'firmengruendung' },
+          { text: 'Ich stelle Mitarbeitende ein', ziel: 'treuhand' },
+          { text: 'Ich möchte meinen Treuhänder wechseln', ziel: 'treuhaenderWechseln' },
+          { text: 'Ich möchte meine Versicherungen prüfen', ziel: 'versicherungen' },
+          { text: 'Ich habe einen Schadenfall', ziel: 'versicherungen', anker: 'schadenfall' },
+        ],
       },
     ],
   },
 
-  // ---- 6 Digital
-  //
-  // ---- 7 Ansprechpartner
-  //
-  // Auf der Startseite nur Name und Zustaendigkeit. Der Werdegang steht auf
-  // „Ueber uns" — hier waere er ein Lebenslauf an der falschen Stelle.
+  digital: {
+    titel: { vor: 'Ihre Versicherungen ', akzent: 'jederzeit', nach: ' im Blick' },
+    absaetze: [
+      'Wir nutzen moderne Software dort, wo sie Administration reduziert, Abläufe vereinfacht und Fehler vermeidet. Die fachliche Prüfung, die Beratung und die Verantwortung bleiben bei uns.',
+      'Sie merken davon vor allem eines: weniger Papier und kürzere Wege.',
+    ],
+    punkte: [
+      'Alle Policen und Unterlagen an einem Ort, auch auf dem Handy',
+      'Fristen und Kündigungstermine auf einen Blick',
+      'Änderungen, Fragen und Offertwünsche direkt an uns',
+      'Anmeldung mit Code per E-Mail, Daten auf unserem eigenen Server in der Schweiz',
+    ],
+    portal: 'Zum Kundenportal',
+    offerte: 'Offerte online anfragen',
+    beispiel: {
+      titel: 'Meine Versicherungen',
+      untertitel: 'Beispielansicht',
+      diagrammTitel: 'Prämien pro Jahr',
+      segmente: [
+        { text: 'Gesundheit', betrag: 4200 },
+        { text: 'Fahrzeug', betrag: 1350 },
+        { text: 'Wohnen', betrag: 620 },
+        { text: 'Rechtsschutz', betrag: 310 },
+      ],
+      hinweis: 'So fasst das Kundenportal Ihre Policen zusammen. Die Zahlen sind ein Beispiel.',
+      frist: { text: 'Nächste Kündigungsfrist', datum: '30.09.' },
+    },
+  },
+
   personen: {
-    eyebrow: 'Unser Team',
-    titel: 'Zwei Ansprechpartner',
+    titel: { vor: 'Zwei ', akzent: 'Ansprechpartner' },
+    satz: 'Keine Hotline. Ihr Dossier wird von einem von uns beiden geführt — und der geht auch ans Telefon.',
     leute: [
       {
         name: 'Ricardo Caires',
-        funktion: ['Treuhand · Versicherungen'],
+        funktion: 'Treuhand · Versicherungen',
         bild: {
           datei: '/bilder/portrait_ricardo.webp',
           alt: 'Ricardo Caires, Porträt vor hellem Bürohintergrund.',
@@ -233,7 +202,7 @@ const de: StartseiteContent = {
       },
       {
         name: 'Octavio Nuno Gouveia Andrade',
-        funktion: ['Treuhand · Versicherungen'],
+        funktion: 'Treuhand · Versicherungen',
         bild: {
           datei: '/bilder/portrait_octavio.webp',
           alt: 'Octavio Nuno Gouveia Andrade, Porträt vor hellem Bürohintergrund.',
@@ -245,15 +214,10 @@ const de: StartseiteContent = {
     link: { text: 'Mehr über uns', ziel: 'ueberUns' },
   },
 
-  // ---- 9 Abschluss
-  // Seit dem 15.09.2026 nach Ricardos HTML-Vorlage
-  // (`content/source/abschluss_kontakt_de.md`). Die Ueberschrift lautet jetzt
-  // gleich wie die von Abschnitt 3 — Ricardo ist darauf hingewiesen.
-  abschluss: {
-    eyebrow: 'Direkt und persönlich',
-    titel: 'Wobei können wir Sie unterstützen?',
+  kontakt: {
+    titel: { vor: 'So erreichen ', akzent: 'Sie', nach: ' uns' },
     satz: 'Schildern Sie uns kurz Ihre Situation. Wir melden uns persönlich bei Ihnen und besprechen, welche nächsten Schritte sinnvoll sind.',
-    felder: { telefon: 'Telefon', email: 'E-Mail' },
+    felder: { telefon: 'Telefon', email: 'E-Mail', adresse: 'Büro' },
   },
 }
 
@@ -261,9 +225,8 @@ const de: StartseiteContent = {
 
 /**
  * FR und PT liegen nicht vor. Sie stehen in `routes.ts` auf
- * `published: false` und sind damit nicht erreichbar; hier steht `null`,
- * damit eine fehlende Uebersetzung nicht versehentlich zur deutschen Fassung
- * zurueckfaellt.
+ * `published: false`; hier steht `null`, damit eine fehlende Übersetzung nicht
+ * versehentlich zur deutschen Fassung zurückfällt.
  */
 const inhalte: Record<Locale, StartseiteContent | null> = {
   de,
@@ -274,5 +237,3 @@ const inhalte: Record<Locale, StartseiteContent | null> = {
 export function getStartseite(locale: Locale): StartseiteContent | null {
   return inhalte[locale]
 }
-
-export type { Rich }

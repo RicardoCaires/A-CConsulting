@@ -1,5 +1,4 @@
 import type { InhaltsseiteInhalt } from '@/components/templates/Inhaltsseite'
-import type { StartseiteInhalt } from '@/components/templates/Startseite'
 import type { Leistungsseite } from '@/content/schema'
 
 /**
@@ -13,102 +12,6 @@ import type { Leistungsseite } from '@/content/schema'
  * Zweck: die Form der drei Vorlagen beurteilen, ohne dass echte Texte
  * vorliegen muessen.
  */
-
-/* ---- Vorlage A — Startseite --------------------------------------------- */
-
-export const beispielStartseite: StartseiteInhalt = {
-  einstieg: {
-    themenzeile: 'BEISPIEL-THEMENZEILE',
-    titel: 'Beispielüberschrift für den Einstieg',
-    knopf: { text: 'Beispielknopf', ziel: 'kontakt' },
-  },
-  situationen: {
-    eyebrow: 'Beispiel-Vorzeile',
-    titel: 'Beispielüberschrift der Situationen',
-    einleitung: 'Beispielsatz über die sechs Ausgangslagen.',
-    eintraege: [
-      { text: 'Erster Beispielfall', bild: 'firmengruendung', ziel: 'firmengruendung' },
-      { text: 'Zweiter Beispielfall', bild: 'mitarbeitende', ziel: 'treuhand' },
-      { text: 'Dritter Beispielfall', bild: 'buchhaltung', ziel: 'buchhaltung' },
-      { text: 'Vierter Beispielfall', bild: 'treuhaenderwechsel', ziel: 'treuhaenderWechseln' },
-      { text: 'Fünfter Beispielfall', bild: 'versicherungspruefung', ziel: 'versicherungen' },
-      { text: 'Sechster Beispielfall', bild: 'schadenfall', ziel: 'versicherungen' },
-    ],
-  },
-  leistungen: {
-    eyebrow: 'Beispiel-Vorzeile',
-    titel: 'Beispielüberschrift der Leistungen',
-    einleitung: 'Beispielsatz über die drei Bereiche.',
-    leit: {
-      kategorie: 'Erster Bereich',
-      titel: 'Beispielaussage des führenden Bereichs.',
-      text: 'Beispieltext zum führenden Bereich. Zwei Sätze, nicht mehr.',
-      leistungen: [
-        { bild: 'leistung_budget', text: 'Erste Beispielleistung' },
-        { bild: 'leistung_budget', text: 'Zweite Beispielleistung' },
-        { bild: 'leistung_budget', text: 'Dritte Beispielleistung' },
-        { bild: 'leistung_budget', text: 'Vierte Beispielleistung' },
-      ],
-      ziel: 'versicherungen',
-      linkText: 'Beispielverweis',
-      motiv: 'versicherungen',
-    },
-    weitere: [
-      {
-        kategorie: 'Zweiter Bereich',
-        titel: 'Beispielaussage des zweiten Bereichs.',
-        text: 'Beispieltext zum zweiten Bereich.',
-        leistungen: [
-          { bild: 'leistung_budget', text: 'Erste Beispielleistung' },
-          { bild: 'leistung_budget', text: 'Zweite Beispielleistung' },
-          { bild: 'leistung_budget', text: 'Dritte Beispielleistung' },
-          { bild: 'leistung_budget', text: 'Vierte Beispielleistung' },
-        ],
-        ziel: 'treuhand',
-        linkText: 'Beispielverweis',
-        motiv: 'treuhand',
-      },
-      {
-        kategorie: 'Dritter Bereich',
-        titel: 'Beispielaussage des dritten Bereichs.',
-        text: 'Beispieltext zum dritten Bereich.',
-        leistungen: [
-          { bild: 'leistung_budget', text: 'Erste Beispielleistung' },
-          { bild: 'leistung_budget', text: 'Zweite Beispielleistung' },
-          { bild: 'leistung_budget', text: 'Dritte Beispielleistung' },
-          { bild: 'leistung_budget', text: 'Vierte Beispielleistung' },
-        ],
-        ziel: 'personalFinance',
-        linkText: 'Beispielverweis',
-        motiv: 'finanzplanung',
-      },
-    ],
-  },
-  personen: {
-    eyebrow: 'Beispiel-Vorzeile',
-    titel: 'Beispielüberschrift der Ansprechpartner',
-    leute: [
-      {
-        name: 'Erste Beispielperson',
-        funktion: ['Erste Beispielzeile', 'Zweite Beispielzeile'],
-        bild: { datei: '/bilder/portrait_ricardo.webp', alt: 'Beispielporträt eins.' },
-      },
-      {
-        name: 'Zweite Beispielperson',
-        funktion: ['Beispielfunktion'],
-        bild: { datei: '/bilder/portrait_octavio.webp', alt: 'Beispielporträt zwei.' },
-      },
-    ],
-    linkedinText: 'Beispielverweis',
-  },
-  abschluss: {
-    eyebrow: 'Beispiel-Vorzeile',
-    titel: 'Beispielüberschrift des Abschlusses',
-    satz: 'Beispielsatz, der zur Kontaktaufnahme führt.',
-    felder: { telefon: 'Telefon', email: 'E-Mail' },
-    knopf: { text: 'Beispielknopf', ziel: 'kontakt' },
-  },
-}
 
 /* ---- Vorlage B — Leistungsseite ------------------------------------------ */
 

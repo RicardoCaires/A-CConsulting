@@ -1,21 +1,22 @@
 import { StartseiteTemplate } from '@/components/templates/Startseite'
 
-import { beispielStartseite } from '../beispiel'
+import { getStartseite } from '@/content/startseite'
 import { VorlagenKopf } from '../VorlagenKopf'
 
-/** Vorschau Vorlage A mit Beispieldaten. Kein Inhalt, kein oeffentlicher Text. */
+/** Vorschau Vorlage A mit dem Inhalt der deutschen Startseite. */
 export const metadata = { title: 'Vorlage A — Startseite', robots: { index: false } }
 
 export default function VorlageA() {
+  const inhalt = getStartseite('de')
   return (
     <main>
       <VorlagenKopf
         name="Vorlage A — Startseite"
-        abfolge="Einstieg · Bereiche · Geschäftsfälle · Weshalb A&C · Ansprechpartner · Wissen · Abschluss"
-        flaechen="DOMINANT · weiss · hell · flaeche · weiss · hell · flaeche"
-        regel="Text und Bildfläche nebeneinander. Keine Sektion über etwa fünfzig Wörter Fliesstext."
+        abfolge="Banner · Einstieg · Leistungen als Listen · Digital mit Beispielansicht · Ansprechpartner · Kontakt"
+        flaechen="DOMINANT · weisse Blöcke auf hellblauem Grund"
+        regel="Fassung vom 14.10.2026 (Vorbild simply.ch). Zeigt den echten Inhalt der Startseite."
       />
-      <StartseiteTemplate inhalt={beispielStartseite} locale="de" />
+      {inhalt ? <StartseiteTemplate inhalt={inhalt} locale="de" /> : null}
     </main>
   )
 }
