@@ -2490,6 +2490,36 @@ Deutsch, Französisch und Portugiesisch.
 > Fussbereich jeder Seite und im Impressum. Die Seite trägt seither Banner,
 > Formular und den Abschluss „Am schnellsten geht es telefonisch".
 
+### /offerte-anfragen
+
+> **Seit dem 14.10.2026** auf Ricardos Auftrag: «Ich will zuerst die offertenanfrage erstellen es soll
+> aber frage für frage gestellt werden und nicht ein grosses Formular sein». Eine Frage je Bild, mit
+> Fortschrittsbalken, «Überspringen», «Rest im Gespräch klären» und «Zurück»
+> (`src/components/blocks/OffertAssistent.tsx`, die dritte Client-Komponente). Erreichbar über den
+> Fussbereich unter dem Kundenportal; **nicht in der Hauptnavigation**. Nur Deutsch.
+>
+> - **Die Fragen kommen aus der Brokerverwaltung** (`crm.ac-co.ch/oeffentlich/api/offertkatalog`) — derselbe
+>   Katalog, mit dem A&C die Offerten bei den Gesellschaften anfragt. Sie stehen nicht in diesem Repository.
+> - **Die Antworten gehen direkt an den eigenen Server in der Schweiz**, nicht über Cloudflare und nicht
+>   per Mail. Darum steht `https://crm.ac-co.ch` in `connect-src` von `public/_headers`. Die Adresse
+>   steht in `company.crm` und lässt sich für die lokale Prüfung über `NEXT_PUBLIC_AC_CRM_URL` in einer
+>   `.env.local` überschreiben (steht in `.gitignore`).
+> - **Abschnitt 7 ist eingehalten:** keine Geburtsdaten, keine Angaben zu Dritten, kein Ausweisentzug, keine
+>   Gesundheit, keine Uploads, keine Policennummer. Der Server lässt diese Fragen weg und verwirft sie auch,
+>   wenn jemand sie schickt. Die Bemerkung trägt den Hinweis «Bitte keine Gesundheitsangaben …».
+> - **Jede Frage ist freiwillig.** Nötig sind nur Name (bei Firmen zusätzlich die Firma), PLZ, Ort und
+>   E-Mail; bei «Bitte rufen Sie mich an» die Telefonnummer.
+> - **Spamschutz:** Honigtopf, Mindestdauer und Bremse je Adresse und E-Mail im CRM. **Turnstile ist nicht
+>   eingebaut.**
+> - **Ohne JavaScript** steht ein Satz mit Telefon und E-Mail (`<noscript>`); dasselbe, wenn der Server
+>   nicht antwortet.
+> - **Die Texte sind ein Vorschlag** (`content/source/offertanfrage_de.md`) und warten auf Ricardos
+>   Bestätigung.
+>
+> ⚠️ **Die Datenschutzerklärung nennt dieses Formular noch nicht.** Sie ändert nur Ricardo (Abschnitt 7).
+> Ein Satz dazu gehört hinein: welche Angaben, wohin (eigener Server bei Infomaniak in der Schweiz), wozu,
+> wie lange.
+
 ### Preisdarstellung
 
 Keine Lockpreise ("Steuererklärung ab CHF 35"). Das passt nicht zur
