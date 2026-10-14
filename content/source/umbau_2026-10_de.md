@@ -37,14 +37,15 @@ Ricardo bestätigt oder ändert sie. Wiederverwendet ist, wo möglich, der freig
   Wir nutzen moderne Software dort, wo sie Administration reduziert, Abläufe vereinfacht und Fehler vermeidet. Die fachliche Prüfung, die Beratung und die Verantwortung bleiben bei uns.
   Sie merken davon vor allem eines: weniger Papier und kürzere Wege.
 - Alle Policen und Unterlagen an einem Ort, auch auf dem Handy
-- Fristen und Kündigungstermine auf einen Blick
+- Deckungen und Selbstbehalte jeder Police zum Nachlesen
+  (ersetzt am 15.10.2026 «Fristen und Kündigungstermine auf einen Blick»: das Portal zeigt die Fristen nicht an)
 - Änderungen, Fragen und Offertwünsche direkt an uns
 - Anmeldung mit Code per E-Mail, Daten auf unserem eigenen Server in der Schweiz
 - Knöpfe: Zum Kundenportal · Offerte online anfragen
 
 Beispielansicht mit Ringdiagramm (erfundene Zahlen, sichtbar als Beispiel bezeichnet):
 Meine Versicherungen · Beispielansicht · Prämien pro Jahr · Gesundheit · Fahrzeug · Wohnen · Rechtsschutz ·
-Nächste Kündigungsfrist · So fasst das Kundenportal Ihre Policen zusammen. Die Zahlen sind ein Beispiel.
+Beispiel mit erfundenen Zahlen. Im Kundenportal sehen Sie jede Police mit Prämie und Deckungen.
 
 ### Ansprechpartner
 
@@ -54,3 +55,15 @@ Nächste Kündigungsfrist · So fasst das Kundenportal Ihre Policen zusammen. Di
 
 - Überschrift: So erreichen **Sie** uns (ersetzt die doppelte Überschrift «Wobei können wir Sie unterstützen?»)
 - Satz aus `abschluss_kontakt_de.md`; Beschriftungen: Telefon · E-Mail · Büro
+
+## News und Blog (Übersicht und Beitrag)
+
+- Überschrift: News und **Blog**
+- Was sich bei A&C tut, und was Sie zu Versicherungen, Steuern und Treuhand wissen sollten.
+- Die ersten Beiträge folgen in Kürze.
+- Beschreibung: Neuigkeiten von A&C und Wissenswertes zu Versicherungen, Steuern und Treuhand.
+- Kennzeichnungen: News · Ratgeber · Entwurf · Min. Lesezeit · ← News und Blog
+
+## Kundenportal-Knopf
+
+- Schwebend unten rechts auf jeder Seite, Beschriftung aus den Oberflächentexten («Kundenportal»).

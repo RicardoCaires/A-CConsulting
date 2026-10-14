@@ -114,7 +114,7 @@ export function UnserModell({
         {/* ---- 1 Einleitung und Grundsaetze ----------------------------- */}
         <div className={styles.kopf}>
           <div>
-            <p className={styles.eyebrow}>{eyebrow}</p>
+            {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
             <h2 id={headingId} className={styles.titel}>
               {heading}
             </h2>

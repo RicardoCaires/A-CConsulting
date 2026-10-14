@@ -167,6 +167,8 @@ export const ui: Record<Locale, UiMessages> = {
       schadenfall: 'Schadenfall',
       kontakt: 'Kontakt',
       offerte: 'Offerte anfragen',
+      digital: 'Digital',
+      news: 'News und Blog',
       impressum: 'Impressum',
       datenschutz: 'Datenschutz',
     },
@@ -180,6 +182,9 @@ export const ui: Record<Locale, UiMessages> = {
       team: 'Die Inhaber',
       arbeitsweise: 'Arbeitsweise',
       standort: 'Standort',
+      buchhaltung: 'Buchhaltung',
+      gruendung: 'Firmengründung',
+      wechsel: 'Treuhänder wechseln',
     },
     contactAddressLabel: 'Adresse',
     person: {
@@ -260,6 +265,8 @@ export const ui: Record<Locale, UiMessages> = {
       impressum: 'Mentions légales',
       datenschutz: 'Protection des données',
       offerte: 'Demander une offre',
+      digital: 'Numérique',
+      news: 'Actualités',
     },
     navSection: {
       privatkunden: 'Pour les particuliers',
@@ -271,6 +278,9 @@ export const ui: Record<Locale, UiMessages> = {
       team: 'Les associés',
       arbeitsweise: 'Notre façon de travailler',
       standort: 'Situation',
+      buchhaltung: 'Comptabilité',
+      gruendung: 'Création d’entreprise',
+      wechsel: 'Changer de fiduciaire',
     },
     contactAddressLabel: 'Adresse',
     person: {
@@ -351,6 +361,8 @@ export const ui: Record<Locale, UiMessages> = {
       impressum: 'Informação legal',
       datenschutz: 'Proteção de dados',
       offerte: 'Pedir uma proposta',
+      digital: 'Digital',
+      news: 'Notícias',
     },
     navSection: {
       privatkunden: 'Para particulares',
@@ -362,6 +374,9 @@ export const ui: Record<Locale, UiMessages> = {
       team: 'Os sócios',
       arbeitsweise: 'Como trabalhamos',
       standort: 'Localização',
+      buchhaltung: 'Contabilidade',
+      gruendung: 'Criação de empresa',
+      wechsel: 'Mudar de fiduciária',
     },
     contactAddressLabel: 'Morada',
     person: {

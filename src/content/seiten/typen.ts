@@ -1,0 +1,159 @@
+/**
+ * Baukasten der Seiten, Fassung vom 15.10.2026.
+ *
+ * Auf Ricardos Auftrag («bitte durchwegs durchziehen») tragen alle Seiten denselben
+ * Aufbau wie die Startseite vom 14.10.2026 (Vorbild simply.ch): weisse Blöcke auf
+ * hellblauem Grund, zweifarbige Überschriften ohne Vorzeile, keine Werbesprüche,
+ * keine Symbolkacheln. Jede Seite ist eine Liste von Blöcken; welche Form ein
+ * Block hat, bestimmt `art`. Abwechslung entsteht aus verschiedenen Arten, nicht
+ * aus Effekten.
+ *
+ * Texte kommen aus `content/source/` (die Quellenprüfung kontrolliert das).
+ */
+
+import type { Rich } from '@/content/types'
+import type { PageKey } from '@/i18n/routes'
+
+/** Zweifarbige Überschrift: das Wort in der Mitte steht in Grün. */
+export type Titel = { vor?: string; akzent: string; nach?: string }
+
+/** Ziel innerhalb der Website: Seite und optional Abschnitt. */
+export type Ziel = { ziel: PageKey; anker?: string }
+
+/**
+ * Ein Knopf oder Link. `haupt` ist der grüne Knopf, `zweit` der helle mit grüner
+ * Kontur, `link` ein unterstrichener Textlink. Externe Ziele (Kundenportal) über `href`.
+ */
+export type Knopf = { text: string; art?: 'haupt' | 'zweit' | 'link' } & (
+  | Ziel
+  | { href: 'kundenportal' | 'telefon' | 'email' | 'offerte' | 'route' }
+  | { datei: string }
+)
+
+/** Eine Linkliste: Titel und Einträge mit Pfeil. */
+export type Liste = {
+  titel: string
+  /** Anker für Sprünge von anderen Seiten (z. B. `privatpersonen`). */
+  id?: string
+  ziel?: Ziel
+  eintraege: readonly ({ text: string; zusatz?: string } & Partial<Ziel>)[]
+}
+
+type Kopf = {
+  /** Anker des Blocks, damit Links von anderen Seiten hierher springen. */
+  id?: string
+  titel: Titel
+  einleitung?: Rich
+}
+
+export type Block =
+  /** Text mit optionalen Haken und Knöpfen. Die einfachste Form. */
+  | (Kopf & {
+      art: 'text'
+      absaetze?: readonly Rich[]
+      punkte?: readonly string[]
+      knoepfe?: readonly Knopf[]
+      /** Text in zwei Spalten statt einer: links Titel, rechts Absätze. */
+      breit?: boolean
+    })
+  /** Mehrere Linklisten nebeneinander. */
+  | (Kopf & { art: 'listen'; listen: readonly Liste[] })
+  /** Text links, rechts etwas zum Anschauen. */
+  | (Kopf & {
+      art: 'textBild'
+      absaetze?: readonly Rich[]
+      punkte?: readonly string[]
+      knoepfe?: readonly Knopf[]
+      bild:
+        | { art: 'foto'; datei: string; alt: string; breite: number; hoehe: number }
+        | { art: 'portal' }
+        | { art: 'karte'; titel: string; knopf: string; hinweis: string }
+        | { art: 'versicherer'; hinweis: string; gesellschaften: readonly { bild: string; name: string; url: string }[] }
+      /** Bild links statt rechts – für Abwechslung zwischen zwei Blöcken. */
+      bildLinks?: boolean
+    })
+  /** Nummerierte Schritte auf einer Linie. */
+  | (Kopf & {
+      art: 'schritte'
+      schritte: readonly { titel: string; text: string }[]
+      nachsatz?: Rich
+    })
+  /** Zwei oder drei Spalten mit denselben Merkmalen, zum Vergleichen. */
+  | (Kopf & {
+      art: 'vergleich'
+      spalten: readonly {
+        titel: string
+        untertitel?: string
+        zeilen: readonly { merkmal: string; wert: string }[]
+        passt?: string
+      }[]
+      nachsatz?: Rich
+      knoepfe?: readonly Knopf[]
+    })
+  /** Eine schlichte Tabelle, z. B. Fristen und Gebühren. */
+  | (Kopf & {
+      art: 'tabelle'
+      kopfzeile: readonly string[]
+      zeilen: readonly (readonly string[])[]
+      nachsaetze?: readonly Rich[]
+      knoepfe?: readonly Knopf[]
+    })
+  /** Häufige Fragen zum Aufklappen. Höchstens drei je Seite (Ricardo, 14.10.2026). */
+  | (Kopf & { art: 'fragen'; fragen: readonly { frage: string; antwort: Rich }[] })
+  /** Die Inhaber mit Foto, Angaben und direktem Kontakt. */
+  | (Kopf & {
+      art: 'personen'
+      satz?: string
+      ausfuehrlich?: boolean
+      leute: readonly {
+        name: string
+        rolle: string
+        bild: { datei: string; alt: string }
+        angaben?: readonly { merkmal: string; wert: string }[]
+        sprachen?: string
+        telefon?: 'ricardo' | 'octavio'
+        email?: 'ricardo' | 'octavio'
+        linkedin?: string
+      }[]
+      knoepfe?: readonly Knopf[]
+    })
+  /** Telefon, E-Mail und Büro mit einem Satz und dem Knopf zur Kontaktseite. */
+  | (Kopf & {
+      art: 'kontakt'
+      satz: string
+      beschriftungen: { telefon: string; email: string; buero: string }
+      ohneKnopf?: boolean
+    })
+  /** Das Schaubild «Unser Modell» der Versicherungsseite, unverändert übernommen. */
+  | { art: 'modell'; id?: string }
+  /** Das Kontaktformular der Kontaktseite, unverändert übernommen. */
+  | { art: 'formular'; id?: string }
+
+export type SeitenInhalt = {
+  meta: { title: string; description: string }
+  /** Banner mit schlichter Überschrift; fehlt er, beginnt die Seite mit dem ersten Block. */
+  banner?: { themenzeile: string; ueberschrift: string; unterzeile?: string }
+  /** Ohne Banner trägt der erste Block die Hauptüberschrift (h1). */
+  bloecke: readonly Block[]
+}
+
+/**
+ * Ein Beitrag in «News und Blog» (15.10.2026). Ricardo: «Du entwirfst, ich gebe
+ * frei». Ein Beitrag erscheint erst, wenn `freigegeben` auf `true` steht.
+ */
+export type Beitrag = {
+  /** Teil der Adresse: /de/news/<slug>/ – nur Kleinbuchstaben, Ziffern, Bindestriche. */
+  slug: string
+  art: 'News' | 'Ratgeber'
+  titel: string
+  /** Ein Satz für die Übersicht und die Suchmaschinen. */
+  kurz: string
+  /** Veröffentlichungsdatum ISO (YYYY-MM-DD); bis zur Freigabe das geplante Datum. */
+  datum: string
+  freigegeben: boolean
+  /** Lesezeit in Minuten, grob. */
+  minuten: number
+  abschnitte: readonly { zwischentitel?: string; absaetze: readonly Rich[]; punkte?: readonly string[] }[]
+  /** Hinweis am Schluss, z. B. dass der Beitrag keine individuelle Beratung ersetzt. */
+  hinweis?: string
+}

@@ -8,6 +8,7 @@ import { htmlLang, isLocale, locales, type Locale } from '@/i18n/config'
 import { getUi } from '@/i18n/messages/ui'
 import { isPublished, localesWithPages, path } from '@/i18n/routes'
 import { Strukturdaten } from '@/components/layout/Strukturdaten'
+import { PortalKnopf } from '@/components/layout/PortalKnopf'
 import { company } from '@/lib/company'
 import { ogBild } from '@/lib/social'
 import { inter, sourceSerif } from '@/lib/fonts'
@@ -106,6 +107,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         <Header locale={typedLocale} />
         <main id="inhalt">{children}</main>
         <Footer locale={typedLocale} />
+        <PortalKnopf locale={typedLocale} />
       </body>
     </html>
   )

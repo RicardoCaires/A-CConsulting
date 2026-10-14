@@ -111,7 +111,7 @@ export function Kontaktformular({
         <section className={styles.schale} id={id} aria-labelledby={headingId}>
           {/* ---- Links: wer antwortet ---------------------------------- */}
           <div className={styles.einstieg}>
-            <p className={styles.eyebrow}>{eyebrow}</p>
+            {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
             <h2 id={headingId} className={styles.titel}>
               {heading}
             </h2>

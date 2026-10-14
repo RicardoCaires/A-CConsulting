@@ -34,6 +34,8 @@ export type PageKey =
   | 'schadenfall'
   | 'kontakt'
   | 'offerte'
+  | 'digital'
+  | 'news'
   | 'impressum'
   | 'datenschutz'
 
@@ -84,6 +86,7 @@ export const pages: Record<PageKey, PageDefinition> = {
     inLegalNav: false,
     sitemapPriority: 0.8,
   },
+  // Seit dem 15.10.2026 Abschnitt der Seite Treuhand (Ricardo: weniger Unterseiten); alte Adresse leitet weiter.
   buchhaltung: {
     slug: {
       de: 'treuhand/buchhaltung',
@@ -96,7 +99,7 @@ export const pages: Record<PageKey, PageDefinition> = {
     // durchgehend als fehlende Uebersetzung markiert, und Marken verschwinden
     // im Produktionsbau — die Seiten waeren dort leer. Die Struktur bleibt im
     // Code stehen, damit die Uebersetzung sie spaeter nur noch fuellen muss.
-    published: { de: true, fr: false, pt: false },
+    published: { de: false, fr: false, pt: false },
     inMainNav: false,
     inLegalNav: false,
     sitemapPriority: 0.7,
@@ -134,13 +137,14 @@ export const pages: Record<PageKey, PageDefinition> = {
     inLegalNav: false,
     sitemapPriority: 0.7,
   },
+  // Seit dem 15.10.2026 Abschnitt der Seite Treuhand (Ricardo: weniger Unterseiten); alte Adresse leitet weiter.
   treuhaenderWechseln: {
     slug: {
       de: 'treuhand/treuhaender-wechseln',
       fr: 'fiduciaire/changer-de-fiduciaire',
       pt: 'fiduciaria/mudar-de-fiduciaria',
     },
-    published: { de: true, fr: false, pt: false },
+    published: { de: false, fr: false, pt: false },
     inMainNav: false,
     inLegalNav: false,
     sitemapPriority: 0.7,
@@ -152,13 +156,14 @@ export const pages: Record<PageKey, PageDefinition> = {
     inLegalNav: false,
     sitemapPriority: 0.8,
   },
+  // Seit dem 15.10.2026 Abschnitt der Seite Treuhand (Ricardo: weniger Unterseiten); alte Adresse leitet weiter.
   firmengruendung: {
     slug: {
       de: 'firmengruendung',
       fr: 'creation-entreprise',
       pt: 'constituicao-de-empresa',
     },
-    published: { de: true, fr: false, pt: false },
+    published: { de: false, fr: false, pt: false },
     inMainNav: false,
     inLegalNav: false,
     sitemapPriority: 0.7,
@@ -226,6 +231,25 @@ export const pages: Record<PageKey, PageDefinition> = {
    * Hauptnavigation; erreichbar ueber den Fussbereich. FR und PT folgen mit den
    * uebrigen Uebersetzungen.
    */
+  /** Digitalisierung und Kundenportal (15.10.2026, Ricardo: «in den Vordergrund stellen»). */
+  digital: {
+    slug: { de: 'digital', fr: 'numerique', pt: 'digital' },
+    published: { de: true, fr: false, pt: false },
+    inMainNav: true,
+    inLegalNav: false,
+    sitemapPriority: 0.8,
+  },
+  /**
+   * News und Blog (15.10.2026). Online erst nach Ricardos Freigabe der Beiträge
+   * («Du entwirfst, ich gebe frei»): bis dahin `published: false`.
+   */
+  news: {
+    slug: { de: 'news', fr: 'actualites', pt: 'noticias' },
+    published: { de: false, fr: false, pt: false },
+    inMainNav: false,
+    inLegalNav: false,
+    sitemapPriority: 0.6,
+  },
   offerte: {
     slug: { de: 'offerte-anfragen', fr: 'demande-offre', pt: 'pedido-proposta' },
     published: { de: true, fr: false, pt: false },
@@ -270,6 +294,7 @@ export const pages: Record<PageKey, PageDefinition> = {
 export const mainNavOrder: readonly PageKey[] = [
   'versicherungen',
   'treuhand',
+  'digital',
   'ueberUns',
 ]
 
@@ -288,6 +313,9 @@ export type NavSectionKey =
   | 'team'
   | 'arbeitsweise'
   | 'standort'
+  | 'buchhaltung'
+  | 'gruendung'
+  | 'wechsel'
 
 /**
  * Ein Unterpunkt: entweder eine eigene Seite oder ein Abschnitt der
@@ -330,11 +358,13 @@ const UNTERPUNKTE: Partial<Record<PageKey, readonly NavChild[]>> = {
     // zurueck, genuegt diese eine Zeile.
     { kind: 'section', page: 'versicherungen', anchor: 'schadenfall', label: 'schadenfall' },
   ],
+  // Seit dem 15.10.2026 Abschnitte der Seite Treuhand statt eigener Seiten
+  // (Ricardo: weniger Unterseiten). Steuern bleibt eine eigene Seite.
   treuhand: [
-    { kind: 'page', page: 'buchhaltung' },
+    { kind: 'section', page: 'treuhand', anchor: 'buchhaltung', label: 'buchhaltung' },
     { kind: 'page', page: 'steuern' },
-    { kind: 'page', page: 'firmengruendung' },
-    { kind: 'page', page: 'treuhaenderWechseln' },
+    { kind: 'section', page: 'treuhand', anchor: 'firmengruendung', label: 'gruendung' },
+    { kind: 'section', page: 'treuhand', anchor: 'wechsel', label: 'wechsel' },
   ],
   ueberUns: [
     { kind: 'section', page: 'ueberUns', anchor: 'inhaber', label: 'team' },

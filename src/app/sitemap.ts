@@ -3,6 +3,7 @@ import type { MetadataRoute } from 'next'
 import { htmlLang, locales } from '@/i18n/config'
 import { isPublished, pages, path, publishedPages } from '@/i18n/routes'
 import { company } from '@/lib/company'
+import { beitraege } from '@/content/seiten/news'
 
 /**
  * Sitemap.
@@ -40,6 +41,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
           ),
         },
       })
+    }
+
+    // Freigegebene Beiträge aus News und Blog (15.10.2026)
+    if (isPublished('news', locale) && locale === 'de') {
+      for (const b of beitraege.filter((x) => x.freigegeben)) {
+        entries.push({
+          url: new URL(`${path('news', locale)}${b.slug}/`, company.url).toString(),
+          lastModified: new Date(b.datum),
+          priority: 0.5,
+        })
+      }
     }
   }
 

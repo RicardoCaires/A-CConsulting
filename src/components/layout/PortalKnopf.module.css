@@ -1,0 +1,71 @@
+/* Kundenportal, schwebend unten rechts (15.10.2026). Grün wie jeder Knopf,
+   beim Zeigen und bei Tastaturfokus dunkel. Auf dem Telefon kleiner, damit er
+   keinen Inhalt verdeckt; der Fussbereich hat unten genug Luft. */
+
+.knopf {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.65rem 1.15rem 0.65rem 0.95rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ac-color-white);
+  text-decoration: none;
+  background-color: var(--ac-color-accent-green);
+  border-radius: 999px;
+  box-shadow: var(--ac-shadow-card-strong);
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing), transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.knopf:hover,
+.knopf:focus-visible {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-navy-deep);
+  transform: translateY(-2px);
+}
+
+.knopf:focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+.schloss {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 30rem) {
+  .knopf {
+    min-height: 2.75rem;
+    padding: 0.55rem 0.95rem 0.55rem 0.8rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .knopf {
+    transition: none;
+  }
+
+  .knopf:hover,
+  .knopf:focus-visible {
+    transform: none;
+  }
+}
+
+@media print {
+  .knopf {
+    display: none;
+  }
+}

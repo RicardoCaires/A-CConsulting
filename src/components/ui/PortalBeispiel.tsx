@@ -23,7 +23,8 @@ type Props = {
   diagrammTitel: string
   segmente: readonly Segment[]
   hinweis: string
-  frist: { text: string; datum: string }
+  /** Nur, wenn das Portal die Angabe auch zeigt. */
+  frist?: { text: string; datum: string }
 }
 
 /** Reihenfolge der Farben: Grün führt, dann die zwei Grau-Navy-Stufen und Hellblau. */
@@ -85,10 +86,12 @@ export function PortalBeispiel({ titel, untertitel, diagrammTitel, segmente, hin
         </ul>
       </div>
 
-      <div className={styles.frist}>
-        <span>{frist.text}</span>
-        <strong>{frist.datum}</strong>
-      </div>
+      {frist ? (
+        <div className={styles.frist}>
+          <span>{frist.text}</span>
+          <strong>{frist.datum}</strong>
+        </div>
+      ) : null}
 
       <figcaption className={styles.hinweis}>{hinweis}</figcaption>
     </figure>

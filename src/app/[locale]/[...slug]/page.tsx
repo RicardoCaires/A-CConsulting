@@ -4,6 +4,10 @@ import { notFound } from 'next/navigation'
 import { Banner } from '@/components/blocks/Banner'
 import { Hero } from '@/components/blocks/Hero'
 import { OffertAssistent } from '@/components/blocks/OffertAssistent'
+import { NewsBeitrag, NewsUebersicht } from '@/components/seite/News'
+import { Seite } from '@/components/seite/Seite'
+import { beitrag, newsVorschau, sichtbareBeitraege } from '@/lib/news'
+import { getSeite } from '@/content/seiten'
 import assistentStyles from '@/components/blocks/OffertAssistent.module.css'
 import { PageBlocks } from '@/components/blocks/PageBlocks'
 import { LeistungsseiteTemplate } from '@/components/templates/Leistungsseite'
@@ -16,7 +20,7 @@ import { getLeistungsseite } from '@/content/leistungsseiten'
 import { getPageContent } from '@/content/pages'
 import { getUeberuns } from '@/content/ueberuns'
 import { getWissen } from '@/content/wissen'
-import { htmlLang, isLocale, locales } from '@/i18n/config'
+import { htmlLang, isLocale, locales, type Locale } from '@/i18n/config'
 import { getUi } from '@/i18n/messages/ui'
 import {
   hrefOrDefault,
@@ -53,16 +57,30 @@ import { ogBild } from '@/lib/social'
 
 export const dynamicParams = false
 
+/** News und Blog: online erst mit freigegebenen Beiträgen; lokal mit Vorschau auch die Entwürfe. */
+const newsSichtbar = (locale: Locale) => isPublished('news', locale) || (newsVorschau && locale === 'de')
+const istNews = (locale: Locale, slug: string[]) => newsSichtbar(locale) && slug[0] === pages.news.slug[locale] && slug.length <= 2
+
 export function generateStaticParams() {
   const params: { locale: string; slug: string[] }[] = []
 
   for (const locale of locales) {
+    if (newsSichtbar(locale)) {
+      params.push({ locale, slug: [pages.news.slug[locale]] })
+      for (const b of sichtbareBeitraege(locale)) params.push({ locale, slug: [pages.news.slug[locale], b.slug] })
+    }
     for (const key of publishedPages(locale)) {
       if (key === 'home') continue
       // Eine Seite wird erzeugt, wenn es Inhalt gibt — nach neuem Schema
       // (Vorlage B) oder nach dem bisherigen Blockmodell.
       if (key === 'ueberUns') {
         if (!getUeberuns(locale)) continue
+        params.push({ locale, slug: pages[key].slug[locale].split('/') })
+        continue
+      }
+
+      // Seiten im Baukasten (15.10.2026)
+      if (getSeite(locale, key)) {
         params.push({ locale, slug: pages[key].slug[locale].split('/') })
         continue
       }
@@ -96,6 +114,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale, slug } = await params
   if (!isLocale(locale)) return {}
 
+  if (istNews(locale, slug)) {
+    const b = slug[1] ? beitrag(locale, slug[1]) : null
+    const titel = b ? b.titel : 'News und Blog'
+    const beschreibung = b ? b.kurz : 'Neuigkeiten von A&C und Wissenswertes zu Versicherungen, Steuern und Treuhand.'
+    const url = b ? `${path('news', locale)}${b.slug}/` : path('news', locale)
+    return {
+      title: titel,
+      description: beschreibung,
+      alternates: { canonical: url },
+      ...(b && !b.freigegeben ? { robots: { index: false, follow: false } } : {}),
+      openGraph: { images: ogBild, title: `${titel} — ${company.shortName}`, description: beschreibung, url, locale: htmlLang[locale].replace('-', '_') },
+    }
+  }
+
   const key = pageKeyFromSlug(locale, slug)
   if (!key) return {}
 
@@ -104,6 +136,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       .filter((candidate) => isPublished(key, candidate))
       .map((candidate) => [htmlLang[candidate], path(key, candidate)]),
   )
+
+  // Seiten im Baukasten: Titel und Beschreibung aus dem Inhalt
+  const baukasten = getSeite(locale, key)
+  if (baukasten) {
+    return {
+      title: baukasten.meta.title,
+      description: baukasten.meta.description,
+      alternates: { canonical: path(key, locale), languages: sprachen },
+      openGraph: {
+        images: ogBild,
+        title: `${baukasten.meta.title} — ${company.shortName}`,
+        description: baukasten.meta.description,
+        url: path(key, locale),
+        locale: htmlLang[locale].replace('-', '_'),
+      },
+    }
+  }
 
   // Vorlage E: „Ueber uns" bringt seine Angaben selbst mit.
   if (key === 'ueberUns') {
@@ -208,8 +257,20 @@ export default async function ContentPage({ params }: PageProps) {
   const { locale, slug } = await params
   if (!isLocale(locale)) notFound()
 
+  // News und Blog (15.10.2026)
+  if (istNews(locale, slug)) {
+    if (!slug[1]) return <NewsUebersicht beitraege={sichtbareBeitraege(locale)} locale={locale} />
+    const b = beitrag(locale, slug[1])
+    if (!b) notFound()
+    return <NewsBeitrag b={b} locale={locale} />
+  }
+
   const key = pageKeyFromSlug(locale, slug)
   if (!key) notFound()
+
+  // Seiten im Baukasten (15.10.2026) haben Vorrang vor allen älteren Vorlagen
+  const seite = getSeite(locale, key)
+  if (seite) return <Seite inhalt={seite} locale={locale} />
 
   // Vorlage E: „Ueber uns" ist eine redaktionelle Seite mit fuenf eigenen
   // Kompositionen statt gleichfoermiger Bloecke. Sie laeuft darum nicht ueber

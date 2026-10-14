@@ -1,0 +1,545 @@
+import Image from 'next/image'
+
+import { Banner } from '@/components/blocks/Banner'
+import { Kontaktformular } from '@/components/blocks/Kontaktformular'
+import { UnserModell } from '@/components/blocks/UnserModell'
+import { PortalBeispiel } from '@/components/ui/PortalBeispiel'
+import { RichText } from '@/components/ui/RichText'
+import { Standortkarte } from '@/components/ui/Standortkarte'
+import { getPageContent } from '@/content/pages'
+import { portalBeispiel } from '@/content/seiten/portal-beispiel'
+import type { Block, Knopf, SeitenInhalt, Titel, Ziel } from '@/content/seiten/typen'
+import type { Locale } from '@/i18n/config'
+import { getUi } from '@/i18n/messages/ui'
+import { hrefOrDefault, isPublished, path } from '@/i18n/routes'
+import { addressLines, bueroLage, company, direktadressen, direktnummern, mapsRoute } from '@/lib/company'
+
+import styles from './Seite.module.css'
+
+/**
+ * Baukasten der Seiten (15.10.2026). Setzt eine Seite aus Blöcken zusammen:
+ * Banner, dann weisse Blöcke auf hellblauem Grund. Die Form jedes Blocks steht
+ * hier und nur hier – eine Änderung wirkt auf allen Seiten.
+ *
+ * Vorbild simply.ch, übertragen auf A&C (Ricardo, 14.10.2026): zweifarbige
+ * Überschriften ohne Vorzeile, keine Werbesprüche, keine Symbolkacheln, Navy nie
+ * als Fläche. Abwechslung kommt aus den verschiedenen Blockarten.
+ */
+
+/* ---- Kleine Bausteine ------------------------------------------------------- */
+
+function Ueberschrift({ titel, id, h1 }: { titel: Titel; id?: string; h1?: boolean }) {
+  const Tag = h1 ? 'h1' : 'h2'
+  return (
+    <Tag id={id} className={h1 ? `${styles.titel} ${styles.titelGross}` : styles.titel}>
+      {titel.vor}
+      <span className={styles.akzent}>{titel.akzent}</span>
+      {titel.nach}
+    </Tag>
+  )
+}
+
+function zielHref(z: Ziel, locale: Locale) {
+  const basis = isPublished(z.ziel, locale) ? path(z.ziel, locale) : hrefOrDefault(z.ziel, locale)
+  return z.anker ? `${basis}#${z.anker}` : basis
+}
+
+function knopfHref(k: Knopf, locale: Locale): { href: string; extern?: boolean } {
+  if ('datei' in k) return { href: k.datei }
+  if ('href' in k) {
+    switch (k.href) {
+      case 'kundenportal':
+        return { href: company.kundenportal }
+      case 'telefon':
+        return { href: `tel:${company.phoneE164}` }
+      case 'email':
+        return { href: `mailto:${company.email}` }
+      case 'offerte':
+        return { href: path('offerte', locale) }
+      case 'route':
+        return { href: mapsRoute, extern: true }
+    }
+  }
+  return { href: zielHref(k, locale) }
+}
+
+function Knoepfe({ knoepfe, locale }: { knoepfe?: readonly Knopf[]; locale: Locale }) {
+  if (!knoepfe?.length) return null
+  return (
+    <div className={styles.knoepfe}>
+      {knoepfe.map((k) => {
+        const { href, extern } = knopfHref(k, locale)
+        const art = k.art ?? 'haupt'
+        const klasse = art === 'link' ? styles.textlink : art === 'zweit' ? `${styles.knopf} ${styles.knopfZweit}` : styles.knopf
+        return (
+          <a key={k.text} className={klasse} href={href} {...(extern ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+            {k.text}
+            {art !== 'link' ? (
+              <span className={styles.pfeil} aria-hidden="true">
+                {' →'}
+              </span>
+            ) : null}
+          </a>
+        )
+      })}
+    </div>
+  )
+}
+
+function Absaetze({ absaetze }: { absaetze?: readonly Parameters<typeof RichText>[0]['value'][] }) {
+  if (!absaetze?.length) return null
+  return (
+    <>
+      {absaetze.map((a, i) => (
+        <p key={i} className={styles.absatz}>
+          <RichText value={a} />
+        </p>
+      ))}
+    </>
+  )
+}
+
+function Haken({ punkte }: { punkte?: readonly string[] }) {
+  if (!punkte?.length) return null
+  return (
+    <ul className={styles.haken}>
+      {punkte.map((p) => (
+        <li key={p}>{p}</li>
+      ))}
+    </ul>
+  )
+}
+
+function Kopf({ block, h1, nr }: { block: { titel: Titel; einleitung?: Parameters<typeof RichText>[0]['value'] }; h1: boolean; nr: number }) {
+  return (
+    <>
+      <Ueberschrift titel={block.titel} id={`block-${nr}`} h1={h1} />
+      {block.einleitung ? (
+        <p className={styles.einleitung}>
+          <RichText value={block.einleitung} />
+        </p>
+      ) : null}
+    </>
+  )
+}
+
+/* ---- Die Blockarten ----------------------------------------------------------- */
+
+function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; h1: boolean; nr: number }) {
+  switch (block.art) {
+    case 'text':
+      return (
+        <div className={block.breit ? styles.textBreit : undefined}>
+          <div>
+            <Kopf block={block} h1={h1} nr={nr} />
+          </div>
+          <div>
+            <Absaetze absaetze={block.absaetze} />
+            <Haken punkte={block.punkte} />
+            <Knoepfe knoepfe={block.knoepfe} locale={locale} />
+          </div>
+        </div>
+      )
+
+    case 'listen':
+      return (
+        <>
+          <Kopf block={block} h1={h1} nr={nr} />
+          <div className={styles.listen} data-anzahl={block.listen.length}>
+            {block.listen.map((liste) => (
+              <nav key={liste.titel} id={liste.id} className={styles.liste} aria-label={liste.titel}>
+                <h3 className={styles.listeTitel}>
+                  {liste.ziel ? <a href={zielHref(liste.ziel, locale)}>{liste.titel}</a> : liste.titel}
+                </h3>
+                <ul>
+                  {liste.eintraege.map((e) => {
+                    const inhalt = (
+                      <>
+                        <span>
+                          {e.text}
+                          {e.zusatz ? <span className={styles.zusatz}>{e.zusatz}</span> : null}
+                        </span>
+                        {e.ziel ? (
+                          <span className={styles.chevron} aria-hidden="true">
+                            ›
+                          </span>
+                        ) : null}
+                      </>
+                    )
+                    return (
+                      <li key={e.text}>
+                        {e.ziel ? (
+                          <a href={zielHref({ ziel: e.ziel, anker: e.anker }, locale)}>{inhalt}</a>
+                        ) : (
+                          <div className={styles.eintrag}>{inhalt}</div>
+                        )}
+                      </li>
+                    )
+                  })}
+                </ul>
+              </nav>
+            ))}
+          </div>
+        </>
+      )
+
+    case 'textBild':
+      return (
+        <div className={`${styles.textBild} ${block.bildLinks ? styles.bildLinks : ''}`}>
+          <div className={styles.textSpalte}>
+            <Kopf block={block} h1={h1} nr={nr} />
+            <Absaetze absaetze={block.absaetze} />
+            <Haken punkte={block.punkte} />
+            <Knoepfe knoepfe={block.knoepfe} locale={locale} />
+          </div>
+          <div className={styles.bildSpalte}>
+            <Bild bild={block.bild} />
+          </div>
+        </div>
+      )
+
+    case 'schritte':
+      return (
+        <>
+          <Kopf block={block} h1={h1} nr={nr} />
+          <ol className={styles.schritte} data-anzahl={block.schritte.length}>
+            {block.schritte.map((s, i) => (
+              <li key={s.titel}>
+                <span className={styles.nummer} aria-hidden="true">
+                  {i + 1}
+                </span>
+                <h3 className={styles.schrittTitel}>{s.titel}</h3>
+                <p className={styles.schrittText}>{s.text}</p>
+              </li>
+            ))}
+          </ol>
+          {block.nachsatz ? (
+            <p className={styles.nachsatz}>
+              <RichText value={block.nachsatz} />
+            </p>
+          ) : null}
+        </>
+      )
+
+    case 'vergleich':
+      return (
+        <>
+          <Kopf block={block} h1={h1} nr={nr} />
+          <div className={styles.vergleich}>
+            {block.spalten.map((sp) => (
+              <div key={sp.titel} className={styles.vergleichSpalte}>
+                <h3 className={styles.vergleichTitel}>{sp.titel}</h3>
+                {sp.untertitel ? <p className={styles.vergleichUnter}>{sp.untertitel}</p> : null}
+                <dl className={styles.merkmale}>
+                  {sp.zeilen.map((z) => (
+                    <div key={z.merkmal}>
+                      <dt>{z.merkmal}</dt>
+                      <dd>{z.wert}</dd>
+                    </div>
+                  ))}
+                </dl>
+                {sp.passt ? <p className={styles.passt}>{sp.passt}</p> : null}
+              </div>
+            ))}
+          </div>
+          {block.nachsatz ? (
+            <p className={styles.nachsatz}>
+              <RichText value={block.nachsatz} />
+            </p>
+          ) : null}
+          <Knoepfe knoepfe={block.knoepfe} locale={locale} />
+        </>
+      )
+
+    case 'tabelle':
+      return (
+        <>
+          <Kopf block={block} h1={h1} nr={nr} />
+          <div className={styles.tabelleRahmen}>
+            <table className={styles.tabelle}>
+              <thead>
+                <tr>
+                  {block.kopfzeile.map((k) => (
+                    <th key={k} scope="col">
+                      {k}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {block.zeilen.map((z, i) => (
+                  <tr key={i}>
+                    {z.map((zelle, j) =>
+                      j === 0 ? (
+                        <th key={j} scope="row">
+                          {zelle}
+                        </th>
+                      ) : (
+                        <td key={j}>{zelle}</td>
+                      ),
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {block.nachsaetze?.map((n, i) => (
+            <p key={i} className={styles.nachsatz}>
+              <RichText value={n} />
+            </p>
+          ))}
+          <Knoepfe knoepfe={block.knoepfe} locale={locale} />
+        </>
+      )
+
+    case 'fragen':
+      return (
+        <div className={styles.fragenRaster}>
+          <div>
+            <Kopf block={block} h1={h1} nr={nr} />
+          </div>
+          <div className={styles.fragen}>
+            {block.fragen.map((f) => (
+              <details key={f.frage} className={styles.frage}>
+                <summary>
+                  <span>{f.frage}</span>
+                  <span className={styles.plus} aria-hidden="true" />
+                </summary>
+                <p className={styles.antwort}>
+                  <RichText value={f.antwort} />
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      )
+
+    case 'personen':
+      return (
+        <div className={block.ausfuehrlich ? undefined : styles.personenRaster}>
+          <div className={styles.personenKopf}>
+            <Kopf block={block} h1={h1} nr={nr} />
+            {block.satz ? <p className={styles.absatz}>{block.satz}</p> : null}
+            <Knoepfe knoepfe={block.knoepfe} locale={locale} />
+          </div>
+          <ul className={block.ausfuehrlich ? `${styles.leute} ${styles.leuteGross}` : styles.leute}>
+            {block.leute.map((p) => (
+              <li key={p.name} className={styles.person}>
+                <Image
+                  src={p.bild.datei}
+                  alt={p.bild.alt}
+                  width={560}
+                  height={420}
+                  sizes="(min-width: 64rem) 30rem, (min-width: 40rem) 45vw, 90vw"
+                  className={styles.foto}
+                />
+                <span className={styles.name}>{p.name}</span>
+                <span className={styles.rolle}>{p.rolle}</span>
+                {p.angaben?.length ? (
+                  <dl className={styles.angabenKlein}>
+                    {p.angaben.map((a) => (
+                      <div key={a.merkmal}>
+                        <dt>{a.merkmal}</dt>
+                        <dd>{a.wert}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                ) : null}
+                {p.sprachen ? <span className={styles.sprachen}>{p.sprachen}</span> : null}
+                <span className={styles.personLinks}>
+                  {p.telefon ? (
+                    <a className={styles.knopf} href={`tel:${direktnummern[p.telefon].e164}`}>
+                      {direktnummern[p.telefon].anzeige}
+                    </a>
+                  ) : null}
+                  {p.email ? (
+                    <a className={`${styles.knopf} ${styles.knopfZweit}`} href={`mailto:${direktadressen[p.email]}`}>
+                      E-Mail
+                    </a>
+                  ) : null}
+                  {p.linkedin ? (
+                    <a className={styles.textlinkKlein} href={p.linkedin} target="_blank" rel="noopener noreferrer">
+                      LinkedIn
+                    </a>
+                  ) : null}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+
+    case 'kontakt': {
+      const ui = getUi(locale)
+      return (
+        <div className={styles.kontakt}>
+          <div>
+            <Kopf block={block} h1={h1} nr={nr} />
+            <p className={styles.absatz}>{block.satz}</p>
+            {block.ohneKnopf ? null : (
+              <Knoepfe knoepfe={[{ text: ui.cta, ziel: 'kontakt' }]} locale={locale} />
+            )}
+          </div>
+          <dl className={styles.angaben}>
+            <div>
+              <dt>{block.beschriftungen.telefon}</dt>
+              <dd>
+                <a href={`tel:${company.phoneE164}`}>{company.phone}</a>
+              </dd>
+            </div>
+            <div>
+              <dt>{block.beschriftungen.email}</dt>
+              <dd>
+                <a href={`mailto:${company.email}`}>{company.email}</a>
+              </dd>
+            </div>
+            <div>
+              <dt>{block.beschriftungen.buero}</dt>
+              <dd>
+                {addressLines.map((z) => (
+                  <span key={z} className={styles.zeile}>
+                    {z}
+                  </span>
+                ))}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      )
+    }
+
+    case 'modell':
+    case 'formular':
+      return null
+  }
+}
+
+function Bild({ bild }: { bild: Extract<Block, { art: 'textBild' }>['bild'] }) {
+  switch (bild.art) {
+    case 'foto':
+      return <Image src={bild.datei} alt={bild.alt} width={bild.breite} height={bild.hoehe} sizes="(min-width: 64rem) 34rem, 90vw" className={styles.bildFoto} />
+    case 'portal':
+      return (
+        <div className={styles.bildFlaeche}>
+          <PortalBeispiel {...portalBeispiel} />
+        </div>
+      )
+    case 'karte':
+      return (
+        <div className={styles.karte}>
+          <Standortkarte
+            bbox={bueroLage.bbox}
+            marker={[bueroLage.breite, bueroLage.laenge]}
+            knopf={bild.knopf}
+            hinweis={bild.hinweis}
+            titel={bild.titel}
+          />
+        </div>
+      )
+    case 'versicherer':
+      return (
+        <div className={styles.bildFlaeche}>
+          <p className={styles.versichererHinweis}>{bild.hinweis}</p>
+          <ul className={styles.logos} role="list">
+            {bild.gesellschaften.map((g) => (
+              <li key={g.name}>
+                <a href={g.url} target="_blank" rel="noopener noreferrer">
+                  <Image src={`/bilder/${g.bild}.webp`} alt={`${g.name} — Schaden melden`} width={409} height={227} sizes="(min-width: 64rem) 160px, 30vw" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+  }
+}
+
+/* ---- Eigene Bausteine, unverändert übernommen -------------------------------- */
+
+function Modell({ id, locale }: { id?: string; locale: Locale }) {
+  const quelle = getPageContent(locale, 'versicherungen') ?? getPageContent('de', 'versicherungen')
+  const m = quelle?.blocks.find((b) => b.kind === 'modell')
+  if (!m || m.kind !== 'modell') return null
+  return (
+    <UnserModell
+      id={id ?? m.id}
+      eyebrow=""
+      heading={m.heading}
+      lead={m.lead}
+      grundsaetze={m.grundsaetze}
+      kunde={m.kunde}
+      mandat={m.mandat}
+      mitte={m.mitte}
+      preisvergleich={m.preisvergleich}
+      markt={m.markt}
+      ergebnis={m.ergebnis}
+      nutzen={m.nutzen}
+    />
+  )
+}
+
+function Formular({ id, locale }: { id?: string; locale: Locale }) {
+  const quelle = getPageContent(locale, 'kontakt') ?? getPageContent('de', 'kontakt')
+  const f = quelle?.blocks.find((b) => b.kind === 'kontaktformular')
+  if (!f || f.kind !== 'kontaktformular') return null
+  return (
+    <Kontaktformular
+      id={id ?? f.id}
+      locale={locale}
+      eyebrow=""
+      heading={f.heading}
+      lead={f.lead}
+      kontakt={f.kontakt}
+      zusage={f.zusage}
+      formular={f.formular}
+    />
+  )
+}
+
+/* ---- Die Seite ---------------------------------------------------------------- */
+
+export function Seite({ inhalt, locale, vorrang = false }: { inhalt: SeitenInhalt; locale: Locale; vorrang?: boolean }) {
+  const ui = getUi(locale)
+  const ohneBanner = !inhalt.banner
+  return (
+    <>
+      {inhalt.banner ? (
+        <Banner
+          themenzeile={inhalt.banner.themenzeile}
+          ueberschrift={inhalt.banner.ueberschrift}
+          unterzeile={inhalt.banner.unterzeile}
+          id="seitenkopf"
+          knopf={ui.cta}
+          locale={locale}
+          vorrang={vorrang}
+        />
+      ) : null}
+
+      <div className={`${styles.seite} ${ohneBanner ? styles.seiteOhneBanner : ''}`}>
+        <div className={`ac-container ${styles.bloecke}`}>
+          {inhalt.bloecke.map((block, i) => {
+            if (block.art === 'modell') {
+              return (
+                <div key={i} className={styles.eigen}>
+                  <Modell id={block.id} locale={locale} />
+                </div>
+              )
+            }
+            if (block.art === 'formular') {
+              return (
+                <div key={i} className={styles.eigen}>
+                  <Formular id={block.id} locale={locale} />
+                </div>
+              )
+            }
+            return (
+              <section key={i} id={block.id} className={styles.block} aria-labelledby={`block-${i}`}>
+                <BlockInhalt block={block} locale={locale} h1={ohneBanner && i === 0} nr={i} />
+              </section>
+            )
+          })}
+        </div>
+      </div>
+    </>
+  )
+}

@@ -16,6 +16,15 @@
 /de/finanzplanung     /de/    301
 /de/finanzplanung/    /de/    301
 
+# Buchhaltung, Treuhänderwechsel und Firmengründung sind seit dem 15.10.2026
+# Abschnitte der Seite Treuhand (Ricardo: weniger Unterseiten).
+/de/treuhand/buchhaltung              /de/treuhand/#buchhaltung    301
+/de/treuhand/buchhaltung/             /de/treuhand/#buchhaltung    301
+/de/treuhand/treuhaender-wechseln     /de/treuhand/#wechsel        301
+/de/treuhand/treuhaender-wechseln/    /de/treuhand/#wechsel        301
+/de/firmengruendung                   /de/treuhand/#firmengruendung    301
+/de/firmengruendung/                  /de/treuhand/#firmengruendung    301
+
 # Kundenportal. Es laeuft nicht auf dieser Website, sondern neben der
 # Brokerverwaltung auf dem eigenen Server (crm.ac-co.ch). Hier steht nur die
 # Weiterleitung: Kundendaten gehen damit nie ueber diese Website und ihren

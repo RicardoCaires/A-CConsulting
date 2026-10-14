@@ -1,0 +1,180 @@
+/* News und Blog (15.10.2026). Übersicht: grosser neuester Beitrag, daneben eine
+   Liste. Beitrag: ruhiger Fliesstext in Lesebreite. Farben nur aus den Tokens. */
+
+.raster {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+@media (min-width: 64rem) {
+  .raster {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+}
+
+.gross {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  text-decoration: none;
+  background-color: var(--ac-color-background-light);
+  border-radius: 24px;
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.gross:hover {
+  background-color: var(--ac-color-background-tint);
+}
+
+.grossTitel {
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem);
+  line-height: 1.15;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.kurz {
+  font-size: var(--ac-body-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-secondary);
+}
+
+.liste {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: var(--ac-border-hairline) solid var(--ac-line);
+  border-radius: 24px;
+}
+
+.liste li + li {
+  border-top: var(--ac-border-hairline) solid var(--ac-line-soft);
+}
+
+.liste a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.1rem 1.4rem;
+  text-decoration: none;
+}
+
+.listeTitel {
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ac-color-primary-navy);
+}
+
+.liste a:hover .listeTitel,
+.gross:hover .grossTitel {
+  color: var(--ac-color-accent-green);
+}
+
+.gross:focus-visible,
+.liste a:focus-visible,
+.zurueck:focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+.marke {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--ac-small-size);
+  font-weight: 700;
+  color: var(--ac-color-accent-green);
+}
+
+.entwurf {
+  padding: 0.1rem 0.55rem;
+  font-weight: 600;
+  color: var(--ac-color-text-primary);
+  background-color: var(--ac-color-signal-warn-bg);
+  border-radius: 999px;
+}
+
+.meta {
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Der Beitrag ---------------------------------------------------------- */
+
+.artikel {
+  max-width: 52rem;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.zurueck {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-bottom: 0.5rem;
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  color: var(--ac-color-accent-green);
+  text-decoration: none;
+}
+
+.zurueck:hover {
+  text-decoration: underline;
+}
+
+.artikelTitel {
+  margin-top: 0.5rem;
+  max-width: none;
+}
+
+.lead {
+  margin: 1.25rem 0 0;
+  font-size: var(--ac-lead-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-primary);
+}
+
+.abschnitt {
+  margin-top: 2rem;
+}
+
+.zwischentitel {
+  margin: 0 0 0.6rem;
+  font-family: var(--ac-font-display);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.text {
+  margin: 0 0 1rem;
+  font-size: var(--ac-body-size);
+  line-height: 1.75;
+  color: var(--ac-color-text-primary);
+}
+
+.text a {
+  color: var(--ac-color-accent-green);
+}
+
+.hinweis {
+  margin: 2.5rem 0 0;
+  padding: 1rem 1.25rem;
+  font-size: var(--ac-small-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-background-light);
+  border-radius: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gross {
+    transition: none;
+  }
+}

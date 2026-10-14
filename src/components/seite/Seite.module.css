@@ -1,0 +1,818 @@
+/* Baukasten der Seiten (15.10.2026). Eine Stelle für die Form aller Blöcke.
+
+   Vorbild simply.ch, übertragen auf A&C: weisse Blöcke mit grossen Ecken auf dem
+   hellblauen Grund, ruhige Abstände, zweifarbige Überschriften ohne Vorzeile.
+   Farben nur aus den Tokens; Navy steht nie als Fläche, nur als Schrift
+   (Ricardo, 14.10.2026). Bewegung nur als kleiner Pfeil, abschaltbar. */
+
+.seite {
+  padding-block: clamp(1.5rem, 3vw, 2.5rem) var(--ac-section-y);
+  background-color: var(--ac-color-background-tint);
+}
+
+.seiteOhneBanner {
+  padding-top: clamp(2rem, 5vw, 3.5rem);
+}
+
+.bloecke {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.block {
+  padding: clamp(1.5rem, 4vw, 3.25rem);
+  background-color: var(--ac-color-white);
+  border-radius: 28px;
+  scroll-margin-top: 6rem;
+}
+
+/* Eigene Bausteine (Schaubild, Formular) bringen ihre Fläche mit; sie stehen
+   im selben Raster, mit denselben runden Ecken. */
+.eigen {
+  overflow: hidden;
+  border-radius: 28px;
+  scroll-margin-top: 6rem;
+}
+
+/* ---- Überschriften und Text --------------------------------------------------- */
+
+.titel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+  line-height: 1.12;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.01em;
+  color: var(--ac-color-primary-navy);
+  text-wrap: balance;
+  max-width: 26ch;
+}
+
+.titelGross {
+  font-size: clamp(2.1rem, 1.5rem + 2.4vw, 3.25rem);
+}
+
+.akzent {
+  color: var(--ac-color-accent-green);
+}
+
+.einleitung {
+  margin: 1rem 0 0;
+  max-width: 62ch;
+  font-size: var(--ac-lead-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-primary);
+}
+
+.absatz {
+  margin: 1rem 0 0;
+  max-width: 62ch;
+  font-size: var(--ac-body-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
+}
+
+.absatz a,
+.einleitung a,
+.antwort a,
+.nachsatz a {
+  color: var(--ac-color-accent-green);
+  text-underline-offset: 3px;
+}
+
+.nachsatz {
+  margin: 1.25rem 0 0;
+  max-width: 70ch;
+  font-size: var(--ac-small-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-secondary);
+}
+
+/* Text in zwei Spalten: links die Überschrift, rechts der Text */
+@media (min-width: 64rem) {
+  .textBreit {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .textBreit .absatz:first-child {
+    margin-top: 0;
+  }
+}
+
+.haken {
+  display: grid;
+  gap: 0.6rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  max-width: 62ch;
+}
+
+.haken li {
+  position: relative;
+  padding-left: 1.75rem;
+  font-size: var(--ac-body-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-primary);
+}
+
+.haken li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 700;
+  color: var(--ac-color-accent-green);
+}
+
+/* ---- Knöpfe und Links --------------------------------------------------------- */
+
+.knoepfe {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.75rem;
+}
+
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  min-height: 3rem;
+  max-width: 100%;
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-accent-green);
+  border-radius: var(--ac-radius-button);
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.knopf:hover,
+.knopf:focus-visible {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-navy-deep);
+}
+
+.knopfZweit {
+  color: var(--ac-color-accent-green);
+  background-color: var(--ac-color-white);
+  box-shadow: inset 0 0 0 2px var(--ac-color-accent-green);
+}
+
+.knopfZweit:hover,
+.knopfZweit:focus-visible {
+  box-shadow: none;
+}
+
+.pfeil {
+  display: inline-block;
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.knopf:hover .pfeil {
+  transform: translateX(3px);
+}
+
+.textlink,
+.textlinkKlein {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-weight: 600;
+  color: var(--ac-color-accent-green);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.textlinkKlein {
+  font-size: var(--ac-small-size);
+  font-weight: 500;
+}
+
+.textlink:hover,
+.textlinkKlein:hover {
+  color: var(--ac-color-primary-navy);
+}
+
+.knopf:focus-visible,
+.textlink:focus-visible,
+.textlinkKlein:focus-visible,
+.liste a:focus-visible,
+.angaben a:focus-visible,
+.logos a:focus-visible,
+.frage summary:focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+/* ---- Linklisten ----------------------------------------------------------------- */
+
+.listen {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+@media (min-width: 40rem) {
+  .listen {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 75rem) {
+  .listen[data-anzahl='3'] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .listen[data-anzahl='4'] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.liste {
+  padding: 1.25rem 1.25rem 0.75rem;
+  border: var(--ac-border-hairline) solid var(--ac-line);
+  border-radius: 20px;
+  scroll-margin-top: 6rem;
+}
+
+.listeTitel {
+  margin: 0 0 0.5rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.listeTitel a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.listeTitel a:hover {
+  color: var(--ac-color-accent-green);
+}
+
+.liste ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.liste li + li {
+  border-top: var(--ac-border-hairline) solid var(--ac-line-soft);
+}
+
+.liste li a,
+.eintrag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  padding-block: 0.4rem;
+  font-size: var(--ac-small-size);
+  line-height: 1.35;
+  color: var(--ac-color-text-primary);
+  text-decoration: none;
+}
+
+.zusatz {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--ac-color-text-secondary);
+}
+
+.chevron {
+  flex: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--ac-color-accent-green);
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.liste li a:hover {
+  color: var(--ac-color-accent-green);
+}
+
+.liste li a:hover .chevron {
+  transform: translateX(3px);
+}
+
+/* ---- Text neben Bild ------------------------------------------------------------ */
+
+.textBild {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  align-items: center;
+}
+
+@media (min-width: 64rem) {
+  .textBild {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+
+  .bildLinks .bildSpalte {
+    order: -1;
+  }
+
+  .bildLinks {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  }
+}
+
+.bildFoto {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+}
+
+.bildFlaeche {
+  padding: clamp(1rem, 3vw, 2rem);
+  background-color: var(--ac-color-background-light);
+  border-radius: 24px;
+}
+
+.karte {
+  overflow: hidden;
+  min-height: 19rem;
+  background-color: var(--ac-color-background-tint);
+  border-radius: 24px;
+}
+
+.versichererHinweis {
+  margin: 0 0 1rem;
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+.logos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.logos a {
+  display: block;
+  overflow: hidden;
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-line-soft);
+  border-radius: 12px;
+  transition: border-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.logos a:hover {
+  border-color: var(--ac-color-accent-green);
+}
+
+.logos img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---- Schritte --------------------------------------------------------------------- */
+
+.schritte {
+  display: grid;
+  gap: 1.25rem;
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+
+@media (min-width: 56rem) {
+  .schritte {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Eine feine Linie verbindet die Nummern */
+  .schritte li {
+    position: relative;
+  }
+
+  .schritte li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 1.25rem;
+    left: 3.25rem;
+    right: -0.75rem;
+    height: 2px;
+    background-color: var(--ac-line);
+  }
+}
+
+.nummer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-weight: 700;
+  color: var(--ac-color-accent-green);
+  background-color: var(--ac-color-white);
+  border: 2px solid var(--ac-color-accent-green);
+  border-radius: 50%;
+}
+
+.schrittTitel {
+  margin: 0.85rem 0 0.35rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.schrittText {
+  margin: 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Vergleich --------------------------------------------------------------------- */
+
+.vergleich {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+@media (min-width: 48rem) {
+  .vergleich {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  }
+}
+
+.vergleichSpalte {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border: var(--ac-border-hairline) solid var(--ac-line);
+  border-radius: 20px;
+}
+
+.vergleichTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: 1.5rem;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.vergleichUnter {
+  margin: 0.25rem 0 0;
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  color: var(--ac-color-accent-green);
+}
+
+.merkmale {
+  margin: 1rem 0 0;
+}
+
+.merkmale > div {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 1rem;
+  padding-block: 0.7rem;
+  border-top: var(--ac-border-hairline) solid var(--ac-line-soft);
+}
+
+.merkmale dt {
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+.merkmale dd {
+  margin: 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-primary);
+}
+
+.passt {
+  margin: auto 0 0;
+  padding-top: 1rem;
+  font-size: var(--ac-small-size);
+  line-height: 1.55;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Tabelle ----------------------------------------------------------------------- */
+
+.tabelleRahmen {
+  overflow-x: auto;
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  border: var(--ac-border-hairline) solid var(--ac-line);
+  border-radius: 20px;
+}
+
+.tabelle {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: var(--ac-small-size);
+}
+
+.tabelle th,
+.tabelle td {
+  padding: 0.85rem 1.1rem;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.45;
+}
+
+.tabelle thead th {
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-light);
+}
+
+.tabelle tbody tr + tr th,
+.tabelle tbody tr + tr td {
+  border-top: var(--ac-border-hairline) solid var(--ac-line-soft);
+}
+
+.tabelle tbody th {
+  font-weight: 600;
+  color: var(--ac-color-text-primary);
+}
+
+.tabelle td {
+  color: var(--ac-color-text-primary);
+}
+
+/* ---- Häufige Fragen ------------------------------------------------------------- */
+
+@media (min-width: 64rem) {
+  .fragenRaster {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+.fragen {
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 64rem) {
+  .fragen {
+    margin-top: 0;
+  }
+}
+
+.frage {
+  border-top: var(--ac-border-hairline) solid var(--ac-line);
+}
+
+.frage:last-child {
+  border-bottom: var(--ac-border-hairline) solid var(--ac-line);
+}
+
+.frage summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.25rem;
+  padding-block: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ac-color-primary-navy);
+  cursor: pointer;
+  list-style: none;
+}
+
+.frage summary::-webkit-details-marker {
+  display: none;
+}
+
+.plus {
+  position: relative;
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+}
+
+.plus::before,
+.plus::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--ac-color-accent-green);
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.plus::after {
+  transform: rotate(90deg);
+}
+
+.frage[open] .plus::after {
+  transform: rotate(0deg);
+}
+
+.antwort {
+  margin: 0 0 1.1rem;
+  max-width: 62ch;
+  font-size: var(--ac-small-size);
+  line-height: 1.65;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Personen -------------------------------------------------------------------- */
+
+.personenRaster {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@media (min-width: 64rem) {
+  .personenRaster {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: center;
+  }
+}
+
+.leute {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 40rem) {
+  .leute {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.leuteGross {
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.person {
+  display: flex;
+  flex-direction: column;
+}
+
+.foto {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.name {
+  margin-top: 0.85rem;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: var(--ac-color-primary-navy);
+}
+
+.rolle {
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+.angabenKlein {
+  margin: 1rem 0 0;
+}
+
+.angabenKlein > div {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: 1rem;
+  padding-block: 0.55rem;
+  border-top: var(--ac-border-hairline) solid var(--ac-line-soft);
+}
+
+.angabenKlein dt {
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+.angabenKlein dd {
+  margin: 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-primary);
+}
+
+.sprachen {
+  margin-top: 0.75rem;
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+.personLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-top: 1rem;
+}
+
+.personLinks .knopf {
+  min-height: 2.75rem;
+  padding: 0.45rem 1.1rem;
+  font-size: var(--ac-small-size);
+}
+
+/* ---- Kontakt ----------------------------------------------------------------------- */
+
+.kontakt {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@media (min-width: 56rem) {
+  .kontakt {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: center;
+  }
+}
+
+.angaben {
+  margin: 0;
+  padding: 0.5rem 1.25rem;
+  background-color: var(--ac-color-background-light);
+  border-radius: 20px;
+}
+
+.angaben > div {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 0.9rem;
+}
+
+.angaben > div + div {
+  border-top: var(--ac-border-hairline) solid var(--ac-line-soft);
+}
+
+.angaben dt {
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+.angaben dd {
+  margin: 0;
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
+  overflow-wrap: anywhere;
+}
+
+.angaben a {
+  color: var(--ac-color-primary-navy);
+  text-decoration: none;
+}
+
+.angaben a:hover {
+  color: var(--ac-color-accent-green);
+  text-decoration: underline;
+}
+
+.zeile {
+  display: block;
+  font-weight: 400;
+  color: var(--ac-color-text-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .knopf,
+  .pfeil,
+  .chevron,
+  .plus::before,
+  .plus::after,
+  .logos a {
+    transition: none;
+  }
+
+  .knopf:hover .pfeil,
+  .liste li a:hover .chevron {
+    transform: none;
+  }
+}
