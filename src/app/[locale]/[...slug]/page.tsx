@@ -232,20 +232,21 @@ export default async function ContentPage({ params }: PageProps) {
 
   // Offertanfrage Frage fuer Frage (14.10.2026). Der Assistent laeuft im
   // Browser; ohne JavaScript stehen Telefon und E-Mail da.
+  // Ohne Banner (Ricardo, 14.10.2026: «bei offerte anfragen soll der banner nicht
+  // angezeigt werden»): Die Seite beginnt direkt mit der Überschrift und der ersten Frage.
   if (key === 'offerte') {
-    const oberflaeche = getUi(locale)
     return (
       <>
-        <Banner
-          themenzeile="OFFERTE"
-          ueberschrift="Ihre Offerte. Frage für Frage."
-          unterzeile="Jede Frage ist freiwillig. Was offen bleibt, klären wir im Gespräch."
-          id="seitenkopf"
-          knopf={oberflaeche.cta}
-          locale={locale}
-        />
-        <section className={`ac-section ${assistentStyles.flaeche}`} aria-label="Offertanfrage">
+        <section className={`ac-section ${assistentStyles.flaeche}`} aria-labelledby="offerte-titel">
           <div className="ac-container">
+            <header className={assistentStyles.seitenkopf}>
+              <h1 id="offerte-titel" className={assistentStyles.seitentitel}>
+                Offerte anfragen
+              </h1>
+              <p className={assistentStyles.seitensatz}>
+                Jede Frage ist freiwillig. Was offen bleibt, klären wir im Gespräch.
+              </p>
+            </header>
             <noscript>
               <p>
                 Für die Offertanfrage braucht es JavaScript. Sie erreichen uns auch direkt: {company.phone} oder{' '}

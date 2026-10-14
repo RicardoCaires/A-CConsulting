@@ -456,8 +456,10 @@
   padding: 0.8rem 1rem;
   font-size: 0.8rem;
   line-height: 1.2;
-  color: var(--ac-color-white);
-  background-color: var(--ac-color-primary-navy);
+  /* Weiss mit Kontur statt navy Flaeche (Ricardo, 14.10.2026) */
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-line);
   border-radius: var(--ac-radius-sm, 0.5rem);
 }
 

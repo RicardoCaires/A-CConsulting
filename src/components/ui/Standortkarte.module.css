@@ -28,7 +28,8 @@
   font-weight: 600;
   color: var(--ac-color-white);
   cursor: pointer;
-  background-color: var(--ac-color-primary-navy);
+  /* Gruen wie jeder Knopf (Navy als Flaeche seit dem 14.10.2026 gestrichen) */
+  background-color: var(--ac-color-accent-green);
   border: 0;
   border-radius: var(--ac-radius-md);
   transition: background-color var(--ac-motion-base) var(--ac-motion-easing);

@@ -11,6 +11,11 @@
 # kanonische Startseite ist — es gibt bewusst kein out/index.html.
 /    /de/    308
 
+# Finanzplanung ist am 14.10.2026 entfallen (Ricardo). Alte Links und Suchtreffer
+# fuehren auf die Startseite statt ins Leere.
+/de/finanzplanung     /de/    301
+/de/finanzplanung/    /de/    301
+
 # Kundenportal. Es laeuft nicht auf dieser Website, sondern neben der
 # Brokerverwaltung auf dem eigenen Server (crm.ac-co.ch). Hier steht nur die
 # Weiterleitung: Kundendaten gehen damit nie ueber diese Website und ihren

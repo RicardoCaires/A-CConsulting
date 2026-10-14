@@ -131,7 +131,7 @@ const de: StartseiteContent = {
   meta: {
     title: 'Treuhand und Versicherungen in Aegerten',
     description:
-      'Buchhaltung, Versicherungen und Finanzplanung für Selbständige, KMU und Privatpersonen. Feste Ansprechpartner in Aegerten, Kanton Bern.',
+      'Versicherungen und Treuhand für Privatpersonen, Selbständige und KMU. Feste Ansprechpartner in Aegerten, Kanton Bern.',
   },
 
   cta: 'Erstgespräch anfragen',
@@ -208,20 +208,6 @@ const de: StartseiteContent = {
         ziel: 'treuhand',
         linkText: 'Zur Treuhand',
         motiv: 'treuhand',
-      },
-      {
-        kategorie: 'Finanzplanung',
-        titel: 'Heute planen. Morgen freier sein.',
-        text: 'Zwei Fragen, die im Alltag untergehen: Wohin fliesst Ihr Geld, und was bleibt für später? Wir schaffen Klarheit.',
-        leistungen: [
-          { bild: 'leistung_budget', text: 'Budget' },
-          { bild: 'leistung_analyse', text: 'Analyse und Optimierung' },
-          { bild: 'leistung_vorsorge', text: 'Vorsorge' },
-          { bild: 'leistung_begleitung', text: 'Persönliche Begleitung' },
-        ],
-        ziel: 'personalFinance',
-        linkText: 'Zur Finanzplanung',
-        motiv: 'finanzplanung',
       },
     ],
   },

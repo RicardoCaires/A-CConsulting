@@ -222,7 +222,8 @@ a:hover {
   font-size: var(--ac-small-size);
   font-weight: 600;
   color: var(--ac-color-white);
-  background-color: var(--ac-color-primary-navy);
+  /* Gruen wie jeder Knopf; das Navy als Flaeche ist seit dem 14.10.2026 gestrichen. */
+  background-color: var(--ac-color-accent-green);
   border-radius: var(--ac-radius-sm);
   text-decoration: none;
   /* Erst sichtbar, wenn die Tastatur sie erreicht. */

@@ -187,11 +187,17 @@
   }
 }
 
-/* ---- Kundenportal: Leiste ueber dem Kopf (14.10.2026) -------------------- */
+/* ---- Kundenportal: Leiste ueber dem Kopf (14.10.2026) --------------------
+
+   Seit dem 14.10.2026 weiss statt navy, auf Ricardos Anweisung: «dieses komische
+   blau im hintergrund hinter kundenportal soll nirgends auf der website verwendet
+   werden». Der Zugang steht als gruener Knopf da wie jeder Knopf der Website;
+   eine Haarlinie trennt die Leiste vom Kopfbereich. */
 
 .portalLeiste {
-  background-color: var(--ac-color-primary-navy);
-  color: var(--ac-color-white);
+  background-color: var(--ac-color-white);
+  color: var(--ac-color-text-secondary);
+  border-bottom: var(--ac-border-hairline) solid var(--ac-line-soft);
 }
 
 .portalInnen {
@@ -205,10 +211,10 @@
 .portalHinweis {
   display: none;
   font-size: var(--ac-small-size);
-  color: color-mix(in srgb, var(--ac-color-white) 85%, transparent);
+  color: var(--ac-color-text-secondary);
 }
 
-/* Trefferflaeche 44 px; sichtbar ist das helle Feld darin */
+/* Trefferflaeche 44 px; sichtbar ist der Knopf darin */
 .portalLink {
   display: inline-flex;
   align-items: center;
@@ -219,26 +225,27 @@
 .portalFeld {
   display: inline-flex;
   align-items: center;
-  padding: 0.3rem 0.95rem;
-  border-radius: 999px;
-  background-color: var(--ac-color-white);
-  color: var(--ac-color-primary-navy);
+  padding: 0.35rem 1rem;
+  border-radius: var(--ac-radius-button);
+  background-color: var(--ac-color-accent-green);
+  color: var(--ac-color-white);
   font-size: var(--ac-small-size);
   font-weight: 700;
   line-height: 1.2;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition: background-color 0.15s ease;
 }
 
+/* Wie jeder Knopf: beim Zeigen und bei Tastaturfokus dunkel */
 .portalLink:hover .portalFeld,
 .portalLink:focus-visible .portalFeld {
-  background-color: var(--ac-color-accent-green);
+  background-color: var(--ac-color-navy-deep);
   color: var(--ac-color-white);
 }
 
 .portalLink:focus-visible {
-  outline: 3px solid var(--ac-color-white);
-  outline-offset: 1px;
-  border-radius: 999px;
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--ac-radius-button);
 }
 
 @media (prefers-reduced-motion: reduce) {

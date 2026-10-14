@@ -74,7 +74,6 @@ export const kontakt: PageContent = {
           'Treuhand und Buchhaltung',
           'Steuern',
           'Firmengründung',
-          'Finanzplanung',
           'Anderes Anliegen',
         ],
         kontaktartFrage: 'Wie dürfen wir Sie kontaktieren?',

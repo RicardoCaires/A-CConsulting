@@ -57,7 +57,6 @@ type Props = {
 const LEISTUNGEN: readonly PageKey[] = [
   'versicherungen',
   'treuhand',
-  'personalFinance',
   'steuern',
 ]
 

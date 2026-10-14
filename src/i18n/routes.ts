@@ -170,14 +170,16 @@ export const pages: Record<PageKey, PageDefinition> = {
    * Leistungen, keine weiteren: Budget und Vorsorge. Keine Anlage-, Trading-
    * oder Bankdarstellung.
    */
+  // Am 14.10.2026 auf Ricardos Anweisung entfernt («bitte Finanzplanung entfernen»).
+  // Inhalt und Vorlage bleiben im Projekt; /de/finanzplanung/ leitet auf die Startseite.
   personalFinance: {
     slug: {
       de: 'finanzplanung',
       fr: 'finances-personnelles',
       pt: 'financas-pessoais',
     },
-    published: { de: true, fr: false, pt: false },
-    inMainNav: true,
+    published: { de: false, fr: false, pt: false },
+    inMainNav: false,
     inLegalNav: false,
     sitemapPriority: 0.8,
   },
@@ -268,7 +270,6 @@ export const pages: Record<PageKey, PageDefinition> = {
 export const mainNavOrder: readonly PageKey[] = [
   'versicherungen',
   'treuhand',
-  'personalFinance',
   'ueberUns',
 ]
 
@@ -334,10 +335,6 @@ const UNTERPUNKTE: Partial<Record<PageKey, readonly NavChild[]>> = {
     { kind: 'page', page: 'steuern' },
     { kind: 'page', page: 'firmengruendung' },
     { kind: 'page', page: 'treuhaenderWechseln' },
-  ],
-  personalFinance: [
-    { kind: 'section', page: 'personalFinance', anchor: 'budget', label: 'budget' },
-    { kind: 'section', page: 'personalFinance', anchor: 'vorsorge', label: 'vorsorge' },
   ],
   ueberUns: [
     { kind: 'section', page: 'ueberUns', anchor: 'inhaber', label: 'team' },

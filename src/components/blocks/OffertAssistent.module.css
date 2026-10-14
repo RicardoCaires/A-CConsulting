@@ -477,3 +477,26 @@
     transform: none;
   }
 }
+
+/* ---- Seitenkopf ohne Banner (14.10.2026) --------------------------------- */
+
+.seitenkopf {
+  max-width: 46rem;
+  margin: 0 auto clamp(1.5rem, 3vw, 2rem);
+}
+
+.seitentitel {
+  margin: 0 0 0.5rem;
+  font-family: var(--ac-font-display);
+  font-size: clamp(2rem, 1.6rem + 1.6vw, 2.75rem);
+  line-height: 1.1;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.seitensatz {
+  margin: 0;
+  font-size: var(--ac-body-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-secondary);
+}
