@@ -39,10 +39,12 @@ export type Liste = {
   id?: string
   ziel?: Ziel
   eintraege: readonly ({ text: string; zusatz?: string } & Partial<Ziel>)[]
+  /** Knopf am Fuss der Liste, nur in der Darstellung `kacheln`. */
+  knopf?: Knopf
 }
 
 /** Welche Beispielansicht des Kundenportals gezeigt wird. */
-export type PortalAnsicht = 'praemien' | 'policen' | 'anfragen' | 'dokumente' | 'fenster'
+export type PortalAnsicht = 'praemien' | 'fenster' | 'versicherungen' | 'anfragen' | 'unterlagen'
 
 type Kopf = {
   /** Anker des Blocks, damit Links von anderen Seiten hierher springen. */
@@ -61,8 +63,11 @@ export type Block =
       /** Text in zwei Spalten statt einer: links Titel, rechts Absätze. */
       breit?: boolean
     })
-  /** Mehrere Linklisten nebeneinander. */
-  | (Kopf & { art: 'listen'; listen: readonly Liste[] })
+  /**
+   * Mehrere Linklisten nebeneinander. `kacheln` (15.10.2026, Ricardo: «sieht langweilig
+   * aus»): je Liste eine Karte mit farbiger Kante, Anzahl und Einträgen als Kacheln mit Haken.
+   */
+  | (Kopf & { art: 'listen'; listen: readonly Liste[]; darstellung?: 'kacheln' })
   /** Text links, rechts etwas zum Anschauen. */
   | (Kopf & {
       art: 'textBild'

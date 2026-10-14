@@ -2611,6 +2611,19 @@ gibt es noch keine.
 >   Telefon je Ereignis eine Karte mit Pillen. **Die Zuordnung ist ein Vorschlag**, Ricardo prüft sie fachlich.
 > - **Lange Wörter tragen weiche Trennstellen** (`­`): Chrome trennt Deutsch nicht selbst und brach z. B.
 >   die Banner-Überschrift «Datenschutzerklärung» bei 375 px über den Rand (426 statt 335 px).
+>
+> **Vierter Schritt am 15.10.2026:**
+> - **Portalansichten 1:1 nach dem echten Portal** (Ricardo: «das ist nicht die ansicht in unserem system»):
+>   `PortalAnsicht` kennt `fenster` (Start), `versicherungen`, `anfragen`, `unterlagen`. Aufbau, Beschriftungen,
+>   Zeichen, Marken und Masse (13 : 16) stammen aus `public-portal/portal.js` und `portal.css` im CRM, Schrift
+>   Arial. **Ändert sich das Portal, gehören diese Ansichten nachgezogen.** Erfunden sind nur Person, Verträge,
+>   Nummern und Beträge. Die frei gestalteten Ausschnitte (Policenliste mit «Aktiv», Dokumente mit «PDF») sind weg.
+> - **«Was wir für Sie prüfen»** als Kacheln (`listen` mit `darstellung: 'kacheln'`): je Gruppe eine Karte mit
+>   farbiger Oberkante, Anzahl im Kreis, Einträge als Kacheln mit Haken, Knopf «Offerte anfragen».
+> - **Matrix leserlicher:** grössere Köpfe, Zeilen abwechselnd hinterlegt, Spaltenlinien, Haken im Punkt.
+> - **Vergleich ohne Versatz:** Spalten teilen ihre Zeilen über ein Subgrid (`--zeilen`), «Passt …» gleich hoch.
+> - **Logos zentriert:** `public/bilder/partner_*_mitte.webp`, aus den gelieferten Kacheln geschnitten (Logofläche
+>   erkannt, mittig auf Weiss gesetzt). Die gelieferten `partner_*.webp` liegen unverändert daneben.
 
 ## 10. Offene Punkte
 

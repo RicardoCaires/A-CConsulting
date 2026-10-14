@@ -1,226 +1,278 @@
 import Image from 'next/image'
+import type { ReactNode } from 'react'
 
 import { PortalBeispiel } from '@/components/ui/PortalBeispiel'
-import { portalAnfragen, portalBeispiel, portalDokumente, portalFenster, portalPolicen } from '@/content/seiten/portal-beispiel'
+import {
+  portalAnfragen,
+  portalBeispiel,
+  portalFenster,
+  portalRahmen,
+  portalUnterlagen,
+  portalVersicherungen,
+} from '@/content/seiten/portal-beispiel'
 import type { PortalAnsicht as Art } from '@/content/seiten/typen'
 
 import styles from './PortalAnsicht.module.css'
 
 /**
- * Beispielansichten des Kundenportals (15.10.2026). Ricardo: «ich will das noch
- * etwas mehr vom portal gezeigt wird», dann «das Kunden Portal wird nicht gut
- * rübergebracht». Darum zuerst das Fenster – das Portal so, wie es nach der Anmeldung
- * aussieht –, dazu Ausschnitte: Policenliste, Anfragen mit Stand, Dokumente.
+ * Das Kundenportal als Fenster (15.10.2026), **nachgebaut nach den echten Portalseiten**
+ * (`public-portal/portal.js` und `portal.css` im CRM). Ricardo: «das ist nicht die ansicht
+ * in unserem system». Darum: dieselbe Schrift (Arial), derselbe Kopf mit grüner Linie oben
+ * und Bereichen, dieselben Karten, Zeichen, Marken und Beschriftungen. Erfunden sind nur
+ * Person, Verträge, Nummern und Beträge – sichtbar als Beispiel bezeichnet.
  *
- * Alles reines HTML und SVG, ohne Skript. Die Angaben sind erfunden und als
- * Beispiel beschriftet. Keine Aussage zu Anmeldung oder Datenhaltung – die
- * gehört nach Ricardos Anweisung nicht auf die Website.
+ * Vier Seiten: Start (Cockpit mit Kostenring), Meine Versicherungen, Anfragen und die
+ * Unterlagen einer Police. Reines HTML und SVG, ohne Skript.
  */
 
-const chf = (n: number) => `CHF ${String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "'")}`
+const chf = (n: number) => `CHF ${String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '’')}.00`
 
-function Kopf({ titel, untertitel }: { titel: string; untertitel: string }) {
+/** Die Linienzeichen des Portals (`ZEICHEN` in portal.js), unverändert übernommen. */
+const ZEICHEN = {
+  schild: 'M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z',
+  dokument: 'M7 3h7l5 5v13H7z M14 3v5h5 M10 13h6 M10 17h6',
+  telefon: 'M6 3h3l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z',
+  kalender: 'M4 6h16v15H4z M4 10h16 M8 3v5 M16 3v5',
+  nachricht: 'M4 5h16v12H9l-5 4z',
+  pfeil: 'M5 12h14 M13 6l6 6-6 6',
+  zurueck: 'M19 12H5 M11 6l-6 6 6 6',
+  laden: 'M12 4v11 M7 11l5 5 5-5 M5 20h14',
+} as const
+
+function Zeichen({ name, klasse }: { name: keyof typeof ZEICHEN; klasse?: string }) {
   return (
-    <div className={styles.kopf}>
-      <span className={styles.titel}>{titel}</span>
-      <span className={styles.marke}>{untertitel}</span>
-    </div>
+    <svg viewBox="0 0 24 24" className={klasse ?? styles.zeichen} aria-hidden="true" focusable="false">
+      <path d={ZEICHEN[name]} />
+    </svg>
   )
 }
 
-function Policen() {
-  const p = portalPolicen
+/** Browserrahmen und Kopf des Portals; `aktiv` ist der markierte Bereich. */
+function Rahmen({ aktiv, titel, children }: { aktiv: number; titel: string; children: ReactNode }) {
+  const r = portalRahmen
   return (
-    <figure className={styles.ansicht} aria-label={p.titel}>
-      <Kopf titel={p.titel} untertitel={p.untertitel} />
-      <ul className={styles.zeilen}>
-        {p.policen.map((x) => (
-          <li key={x.sparte} className={styles.police}>
-            <span className={styles.text}>
-              <span className={styles.haupt}>{x.sparte}</span>
-              <span className={styles.neben}>{x.detail}</span>
-            </span>
-            <span className={styles.rechts}>
-              <span className={styles.betrag}>{chf(x.betrag)}</span>
-              <span className={styles.status}>{p.status}</span>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <figcaption className={styles.hinweis}>
-        {p.spalte} · {p.hinweis}
-      </figcaption>
-    </figure>
-  )
-}
-
-function Anfragen() {
-  const a = portalAnfragen
-  return (
-    <figure className={styles.ansicht} aria-label={a.titel}>
-      <Kopf titel={a.titel} untertitel={a.untertitel} />
-      <ul className={styles.zeilen}>
-        {a.anfragen.map((x) => {
-          const fertig = x.stand === x.stufen.length - 1
-          return (
-            <li key={x.text} className={styles.anfrage}>
-              <span className={styles.anfrageKopf}>
-                <span className={styles.haupt}>{x.text}</span>
-                <span className={fertig ? `${styles.stand} ${styles.standFertig}` : styles.stand}>{x.stufen[x.stand]}</span>
-              </span>
-              {/* Ein Abschnitt je Stufe: erreichte grün, der Rest hell. Ein Rückruf hat nur zwei. */}
-              <span className={styles.balken} data-stufen={x.stufen.length} aria-hidden="true">
-                {x.stufen.map((s, i) => (
-                  <span key={s} className={i <= x.stand ? styles.balkenAn : styles.balkenAus} />
-                ))}
-              </span>
-            </li>
-          )
-        })}
-      </ul>
-      <figcaption className={styles.hinweis}>{a.hinweis}</figcaption>
-    </figure>
-  )
-}
-
-function Dokumente() {
-  const d = portalDokumente
-  return (
-    <figure className={styles.ansicht} aria-label={d.titel}>
-      <Kopf titel={d.titel} untertitel={d.untertitel} />
-      <ul className={styles.zeilen}>
-        {d.dokumente.map((x) => (
-          <li key={x.name} className={styles.dokument}>
-            <svg className={styles.blatt} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="M6 2.5h8l4 4v15H6z" />
-              <path d="M14 2.5v4h4" />
-              <path d="M9 12h6M9 15.5h6" />
-            </svg>
-            <span className={styles.haupt}>{x.name}</span>
-            <span className={styles.art}>{x.art}</span>
-          </li>
-        ))}
-      </ul>
-      <figcaption className={styles.hinweis}>{d.hinweis}</figcaption>
-    </figure>
-  )
-}
-
-/** Farbfolge der Diagramme nach Corporate Design: Navy, Grün, Grau, Hellblau – wie im Portal. */
-const RINGFARBEN = [styles.r0, styles.r1, styles.r2, styles.r3]
-
-function Ring({ segmente, summeText, unter }: { segmente: readonly { text: string; betrag: number }[]; summeText: string; unter: string }) {
-  const summe = segmente.reduce((t, x) => t + x.betrag, 0)
-  let versatz = 25
-  return (
-    <span className={styles.ring}>
-      <svg viewBox="0 0 42 42" aria-hidden="true" focusable="false">
-        <circle className={styles.ringGrund} cx="21" cy="21" r="15.9155" fill="none" strokeWidth="5.5" />
-        {segmente.map((x, i) => {
-          const anteil = (x.betrag / summe) * 100
-          const lang = Math.max(anteil - 0.8, 0)
-          const el = (
-            <circle
-              key={x.text}
-              className={RINGFARBEN[i % RINGFARBEN.length]}
-              cx="21"
-              cy="21"
-              r="15.9155"
-              fill="none"
-              strokeWidth="5.5"
-              strokeDasharray={`${lang} ${100 - lang}`}
-              strokeDashoffset={versatz}
-            />
-          )
-          versatz -= anteil
-          return el
-        })}
-      </svg>
-      <span className={styles.ringMitte}>
-        <strong>{summeText}</strong>
-        <span>{unter}</span>
-      </span>
-    </span>
-  )
-}
-
-/**
- * Das Portal als Fenster, nachgebaut nach `public-portal/portal.css` im CRM: Kopf mit
- * Logo und Bereichen, Begrüssung mit Navy-Strich, Kennzahlen und der Kostenring, der
- * seit dem 15.10.2026 im Portal steht.
- */
-function Fenster() {
-  const f = portalFenster
-  const summe = f.segmente.reduce((t, x) => t + x.betrag, 0)
-  return (
-    <figure className={styles.fenster} aria-label={`${f.vorzeile}: ${f.hinweis}`}>
+    <figure className={styles.fenster} aria-label={`${titel}: ${r.hinweis}`}>
       <div className={styles.leiste} aria-hidden="true">
         <span className={styles.punkte}>
           <span />
           <span />
           <span />
         </span>
-        <span className={styles.adresse}>{f.adresse}</span>
+        <span className={styles.adresse}>{r.adresse}</span>
       </div>
-      <div className={styles.portalKopf}>
-        <Image src="/logo/ac-logo.png" alt="" width={216} height={47} className={styles.portalLogo} />
-        <span className={styles.portalNav} aria-hidden="true">
-          {f.navigation.map((n, i) => (
-            <span key={n} className={i === 0 ? styles.navAktiv : undefined}>
-              {n}
-            </span>
-          ))}
-        </span>
-      </div>
-      <div className={styles.portalInhalt}>
-        <div className={styles.willkommen}>
-          <span className={styles.vorzeile}>{f.vorzeile}</span>
-          <strong className={styles.gruss}>{f.gruss}</strong>
-          <span className={styles.satz}>{f.satz}</span>
-        </div>
-        <div className={styles.kennzahlen}>
-          {f.kennzahlen.map((k) => (
-            <span key={k.text} className={styles.kennzahl}>
-              <strong>{k.zahl}</strong>
-              <span>{k.text}</span>
-            </span>
-          ))}
-          <span className={`${styles.kennzahl} ${styles.termin}`}>
-            <span className={styles.terminTitel}>{f.termin.titel}</span>
-            <span className={styles.terminKnopf}>{f.termin.knopf}</span>
+      <div className={styles.portal}>
+        <div className={styles.kopf}>
+          <Image src="/logo/ac-logo.png" alt="" width={216} height={47} className={styles.logo} />
+          <span className={styles.nav} aria-hidden="true">
+            {r.navigation.map((n, i) => (
+              <span key={n} className={i === aktiv ? styles.navAktiv : undefined}>
+                {n}
+              </span>
+            ))}
+            <span className={styles.abmelden}>{r.abmelden}</span>
           </span>
         </div>
-        <div className={styles.kosten}>
-          <strong className={styles.kostenTitel}>{f.ringTitel}</strong>
-          <div className={styles.kostenInhalt}>
-            <Ring segmente={f.segmente} summeText={chf(summe)} unter={f.proJahr} />
-            <ul className={styles.legende}>
-              {f.segmente.map((x, i) => (
-                <li key={x.text}>
-                  <span className={`${styles.legendePunkt} ${RINGFARBEN[i % RINGFARBEN.length]}`} aria-hidden="true" />
-                  <span className={styles.legendeText}>{x.text}</span>
-                  <strong>{chf(x.betrag)}</strong>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className={styles.inhalt}>{children}</div>
+      </div>
+      <figcaption className={styles.hinweis}>{r.hinweis}</figcaption>
+    </figure>
+  )
+}
+
+/* ---- Start: Cockpit mit Kostenring --------------------------------------------- */
+
+const RINGFARBEN = [styles.r0, styles.r1, styles.r2, styles.r3]
+
+function Start() {
+  const f = portalFenster
+  const summe = f.segmente.reduce((t, x) => t + x.betrag, 0)
+  let versatz = 25
+  return (
+    <Rahmen aktiv={0} titel={f.vorzeile}>
+      <div className={styles.willkommen}>
+        <span className={styles.vorzeile}>{f.vorzeile}</span>
+        <strong className={styles.h1}>{f.gruss}</strong>
+        <span className={styles.leise}>{f.satz}</span>
+      </div>
+      <div className={styles.uebersicht}>
+        {f.kennzahlen.map((k) => (
+          <span key={k.text} className={styles.stand}>
+            <strong>{k.zahl}</strong>
+            <span>{k.text}</span>
+            {'link' in k ? <span className={styles.standLink}>{k.link}</span> : null}
+          </span>
+        ))}
+        <span className={`${styles.stand} ${styles.termin}`}>
+          <span className={styles.standTitel}>{f.termin.titel}</span>
+          <span>{f.termin.text}</span>
+          <span className={styles.kleinKnopf}>{f.termin.knopf}</span>
+        </span>
+      </div>
+      <div className={`${styles.karte} ${styles.kosten}`}>
+        <strong className={styles.h2}>{f.ringTitel}</strong>
+        <div className={styles.kostenInhalt}>
+          <span className={styles.ring}>
+            <svg viewBox="0 0 42 42" aria-hidden="true" focusable="false">
+              <circle className={styles.ringGrund} cx="21" cy="21" r="15.9155" fill="none" strokeWidth="5.5" />
+              {f.segmente.map((x, i) => {
+                const anteil = (x.betrag / summe) * 100
+                const lang = Math.max(anteil - 0.8, 0)
+                const el = (
+                  <circle
+                    key={x.text}
+                    className={RINGFARBEN[i % RINGFARBEN.length]}
+                    cx="21"
+                    cy="21"
+                    r="15.9155"
+                    fill="none"
+                    strokeWidth="5.5"
+                    strokeDasharray={`${lang} ${100 - lang}`}
+                    strokeDashoffset={versatz}
+                  />
+                )
+                versatz -= anteil
+                return el
+              })}
+            </svg>
+            <span className={styles.ringMitte}>
+              <strong>{chf(summe)}</strong>
+              <span>{f.proJahr}</span>
+            </span>
+          </span>
+          <ul className={styles.legende}>
+            {f.segmente.map((x, i) => (
+              <li key={x.text}>
+                <span className={`${styles.legendePunkt} ${RINGFARBEN[i % RINGFARBEN.length]}`} aria-hidden="true" />
+                <span className={styles.legendeText}>{x.text}</span>
+                <strong>{chf(x.betrag)}</strong>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-      <figcaption className={`${styles.hinweis} ${styles.fensterHinweis}`}>{f.hinweis}</figcaption>
-    </figure>
+    </Rahmen>
+  )
+}
+
+/* ---- Meine Versicherungen ------------------------------------------------------ */
+
+function Versicherungen() {
+  const v = portalVersicherungen
+  return (
+    <Rahmen aktiv={1} titel={v.titel}>
+      <strong className={styles.h1}>{v.titel}</strong>
+      <span className={`${styles.leise} ${styles.einleitung}`}>{v.einleitung}</span>
+      <strong className={styles.h2}>{v.gruppe}</strong>
+      <div className={styles.policen}>
+        {v.policen.map((p) => (
+          <span key={p.zeile} className={styles.police}>
+            <span className={styles.rund}>
+              <Zeichen name="schild" />
+            </span>
+            <span className={styles.policeText}>
+              <strong>{p.name}</strong>
+              <span>{p.gesellschaft}</span>
+              <span className={styles.klein}>{p.zeile}</span>
+            </span>
+            <Zeichen name="pfeil" klasse={`${styles.zeichen} ${styles.pfeil}`} />
+          </span>
+        ))}
+      </div>
+    </Rahmen>
+  )
+}
+
+/* ---- Anfragen ------------------------------------------------------------------- */
+
+const WAHLZEICHEN = ['dokument', 'telefon', 'kalender', 'schild', 'nachricht'] as const
+const MARKE = { offen: styles.marke, navy: `${styles.marke} ${styles.markeNavy}`, gruen: `${styles.marke} ${styles.markeGruen}` }
+
+function Anfragen() {
+  const a = portalAnfragen
+  return (
+    <Rahmen aktiv={2} titel={a.titel}>
+      <strong className={styles.h1}>{a.titel}</strong>
+      <div className={styles.wahl}>
+        {a.wahl.map((w, i) => (
+          <span key={w} className={styles.wahlKnopf}>
+            <span className={styles.rund}>
+              <Zeichen name={WAHLZEICHEN[i] ?? 'nachricht'} />
+            </span>
+            <strong>{w}</strong>
+          </span>
+        ))}
+      </div>
+      <strong className={styles.h2}>{a.bisher}</strong>
+      <div className={styles.anfragen}>
+        {a.anfragen.map((x) => (
+          <span key={x.betreff} className={`${styles.karte} ${styles.anfrage}`}>
+            <span>
+              <strong>{x.betreff}</strong>
+              <span className={styles.klein}> · {x.datum}</span>
+            </span>
+            <span className={MARKE[x.art]}>{x.stand}</span>
+          </span>
+        ))}
+      </div>
+    </Rahmen>
+  )
+}
+
+/* ---- Eine Police: Unterlagen --------------------------------------------------- */
+
+function Unterlagen() {
+  const u = portalUnterlagen
+  return (
+    <Rahmen aktiv={1} titel={u.titel}>
+      <span className={styles.zurueck}>
+        <Zeichen name="zurueck" />
+        {u.zurueck}
+      </span>
+      <div className={styles.policeKopf}>
+        <span className={`${styles.rund} ${styles.rundGross}`}>
+          <Zeichen name="schild" />
+        </span>
+        <span className={styles.policeKopfText}>
+          <strong className={styles.h1}>{u.name}</strong>
+          <span className={styles.leise}>
+            {u.gesellschaft} <span className={`${styles.marke} ${styles.markeGruen}`}>{u.status}</span>
+          </span>
+        </span>
+      </div>
+      <div className={styles.karte}>
+        <strong className={styles.h2}>{u.titel}</strong>
+        <div className={styles.dokumente}>
+          {u.dokumente.map((d) => (
+            <span key={d.name} className={styles.dokument}>
+              <span className={styles.dokumentBild}>
+                <Zeichen name="dokument" />
+              </span>
+              <span className={styles.policeText}>
+                <strong>{d.name}</strong>
+                <span className={styles.klein}>{d.zeile}</span>
+              </span>
+              <span className={d.haupt ? styles.knopf : `${styles.knopf} ${styles.knopfLeise}`}>
+                <Zeichen name="laden" />
+                {d.knopf}
+              </span>
+            </span>
+          ))}
+        </div>
+      </div>
+    </Rahmen>
   )
 }
 
 export function PortalAnsicht({ ansicht = 'praemien' }: { ansicht?: Art }) {
   switch (ansicht) {
-    case 'policen':
-      return <Policen />
+    case 'fenster':
+      return <Start />
+    case 'versicherungen':
+      return <Versicherungen />
     case 'anfragen':
       return <Anfragen />
-    case 'dokumente':
-      return <Dokumente />
-    case 'fenster':
-      return <Fenster />
+    case 'unterlagen':
+      return <Unterlagen />
     default:
       return <PortalBeispiel {...portalBeispiel} />
   }

@@ -1,207 +1,23 @@
-/* Beispielansichten des Kundenportals (15.10.2026). Dieselbe Karte wie die
-   Ringansicht in PortalBeispiel: weiss, feine Kontur, leichter Schatten.
-   Farben nur aus den Tokens. Lange Namen brechen um, nichts wird abgeschnitten. */
-
-.ansicht {
-  margin: 0;
-  padding: clamp(1.1rem, 2.5vw, 1.5rem);
-  background-color: var(--ac-color-white);
-  border: var(--ac-border-hairline) solid var(--ac-line);
-  border-radius: 20px;
-  box-shadow: var(--ac-shadow-card);
-  min-width: 0;
-}
-
-.kopf {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem 1rem;
-  padding-bottom: 0.85rem;
-  border-bottom: var(--ac-border-hairline) solid var(--ac-line-soft);
-}
-
-.titel {
-  font-weight: 700;
-  color: var(--ac-color-primary-navy);
-}
-
-.marke {
-  padding: 0.2rem 0.65rem;
-  font-size: 0.8125rem;
-  color: var(--ac-color-text-secondary);
-  background-color: var(--ac-color-background-light);
-  border-radius: 999px;
-}
-
-.zeilen {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.zeilen > li {
-  padding-block: 0.8rem;
-}
-
-.zeilen > li + li {
-  border-top: var(--ac-border-hairline) solid var(--ac-line-soft);
-}
-
-.haupt {
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--ac-color-text-primary);
-  overflow-wrap: anywhere;
-}
-
-.neben {
-  display: block;
-  margin-top: 0.15rem;
-  font-size: 0.8125rem;
-  line-height: 1.35;
-  color: var(--ac-color-text-secondary);
-}
-
-/* ---- Policen ---------------------------------------------------------------- */
-
-.police {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-
-.text {
-  min-width: 0;
-  font-size: var(--ac-small-size);
-}
-
-.rechts {
-  display: flex;
-  flex: none;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.25rem;
-}
-
-.betrag {
-  font-weight: 700;
-  font-size: var(--ac-small-size);
-  font-variant-numeric: tabular-nums;
-  color: var(--ac-color-primary-navy);
-  white-space: nowrap;
-}
-
-.status {
-  padding: 0.1rem 0.55rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--ac-color-accent-green);
-  background-color: var(--ac-color-signal-positive-bg);
-  border-radius: 999px;
-}
-
-/* ---- Anfragen mit Stand ------------------------------------------------------ */
-
-.anfrage {
-  display: grid;
-  gap: 0.55rem;
-  font-size: var(--ac-small-size);
-}
-
-.anfrageKopf {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.25rem 0.75rem;
-}
-
-.stand {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: var(--ac-color-primary-navy);
-}
-
-.standFertig {
-  color: var(--ac-color-accent-green);
-}
-
-.balken {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.3rem;
-}
-
-.balkenAn,
-.balkenAus {
-  height: 0.45rem;
-  border-radius: 999px;
-}
-
-.balkenAn {
-  background-color: var(--ac-color-accent-green);
-}
-
-.balkenAus {
-  background-color: var(--ac-color-background-tint);
-}
-
-/* Ein Rückruf hat nur zwei Stufen: angefragt, erledigt */
-.balken[data-stufen='2'] {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-/* ---- Dokumente ---------------------------------------------------------------- */
-
-.dokument {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: var(--ac-small-size);
-}
-
-.blatt {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: none;
-  stroke: var(--ac-color-accent-green);
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.art {
-  padding: 0.1rem 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--ac-color-primary-navy);
-  background-color: var(--ac-color-background-light);
-  border-radius: 6px;
-}
-
-.hinweis {
-  margin-top: 0.75rem;
-  font-size: 0.75rem;
-  color: var(--ac-color-text-secondary);
-}
-
-/* ---- Das Portal als Fenster (15.10.2026) -----------------------------------
-   Nachgebaut nach public-portal/portal.css im CRM: weisser Kopf mit Navy-Linie,
-   Begrüssung mit Navy-Strich links, Kennzahlen, Kostenring. Gleiche Farbfolge. */
+/* Das Kundenportal als Fenster (15.10.2026), nachgebaut nach public-portal/portal.css im CRM.
+   Dieselben Masse im Verhältnis 13 : 16 (Fenster : Portal), dieselbe Schrift (Arial), dieselben
+   Tokenfarben. Navy als Knopffläche steht hier nur, weil das Portal sie so zeigt. Lange Wörter
+   brechen mit weicher Trennstelle, nichts wird abgeschnitten. */
 
 .fenster {
   margin: 0;
   min-width: 0;
   overflow: hidden;
-  background-color: var(--ac-color-background-light);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--ac-color-text-primary);
+  background-color: var(--ac-color-white);
   border: var(--ac-border-hairline) solid var(--ac-line);
   border-radius: 16px;
   box-shadow: var(--ac-shadow-card-strong);
 }
+
+/* ---- Browserleiste --------------------------------------------------------- */
 
 .leiste {
   display: flex;
@@ -236,91 +52,210 @@
   border-radius: 999px;
 }
 
-.portalKopf {
+/* ---- Portal: Kopf ------------------------------------------------------------ */
+
+.portal {
+  background-color: var(--ac-color-background-light);
+  container-type: inline-size;
+}
+
+.kopf {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem 1rem;
-  padding: 0.75rem 1rem;
+  gap: 0.4em 1em;
+  padding: 0.6em 1.2em;
   background-color: var(--ac-color-white);
-  border-bottom: 1px solid var(--ac-color-primary-navy);
+  border-top: 3px solid var(--ac-color-accent-green);
+  border-bottom: 1px solid var(--ac-color-border-tint);
 }
 
-.portalLogo {
-  width: 7.5rem;
+.logo {
+  width: 9em;
   height: auto;
 }
 
-.portalNav {
+.nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem 0.85rem;
-  font-size: 0.75rem;
-  color: var(--ac-color-primary-navy);
-}
-
-.navAktiv {
-  font-weight: 700;
-  box-shadow: inset 0 -2px 0 var(--ac-color-accent-green);
-}
-
-.portalInhalt {
-  display: grid;
-  gap: 0.75rem;
-  padding: 1rem;
-}
-
-.willkommen {
-  display: grid;
-  gap: 0.15rem;
-  padding: 0.85rem 1rem;
-  background-color: var(--ac-color-white);
-  border: 1px solid var(--ac-color-border-tint);
-  border-left: 5px solid var(--ac-color-primary-navy);
-  border-radius: 10px;
-}
-
-.vorzeile {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--ac-color-accent-green);
-}
-
-.gruss {
-  font-size: 1.125rem;
-  color: var(--ac-color-primary-navy);
-}
-
-.satz {
-  font-size: 0.8125rem;
+  align-items: center;
+  gap: 0.2em 0.9em;
+  margin-left: auto;
   color: var(--ac-color-text-secondary);
 }
 
-.kennzahlen {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.5rem;
+.nav > span {
+  padding-block: 0.35em;
+  border-bottom: 3px solid transparent;
 }
 
-.kennzahl {
+.nav > .navAktiv {
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+  border-bottom-color: var(--ac-color-accent-green);
+}
+
+.nav > .abmelden {
+  padding: 0.3em 0.7em;
+  color: var(--ac-color-primary-navy);
+  border: 1px solid var(--ac-color-border-tint);
+  border-radius: 6px;
+}
+
+/* ---- Portal: Inhalt ---------------------------------------------------------- */
+
+.inhalt {
   display: grid;
+  gap: 0.75em;
   align-content: start;
-  gap: 0.1rem;
-  min-width: 0;
-  padding: 0.6rem 0.7rem;
-  font-size: 0.75rem;
+  padding: 1.2em 1.2em 1.4em;
+}
+
+.h1 {
+  display: block;
+  font-size: 1.5em;
+  line-height: 1.25;
+  color: var(--ac-color-primary-navy);
+  overflow-wrap: break-word;
+}
+
+.h2 {
+  display: block;
+  margin-top: 0.4em;
+  font-size: 1.125em;
   line-height: 1.3;
-  color: var(--ac-color-text-primary);
+  color: var(--ac-color-primary-navy);
+}
+
+.leise {
+  color: var(--ac-color-text-secondary);
+}
+
+.einleitung {
+  margin-top: -0.4em;
+}
+
+.klein {
+  font-size: 0.875em;
+  color: var(--ac-color-text-secondary);
+}
+
+.karte {
+  display: block;
+  padding: 1em 1.1em;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-light);
+  border-radius: 12px;
+}
+
+.zeichen {
+  width: 1.5em;
+  height: 1.5em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pfeil {
+  color: var(--ac-color-accent-green);
+}
+
+.rund {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 3.25em;
+  height: 3.25em;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-tint);
+  border-radius: 50%;
+}
+
+.rundGross {
+  width: 4em;
+  height: 4em;
+}
+
+.marke {
+  display: inline-block;
+  padding: 0.05em 0.5em;
+  font-size: 0.875em;
+  white-space: nowrap;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-background-light);
+  border: 1px solid var(--ac-color-border-light);
+  border-radius: 6px;
+}
+
+.markeGruen {
+  color: var(--ac-color-accent-green);
+  background-color: var(--ac-color-signal-positive-bg);
+  border-color: var(--ac-color-accent-green);
+}
+
+.markeNavy {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-primary-navy);
+  border-color: var(--ac-color-primary-navy);
+}
+
+/* ---- Start: Begrüssung und Übersicht ----------------------------------------- */
+
+.willkommen {
+  display: grid;
+  gap: 0.2em;
+  padding: 1.1em 1.3em;
   background-color: var(--ac-color-white);
   border: 1px solid var(--ac-color-border-tint);
-  border-radius: 10px;
+  border-left: 6px solid var(--ac-color-primary-navy);
+  border-radius: 12px;
 }
 
-.kennzahl strong {
-  font-size: 1.375rem;
+.vorzeile {
+  font-size: 0.875em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ac-color-accent-green);
+}
+
+.uebersicht {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6em;
+}
+
+.stand {
+  display: grid;
+  align-content: start;
+  gap: 0.1em;
+  min-width: 0;
+  padding: 0.8em 0.9em;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-radius: 12px;
+}
+
+.stand strong {
+  font-size: 1.5em;
   line-height: 1.1;
   color: var(--ac-color-primary-navy);
+}
+
+.standTitel {
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.standLink {
+  margin-top: 0.3em;
+  font-size: 0.875em;
+  font-weight: 700;
+  color: var(--ac-color-accent-green);
 }
 
 .termin {
@@ -328,56 +263,52 @@
   border-style: dashed;
 }
 
-.terminTitel {
-  font-weight: 700;
-  color: var(--ac-color-primary-navy);
-}
-
-.terminKnopf {
+.kleinKnopf {
   justify-self: start;
-  margin-top: 0.25rem;
-  padding: 0.15rem 0.5rem;
-  font-weight: 600;
+  margin-top: 0.4em;
+  padding: 0.35em 0.7em;
+  font-size: 0.875em;
   color: var(--ac-color-white);
-  background-color: var(--ac-color-accent-green);
+  background-color: var(--ac-color-primary-navy);
   border-radius: 6px;
 }
 
-.kosten {
-  padding: 0.85rem 1rem;
-  background-color: var(--ac-color-white);
-  border: 1px solid var(--ac-color-border-tint);
-  border-radius: 10px;
+@container (max-width: 26rem) {
+  .uebersicht {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .termin {
+    grid-column: 1 / -1;
+  }
 }
 
-.kostenTitel {
-  display: block;
-  margin-bottom: 0.6rem;
-  font-size: 0.9375rem;
-  color: var(--ac-color-primary-navy);
-}
+/* ---- Start: Kostenring ----------------------------------------------------------- */
 
-.kostenInhalt {
-  display: grid;
-  gap: 0.85rem;
-  align-items: center;
-}
-
-/* Ring neben der Legende nur, wenn die Karte selbst breit genug ist – sonst darüber */
 .kosten {
   container-type: inline-size;
 }
 
+.kosten .h2 {
+  margin: 0 0 0.6em;
+}
+
+.kostenInhalt {
+  display: grid;
+  gap: 0.85em;
+  align-items: center;
+}
+
 @container (min-width: 22rem) {
   .kostenInhalt {
-    grid-template-columns: 8.5rem minmax(0, 1fr);
+    grid-template-columns: 9em minmax(0, 1fr);
   }
 }
 
 .ring {
   position: relative;
   display: block;
-  width: min(100%, 8.5rem);
+  width: min(100%, 9em);
   aspect-ratio: 1;
   margin-inline: auto;
 }
@@ -419,12 +350,12 @@
 }
 
 .ringMitte strong {
-  font-size: 0.875rem;
+  font-size: 1em;
   color: var(--ac-color-primary-navy);
 }
 
 .ringMitte span {
-  font-size: 0.6875rem;
+  font-size: 0.85em;
   color: var(--ac-color-text-secondary);
 }
 
@@ -437,11 +368,10 @@
 
 .legende li {
   display: grid;
-  grid-template-columns: 0.65rem minmax(0, 1fr) auto;
-  gap: 0.5rem;
+  grid-template-columns: 0.75em minmax(0, 1fr) auto;
+  gap: 0.6em;
   align-items: center;
-  padding-block: 0.35rem;
-  font-size: 0.8125rem;
+  padding-block: 0.4em;
 }
 
 .legende li + li {
@@ -450,13 +380,13 @@
 
 .legende strong {
   font-variant-numeric: tabular-nums;
-  color: var(--ac-color-primary-navy);
   white-space: nowrap;
+  color: var(--ac-color-primary-navy);
 }
 
 .legendePunkt {
-  width: 0.65rem;
-  height: 0.65rem;
+  width: 0.75em;
+  height: 0.75em;
   border-radius: 50%;
 }
 
@@ -478,47 +408,189 @@
 
 .legendeText {
   line-height: 1.3;
-  color: var(--ac-color-text-primary);
   overflow-wrap: break-word;
-  hyphens: auto;
 }
 
-.fensterHinweis {
-  margin: 0;
-  padding: 0 1rem 0.85rem;
-}
-
-/* Schmales Fenster: zwei Kennzahlen nebeneinander, der Termin darunter über die
-   ganze Breite – drei Spalten überlappten bei 375 px. */
-.portalInhalt {
-  container-type: inline-size;
-}
-
-@container (max-width: 26rem) {
-  .kennzahlen {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .termin {
-    grid-column: 1 / -1;
-  }
-}
-
-/* Lange Versicherungsnamen in den schmalen Ausschnitten: Trennstrich statt Bruch mitten im Wort */
-.haupt,
-.neben {
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-
-/* Sehr schmale Kostenkarte (Telefon): Betrag unter den Namen statt daneben */
 @container (max-width: 18rem) {
   .legende li {
-    grid-template-columns: 0.65rem minmax(0, 1fr);
-    row-gap: 0.1rem;
+    grid-template-columns: 0.75em minmax(0, 1fr);
+    row-gap: 0.1em;
   }
 
   .legende strong {
     grid-column: 2;
   }
+}
+
+/* ---- Meine Versicherungen ------------------------------------------------------- */
+
+.policen {
+  display: grid;
+  gap: 0.6em;
+}
+
+.police {
+  display: grid;
+  grid-template-columns: 3.25em minmax(0, 1fr) 1.5em;
+  gap: 0.9em;
+  align-items: center;
+  padding: 0.9em 1.1em;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-radius: 12px;
+}
+
+.policeText {
+  display: grid;
+  gap: 0.1em;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.policeText strong {
+  font-size: 1.125em;
+  line-height: 1.25;
+  color: var(--ac-color-primary-navy);
+}
+
+/* ---- Anfragen ---------------------------------------------------------------------- */
+
+.wahl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5em, 1fr));
+  gap: 0.5em;
+}
+
+.wahlKnopf {
+  display: grid;
+  gap: 0.4em;
+  justify-items: start;
+  padding: 0.8em 0.9em;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-radius: 12px;
+}
+
+.wahlKnopf .rund {
+  width: 2.6em;
+  height: 2.6em;
+}
+
+.wahlKnopf strong {
+  line-height: 1.25;
+  color: var(--ac-color-primary-navy);
+}
+
+.anfragen {
+  display: grid;
+  gap: 0.5em;
+}
+
+.anfrage {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4em 0.75em;
+}
+
+/* ---- Eine Police: Kopf und Unterlagen --------------------------------------------- */
+
+.zurueck {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.policeKopf {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1em;
+  padding: 1.1em 1.3em;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-left: 6px solid var(--ac-color-primary-navy);
+  border-radius: 12px;
+}
+
+.policeKopfText {
+  display: grid;
+  flex: 1 1 12em;
+  gap: 0.3em;
+  min-width: 0;
+}
+
+.dokumente {
+  display: grid;
+  margin-top: 0.6em;
+}
+
+.dokument {
+  display: grid;
+  grid-template-columns: 2.75em minmax(0, 1fr);
+  gap: 0.4em 0.9em;
+  align-items: center;
+  padding-block: 0.75em;
+}
+
+.dokument + .dokument {
+  border-top: 1px solid var(--ac-color-background-tint);
+}
+
+.dokumentBild {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75em;
+  height: 2.75em;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-tint);
+  border-radius: 10px;
+}
+
+.knopf {
+  display: inline-flex;
+  grid-column: 2;
+  justify-self: start;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em 0.9em;
+  font-weight: 700;
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-primary-navy);
+  border: 1px solid var(--ac-color-primary-navy);
+  border-radius: 6px;
+}
+
+.knopf .zeichen {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.knopfLeise {
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-white);
+}
+
+@container (min-width: 30rem) {
+  .dokument {
+    grid-template-columns: 2.75em minmax(0, 1fr) auto;
+  }
+
+  .knopf {
+    grid-column: auto;
+  }
+}
+
+/* ---- Unterschrift ------------------------------------------------------------------- */
+
+.hinweis {
+  margin: 0;
+  padding: 0.6rem 1rem 0.75rem;
+  font-size: 0.75rem;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-white);
 }

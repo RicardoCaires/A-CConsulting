@@ -57,6 +57,7 @@ export const versicherungen: SeitenInhalt = {
       art: 'listen',
       id: 'bereiche',
       titel: { vor: 'Was wir für Sie ', akzent: 'prüfen' },
+      darstellung: 'kacheln',
       listen: [
         {
           titel: 'Für Privatpersonen',
@@ -68,6 +69,7 @@ export const versicherungen: SeitenInhalt = {
             { text: 'Leben und Säule 3a' },
             { text: 'Rechtsschutz' },
           ],
+          knopf: { text: 'Offerte anfragen', href: 'offerte', art: 'zweit' },
         },
         {
           titel: 'Für Unternehmen',
@@ -80,6 +82,7 @@ export const versicherungen: SeitenInhalt = {
             { text: 'Sachversicherung' },
             { text: 'Rechtsschutz' },
           ],
+          knopf: { text: 'Offerte anfragen', href: 'offerte', art: 'zweit' },
         },
       ],
     },

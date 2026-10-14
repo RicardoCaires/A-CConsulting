@@ -168,3 +168,34 @@ Weiche Trennstellen (15.10.2026, lange Wörter in schmalen Spalten; Chrome trenn
 - Privat- und Verkehrs­rechtsschutz
 - Wohnung und Privat­haftpflicht
 - Steuer­erklärung im Kanton Bern · Kranken­versicherung · Motor­fahrzeug · Hausrat und Privat­haftpflicht
+
+## Vierter Schritt, 15.10.2026
+
+Ricardo: «das ist nicht die ansicht in unserem system». Die Portalansichten sind nach den echten Portalseiten nachgebaut (`public-portal/portal.js` im CRM); die Beschriftungen stammen von dort, Person, Verträge, Nummern und Beträge sind erfunden. Dazu «Was wir für Sie prüfen» als Kacheln, die Matrix leserlicher, der Vergleich ohne Versatz, die Logos zentriert (zentrierte Fassungen `partner_*_mitte.webp`, aus den gelieferten Dateien geschnitten).
+
+- Abmelden
+- Alle Versicherungen
+- Ansehen
+- Beispiel Versicherung AG
+- Bitte um Rückruf
+- Ihre bisherigen Anfragen
+- Jeder Vertrag zum Anklicken, mit Gesellschaft und Unterlagen.
+- Klicken Sie auf einen Vertrag, um die Einzelheiten zu sehen und die Police herunterzuladen.
+- Nachricht senden
+- Nachtrag Wohnungswechsel
+- Nachtrag · 15.03.2026 · 120 KB
+- Noch keiner vereinbart
+- Offertanfrage Motorfahrzeug
+- Police 2026
+- Police BV-100200 · 1 Unterlage
+- Police KV-100100 · 2 Unterlagen
+- Police MF-100300 · 1 Unterlage
+- Police herunterladen
+- Police und Nachträge zum Herunterladen.
+- Police · 01.01.2026 · 245 KB
+- Rückruf wünschen
+- Terminwunsch
+- Unterlagen zu diesem Vertrag
+- in Kraft
+- Änderung melden
+- Über A&C betreut

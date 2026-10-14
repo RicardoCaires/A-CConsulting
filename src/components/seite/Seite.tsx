@@ -164,6 +164,36 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
       )
 
     case 'listen':
+      if (block.darstellung === 'kacheln') {
+        return (
+          <>
+            <Kopf block={block} h1={h1} nr={nr} />
+            <div className={styles.kachelGruppen}>
+              {block.listen.map((liste, li) => (
+                <section key={liste.titel} id={liste.id} className={styles.kachelGruppe} data-ton={li % 2 ? 'navy' : 'gruen'}>
+                  <div className={styles.kachelKopf}>
+                    <h3 className={styles.kachelTitel}>{liste.titel}</h3>
+                    <span className={styles.kachelZahl} aria-hidden="true">
+                      {liste.eintraege.length}
+                    </span>
+                  </div>
+                  <ul className={styles.kacheln}>
+                    {liste.eintraege.map((e) => (
+                      <li key={e.text}>
+                        <span className={styles.kachelHaken} aria-hidden="true">
+                          ✓
+                        </span>
+                        {e.text}
+                      </li>
+                    ))}
+                  </ul>
+                  {liste.knopf ? <Knoepfe knoepfe={[liste.knopf]} locale={locale} /> : null}
+                </section>
+              ))}
+            </div>
+          </>
+        )
+      }
       return (
         <>
           <Kopf block={block} h1={h1} nr={nr} />
@@ -251,9 +281,15 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
       return (
         <>
           <Kopf block={block} h1={h1} nr={nr} />
+          {/* Alle Spalten teilen dieselben Zeilen (Subgrid): Mindestkapital, Haftung … und
+              «Passt …» stehen nebeneinander auf gleicher Höhe (Ricardo: «nicht versetzt»). */}
           <div className={styles.vergleich}>
             {block.spalten.map((sp) => (
-              <div key={sp.titel} className={styles.vergleichSpalte}>
+              <div
+                key={sp.titel}
+                className={styles.vergleichSpalte}
+                style={{ ['--zeilen' as string]: 1 + (sp.untertitel ? 1 : 0) + sp.zeilen.length + (sp.passt ? 1 : 0) }}
+              >
                 <h3 className={styles.vergleichTitel}>{sp.titel}</h3>
                 {sp.untertitel ? <p className={styles.vergleichUnter}>{sp.untertitel}</p> : null}
                 <dl className={styles.merkmale}>
@@ -415,7 +451,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
               <ul className={styles.knotenLogos}>
                 {block.markt.gesellschaften.map((g) => (
                   <li key={g.name}>
-                    <Image src={`/bilder/${g.bild}.webp`} alt={g.name} width={409} height={227} sizes="6rem" />
+                    <Image src={`/bilder/${g.bild}_mitte.webp`} alt={g.name} width={400} height={220} sizes="6rem" />
                   </li>
                 ))}
               </ul>
@@ -648,7 +684,7 @@ function Bild({ bild }: { bild: Extract<Block, { art: 'textBild' }>['bild'] }) {
             {bild.gesellschaften.map((g) => (
               <li key={g.name}>
                 <a href={g.url} target="_blank" rel="noopener noreferrer">
-                  <Image src={`/bilder/${g.bild}.webp`} alt={`${g.name} — Schaden melden`} width={409} height={227} sizes="(min-width: 64rem) 160px, 30vw" />
+                  <Image src={`/bilder/${g.bild}_mitte.webp`} alt={`${g.name} — Schaden melden`} width={400} height={220} sizes="(min-width: 64rem) 160px, 30vw" />
                 </a>
               </li>
             ))}
