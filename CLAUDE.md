@@ -2536,6 +2536,42 @@ gibt es noch keine.
 
 ---
 
+## 9a. Umbau vom 14./15.10.2026 – Baukasten, schlanker, digital
+
+> **Gilt vor allen älteren Notizen zu Gestaltung und Seitenaufbau in Abschnitt 5 und 9.** Auftrag Ricardo:
+> «zu viele inhalte», «News und Blogbereich», «Finanzplanung entfernen», «dieses komische blau im hintergrund
+> hinter kundenportal soll nirgends … verwendet werden», «Digitalisierung und Kundenportal in den vordergrund»,
+> «weniger nach KI aussehen», Vorbild **simply.ch**, dann «Finde ich gut bitte durchwegs durchziehen».
+>
+> - **Baukasten:** Jede Seite (ausser Offerte anfragen) ist eine Liste von Blöcken in `src/content/seiten/`
+>   (Typen in `typen.ts`), ausgegeben von `src/components/seite/Seite.tsx` mit `Seite.module.css` – **eine Stelle
+>   für die Form aller Blöcke**. Weisse Blöcke mit 28 px Ecken auf `background_tint`, zweifarbige Überschriften
+>   (Akzentwort grün), **keine Vorzeilen, keine Werbesprüche, keine Symbolkacheln, keine Illustrationen**.
+>   Blockarten: text, listen, textBild (Foto/Portal-Beispiel/Karte/Versicherer-Logos), schritte, vergleich, tabelle,
+>   fragen (höchstens 3 je Seite), personen, kontakt, modell (Schaubild), formular. Ältere Bausteine unter
+>   `src/components/blocks/` und `src/content/pages/` bleiben liegen; Schaubild und Kontaktformular lesen ihre
+>   Daten weiterhin dort.
+> - **Navy (`primary_navy`) nie als Fläche** – nur Schrift und Hover-Zustände (Ricardo hat die Hover-Zustände
+>   ausdrücklich so gelassen). Kundenportal-Leiste entfernt; **«Kundenportal» schwebt unten rechts** auf jeder Seite
+>   (`components/layout/PortalKnopf.tsx`, Ricardos Wahl).
+> - **Finanzplanung** nicht mehr veröffentlicht, `/de/finanzplanung` → Startseite (301).
+> - **Buchhaltung, Treuhänderwechsel, Firmengründung** sind Abschnitte von `/de/treuhand` (`#buchhaltung`, `#wechsel`,
+>   `#firmengruendung`); alte Adressen leiten weiter (`public/_redirects`). Steuern bleibt eigene Seite.
+> - **Neue Seite `/de/digital`** in der Hauptnavigation (Versicherungen · Treuhand · Digital · Über uns).
+> - **News und Blog** unter `/de/news/` (`src/content/seiten/news.ts`, Ansicht `components/seite/News.tsx`,
+>   Zugriff `src/lib/news.ts`). **Online erst nach Ricardos Freigabe:** `news` steht in `routes.ts` auf
+>   `published: false`, jeder Beitrag auf `freigegeben: false`. Lokal zeigt `NEXT_PUBLIC_NEWS_VORSCHAU=1` in
+>   `.env.local` die Entwürfe mit Vermerk «Entwurf». Drei Entwürfe liegen vor.
+> - **Offerte anfragen** ohne Banner. Banner der übrigen Seiten mit **schlichten Überschriften** statt Slogans;
+>   die Startseite behält «Verwurzelt im Seeland. Blick auf mehr.» (von Ricardo gesehen und gutgeheissen).
+> - **Neue Texte sind Vorschläge**, festgehalten in `content/source/umbau_*_de.md`; Ricardo bestätigt.
+> - Die **Beispielansicht des Kundenportals** mit Ringdiagramm hat erfundene, als Beispiel bezeichnete Zahlen.
+>   Das Portal selbst zeigt Prämie und Deckungen je Police, **keine** Zusammenfassung und **keine Fristen** – die
+>   Texte behaupten das darum nicht.
+> - ⚠️ **Datenschutzerklärung veraltet** (Wortlaut unverändert übernommen): Sie sagt, es gebe kein Kontaktformular,
+>   keine Karten fremder Server und keinen Kundenbereich. Seit Offertanfrage, OpenStreetMap-Karte nach Klick,
+>   Kundenportal und Turnstile stimmt das nicht mehr. **Nur Ricardo ändert sie.**
+
 ## 10. Offene Punkte
 
 Technik und Infrastruktur:
