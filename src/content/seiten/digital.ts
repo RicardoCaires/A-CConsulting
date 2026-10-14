@@ -51,9 +51,8 @@ export const digital: SeitenInhalt = {
       id: 'ansichten',
       titel: { vor: 'Ein Blick ', akzent: 'hinein' },
       ansichten: [
-        { ansicht: 'versicherungen', titel: 'Ihre Versicherungen', text: 'Jeder Vertrag zum Anklicken, mit Gesellschaft und Unterlagen.' },
-        { ansicht: 'anfragen', titel: 'Ihre Anfragen', text: 'Sie sehen jederzeit, wie weit wir sind.' },
-        { ansicht: 'unterlagen', titel: 'Ihre Unterlagen', text: 'Police und Nachträge zum Herunterladen.' },
+        { ansicht: 'versicherungen', titel: 'Alle Policen im Überblick', text: 'Jeder Vertrag mit Gesellschaft, zum Anklicken.' },
+        { ansicht: 'police', titel: 'Leistungen und Police', text: 'Was versichert ist – und die Police direkt zum Herunterladen.' },
       ],
     },
     {

@@ -6,6 +6,7 @@ import {
   portalAnfragen,
   portalBeispiel,
   portalFenster,
+  portalPolice,
   portalRahmen,
   portalUnterlagen,
   portalVersicherungen,
@@ -69,7 +70,6 @@ function Rahmen({ aktiv, titel, children }: { aktiv: number; titel: string; chil
                 {n}
               </span>
             ))}
-            <span className={styles.abmelden}>{r.abmelden}</span>
           </span>
         </div>
         <div className={styles.inhalt}>{children}</div>
@@ -161,22 +161,63 @@ function Versicherungen() {
   return (
     <Rahmen aktiv={1} titel={v.titel}>
       <strong className={styles.h1}>{v.titel}</strong>
-      <span className={`${styles.leise} ${styles.einleitung}`}>{v.einleitung}</span>
       <strong className={styles.h2}>{v.gruppe}</strong>
       <div className={styles.policen}>
-        {v.policen.map((p) => (
-          <span key={p.zeile} className={styles.police}>
+        {v.policen.map((p, i) => (
+          <span key={p.zeile} className={i === v.angewaehlt ? `${styles.police} ${styles.policeAktiv}` : styles.police}>
             <span className={styles.rund}>
               <Zeichen name="schild" />
             </span>
             <span className={styles.policeText}>
               <strong>{p.name}</strong>
               <span>{p.gesellschaft}</span>
-              <span className={styles.klein}>{p.zeile}</span>
             </span>
             <Zeichen name="pfeil" klasse={`${styles.zeichen} ${styles.pfeil}`} />
           </span>
         ))}
+      </div>
+    </Rahmen>
+  )
+}
+
+/* ---- Eine Police: Motorfahrzeug mit Leistungen und Download -------------------- */
+
+function Police() {
+  const p = portalPolice
+  return (
+    <Rahmen aktiv={1} titel={p.name}>
+      <span className={styles.zurueck}>
+        <Zeichen name="zurueck" />
+        {p.zurueck}
+      </span>
+      <div className={styles.policeKopf}>
+        <span className={`${styles.rund} ${styles.rundGross}`}>
+          <Zeichen name="schild" />
+        </span>
+        <span className={styles.policeKopfText}>
+          <strong className={styles.h1}>{p.name}</strong>
+          <span className={styles.leise}>
+            {p.gesellschaft} <span className={`${styles.marke} ${styles.markeGruen}`}>{p.status}</span>
+          </span>
+        </span>
+        <span className={styles.knopf}>
+          <Zeichen name="laden" />
+          {p.knopf}
+        </span>
+      </div>
+      <div className={styles.karte}>
+        <strong className={styles.h2}>{p.titel}</strong>
+        <ul className={styles.leistungen}>
+          {p.leistungen.map((l) => (
+            <li key={l.name}>
+              <span className={styles.policeText}>
+                <strong>{l.name}</strong>
+                {l.zusatz ? <span className={styles.klein}>{l.zusatz}</span> : null}
+              </span>
+              {l.wert ? <span className={styles.wert}>{l.wert}</span> : null}
+            </li>
+          ))}
+        </ul>
       </div>
     </Rahmen>
   )
@@ -269,6 +310,8 @@ export function PortalAnsicht({ ansicht = 'praemien' }: { ansicht?: Art }) {
       return <Start />
     case 'versicherungen':
       return <Versicherungen />
+    case 'police':
+      return <Police />
     case 'anfragen':
       return <Anfragen />
     case 'unterlagen':

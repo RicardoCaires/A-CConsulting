@@ -44,7 +44,7 @@ export type Liste = {
 }
 
 /** Welche Beispielansicht des Kundenportals gezeigt wird. */
-export type PortalAnsicht = 'praemien' | 'fenster' | 'versicherungen' | 'anfragen' | 'unterlagen'
+export type PortalAnsicht = 'praemien' | 'fenster' | 'versicherungen' | 'police' | 'anfragen' | 'unterlagen'
 
 type Kopf = {
   /** Anker des Blocks, damit Links von anderen Seiten hierher springen. */

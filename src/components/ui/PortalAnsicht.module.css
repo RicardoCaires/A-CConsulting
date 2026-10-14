@@ -594,3 +594,81 @@
   color: var(--ac-color-text-secondary);
   background-color: var(--ac-color-white);
 }
+
+/* ---- Angewählte Police (wie im Portal beim Darüberfahren) und Leistungen ---------- */
+
+.policeAktiv {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-primary-navy);
+  border-color: var(--ac-color-primary-navy);
+}
+
+.policeAktiv .policeText strong,
+.policeAktiv .policeText span,
+.policeAktiv .pfeil {
+  color: var(--ac-color-white);
+}
+
+.policeAktiv .rund {
+  background-color: var(--ac-color-white);
+}
+
+.policeKopf .knopf {
+  grid-column: auto;
+}
+
+.leistungen {
+  display: grid;
+  margin: 0.5em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.leistungen li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75em;
+  padding-block: 0.55em;
+}
+
+.leistungen li + li {
+  border-top: 1px solid var(--ac-color-border-light);
+}
+
+.leistungen .policeText strong {
+  font-size: 1em;
+  color: var(--ac-color-text-primary);
+}
+
+.wert {
+  color: var(--ac-color-primary-navy);
+  text-align: right;
+  white-space: nowrap;
+}
+
+
+/* Die Ringmitte wächst mit dem Ring: Bei schmalem Fenster lief «CHF 6’480.00» über den
+   Ring hinaus (Ricardo, 15.10.2026). cqi = Prozent der Ringbreite. */
+.ring {
+  container-type: inline-size;
+}
+
+.ringMitte {
+  padding-inline: 0;
+}
+
+.ringMitte strong {
+  /* «CHF 6’480.00» passt so ins Loch (innen rund 64 % der Ringbreite) */
+  font-size: clamp(0.5rem, 9cqi, 0.95rem);
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.ringMitte span {
+  font-size: clamp(0.5rem, 8cqi, 0.8rem);
+}
+
+.kosten .h2 {
+  overflow-wrap: break-word;
+}

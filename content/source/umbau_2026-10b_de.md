@@ -199,3 +199,18 @@ Ricardo: «das ist nicht die ansicht in unserem system». Die Portalansichten si
 - in Kraft
 - Änderung melden
 - Über A&C betreut
+
+## Fünfter Schritt, 15.10.2026
+
+Ricardo: «Hier trotzdem weniger anzeigen soll eigentlich nur verdeutlichen das man eine übersicht der Policen hat und der versicherten leistungen und das man die verträge direkt herunterladen kann nimm MF als Beispiel». Zwei Fenster: Übersicht (Motorfahrzeug angewählt) und Police Motorfahrzeug mit Leistungen und Download. Leistungen, Summen und Selbstbehalte sind erfunden.
+
+- 
+- Alle Policen im Überblick
+- Jeder Vertrag mit Gesellschaft, zum Anklicken.
+- Leistungen und Police
+- Motorfahrzeug­haftpflicht
+- Parkschaden
+- Selbstbehalt CHF 200
+- Selbstbehalt CHF 500
+- Was versichert ist
+- Was versichert ist – und die Police direkt zum Herunterladen.

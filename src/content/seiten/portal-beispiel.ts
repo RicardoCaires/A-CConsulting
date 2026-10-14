@@ -25,8 +25,8 @@ export const portalBeispiel = {
 /** Kopf des Portals, wie nach der Anmeldung. */
 export const portalRahmen = {
   adresse: 'crm.ac-co.ch/portal',
-  navigation: ['Start', 'Versicherungen', 'Anfragen', 'Meine Angaben', 'Zugang'],
-  abmelden: 'Abmelden',
+  // Gekürzt auf drei Bereiche (Ricardo, 15.10.2026: «trotzdem weniger anzeigen»)
+  navigation: ['Start', 'Versicherungen', 'Anfragen'],
   hinweis: 'Beispielansicht mit erfundenen Angaben.',
 } as const
 
@@ -55,10 +55,30 @@ export const portalVersicherungen = {
   titel: 'Meine Versicherungen',
   einleitung: 'Klicken Sie auf einen Vertrag, um die Einzelheiten zu sehen und die Police herunterzuladen.',
   gruppe: 'Über A&C betreut',
+  // Motorfahrzeug ist angewählt: daneben steht seine Police (Ricardo: «nimm MF als Beispiel»)
+  angewaehlt: 1,
   policen: [
     { name: 'Kranken­versicherung', gesellschaft: 'Beispiel Versicherung AG', zeile: 'Police KV-100100 · 2 Unterlagen' },
     { name: 'Motor­fahrzeug', gesellschaft: 'Beispiel Versicherung AG', zeile: 'Police MF-100300 · 1 Unterlage' },
     { name: 'Hausrat und Privat­haftpflicht', gesellschaft: 'Beispiel Versicherung AG', zeile: 'Police BV-100200 · 1 Unterlage' },
+  ],
+} as const
+
+/**
+ * Eine Police von innen, am Beispiel Motorfahrzeug: Kopf mit «Police herunterladen» und
+ * «Was versichert ist» – Leistung, Selbstbehalt, Versicherungssumme wie im Portal.
+ */
+export const portalPolice = {
+  zurueck: 'Alle Versicherungen',
+  name: 'Motor­fahrzeug',
+  gesellschaft: 'Beispiel Versicherung AG',
+  status: 'in Kraft',
+  knopf: 'Police herunterladen',
+  titel: 'Was versichert ist',
+  leistungen: [
+    { name: 'Motorfahrzeug­haftpflicht', zusatz: null, wert: "CHF 100'000'000" },
+    { name: 'Teilkasko', zusatz: 'Selbstbehalt CHF 200', wert: null },
+    { name: 'Parkschaden', zusatz: 'Selbstbehalt CHF 500', wert: null },
   ],
 } as const
 

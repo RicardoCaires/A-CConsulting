@@ -1651,3 +1651,24 @@
   visibility: hidden;
 }
 
+
+/* Gitter der Matrix kräftiger (Ricardo, 15.10.2026: «gitter noch etwas dünkler»):
+   Linien in border_tint statt im 8-%-Navy, Rahmen ebenso. */
+.matrixRahmen {
+  border-color: var(--ac-color-border-tint);
+}
+
+.matrix td,
+.matrix thead th + th {
+  border-left: 1px solid var(--ac-color-border-tint);
+}
+
+.matrix tbody tr > * {
+  border-top: 1px solid var(--ac-color-border-tint);
+}
+
+/* Karte auf «Über uns» (15.10.2026, «karte ist abgeschnitten»): Mit nur min-height
+   blieb die eingebettete Karte bei 150 px stehen. Eine feste Höhe lässt sie die Fläche füllen. */
+.karte {
+  height: clamp(19rem, 32vw, 24rem);
+}
