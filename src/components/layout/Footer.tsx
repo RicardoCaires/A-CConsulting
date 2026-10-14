@@ -127,6 +127,11 @@ export function Footer({ locale }: Props) {
                 </a>
               </span>
             </address>
+
+            <a href={company.kundenportal} className={styles.portalLink}>
+              {ui.portal.label}
+              <span aria-hidden="true">{' →'}</span>
+            </a>
           </div>
 
           {/* ---- 2 Leistungen -------------------------------------------- */}

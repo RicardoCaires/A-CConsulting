@@ -73,6 +73,14 @@ export const company = {
   domain: 'ac-co.ch',
   url: 'https://www.ac-co.ch',
 
+  /**
+   * Kundenportal (seit 12.10.2026, auf Ricardos Anweisung am 14.10.2026 gut sichtbar verlinkt):
+   * Leiste ueber dem Kopfbereich auf jeder Seite und Eintrag im Fussbereich. Das Portal gehoert nicht
+   * zu dieser Website; es laeuft neben der Brokerverwaltung. Verlinkt wird direkt, nicht ueber die
+   * Weiterleitung /kundenportal, damit kein Umweg entsteht.
+   */
+  kundenportal: 'https://crm.ac-co.ch/portal/',
+
   /** UID ist zugleich die Handelsregisternummer (BFS-Schreiben vom 23.02.2026). */
   uid: 'CHE-332.960.986',
   commercialRegister: 'CHE-332.960.986',

@@ -65,6 +65,11 @@ type UiMessages = {
    * zweite Aufforderung, und die schwaecht beide.
    */
   cta: string
+  /** Kundenportal: Leiste ueber dem Kopfbereich und Eintrag im Fussbereich. */
+  portal: {
+    label: string
+    hint: string
+  }
   /** Beschriftung der Adresszeile im Direktkontakt. */
   contactAddressLabel: string
   /**
@@ -197,6 +202,7 @@ export const ui: Record<Locale, UiMessages> = {
       hint: 'Diese Seite ist noch nicht verfügbar.',
     },
     cta: 'Erstgespräch anfragen',
+    portal: { label: 'Kundenportal', hint: 'Ihre Versicherungen und Unterlagen jederzeit online' },
     notFound: {
       title: 'Seite nicht gefunden',
       body: 'Die aufgerufene Adresse gibt es nicht oder nicht mehr.',
@@ -286,6 +292,7 @@ export const ui: Record<Locale, UiMessages> = {
       hint: 'Cette page n’est pas encore disponible.',
     },
     cta: 'Prendre rendez-vous',
+    portal: { label: 'Portail clients', hint: 'Vos assurances et documents en ligne, à tout moment' },
     notFound: {
       title: 'Page introuvable',
       body: 'L’adresse demandée n’existe pas ou n’existe plus.',
@@ -375,6 +382,7 @@ export const ui: Record<Locale, UiMessages> = {
       hint: 'Esta página ainda não está disponível.',
     },
     cta: 'Marcar uma primeira conversa',
+    portal: { label: 'Portal do cliente', hint: 'Os seus seguros e documentos online, a qualquer momento' },
     notFound: {
       title: 'Página não encontrada',
       body: 'O endereço indicado não existe ou já não está disponível.',

@@ -277,3 +277,23 @@
     justify-content: space-between;
   }
 }
+
+/* ---- Kundenportal im Fussbereich (14.10.2026) ----------------------------- */
+
+.portalLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: var(--ac-color-white);
+  text-decoration: none;
+  border-bottom: 2px solid var(--ac-color-accent-green);
+  line-height: 1.2;
+  align-self: flex-start;
+}
+
+.portalLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

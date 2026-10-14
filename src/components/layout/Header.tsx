@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/Button'
 import { getUi } from '@/i18n/messages/ui'
+import { company } from '@/lib/company'
 import { hrefOrDefault } from '@/i18n/routes'
 import type { Locale } from '@/i18n/config'
 
@@ -39,6 +40,20 @@ export function Header({ locale }: Props) {
 
   return (
     <header className={styles.header}>
+      {/* Kundenportal: schmale Leiste ueber dem Kopf, auf jeder Seite und jeder Breite sichtbar
+          (Ricardo, 14.10.2026: «ziemlich sichtbar»). Bewusst kein zweiter Knopf neben
+          «Erstgespraech anfragen» — die Kopfzeile ist zwischen 64 und 75rem ausgereizt. */}
+      <div className={styles.portalLeiste}>
+        <div className={`ac-container ${styles.portalInnen}`}>
+          <span className={styles.portalHinweis}>{ui.portal.hint}</span>
+          <a href={company.kundenportal} className={styles.portalLink}>
+            <span className={styles.portalFeld}>
+              {ui.portal.label}
+              <span aria-hidden="true">{' →'}</span>
+            </span>
+          </a>
+        </div>
+      </div>
       <div className={`ac-container ${styles.inner}`}>
         <Logo locale={locale} priority className={styles.logo} />
 

@@ -186,3 +186,67 @@
     box-shadow: none;
   }
 }
+
+/* ---- Kundenportal: Leiste ueber dem Kopf (14.10.2026) -------------------- */
+
+.portalLeiste {
+  background-color: var(--ac-color-primary-navy);
+  color: var(--ac-color-white);
+}
+
+.portalInnen {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  min-height: 2.75rem;
+}
+
+.portalHinweis {
+  display: none;
+  font-size: var(--ac-small-size);
+  color: color-mix(in srgb, var(--ac-color-white) 85%, transparent);
+}
+
+/* Trefferflaeche 44 px; sichtbar ist das helle Feld darin */
+.portalLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  text-decoration: none;
+}
+
+.portalFeld {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.95rem;
+  border-radius: 999px;
+  background-color: var(--ac-color-white);
+  color: var(--ac-color-primary-navy);
+  font-size: var(--ac-small-size);
+  font-weight: 700;
+  line-height: 1.2;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.portalLink:hover .portalFeld,
+.portalLink:focus-visible .portalFeld {
+  background-color: var(--ac-color-accent-green);
+  color: var(--ac-color-white);
+}
+
+.portalLink:focus-visible {
+  outline: 3px solid var(--ac-color-white);
+  outline-offset: 1px;
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portalFeld { transition: none; }
+}
+
+@media (min-width: 48rem) {
+  .portalHinweis {
+    display: inline;
+  }
+}
