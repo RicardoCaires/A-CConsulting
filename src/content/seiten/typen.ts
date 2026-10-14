@@ -42,7 +42,7 @@ export type Liste = {
 }
 
 /** Welche Beispielansicht des Kundenportals gezeigt wird. */
-export type PortalAnsicht = 'praemien' | 'policen' | 'anfragen' | 'dokumente'
+export type PortalAnsicht = 'praemien' | 'policen' | 'anfragen' | 'dokumente' | 'fenster'
 
 type Kopf = {
   /** Anker des Blocks, damit Links von anderen Seiten hierher springen. */
@@ -128,6 +128,31 @@ export type Block =
       stufen: readonly { titel: string; punkte: readonly string[] }[]
       nachsatz?: Rich
       knoepfe?: readonly Knopf[]
+    })
+  /**
+   * Unser Geschäftsmodell als Bild (15.10.2026): Sie – A&C – Gesellschaften, mit dem,
+   * was zwischen ihnen hin und her geht, und darunter wer entscheidet und wer bezahlt.
+   */
+  | (Kopf & {
+      art: 'geschaeftsmodell'
+      sie: { titel: string; text: string }
+      ac: { titel: string; punkte: readonly string[] }
+      markt: { titel: string; gesellschaften: readonly { bild: string; name: string }[] }
+      hin: readonly [{ hin: string; zurueck: string }, { hin: string; zurueck: string }]
+      fakten: readonly { titel: string; text: string }[]
+    })
+  /**
+   * Matrix als Diagramm (15.10.2026): Ereignisse in den Zeilen, betroffene Versicherungen
+   * in den Spalten, ein Punkt, wo es zusammentrifft. Auf dem Telefon je Ereignis eine Karte.
+   */
+  | (Kopf & {
+      art: 'matrix'
+      gruppen: readonly {
+        titel: string
+        spalten: readonly string[]
+        zeilen: readonly { titel: string; treffer: readonly number[] }[]
+      }[]
+      nachsatz?: Rich
     })
   /** Häufige Fragen zum Aufklappen. Höchstens drei je Seite (Ricardo, 14.10.2026). */
   | (Kopf & { art: 'fragen'; fragen: readonly { frage: string; antwort: Rich }[] })

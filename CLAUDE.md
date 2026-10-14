@@ -2593,6 +2593,24 @@ gibt es noch keine.
 >   unter 48rem nur ein runder Knopf mit Symbol, damit er möglichst wenig verdeckt.
 > - `.bloecke` läuft auf `minmax(0, 1fr)`: Ein langes Wort im Impressum drückte den Block bei 375 px 2 px über
 >   den Rand.
+>
+> **Dritter Schritt am 15.10.2026** – Ricardo: «Wie eine App … entfernen», «ein Rückruf kann nicht in bearbeitung
+> sein», «das Kunden Portal wird nicht gut rübergebracht», das Kreisdiagramm der jährlichen Versicherungskosten
+> «will ich im Kundenportal», «unser Geschäftsmodell soll bildlich erklärt werden aber nicht so», die Zeitleiste
+> der Lebensereignisse «sieht nicht gut aus».
+>
+> - **Portalfenster** (`PortalAnsicht` mit `ansicht: 'fenster'`): das Portal, wie es nach der Anmeldung aussieht –
+>   Adressleiste, Kopf, Begrüssung, Kennzahlen, **Kostenring**. Der Ring steht seit demselben Tag **im echten
+>   Portal** (CRM, `kostenring()`); die Website behauptet damit nichts mehr, was es nicht gibt. Auf Startseite und
+>   `/digital` neben dem Text, breiter als ein Foto (`bildGross`).
+> - **Rückruf** im Beispiel nur «Angefragt» und «Erledigt» (zwei Balkenabschnitte) – wie im Portal.
+> - **Geschäftsmodell** (`geschaeftsmodell`) ersetzt auf `/versicherungen` das Schaubild «Unser Modell»: Sie →
+>   A&C → Gesellschaften, dazwischen «Mandat / Empfehlung» und «Anfrage / Offerten», darunter drei Fakten
+>   (entscheiden, kostenlos im Maklermandat, bleiben). Anker `modell` bleibt. `UnserModell.tsx` liegt weiter herum.
+> - **Lebensereignisse als Matrix** (`matrix`): Ereignis × betroffene Versicherung mit grünen Punkten; auf dem
+>   Telefon je Ereignis eine Karte mit Pillen. **Die Zuordnung ist ein Vorschlag**, Ricardo prüft sie fachlich.
+> - **Lange Wörter tragen weiche Trennstellen** (`­`): Chrome trennt Deutsch nicht selbst und brach z. B.
+>   die Banner-Überschrift «Datenschutzerklärung» bei 375 px über den Rand (426 statt 335 px).
 
 ## 10. Offene Punkte
 

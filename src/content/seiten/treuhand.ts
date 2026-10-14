@@ -134,7 +134,7 @@ export const treuhand: SeitenInhalt = {
       einleitung: 'Wir klären die Rechtsform und koordinieren Bank und Notariat.',
       spalten: [
         {
-          titel: 'Einzelunternehmen',
+          titel: 'Einzel­unternehmen',
           untertitel: 'Einfach starten',
           zeilen: [
             { merkmal: 'Mindestkapital', wert: 'Keines vorgeschrieben' },

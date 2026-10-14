@@ -38,13 +38,13 @@ export const digital: SeitenInhalt = {
       titel: { vor: 'Das ', akzent: 'Kundenportal' },
       punkte: [
         'Policen und Dokumente: an einem Ort, am Computer oder auf dem Handy',
+        'Kosten: Ihre Versicherungen pro Jahr als Diagramm',
         'Änderungen: etwa eine neue Adresse direkt melden',
         'Anfragen: Offerte, Rückruf, Termin oder Vertragsänderung',
         'Stand: angefragt, in Bearbeitung, erledigt – mit E-Mail bei jedem Wechsel',
-        'Wie eine App: auf dem Handy auf den Startbildschirm legen',
       ],
       knoepfe: [{ text: 'Zum Kundenportal', href: 'kundenportal' }],
-      bild: { art: 'portal', ansicht: 'anfragen' },
+      bild: { art: 'portal', ansicht: 'fenster' },
     },
     {
       art: 'portalAnsichten',
@@ -52,6 +52,7 @@ export const digital: SeitenInhalt = {
       titel: { vor: 'Ein Blick ', akzent: 'hinein' },
       ansichten: [
         { ansicht: 'policen', titel: 'Ihre Policen', text: 'Jede Police mit Prämie und Deckungen.' },
+        { ansicht: 'anfragen', titel: 'Ihre Anfragen', text: 'Sie sehen jederzeit, wie weit wir sind.' },
         { ansicht: 'dokumente', titel: 'Ihre Dokumente', text: 'Policen und Offerten zum Öffnen und Speichern.' },
       ],
     },

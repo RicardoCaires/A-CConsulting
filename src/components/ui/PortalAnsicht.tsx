@@ -1,13 +1,16 @@
+import Image from 'next/image'
+
 import { PortalBeispiel } from '@/components/ui/PortalBeispiel'
-import { portalAnfragen, portalBeispiel, portalDokumente, portalPolicen } from '@/content/seiten/portal-beispiel'
+import { portalAnfragen, portalBeispiel, portalDokumente, portalFenster, portalPolicen } from '@/content/seiten/portal-beispiel'
 import type { PortalAnsicht as Art } from '@/content/seiten/typen'
 
 import styles from './PortalAnsicht.module.css'
 
 /**
  * Beispielansichten des Kundenportals (15.10.2026). Ricardo: «ich will das noch
- * etwas mehr vom portal gezeigt wird». Vier Ausschnitte im Stil des Portals:
- * Prämien als Ring, Policenliste, Anfragen mit Stand, Dokumente.
+ * etwas mehr vom portal gezeigt wird», dann «das Kunden Portal wird nicht gut
+ * rübergebracht». Darum zuerst das Fenster – das Portal so, wie es nach der Anmeldung
+ * aussieht –, dazu Ausschnitte: Policenliste, Anfragen mit Stand, Dokumente.
  *
  * Alles reines HTML und SVG, ohne Skript. Die Angaben sind erfunden und als
  * Beispiel beschriftet. Keine Aussage zu Anmeldung oder Datenhaltung – die
@@ -53,33 +56,28 @@ function Policen() {
 
 function Anfragen() {
   const a = portalAnfragen
-  const letzte = a.stufen.length - 1
   return (
     <figure className={styles.ansicht} aria-label={a.titel}>
       <Kopf titel={a.titel} untertitel={a.untertitel} />
       <ul className={styles.zeilen}>
-        {a.anfragen.map((x) => (
-          <li key={x.text} className={styles.anfrage}>
-            <span className={styles.anfrageKopf}>
-              <span className={styles.haupt}>{x.text}</span>
-              <span className={x.stand === letzte ? `${styles.stand} ${styles.standFertig}` : styles.stand}>
-                {a.stufen[x.stand]}
+        {a.anfragen.map((x) => {
+          const fertig = x.stand === x.stufen.length - 1
+          return (
+            <li key={x.text} className={styles.anfrage}>
+              <span className={styles.anfrageKopf}>
+                <span className={styles.haupt}>{x.text}</span>
+                <span className={fertig ? `${styles.stand} ${styles.standFertig}` : styles.stand}>{x.stufen[x.stand]}</span>
               </span>
-            </span>
-            {/* Drei Abschnitte: erledigte grün, der Rest hell */}
-            <span className={styles.balken} aria-hidden="true">
-              {a.stufen.map((s, i) => (
-                <span key={s} className={i <= x.stand ? styles.balkenAn : styles.balkenAus} />
-              ))}
-            </span>
-          </li>
-        ))}
+              {/* Ein Abschnitt je Stufe: erreichte grün, der Rest hell. Ein Rückruf hat nur zwei. */}
+              <span className={styles.balken} data-stufen={x.stufen.length} aria-hidden="true">
+                {x.stufen.map((s, i) => (
+                  <span key={s} className={i <= x.stand ? styles.balkenAn : styles.balkenAus} />
+                ))}
+              </span>
+            </li>
+          )
+        })}
       </ul>
-      <p className={styles.legende} aria-hidden="true">
-        {a.stufen.map((s) => (
-          <span key={s}>{s}</span>
-        ))}
-      </p>
       <figcaption className={styles.hinweis}>{a.hinweis}</figcaption>
     </figure>
   )
@@ -108,6 +106,111 @@ function Dokumente() {
   )
 }
 
+/** Farbfolge der Diagramme nach Corporate Design: Navy, Grün, Grau, Hellblau – wie im Portal. */
+const RINGFARBEN = [styles.r0, styles.r1, styles.r2, styles.r3]
+
+function Ring({ segmente, summeText, unter }: { segmente: readonly { text: string; betrag: number }[]; summeText: string; unter: string }) {
+  const summe = segmente.reduce((t, x) => t + x.betrag, 0)
+  let versatz = 25
+  return (
+    <span className={styles.ring}>
+      <svg viewBox="0 0 42 42" aria-hidden="true" focusable="false">
+        <circle className={styles.ringGrund} cx="21" cy="21" r="15.9155" fill="none" strokeWidth="5.5" />
+        {segmente.map((x, i) => {
+          const anteil = (x.betrag / summe) * 100
+          const lang = Math.max(anteil - 0.8, 0)
+          const el = (
+            <circle
+              key={x.text}
+              className={RINGFARBEN[i % RINGFARBEN.length]}
+              cx="21"
+              cy="21"
+              r="15.9155"
+              fill="none"
+              strokeWidth="5.5"
+              strokeDasharray={`${lang} ${100 - lang}`}
+              strokeDashoffset={versatz}
+            />
+          )
+          versatz -= anteil
+          return el
+        })}
+      </svg>
+      <span className={styles.ringMitte}>
+        <strong>{summeText}</strong>
+        <span>{unter}</span>
+      </span>
+    </span>
+  )
+}
+
+/**
+ * Das Portal als Fenster, nachgebaut nach `public-portal/portal.css` im CRM: Kopf mit
+ * Logo und Bereichen, Begrüssung mit Navy-Strich, Kennzahlen und der Kostenring, der
+ * seit dem 15.10.2026 im Portal steht.
+ */
+function Fenster() {
+  const f = portalFenster
+  const summe = f.segmente.reduce((t, x) => t + x.betrag, 0)
+  return (
+    <figure className={styles.fenster} aria-label={`${f.vorzeile}: ${f.hinweis}`}>
+      <div className={styles.leiste} aria-hidden="true">
+        <span className={styles.punkte}>
+          <span />
+          <span />
+          <span />
+        </span>
+        <span className={styles.adresse}>{f.adresse}</span>
+      </div>
+      <div className={styles.portalKopf}>
+        <Image src="/logo/ac-logo.png" alt="" width={216} height={47} className={styles.portalLogo} />
+        <span className={styles.portalNav} aria-hidden="true">
+          {f.navigation.map((n, i) => (
+            <span key={n} className={i === 0 ? styles.navAktiv : undefined}>
+              {n}
+            </span>
+          ))}
+        </span>
+      </div>
+      <div className={styles.portalInhalt}>
+        <div className={styles.willkommen}>
+          <span className={styles.vorzeile}>{f.vorzeile}</span>
+          <strong className={styles.gruss}>{f.gruss}</strong>
+          <span className={styles.satz}>{f.satz}</span>
+        </div>
+        <div className={styles.kennzahlen}>
+          {f.kennzahlen.map((k) => (
+            <span key={k.text} className={styles.kennzahl}>
+              <strong>{k.zahl}</strong>
+              <span>{k.text}</span>
+            </span>
+          ))}
+          <span className={`${styles.kennzahl} ${styles.termin}`}>
+            <span className={styles.terminTitel}>{f.termin.titel}</span>
+            <span className={styles.terminKnopf}>{f.termin.knopf}</span>
+          </span>
+        </div>
+        <div className={styles.kosten}>
+          <strong className={styles.kostenTitel}>{f.ringTitel}</strong>
+          <div className={styles.kostenInhalt}>
+            <Ring segmente={f.segmente} summeText={chf(summe)} unter={f.proJahr} />
+            <ul className={styles.legende}>
+              {f.segmente.map((x, i) => (
+                <li key={x.text}>
+                  <span className={`${styles.legendePunkt} ${RINGFARBEN[i % RINGFARBEN.length]}`} aria-hidden="true" />
+                  <span className={styles.legendeText}>{x.text}</span>
+                  <strong>{chf(x.betrag)}</strong>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <figcaption className={`${styles.hinweis} ${styles.fensterHinweis}`}>{f.hinweis}</figcaption>
+    </figure>
+  )
+}
+
 export function PortalAnsicht({ ansicht = 'praemien' }: { ansicht?: Art }) {
   switch (ansicht) {
     case 'policen':
@@ -116,6 +219,8 @@ export function PortalAnsicht({ ansicht = 'praemien' }: { ansicht?: Art }) {
       return <Anfragen />
     case 'dokumente':
       return <Dokumente />
+    case 'fenster':
+      return <Fenster />
     default:
       return <PortalBeispiel {...portalBeispiel} />
   }

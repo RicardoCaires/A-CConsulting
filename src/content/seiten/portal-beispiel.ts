@@ -20,28 +20,58 @@ export const portalBeispiel = {
   hinweis: 'Beispiel mit erfundenen Zahlen.',
 } as const
 
+/**
+ * Das Portal als Fenster, so wie es Kundinnen und Kunden nach der Anmeldung sehen:
+ * Kopf, Begrüssung, Kennzahlen und das Ringdiagramm der Versicherungskosten
+ * (seit dem 15.10.2026 im Portal). Erfundene Person, erfundene Zahlen.
+ */
+export const portalFenster = {
+  adresse: 'crm.ac-co.ch/portal',
+  navigation: ['Start', 'Versicherungen', 'Anfragen', 'Meine Angaben'],
+  vorzeile: 'Ihr Kundenportal',
+  gruss: 'Guten Tag, Frau Muster',
+  satz: 'Hier sehen Sie Ihre Versicherungen und erreichen uns direkt.',
+  kennzahlen: [
+    { zahl: '4', text: 'laufende Verträge' },
+    { zahl: '4', text: 'Gesellschaften' },
+  ],
+  termin: { titel: 'Nächster Termin', knopf: 'Termin vereinbaren' },
+  ringTitel: 'Ihre Versicherungskosten pro Jahr',
+  proJahr: 'pro Jahr',
+  segmente: [
+    { text: 'Kranken­versicherung', betrag: 4200 },
+    { text: 'Motor­fahrzeug', betrag: 1350 },
+    { text: 'Hausrat und Privat­haftpflicht', betrag: 620 },
+    { text: 'Rechtsschutz', betrag: 310 },
+  ],
+  hinweis: 'Beispielansicht mit erfundenen Angaben.',
+} as const
+
 export const portalPolicen = {
   titel: 'Meine Policen',
   untertitel: 'Beispielansicht',
   spalte: 'Prämie pro Jahr',
   status: 'Aktiv',
   policen: [
-    { sparte: 'Krankenversicherung', detail: 'Grund- und Zusatzversicherung', betrag: 4200 },
+    { sparte: 'Kranken­versicherung', detail: 'Grund- und Zusatz­versicherung', betrag: 4200 },
     { sparte: 'Motorfahrzeug', detail: 'Haftpflicht und Teilkasko', betrag: 1350 },
-    { sparte: 'Hausrat und Haftpflicht', detail: 'Wohnung und Privathaftpflicht', betrag: 620 },
-    { sparte: 'Rechtsschutz', detail: 'Privat- und Verkehrsrechtsschutz', betrag: 310 },
+    { sparte: 'Hausrat und Privat­haftpflicht', detail: 'Wohnung und Privat­haftpflicht', betrag: 620 },
+    { sparte: 'Rechtsschutz', detail: 'Privat- und Verkehrs­rechtsschutz', betrag: 310 },
   ],
   hinweis: 'Beispiel mit erfundenen Angaben.',
 } as const
 
+// Ein Rückruf kennt nur «Angefragt» und «Erledigt» – wie im Portal (Ricardo, 15.10.2026).
+const DREI = ['Angefragt', 'In Bearbeitung', 'Erledigt'] as const
+const ZWEI = ['Angefragt', 'Erledigt'] as const
+
 export const portalAnfragen = {
   titel: 'Meine Anfragen',
   untertitel: 'Beispielansicht',
-  stufen: ['Angefragt', 'In Bearbeitung', 'Erledigt'],
   anfragen: [
-    { text: 'Offerte Motorfahrzeug', stand: 1 },
-    { text: 'Neue Adresse', stand: 2 },
-    { text: 'Rückruf zur Hausratversicherung', stand: 0 },
+    { text: 'Offerte Motorfahrzeug', stufen: DREI, stand: 1 },
+    { text: 'Neue Adresse', stufen: DREI, stand: 2 },
+    { text: 'Rückruf zur Hausratversicherung', stufen: ZWEI, stand: 0 },
   ],
   hinweis: 'Beispiel mit erfundenen Angaben.',
 } as const
@@ -50,7 +80,7 @@ export const portalDokumente = {
   titel: 'Meine Dokumente',
   untertitel: 'Beispielansicht',
   dokumente: [
-    { name: 'Police Krankenversicherung', art: 'PDF' },
+    { name: 'Police Kranken­versicherung', art: 'PDF' },
     { name: 'Police Motorfahrzeug', art: 'PDF' },
     { name: 'Police Hausrat und Haftpflicht', art: 'PDF' },
     { name: 'Offerte Rechtsschutz', art: 'PDF' },

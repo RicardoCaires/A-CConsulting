@@ -330,6 +330,11 @@
   .bildLinks {
     grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   }
+
+  /* Das Portalfenster braucht mehr Breite als ein Foto */
+  .bildGross {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
 }
 
 .bildFoto {
@@ -1077,4 +1082,363 @@
   .liste li a:hover .chevron {
     transform: none;
   }
+}
+/* ---- Geschäftsmodell als Bild (15.10.2026) ---------------------------------
+   Drei Stellen – Sie, A&C, Gesellschaften – mit dem, was dazwischen hin- und
+   zurückgeht. Breit nebeneinander mit Pfeillinien, schmal untereinander. */
+
+.unsichtbar {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.modell {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+@media (min-width: 64rem) {
+  .modell {
+    grid-template-columns: minmax(0, 0.8fr) 8.5rem minmax(0, 1.1fr) 8.5rem minmax(0, 1.1fr);
+    align-items: center;
+    gap: 0;
+  }
+}
+
+.knoten {
+  min-width: 0;
+  padding: 1.35rem 1.4rem;
+  text-align: center;
+  background-color: var(--ac-color-background-light);
+  border-radius: 20px;
+}
+
+.knotenAc {
+  background-color: var(--ac-color-white);
+  border: 2px solid var(--ac-color-accent-green);
+  box-shadow: var(--ac-shadow-card);
+}
+
+.knotenTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: 1.5rem;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.knotenText {
+  margin: 0.35rem 0 0;
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-primary);
+}
+
+.knotenLogo {
+  display: block;
+  width: min(100%, 11rem);
+  height: auto;
+  margin: 0 auto 0.85rem;
+}
+
+.knotenPunkte {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.knotenPunkte li {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ac-color-primary-navy);
+}
+
+.knotenPunkte li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--ac-color-accent-green);
+}
+
+.knotenLogos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.knotenLogos li {
+  overflow: hidden;
+  background-color: var(--ac-color-white);
+  border-radius: 8px;
+}
+
+.knotenLogos img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Pfeile: oben «hin» in Grün, unten «zurück» in Navy. Schmal als ↓ und ↑. */
+.pfeile {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding-block: 0.25rem;
+}
+
+.pfeilHin,
+.pfeilZurueck {
+  font-size: var(--ac-small-size);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pfeilHin {
+  color: var(--ac-color-accent-green);
+}
+
+.pfeilZurueck {
+  color: var(--ac-color-primary-navy);
+}
+
+.pfeilHin::before {
+  content: '↓ ';
+}
+
+.pfeilZurueck::before {
+  content: '↑ ';
+}
+
+@media (min-width: 64rem) {
+  .pfeile {
+    flex-direction: column;
+    gap: 1.1rem;
+    padding: 0 0.6rem;
+  }
+
+  .pfeilHin,
+  .pfeilZurueck {
+    position: relative;
+    display: block;
+    padding-bottom: 0.4rem;
+    text-align: center;
+  }
+
+  /* Breit: Linie unter der Beschriftung, Pfeilspitze als Zeichen am Ende */
+  .pfeilHin {
+    border-bottom: 2px solid currentColor;
+  }
+
+  .pfeilZurueck {
+    border-bottom: 2px dashed currentColor;
+  }
+
+  .pfeilHin::before {
+    content: none;
+  }
+
+  .pfeilHin::after {
+    content: ' →';
+  }
+
+  .pfeilZurueck::before {
+    content: '← ';
+  }
+}
+
+.fakten {
+  display: grid;
+  gap: 0.75rem;
+  margin: clamp(1.25rem, 2.5vw, 1.75rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 48rem) {
+  .fakten {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.fakten li {
+  display: grid;
+  gap: 0.2rem;
+  padding: 1rem 1.15rem;
+  background-color: var(--ac-color-background-light);
+  border-left: 3px solid var(--ac-color-accent-green);
+  border-radius: 0 14px 14px 0;
+}
+
+.fakten strong {
+  font-size: 1.0625rem;
+  color: var(--ac-color-primary-navy);
+}
+
+.fakten span {
+  font-size: var(--ac-small-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-primary);
+}
+
+/* ---- Matrix: Ereignisse und betroffene Versicherungen (15.10.2026) ---------- */
+
+.matrixGruppe {
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.matrixRahmen {
+  display: none;
+}
+
+@media (min-width: 48rem) {
+  .matrixRahmen {
+    display: block;
+    border: var(--ac-border-hairline) solid var(--ac-line);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+}
+
+.matrix {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.matrix thead th {
+  padding: 0.85rem 0.5rem;
+  font-size: var(--ac-small-size);
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-light);
+  vertical-align: bottom;
+}
+
+.matrix thead th:first-child {
+  width: 26%;
+}
+
+.matrix tbody th {
+  padding: 0.8rem 1rem;
+  font-size: var(--ac-body-size);
+  font-weight: 600;
+  text-align: left;
+  color: var(--ac-color-primary-navy);
+}
+
+.matrix td {
+  padding: 0.8rem 0.5rem;
+  text-align: center;
+}
+
+.matrix tbody tr + tr > * {
+  border-top: var(--ac-border-hairline) solid var(--ac-line-soft);
+}
+
+.matrix tbody tr:hover > * {
+  background-color: var(--ac-color-background-light);
+}
+
+.treffer {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: middle;
+  background-color: var(--ac-color-accent-green);
+  border-radius: 50%;
+}
+
+.keinTreffer {
+  display: inline-block;
+  width: 0.5rem;
+  height: 2px;
+  vertical-align: middle;
+  background-color: var(--ac-line);
+}
+
+.matrixKarten {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.matrixKarten li {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem;
+  background-color: var(--ac-color-background-light);
+  border-radius: 14px;
+}
+
+.matrixKarten strong {
+  font-size: var(--ac-body-size);
+  color: var(--ac-color-primary-navy);
+}
+
+.pillen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.pillen span {
+  padding: 0.2rem 0.65rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ac-color-accent-green);
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-accent-green);
+  border-radius: 999px;
+}
+
+/* Steht nach der Grundform, damit sie gewinnt: breit nur die Tabelle */
+@media (min-width: 48rem) {
+  .matrixKarten {
+    display: none;
+  }
+}
+
+/* Merkmal und Wert untereinander, wenn die Spalte schmal ist: Sonst brachen
+   «Mindestkapital» oder «Qualifikationen» mitten im Wort (gemessen bei 375 px). */
+@media (max-width: 29.99rem) {
+  .merkmale > div,
+  .angabenKlein > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.15rem;
+  }
+}
+
+/* Spaltenköpfe der Matrix: lange Wörter mit Trennstrich statt mitten im Wort */
+.matrix thead th {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+@media (max-width: 74.99rem) {
+  .matrix thead th {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Titel der Vergleichsspalten («Einzelunternehmen») auf dem Telefon */
+.vergleichTitel {
+  hyphens: auto;
 }

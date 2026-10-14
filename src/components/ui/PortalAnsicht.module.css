@@ -149,21 +149,9 @@
   background-color: var(--ac-color-background-tint);
 }
 
-.legende {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.3rem;
-  margin: 0.25rem 0 0;
-  font-size: 0.75rem;
-  color: var(--ac-color-text-secondary);
-}
-
-.legende span:nth-child(2) {
-  text-align: center;
-}
-
-.legende span:nth-child(3) {
-  text-align: right;
+/* Ein Rückruf hat nur zwei Stufen: angefragt, erledigt */
+.balken[data-stufen='2'] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 /* ---- Dokumente ---------------------------------------------------------------- */
@@ -199,4 +187,338 @@
   margin-top: 0.75rem;
   font-size: 0.75rem;
   color: var(--ac-color-text-secondary);
+}
+
+/* ---- Das Portal als Fenster (15.10.2026) -----------------------------------
+   Nachgebaut nach public-portal/portal.css im CRM: weisser Kopf mit Navy-Linie,
+   Begrüssung mit Navy-Strich links, Kennzahlen, Kostenring. Gleiche Farbfolge. */
+
+.fenster {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  background-color: var(--ac-color-background-light);
+  border: var(--ac-border-hairline) solid var(--ac-line);
+  border-radius: 16px;
+  box-shadow: var(--ac-shadow-card-strong);
+}
+
+.leiste {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  background-color: var(--ac-color-background-tint);
+}
+
+.punkte {
+  display: inline-flex;
+  gap: 0.3rem;
+}
+
+.punkte span {
+  width: 0.55rem;
+  height: 0.55rem;
+  background-color: var(--ac-color-border-tint);
+  border-radius: 50%;
+}
+
+.adresse {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.75rem;
+  color: var(--ac-color-text-secondary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: var(--ac-color-white);
+  border-radius: 999px;
+}
+
+.portalKopf {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--ac-color-white);
+  border-bottom: 1px solid var(--ac-color-primary-navy);
+}
+
+.portalLogo {
+  width: 7.5rem;
+  height: auto;
+}
+
+.portalNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.85rem;
+  font-size: 0.75rem;
+  color: var(--ac-color-primary-navy);
+}
+
+.navAktiv {
+  font-weight: 700;
+  box-shadow: inset 0 -2px 0 var(--ac-color-accent-green);
+}
+
+.portalInhalt {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.willkommen {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.85rem 1rem;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-left: 5px solid var(--ac-color-primary-navy);
+  border-radius: 10px;
+}
+
+.vorzeile {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ac-color-accent-green);
+}
+
+.gruss {
+  font-size: 1.125rem;
+  color: var(--ac-color-primary-navy);
+}
+
+.satz {
+  font-size: 0.8125rem;
+  color: var(--ac-color-text-secondary);
+}
+
+.kennzahlen {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.kennzahl {
+  display: grid;
+  align-content: start;
+  gap: 0.1rem;
+  min-width: 0;
+  padding: 0.6rem 0.7rem;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: var(--ac-color-text-primary);
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-radius: 10px;
+}
+
+.kennzahl strong {
+  font-size: 1.375rem;
+  line-height: 1.1;
+  color: var(--ac-color-primary-navy);
+}
+
+.termin {
+  background-color: var(--ac-color-background-tint);
+  border-style: dashed;
+}
+
+.terminTitel {
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.terminKnopf {
+  justify-self: start;
+  margin-top: 0.25rem;
+  padding: 0.15rem 0.5rem;
+  font-weight: 600;
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-accent-green);
+  border-radius: 6px;
+}
+
+.kosten {
+  padding: 0.85rem 1rem;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-radius: 10px;
+}
+
+.kostenTitel {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-size: 0.9375rem;
+  color: var(--ac-color-primary-navy);
+}
+
+.kostenInhalt {
+  display: grid;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+/* Ring neben der Legende nur, wenn die Karte selbst breit genug ist – sonst darüber */
+.kosten {
+  container-type: inline-size;
+}
+
+@container (min-width: 22rem) {
+  .kostenInhalt {
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+  }
+}
+
+.ring {
+  position: relative;
+  display: block;
+  width: min(100%, 8.5rem);
+  aspect-ratio: 1;
+  margin-inline: auto;
+}
+
+.ring svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ringGrund {
+  stroke: var(--ac-color-background-tint);
+}
+
+.r0 {
+  stroke: var(--ac-color-primary-navy);
+}
+
+.r1 {
+  stroke: var(--ac-color-accent-green);
+}
+
+.r2 {
+  stroke: var(--ac-color-brand-grey);
+}
+
+.r3 {
+  stroke: var(--ac-color-border-tint);
+}
+
+.ringMitte {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ringMitte strong {
+  font-size: 0.875rem;
+  color: var(--ac-color-primary-navy);
+}
+
+.ringMitte span {
+  font-size: 0.6875rem;
+  color: var(--ac-color-text-secondary);
+}
+
+.legende {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.legende li {
+  display: grid;
+  grid-template-columns: 0.65rem minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  align-items: center;
+  padding-block: 0.35rem;
+  font-size: 0.8125rem;
+}
+
+.legende li + li {
+  border-top: 1px solid var(--ac-color-background-tint);
+}
+
+.legende strong {
+  font-variant-numeric: tabular-nums;
+  color: var(--ac-color-primary-navy);
+  white-space: nowrap;
+}
+
+.legendePunkt {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+}
+
+.legendePunkt.r0 {
+  background-color: var(--ac-color-primary-navy);
+}
+
+.legendePunkt.r1 {
+  background-color: var(--ac-color-accent-green);
+}
+
+.legendePunkt.r2 {
+  background-color: var(--ac-color-brand-grey);
+}
+
+.legendePunkt.r3 {
+  background-color: var(--ac-color-border-tint);
+}
+
+.legendeText {
+  line-height: 1.3;
+  color: var(--ac-color-text-primary);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.fensterHinweis {
+  margin: 0;
+  padding: 0 1rem 0.85rem;
+}
+
+/* Schmales Fenster: zwei Kennzahlen nebeneinander, der Termin darunter über die
+   ganze Breite – drei Spalten überlappten bei 375 px. */
+.portalInhalt {
+  container-type: inline-size;
+}
+
+@container (max-width: 26rem) {
+  .kennzahlen {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .termin {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Lange Versicherungsnamen in den schmalen Ausschnitten: Trennstrich statt Bruch mitten im Wort */
+.haupt,
+.neben {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Sehr schmale Kostenkarte (Telefon): Betrag unter den Namen statt daneben */
+@container (max-width: 18rem) {
+  .legende li {
+    grid-template-columns: 0.65rem minmax(0, 1fr);
+    row-gap: 0.1rem;
+  }
+
+  .legende strong {
+    grid-column: 2;
+  }
 }

@@ -86,20 +86,21 @@ export const start: SeitenInhalt = {
       absaetze: ['Weniger Papier, kürzere Wege. Im Kundenportal haben Sie alles zur Hand.'],
       punkte: [
         'Policen: alle Verträge und Unterlagen an einem Ort, auch auf dem Handy',
-        'Deckungen: Selbstbehalte und Leistungen jeder Police zum Nachlesen',
+        'Kosten: was Sie pro Jahr für Ihre Versicherungen bezahlen, auf einen Blick',
         'Anfragen: Änderungen und Offertwünsche direkt an uns, mit Stand',
       ],
       knoepfe: [
         { text: 'Zum Kundenportal', href: 'kundenportal' },
         { text: 'Offerte online anfragen', href: 'offerte', art: 'zweit' },
       ],
-      bild: { art: 'portal', ansicht: 'policen' },
+      bild: { art: 'portal', ansicht: 'fenster' },
     },
     {
       art: 'portalAnsichten',
       id: 'portal',
       titel: { vor: 'So sieht das ', akzent: 'Kundenportal', nach: ' aus' },
       ansichten: [
+        { ansicht: 'policen', titel: 'Ihre Policen', text: 'Jede Police mit Prämie und Deckungen.' },
         { ansicht: 'anfragen', titel: 'Ihre Anfragen', text: 'Sie sehen jederzeit, wie weit wir sind.' },
         { ansicht: 'dokumente', titel: 'Ihre Dokumente', text: 'Policen und Offerten zum Öffnen und Speichern.' },
       ],

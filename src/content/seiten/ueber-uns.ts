@@ -37,7 +37,7 @@ export const ueberUns: SeitenInhalt = {
               wert: 'Kaufmann EFZ. Finanz- und Rechnungswesen der Creabeton Matériaux AG in Lyss.',
             },
             {
-              merkmal: 'Qualifikationen',
+              merkmal: 'Qualifi­kationen',
               wert: 'Sachbearbeiter Rechnungswesen VSK, Feusi Bildungszentrum Bern, und Versicherungsvermittler VBV.',
             },
           ],

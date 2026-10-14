@@ -1,8 +1,9 @@
 /**
  * /de/versicherungen im Baukasten (15.10.2026), auf Ricardos Auftrag kürzer und
  * im Ton «direkt und persönlich». Betreuung und Schadenfall sind ein Abschnitt.
- * Am selben Tag gekürzt, Lebensereignisse als Zeitleiste (Ricardo: «zu viel text»,
- * «häufiger bildlich dar mit diagrammen»).
+ * Am selben Tag gekürzt; dann Geschäftsmodell und Lebensereignisse neu gezeichnet
+ * (Ricardo: «unser Geschäftsmodell soll bildlich erklärt werden aber nicht so», die
+ * Zeitleiste «sieht nicht gut aus»). Das frühere Schaubild `modell` steht nicht mehr hier.
  * QUELLEN: `content/source/umbau_2026-10b_de.md`, `umbau_versicherungen_de.md`, `schritt4_fassung2_de.md`,
  * `ergaenzungen_de.md`, `versicherungen_schadenfall_de.md`, `versicherungen_modell_de.md`.
  *
@@ -19,7 +20,39 @@ export const versicherungen: SeitenInhalt = {
   },
   banner: { themenzeile: 'VERSICHERUNGEN', ueberschrift: 'Versicherungen für Privatpersonen und Unternehmen' },
   bloecke: [
-    { art: 'modell', id: 'modell' },
+    {
+      art: 'geschaeftsmodell',
+      id: 'modell',
+      titel: { vor: 'Wir vertreten ', akzent: 'Sie', nach: ', nicht die Versicherung' },
+      sie: { titel: 'Sie', text: 'Privatperson oder Unternehmen' },
+      ac: {
+        titel: 'A&C Consulting',
+        punkte: ['Bedarf klären', 'Angebote vergleichen', 'Empfehlung abgeben', 'Im Schadenfall begleiten'],
+      },
+      markt: {
+        titel: 'Versicherungs­gesellschaften',
+        gesellschaften: [
+          { bild: 'partner_allianz', name: 'Allianz' },
+          { bild: 'partner_axa', name: 'AXA' },
+          { bild: 'partner_mobiliar', name: 'die Mobiliar' },
+          { bild: 'partner_generali', name: 'Generali' },
+          { bild: 'partner_gvb', name: 'GVB' },
+          { bild: 'partner_helvetia', name: 'Helvetia' },
+          { bild: 'partner_smile', name: 'Smile' },
+          { bild: 'partner_vaudoise', name: 'Vaudoise' },
+          { bild: 'partner_zurich', name: 'Zurich' },
+        ],
+      },
+      hin: [
+        { hin: 'Mandat', zurueck: 'Empfehlung' },
+        { hin: 'Anfrage', zurueck: 'Offerten' },
+      ],
+      fakten: [
+        { titel: 'Sie entscheiden', text: 'Wir setzen um, was Sie wählen.' },
+        { titel: 'Für Sie kostenlos', text: 'Im Maklermandat entschädigt uns die Gesellschaft über eine Courtage.' },
+        { titel: 'Wir bleiben', text: 'Auch nach dem Abschluss und im Schadenfall.' },
+      ],
+    },
     {
       art: 'listen',
       id: 'bereiche',
@@ -51,32 +84,35 @@ export const versicherungen: SeitenInhalt = {
       ],
     },
     {
-      art: 'zeitleiste',
+      art: 'matrix',
       id: 'ueberpruefung',
       titel: { vor: 'Wann sich eine ', akzent: 'Überprüfung', nach: ' lohnt' },
       einleitung: 'Bei diesen Ereignissen kann mehr als eine Police betroffen sein.',
-      reihen: [
+      gruppen: [
         {
           titel: 'Privat',
-          stationen: [
-            { titel: 'Umzug' },
-            { titel: 'Heirat' },
-            { titel: 'Kind' },
-            { titel: 'Wohneigentum' },
-            { titel: 'Stellenwechsel' },
-            { titel: 'Pensionierung', hervor: true },
+          spalten: ['Kranken­kasse', 'Hausrat und Haftpflicht', 'Motorfahrzeug', 'Leben und Säule 3a'],
+          zeilen: [
+            { titel: 'Umzug', treffer: [0, 1, 2] },
+            { titel: 'Heirat', treffer: [1, 3] },
+            { titel: 'Kind', treffer: [0, 1, 3] },
+            { titel: 'Wohneigentum', treffer: [1, 3] },
+            { titel: 'Stellenwechsel', treffer: [0, 3] },
+            { titel: 'Pensionierung', treffer: [0, 3] },
           ],
         },
         {
           titel: 'Im Betrieb',
-          stationen: [
-            { titel: 'Gründung' },
-            { titel: 'Erste Anstellung' },
-            { titel: 'Neue Fahrzeuge oder Räume' },
-            { titel: 'Wachstum', hervor: true },
+          spalten: ['UVG', 'BVG', 'Kranken­taggeld', 'Betriebs­haftpflicht', 'Sach­versicherung'],
+          zeilen: [
+            { titel: 'Gründung', treffer: [3, 4] },
+            { titel: 'Erste Anstellung', treffer: [0, 1, 2] },
+            { titel: 'Neue Fahrzeuge oder Räume', treffer: [3, 4] },
+            { titel: 'Wachstum', treffer: [0, 1, 2, 3, 4] },
           ],
         },
       ],
+      nachsatz: 'Eine Übersicht, keine abschliessende Liste. Was bei Ihnen betroffen ist, schauen wir gemeinsam an.',
     },
     {
       art: 'schritte',

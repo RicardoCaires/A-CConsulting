@@ -104,6 +104,10 @@
   letter-spacing: -0.025em;
   color: var(--ac-color-white);
   text-wrap: balance;
+  /* «Datenschutzerklärung» ist breiter als 18ch und lief über den Rand (15.10.2026):
+     lange Wörter mit Trennstrich umbrechen statt hinausragen. */
+  hyphens: auto;
+  overflow-wrap: break-word;
 }
 
 /* Der Knopf: gruen, weisse fette Schrift, beim Zeigen und bei Tastaturfokus

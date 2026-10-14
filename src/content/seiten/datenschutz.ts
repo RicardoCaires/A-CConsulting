@@ -21,7 +21,7 @@ export const datenschutz: SeitenInhalt = {
     description:
       'Wie die A&C Consulting GmbH mit Personendaten umgeht — nach dem revidierten Schweizer Datenschutzgesetz.',
   },
-  banner: { themenzeile: 'DATENSCHUTZ', ueberschrift: 'Datenschutzerklärung' },
+  banner: { themenzeile: 'DATENSCHUTZ', ueberschrift: 'Datenschutz­erklärung' },
   bloecke: [
     {
       art: 'text',

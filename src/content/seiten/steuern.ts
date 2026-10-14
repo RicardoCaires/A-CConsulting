@@ -19,7 +19,7 @@ export const steuern: SeitenInhalt = {
     description:
       'Sie bringen die Unterlagen, wir erstellen die Steuererklärung, reichen sie ein und prüfen später die Veranlagung.',
   },
-  banner: { themenzeile: 'STEUERN', ueberschrift: 'Steuererklärung im Kanton Bern' },
+  banner: { themenzeile: 'STEUERN', ueberschrift: 'Steuer­erklärung im Kanton Bern' },
   bloecke: [
     {
       art: 'fluss',

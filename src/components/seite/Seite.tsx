@@ -122,6 +122,16 @@ function Haken({ punkte }: { punkte?: readonly string[] }) {
   )
 }
 
+/** Was zwischen zwei Stellen im Geschäftsmodell hin- und zurückgeht. */
+function Pfeile({ paar }: { paar: { hin: string; zurueck: string } }) {
+  return (
+    <div className={styles.pfeile}>
+      <span className={styles.pfeilHin}>{paar.hin}</span>
+      <span className={styles.pfeilZurueck}>{paar.zurueck}</span>
+    </div>
+  )
+}
+
 function Kopf({ block, h1, nr }: { block: { titel: Titel; einleitung?: Parameters<typeof RichText>[0]['value'] }; h1: boolean; nr: number }) {
   return (
     <>
@@ -197,7 +207,11 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
 
     case 'textBild':
       return (
-        <div className={`${styles.textBild} ${block.bildLinks ? styles.bildLinks : ''}`}>
+        <div
+          className={`${styles.textBild} ${block.bildLinks ? styles.bildLinks : ''} ${
+            block.bild.art === 'portal' && block.bild.ansicht === 'fenster' ? styles.bildGross : ''
+          }`}
+        >
           <div className={styles.textSpalte}>
             <Kopf block={block} h1={h1} nr={nr} />
             <Absaetze absaetze={block.absaetze} />
@@ -373,6 +387,112 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
             </p>
           ) : null}
           <Knoepfe knoepfe={block.knoepfe} locale={locale} />
+        </>
+      )
+
+    case 'geschaeftsmodell':
+      return (
+        <>
+          <Kopf block={block} h1={h1} nr={nr} />
+          <div className={styles.modell}>
+            <div className={styles.knoten}>
+              <h3 className={styles.knotenTitel}>{block.sie.titel}</h3>
+              <p className={styles.knotenText}>{block.sie.text}</p>
+            </div>
+            <Pfeile paar={block.hin[0]} />
+            <div className={`${styles.knoten} ${styles.knotenAc}`}>
+              <Image src="/logo/ac-logo.png" alt="" width={216} height={47} className={styles.knotenLogo} />
+              <h3 className={styles.unsichtbar}>{block.ac.titel}</h3>
+              <ul className={styles.knotenPunkte}>
+                {block.ac.punkte.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+            </div>
+            <Pfeile paar={block.hin[1]} />
+            <div className={styles.knoten}>
+              <h3 className={styles.knotenTitel}>{block.markt.titel}</h3>
+              <ul className={styles.knotenLogos}>
+                {block.markt.gesellschaften.map((g) => (
+                  <li key={g.name}>
+                    <Image src={`/bilder/${g.bild}.webp`} alt={g.name} width={409} height={227} sizes="6rem" />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <ul className={styles.fakten}>
+            {block.fakten.map((f) => (
+              <li key={f.titel}>
+                <strong>{f.titel}</strong>
+                <span>{f.text}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )
+
+    case 'matrix':
+      return (
+        <>
+          <Kopf block={block} h1={h1} nr={nr} />
+          {block.gruppen.map((g) => (
+            <div key={g.titel} className={styles.matrixGruppe}>
+              <h3 className={styles.reiheTitel}>{g.titel}</h3>
+              {/* Breit: Tabelle mit Punkten. Schmal: je Ereignis eine Karte mit den betroffenen Versicherungen. */}
+              <div className={styles.matrixRahmen}>
+                <table className={styles.matrix}>
+                  <thead>
+                    <tr>
+                      <th scope="col">
+                        <span className={styles.unsichtbar}>Ereignis</span>
+                      </th>
+                      {g.spalten.map((s) => (
+                        <th key={s} scope="col">
+                          {s}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {g.zeilen.map((z) => (
+                      <tr key={z.titel}>
+                        <th scope="row">{z.titel}</th>
+                        {g.spalten.map((s, j) => (
+                          <td key={s}>
+                            {z.treffer.includes(j) ? (
+                              <span className={styles.treffer}>
+                                <span className={styles.unsichtbar}>betroffen</span>
+                              </span>
+                            ) : (
+                              <span className={styles.keinTreffer} aria-hidden="true" />
+                            )}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <ul className={styles.matrixKarten}>
+                {g.zeilen.map((z) => (
+                  <li key={z.titel}>
+                    <strong>{z.titel}</strong>
+                    <span className={styles.pillen}>
+                      {z.treffer.map((j) => (
+                        <span key={j}>{g.spalten[j]}</span>
+                      ))}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          {block.nachsatz ? (
+            <p className={styles.nachsatz}>
+              <RichText value={block.nachsatz} />
+            </p>
+          ) : null}
         </>
       )
 

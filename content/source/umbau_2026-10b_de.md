@@ -128,3 +128,43 @@ Stichworte vor einem Doppelpunkt erscheinen auf der Seite fett.
 - Übergabe: Wir übernehmen den bestehenden Stand.
 - Zeitleiste Überprüfung: Privat · Umzug · Heirat · Kind · Wohneigentum · Stellenwechsel · Pensionierung; Im Betrieb · Gründung · Erste Anstellung · Neue Fahrzeuge oder Räume · Wachstum
 - Ein Blick hinein · So sieht das Kundenportal aus
+
+## Dritter Schritt, 15.10.2026
+
+Ricardo: «Wie eine App … entfernen», «ein Rückruf kann nicht in bearbeitung sein der wird angefragt und erledigt», «das Kunden Portal wird nicht gut rübergebracht», «das kreisdiagramm mit den Gesamtversicherungskosten jährlich will ich im Kundenportal so implementiert haben», «unser Geschäftsmodell soll bildlich erklärt werden aber nicht so», die Zeitleiste der Lebensereignisse «sieht nicht gut aus».
+
+**Vorschläge.** Die Zuordnung Ereignis → Versicherung in der Matrix ist eine allgemeine Übersicht und von Ricardo fachlich zu prüfen. Das Portalfenster zeigt eine erfundene Person mit erfundenen Zahlen; die Texte im Fenster sind die des Portals (Ereignis, betroffen: nur für Vorlesewerkzeuge).
+
+- Angebote vergleichen
+- Auch nach dem Abschluss und im Schadenfall.
+- Bedarf klären
+- Beispielansicht mit erfundenen Angaben.
+- Eine Übersicht, keine abschliessende Liste. Was bei Ihnen betroffen ist, schauen wir gemeinsam an.
+- Empfehlung abgeben
+- Für Sie kostenlos
+- Guten Tag, Frau Muster
+- Hausrat und Privathaftpflicht
+- Hier sehen Sie Ihre Versicherungen und erreichen uns direkt.
+- Ihre Versicherungskosten pro Jahr
+- Im Maklermandat entschädigt uns die Gesellschaft über eine Courtage.
+- Im Schadenfall begleiten
+- Kosten: Ihre Versicherungen pro Jahr als Diagramm
+- Kosten: was Sie pro Jahr für Ihre Versicherungen bezahlen, auf einen Blick
+- Meine Angaben
+- Nächster Termin
+- Privatperson oder Unternehmen
+- Versicherungs­gesellschaften
+- Wir bleiben
+- Wir setzen um, was Sie wählen.
+- crm.ac-co.ch/portal
+- laufende Verträge
+- Ereignis · betroffen · Start · Versicherungen · Anfragen
+
+Weiche Trennstellen (15.10.2026, lange Wörter in schmalen Spalten; Chrome trennt Deutsch nicht selbst): Datenschutz­erklärung · Kranken­versicherung · Zusatz­versicherung · Verkehrs­rechtsschutz · Privat­haftpflicht · Betriebs­haftpflicht · Sach­versicherung · Kranken­taggeld · Kranken­kasse · Einzel­unternehmen · Qualifi­kationen
+
+- Grund- und Zusatz­versicherung
+- Hausrat und Privat­haftpflicht
+- Police Kranken­versicherung
+- Privat- und Verkehrs­rechtsschutz
+- Wohnung und Privat­haftpflicht
+- Steuer­erklärung im Kanton Bern · Kranken­versicherung · Motor­fahrzeug · Hausrat und Privat­haftpflicht
