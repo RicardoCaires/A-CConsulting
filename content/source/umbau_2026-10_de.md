@@ -40,7 +40,7 @@ Ricardo bestätigt oder ändert sie. Wiederverwendet ist, wo möglich, der freig
 - Deckungen und Selbstbehalte jeder Police zum Nachlesen
   (ersetzt am 15.10.2026 «Fristen und Kündigungstermine auf einen Blick»: das Portal zeigt die Fristen nicht an)
 - Änderungen, Fragen und Offertwünsche direkt an uns
-- Anmeldung mit Code per E-Mail, Daten auf unserem eigenen Server in der Schweiz
+- (Am 15.10.2026 entfallen: Ricardo will zum Kundenportal nichts zu Sicherheit oder Datenschutz auf der Website.)
 - Knöpfe: Zum Kundenportal · Offerte online anfragen
 
 Beispielansicht mit Ringdiagramm (erfundene Zahlen, sichtbar als Beispiel bezeichnet):

@@ -1,7 +1,9 @@
 /**
  * /de/treuhand im Baukasten (15.10.2026). Nimmt Buchhaltung, Treuhänderwechsel und
- * Firmengründung auf, die bis dahin eigene Seiten waren. QUELLEN:
- * `content/source/umbau_treuhand_de.md`, `schritt4_fassung2_de.md`,
+ * Firmengründung auf, die bis dahin eigene Seiten waren.
+ * Am selben Tag gekürzt; die Buchhaltung steht als Ablauf in drei Stufen
+ * (Ricardo: «zu viel text», «häufiger bildlich dar mit diagrammen»). QUELLEN:
+ * `content/source/umbau_2026-10b_de.md`, `umbau_treuhand_de.md`, `schritt4_fassung2_de.md`,
  * `buchhaltung_leistungen_de.md`, `buchhaltung_unterlagen_de.md`,
  * `firmengruendung_rechtsformen_de.md`, `wechsel_zeitpunkt_de.md`.
  */
@@ -19,8 +21,6 @@ export const treuhand: SeitenInhalt = {
       art: 'listen',
       id: 'leistungen',
       titel: { vor: 'Was wir ', akzent: 'übernehmen' },
-      einleitung:
-        'Sie liefern die Unterlagen, wir führen die Buchhaltung laufend. Sie haben einen festen Ansprechpartner und wissen jederzeit, was als Nächstes ansteht.',
       listen: [
         {
           titel: 'Buchhaltung und Abschluss',
@@ -28,15 +28,14 @@ export const treuhand: SeitenInhalt = {
           eintraege: [
             {
               text: 'Laufende Buchhaltung',
-              zusatz: 'Belege erfassen, kontieren und nachvollziehbar verbuchen.',
+              zusatz: 'Belege erfassen und verbuchen.',
               ziel: 'treuhand',
               anker: 'buchhaltung',
             },
-            { text: 'Debitoren & Kreditoren', zusatz: 'Offene Posten, Rechnungen und Zahlungsfristen im Blick behalten.' },
+            { text: 'Debitoren & Kreditoren', zusatz: 'Offene Posten und Zahlungsfristen.' },
             {
               text: 'Jahresabschluss',
-              zusatz:
-                'Abschluss Ihrer Buchhaltung am Ende des Geschäftsjahres, mit Anhang, Kontenblättern und einer Besprechung.',
+              zusatz: 'Mit Anhang und Besprechung.',
             },
           ],
         },
@@ -45,14 +44,12 @@ export const treuhand: SeitenInhalt = {
           eintraege: [
             {
               text: 'Lohnbuchhaltung',
-              zusatz:
-                'Monatliche Lohnabrechnungen, Lohnausweise, Quellensteuer und die Meldungen an die Sozialversicherungen.',
+              zusatz: 'Lohnabrechnungen, Lohnausweise, Sozialversicherungen.',
             },
-            { text: 'Mehrwertsteuer', zusatz: 'Abrechnungen, Einhaltung der Fristen und die Wahl der Abrechnungsmethode.' },
+            { text: 'Mehrwertsteuer', zusatz: 'Abrechnungen und Fristen.' },
             {
               text: 'Unternehmensadministration',
-              zusatz:
-                'Je nach Situation übernehmen wir auch Zahlungsverkehr, Mahnwesen und die Korrespondenz mit Ämtern.',
+              zusatz: 'Zahlungsverkehr, Mahnwesen, Ämter.',
             },
           ],
         },
@@ -61,7 +58,7 @@ export const treuhand: SeitenInhalt = {
           eintraege: [
             {
               text: 'Firmengründung',
-              zusatz: 'Von der Wahl der Rechtsform bis zur ersten Buchhaltung.',
+              zusatz: 'Von der Rechtsform bis zur ersten Buchhaltung.',
               ziel: 'treuhand',
               anker: 'firmengruendung',
             },
@@ -73,7 +70,7 @@ export const treuhand: SeitenInhalt = {
             },
             {
               text: 'Steuererklärung',
-              zusatz: 'Für Ihre Firma, aufbauend auf dem Abschluss.',
+              zusatz: 'Aufbauend auf dem Abschluss.',
               ziel: 'steuern',
               anker: 'firmen',
             },
@@ -82,21 +79,29 @@ export const treuhand: SeitenInhalt = {
       ],
     },
     {
-      art: 'text',
+      art: 'fluss',
       id: 'buchhaltung',
-      breit: true,
       titel: { vor: 'Ihre ', akzent: 'Buchhaltung', nach: ' ohne Vorbuchen' },
-      absaetze: [
-        'Sie müssen keine Buchhaltungssoftware bedienen und nichts vorbuchen. Sortiert ist hilfreich, nötig ist es nicht — das Ordnen übernehmen wir.',
-        'In welcher Form und in welchem Rhythmus Sie das liefern, halten wir zu Beginn fest. Sie können uns die Unterlagen digital oder physisch übergeben.',
+      stufen: [
+        {
+          titel: 'Sie liefern',
+          punkte: [
+            'Bank- und Kassenauszüge',
+            'Kunden- und Lieferantenrechnungen',
+            'Spesen und Barbelege',
+            'Personalunterlagen, falls Sie Mitarbeitende haben',
+          ],
+        },
+        {
+          titel: 'Wir erledigen',
+          punkte: ['Ordnen und verbuchen', 'Löhne und Mehrwertsteuer', 'Fristen im Blick'],
+        },
+        {
+          titel: 'Sie erhalten',
+          punkte: ['Auswertungen zu festen Terminen', 'Jahresabschluss', 'Grundlage für die Steuererklärung'],
+        },
       ],
-      punkte: [
-        'Bank- und Kassenauszüge',
-        'Kundenrechnungen',
-        'Lieferantenrechnungen',
-        'Spesen und Barbelege',
-        'Personalunterlagen, falls Sie Mitarbeitende haben',
-      ],
+      nachsatz: 'Keine Software, kein Vorbuchen. Digital oder auf Papier.',
     },
     {
       art: 'schritte',
@@ -105,19 +110,19 @@ export const treuhand: SeitenInhalt = {
       schritte: [
         {
           titel: 'Erstgespräch',
-          text: 'Wir schauen an, wie Ihre Administration heute läuft und was Sie abgeben möchten.',
+          text: 'Was läuft heute, was möchten Sie abgeben?',
         },
         {
           titel: 'Offerte und Leistungsumfang',
-          text: 'Sie erhalten schriftlich, welche Aufgaben wir übernehmen und welche bei Ihnen bleiben.',
+          text: 'Schriftlich: was wir übernehmen, was bei Ihnen bleibt.',
         },
         {
           titel: 'Übernahme und Start',
-          text: 'Wir richten Ihre Buchhaltung ein und übernehmen den bestehenden Stand. Den Startzeitpunkt legen wir gemeinsam fest.',
+          text: 'Wir übernehmen den bestehenden Stand.',
         },
         {
           titel: 'Laufender Betrieb',
-          text: 'Sie liefern Ihre Unterlagen im vereinbarten Rhythmus. Wir buchen, melden uns, wenn etwas fehlt, und liefern die Auswertungen zu den festgelegten Terminen.',
+          text: 'Sie liefern, wir buchen und melden uns, wenn etwas fehlt.',
         },
       ],
       nachsatz: 'Das erste Gespräch kostet nichts.',
@@ -126,40 +131,37 @@ export const treuhand: SeitenInhalt = {
       art: 'vergleich',
       id: 'firmengruendung',
       titel: { vor: 'Einzelunternehmen ', akzent: 'oder', nach: ' GmbH?' },
-      einleitung:
-        'Wir klären mit Ihnen die Rechtsform, bereiten die Unterlagen vor und koordinieren die nächsten Schritte mit Bank und Notariat. Entscheidend sind Haftung, Kapital, Gründungsaufwand und die gewünschte Trennung zwischen Privat- und Geschäftsvermögen.',
+      einleitung: 'Wir klären die Rechtsform und koordinieren Bank und Notariat.',
       spalten: [
         {
           titel: 'Einzelunternehmen',
           untertitel: 'Einfach starten',
           zeilen: [
             { merkmal: 'Mindestkapital', wert: 'Keines vorgeschrieben' },
-            { merkmal: 'Haftung', wert: 'Persönlich und unbeschränkt, auch mit dem Privatvermögen' },
-            { merkmal: 'Gründung', wert: 'Einfach und ohne Beurkundung' },
+            { merkmal: 'Haftung', wert: 'Persönlich, auch mit dem Privatvermögen' },
+            { merkmal: 'Gründung', wert: 'Ohne Beurkundung' },
             {
               merkmal: 'Handelsregister',
-              wert: 'Je nach Tätigkeit; bei kaufmännischem Gewerbe ab CHF 100\'000 Jahresumsatz obligatorisch',
+              wert: 'Bei kaufmännischem Gewerbe ab CHF 100\'000 Umsatz obligatorisch',
             },
             { merkmal: 'Rechtsstellung', wert: 'Keine eigene Rechtspersönlichkeit' },
           ],
-          passt:
-            'Passt häufig, wenn Sie allein starten, wenig Formalitäten wünschen und das persönliche Haftungsrisiko überschaubar ist.',
+          passt: 'Passt, wenn Sie allein und mit überschaubarem Risiko starten.',
         },
         {
           titel: 'GmbH',
           untertitel: 'Getrennt aufbauen',
           zeilen: [
-            { merkmal: 'Mindestkapital', wert: 'CHF 20\'000, vollständig einbezahlt oder durch Sacheinlagen gedeckt' },
+            { merkmal: 'Mindestkapital', wert: 'CHF 20\'000, voll einbezahlt' },
             {
               merkmal: 'Haftung',
-              wert: 'Grundsätzlich Gesellschaftsvermögen; statutarische Nachschusspflichten können vorgesehen werden',
+              wert: 'Grundsätzlich nur das Gesellschaftsvermögen',
             },
             { merkmal: 'Gründung', wert: 'Beurkundung und Statuten' },
-            { merkmal: 'Handelsregister', wert: 'Eintrag obligatorisch; die GmbH entsteht erst mit der Eintragung' },
+            { merkmal: 'Handelsregister', wert: 'Immer obligatorisch' },
             { merkmal: 'Rechtsstellung', wert: 'Eigene juristische Person' },
           ],
-          passt:
-            'Passt häufig, wenn Sie Geschäfts- und Privatvermögen trennen oder mit mehreren Personen gründen möchten.',
+          passt: 'Passt, wenn Sie Privat und Geschäft trennen oder zu mehreren gründen.',
         },
       ],
       nachsatz: 'Kurzvergleich gemäss KMU-Portal des Bundes. Die passende Rechtsform ist im Einzelfall zu prüfen.',
@@ -169,14 +171,11 @@ export const treuhand: SeitenInhalt = {
       art: 'text',
       id: 'wechsel',
       titel: { vor: 'Sie haben bereits einen ', akzent: 'Treuhänder', nach: '?' },
-      absaetze: [
-        'Ein Wechsel ist grundsätzlich möglich. Wir schauen mit Ihnen zuerst die bestehende Situation an, klären den geeigneten Zeitpunkt und welche Unterlagen für die Übernahme nötig sind.',
-        'Ein Wechsel ist zum Jahresbeginn besonders übersichtlich. Er kann aber auch während des Geschäftsjahres gut gelingen, wenn die Übergabe sorgfältig abgestimmt wird.',
-      ],
+      absaetze: ['Ein Wechsel ist auch während des Jahres möglich, am übersichtlichsten zum Jahresbeginn.'],
       punkte: [
-        'Ihr bisheriger Treuhänder erfährt erst davon, wenn Sie uns mit der Kontaktaufnahme beauftragen.',
-        'Die Kündigung beim bisherigen Treuhänder bereiten wir für Sie vor.',
-        'Wir prüfen von Fall zu Fall, welches System sich übernehmen lässt.',
+        'Diskret: Ihr bisheriger Treuhänder erfährt erst davon, wenn Sie uns beauftragen.',
+        'Kündigung: Wir bereiten sie für Sie vor.',
+        'Übergabe: Wir übernehmen den bestehenden Stand.',
       ],
       knoepfe: [{ text: 'Situation besprechen', ziel: 'kontakt', art: 'zweit' }],
     },
@@ -188,7 +187,7 @@ export const treuhand: SeitenInhalt = {
         {
           frage: 'Kann ich mitten im Jahr starten?',
           antwort:
-            'Ein unterjähriger Start ist grundsätzlich möglich. Wir übernehmen den bestehenden Stand und führen von dort weiter. Wie aufwendig das ist, hängt davon ab, wie die Buchhaltung bisher geführt wurde.',
+            'Ja. Wir übernehmen den bestehenden Stand und führen von dort weiter.',
         },
         {
           frage: 'Wer ist mein Ansprechpartner?',
@@ -204,7 +203,7 @@ export const treuhand: SeitenInhalt = {
     {
       art: 'kontakt',
       titel: { vor: 'So erreichen ', akzent: 'Sie', nach: ' uns' },
-      satz: 'Im Erstgespräch schauen wir an, was heute bei Ihnen liegt und was davon zu uns kann. Danach wissen Sie, was eine Zusammenarbeit für Sie bedeuten würde.',
+      satz: 'Im Erstgespräch schauen wir an, was heute bei Ihnen liegt. Es kostet nichts.',
       beschriftungen: { telefon: 'Telefon', email: 'E-Mail', buero: 'Büro' },
     },
   ],

@@ -1,7 +1,9 @@
 /**
  * /de/versicherungen im Baukasten (15.10.2026), auf Ricardos Auftrag kürzer und
  * im Ton «direkt und persönlich». Betreuung und Schadenfall sind ein Abschnitt.
- * QUELLEN: `content/source/umbau_versicherungen_de.md`, `schritt4_fassung2_de.md`,
+ * Am selben Tag gekürzt, Lebensereignisse als Zeitleiste (Ricardo: «zu viel text»,
+ * «häufiger bildlich dar mit diagrammen»).
+ * QUELLEN: `content/source/umbau_2026-10b_de.md`, `umbau_versicherungen_de.md`, `schritt4_fassung2_de.md`,
  * `ergaenzungen_de.md`, `versicherungen_schadenfall_de.md`, `versicherungen_modell_de.md`.
  *
  * Die Anker `privatpersonen`, `unternehmen` und `schadenfall` werden von der
@@ -22,7 +24,6 @@ export const versicherungen: SeitenInhalt = {
       art: 'listen',
       id: 'bereiche',
       titel: { vor: 'Was wir für Sie ', akzent: 'prüfen' },
-      einleitung: 'Wir prüfen, ob Ihre Deckung noch zu Ihrer Lebenssituation passt, und beraten Sie bei Anpassungen.',
       listen: [
         {
           titel: 'Für Privatpersonen',
@@ -50,14 +51,31 @@ export const versicherungen: SeitenInhalt = {
       ],
     },
     {
-      art: 'text',
+      art: 'zeitleiste',
       id: 'ueberpruefung',
-      breit: true,
       titel: { vor: 'Wann sich eine ', akzent: 'Überprüfung', nach: ' lohnt' },
-      absaetze: [
-        'Sie ziehen um, heiraten, bekommen ein Kind, kaufen Wohneigentum, wechseln die Stelle oder nähern sich der Pensionierung. In solchen Situationen kann mehr als eine Police betroffen sein.',
-        'Mit der ersten Anstellung kommen die obligatorische Unfallversicherung, die berufliche Vorsorge und je nach Betrieb ein Krankentaggeld dazu. Wir klären mit Ihnen, was in Ihrem Fall vorgeschrieben ist und was freiwillig bleibt.',
-        'Für den Betrieb selbst gehören je nach Tätigkeit Haftpflicht, Sachversicherung, Fahrzeuge oder Transportdeckungen dazu.',
+      einleitung: 'Bei diesen Ereignissen kann mehr als eine Police betroffen sein.',
+      reihen: [
+        {
+          titel: 'Privat',
+          stationen: [
+            { titel: 'Umzug' },
+            { titel: 'Heirat' },
+            { titel: 'Kind' },
+            { titel: 'Wohneigentum' },
+            { titel: 'Stellenwechsel' },
+            { titel: 'Pensionierung', hervor: true },
+          ],
+        },
+        {
+          titel: 'Im Betrieb',
+          stationen: [
+            { titel: 'Gründung' },
+            { titel: 'Erste Anstellung' },
+            { titel: 'Neue Fahrzeuge oder Räume' },
+            { titel: 'Wachstum', hervor: true },
+          ],
+        },
       ],
     },
     {
@@ -67,15 +85,15 @@ export const versicherungen: SeitenInhalt = {
       schritte: [
         {
           titel: 'Unterlagen sichten',
-          text: 'Sie stellen uns Ihre bestehenden Policen zusammen. Wir schauen sie durch und stellen Rückfragen, wo etwas unklar ist.',
+          text: 'Sie geben uns Ihre Policen. Wir sehen sie durch.',
         },
         {
           titel: 'Auswerten',
-          text: 'Wir zeigen Ihnen, wo eine Deckung fehlt, wo sich zwei Verträge überschneiden und wo Prämie und Leistung nicht zusammenpassen.',
+          text: 'Wir zeigen Lücken, Doppelungen und Prämien, die nicht zur Leistung passen.',
         },
         {
           titel: 'Vorschlag',
-          text: 'Sie erhalten eine Übersicht mit unseren Empfehlungen und, wo es sinnvoll ist, einen Vergleich. Sie entscheiden, was umgesetzt wird.',
+          text: 'Sie erhalten eine Übersicht mit Empfehlung. Sie entscheiden.',
         },
       ],
       nachsatz: 'Sie müssen dafür nichts kündigen. Wir schauen zuerst an, was Sie haben.',
@@ -84,9 +102,11 @@ export const versicherungen: SeitenInhalt = {
       art: 'textBild',
       id: 'schadenfall',
       titel: { vor: 'Auch nach dem Abschluss ', akzent: 'für Sie', nach: ' da' },
-      absaetze: [
-        'Wir behalten Ihre Verträge im Blick: Wir melden Adress- und Personenänderungen, sehen uns Prämienanpassungen an, wenn sie ins Haus kommen, und melden uns, wenn wir etwas bemerken, das Ihre Deckung betrifft.',
-        'Wenn ein Schaden eintritt, melden Sie sich bei uns. Wir nehmen den Fall auf, melden ihn der Versicherung und begleiten die Abwicklung. Im Notfall sind wir auch ausserhalb der Bürozeiten erreichbar. Die laufende Schadenbegleitung erledigen wir während der Bürozeiten.',
+      punkte: [
+        'Änderungen: Adresse oder Familie – wir melden es der Versicherung.',
+        'Prämien: Anpassungen sehen wir uns an, wenn sie kommen.',
+        'Schadenfall: Wir nehmen ihn auf, melden ihn und begleiten die Abwicklung.',
+        'Notfall: auch ausserhalb der Bürozeiten erreichbar.',
       ],
       knoepfe: [{ text: 'Schaden telefonisch melden', href: 'telefon' }],
       bild: {
@@ -141,7 +161,7 @@ export const versicherungen: SeitenInhalt = {
         {
           frage: 'Kostet mich die Beratung etwas?',
           antwort:
-            'Für die Vermittlung und Betreuung von Versicherungen werden wir von den Gesellschaften über eine Courtage entschädigt. Für Sie ist die Arbeit im Rahmen des Maklermandats kostenlos. Geht ein Auftrag darüber hinaus, vereinbaren wir vorher ein Honorar.',
+            'Im Rahmen des Maklermandats nicht. Uns entschädigen die Gesellschaften über eine Courtage. Geht ein Auftrag darüber hinaus, vereinbaren wir vorher ein Honorar.',
         },
         {
           frage: 'Arbeiten Sie mit allen Gesellschaften zusammen?',
@@ -157,7 +177,7 @@ export const versicherungen: SeitenInhalt = {
     {
       art: 'kontakt',
       titel: { vor: 'Lassen Sie Ihre ', akzent: 'Verträge', nach: ' anschauen' },
-      satz: 'Ein erstes Gespräch verpflichtet Sie zu nichts. Bringen Sie mit, was Sie haben, und wir sagen Ihnen, was uns auffällt.',
+      satz: 'Ein erstes Gespräch verpflichtet zu nichts. Bringen Sie mit, was Sie haben.',
       beschriftungen: { telefon: 'Telefon', email: 'E-Mail', buero: 'Büro' },
     },
   ],

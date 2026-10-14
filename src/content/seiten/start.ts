@@ -1,7 +1,8 @@
 /**
- * Startseite im Baukasten (15.10.2026). Inhalt unverändert gegenüber der Fassung
- * vom 14.10.2026, die Ricardo gutgeheissen hat («Finde ich gut bitte durchwegs
- * durchziehen»). QUELLEN: `content/source/umbau_2026-10_de.md`, `startseite_de.md`,
+ * Startseite im Baukasten (15.10.2026), am selben Tag gekürzt und um Portalansichten
+ * ergänzt (Ricardo: «zu viel text», «noch etwas mehr vom portal»). Nichts zum Portal
+ * im Zusammenhang mit Sicherheit oder Datenschutz. QUELLEN:
+ * `content/source/umbau_2026-10b_de.md`, `umbau_2026-10_de.md`, `startseite_de.md`,
  * `abschluss_kontakt_de.md`, `banner_serie_de.md`.
  */
 import type { SeitenInhalt } from './typen'
@@ -18,9 +19,10 @@ export const start: SeitenInhalt = {
       art: 'text',
       id: 'intro',
       titel: { vor: 'Ihr ', akzent: 'unabhängiger', nach: ' Versicherungsbroker im Seeland' },
-      absaetze: [
-        'Wir sind bei der FINMA als Versicherungsvermittler registriert und arbeiten in Ihrem Auftrag, nicht im Auftrag einer Versicherung.',
-        'Dazu übernehmen wir Buchhaltung, Löhne und Steuererklärungen – für Privatpersonen, Selbständige und kleine Unternehmen.',
+      punkte: [
+        'Unabhängig: Wir arbeiten in Ihrem Auftrag, nicht für eine Versicherung.',
+        'Registriert: bei der FINMA als Versicherungsvermittler.',
+        'Treuhand dazu: Buchhaltung, Löhne und Steuererklärungen.',
       ],
       knoepfe: [
         { text: 'Offerte anfragen', href: 'offerte' },
@@ -81,21 +83,27 @@ export const start: SeitenInhalt = {
       art: 'textBild',
       id: 'digital',
       titel: { vor: 'Ihre Versicherungen ', akzent: 'jederzeit', nach: ' im Blick' },
-      absaetze: [
-        'Wir nutzen moderne Software dort, wo sie Administration reduziert, Abläufe vereinfacht und Fehler vermeidet. Die fachliche Prüfung, die Beratung und die Verantwortung bleiben bei uns.',
-        'Sie merken davon vor allem eines: weniger Papier und kürzere Wege.',
-      ],
+      absaetze: ['Weniger Papier, kürzere Wege. Im Kundenportal haben Sie alles zur Hand.'],
       punkte: [
-        'Alle Policen und Unterlagen an einem Ort, auch auf dem Handy',
-        'Deckungen und Selbstbehalte jeder Police zum Nachlesen',
-        'Änderungen, Fragen und Offertwünsche direkt an uns',
-        'Anmeldung mit Code per E-Mail, Daten auf unserem eigenen Server in der Schweiz',
+        'Policen: alle Verträge und Unterlagen an einem Ort, auch auf dem Handy',
+        'Deckungen: Selbstbehalte und Leistungen jeder Police zum Nachlesen',
+        'Anfragen: Änderungen und Offertwünsche direkt an uns, mit Stand',
       ],
       knoepfe: [
         { text: 'Zum Kundenportal', href: 'kundenportal' },
-        { text: 'Offerte online anfragen', href: 'offerte', art: 'link' },
+        { text: 'Offerte online anfragen', href: 'offerte', art: 'zweit' },
       ],
-      bild: { art: 'portal' },
+      bild: { art: 'portal', ansicht: 'policen' },
+    },
+    {
+      art: 'portalAnsichten',
+      id: 'portal',
+      titel: { vor: 'So sieht das ', akzent: 'Kundenportal', nach: ' aus' },
+      ansichten: [
+        { ansicht: 'anfragen', titel: 'Ihre Anfragen', text: 'Sie sehen jederzeit, wie weit wir sind.' },
+        { ansicht: 'dokumente', titel: 'Ihre Dokumente', text: 'Policen und Offerten zum Öffnen und Speichern.' },
+      ],
+      knoepfe: [{ text: 'Mehr zum Kundenportal', ziel: 'digital', art: 'zweit' }],
     },
     {
       art: 'personen',
@@ -118,12 +126,12 @@ export const start: SeitenInhalt = {
           linkedin: 'https://www.linkedin.com/in/octavio-andrade-211083130/',
         },
       ],
-      knoepfe: [{ text: 'Mehr über uns', ziel: 'ueberUns', art: 'link' }],
+      knoepfe: [{ text: 'Mehr über uns', ziel: 'ueberUns', art: 'zweit' }],
     },
     {
       art: 'kontakt',
       titel: { vor: 'So erreichen ', akzent: 'Sie', nach: ' uns' },
-      satz: 'Schildern Sie uns kurz Ihre Situation. Wir melden uns persönlich bei Ihnen und besprechen, welche nächsten Schritte sinnvoll sind.',
+      satz: 'Schildern Sie uns kurz Ihre Situation. Wir melden uns persönlich.',
       beschriftungen: { telefon: 'Telefon', email: 'E-Mail', buero: 'Büro' },
     },
   ],

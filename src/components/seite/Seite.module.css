@@ -14,12 +14,17 @@
   padding-top: clamp(2rem, 5vw, 3.5rem);
 }
 
+/* minmax(0, 1fr): Ein langes Wort (Adresse, Link) darf den Block nie über den
+   Rand drücken – es bricht um. */
 .bloecke {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .block {
+  min-width: 0;
+  overflow-wrap: break-word;
   padding: clamp(1.5rem, 4vw, 3.25rem);
   background-color: var(--ac-color-white);
   border-radius: 28px;
@@ -58,7 +63,8 @@
 
 .einleitung {
   margin: 1rem 0 0;
-  max-width: 62ch;
+  max-width: 56ch;
+  font-weight: 500;
   font-size: var(--ac-lead-size);
   line-height: 1.6;
   color: var(--ac-color-text-primary);
@@ -66,10 +72,10 @@
 
 .absatz {
   margin: 1rem 0 0;
-  max-width: 62ch;
+  max-width: 56ch;
   font-size: var(--ac-body-size);
   line-height: 1.65;
-  color: var(--ac-color-text-secondary);
+  color: var(--ac-color-text-primary);
 }
 
 .absatz a,
@@ -104,26 +110,36 @@
 
 .haken {
   display: grid;
-  gap: 0.6rem;
   margin: 1.5rem 0 0;
   padding: 0;
   list-style: none;
-  max-width: 62ch;
+  max-width: 56ch;
 }
 
+/* Jede Zeile für sich, durch eine feine Linie getrennt: Das Auge verliert die
+   Zeile nicht, auch wenn sie umbricht. */
 .haken li {
   position: relative;
-  padding-left: 1.75rem;
+  padding: 0.7rem 0 0.7rem 1.9rem;
   font-size: var(--ac-body-size);
   line-height: 1.5;
   color: var(--ac-color-text-primary);
 }
 
+.haken li + li {
+  border-top: var(--ac-border-hairline) solid var(--ac-line-soft);
+}
+
+.stichwort {
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
 .haken li::before {
   content: '✓';
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 0.15rem;
+  top: 0.7rem;
   font-weight: 700;
   color: var(--ac-color-accent-green);
 }
@@ -182,31 +198,7 @@
   transform: translateX(3px);
 }
 
-.textlink,
-.textlinkKlein {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.75rem;
-  font-weight: 600;
-  color: var(--ac-color-accent-green);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1px;
-}
-
-.textlinkKlein {
-  font-size: var(--ac-small-size);
-  font-weight: 500;
-}
-
-.textlink:hover,
-.textlinkKlein:hover {
-  color: var(--ac-color-primary-navy);
-}
-
 .knopf:focus-visible,
-.textlink:focus-visible,
-.textlinkKlein:focus-visible,
 .liste a:focus-visible,
 .angaben a:focus-visible,
 .logos a:focus-visible,
@@ -288,8 +280,18 @@
 
 .zusatz {
   display: block;
-  margin-top: 0.15rem;
+  margin-top: 0.2rem;
+  font-weight: 400;
   color: var(--ac-color-text-secondary);
+}
+
+/* Hat ein Eintrag einen Zusatz, trägt der Titel das Gewicht – zwei Farben,
+   zwei Schnitte, klar zu unterscheiden. */
+.liste li:has(.zusatz) > a,
+.liste li:has(.zusatz) > .eintrag {
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
+  padding-block: 0.65rem;
 }
 
 .chevron {
@@ -441,7 +443,7 @@
   margin: 0;
   font-size: var(--ac-small-size);
   line-height: 1.6;
-  color: var(--ac-color-text-secondary);
+  color: var(--ac-color-text-primary);
 }
 
 /* ---- Vergleich --------------------------------------------------------------------- */
@@ -495,7 +497,8 @@
 
 .merkmale dt {
   font-size: var(--ac-small-size);
-  color: var(--ac-color-text-secondary);
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
 }
 
 .merkmale dd {
@@ -507,10 +510,17 @@
 
 .passt {
   margin: auto 0 0;
-  padding-top: 1rem;
+  padding: 0.85rem 1rem;
   font-size: var(--ac-small-size);
   line-height: 1.55;
-  color: var(--ac-color-text-secondary);
+  color: var(--ac-color-text-primary);
+  background-color: var(--ac-color-background-light);
+  border-left: 3px solid var(--ac-color-accent-green);
+  border-radius: 0 12px 12px 0;
+}
+
+.merkmale + .passt {
+  margin-top: 1rem;
 }
 
 /* ---- Tabelle ----------------------------------------------------------------------- */
@@ -555,6 +565,257 @@
 
 .tabelle td {
   color: var(--ac-color-text-primary);
+}
+
+/* ---- Portalansichten ------------------------------------------------------------ */
+
+.ansichten {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 48rem) {
+  .ansichten {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 75rem) {
+  .ansichten[data-anzahl='3'] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.ansichtFeld {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  background-color: var(--ac-color-background-light);
+  border-radius: 24px;
+}
+
+.ansichtTitel {
+  margin: 1.1rem 0.25rem 0.3rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.ansichtText {
+  margin: 0 0.25rem 0.25rem;
+  font-size: var(--ac-small-size);
+  line-height: 1.55;
+  color: var(--ac-color-text-primary);
+}
+
+/* ---- Zeitleiste ------------------------------------------------------------------ */
+
+.reihen {
+  display: grid;
+  gap: clamp(1.75rem, 3vw, 2.5rem);
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.reiheTitel {
+  margin: 0 0 1rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+/* Telefon: senkrecht, Linie links. Ab 48rem waagrecht, Linie durch die Punkte. */
+.leiste {
+  position: relative;
+  display: grid;
+  gap: 1.1rem;
+  margin: 0;
+  padding: 0 0 0 1.75rem;
+  list-style: none;
+}
+
+.leiste::before {
+  content: '';
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.45rem;
+  width: 2px;
+  background-color: var(--ac-line);
+}
+
+.station,
+.stationHervor {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.punktLeiste {
+  position: absolute;
+  top: 0.3rem;
+  left: -1.75rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  background-color: var(--ac-color-white);
+  border: 3px solid var(--ac-color-accent-green);
+  border-radius: 50%;
+}
+
+.stationHervor .punktLeiste {
+  background-color: var(--ac-color-accent-green);
+}
+
+.stationMarke {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.stationTitel {
+  font-size: var(--ac-small-size);
+  line-height: 1.45;
+  color: var(--ac-color-text-primary);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Ohne Marke (z. B. Lebensereignisse) trägt der Titel selbst das Gewicht. */
+.punktLeiste + .stationTitel {
+  font-size: var(--ac-body-size);
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
+}
+
+.stationWert {
+  align-self: flex-start;
+  margin-top: 0.3rem;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-light);
+  border-radius: 999px;
+}
+
+.stationHervor .stationWert {
+  color: var(--ac-color-accent-green);
+  background-color: var(--ac-color-signal-positive-bg);
+}
+
+@media (min-width: 48rem) {
+  .leiste {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1.9rem 0 0;
+  }
+
+  .leiste::before {
+    top: 0.5rem;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 2px;
+  }
+
+  .punktLeiste {
+    top: -1.9rem;
+    left: 0;
+  }
+}
+
+/* ---- Fluss: Stufen mit Pfeilen ------------------------------------------------------- */
+
+.fluss {
+  display: grid;
+  gap: 2.25rem;
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stufe {
+  position: relative;
+  min-width: 0;
+  padding: 1.35rem 1.4rem;
+  background-color: var(--ac-color-background-light);
+  border-radius: 20px;
+}
+
+.stufeZiel {
+  background-color: var(--ac-color-signal-positive-bg);
+}
+
+/* Pfeil zur nächsten Stufe: auf dem Telefon nach unten, breit nach rechts */
+.stufe:not(:last-child)::after {
+  content: '↓';
+  position: absolute;
+  left: 50%;
+  bottom: -1.95rem;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ac-color-accent-green);
+}
+
+@media (min-width: 56rem) {
+  .fluss {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .stufe:not(:last-child)::after {
+    content: '→';
+    left: auto;
+    right: -1.85rem;
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.stufeTitel {
+  margin: 0 0 0.6rem;
+  font-family: var(--ac-font-display);
+  font-size: 1.375rem;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.stufePunkte {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stufePunkte li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: var(--ac-small-size);
+  line-height: 1.45;
+  color: var(--ac-color-text-primary);
+}
+
+.stufePunkte li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: var(--ac-color-accent-green);
+  border-radius: 50%;
 }
 
 /* ---- Häufige Fragen ------------------------------------------------------------- */
@@ -633,10 +894,10 @@
 
 .antwort {
   margin: 0 0 1.1rem;
-  max-width: 62ch;
+  max-width: 56ch;
   font-size: var(--ac-small-size);
   line-height: 1.65;
-  color: var(--ac-color-text-secondary);
+  color: var(--ac-color-text-primary);
 }
 
 /* ---- Personen -------------------------------------------------------------------- */
@@ -711,7 +972,8 @@
 
 .angabenKlein dt {
   font-size: var(--ac-small-size);
-  color: var(--ac-color-text-secondary);
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
 }
 
 .angabenKlein dd {

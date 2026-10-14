@@ -2571,6 +2571,28 @@ gibt es noch keine.
 > - ⚠️ **Datenschutzerklärung veraltet** (Wortlaut unverändert übernommen): Sie sagt, es gebe kein Kontaktformular,
 >   keine Karten fremder Server und keinen Kundenbereich. Seit Offertanfrage, OpenStreetMap-Karte nach Klick,
 >   Kundenportal und Turnstile stimmt das nicht mehr. **Nur Ricardo ändert sie.**
+>
+> **Zweiter Schritt am 15.10.2026** – Ricardo: «zu viel text», «schwerleserlich … wenn alles gleichfarbig ist»,
+> «nichts überlappen oder abgeschnitten», «nicht das etwas bezüglich kundenprotal im zusammenhang mit sicherheit
+> oder datenschutz genannt wird», «häufiger bildlich dar mit diagrammen», «etwas mehr vom portal», «links … das
+> sollen buttons werden». Neue Wortlaute in `content/source/umbau_2026-10b_de.md`.
+>
+> - **Keine Textlinks mehr.** `Knopf.art` kennt nur `haupt` und `zweit`; LinkedIn und «← News und Blog» sind
+>   ebenfalls Knöpfe. Links mitten im Satz (Datenschutzerklärung im Formular) bleiben Links.
+> - **Kontrast:** Fliesstext in `text_primary` statt `text_secondary`, Zeilen höchstens 56 Zeichen. Haken-Listen
+>   mit Trennlinien; **ein Stichwort vor dem ersten Doppelpunkt wird fett und navy** («Policen: …»). Einträge mit
+>   Zusatz tragen den Titel fett und navy, den Zusatz grau. Merkmale im Vergleich fett, «Passt …» als Hinweisfeld.
+> - **Neue Blockarten:** `zeitleiste` (Punkte auf einer Linie, auf dem Telefon senkrecht – Steuerfristen,
+>   Lebensereignisse auf `/versicherungen`), `fluss` (Stufen mit Pfeilen – Buchhaltung auf `/treuhand`, Ablauf und
+>   Checkliste auf `/steuern`), `portalAnsichten` (mehrere Beispielansichten nebeneinander).
+> - **Portalansichten** (`components/ui/PortalAnsicht.tsx`, Daten in `content/seiten/portal-beispiel.ts`):
+>   Policen mit Prämie, Anfragen mit Stand als Balken, Dokumente. Alle Angaben erfunden und als Beispiel beschriftet.
+>   **Das Ringdiagramm steht auf keiner Seite mehr** – das Portal zählt die Prämien nicht nach Bereich zusammen.
+> - **Zum Kundenportal kein Wort zu Anmeldung, Code, Passwort, Server oder Datenschutz** – auch nicht in den
+>   News-Entwürfen und den Quellen. Der schwebende Knopf trägt ein **Personensymbol statt des Schlosses** und ist
+>   unter 48rem nur ein runder Knopf mit Symbol, damit er möglichst wenig verdeckt.
+> - `.bloecke` läuft auf `minmax(0, 1fr)`: Ein langes Wort im Impressum drückte den Block bei 375 px 2 px über
+>   den Rand.
 
 ## 10. Offene Punkte
 

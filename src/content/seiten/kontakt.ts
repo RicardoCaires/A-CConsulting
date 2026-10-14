@@ -23,7 +23,7 @@ export const kontakt: SeitenInhalt = {
       breit: true,
       titel: { vor: 'Offerte ', akzent: 'online', nach: ' anfragen' },
       absaetze: [
-        'Sie möchten eine Versicherung offerieren lassen? Die Offertanfrage stellt Ihnen Frage für Frage, was wir dafür brauchen. Jede Frage ist freiwillig. Was offen bleibt, klären wir im Gespräch.',
+        'Frage für Frage, jede freiwillig. Was offen bleibt, klären wir im Gespräch.',
       ],
       knoepfe: [{ text: 'Offerte anfragen', href: 'offerte' }],
     },

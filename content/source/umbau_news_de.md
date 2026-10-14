@@ -33,21 +33,17 @@ Genauso bei einer Frage zu Ihrer Police oder wenn Sie eine Offerte möchten: Sie
 
 ### So kommen Sie zu Ihrem Zugang
 
-Sie registrieren sich im Kundenportal. Wir ordnen Ihren Zugang Ihrem Dossier zu und schalten ihn frei. Erst dann sehen Sie Ihre Daten.
-
-Bei der Anmeldung geben Sie Ihr Passwort ein und danach einen Code, den Sie per E-Mail erhalten.
+Sie registrieren sich im Kundenportal. Wir ordnen Ihren Zugang Ihrem Dossier zu und schalten ihn frei.
 
 Auf dem Handy können Sie das Portal wie eine App auf den Startbildschirm legen. Dann ist es mit einem Tippen da.
 
 Den Zugang finden Sie auf jeder Seite unserer Website unten rechts unter «Kundenportal».
 
-### Ihre Daten bleiben in der Schweiz
-
-Das Portal läuft auf unserem eigenen Server in der Schweiz. Für Kundinnen und Kunden von A&C ist es ohne Kosten.
+(Am 15.10.2026 entfallen: Ricardo will zum Kundenportal nichts zu Sicherheit oder Datenschutz auf der Website.)
 
 ### Und wer lieber anruft?
 
-Telefon und E-Mail bleiben. Das Portal ist ein zusätzlicher Weg, kein Ersatz für das Gespräch. Die fachliche Prüfung, die Beratung und die Verantwortung bleiben bei uns.
+Telefon und E-Mail bleiben. Das Portal ist ein zusätzlicher Weg, kein Ersatz für das Gespräch. Für Kundinnen und Kunden von A&C ist es ohne Kosten.
 
 ---
 

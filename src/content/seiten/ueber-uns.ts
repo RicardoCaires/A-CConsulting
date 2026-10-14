@@ -6,6 +6,9 @@
  *
  * Rollen verbindlich nach Ricardos Anweisung vom 15.09.2026: Octavio ist Geschäftsführer
  * und Mitinhaber, Ricardo Mitinhaber. Die Anker `inhaber`, `arbeitsweise` und `region` bleiben.
+ *
+ * Am 15.10.2026 gekürzt (Ricardo: «zu viel text»); neue Wortlaute in
+ * `content/source/umbau_2026-10b_de.md`.
  */
 import type { SeitenInhalt } from './typen'
 
@@ -31,7 +34,7 @@ export const ueberUns: SeitenInhalt = {
           angaben: [
             {
               merkmal: 'Beruflicher Hintergrund',
-              wert: 'Kaufmann EFZ. Im Finanz- und Rechnungswesen der Creabeton Matériaux AG in Lyss verantwortlich für Kreditoren, Debitoren und Anlagebuchhaltung sowie Leiter der Berufsbildung.',
+              wert: 'Kaufmann EFZ. Finanz- und Rechnungswesen der Creabeton Matériaux AG in Lyss.',
             },
             {
               merkmal: 'Qualifikationen',
@@ -53,7 +56,7 @@ export const ueberUns: SeitenInhalt = {
           angaben: [
             {
               merkmal: 'Beruflicher Hintergrund',
-              wert: 'Kundenberater und Verkaufsleiter bei Allianz Suisse in Biel, danach Hauptagent der Zurich Versicherungen in Biel und heute selbstständiger Versicherungsbroker.',
+              wert: 'Allianz Suisse und Zurich Versicherungen in Biel, heute selbständiger Versicherungsbroker.',
             },
             { merkmal: 'Qualifikation', wert: 'Versicherungsvermittler VBV.' },
           ],
@@ -69,14 +72,11 @@ export const ueberUns: SeitenInhalt = {
       id: 'arbeitsweise',
       breit: true,
       titel: { vor: 'So ', akzent: 'arbeiten', nach: ' wir' },
-      einleitung:
-        'Sie sollen wissen, wer Ihr Dossier betreut, was wir übernehmen und wie Entscheidungen zustande kommen.',
       punkte: [
-        'Sie sprechen mit der Person, die Ihr Dossier kennt und bearbeitet.',
-        'Aufgaben, Zuständigkeiten und Kosten halten wir zu Beginn fest. Ändert sich der Umfang, besprechen wir das vorgängig mit Ihnen.',
-        'Digitale Prozesse reduzieren administrative Umwege. Die fachliche Prüfung und Verantwortung bleiben bei uns.',
-        'Wir behandeln Ihre Angaben und Unterlagen vertraulich und schützen sie mit angemessenen organisatorischen Massnahmen.',
-        'Rechtsberatung und aktienrechtliche Revision gehören nicht zu unseren Leistungen. Bei Bedarf beziehen wir geeignete Fachpersonen ein.',
+        'Direkt: Sie sprechen mit der Person, die Ihr Dossier kennt.',
+        'Klar: Aufgaben und Kosten halten wir zu Beginn fest.',
+        'Vertraulich: Wir behandeln Ihre Angaben und Unterlagen vertraulich.',
+        'Abgegrenzt: Rechtsberatung und aktienrechtliche Revision gehören nicht zu unseren Leistungen.',
       ],
     },
     {
@@ -95,7 +95,7 @@ export const ueberUns: SeitenInhalt = {
     {
       art: 'kontakt',
       titel: { vor: 'Lernen Sie uns ', akzent: 'kennen' },
-      satz: 'Schildern Sie uns kurz Ihre Situation. Wir melden uns persönlich bei Ihnen und besprechen, welche nächsten Schritte sinnvoll sind.',
+      satz: 'Schildern Sie uns kurz Ihre Situation. Wir melden uns persönlich.',
       beschriftungen: { telefon: 'Telefon', email: 'E-Mail', buero: 'Büro' },
     },
   ],

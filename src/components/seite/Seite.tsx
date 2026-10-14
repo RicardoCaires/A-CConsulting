@@ -3,11 +3,10 @@ import Image from 'next/image'
 import { Banner } from '@/components/blocks/Banner'
 import { Kontaktformular } from '@/components/blocks/Kontaktformular'
 import { UnserModell } from '@/components/blocks/UnserModell'
-import { PortalBeispiel } from '@/components/ui/PortalBeispiel'
+import { PortalAnsicht } from '@/components/ui/PortalAnsicht'
 import { RichText } from '@/components/ui/RichText'
 import { Standortkarte } from '@/components/ui/Standortkarte'
 import { getPageContent } from '@/content/pages'
-import { portalBeispiel } from '@/content/seiten/portal-beispiel'
 import type { Block, Knopf, SeitenInhalt, Titel, Ziel } from '@/content/seiten/typen'
 import type { Locale } from '@/i18n/config'
 import { getUi } from '@/i18n/messages/ui'
@@ -69,16 +68,13 @@ function Knoepfe({ knoepfe, locale }: { knoepfe?: readonly Knopf[]; locale: Loca
     <div className={styles.knoepfe}>
       {knoepfe.map((k) => {
         const { href, extern } = knopfHref(k, locale)
-        const art = k.art ?? 'haupt'
-        const klasse = art === 'link' ? styles.textlink : art === 'zweit' ? `${styles.knopf} ${styles.knopfZweit}` : styles.knopf
+        const klasse = k.art === 'zweit' ? `${styles.knopf} ${styles.knopfZweit}` : styles.knopf
         return (
           <a key={k.text} className={klasse} href={href} {...(extern ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
             {k.text}
-            {art !== 'link' ? (
-              <span className={styles.pfeil} aria-hidden="true">
-                {' →'}
-              </span>
-            ) : null}
+            <span className={styles.pfeil} aria-hidden="true">
+              {' →'}
+            </span>
           </a>
         )
       })}
@@ -99,13 +95,29 @@ function Absaetze({ absaetze }: { absaetze?: readonly Parameters<typeof RichText
   )
 }
 
+/**
+ * Haken-Liste. Steht vor dem ersten Doppelpunkt ein Stichwort, wird es fett und
+ * dunkel gesetzt – so findet das Auge den Anfang jeder Zeile (Ricardo, 15.10.2026:
+ * «man verliest sich in der zeile … wenn alles gleichfarbig ist»).
+ */
 function Haken({ punkte }: { punkte?: readonly string[] }) {
   if (!punkte?.length) return null
   return (
     <ul className={styles.haken}>
-      {punkte.map((p) => (
-        <li key={p}>{p}</li>
-      ))}
+      {punkte.map((p) => {
+        const i = p.indexOf(': ')
+        return (
+          <li key={p}>
+            {i > 0 ? (
+              <>
+                <strong className={styles.stichwort}>{p.slice(0, i)}</strong> {p.slice(i + 2)}
+              </>
+            ) : (
+              p
+            )}
+          </li>
+        )
+      })}
     </ul>
   )
 }
@@ -292,6 +304,78 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
         </>
       )
 
+    case 'portalAnsichten':
+      return (
+        <>
+          <Kopf block={block} h1={h1} nr={nr} />
+          <ul className={styles.ansichten} data-anzahl={block.ansichten.length}>
+            {block.ansichten.map((a) => (
+              <li key={a.ansicht} className={styles.ansichtFeld}>
+                <PortalAnsicht ansicht={a.ansicht} />
+                <h3 className={styles.ansichtTitel}>{a.titel}</h3>
+                <p className={styles.ansichtText}>{a.text}</p>
+              </li>
+            ))}
+          </ul>
+          <Knoepfe knoepfe={block.knoepfe} locale={locale} />
+        </>
+      )
+
+    case 'zeitleiste':
+      return (
+        <>
+          <Kopf block={block} h1={h1} nr={nr} />
+          <div className={styles.reihen}>
+            {block.reihen.map((r, ri) => (
+              <div key={r.titel ?? ri} className={styles.reihe}>
+                {r.titel ? <h3 className={styles.reiheTitel}>{r.titel}</h3> : null}
+                <ol className={styles.leiste} data-anzahl={r.stationen.length}>
+                  {r.stationen.map((st) => (
+                    <li key={`${st.marke ?? ''}${st.titel}`} className={st.hervor ? styles.stationHervor : styles.station}>
+                      <span className={styles.punktLeiste} aria-hidden="true" />
+                      {st.marke ? <span className={styles.stationMarke}>{st.marke}</span> : null}
+                      <span className={styles.stationTitel}>{st.titel}</span>
+                      {st.wert ? <span className={styles.stationWert}>{st.wert}</span> : null}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))}
+          </div>
+          {block.nachsaetze?.map((n, i) => (
+            <p key={i} className={styles.nachsatz}>
+              <RichText value={n} />
+            </p>
+          ))}
+          <Knoepfe knoepfe={block.knoepfe} locale={locale} />
+        </>
+      )
+
+    case 'fluss':
+      return (
+        <>
+          <Kopf block={block} h1={h1} nr={nr} />
+          <ol className={styles.fluss} data-anzahl={block.stufen.length}>
+            {block.stufen.map((st, i) => (
+              <li key={st.titel} className={i === block.stufen.length - 1 ? `${styles.stufe} ${styles.stufeZiel}` : styles.stufe}>
+                <h3 className={styles.stufeTitel}>{st.titel}</h3>
+                <ul className={styles.stufePunkte}>
+                  {st.punkte.map((p) => (
+                    <li key={p}>{p}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ol>
+          {block.nachsatz ? (
+            <p className={styles.nachsatz}>
+              <RichText value={block.nachsatz} />
+            </p>
+          ) : null}
+          <Knoepfe knoepfe={block.knoepfe} locale={locale} />
+        </>
+      )
+
     case 'fragen':
       return (
         <div className={styles.fragenRaster}>
@@ -358,7 +442,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
                     </a>
                   ) : null}
                   {p.linkedin ? (
-                    <a className={styles.textlinkKlein} href={p.linkedin} target="_blank" rel="noopener noreferrer">
+                    <a className={`${styles.knopf} ${styles.knopfZweit}`} href={p.linkedin} target="_blank" rel="noopener noreferrer">
                       LinkedIn
                     </a>
                   ) : null}
@@ -421,7 +505,7 @@ function Bild({ bild }: { bild: Extract<Block, { art: 'textBild' }>['bild'] }) {
     case 'portal':
       return (
         <div className={styles.bildFlaeche}>
-          <PortalBeispiel {...portalBeispiel} />
+          <PortalAnsicht ansicht={bild.ansicht} />
         </div>
       )
     case 'karte':

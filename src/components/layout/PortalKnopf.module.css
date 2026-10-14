@@ -35,7 +35,7 @@
   outline-offset: 3px;
 }
 
-.schloss {
+.symbol {
   width: 1.15rem;
   height: 1.15rem;
   fill: none;
@@ -45,11 +45,30 @@
   stroke-linejoin: round;
 }
 
-@media (max-width: 30rem) {
+/* Auf dem Telefon nur der runde Knopf mit Symbol: Er deckt so wenig wie möglich
+   zu (Ricardo, 15.10.2026: «es soll nichts überlappen»). Die Beschriftung bleibt
+   für Vorlesewerkzeuge im aria-label. */
+@media (max-width: 47.99rem) {
   .knopf {
-    min-height: 2.75rem;
-    padding: 0.55rem 0.95rem 0.55rem 0.8rem;
-    font-size: 0.875rem;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .symbol {
+    width: 1.35rem;
+    height: 1.35rem;
   }
 }
 

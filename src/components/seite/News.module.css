@@ -112,19 +112,27 @@
   width: 100%;
 }
 
+/* Zurück als Knopf, nicht als Textlink (Ricardo, 15.10.2026). */
 .zurueck {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.45rem 1.1rem;
   font-size: var(--ac-small-size);
   font-weight: 600;
   color: var(--ac-color-accent-green);
   text-decoration: none;
+  background-color: var(--ac-color-white);
+  border-radius: var(--ac-radius-button);
+  box-shadow: inset 0 0 0 2px var(--ac-color-accent-green);
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
 .zurueck:hover {
-  text-decoration: underline;
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-navy-deep);
+  box-shadow: none;
 }
 
 .artikelTitel {

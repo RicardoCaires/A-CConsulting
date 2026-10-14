@@ -21,10 +21,12 @@ export type Titel = { vor?: string; akzent: string; nach?: string }
 export type Ziel = { ziel: PageKey; anker?: string }
 
 /**
- * Ein Knopf oder Link. `haupt` ist der grüne Knopf, `zweit` der helle mit grüner
- * Kontur, `link` ein unterstrichener Textlink. Externe Ziele (Kundenportal) über `href`.
+ * Ein Knopf. `haupt` ist der grüne Knopf, `zweit` der helle mit grüner Kontur.
+ * Unterstrichene Textlinks gibt es seit dem 15.10.2026 nicht mehr (Ricardo:
+ * «links wie das auf dem bild will ich nicht das sollen buttons werden»).
+ * Externe Ziele (Kundenportal) über `href`.
  */
-export type Knopf = { text: string; art?: 'haupt' | 'zweit' | 'link' } & (
+export type Knopf = { text: string; art?: 'haupt' | 'zweit' } & (
   | Ziel
   | { href: 'kundenportal' | 'telefon' | 'email' | 'offerte' | 'route' }
   | { datei: string }
@@ -38,6 +40,9 @@ export type Liste = {
   ziel?: Ziel
   eintraege: readonly ({ text: string; zusatz?: string } & Partial<Ziel>)[]
 }
+
+/** Welche Beispielansicht des Kundenportals gezeigt wird. */
+export type PortalAnsicht = 'praemien' | 'policen' | 'anfragen' | 'dokumente'
 
 type Kopf = {
   /** Anker des Blocks, damit Links von anderen Seiten hierher springen. */
@@ -66,7 +71,7 @@ export type Block =
       knoepfe?: readonly Knopf[]
       bild:
         | { art: 'foto'; datei: string; alt: string; breite: number; hoehe: number }
-        | { art: 'portal' }
+        | { art: 'portal'; ansicht?: PortalAnsicht }
         | { art: 'karte'; titel: string; knopf: string; hinweis: string }
         | { art: 'versicherer'; hinweis: string; gesellschaften: readonly { bild: string; name: string; url: string }[] }
       /** Bild links statt rechts – für Abwechslung zwischen zwei Blöcken. */
@@ -96,6 +101,32 @@ export type Block =
       kopfzeile: readonly string[]
       zeilen: readonly (readonly string[])[]
       nachsaetze?: readonly Rich[]
+      knoepfe?: readonly Knopf[]
+    })
+  /** Mehrere Beispielansichten des Kundenportals nebeneinander, je mit kurzer Unterschrift. */
+  | (Kopf & {
+      art: 'portalAnsichten'
+      ansichten: readonly { ansicht: PortalAnsicht; titel: string; text: string }[]
+      knoepfe?: readonly Knopf[]
+    })
+  /**
+   * Zeitleiste als Diagramm: Punkte auf einer Linie, je mit Marke (z. B. Datum),
+   * Titel und optional einem Wert (z. B. Gebühr). Mehrere Reihen untereinander.
+   */
+  | (Kopf & {
+      art: 'zeitleiste'
+      reihen: readonly {
+        titel?: string
+        stationen: readonly { marke?: string; titel: string; wert?: string; hervor?: boolean }[]
+      }[]
+      nachsaetze?: readonly Rich[]
+      knoepfe?: readonly Knopf[]
+    })
+  /** Ablauf in Stufen mit Pfeilen dazwischen, je Stufe ein Titel und Stichworte. */
+  | (Kopf & {
+      art: 'fluss'
+      stufen: readonly { titel: string; punkte: readonly string[] }[]
+      nachsatz?: Rich
       knoepfe?: readonly Knopf[]
     })
   /** Häufige Fragen zum Aufklappen. Höchstens drei je Seite (Ricardo, 14.10.2026). */

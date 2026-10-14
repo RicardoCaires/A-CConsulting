@@ -1,0 +1,202 @@
+/* Beispielansichten des Kundenportals (15.10.2026). Dieselbe Karte wie die
+   Ringansicht in PortalBeispiel: weiss, feine Kontur, leichter Schatten.
+   Farben nur aus den Tokens. Lange Namen brechen um, nichts wird abgeschnitten. */
+
+.ansicht {
+  margin: 0;
+  padding: clamp(1.1rem, 2.5vw, 1.5rem);
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-line);
+  border-radius: 20px;
+  box-shadow: var(--ac-shadow-card);
+  min-width: 0;
+}
+
+.kopf {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: var(--ac-border-hairline) solid var(--ac-line-soft);
+}
+
+.titel {
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.marke {
+  padding: 0.2rem 0.65rem;
+  font-size: 0.8125rem;
+  color: var(--ac-color-text-secondary);
+  background-color: var(--ac-color-background-light);
+  border-radius: 999px;
+}
+
+.zeilen {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.zeilen > li {
+  padding-block: 0.8rem;
+}
+
+.zeilen > li + li {
+  border-top: var(--ac-border-hairline) solid var(--ac-line-soft);
+}
+
+.haupt {
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ac-color-text-primary);
+  overflow-wrap: anywhere;
+}
+
+.neben {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Policen ---------------------------------------------------------------- */
+
+.police {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.text {
+  min-width: 0;
+  font-size: var(--ac-small-size);
+}
+
+.rechts {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.betrag {
+  font-weight: 700;
+  font-size: var(--ac-small-size);
+  font-variant-numeric: tabular-nums;
+  color: var(--ac-color-primary-navy);
+  white-space: nowrap;
+}
+
+.status {
+  padding: 0.1rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ac-color-accent-green);
+  background-color: var(--ac-color-signal-positive-bg);
+  border-radius: 999px;
+}
+
+/* ---- Anfragen mit Stand ------------------------------------------------------ */
+
+.anfrage {
+  display: grid;
+  gap: 0.55rem;
+  font-size: var(--ac-small-size);
+}
+
+.anfrageKopf {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+}
+
+.stand {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.standFertig {
+  color: var(--ac-color-accent-green);
+}
+
+.balken {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.3rem;
+}
+
+.balkenAn,
+.balkenAus {
+  height: 0.45rem;
+  border-radius: 999px;
+}
+
+.balkenAn {
+  background-color: var(--ac-color-accent-green);
+}
+
+.balkenAus {
+  background-color: var(--ac-color-background-tint);
+}
+
+.legende {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.3rem;
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: var(--ac-color-text-secondary);
+}
+
+.legende span:nth-child(2) {
+  text-align: center;
+}
+
+.legende span:nth-child(3) {
+  text-align: right;
+}
+
+/* ---- Dokumente ---------------------------------------------------------------- */
+
+.dokument {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: var(--ac-small-size);
+}
+
+.blatt {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: var(--ac-color-accent-green);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.art {
+  padding: 0.1rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-light);
+  border-radius: 6px;
+}
+
+.hinweis {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--ac-color-text-secondary);
+}

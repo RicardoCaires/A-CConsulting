@@ -6,6 +6,10 @@
  * Nachkontrolle der Veranlagung. Fristen und Gebühren unverändert aus der
  * Fassung vom 16.09.2026. Die Checkliste hat noch keine Datei (`file: null`),
  * darum steht kein Download-Knopf.
+ *
+ * Am 15.10.2026 gekürzt: Ablauf und Checkliste als drei Stufen, Fristen als
+ * Zeitleiste statt Tabelle (Ricardo: «zu viel text», «häufiger bildlich dar mit
+ * diagrammen»). Neue Wortlaute in `content/source/umbau_2026-10b_de.md`.
  */
 import type { SeitenInhalt } from './typen'
 
@@ -18,14 +22,24 @@ export const steuern: SeitenInhalt = {
   banner: { themenzeile: 'STEUERN', ueberschrift: 'Steuererklärung im Kanton Bern' },
   bloecke: [
     {
-      art: 'text',
-      id: 'einstieg',
-      breit: true,
+      art: 'fluss',
+      id: 'checkliste',
       titel: { vor: 'Sie bringen die ', akzent: 'Unterlagen', nach: ', wir den Rest' },
-      absaetze: [
-        'Sie bringen die Unterlagen, wir erstellen die Steuererklärung, reichen sie ein und prüfen später die Veranlagung.',
-        'Wir erstellen Steuererklärungen hauptsächlich im Kanton Bern.',
+      stufen: [
+        {
+          titel: 'Sie bringen',
+          punkte: ['Einkommen und Vermögen', 'Versicherungen und Vorsorge', 'Abzüge und besondere Ereignisse'],
+        },
+        {
+          titel: 'Wir erledigen',
+          punkte: ['Steuererklärung erstellen', 'Frist verlängern, wenn nötig', 'Fristgerecht einreichen'],
+        },
+        {
+          titel: 'Sie erhalten',
+          punkte: ['Veranlagung nachkontrolliert', 'Rückmeldung, ob alles stimmt'],
+        },
       ],
+      nachsatz: 'Die PDF-Checkliste ist in Vorbereitung.',
       knoepfe: [{ text: 'Termin vereinbaren', ziel: 'kontakt' }],
     },
     {
@@ -39,16 +53,15 @@ export const steuern: SeitenInhalt = {
           eintraege: [
             {
               text: 'Fristgerecht eingereicht',
-              zusatz: 'Wir achten auf die Abzüge, die Ihnen zustehen, und reichen fristgerecht ein.',
+              zusatz: 'Mit den Abzügen, die Ihnen zustehen.',
             },
             {
               text: 'Veranlagung nachkontrolliert',
-              zusatz:
-                'Wenn die Veranlagung kommt, prüfen wir sie und sagen Ihnen, ob sie mit dem übereinstimmt, was eingereicht wurde.',
+              zusatz: 'Wir prüfen, ob sie zur Eingabe passt.',
             },
             {
               text: 'Checkliste für Privatpersonen',
-              zusatz: 'Was Sie zusammenstellen sollten.',
+              zusatz: 'Was Sie mitbringen.',
               ziel: 'steuern',
               anker: 'checkliste',
             },
@@ -61,7 +74,7 @@ export const steuern: SeitenInhalt = {
             { text: 'Abschluss als Grundlage', zusatz: 'Die Steuererklärung baut direkt auf der Buchhaltung auf.' },
             {
               text: 'Unterlagen bereits vorhanden',
-              zusatz: 'Führen wir Ihre Buchhaltung, sind die nötigen Unterlagen bereits vorhanden.',
+              zusatz: 'Wenn wir Ihre Buchhaltung führen.',
             },
             {
               text: 'Buchhaltung und Jahresabschluss',
@@ -74,32 +87,30 @@ export const steuern: SeitenInhalt = {
       ],
     },
     {
-      art: 'text',
-      id: 'checkliste',
-      titel: { akzent: 'Checkliste', nach: ' Steuererklärung Kanton Bern' },
-      absaetze: [
-        'Die Checkliste zeigt, welche Dokumente Privatpersonen für die Steuererklärung üblicherweise benötigen.',
-        'Die PDF-Checkliste ist in Vorbereitung.',
-      ],
-      punkte: ['Einkommen und Vermögen', 'Versicherungen und Vorsorge', 'Abzüge und besondere Ereignisse'],
-    },
-    {
-      art: 'tabelle',
+      art: 'zeitleiste',
       id: 'fristen',
       titel: { vor: 'Fristen und ', akzent: 'Gebühren' },
-      kopfzeile: ['Wer', 'Was', 'Bis wann', 'Gebühr'],
-      zeilen: [
-        ['Privatpersonen', 'Übliche Einreichefrist', '15. März', '–'],
-        ['Privatpersonen', 'Online verlängern', 'bis 15. Juli', 'kostenlos'],
-        ['Privatpersonen', 'Online verlängern', 'bis 15. September', 'CHF 20'],
-        ['Privatpersonen', 'Online verlängern', 'bis 15. November', 'CHF 40'],
-        ['Unternehmen', 'Ordentliche Einreichefrist', '7 Monate nach Geschäftsabschluss', '–'],
-        ['Unternehmen', 'Online verlängern', 'zusätzliche 1½ Monate', 'kostenlos'],
-        ['Unternehmen', 'Online verlängern', 'maximal zusätzliche 3½ Monate', 'CHF 20'],
+      reihen: [
+        {
+          titel: 'Privatpersonen',
+          stationen: [
+            { marke: '15. März', titel: 'Übliche Einreichefrist', hervor: true },
+            { marke: '15. Juli', titel: 'Online verlängern', wert: 'kostenlos' },
+            { marke: '15. September', titel: 'Online verlängern', wert: 'CHF 20' },
+            { marke: '15. November', titel: 'Online verlängern', wert: 'CHF 40' },
+          ],
+        },
+        {
+          titel: 'Unternehmen',
+          stationen: [
+            { marke: '7 Monate', titel: 'nach Geschäftsabschluss', hervor: true },
+            { marke: '+ 1½ Monate', titel: 'Online verlängern', wert: 'kostenlos' },
+            { marke: '+ 3½ Monate', titel: 'Online verlängern, maximal', wert: 'CHF 20' },
+          ],
+        },
       ],
       nachsaetze: [
-        'Massgebend ist immer das Datum auf Ihrem Schreiben der Steuerverwaltung.',
-        'Die Gebühren gelten für online eingereichte Fristverlängerungen. Schriftlich eingereichte Fristverlängerungen können höhere Gebühren verursachen.',
+        'Massgebend ist immer das Datum auf Ihrem Schreiben der Steuerverwaltung. Die Gebühren gelten für online eingereichte Fristverlängerungen.',
         'Wenn wir Ihre Steuererklärung erstellen, übernehmen wir auch die Fristverlängerung.',
       ],
     },

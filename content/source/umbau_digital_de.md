@@ -7,7 +7,7 @@ Auftrag Ricardo, 14./15.10.2026: Digitalisierung und Kundenportal auf einer eige
 ## Seite
 
 - Seitentitel: Kundenportal und Offerte online
-- Seitenbeschreibung: Ihre Policen und Dokumente an einem Ort, Anfragen direkt an uns und eine Offerte online anfragen. Daten auf unserem eigenen Server in der Schweiz.
+- Seitenbeschreibung: Ihre Policen und Dokumente an einem Ort, Anfragen direkt an uns und eine Offerte online anfragen.
 - Banner: Themenzeile DIGITAL · Überschrift «Kundenportal und Offerte online»
 
 ## Einstieg
@@ -25,15 +25,14 @@ Auftrag Ricardo, 14./15.10.2026: Digitalisierung und Kundenportal auf einer eige
 - Anfragen stellen: Offerte, Rückruf, Termin oder Vertragsänderung
 - Den Stand jeder Anfrage sehen: angefragt, in Bearbeitung, erledigt – bei jedem Wechsel erhalten Sie eine E-Mail
 - Auf dem Handy wie eine App auf den Startbildschirm legen
-- Anmeldung mit Passwort und Code per E-Mail, Daten auf unserem eigenen Server in der Schweiz
+- (Am 15.10.2026 entfallen: Ricardo will zum Kundenportal nichts zu Sicherheit oder Datenschutz auf der Website.)
 - Knopf: Zum Kundenportal
 
 ## Zugang in vier Schritten
 
 - Überschrift: So kommen Sie zu · Ihrem Zugang (grün)
 - Registrieren · Sie registrieren sich im Kundenportal.
-- Wir prüfen und schalten frei · Wir ordnen Ihren Zugang Ihrem Dossier zu und schalten ihn frei. Erst dann sehen Sie Ihre Daten.
-- Code per E-Mail · Bei der Anmeldung geben Sie Ihr Passwort ein und danach einen Code, den Sie per E-Mail erhalten.
+- Wir prüfen und schalten frei · Wir ordnen Ihren Zugang Ihrem Dossier zu und schalten ihn frei.
 - Loslegen · Sie sehen Ihre Policen und Dokumente und schicken uns Änderungen und Anfragen direkt.
 - Nachsatz: Das Portal ist für Kundinnen und Kunden von A&C. Sind Sie es noch nicht, beginnt es mit einem Gespräch.
 
@@ -49,8 +48,7 @@ Auftrag Ricardo, 14./15.10.2026: Digitalisierung und Kundenportal auf einer eige
 - Überschrift: Häufige · Fragen (grün)
 - Kostet das Kundenportal etwas?
   Nein. Für Kundinnen und Kunden von A&C ist das Portal ohne Kosten.
-- Sind meine Daten sicher?
-  Ihre Daten liegen auf unserem eigenen Server in der Schweiz. Für die Anmeldung brauchen Sie Ihr Passwort und zusätzlich einen Code, den Sie per E-Mail erhalten. Und Sie sehen erst etwas, wenn wir Ihren Zugang Ihrem Dossier zugeordnet haben.
+- (Am 15.10.2026 entfallen: Ricardo will zum Kundenportal nichts zu Sicherheit oder Datenschutz auf der Website.)
 - Muss ich das Portal nutzen?
   Nein. Telefon und E-Mail bleiben. Das Portal ist ein zusätzlicher Weg, kein Ersatz für das Gespräch.
 
