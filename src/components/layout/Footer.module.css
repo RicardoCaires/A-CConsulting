@@ -293,7 +293,14 @@
   align-self: flex-start;
 }
 
-.portalLink:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+/* Nur die grüne Linie, keine zweite Unterstreichung: `.footer a` unterstreicht alle Links
+   im Fussbereich und ist spezifischer als `.portalLink` (Ricardo, 15.10.2026: «doppelt
+   unterstrichen?»). Darum hier mit `.footer` davor. */
+.footer .portalLink,
+.footer .portalLink:hover {
+  text-decoration: none;
+}
+
+.footer .portalLink:hover {
+  border-bottom-color: var(--ac-color-white);
 }
