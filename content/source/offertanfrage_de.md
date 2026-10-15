@@ -50,3 +50,385 @@ nicht hier.
 - vielen Dank für Ihre Offertanfrage {Sparte}. Wir haben Ihre Angaben erhalten und melden uns bei Ihnen, in der Regel innerhalb eines Werktags.
 - Was Sie in den Fragen offengelassen haben, klären wir gerne im Gespräch.
 - Nicht von Ihnen? Haben Sie keine Anfrage gestellt, können Sie diese Nachricht ignorieren. Es entsteht Ihnen daraus nichts.
+
+## Darstellung vom 15.10.2026
+
+Ricardo: «ich will dass das Offertenformular auf der Website keine in Klammern gesetzte Begriffe hat und es soll eine Text eingabe nur dann geben wenn es nicht anders geht ausserdem wäre es cool wenn man sein Fahrzeug und Modell suchen könnte oder auswählen könnte und falls es nicht vorhanden ist dann selbst eingeben».
+
+**Vorschläge**, Ricardo bestätigt: Fragen ohne Klammern, Auswahlknöpfe, Suchlisten der Versicherer, Leasingfirmen und Vorsorgeeinrichtungen, Abstufungen bei Beträgen, Kilometern und Anzahlen. Die Fahrzeugliste ist eine Auswahl verbreiteter Marken und Modelle (Abschnitt «Fahrzeuge»); eigene Eingabe ist immer möglich.
+
+### Fahrzeuge und weitere Wortlaute
+
+- 
+- #1
+- #3
+- $1
+- 1 Monat
+- 1 bis 1½
+- 1 bis 5
+- 1'000
+- 1'000 bis 10'000
+- 1'000'000
+- 10 bis 50 %
+- 10'000
+- 10'000 bis 100'000
+- 100'000 bis 150'000 km
+- 11 bis 20
+- 150'000
+- 2 bis 2½
+- 2'000
+- 2'500
+- 20'000 bis 50'000 km
+- 200'000
+- 21 bis 50
+- 250'000
+- 3 Monate
+- 3 bis 3½
+- 3'000
+- 30'000
+- 4 bis 4½
+- 5 bis 10
+- 5 bis 5½
+- 5 und mehr
+- 5'000
+- 50'000
+- 50'000 bis 100'000 km
+- 500'000
+- 6 Monate
+- 6 bis 10
+- 6 und mehr
+- 75'000
+- A-Klasse
+- AMAG Leasing
+- AXA Stiftung Berufliche Vorsorge
+- Alarmanlage
+- Alfa Romeo
+- Anderer Betrag
+- Anzahl, Rentenart und ob er übertragen werden soll.
+- Arbeiten Sie an fremden Sachen, oder haben Sie fremde Sachen in Obhut?
+- Arbeiten Sie mit einem externen IT-Dienstleister?
+- Arbeitsrecht (als Arbeitgeber)
+- Arbeitsrecht (unselbständig)
+- Arbeitsrecht als Arbeitgeber
+- Arbeitsrecht für Angestellte
+- Arkana
+- Arona
+- Art, Datum und Schaden.
+- Astra
+- Ateca
+- Atto 3
+- Austral
+- Avenger
+- Aygo X
+- B-Klasse
+- BANK-now
+- BMW Financial Services
+- BMW Motorrad
+- Baloise
+- Bei welcher Gesellschaft sind Sie heute versichert?
+- Bei welcher Vorsorgeeinrichtung ist der Betrieb heute?
+- Bei wem ist das Fahrzeug geleast oder finanziert?
+- Bei wem ist die obligatorische Unfallversicherung?
+- Berlingo
+- Bis zu welchem Betrag soll Einbruchdiebstahl versichert sein?
+- Bitte ohne Diagnosen.
+- Boot
+- Born
+- Boxer
+- Brandmelder
+- C-Klasse
+- C5 Aircross
+- Caddy
+- Captur
+- Cayenne
+- Ceed
+- Cembra Money Bank
+- Civic
+- Clio
+- Clubman
+- Compass
+- Cooper
+- Corolla
+- Corsa
+- Countryman
+- Crafter
+- Crosstrek
+- Defender
+- Die Mobiliar
+- Discovery
+- Doblò
+- Dolphin
+- Drohne
+- Ducato
+- Duster
+- E-Klasse
+- Eclipse Cross
+- Elroq
+- Emmental Versicherung
+- Enyaq
+- Ertragsausfall (Deckungsbeitrag)
+- Ertragsausfall auf Basis Deckungsbeitrag
+- Etwa Invaliden-, Partner- oder Kinderrente und Todesfallkapital.
+- Expert
+- Fabia
+- Feuer / Elementar (nur ohne kantonale Gebäudeversicherung)
+- Feuer und Elementar, nur ohne kantonale Gebäudeversicherung
+- Focus
+- Forester
+- Formentor
+- Für die Deckung der Lohnspitzen.
+- Gebäudeglas (bei Mietwohnung)
+- Gebäudeglas bei Mietwohnung
+- Genauen Stand eingeben
+- Gibt es besondere Risiken?
+- Giulia
+- Golf
+- Grandland
+- Harley-Davidson
+- Helsana
+- Helvetia Sammelstiftung
+- Hilux
+- ID. Buzz
+- Ibiza
+- Ignis
+- Ioniq 5
+- Ioniq 6
+- Jagd
+- Jazz
+- Jogger
+- Juke
+- Jumper
+- Jumpy
+- Junior
+- Kamiq
+- Kangoo
+- Karoq
+- Kein Onlinehandel
+- Kein Zubehör
+- Kodiaq
+- Kona
+- Kuga
+- Land Rover
+- Leaf
+- Leistung in kWp und Wert in Franken.
+- Leon
+- Macan
+- Marke, Typ, Kontrollschild, erste Inverkehrsetzung und Katalogpreis. Eine Liste können Sie uns auch später senden.
+- Master
+- Mazda2
+- Mazda3
+- Mercedes-Benz
+- Mercedes-Benz Financial Services
+- Micra
+- Mit Adresse und Nutzung.
+- Mit Art und Anteil am Umsatz.
+- Mit Art, Honorarumsatz und typischen Auftraggebern.
+- Mit Bezeichnung, Anzahl und Lohnsumme.
+- Mit Name und Umfang.
+- Mit Neuwert.
+- Model 3
+- Model S
+- Model X
+- Model Y
+- Mokka
+- Movano
+- MultiLease
+- Mustang Mach-E
+- Mégane
+- Niro
+- Nur nötig, wenn die Prämie danach berechnet wird.
+- Octavia
+- Outback
+- Outlander
+- PAX Sammelstiftung
+- Panamera
+- Panda
+- Passat
+- Picanto
+- Polestar 2
+- Polestar 3
+- Polestar 4
+- Polo
+- Proace
+- Puma
+- Q4 e-tron
+- Qashqai
+- Range Rover
+- Range Rover Evoque
+- Range Rover Sport
+- Ranger
+- Renegade
+- S-Cross
+- Sammelstiftung Vita
+- Sandero
+- Santa Fe
+- Scala
+- Seal
+- Seal U
+- Sie steht im Fahrzeugausweis unter Ziffer 18.
+- Sie steht im Fahrzeugausweis unter Ziffer 24.
+- Simpego
+- Sorento
+- Space Star
+- Sportage
+- Spring
+- Sprinkler
+- Sprinter
+- Stelvio
+- Stonic
+- Superb
+- Suva
+- Swift
+- Swiss Life Sammelstiftung
+- Sympany
+- T-Cross
+- T-Roc
+- Tarraco
+- Tavascan
+- Taycan
+- Tiguan
+- Tipo
+- Tippen Sie die ersten Buchstaben und wählen Sie aus. Fehlt Ihr Fahrzeug, schreiben Sie es einfach hinein.
+- Tippen Sie die ersten Buchstaben. Fehlt die Firma, schreiben Sie sie einfach hinein.
+- Tippen Sie die ersten Buchstaben. Fehlt die Gesellschaft, schreiben Sie sie einfach hinein.
+- Tippen Sie die ersten Buchstaben. Fehlt sie, schreiben Sie sie einfach hinein.
+- Tonale
+- Touran
+- Tourneo
+- Trafic
+- Transit
+- Transporter
+- Tresor
+- Tucson
+- Untersteht der Betrieb einem Gesamtarbeitsvertrag?
+- Vermietetes Eigentum
+- Versichert auf erstes Risiko.
+- Visana
+- Vitara
+- Vito
+- Vivaro
+- Volkswagen Financial Services
+- Was ist passiert?
+- Weiss ich nicht
+- Welche Elektronik und Maschinen sollen versichert werden?
+- Welche Fahrzeuge gehören zur Flotte?
+- Welche Fälle laufen derzeit?
+- Welche Kapitalien wünschen Sie bei Invalidität und Tod?
+- Welche Marke und welches Modell?
+- Welche Personengruppen sollen versichert werden?
+- Welche Produkte stellen Sie her oder verkaufen Sie?
+- Welche Risikoleistungen wünschen Sie?
+- Welche Sicherungen gibt es?
+- Welche Standorte sollen versichert werden?
+- Welche beratende oder planende Tätigkeit üben Sie aus?
+- Welche gefährlichen Stoffe, und in welcher Menge?
+- Welchen Selbstbehalt wünschen Sie?
+- Wie gross ist die Photovoltaikanlage, und was ist sie wert?
+- Wie hoch ist der Neuwert der Betriebseinrichtung?
+- Wie hoch ist die Lohnsumme über dem UVG-Maximum?
+- Wie hoch ist die Lohnsumme?
+- Wie lange ist die Kündigungsfrist der heutigen Police?
+- Wie lautet das Kontrollschild?
+- Wie lautet die Stammnummer?
+- Wie lautet die Typengenehmigung?
+- Wie sieht der Rentnerbestand aus?
+- Wie viel ist zusätzliches Zubehör wert?
+- Wie viele Kilometer hat das Fahrzeug heute?
+- Wie viele Personen sind arbeitsunfähig, und zu welchem Grad?
+- Wrangler
+- Wählen Sie alles, was zutrifft.
+- X-Trail
+- Yaris
+- Yaris Cross
+- Zum Beispiel BE 123456.
+- besonders schützenswerte Daten (z. B. Gesundheit)
+- besonders schützenswerte Daten wie Gesundheitsdaten
+- bh.beratung_details
+- bh.lohnsumme
+- bh.obhut_bearbeitung
+- bh.produkte_details
+- bh.selbstbehalt
+- bis 10 %
+- bvg.arbeitsunfaehige_details
+- bvg.bisherige_einrichtung
+- bvg.rentner_details
+- bvg.risikoleistungen
+- bvg.versicherte
+- cy.datensaetze
+- cy.it_dienstleister
+- cy.onlinehandel_anteil
+- cy.vorfaelle_details
+- e-tron GT
+- etwa 10'000 km
+- etwa 15'000 km
+- etwa 20'000 km
+- etwa 30'000 km
+- etwa 5'000 km
+- fl.fahrzeuge_text
+- gb.anzahl_wohnungen
+- gb.photovoltaik_details
+- gb.selbstbehalt
+- grs.fahrzeuge
+- grs.versicherungssumme
+- hr.diebstahl_auswaerts_summe
+- hr.personen
+- hr.versicherungssumme
+- hr.zimmer
+- kein Onlinehandel
+- ktg.gav
+- ktg.laufende_faelle_details
+- mehr als 10
+- mehr als 30'000 km
+- mehr als 50
+- mf.jahreskilometer
+- mf.kilometerstand
+- mf.kontrollschild
+- mf.leasinggeber
+- mf.marke_typ
+- mf.selbstbehalt_teilkasko
+- mf.selbstbehalt_vollkasko
+- mf.stammnummer
+- mf.typengenehmigung
+- mf.zubehoer
+- ph.sonderrisiken
+- re.annullierung_summe
+- sach.diebstahl_summe
+- sach.einrichtung
+- sach.elektronik
+- sach.gefahrstoffe_details
+- sach.selbstbehalt
+- sach.sicherung
+- sach.standorte
+- teilweise (einzelne Betriebsteile)
+- teilweise, für einzelne Betriebsteile
+- umhüllende Lösung (überobligatorisch)
+- umhüllende Lösung, überobligatorisch
+- unter 1'000
+- unter 20'000 km
+- uvgz.kapitalien
+- uvgz.lohnspitze_summe
+- uvgz.personenkreis_details
+- uvgz.uvg_versicherer
+- vermietetes Eigentum
+- über 100'000
+- über 150'000 km
+- über 50 %
+- Besitzen Sie Wohneigentum?
+- Lenken Sie das Fahrzeug am häufigsten?
+- Sind Sie Halterin oder Halter gemäss Fahrzeugausweis?
+- Wann endet der Leasingvertrag?
+- Wann haben Sie das Fahrzeug gekauft?
+- Wann läuft die heutige Police ab?
+- Wann wurde das Gebäude zuletzt geschätzt?
+- Wie wohnen Sie?
+- Wo steht das Fahrzeug über Nacht?
+- Wohnen Sie in gemieteten Räumen?
+- gb.schaetzung_datum
+- hr.wohnform
+- mf.abstellort
+- mf.halter_ist_kunde
+- mf.hauptlenker_ist_kunde
+- mf.kaufdatum
+- mf.leasing_ende
+- ph.mieter
+- rs.wohneigentum

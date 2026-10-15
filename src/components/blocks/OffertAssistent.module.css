@@ -276,6 +276,7 @@
 }
 
 .feld input,
+.feld select,
 .feld textarea {
   width: 100%;
   min-height: 3rem;
@@ -299,6 +300,7 @@
 }
 
 .feld input:focus,
+.feld select:focus,
 .feld textarea:focus {
   outline: none;
   border-color: var(--ac-color-accent-green);
@@ -345,26 +347,32 @@
 
 /* Leise Wege weiter: Textlinks, keine Knoepfe — sie sollen die Antwort nicht
    verdraengen. Trefferflaeche trotzdem 44 px. */
+/* Zweitrangige Aktionen als Knöpfe mit grüner Kontur, nicht als unterstrichene Links
+   (Ricardo, 15.10.2026: «links … das sollen buttons werden»). */
 .leise,
 .zurueck {
   display: inline-flex;
   align-items: center;
+  gap: 0.35rem;
   min-height: 2.75rem;
-  padding: 0 0.25rem;
+  padding: 0.45rem 1.1rem;
   font: inherit;
   font-size: var(--ac-small-size);
   font-weight: 600;
-  color: var(--ac-color-primary-navy);
-  background: none;
+  color: var(--ac-color-accent-green);
+  background-color: var(--ac-color-white);
   border: 0;
-  border-bottom: 2px solid var(--ac-color-accent-green);
-  border-radius: 0;
+  border-radius: var(--ac-radius-button);
+  box-shadow: inset 0 0 0 2px var(--ac-color-accent-green);
   cursor: pointer;
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
 }
 
 .leise:hover,
 .zurueck:hover {
-  color: var(--ac-color-accent-green);
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-navy-deep);
+  box-shadow: none;
 }
 
 .fuss {
@@ -500,3 +508,21 @@
   line-height: 1.6;
   color: var(--ac-color-text-secondary);
 }
+
+/* Fahrzeug suchen: Marke, Modell, Ausführung (15.10.2026). Breit nebeneinander,
+   schmal untereinander. */
+.fahrzeug {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 40rem) {
+  .fahrzeug {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.fahrzeug .feld {
+  margin: 0;
+}
+

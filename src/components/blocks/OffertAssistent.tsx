@@ -2,6 +2,11 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
+import { Suchauswahl } from '@/components/ui/Suchauswahl'
+import { autos, motorraeder } from '@/content/fahrzeuge'
+import { listen, optionText } from '@/content/offerte-darstellung'
+import { darstellungVon, ohneKlammern } from '@/lib/offerte'
+
 import styles from './OffertAssistent.module.css'
 
 /**
@@ -23,6 +28,11 @@ import styles from './OffertAssistent.module.css'
  * **Jede Frage ist freiwillig.** «Ueberspringen» geht zur naechsten Frage,
  * «Rest im Gespraech klaeren» direkt zu den Kontaktangaben. Pflicht sind nur
  * Name, Postleitzahl, Ort und E-Mail — ohne sie kann niemand antworten.
+ *
+ * **Darstellung (15.10.2026)** – Ricardo: keine Begriffe in Klammern, Texteingabe nur, wo es
+ * nicht anders geht, Fahrzeug suchen statt tippen. Wie jede Frage erscheint, steht in
+ * `src/content/offerte-darstellung.ts`: eigener Titel, Knöpfe statt Eingabe, Suchliste mit
+ * eigener Eingabe. Der Katalog im CRM bleibt unverändert; gesendet wird lesbarer Text.
  *
  * **Ohne JavaScript** gibt es keinen Assistenten; dann stehen Telefon und
  * E-Mail da (`<noscript>` in der Seite und hier als Rueckfall, wenn der
@@ -97,7 +107,17 @@ function sichtbar(f: Feld, werte: Record<string, Wert>) {
 }
 
 const optionenVon = (f: Feld) => (f.optionen && f.optionen.length ? f.optionen : f.typ === 'janein' ? ['ja', 'nein'] : [])
-const zeige = (v: Wert) => (Array.isArray(v) ? v.join(', ') : v)
+/** Anzeige eines Katalogwerts ohne Klammern; gesendet wird der Katalogwert. */
+const optionAnzeige = (o: string) => optionText[o] ?? ohneKlammern(o)
+const zeige = (v: Wert) => (Array.isArray(v) ? v.map(optionAnzeige).join(', ') : optionAnzeige(v))
+
+/** ISO-Datum der Datumswahl als 31.12.2026 – so liest es das Offertentool. */
+const datumText = (iso: string) => {
+  const [j, m, t] = iso.split('-')
+  return t ? `${t}.${m}.${j}` : ''
+}
+const JAHRE = Array.from({ length: new Date().getFullYear() - 1899 }, (_, i) => String(new Date().getFullYear() - i))
+const ERREICHBAR = ['vormittags', 'über Mittag', 'nachmittags', 'gegen Abend', 'jederzeit']
 
 type Props = {
   /** Adresse der Brokerverwaltung, ohne Schraegstrich am Ende. */
@@ -121,6 +141,10 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
   const [sendefehler, setSendefehler] = useState<string | null>(null)
   const [sendet, setSendet] = useState(false)
   const [honig, setHonig] = useState('')
+  // Eigene Eingabe geöffnet («Anderer Betrag»), Datumswahl als ISO, Fahrzeug in drei Teilen
+  const [frei, setFrei] = useState<Record<string, boolean>>({})
+  const [tage, setTage] = useState<Record<string, string>>({})
+  const [fahrzeug, setFahrzeug] = useState({ marke: '', modell: '', ausfuehrung: '' })
   const beginn = useRef<number>(Date.now())
   const titelRef = useRef<HTMLHeadingElement>(null)
   const karteRef = useRef<HTMLDivElement>(null)
@@ -149,7 +173,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
       return
     }
     const feld = karteRef.current?.querySelector<HTMLElement>(
-      'input[type="text"]:not(#website), input[type="email"], input[type="tel"], textarea',
+      'input[type="text"]:not(#website), input[type="email"], input[type="tel"], input[type="date"], select, textarea',
     )
     ;(feld ?? titelRef.current)?.focus()
   }, [schritt])
@@ -440,7 +464,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
                 gehe(erste?.key ? `f:${erste.key}` : 'k:name')
               }}
             >
-              <span className={styles.kachelTitel}>{s.label}</span>
+              <span className={styles.kachelTitel}>{ohneKlammern(s.label)}</span>
             </button>
           ))}
         </div>
@@ -455,11 +479,34 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
       const key = f.key as string
       const wert = werte[key]
       const ops = optionenVon(f)
+      const d = darstellungVon(key)
       const id = `frage-${key.replace(/\W/g, '-')}`
+      const text = typeof wert === 'string' ? wert : ''
+      const enter = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter') {
+          e.preventDefault()
+          weiter()
+        }
+      }
+      const eingabefeld = (attr: { zahl?: boolean } = {}) => (
+        <div className={styles.feld}>
+          <input
+            id={id}
+            aria-labelledby="assistent-frage"
+            type="text"
+            maxLength={200}
+            inputMode={attr.zahl ? 'decimal' : undefined}
+            autoComplete="off"
+            value={text}
+            onChange={(e) => setzeWert(key, e.target.value)}
+            onKeyDown={enter}
+          />
+        </div>
+      )
       let eingabe: React.ReactNode
       if (f.typ === 'auswahl' || f.typ === 'janein') {
         eingabe = (
-          <div className={styles.wahl} role="group" aria-label={f.label}>
+          <div className={styles.wahl} role="group" aria-label={ohneKlammern(f.label ?? '')}>
             {ops.map((o) => (
               <button
                 key={o}
@@ -468,7 +515,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
                 aria-pressed={wert === o}
                 onClick={() => weiter(setzeWert(key, o))}
               >
-                {o}
+                {optionAnzeige(o)}
               </button>
             ))}
           </div>
@@ -477,7 +524,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
         const liste = Array.isArray(wert) ? wert : []
         eingabe = (
           <fieldset className={styles.mehrfach}>
-            <legend className={styles.unsichtbar}>{f.label}</legend>
+            <legend className={styles.unsichtbar}>{ohneKlammern(f.label ?? '')}</legend>
             {ops.map((o) => (
               <label key={o} className={styles.haken}>
                 <input
@@ -485,46 +532,134 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
                   checked={liste.includes(o)}
                   onChange={(e) => setzeWert(key, e.target.checked ? [...liste, o] : liste.filter((x) => x !== o))}
                 />
-                <span>{o}</span>
+                <span>{optionAnzeige(o)}</span>
               </label>
             ))}
           </fieldset>
         )
+      } else if (d.fahrzeug) {
+        // Marke und Modell suchen; was fehlt, schreibt man hinein
+        const marken = werte['mf.art'] === 'Motorrad' ? motorraeder : autos
+        const modelle = marken[fahrzeug.marke] ?? []
+        const setzeFz = (teil: 'marke' | 'modell' | 'ausfuehrung', v: string) => {
+          const neu = { ...fahrzeug, [teil]: v, ...(teil === 'marke' ? { modell: '' } : {}) }
+          setFahrzeug(neu)
+          setzeWert(key, [neu.marke, neu.modell, neu.ausfuehrung].map((x) => x.trim()).filter(Boolean).join(' '))
+        }
+        eingabe = (
+          <div className={styles.fahrzeug}>
+            <div className={styles.feld}>
+              <label htmlFor={`${id}-marke`} id={`${id}-marke-titel`}>
+                Marke
+              </label>
+              <Suchauswahl id={`${id}-marke`} beschriftetVon={`${id}-marke-titel`} wert={fahrzeug.marke} optionen={Object.keys(marken)} onChange={(v) => setzeFz('marke', v)} onEnter={() => weiter()} />
+            </div>
+            <div className={styles.feld}>
+              <label htmlFor={`${id}-modell`} id={`${id}-modell-titel`}>
+                Modell
+              </label>
+              <Suchauswahl id={`${id}-modell`} beschriftetVon={`${id}-modell-titel`} wert={fahrzeug.modell} optionen={modelle} onChange={(v) => setzeFz('modell', v)} onEnter={() => weiter()} />
+            </div>
+            <div className={styles.feld}>
+              <label htmlFor={`${id}-ausfuehrung`}>Ausführung, falls bekannt</label>
+              <input id={`${id}-ausfuehrung`} type="text" autoComplete="off" maxLength={60} placeholder="zum Beispiel 2.0 TDI" value={fahrzeug.ausfuehrung} onChange={(e) => setzeFz('ausfuehrung', e.target.value)} onKeyDown={enter} />
+            </div>
+          </div>
+        )
+      } else if (d.wahl) {
+        const gewaehlt = d.mehrere ? text.split(', ').filter(Boolean) : []
+        eingabe = (
+          <>
+            <div className={styles.wahl} role="group" aria-labelledby="assistent-frage">
+              {d.wahl.map((o) => (
+                <button
+                  key={o.wert}
+                  type="button"
+                  className={styles.wahlKnopf}
+                  aria-pressed={d.mehrere ? gewaehlt.includes(o.wert) : wert === o.wert && !frei[key]}
+                  onClick={() => {
+                    if (d.mehrere) {
+                      const neu = gewaehlt.includes(o.wert) ? gewaehlt.filter((x) => x !== o.wert) : [...gewaehlt, o.wert]
+                      setzeWert(key, neu.join(', '))
+                    } else {
+                      setFrei((x) => ({ ...x, [key]: false }))
+                      weiter(setzeWert(key, o.wert))
+                    }
+                  }}
+                >
+                  {o.text}
+                </button>
+              ))}
+              {d.andere ? (
+                <button
+                  type="button"
+                  className={styles.wahlKnopf}
+                  aria-pressed={!!frei[key]}
+                  onClick={() => {
+                    setFrei((x) => ({ ...x, [key]: true }))
+                    setzeWert(key, '')
+                  }}
+                >
+                  {d.andere}
+                </button>
+              ) : null}
+            </div>
+            {frei[key] ? eingabefeld({ zahl: f.typ !== 'text' }) : null}
+          </>
+        )
+      } else if (d.liste) {
+        const liste = d.liste
+        eingabe = (
+          <div className={styles.feld}>
+            <Suchauswahl id={id} beschriftetVon="assistent-frage" wert={text} optionen={listen[liste]} onChange={(v) => setzeWert(key, v)} onEnter={() => weiter()} />
+          </div>
+        )
       } else if (f.typ === 'textarea') {
         eingabe = (
           <div className={styles.feld}>
-            <textarea id={id} aria-labelledby="assistent-frage" rows={4} maxLength={1500} value={typeof wert === 'string' ? wert : ''} onChange={(e) => setzeWert(key, e.target.value)} />
+            <textarea id={id} aria-labelledby="assistent-frage" rows={4} maxLength={1500} value={text} onChange={(e) => setzeWert(key, e.target.value)} />
           </div>
         )
-      } else {
-        const zahl = f.typ === 'zahl' || f.typ === 'betrag' || f.typ === 'jahr'
+      } else if (f.typ === 'datum') {
+        // Datumswahl statt Eintippen; gesendet wird 31.12.2026
         eingabe = (
           <div className={styles.feld}>
             <input
               id={id}
               aria-labelledby="assistent-frage"
-              type="text"
-              maxLength={200}
-              inputMode={zahl ? 'decimal' : undefined}
-              placeholder={f.typ === 'datum' ? 'TT.MM.JJJJ' : f.typ === 'betrag' ? 'CHF' : f.typ === 'jahr' ? 'JJJJ' : undefined}
-              value={typeof wert === 'string' ? wert : ''}
-              onChange={(e) => setzeWert(key, e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  e.preventDefault()
-                  weiter()
-                }
+              type="date"
+              min="1900-01-01"
+              value={tage[key] ?? ''}
+              onChange={(e) => {
+                setTage((x) => ({ ...x, [key]: e.target.value }))
+                setzeWert(key, datumText(e.target.value))
               }}
             />
           </div>
         )
+      } else if (f.typ === 'jahr') {
+        eingabe = (
+          <div className={styles.feld}>
+            <select id={id} aria-labelledby="assistent-frage" value={text} onChange={(e) => setzeWert(key, e.target.value)}>
+              <option value="">Bitte wählen</option>
+              {JAHRE.map((j) => (
+                <option key={j} value={j}>
+                  {j}
+                </option>
+              ))}
+            </select>
+          </div>
+        )
+      } else {
+        eingabe = eingabefeld({ zahl: f.typ === 'zahl' || f.typ === 'betrag' })
       }
-      const auswahl = f.typ === 'auswahl' || f.typ === 'janein'
+      // Ein Klick auf eine einzelne Antwort geht von selbst weiter; sonst steht «Weiter» da
+      const auswahl = f.typ === 'auswahl' || f.typ === 'janein' || (!!d.wahl && !d.mehrere && !frei[key])
       inhalt = (
         <>
           {eintrag.abschnitt ? <p className={styles.abschnitt}>{eintrag.abschnitt}</p> : null}
-          {titel(f.frage || f.label || '')}
-          {f.hilfe ? <p className={styles.hilfe}>{f.hilfe}</p> : null}
+          {titel(d.titel ?? ohneKlammern(f.frage && !f.frage.includes('{') ? f.frage : f.label || ''))}
+          {d.hilfe || f.hilfe ? <p className={styles.hilfe}>{d.hilfe ?? ohneKlammern(f.hilfe ?? '')}</p> : null}
           {eingabe}
           {f.wichtig ? (
             <p className={styles.wichtig}>Diese Angabe brauchen wir für die Offerte. Sie können sie aber auch im Gespräch nennen.</p>
@@ -596,9 +731,20 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
           <input type="checkbox" checked={kontakt.rueckruf} onChange={(e) => k('rueckruf', e.target.checked)} />
           <span>Bitte rufen Sie mich an.</span>
         </label>
-        {kontakt.rueckruf
-          ? textfeld('erreichbar', 'Wann erreichen wir Sie am besten?', kontakt.erreichbar, (v) => k('erreichbar', v), { platzhalter: 'zum Beispiel werktags ab 17 Uhr' })
-          : null}
+        {kontakt.rueckruf ? (
+          <div className={styles.feld}>
+            <span className={styles.feldTitel} id="erreichbar-titel">
+              Wann erreichen wir Sie am besten?
+            </span>
+            <div className={styles.wahl} role="group" aria-labelledby="erreichbar-titel">
+              {ERREICHBAR.map((z) => (
+                <button key={z} type="button" className={styles.wahlKnopf} aria-pressed={kontakt.erreichbar === z} onClick={() => k('erreichbar', kontakt.erreichbar === z ? '' : z)}>
+                  {z}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </>
     )
   } else if (schritt === 'k:bemerkung') {
@@ -607,7 +753,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
         <p className={styles.abschnitt}>Fast fertig</p>
         {titel('Möchten Sie uns noch etwas mitteilen?')}
         <div className={styles.feld}>
-          <label htmlFor="bemerkung">Bemerkung (freiwillig)</label>
+          <label htmlFor="bemerkung">Bemerkung</label>
           <textarea id="bemerkung" rows={4} maxLength={1500} value={kontakt.bemerkung} onChange={(e) => k('bemerkung', e.target.value)} />
           <p className={styles.hilfe}>Bitte keine Gesundheitsangaben und keine Angaben zu weiteren Personen.</p>
         </div>
@@ -630,7 +776,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
     inhalt = (
       <>
         <p className={styles.abschnitt}>Zusammenfassung</p>
-        {titel(`Ihre Offertanfrage ${sparte.label}`)}
+        {titel(`Ihre Offertanfrage ${ohneKlammern(sparte.label)}`)}
         <dl className={styles.zusammenfassung}>
           <dt>Kontakt</dt>
           <dd>
@@ -644,14 +790,14 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
             {kontakt.rueckruf ? (
               <>
                 <br />
-                Rückruf gewünscht{kontakt.erreichbar ? ` (${kontakt.erreichbar})` : ''}
+                Rückruf gewünscht{kontakt.erreichbar ? `, ${kontakt.erreichbar}` : ''}
               </>
             ) : null}
           </dd>
           {beantwortet.length ? (
             beantwortet.map(({ feld }) => (
               <div key={feld.key} className={styles.zeile}>
-                <dt>{feld.label}</dt>
+                <dt>{ohneKlammern(feld.label ?? '')}</dt>
                 <dd>{zeige(werte[feld.key as string] ?? '')}</dd>
               </div>
             ))

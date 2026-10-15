@@ -159,6 +159,8 @@ export type Block =
       }[]
       nachsatz?: Rich
     })
+  /** Rechner: Steuerersparnis mit der Säule 3a (15.10.2026), rechnet im Browser. */
+  | (Kopf & { art: 'rechner3a' })
   /** Häufige Fragen zum Aufklappen. Höchstens drei je Seite (Ricardo, 14.10.2026). */
   | (Kopf & { art: 'fragen'; fragen: readonly { frage: string; antwort: Rich }[] })
   /** Die Inhaber mit Foto, Angaben und direktem Kontakt. */

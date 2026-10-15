@@ -4,6 +4,7 @@ import { Banner } from '@/components/blocks/Banner'
 import { Kontaktformular } from '@/components/blocks/Kontaktformular'
 import { UnserModell } from '@/components/blocks/UnserModell'
 import { PortalAnsicht } from '@/components/ui/PortalAnsicht'
+import { Rechner3a } from '@/components/ui/Rechner3a'
 import { RichText } from '@/components/ui/RichText'
 import { Standortkarte } from '@/components/ui/Standortkarte'
 import { getPageContent } from '@/content/pages'
@@ -529,6 +530,14 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
               <RichText value={block.nachsatz} />
             </p>
           ) : null}
+        </>
+      )
+
+    case 'rechner3a':
+      return (
+        <>
+          <Kopf block={block} h1={h1} nr={nr} />
+          <Rechner3a kontaktHref={zielHref({ ziel: 'kontakt' }, locale)} />
         </>
       )
 

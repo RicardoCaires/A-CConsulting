@@ -2516,6 +2516,34 @@ Deutsch, Französisch und Portugiesisch.
 > - **Die Texte sind ein Vorschlag** (`content/source/offertanfrage_de.md`) und warten auf Ricardos
 >   Bestätigung.
 >
+> **Darstellung seit dem 15.10.2026** – Ricardo: «keine in Klammern gesetzte Begriffe», «eine Text eingabe
+> nur dann … wenn es nicht anders geht», Fahrzeug «suchen oder auswählen … falls es nicht vorhanden ist dann
+> selbst eingeben».
+>
+> - **Der Katalog im CRM bleibt unverändert** (er dient auch dem Offertentool). Wie eine Frage auf der Website
+>   erscheint, steht in `src/content/offerte-darstellung.ts`: eigener Titel ohne Klammern, Knöpfe mit Abstufungen
+>   statt Eingabe (Selbstbehalt, Kilometer, Zimmer, Summen, Kündigungsfrist …), wo nötig ein Knopf «Anderer
+>   Betrag» für die eigene Eingabe, Suchlisten für Versicherer, Leasingfirmen und Vorsorgeeinrichtungen. Fragen
+>   ohne eigene Darstellung verlieren ihre Klammern über `ohneKlammern()` (`src/lib/offerte.ts`).
+> - **Gesendet wird lesbarer Text** («CHF 500», «etwa 10'000 km»). Der Server nimmt bei Zahl-, Betrags- und
+>   Textfeldern jeden Text an und prüft nur die festen Auswahlfelder – deren Werte bleiben die Katalogwerte, nur
+>   die Anzeige ändert sich (`optionText`).
+> - **Fahrzeug:** Marke und Modell über eine eigene Suchliste (`components/ui/Suchauswahl.tsx`, Daten in
+>   `src/content/fahrzeuge.ts`, Motorräder getrennt), dazu «Ausführung, falls bekannt». Eigene Eingabe bleibt.
+>   Eigene Liste statt `<datalist>`, weil diese auf dem iPhone unzuverlässig erscheint.
+> - **Datum über die Datumswahl**, Baujahr als Liste; gesendet wird `31.12.2026` wie bisher.
+> - **Fehler behoben:** Fragen zeigten Platzhalter des Offertentools («Ist {kunde} Halterin …», «in den letzten
+>   {jahre} Jahren»). Jetzt Sie-Form beziehungsweise die Zahl aus der Bezeichnung.
+> - «Überspringen», «Rest im Gespräch klären» und «Zurück» sind Knöpfe statt unterstrichener Links;
+>   die Erreichbarkeit beim Rückruf wird gewählt statt getippt.
+>
+> **Rechner Säule 3a auf `/steuern`** (`components/ui/Rechner3a.tsx`, Tarife in `src/lib/steuer-3a.ts` mit
+> Quellen). Ricardo: «eine Steuerersparnis berechnung … anhand von säule 3a einzahlungen». Amtliche Tarife 2026
+> von Bund (Art. 36 DBG), Kanton Bern (Art. 42 StG) und Steueranlagen Kanton 2.975, Aegerten 1.79, Kirche;
+> geprüft gegen nachgerechnete Werte (z. B. alleinstehend, CHF 80'000, CHF 7'258 eingezahlt, reformiert:
+> CHF 2'141.86). Nur Knöpfe und Schieberegler, rechnet im Browser, sendet nichts. **Jedes Jahr nachführen**
+> (2027: 3a 7'373 / 36'864). Vereinfachung, auf der Seite genannt: steuerbares Einkommen bei Bund und Kanton gleich.
+>
 > ⚠️ **Die Datenschutzerklärung nennt dieses Formular noch nicht.** Sie ändert nur Ricardo (Abschnitt 7).
 > Ein Satz dazu gehört hinein: welche Angaben, wohin (eigener Server bei Infomaniak in der Schweiz), wozu,
 > wie lange.

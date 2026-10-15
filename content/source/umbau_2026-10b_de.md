@@ -214,3 +214,11 @@ Ricardo: «Hier trotzdem weniger anzeigen soll eigentlich nur verdeutlichen das 
 - Selbstbehalt CHF 500
 - Was versichert ist
 - Was versichert ist – und die Police direkt zum Herunterladen.
+
+## Rechner Säule 3a (15.10.2026)
+
+Ricardo: «weiter wäre es toll eine Steuerersparnis berechnung einzubauen wo man anhand von säule 3a einzahlungen ungefähr berechnen kann wie viel steuerersparnis man hätte». Auf `/steuern`, nach dem Ablauf. Tarife und Quellen in `src/lib/steuer-3a.ts` (amtlich, Steuerjahr 2026). Vorschlag, Ricardo bestätigt.
+
+- Überschrift: Steuern sparen mit der **Säule 3a**
+- Schätzen Sie, wie viel weniger Steuern Sie mit einer Einzahlung in die Säule 3a bezahlen.
+

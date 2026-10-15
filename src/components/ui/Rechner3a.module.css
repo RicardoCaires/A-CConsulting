@@ -1,0 +1,234 @@
+/* Rechner Säule 3a (15.10.2026). Links die Angaben als Knöpfe und Schieberegler, rechts das
+   Ergebnis mit Balken. Farben nur aus den Tokens; Diagrammfolge nach Corporate Design. */
+
+.rechner {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+@media (min-width: 60rem) {
+  .rechner {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: start;
+  }
+}
+
+.eingaben {
+  display: grid;
+  gap: 1.4rem;
+  min-width: 0;
+}
+
+.gruppe {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.gruppe legend,
+.regelTitel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  width: 100%;
+  margin-bottom: 0.6rem;
+  padding: 0;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.regelTitel strong {
+  font-variant-numeric: tabular-nums;
+  color: var(--ac-color-accent-green);
+}
+
+.wahl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.wahlKnopf {
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
+  cursor: pointer;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-radius: var(--ac-radius-button);
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.wahlKnopf:hover {
+  background-color: var(--ac-color-background-light);
+}
+
+.wahlKnopf[aria-pressed='true'] {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-accent-green);
+  border-color: var(--ac-color-accent-green);
+}
+
+.wahlKnopf:focus-visible,
+.regler:focus-visible,
+.knopf:focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+.regler {
+  width: 100%;
+  min-height: 2.75rem;
+  accent-color: var(--ac-color-accent-green);
+  cursor: pointer;
+}
+
+.hilfe {
+  margin: 0.25rem 0 0;
+  font-size: var(--ac-small-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Ergebnis --------------------------------------------------------------- */
+
+.ergebnis {
+  display: grid;
+  gap: 0.35rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  background-color: var(--ac-color-background-light);
+  border-top: 5px solid var(--ac-color-accent-green);
+  border-radius: 20px;
+}
+
+@media (min-width: 60rem) {
+  .ergebnis {
+    position: sticky;
+    top: 6rem;
+  }
+}
+
+.ergebnisTitel {
+  margin: 0;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.betrag {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(2.25rem, 1.8rem + 2vw, 3rem);
+  font-weight: var(--ac-display-weight);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  color: var(--ac-color-accent-green);
+}
+
+.proJahr {
+  margin: 0 0 0.75rem;
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+.balken {
+  display: flex;
+  gap: 3px;
+  height: 1.1rem;
+  overflow: hidden;
+  border-radius: 999px;
+}
+
+.balken > span {
+  min-width: 3px;
+}
+
+.bund {
+  background-color: var(--ac-color-primary-navy);
+}
+
+.kanton {
+  background-color: var(--ac-color-accent-green);
+}
+
+.kirche {
+  background-color: var(--ac-color-brand-grey);
+}
+
+.leer {
+  flex-grow: 1;
+  background-color: var(--ac-color-background-tint);
+}
+
+.legende {
+  display: grid;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.legende li {
+  display: grid;
+  grid-template-columns: 0.75rem minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  align-items: center;
+  padding-block: 0.45rem;
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-primary);
+}
+
+.legende li + li {
+  border-top: 1px solid var(--ac-color-border-tint);
+}
+
+.legende strong {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--ac-color-primary-navy);
+}
+
+.punkt {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.hinweis {
+  margin: 0.85rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ac-color-text-secondary);
+}
+
+.knopf {
+  display: inline-flex;
+  justify-self: start;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 3rem;
+  margin-top: 1rem;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  color: var(--ac-color-white);
+  text-decoration: none;
+  background-color: var(--ac-color-accent-green);
+  border-radius: var(--ac-radius-button);
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.knopf:hover {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-navy-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wahlKnopf,
+  .knopf {
+    transition: none;
+  }
+}

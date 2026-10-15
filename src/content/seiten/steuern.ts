@@ -43,6 +43,12 @@ export const steuern: SeitenInhalt = {
       knoepfe: [{ text: 'Termin vereinbaren', ziel: 'kontakt' }],
     },
     {
+      art: 'rechner3a',
+      id: 'saeule-3a',
+      titel: { vor: 'Steuern sparen mit der ', akzent: 'Säule 3a' },
+      einleitung: 'Schätzen Sie, wie viel weniger Steuern Sie mit einer Einzahlung in die Säule 3a bezahlen.',
+    },
+    {
       art: 'listen',
       id: 'zielgruppen',
       titel: { vor: 'Für Privatpersonen ', akzent: 'und', nach: ' Firmen' },
