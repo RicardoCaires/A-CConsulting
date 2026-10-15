@@ -2626,8 +2626,10 @@ gibt es noch keine.
 >   direkt angezeigt wird», dann auf Rückfrage «Google Maps» statt OpenStreetMap). Öffentliche Einbettung ohne
 >   Schlüssel, Adresse aus `company.ts` (`mapsKarte`); `frame-src` in `public/_headers` erlaubt dafür
 >   `www.google.com` und `maps.google.com`, OpenStreetMap nicht mehr. `Standortkarte.tsx` braucht kein Skript.
->   ⚠️ **Jeder Aufruf von `/ueber-uns` übermittelt die IP-Adresse an Google (USA).** Ein Satz dazu gehört in die
->   Datenschutzerklärung – die ändert nur Ricardo; ein Vorschlag ist ihm gegeben.
+>   **Gesucht wird nur mit der Adresse**, ohne Firmennamen – mit dem Namen setzte Google die Stecknadel nicht aufs Büro.
+>   Jeder Aufruf von `/ueber-uns` übermittelt die IP-Adresse an Google (USA). **Die Datenschutzerklärung nennt das
+>   seit dem 15.10.2026** (Abschnitt «Karte von Google Maps», von Ricardo bestätigt: «text einsetzen»); der Satz
+>   «keine Karten von fremden Servern» unter «Was diese Website nicht tut» ist dafür angepasst.
 > - **Logos zentriert:** `public/bilder/partner_*_mitte.webp`, aus den gelieferten Kacheln geschnitten (Logofläche
 >   erkannt, mittig auf Weiss gesetzt). Die gelieferten `partner_*.webp` liegen unverändert daneben.
 

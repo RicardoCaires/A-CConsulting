@@ -40,7 +40,7 @@ export const datenschutz: SeitenInhalt = {
       punkte: [
         'Diese Website setzt keine Cookies.',
         'Sie verwendet kein Analysewerkzeug, keine Zählpixel und keine Werkzeuge zur Verhaltensmessung.',
-        'Sie bindet keine Schriften, Karten, Videos oder Schaltflächen von fremden Servern ein. Alles, was Sie sehen, wird von unserem eigenen Webauftritt ausgeliefert.',
+        'Sie bindet keine Schriften, Videos oder Schaltflächen von fremden Servern ein. Einzige Ausnahme ist die Karte von Google Maps auf der Seite «Über uns».',
         'Es gibt keine Anmeldung, keinen Kundenbereich und keinen Newsletter.',
       ],
     },
@@ -63,6 +63,16 @@ export const datenschutz: SeitenInhalt = {
         'Das bedeutet, dass die unter Abschnitt 03 genannten technischen Angaben auch ausserhalb der Schweiz bearbeitet werden können, je nachdem, über welchen Standort Ihr Aufruf läuft.',
         'Cloudflare ist für uns Auftragsbearbeiterin und darf die Daten nur für den Betrieb der Website verwenden.',
         'Diese Angabe betrifft ausschliesslich den Besuch der Website. Unterlagen und Daten aus einem Mandat werden getrennt davon bearbeitet und laufen nicht über diese Website.',
+      ],
+    },
+    {
+      art: 'text',
+      id: 'google-maps',
+      titel: { vor: 'Karte von ', akzent: 'Google Maps' },
+      absaetze: [
+        'Auf der Seite «Über uns» binden wir eine Karte von Google Maps ein (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland).',
+        'Beim Aufruf der Seite stellt Ihr Browser eine Verbindung zu Servern von Google her; dabei werden insbesondere Ihre IP-Adresse und Angaben zum Browser an Google übermittelt, auch in die USA.',
+        'Wir setzen die Karte ein, damit Sie unser Büro leicht finden. Weitere Informationen finden Sie in der Datenschutzerklärung von Google unter policies.google.com/privacy.',
       ],
     },
     {

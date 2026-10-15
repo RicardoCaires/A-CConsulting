@@ -204,9 +204,10 @@ export const mapsRoute = `https://www.google.com/maps/dir/?api=1&destination=${e
  * Eingebettete Google-Karte mit dem Büro (15.10.2026, Ricardos Wahl statt OpenStreetMap).
  * Öffentliche Einbettung ohne Schlüssel; Suche nach der Adresse, Zoomstufe 16.
  */
+// Nur die Adresse, ohne Firmennamen: Mit dem Namen landete Google nicht auf dem Büro (15.10.2026).
 export const mapsKarte = `https://maps.google.com/maps?q=${encodeURIComponent(
-  `A&C Consulting GmbH, ${buero.street}, ${buero.postalCode} ${buero.city}`,
-)}&z=16&hl=de&output=embed`
+  `${buero.street}, ${buero.postalCode} ${buero.city}, Schweiz`,
+)}&z=17&hl=de&output=embed`
 
 /**
  * Direktnummern der beiden Inhaber.
