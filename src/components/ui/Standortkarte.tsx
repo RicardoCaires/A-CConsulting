@@ -1,58 +1,35 @@
-'use client'
-
-import { useState } from 'react'
-
 import styles from './Standortkarte.module.css'
 
 /**
- * Die Karte laedt erst auf Klick.
+ * Karte von OpenStreetMap mit Stecknadel auf dem Büro.
  *
- * Grund: Ein eingebetteter Kartendienst holt beim Aufruf der Seite Daten von
- * einem fremden Server und uebermittelt dabei die IP-Adresse der Besucherin.
- * CLAUDE.md, Abschnitt 6 und 7, verlangt, dass ohne Ruecksprache keine
- * fremden Dienste mitlaufen. Erst der Klick loest das aus — bis dahin geht
- * nichts nach aussen.
+ * Seit dem 15.10.2026 erscheint sie direkt, ohne Klick (Ricardo: «ich muss immer klicken
+ * damit sie angezeigt wird kann man das nicht so einstellen das es direkt angezeigt wird»).
+ * Bis dahin lud sie erst auf Klick, weil der Browser beim Laden die IP-Adresse an
+ * OpenStreetMap übermittelt. ⚠️ Das gehört jetzt in die Datenschutzerklärung – die ändert
+ * nur Ricardo (CLAUDE.md, Abschnitt 7).
  *
- * Die Karte ist Zugabe: Anschrift und Routenknopf daneben funktionieren ohne
- * Skript und ohne fremden Dienst.
+ * Kein Skript nötig: eine gewöhnliche Einbettung, `loading="lazy"` lädt sie erst, wenn
+ * der Abschnitt in die Nähe des Bildschirms kommt.
  */
 export function Standortkarte({
   bbox,
   marker,
-  knopf,
-  hinweis,
   titel,
 }: {
   /** Ausschnitt: links, unten, rechts, oben — in Grad. */
   bbox: readonly [number, number, number, number]
-  /** Breite und Laenge der Stecknadel. */
+  /** Breite und Länge der Stecknadel. */
   marker: readonly [number, number]
-  knopf: string
-  hinweis: string
   titel: string
 }) {
-  const [geladen, setGeladen] = useState(false)
-
-  if (geladen) {
-    return (
-      <iframe
-        className={styles.karte}
-        title={titel}
-        src={`https://www.openstreetmap.org/export/embed.html?bbox=${bbox.join(
-          '%2C',
-        )}&layer=mapnik&marker=${marker[0]}%2C${marker[1]}`}
-        loading="lazy"
-        referrerPolicy="no-referrer"
-      />
-    )
-  }
-
   return (
-    <div className={styles.vorschau}>
-      <button type="button" className={styles.knopf} onClick={() => setGeladen(true)}>
-        {knopf}
-      </button>
-      <p className={styles.hinweis}>{hinweis}</p>
-    </div>
+    <iframe
+      className={styles.karte}
+      title={titel}
+      src={`https://www.openstreetmap.org/export/embed.html?bbox=${bbox.join('%2C')}&layer=mapnik&marker=${marker[0]}%2C${marker[1]}`}
+      loading="lazy"
+      referrerPolicy="no-referrer"
+    />
   )
 }

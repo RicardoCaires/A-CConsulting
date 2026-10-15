@@ -77,7 +77,7 @@ export type Block =
       bild:
         | { art: 'foto'; datei: string; alt: string; breite: number; hoehe: number }
         | { art: 'portal'; ansicht?: PortalAnsicht }
-        | { art: 'karte'; titel: string; knopf: string; hinweis: string }
+        | { art: 'karte'; titel: string }
         | { art: 'versicherer'; hinweis: string; gesellschaften: readonly { bild: string; name: string; url: string }[] }
       /** Bild links statt rechts – für Abwechslung zwischen zwei Blöcken. */
       bildLinks?: boolean

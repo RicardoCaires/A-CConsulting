@@ -2622,6 +2622,10 @@ gibt es noch keine.
 >   farbiger Oberkante, Anzahl im Kreis, Einträge als Kacheln mit Haken, Knopf «Offerte anfragen».
 > - **Matrix leserlicher:** grössere Köpfe, Zeilen abwechselnd hinterlegt, Spaltenlinien, Haken im Punkt.
 > - **Vergleich ohne Versatz:** Spalten teilen ihre Zeilen über ein Subgrid (`--zeilen`), «Passt …» gleich hoch.
+> - **Karte auf «Über uns» erscheint direkt, ohne Klick** (Ricardo: «kann man das nicht so einstellen das es
+>   direkt angezeigt wird»), farbig wie geliefert. `Standortkarte.tsx` ist keine Client-Komponente mehr.
+>   ⚠️ **Damit übermittelt jeder Aufruf von `/ueber-uns` die IP-Adresse an OpenStreetMap.** Ein Satz dazu gehört
+>   in die Datenschutzerklärung – die ändert nur Ricardo; ein Vorschlag ist ihm gegeben.
 > - **Logos zentriert:** `public/bilder/partner_*_mitte.webp`, aus den gelieferten Kacheln geschnitten (Logofläche
 >   erkannt, mittig auf Weiss gesetzt). Die gelieferten `partner_*.webp` liegen unverändert daneben.
 

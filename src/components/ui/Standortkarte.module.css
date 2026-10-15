@@ -6,9 +6,8 @@
   width: 100%;
   height: 100%;
   border: 0;
-  /* Weniger farbig (Ricardo, 15.10.2026): Farben stark gedämpft, damit die Karte
-     neben den Tokenfarben der Seite ruhig bleibt. Die Stecknadel bleibt erkennbar. */
-  filter: saturate(0.25) contrast(1.05);
+  /* Farbig wie von OpenStreetMap geliefert: Die gedämpfte Fassung vom 15.10.2026 hat
+     Ricardo am selben Tag zurückgenommen («bitte wieder die andere karte»). */
 }
 
 .vorschau {

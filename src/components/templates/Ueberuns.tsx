@@ -251,8 +251,6 @@ export function UeberunsTemplate({ inhalt, locale, bannerKnopf }: Props) {
               <Standortkarte
                 bbox={bueroLage.bbox}
                 marker={[bueroLage.breite, bueroLage.laenge]}
-                knopf={inhalt.standort.karte.knopf}
-                hinweis={inhalt.standort.karte.hinweis}
                 titel={inhalt.standort.karte.titel}
               />
               <p className={styles.ortsschild} aria-hidden="true">

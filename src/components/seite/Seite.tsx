@@ -670,8 +670,6 @@ function Bild({ bild }: { bild: Extract<Block, { art: 'textBild' }>['bild'] }) {
           <Standortkarte
             bbox={bueroLage.bbox}
             marker={[bueroLage.breite, bueroLage.laenge]}
-            knopf={bild.knopf}
-            hinweis={bild.hinweis}
             titel={bild.titel}
           />
         </div>

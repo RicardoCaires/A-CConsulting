@@ -88,8 +88,6 @@ export const ueberUns: SeitenInhalt = {
       bild: {
         art: 'karte',
         titel: 'Karte mit dem Standort von A&C Consulting in Aegerten',
-        knopf: 'Karte anzeigen',
-        hinweis: 'Beim Anzeigen wird die Karte von OpenStreetMap geladen.',
       },
     },
     {
