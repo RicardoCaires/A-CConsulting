@@ -11,7 +11,7 @@ import type { Block, Knopf, SeitenInhalt, Titel, Ziel } from '@/content/seiten/t
 import type { Locale } from '@/i18n/config'
 import { getUi } from '@/i18n/messages/ui'
 import { hrefOrDefault, isPublished, path } from '@/i18n/routes'
-import { addressLines, bueroLage, company, direktadressen, direktnummern, mapsRoute } from '@/lib/company'
+import { addressLines, company, direktadressen, direktnummern, mapsRoute } from '@/lib/company'
 
 import styles from './Seite.module.css'
 
@@ -667,10 +667,7 @@ function Bild({ bild }: { bild: Extract<Block, { art: 'textBild' }>['bild'] }) {
     case 'karte':
       return (
         <div className={styles.karte}>
-          <Standortkarte
-            bbox={bueroLage.bbox}
-            marker={[bueroLage.breite, bueroLage.laenge]}
-            titel={bild.titel}
+          <Standortkarte titel={bild.titel}
           />
         </div>
       )

@@ -9,7 +9,6 @@ import type { Locale } from '@/i18n/config'
 import {
   buero,
   bueroImSatz,
-  bueroLage,
   direktadressen,
   direktnummern,
   mapsRoute,
@@ -248,10 +247,7 @@ export function UeberunsTemplate({ inhalt, locale, bannerKnopf }: Props) {
             {/* Die Karte laedt erst auf Klick — vorher geht nichts an einen
                 fremden Server. Das Ortsschild bleibt darueber stehen. */}
             <div className={styles.standortBild}>
-              <Standortkarte
-                bbox={bueroLage.bbox}
-                marker={[bueroLage.breite, bueroLage.laenge]}
-                titel={inhalt.standort.karte.titel}
+              <Standortkarte titel={inhalt.standort.karte.titel}
               />
               <p className={styles.ortsschild} aria-hidden="true">
                 <Image src="/bilder/standort_pin.svg" alt="" width={21} height={21} unoptimized />

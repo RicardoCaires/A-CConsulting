@@ -201,6 +201,14 @@ export const mapsRoute = `https://www.google.com/maps/dir/?api=1&destination=${e
 )}`
 
 /**
+ * Eingebettete Google-Karte mit dem Büro (15.10.2026, Ricardos Wahl statt OpenStreetMap).
+ * Öffentliche Einbettung ohne Schlüssel; Suche nach der Adresse, Zoomstufe 16.
+ */
+export const mapsKarte = `https://maps.google.com/maps?q=${encodeURIComponent(
+  `A&C Consulting GmbH, ${buero.street}, ${buero.postalCode} ${buero.city}`,
+)}&z=16&hl=de&output=embed`
+
+/**
  * Direktnummern der beiden Inhaber.
  * Von Ricardo am 07.09.2026 freigegeben, Octavios Nummer mit seiner Zustimmung.
  */
