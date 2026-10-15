@@ -26,21 +26,22 @@ import styles from './PortalAnsicht.module.css'
  * Unterlagen einer Police. Reines HTML und SVG, ohne Skript.
  */
 
-const chf = (n: number) => `CHF ${String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '’')}.00`
+export const chf = (n: number) => `CHF ${String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '’')}.00`
 
 /** Die Linienzeichen des Portals (`ZEICHEN` in portal.js), unverändert übernommen. */
-const ZEICHEN = {
+export const ZEICHEN = {
   schild: 'M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z',
   dokument: 'M7 3h7l5 5v13H7z M14 3v5h5 M10 13h6 M10 17h6',
   telefon: 'M6 3h3l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z',
   kalender: 'M4 6h16v15H4z M4 10h16 M8 3v5 M16 3v5',
+  person: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M4 21c0-4 3.5-7 8-7s8 3 8 7',
   nachricht: 'M4 5h16v12H9l-5 4z',
   pfeil: 'M5 12h14 M13 6l6 6-6 6',
   zurueck: 'M19 12H5 M11 6l-6 6 6 6',
   laden: 'M12 4v11 M7 11l5 5 5-5 M5 20h14',
 } as const
 
-function Zeichen({ name, klasse }: { name: keyof typeof ZEICHEN; klasse?: string }) {
+export function Zeichen({ name, klasse }: { name: keyof typeof ZEICHEN; klasse?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={klasse ?? styles.zeichen} aria-hidden="true" focusable="false">
       <path d={ZEICHEN[name]} />
@@ -83,10 +84,66 @@ function Rahmen({ aktiv, titel, children }: { aktiv: number; titel: string; chil
 
 const RINGFARBEN = [styles.r0, styles.r1, styles.r2, styles.r3]
 
+/** Der Kostenring des Portals: Prämien pro Jahr nach Versicherung. */
+export function Kostenring({
+  titel,
+  proJahr,
+  segmente,
+}: {
+  titel: string
+  proJahr: string
+  segmente: readonly { text: string; betrag: number }[]
+}) {
+  const summe = segmente.reduce((t, x) => t + x.betrag, 0)
+  let versatz = 25
+  return (
+    <div className={`${styles.karte} ${styles.kosten}`}>
+      <strong className={styles.h2}>{titel}</strong>
+      <div className={styles.kostenInhalt}>
+        <span className={styles.ring}>
+          <svg viewBox="0 0 42 42" aria-hidden="true" focusable="false">
+            <circle className={styles.ringGrund} cx="21" cy="21" r="15.9155" fill="none" strokeWidth="5.5" />
+            {segmente.map((x, i) => {
+              const anteil = (x.betrag / summe) * 100
+              const lang = Math.max(anteil - 0.8, 0)
+              const el = (
+                <circle
+                  key={x.text}
+                  className={RINGFARBEN[i % RINGFARBEN.length]}
+                  cx="21"
+                  cy="21"
+                  r="15.9155"
+                  fill="none"
+                  strokeWidth="5.5"
+                  strokeDasharray={`${lang} ${100 - lang}`}
+                  strokeDashoffset={versatz}
+                />
+              )
+              versatz -= anteil
+              return el
+            })}
+          </svg>
+          <span className={styles.ringMitte}>
+            <strong>{chf(summe)}</strong>
+            <span>{proJahr}</span>
+          </span>
+        </span>
+        <ul className={styles.legende}>
+          {segmente.map((x, i) => (
+            <li key={x.text}>
+              <span className={`${styles.legendePunkt} ${RINGFARBEN[i % RINGFARBEN.length]}`} aria-hidden="true" />
+              <span className={styles.legendeText}>{x.text}</span>
+              <strong>{chf(x.betrag)}</strong>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
+
 function Start() {
   const f = portalFenster
-  const summe = f.segmente.reduce((t, x) => t + x.betrag, 0)
-  let versatz = 25
   return (
     <Rahmen aktiv={0} titel={f.vorzeile}>
       <div className={styles.willkommen}>
@@ -108,48 +165,7 @@ function Start() {
           <span className={styles.kleinKnopf}>{f.termin.knopf}</span>
         </span>
       </div>
-      <div className={`${styles.karte} ${styles.kosten}`}>
-        <strong className={styles.h2}>{f.ringTitel}</strong>
-        <div className={styles.kostenInhalt}>
-          <span className={styles.ring}>
-            <svg viewBox="0 0 42 42" aria-hidden="true" focusable="false">
-              <circle className={styles.ringGrund} cx="21" cy="21" r="15.9155" fill="none" strokeWidth="5.5" />
-              {f.segmente.map((x, i) => {
-                const anteil = (x.betrag / summe) * 100
-                const lang = Math.max(anteil - 0.8, 0)
-                const el = (
-                  <circle
-                    key={x.text}
-                    className={RINGFARBEN[i % RINGFARBEN.length]}
-                    cx="21"
-                    cy="21"
-                    r="15.9155"
-                    fill="none"
-                    strokeWidth="5.5"
-                    strokeDasharray={`${lang} ${100 - lang}`}
-                    strokeDashoffset={versatz}
-                  />
-                )
-                versatz -= anteil
-                return el
-              })}
-            </svg>
-            <span className={styles.ringMitte}>
-              <strong>{chf(summe)}</strong>
-              <span>{f.proJahr}</span>
-            </span>
-          </span>
-          <ul className={styles.legende}>
-            {f.segmente.map((x, i) => (
-              <li key={x.text}>
-                <span className={`${styles.legendePunkt} ${RINGFARBEN[i % RINGFARBEN.length]}`} aria-hidden="true" />
-                <span className={styles.legendeText}>{x.text}</span>
-                <strong>{chf(x.betrag)}</strong>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <Kostenring titel={f.ringTitel} proJahr={f.proJahr} segmente={f.segmente} />
     </Rahmen>
   )
 }

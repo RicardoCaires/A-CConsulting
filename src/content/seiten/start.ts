@@ -96,13 +96,10 @@ export const start: SeitenInhalt = {
       bild: { art: 'portal', ansicht: 'fenster' },
     },
     {
-      art: 'portalAnsichten',
+      art: 'portalDemo',
       id: 'portal',
       titel: { vor: 'So sieht das ', akzent: 'Kundenportal', nach: ' aus' },
-      ansichten: [
-        { ansicht: 'versicherungen', titel: 'Alle Policen im Überblick', text: 'Jeder Vertrag mit Gesellschaft, zum Anklicken.' },
-        { ansicht: 'police', titel: 'Leistungen und Police', text: 'Was versichert ist – und die Police direkt zum Herunterladen.' },
-      ],
+      einleitung: 'Probieren Sie es aus: Verträge öffnen, Leistungen ansehen, eine Anfrage ausfüllen. Alle Angaben sind erfunden.',
       knoepfe: [{ text: 'Mehr zum Kundenportal', ziel: 'digital', art: 'zweit' }],
     },
     {

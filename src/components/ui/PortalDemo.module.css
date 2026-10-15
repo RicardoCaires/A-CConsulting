@@ -1,0 +1,499 @@
+/* Das Kundenportal zum Durchklicken (15.10.2026). Baut auf PortalAnsicht.module.css auf
+   (dieselbe Schrift, dieselben Karten und Marken wie das echte Portal) und ergänzt nur,
+   was zum Bedienen nötig ist: Knöpfe, Zustände beim Zeigen und Fokus, Formularfelder.
+   Navy als Fläche steht hier nur, weil das Portal sie so zeigt. */
+
+.demo {
+  font-size: 0.875rem;
+}
+
+@media (min-width: 64rem) {
+  .demo {
+    font-size: 0.9375rem;
+  }
+}
+
+.demo button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.demo h3,
+.demo h4 {
+  margin: 0;
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: normal;
+}
+
+.demo :focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Hinweis über dem Portal: Beispiel, nichts wird gesendet */
+.band {
+  margin: 0;
+  padding: 0.55em 1.2em;
+  font-size: 0.9em;
+  font-weight: 700;
+  color: var(--ac-color-accent-green);
+  background-color: var(--ac-color-signal-positive-bg);
+  border-bottom: 1px solid var(--ac-color-border-tint);
+}
+
+/* ---- Kopf mit Bereichen ----------------------------------------------------------- */
+
+.logoKnopf {
+  display: flex;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  gap: 0 0.2em;
+}
+
+.nav button {
+  min-height: 2.75rem;
+  padding: 0.4em 0.65em;
+  color: var(--ac-color-text-secondary);
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+}
+
+.nav button:hover {
+  color: var(--ac-color-primary-navy);
+  border-bottom-color: var(--ac-color-border-tint);
+}
+
+.nav button[aria-current='page'] {
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+  border-bottom-color: var(--ac-color-accent-green);
+}
+
+/* Schmal: Logo oben, darunter die vier Bereiche zwei mal zwei – nichts angeschnitten */
+@container (max-width: 34rem) {
+  .nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .nav button {
+    text-align: left;
+  }
+}
+
+/* ---- Inhaltsfläche: feste Höhe, scrollt in sich ---------------------------------- */
+
+.flaeche {
+  position: relative;
+  height: clamp(30rem, 72vh, 46rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.demo .titel {
+  margin: 0;
+  scroll-margin-top: 4rem;
+}
+
+.titel:focus {
+  outline: none;
+}
+
+.titel:focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+}
+
+.absatz {
+  margin: 0;
+}
+
+.demo .kartenTitel {
+  margin: 0 0 0.7em;
+}
+
+/* ---- Hinweis nach einer Aktion ------------------------------------------------------ */
+
+.meldungOrt {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 0 1.2em;
+}
+
+.meldung {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75em;
+  margin-top: 1em;
+  padding: 0.8em 0.9em 0.8em 1.1em;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-signal-positive-bg);
+  border: 1px solid var(--ac-color-accent-green);
+  border-left-width: 6px;
+  border-radius: 10px;
+  box-shadow: var(--ac-shadow-card);
+}
+
+.meldung > span {
+  flex: 1;
+}
+
+.meldungZu {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: -0.4em -0.3em -0.4em 0;
+  color: var(--ac-color-primary-navy);
+  background: none;
+  border: 0;
+  border-radius: 6px;
+}
+
+.meldungZu svg {
+  width: 1.1em;
+  height: 1.1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.meldungZu:hover {
+  background-color: var(--ac-color-white);
+}
+
+/* ---- Knöpfe ------------------------------------------------------------------------- */
+
+.knopf {
+  min-height: 2.75rem;
+  font: inherit;
+  font-weight: 700;
+  transition: background-color 0.15s;
+}
+
+.knopf:hover {
+  background-color: var(--ac-color-navy-deep);
+  border-color: var(--ac-color-navy-deep);
+}
+
+.leise {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.5em 0.9em;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-primary-navy);
+  border-radius: 6px;
+}
+
+.leise:hover,
+.knopfHell:hover {
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-background-tint);
+  border-color: var(--ac-color-primary-navy);
+}
+
+.knoepfe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 0.4em;
+}
+
+.zurueck {
+  justify-self: start;
+  min-height: 2.5rem;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+.zurueck:hover {
+  text-decoration: underline;
+}
+
+.knopfKlein {
+  border: 0;
+}
+
+.knopfKlein:hover {
+  background-color: var(--ac-color-navy-deep);
+}
+
+/* Karten, die beim Zeigen navy werden – wie im Portal */
+.knopfStand,
+.kachel,
+.knopfPolice,
+.knopfWahl {
+  width: 100%;
+  text-align: left;
+  color: var(--ac-color-text-primary);
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.knopfStand:hover,
+.knopfStand:focus-visible,
+.kachel:hover,
+.kachel:focus-visible,
+.knopfPolice:hover,
+.knopfPolice:focus-visible,
+.knopfWahl:hover,
+.knopfWahl[aria-pressed='true'] {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-primary-navy);
+  border-color: var(--ac-color-primary-navy);
+}
+
+.knopfStand:hover strong,
+.knopfStand:hover span,
+.knopfStand:focus-visible strong,
+.knopfStand:focus-visible span,
+.kachel:hover strong,
+.kachel:hover span,
+.kachel:hover svg,
+.kachel:focus-visible strong,
+.kachel:focus-visible span,
+.kachel:focus-visible svg,
+.knopfPolice:hover strong,
+.knopfPolice:hover span,
+.knopfPolice:hover svg,
+.knopfPolice:focus-visible strong,
+.knopfPolice:focus-visible span,
+.knopfPolice:focus-visible svg,
+.knopfWahl:hover strong,
+.knopfWahl:hover span,
+.knopfWahl[aria-pressed='true'] strong,
+.knopfWahl[aria-pressed='true'] span {
+  color: var(--ac-color-white);
+}
+
+/* Der Kreis hinter dem Zeichen bleibt hell, das Zeichen navy */
+.kachel:hover > span:first-child,
+.kachel:focus-visible > span:first-child,
+.knopfPolice:hover > span:first-child,
+.knopfPolice:focus-visible > span:first-child,
+.knopfWahl:hover > span:first-child,
+.knopfWahl[aria-pressed='true'] > span:first-child {
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-white);
+}
+
+.kachel:hover > span:first-child svg,
+.kachel:focus-visible > span:first-child svg,
+.knopfPolice:hover > span:first-child svg,
+.knopfPolice:focus-visible > span:first-child svg,
+.knopfWahl:hover > span:first-child svg,
+.knopfWahl[aria-pressed='true'] > span:first-child svg {
+  color: var(--ac-color-primary-navy);
+}
+
+.kacheln {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19em), 1fr));
+  gap: 0.6em;
+}
+
+.kachel {
+  display: grid;
+  grid-template-columns: 3.25em minmax(0, 1fr) 1.5em;
+  gap: 0.9em;
+  align-items: center;
+  min-height: 5.5em;
+  padding: 0.9em 1.1em;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-radius: 12px;
+}
+
+.kachel strong {
+  font-size: 1.05em;
+  line-height: 1.25;
+  color: var(--ac-color-primary-navy);
+}
+
+.kachel span span,
+.knopfPolice span span {
+  color: var(--ac-color-text-secondary);
+}
+
+/* Schmal: die fünf Anfragearten kompakt, damit das Formular nahe bleibt */
+@container (max-width: 34rem) {
+  .wahl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .knopfWahl {
+    padding: 0.7em 0.75em;
+  }
+
+  .knopfWahl > span:last-child {
+    display: none;
+  }
+}
+
+/* ---- Listen -------------------------------------------------------------------------- */
+
+.liste {
+  display: grid;
+  padding-block: 0.3em;
+}
+
+.zeile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4em 0.75em;
+  padding-block: 0.55em;
+}
+
+.zeile + .zeile {
+  border-top: 1px solid var(--ac-color-background-tint);
+}
+
+.anfrage summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4em 0.75em;
+  min-height: 2.25rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.anfrage summary::-webkit-details-marker {
+  display: none;
+}
+
+.anfrage[open] summary {
+  margin-bottom: 0.5em;
+}
+
+/* ---- Police ---------------------------------------------------------------------------- */
+
+.zwei {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18em), 1fr));
+  gap: 0.75em;
+}
+
+.angaben {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.45em 1.25em;
+  margin: 0;
+}
+
+.angaben > div {
+  display: contents;
+}
+
+.angaben dt {
+  color: var(--ac-color-text-secondary);
+}
+
+.angaben dd {
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+/* ---- Formulare --------------------------------------------------------------------------- */
+
+.formular form {
+  display: grid;
+  gap: 0.2em;
+}
+
+.feld {
+  display: grid;
+  gap: 0.25em;
+  min-width: 0;
+  margin-top: 0.6em;
+}
+
+.feld label {
+  font-size: 0.9em;
+  color: var(--ac-color-text-secondary);
+}
+
+.frei {
+  font-size: 0.95em;
+}
+
+.feld input,
+.feld select,
+.feld textarea {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.55em 0.7em;
+  font: inherit;
+  color: var(--ac-color-text-primary);
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-light);
+  border-radius: 6px;
+}
+
+.feld textarea {
+  min-height: 6.5em;
+  resize: vertical;
+}
+
+.feld input:hover,
+.feld select:hover,
+.feld textarea:hover {
+  border-color: var(--ac-color-primary-navy);
+}
+
+.feld input:focus,
+.feld select:focus,
+.feld textarea:focus {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 1px;
+}
+
+.felderZeile {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11em), 1fr));
+  gap: 0 0.9em;
+}
+
+.hinweis {
+  margin: 0;
+  padding: 0.7em 1em;
+  background-color: var(--ac-color-background-light);
+  border-left: 3px solid var(--ac-color-accent-green);
+  border-radius: 6px;
+}
+
+.formular .hinweis {
+  margin-top: 0.6em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .knopf,
+  .knopfStand,
+  .kachel,
+  .knopfPolice,
+  .knopfWahl {
+    transition: none;
+  }
+}

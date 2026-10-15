@@ -2660,6 +2660,25 @@ gibt es noch keine.
 >   «keine Karten von fremden Servern» unter «Was diese Website nicht tut» ist dafür angepasst.
 > - **Logos zentriert:** `public/bilder/partner_*_mitte.webp`, aus den gelieferten Kacheln geschnitten (Logofläche
 >   erkannt, mittig auf Weiss gesetzt). Die gelieferten `partner_*.webp` liegen unverändert daneben.
+>
+> **Kundenportal zum Durchklicken (15.10.2026)** – Ricardo: «interaktiv das Kundenportal zeigen sodass man … fiktiv
+> browsen kann natürlich mit erfundenen Daten und ohne das man etwas absenden kann». Blockart `portalDemo`
+> (`components/ui/PortalDemo.tsx`, die vierte Client-Komponente; Daten `portalDemo` in
+> `content/seiten/portal-beispiel.ts`). Ersetzt die zwei starren Fenster auf der Startseite (`#portal`) und auf
+> `/digital` (`#ansichten`).
+>
+> - **Seiten wie im echten Portal** (`public-portal/portal.js`): Start mit Kennzahlen, Kostenring und sechs Kacheln,
+>   Meine Versicherungen mit vier Policen und je eigener Detailseite (Vertrag, Leistungen, Fahrzeug, Unterlagen),
+>   Anfragen mit den fünf Formularen, Meine Angaben. «Zugang» und «Abmelden» fehlen bewusst – kein Wort zu Anmeldung
+>   oder Passwort. **Ändert sich das Portal, gehört die Vorschau nachgezogen.**
+> - **Es geht nichts hinaus:** Formulare ohne Ziel, Absenden wird abgefangen; stattdessen ein Hinweis, und die Anfrage
+>   erscheint nur in der Liste der Vorschau als «angefragt». «Herunterladen» zeigt ebenfalls einen Hinweis. Nichts wird
+>   gespeichert, neu Laden stellt den Anfang her. Nachgeprüft: kein Netzwerkaufruf beim Absenden.
+> - Feste Höhe, die Fläche scrollt in sich; ein Seitenwechsel in der Vorschau verschiebt die Website nicht. Auf dem
+>   Telefon stehen die Bereiche zwei mal zwei und die Anfragearten kompakt, nach der Wahl springt sie zum Formular.
+>   Nachgemessen bei 390, 768 und 1440 px: nichts läuft über das Fenster hinaus.
+> - Gesellschaften («Beispiel Krankenkasse», «Muster Versicherung AG» …), Person, Nummern und Beträge sind erfunden.
+>   Neue Sätze (Einleitung, Band, Hinweise) sind ein Vorschlag in `umbau_2026-10b_de.md`.
 
 ## 10. Offene Punkte
 

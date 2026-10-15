@@ -108,6 +108,11 @@ export type Block =
       nachsaetze?: readonly Rich[]
       knoepfe?: readonly Knopf[]
     })
+  /** Das Kundenportal zum Durchklicken, mit erfundenen Angaben. Gesendet wird nichts. */
+  | (Kopf & {
+      art: 'portalDemo'
+      knoepfe?: readonly Knopf[]
+    })
   /** Mehrere Beispielansichten des Kundenportals nebeneinander, je mit kurzer Unterschrift. */
   | (Kopf & {
       art: 'portalAnsichten'

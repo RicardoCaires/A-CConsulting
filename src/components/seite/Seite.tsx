@@ -4,6 +4,7 @@ import { Banner } from '@/components/blocks/Banner'
 import { Kontaktformular } from '@/components/blocks/Kontaktformular'
 import { UnserModell } from '@/components/blocks/UnserModell'
 import { PortalAnsicht } from '@/components/ui/PortalAnsicht'
+import { PortalDemo } from '@/components/ui/PortalDemo'
 import { Rechner3a } from '@/components/ui/Rechner3a'
 import { RichText } from '@/components/ui/RichText'
 import { Standortkarte } from '@/components/ui/Standortkarte'
@@ -351,6 +352,15 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
               <RichText value={n} />
             </p>
           ))}
+          <Knoepfe knoepfe={block.knoepfe} locale={locale} />
+        </>
+      )
+
+    case 'portalDemo':
+      return (
+        <>
+          <Kopf block={block} h1={h1} nr={nr} />
+          <PortalDemo />
           <Knoepfe knoepfe={block.knoepfe} locale={locale} />
         </>
       )

@@ -222,3 +222,108 @@ Ricardo: «weiter wäre es toll eine Steuerersparnis berechnung einzubauen wo ma
 - Überschrift: Steuern sparen mit der **Säule 3a**
 - Schätzen Sie, wie viel weniger Steuern Sie mit einer Einzahlung in die Säule 3a bezahlen.
 
+
+## Kundenportal zum Durchklicken (15.10.2026)
+
+Ricardo: «wäre es möglich hier interaktiv das Kundenportal zu zeigen sodass man beim Besuch im kundenportal fiktiv browsen kann natürlich mit erfundenen Daten und ohne das man etwas absenden kann». Auf der Startseite und auf `/digital`. Aufbau, Beschriftungen und Formulare wie im echten Portal (`public-portal/portal.js`); Person, Gesellschaften, Verträge, Nummern und Beträge sind erfunden. Gesendet und heruntergeladen wird nichts. Neue Sätze (Einleitung, Band, Hinweise) sind ein Vorschlag, Ricardo bestätigt.
+
+- 01.01.2026 bis 31.12.2026
+- 01.01.2026 bis 31.12.2028
+- 01.03.2025 bis 28.02.2028
+- 01.04.2024 bis 31.03.2027
+- 1. April
+- 31. Dezember
+- 80 % der Kosten
+- Adresse oder Standort
+- Adresse, Telefon oder E-Mail ändern
+- Alle Anfragen ansehen
+- Alternativmedizin
+- Am besten erreichbar
+- An welchem Tag?
+- Anfragen sind offen
+- Anna Muster
+- Aufgeführt ist, was bei uns erfasst ist. Fehlt eine Leistung aus Ihrer Police, melden Sie es uns bitte.
+- Ausweis · 01.01.2026 · 85 KB
+- Bei einem Fahrzeugwechsel zum Beispiel Marke, Modell, Kontrollschild und 1. Inverkehrsetzung.
+- Beispiel Krankenkasse
+- Beispiel Rechtsschutz AG
+- Beispielportal mit erfundenen Angaben – klicken Sie sich durch. Gesendet wird nichts.
+- Bemerkung
+- Bitte um eine Vergleichsofferte mit Vollkasko.
+- Bitte wählen
+- CHF 1’350.00 jährlich
+- CHF 310.00 jährlich
+- CHF 350.00 monatlich
+- CHF 3’000.00
+- CHF 42’000.00
+- CHF 5’000’000.00
+- CHF 600’000.00
+- CHF 620.00 jährlich
+- CHF 80’000.00
+- Das ist Ihr Wunschtermin. Er gilt erst, wenn wir ihn Ihnen bestätigt haben; passt er uns nicht, schlagen wir Ihnen einen anderen vor.
+- Deckung oder Leistungen anpassen
+- Eine Anfrage ist offen
+- Eine Frage oder ein Anliegen
+- Einfacher Diebstahl auswärts
+- Fahrzeug: Beispielwagen Kombi
+- Fahrzeugwechsel
+- Frage oder Anliegen
+- Frage zu diesem Vertrag
+- Franchise CHF 1’500
+- Für eine neue oder bessere Versicherung
+- Grundlage sind die bei A&C erfassten Angaben. Massgebend ist die Police der jeweiligen Gesellschaft.
+- Gültig ab
+- Hauptlenkerin
+- Hauptverfall
+- Hinweis schliessen
+- Ihre Meldung kommt bei uns an und wird von Hand übernommen — so bleibt nachvollziehbar, woher eine Angabe stammt. Name, Geburtsdatum und Firmenangaben ändern wir nach Rücksprache.
+- Ihre Meldung ändert den Vertrag noch nicht. Wir klären die Änderung mit der Gesellschaft und bestätigen sie Ihnen.
+- Im Beispielportal gibt es keine Dateien. Im echten Portal laden Sie hier die PDF-Datei herunter.
+- Im Beispielportal wird nichts gesendet. Im echten Portal wäre Ihre Anfrage jetzt bei uns.
+- Im Beispielportal wird nichts gesendet. Im echten Portal übernehmen wir Ihre Änderung.
+- Im Büro oder am Telefon
+- Im echten Portal folgen hier die Fragen, die eine Gesellschaft für die Offerte braucht.
+- Jahresgespräch im Büro.
+- Kündigung oder Sistierung
+- Laufzeit
+- Massgebend ist die Police der Gesellschaft. Die Angaben hier stammen aus unserer Erfassung.
+- Mit den Angaben, die eine Gesellschaft braucht
+- Mobile
+- Muster Versicherung AG
+- Musterweg 1
+- Offertanfrage senden
+- PLZ und Ort
+- Police 2024
+- Police 2025
+- Police · 01.01.2026 · 190 KB
+- Police · 01.01.2026 · 210 KB
+- Police · 01.03.2025 · 245 KB
+- Police · 01.04.2024 · 230 KB
+- Privatrechtsschutz
+- Probieren Sie es aus: Verträge öffnen, Leistungen ansehen, eine Anfrage ausfüllen. Alle Angaben sind erfunden.
+- Rückruf anfordern
+- Spital halbprivat
+- Strasse und Nummer
+- Terminwunsch senden
+- Um welche Zeit?
+- Unter dieser Nummer erreichen wir Sie
+- Versicherte Personen oder Lenker
+- Versicherungsausweis
+- Versicherungssumme oder Selbstbehalt
+- Verträge, Deckungen und Policen zum Herunterladen
+- Was möchten Sie tun?
+- Was ändert sich?
+- Welcher Vertrag?
+- Wie möchten Sie uns treffen?
+- Wir rufen Sie an
+- Wir rufen Sie zur gewünschten Zeit an
+- Worum geht es?
+- Wunschtag
+- Wählen Sie oben, worum es geht.
+- Zu einem bestehenden Vertrag
+- Zur Startseite
+- anna.muster@beispiel.ch
+- gegen Abend
+- Änderung zu diesem Vertrag melden
+- Änderung zu einem Vertrag
+- über Mittag
