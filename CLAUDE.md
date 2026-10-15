@@ -2686,6 +2686,35 @@ gibt es noch keine.
 >   `scripts/offerte-darstellung-kopieren.js` im CRM. **Nach einer Änderung dort das Skript laufen lassen.**
 > - Die Suchliste (`Suchauswahl`) vergleicht ohne Akzente: «sko» findet «Škoda». Die Zusammenfassung der
 >   Offertanfrage zeigt die Fragen statt der internen Bezeichnungen des Katalogs.
+>
+> **Rechner Säule 3a für die ganze Schweiz, Fristen je Kanton (15.10.2026)** – Ricardo: «sein Bruttoeinkommen
+> ungefähr in steuerbares einkommen ausrechnen … anhand von infos die du öffentlich findest», «seine Gemeinde
+> aussuchen können und kanton», «bei den Fristverlängerungen … den Kanton anpassen», «die werte … sollen alle einen
+> angenehmen und fliessenden übergang haben», «standardmässig soll alles auf bern eingestellt sein».
+>
+> - **Steuern aller 26 Kantone und 2110 Gemeinden, Steuerjahr 2026** (`src/lib/steuer-kantone.ts`, Daten
+>   `public/daten/steuern-2026/tarife.json` und `gemeinden.json`): aus dem Steuerrechner der ESTV
+>   (API_exportManyTaxScales, API_exportManySimpleRates), gegen dessen Berechnung über alle Gemeinden höchstens rund
+>   CHF 2 Abweichung. Sonderregeln (VD, VS, BL, GE, Rundungen) sind aus Antworten des ESTV-Rechners abgeleitet. Die
+>   Daten werden erst geladen, wenn der Rechner auf der Seite steht, und kommen von der eigenen Website.
+>   **Jedes Jahr neu erzeugen** – Abrufskripte liegen nicht im Repository, die Schnittstellen stehen im Kopf der Datei.
+> - **Vom Bruttolohn zum steuerbaren Einkommen** (`src/lib/brutto-steuerbar.ts`, Daten `abzuege.json`): AHV/IV/EO
+>   5.3 %, ALV 1.1 % bis 148'200, NBU 1 % und Pensionskasse 6.5 % (Schätzannahmen der ESTV für die Quellensteuer
+>   2026), Abzüge Bund 2026 und je Kanton (Quellensteuer-Grundlagen 2026, sonst ESTV-Steuermäppchen 2025). Bund und
+>   Kanton werden getrennt gerechnet; die Umrechnung steht Schritt für Schritt neben den Eingaben. Nachgerechnet:
+>   BE ledig 80'000 → Bund 64'213.60 / Kanton 55'863.60. **Unsicher und von Ricardo zu prüfen:** einzelne Kantonswerte
+>   nur Stand 2025 (u. a. NW, ZG, SH, SG, VS, GE, JU), BL nur Gesetz 2023, TI aus einer Zusammenfassung, Staffelungen
+>   der Kinderabzüge vereinfacht (LU, AG, SH, SG, NE), VD Familienquotient-Abbau nicht erfasst.
+> - **Voreinstellung Bern, Stadt Bern** (Aegerten war es vorher). Beim Kantonswechsel springt die Gemeinde auf den
+>   Hauptort; die Gemeinde lässt sich suchen.
+> - **Fristen und Gebühren je Kanton** (`src/content/fristen-kantone.ts`, Ansicht `seite/ZeitleisteKantone.tsx`,
+>   Blockfeld `kantone` der `zeitleiste`): Steuerperiode 2025, je Kanton zweimal auf den Seiten der kantonalen
+>   Steuerverwaltung geprüft. **Was nicht belegt ist, steht nicht da** – keine Gebühr ohne Quelle, «gemäss Formular»
+>   ohne veröffentlichtes Datum, ein Nachsatz sagt es. Bern: Für die Steuererklärung 2025 gilt automatisch der
+>   30. November. **Jährlich nachführen.**
+> - **Fliessende Übergänge** (`components/ui/Fliessend.tsx`): Zahlen laufen zum neuen Wert, Balken gleiten, die
+>   Zeitleiste blendet beim Kantonswechsel über. Unter «Bewegung reduzieren» springt alles sofort.
+> - `src/lib/steuer-3a.ts` liefert nur noch Steuerjahr und Höchstbeträge 3a; seine Berner Tarife sind ersetzt.
 
 ## 10. Offene Punkte
 

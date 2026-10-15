@@ -125,6 +125,8 @@ export type Block =
    */
   | (Kopf & {
       art: 'zeitleiste'
+      /** Mit Kantonswahl: Die Reihen kommen aus `fristen-kantone.ts`, voreingestellt Bern. */
+      kantone?: { beschriftung: string }
       reihen: readonly {
         titel?: string
         stationen: readonly { marke?: string; titel: string; wert?: string; hervor?: boolean }[]

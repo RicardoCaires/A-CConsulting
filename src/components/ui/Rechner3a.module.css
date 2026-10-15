@@ -138,14 +138,20 @@
 
 .balken {
   display: flex;
-  gap: 3px;
   height: 1.1rem;
   overflow: hidden;
   border-radius: 999px;
 }
 
 .balken > span {
-  min-width: 3px;
+  flex-basis: 0;
+  /* Fliessender Übergang, wenn sich die Anteile ändern (15.10.2026) */
+  transition: flex-grow 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Trennfuge als innerer Schatten: Ein Teil mit Breite null bleibt so ganz unsichtbar */
+.balken > span + span {
+  box-shadow: inset 3px 0 0 var(--ac-color-background-light);
 }
 
 .bund {
@@ -228,7 +234,132 @@
 
 @media (prefers-reduced-motion: reduce) {
   .wahlKnopf,
-  .knopf {
+  .knopf,
+  .balken > span {
     transition: none;
   }
+}
+
+/* ---- Wohnort und Umrechnung vom Bruttolohn (15.10.2026) ----------------------------------------- */
+.wohnort {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 36rem) {
+  .wohnort {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  }
+}
+
+.feld {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.feld label {
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+.auswahl,
+.feld input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-radius: 10px;
+}
+
+.auswahl:hover,
+.feld input:hover {
+  border-color: var(--ac-color-primary-navy);
+}
+
+.auswahl:focus-visible,
+.feld input:focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 2px;
+}
+
+.umrechnung {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  background-color: var(--ac-color-background-light);
+  border-left: 4px solid var(--ac-color-primary-navy);
+  border-radius: 12px;
+}
+
+.umrechnungTitel {
+  margin: 0;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.tabelle {
+  display: grid;
+  margin: 0;
+}
+
+.tabelle > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.35rem;
+  font-size: var(--ac-small-size);
+}
+
+.tabelle > div + div {
+  border-top: 1px solid var(--ac-color-border-tint);
+}
+
+.tabelle dd,
+.vergleich td {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.vergleich {
+  width: 100%;
+  font-size: var(--ac-small-size);
+  border-collapse: collapse;
+}
+
+.vergleich th,
+.vergleich td {
+  padding: 0.35rem 0 0.35rem 0.75rem;
+  border-top: 1px solid var(--ac-color-border-tint);
+}
+
+.vergleich thead th {
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+  text-align: right;
+  border-top: 0;
+}
+
+.vergleich th[scope='row'] {
+  padding-left: 0;
+  font-weight: 400;
+  text-align: left;
+}
+
+.summe,
+.summe th[scope='row'],
+.summe dt {
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.vergleich .summe th,
+.vergleich .summe td,
+.tabelle > .summe {
+  border-top: 2px solid var(--ac-color-primary-navy);
 }

@@ -96,6 +96,7 @@ export const steuern: SeitenInhalt = {
       art: 'zeitleiste',
       id: 'fristen',
       titel: { vor: 'Fristen und ', akzent: 'Gebühren' },
+      kantone: { beschriftung: 'Ihr Kanton' },
       reihen: [
         {
           titel: 'Privatpersonen',

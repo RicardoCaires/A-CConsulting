@@ -6,6 +6,7 @@ import { UnserModell } from '@/components/blocks/UnserModell'
 import { PortalAnsicht } from '@/components/ui/PortalAnsicht'
 import { PortalDemo } from '@/components/ui/PortalDemo'
 import { Rechner3a } from '@/components/ui/Rechner3a'
+import { ZeitleisteKantone } from '@/components/seite/ZeitleisteKantone'
 import { RichText } from '@/components/ui/RichText'
 import { Standortkarte } from '@/components/ui/Standortkarte'
 import { getPageContent } from '@/content/pages'
@@ -386,6 +387,13 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
       return (
         <>
           <Kopf block={block} h1={h1} nr={nr} />
+          {block.kantone ? (
+            <ZeitleisteKantone
+              beschriftung={block.kantone.beschriftung}
+              titelPrivat={block.reihen[0]?.titel ?? ''}
+              titelUnternehmen={block.reihen[1]?.titel ?? ''}
+            />
+          ) : (
           <div className={styles.reihen}>
             {block.reihen.map((r, ri) => (
               <div key={r.titel ?? ri} className={styles.reihe}>
@@ -407,6 +415,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
               </div>
             ))}
           </div>
+          )}
           {block.nachsaetze?.map((n, i) => (
             <p key={i} className={styles.nachsatz}>
               <RichText value={n} />

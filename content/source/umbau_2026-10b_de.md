@@ -401,3 +401,117 @@ Ricardo: «das offertenanfrage formular ist mittlerweile besser als das im Kunde
 - neues Kontrollschild
 - nur Haftpflicht
 - zum Beispiel 2.0 TDI
+
+## Fristen je Kanton und Rechner Säule 3a erweitert (15.10.2026)
+
+Ricardo: «ich will das man hier noch sein Bruttoeinkommen ungefähr in steuerbares einkommen ausrechnen kann … ausserdem soll man seine Gemeinde aussuchen können und kanton bei den Fristverlängerungen soll man auch den Kanton anpassen können», «standardmässig soll alles auf bern eingestellt sein». Fristen recherchiert auf den Seiten der 26 kantonalen Steuerverwaltungen (Steuerperiode 2025, geprüft am 15.10.2026), je Kanton zweimal; nicht Belegtes steht nicht da.
+
+- Ihr Kanton
+- Zürich
+- 31. März
+- Steuererklärung einreichen
+- 30. November
+- Verlängern, höchstens
+- Selbständige: 30. September ohne Gesuch; Gebühren nennt der Kanton nicht.
+- 30. September
+- Online verlängern, höchstens
+- Gebühren für Verlängerungen nennt der Kanton nicht.
+- Bern
+- 15. März
+- 15. Juli
+- Online verlängern
+- kostenlos
+- 15. September
+- CHF 20
+- 15. November
+- CHF 40
+- Selbständige: 15. Mai; für die Steuererklärung 2025 gilt als letzte Frist automatisch der 30. November.
+- 7 Monate
+- Nach Abschluss einreichen
+- + 1½ Monate
+- + 3½ Monate
+- Online verlängern, maximal
+- Luzern
+- gemäss Formular
+- 31. August
+- Selbständige: 31. August; Gebühren für Verlängerungen nennt der Kanton nicht.
+- 31. Dezember
+- Uri
+- auf Gesuch
+- Höchstfrist und Gebühren nennt der Kanton nicht.
+- 31. Juli
+- Schwyz
+- 31. Oktober
+- Obwalden
+- 30. April
+- je Quartal
+- Begründet verlängern
+- CHF 30
+- Schriftliche Gesuche kosten CHF 30.
+- 30 Tage
+- Nach der GV einreichen
+- Nidwalden
+- Selbständige und Vertretene: 30. Juni; Gebühren nennt der Kanton nicht.
+- 30. Juni
+- Glarus
+- danach
+- Schriftlich verlängern
+- Zug
+- CHF 35
+- Freiburg
+- Verlängern
+- 15. Dezember
+- je CHF 20
+- Höchstens vier Verlängerungen; die erste wird mit der beiliegenden QR-Rechnung bezahlt.
+- Gilt für Kapitalgesellschaften; Vereine und Stiftungen: 30. April.
+- Solothurn
+- Ausnahmsweise verlängern
+- Kollektiv- und Kommanditgesellschaften: 31. Juli.
+- Basel-Stadt
+- bis Jahresende
+- CHF 40 je Gesuch
+- Über das Jahresende hinaus nur gegen Vorauszahlung.
+- Basel-Landschaft
+- 31. Mai
+- Ohne Gesuch verlängert
+- Selbständige: 30. Juni, die Verlängerungen verschieben sich entsprechend.
+- 28. Februar
+- Schaffhausen
+- Appenzell Ausserrhoden
+- jede weitere
+- CHF 25
+- Eine Höchstfrist nennt der Kanton nicht.
+- Appenzell Innerrhoden
+- Gebühren nennt der Kanton nicht; verlängert wird nur bei bezahlten Steuern.
+- St. Gallen
+- 6 Monate
+- + 6 Monate
+- Graubünden
+- Selbständige: 30. September; Gebühren nennt der Kanton nicht.
+- 9 Monate
+- + 3 Monate
+- Vereine und Stiftungen: 6 Monate; Gebühren nennt der Kanton nicht.
+- Aargau
+- Selbständige: 30. Juni; Höchstfrist und Gebühren nennt der Kanton nicht.
+- Thurgau
+- Mit Treuhänder bis 31. Dezember; Gebühren nennt der Kanton nicht.
+- CHF 30 je Monat
+- Tessin
+- 31. Januar
+- Waadt
+- Bis 30. Juni gilt eine Toleranz auch ohne Gesuch.
+- 255 Tage
+- + 30 Tage
+- Wallis
+- Verlängern in Sonderfällen
+- Verlängert wird mit dem beiliegenden Einzahlungsschein vor dem 31. März, für Selbständige bis 31. Oktober.
+- Neuenburg
+- 20. Februar
+- Die Gebühr richtet sich nach dem tatsächlichen Einreichedatum.
+- Gebühren nach dem 30. April nennt der Kanton nicht.
+- Genf
+- CHF 60
+- Ab November nur noch per Post und mit Begründung.
+- Jura
+- CHF 31
+- Auf Papier gilt die Frist ohne Gesuch bis 30. Juni.
