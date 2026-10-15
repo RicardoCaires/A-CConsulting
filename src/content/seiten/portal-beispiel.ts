@@ -291,12 +291,70 @@ export const portalDemo = {
     neu: 'angefragt',
     freiwillig: 'freiwillig',
     bitteWaehlen: 'Bitte wählen',
+    // Frage für Frage wie im Portal (15.10.2026); eine Auswahl der echten Fragen je Versicherung
     offerte: {
       sparte: 'Wofür wünschen Sie eine Offerte?',
-      sparten: ['Motorfahrzeug', 'Hausrat und Privathaftpflicht', 'Rechtsschutz', 'Gebäude', 'Reise'],
+      sparteHilfe: 'Wählen Sie eine Versicherung. Weitere besprechen wir gerne im Gespräch.',
+      fragen: [
+        {
+          sparte: 'Motorfahrzeug',
+          fragen: [
+            { titel: 'Um welche Art Fahrzeug geht es?', optionen: ['Personenwagen', 'Lieferwagen bis 3.5 t', 'Motorrad', 'Wohnmobil'] },
+            { titel: 'Welche Marke und welches Modell?', fahrzeug: true },
+            { titel: 'Wie viele Kilometer wird das Fahrzeug pro Jahr gefahren?', optionen: ['etwa 5’000 km', 'etwa 10’000 km', 'etwa 15’000 km', 'etwa 20’000 km', 'mehr als 30’000 km'] },
+            { titel: 'Wo steht das Fahrzeug über Nacht?', optionen: ['Einzelgarage', 'Sammelgarage', 'Carport', 'Aussenparkplatz'] },
+            { titel: 'Welcher Versicherungsumfang ist gewünscht?', optionen: ['nur Haftpflicht', 'Teilkasko', 'Vollkasko'] },
+          ],
+        },
+        {
+          sparte: 'Hausrat',
+          fragen: [
+            { titel: 'Wie wohnen Sie?', optionen: ['Mietwohnung', 'Eigentumswohnung', 'Einfamilienhaus'] },
+            { titel: 'Wie viele Zimmer hat die Wohnung oder das Haus?', optionen: ['1 bis 1½', '2 bis 2½', '3 bis 3½', '4 bis 4½', '5 bis 5½', '6 und mehr'] },
+            { titel: 'Wie viele Personen leben im Haushalt?', optionen: ['1', '2', '3', '4', '5 und mehr'] },
+          ],
+        },
+        {
+          sparte: 'Privathaftpflicht',
+          fragen: [
+            { titel: 'Wer soll versichert sein?', optionen: ['Einzelperson', 'Paar ohne Kinder', 'Familie', 'Haushalt'] },
+            { titel: 'Welche Versicherungssumme ist gewünscht?', optionen: ['CHF 3 Mio.', 'CHF 5 Mio.', 'CHF 10 Mio.'] },
+          ],
+        },
+        {
+          sparte: 'Rechtsschutz',
+          fragen: [
+            { titel: 'Wer soll versichert sein?', optionen: ['Einzelperson', 'Familie', 'Haushalt'] },
+            { titel: 'Besitzen Sie Wohneigentum?', optionen: ['ja', 'nein'] },
+          ],
+        },
+        {
+          sparte: 'Reiseversicherung',
+          fragen: [
+            { titel: 'Soll eine Jahresversicherung oder eine einzelne Reise versichert werden?', optionen: ['Jahresversicherung', 'Einzelreise'] },
+            { titel: 'Wohin wird gereist?', optionen: ['Europa', 'weltweit'] },
+          ],
+        },
+      ],
+      frageVon: 'Frage',
+      von: 'von',
+      letzter: 'Letzter Schritt',
+      weiter: 'Weiter',
+      ueberspringen: 'Überspringen',
+      gespraech: 'Rest im Gespräch klären',
+      zurueck: 'Zurück',
+      fastFertig: 'Fast fertig',
+      mitteilen: 'Möchten Sie uns noch etwas mitteilen?',
+      zusammenfassung: 'Zusammenfassung',
+      ihre: 'Ihre Offertanfrage',
+      keineAngaben: 'Alles Weitere klären wir im Gespräch.',
+      angaben: 'Angaben',
+      marke: 'Marke',
+      modell: 'Modell',
+      ausfuehrung: 'Ausführung, falls bekannt',
+      beispiel: 'zum Beispiel 2.0 TDI',
       bemerkung: 'Bemerkung',
       knopf: 'Offertanfrage senden',
-      hinweis: 'Im echten Portal folgen hier die Fragen, die eine Gesellschaft für die Offerte braucht.',
       betreff: 'Offertanfrage',
     },
     rueckruf: {
@@ -304,8 +362,10 @@ export const portalDemo = {
       nummer: '079 000 00 00',
       zeit: 'Am besten erreichbar',
       zeiten: ['jederzeit', 'vormittags', 'über Mittag', 'nachmittags', 'gegen Abend'],
+      thema: 'Worum geht es?',
+      themen: ['Bestehender Vertrag', 'Neue Versicherung', 'Schadenfall', 'Treuhand oder Steuern', 'Anderes'],
       tag: 'Wunschtag',
-      text: 'Worum geht es?',
+      text: 'Möchten Sie noch etwas ergänzen?',
       knopf: 'Rückruf anfordern',
       betreff: 'Bitte um Rückruf',
     },
@@ -320,16 +380,76 @@ export const portalDemo = {
       betreff: 'Terminwunsch',
       uhrzeit: 'Uhr',
     },
+    // Gezielte Fragen je Art der Änderung, wie im Portal (15.10.2026). Ricardo: «wenn man z.B das
+    // Fahrzeug wechseln möchte soll man auch das neue Fahrzeug angeben und nicht einfach text eingeben»
     vertrag: {
       police: 'Welcher Vertrag?',
       was: 'Was ändert sich?',
-      aenderungen: ['Fahrzeugwechsel', 'Adresse oder Standort', 'Deckung oder Leistungen anpassen', 'Versicherungssumme oder Selbstbehalt', 'Versicherte Personen oder Lenker', 'Kündigung oder Sistierung', 'Anderes'],
-      ab: 'Gültig ab',
-      text: 'Beschreibung',
-      hilfe: 'Bei einem Fahrzeugwechsel zum Beispiel Marke, Modell, Kontrollschild und 1. Inverkehrsetzung.',
+      arten: [
+        {
+          art: 'Fahrzeugwechsel',
+          nurFahrzeug: true,
+          felder: [
+            { key: 'fzart', typ: 'wahl', titel: 'Was für ein Fahrzeug?', optionen: ['Personenwagen', 'Lieferwagen', 'Motorrad', 'Wohnmobil'] },
+            { key: 'fahrzeug', typ: 'fahrzeug', titel: 'Neues Fahrzeug' },
+            { key: 'ausfuehrung', typ: 'text', titel: 'Ausführung' },
+            { key: 'iv', typ: 'datum', titel: '1. Inverkehrsetzung' },
+            { key: 'zustand', typ: 'wahl', titel: 'Neu oder Occasion?', optionen: ['neu', 'Occasion'] },
+            { key: 'schild', typ: 'wahl', titel: 'Kontrollschild', optionen: ['bisheriges übernehmen', 'neues Kontrollschild'] },
+            { key: 'leasing', typ: 'wahl', titel: 'Ist das Fahrzeug geleast?', optionen: ['ja', 'nein'] },
+            { key: 'preis', typ: 'text', titel: 'Katalogpreis inklusive Zubehör, falls bekannt' },
+          ],
+        },
+        {
+          art: 'Adresse oder Standort',
+          nurFahrzeug: false,
+          felder: [
+            { key: 'strasse', typ: 'text', titel: 'Neue Strasse und Nummer' },
+            { key: 'plzort', typ: 'text', titel: 'PLZ und Ort' },
+          ],
+        },
+        {
+          art: 'Deckung oder Leistungen anpassen',
+          nurFahrzeug: false,
+          felder: [
+            { key: 'richtung', typ: 'wahl', titel: 'Was möchten Sie?', optionen: ['Deckung erweitern', 'Deckung reduzieren', 'Beratung zur Deckung'] },
+            { key: 'betrifft', typ: 'deckungen', titel: 'Welche Leistungen betrifft es?' },
+          ],
+        },
+        {
+          art: 'Versicherungssumme oder Selbstbehalt',
+          nurFahrzeug: false,
+          felder: [
+            { key: 'selbstbehalt', typ: 'wahl', titel: 'Welchen Selbstbehalt wünschen Sie?', optionen: ['CHF 0', 'CHF 200', 'CHF 500', 'CHF 1’000', 'CHF 2’500'] },
+            { key: 'summe', typ: 'text', titel: 'Neue Versicherungssumme' },
+          ],
+        },
+        {
+          art: 'Versicherte Personen oder Lenker',
+          nurFahrzeug: false,
+          felder: [
+            { key: 'aktion', typ: 'wahl', titel: 'Was ändert sich?', optionen: ['Person hinzufügen', 'Person entfernen'] },
+            { key: 'person', typ: 'text', titel: 'Vorname und Nachname' },
+          ],
+        },
+        {
+          art: 'Kündigung oder Sistierung',
+          nurFahrzeug: false,
+          felder: [
+            { key: 'kart', typ: 'wahl', titel: 'Was möchten Sie?', optionen: ['Kündigung', 'Sistierung, Fahrzeug vorübergehend ausser Verkehr'] },
+            { key: 'grund', typ: 'wahl', titel: 'Aus welchem Grund?', optionen: ['Fahrzeug verkauft', 'Umzug ins Ausland', 'Wechsel der Gesellschaft', 'Anderer Grund'] },
+          ],
+        },
+        { art: 'Anderes', nurFahrzeug: false, felder: [] },
+      ],
+      ab: 'Ab wann?',
+      ergaenzen: 'Möchten Sie noch etwas ergänzen?',
+      anderes: 'Was ändert sich?',
+      suchen: 'Tippen Sie die ersten Buchstaben. Fehlt Ihr Fahrzeug, schreiben Sie es einfach hinein.',
       hinweis: 'Ihre Meldung ändert den Vertrag noch nicht. Wir klären die Änderung mit der Gesellschaft und bestätigen sie Ihnen.',
+      fehlt: 'Bitte wählen oder ergänzen Sie, was sich ändert.',
       knopf: 'Änderung melden',
-      betreff: 'Änderung zu einem Vertrag',
+      betreff: 'Änderung zu',
     },
     nachricht: {
       betreff: 'Betreff',

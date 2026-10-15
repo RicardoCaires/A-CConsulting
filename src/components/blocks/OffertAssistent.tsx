@@ -109,6 +109,9 @@ function sichtbar(f: Feld, werte: Record<string, Wert>) {
 const optionenVon = (f: Feld) => (f.optionen && f.optionen.length ? f.optionen : f.typ === 'janein' ? ['ja', 'nein'] : [])
 /** Anzeige eines Katalogwerts ohne Klammern; gesendet wird der Katalogwert. */
 const optionAnzeige = (o: string) => optionText[o] ?? ohneKlammern(o)
+/** Die Frage, wie sie erscheint – auch in der Zusammenfassung statt der internen Bezeichnung. */
+const frageText = (f: Feld) =>
+  darstellungVon(f.key ?? '').titel ?? ohneKlammern(f.frage && !f.frage.includes('{') ? f.frage : f.label || '')
 const zeige = (v: Wert) => (Array.isArray(v) ? v.map(optionAnzeige).join(', ') : optionAnzeige(v))
 
 /** ISO-Datum der Datumswahl als 31.12.2026 – so liest es das Offertentool. */
@@ -658,7 +661,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
       inhalt = (
         <>
           {eintrag.abschnitt ? <p className={styles.abschnitt}>{eintrag.abschnitt}</p> : null}
-          {titel(d.titel ?? ohneKlammern(f.frage && !f.frage.includes('{') ? f.frage : f.label || ''))}
+          {titel(frageText(f))}
           {d.hilfe || f.hilfe ? <p className={styles.hilfe}>{d.hilfe ?? ohneKlammern(f.hilfe ?? '')}</p> : null}
           {eingabe}
           {f.wichtig ? (
@@ -797,7 +800,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
           {beantwortet.length ? (
             beantwortet.map(({ feld }) => (
               <div key={feld.key} className={styles.zeile}>
-                <dt>{ohneKlammern(feld.label ?? '')}</dt>
+                <dt>{frageText(feld)}</dt>
                 <dd>{zeige(werte[feld.key as string] ?? '')}</dd>
               </div>
             ))

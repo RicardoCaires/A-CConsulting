@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
 
 import { Kostenring, Zeichen } from '@/components/ui/PortalAnsicht'
+import { OfferteDemo, VertragDemo, WahlFeld } from '@/components/ui/PortalDemoFormulare'
 import { portalDemo as D, portalRahmen } from '@/content/seiten/portal-beispiel'
 
 import a from './PortalAnsicht.module.css'
@@ -97,8 +98,13 @@ export function PortalDemo() {
     e.preventDefault()
     const daten = new FormData(e.currentTarget)
     const eigen = String(daten.get('betreff') ?? '').trim()
-    const text = String(daten.get('text') ?? '').trim()
-    setAnfragen((x) => [{ betreff: eigen || betreff, datum: heute(), stand: D.anfragen.neu, art: 'offen', text }, ...x])
+    const thema = String(daten.get('thema') ?? '').trim()
+    const text = [thema, String(daten.get('text') ?? '').trim()].filter(Boolean).join(String.fromCharCode(10))
+    ablegen(eigen || betreff, text)
+  }
+
+  const ablegen = (betreff: string, text: string) => {
+    setAnfragen((x) => [{ betreff, datum: heute(), stand: D.anfragen.neu, art: 'offen', text }, ...x])
     setFormular(null)
     melde(D.meldungSenden)
   }
@@ -339,25 +345,7 @@ export function PortalDemo() {
     const q = D.anfragen
     switch (f) {
       case 'offerte':
-        return (
-          <form onSubmit={sende(q.offerte.betreff)}>
-            <Feld id="d-sparte" titel={q.offerte.sparte}>
-              <select id="d-sparte" name="sparte" required defaultValue="">
-                <option value="" disabled>
-                  {q.bitteWaehlen}
-                </option>
-                {q.offerte.sparten.map((x) => (
-                  <option key={x}>{x}</option>
-                ))}
-              </select>
-            </Feld>
-            <p className={`${s.hinweis} ${s.absatz}`}>{q.offerte.hinweis}</p>
-            <Feld id="d-bemerkung" titel={q.offerte.bemerkung} frei>
-              <textarea id="d-bemerkung" name="text" />
-            </Feld>
-            {knopfSenden(q.offerte.knopf)}
-          </form>
-        )
+        return <OfferteDemo ablegen={ablegen} />
       case 'rueckruf':
         return (
           <form onSubmit={sende(q.rueckruf.betreff)}>
@@ -365,14 +353,9 @@ export function PortalDemo() {
               <Feld id="d-telefon" titel={q.rueckruf.telefon}>
                 <input id="d-telefon" type="tel" required defaultValue={q.rueckruf.nummer} autoComplete="off" />
               </Feld>
-              <Feld id="d-zeit" titel={q.rueckruf.zeit}>
-                <select id="d-zeit">
-                  {q.rueckruf.zeiten.map((x) => (
-                    <option key={x}>{x}</option>
-                  ))}
-                </select>
-              </Feld>
             </div>
+            <WahlFeld id="d-zeit" titel={q.rueckruf.zeit} optionen={q.rueckruf.zeiten} start={q.rueckruf.zeiten[0]} name="zeit" fest />
+            <WahlFeld id="d-thema" titel={q.rueckruf.thema} optionen={q.rueckruf.themen} name="thema" />
             <Feld id="d-tag" titel={q.rueckruf.tag} frei>
               <input id="d-tag" type="date" />
             </Feld>
@@ -401,14 +384,8 @@ export function PortalDemo() {
                   ))}
                 </select>
               </Feld>
-              <Feld id="d-ort" titel={q.termin.ort}>
-                <select id="d-ort">
-                  {q.termin.orte.map((x) => (
-                    <option key={x}>{x}</option>
-                  ))}
-                </select>
-              </Feld>
             </div>
+            <WahlFeld id="d-ort" titel={q.termin.ort} optionen={q.termin.orte} start={q.termin.orte[0]} name="ort" fest />
             <Feld id="d-ttext" titel={q.termin.text} frei>
               <textarea id="d-ttext" name="text" />
             </Feld>
@@ -417,36 +394,7 @@ export function PortalDemo() {
           </form>
         )
       case 'vertrag':
-        return (
-          <form onSubmit={sende(q.vertrag.betreff)}>
-            <Feld id="d-police" titel={q.vertrag.police}>
-              <select id="d-police" defaultValue={vorgabe ?? D.policen[0].id}>
-                {D.policen.map((p) => (
-                  <option key={p.id} value={p.id}>
-                    {p.name.replace(/­/g, '')} · {p.gesellschaft} · {p.nummer}
-                  </option>
-                ))}
-              </select>
-            </Feld>
-            <div className={s.felderZeile}>
-              <Feld id="d-was" titel={q.vertrag.was}>
-                <select id="d-was">
-                  {q.vertrag.aenderungen.map((x) => (
-                    <option key={x}>{x}</option>
-                  ))}
-                </select>
-              </Feld>
-              <Feld id="d-ab" titel={q.vertrag.ab} frei>
-                <input id="d-ab" type="date" />
-              </Feld>
-            </div>
-            <Feld id="d-vtext" titel={q.vertrag.text} hilfe={q.vertrag.hilfe}>
-              <textarea id="d-vtext" name="text" required />
-            </Feld>
-            <p className={`${a.klein} ${s.absatz}`}>{q.vertrag.hinweis}</p>
-            {knopfSenden(q.vertrag.knopf)}
-          </form>
-        )
+        return <VertragDemo ablegen={ablegen} vorgabe={vorgabe} />
       case 'nachricht': {
         const p = D.policen.find((x) => x.id === vorgabe)
         return (

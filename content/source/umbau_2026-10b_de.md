@@ -329,3 +329,75 @@ Ricardo: «wäre es möglich hier interaktiv das Kundenportal zu zeigen sodass m
 - über Mittag
 - Versiche­rungen
 - Ihre Versicherungs­kosten pro Jahr
+
+## Formulare im Beispielportal wie im Portal (15.10.2026)
+
+Ricardo: «das offertenanfrage formular ist mittlerweile besser als das im Kundenportal bitte das im Kundenportal anpassen und dementsprechend auch in der Vorschau» und «wenn man z.B das Fahrzeug wechseln möchte soll man auch das neue Fahrzeug angeben und nicht einfach text eingeben». Fragen und Antworten der Offertanfrage stammen aus dem Offertkatalog (Auswahl), die Fragen zur Änderung sind ein Vorschlag.
+
+- Ab wann?
+- Anderer Grund
+- Aus welchem Grund?
+- Ausführung
+- Ausführung, falls bekannt
+- Aussenparkplatz
+- Beratung zur Deckung
+- Bestehender Vertrag
+- Bitte wählen oder ergänzen Sie, was sich ändert.
+- CHF 10 Mio.
+- CHF 1’000
+- CHF 2’500
+- CHF 3 Mio.
+- CHF 5 Mio.
+- Carport
+- Deckung erweitern
+- Deckung reduzieren
+- Eigentumswohnung
+- Einfamilienhaus
+- Einzelgarage
+- Einzelperson
+- Einzelreise
+- Europa
+- Fahrzeug verkauft
+- Fast fertig
+- Ist das Fahrzeug geleast?
+- Jahresversicherung
+- Katalogpreis inklusive Zubehör, falls bekannt
+- Letzter Schritt
+- Lieferwagen
+- Lieferwagen bis 3.5 t
+- Möchten Sie noch etwas ergänzen?
+- Neu oder Occasion?
+- Neue Strasse und Nummer
+- Neue Versicherung
+- Neue Versicherungssumme
+- Neues Fahrzeug
+- Occasion
+- Paar ohne Kinder
+- Person entfernen
+- Person hinzufügen
+- Personenwagen
+- Reiseversicherung
+- Sammelgarage
+- Sistierung, Fahrzeug vorübergehend ausser Verkehr
+- Soll eine Jahresversicherung oder eine einzelne Reise versichert werden?
+- Treuhand oder Steuern
+- Um welche Art Fahrzeug geht es?
+- Umzug ins Ausland
+- Vorname und Nachname
+- Was für ein Fahrzeug?
+- Was möchten Sie?
+- Wechsel der Gesellschaft
+- Welche Leistungen betrifft es?
+- Welche Versicherungssumme ist gewünscht?
+- Welcher Versicherungsumfang ist gewünscht?
+- Wer soll versichert sein?
+- Wie viele Kilometer wird das Fahrzeug pro Jahr gefahren?
+- Wie viele Personen leben im Haushalt?
+- Wie viele Zimmer hat die Wohnung oder das Haus?
+- Wohin wird gereist?
+- Wohnmobil
+- Zusammenfassung
+- bisheriges übernehmen
+- neues Kontrollschild
+- nur Haftpflicht
+- zum Beispiel 2.0 TDI

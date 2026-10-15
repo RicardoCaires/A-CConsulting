@@ -12,6 +12,9 @@ import styles from './Suchauswahl.module.css'
  * Eigene Liste statt `<datalist>`: Die sieht je Browser anders aus und erscheint auf dem
  * iPhone nur unzuverlässig. Zugänglich als Combobox nach ARIA (Pfeiltasten, Enter, Escape).
  */
+/** Ohne Akzente und Gross-/Kleinschreibung vergleichen: «sko» findet «Škoda». */
+const schlicht = (t: string) => t.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase()
+
 export function Suchauswahl({
   id,
   wert,
@@ -35,10 +38,10 @@ export function Suchauswahl({
   const listeId = useId()
 
   const treffer = useMemo(() => {
-    const q = wert.trim().toLowerCase()
+    const q = schlicht(wert.trim())
     if (!q) return optionen.slice(0, 50)
-    const beginnt = optionen.filter((o) => o.toLowerCase().startsWith(q))
-    const enthaelt = optionen.filter((o) => !o.toLowerCase().startsWith(q) && o.toLowerCase().includes(q))
+    const beginnt = optionen.filter((o) => schlicht(o).startsWith(q))
+    const enthaelt = optionen.filter((o) => !schlicht(o).startsWith(q) && schlicht(o).includes(q))
     return [...beginnt, ...enthaelt].slice(0, 8)
   }, [wert, optionen])
 

@@ -2679,6 +2679,13 @@ gibt es noch keine.
 >   Nachgemessen bei 320, 390, 768 und 1440 px: nichts läuft über das Fenster hinaus.
 > - Gesellschaften («Beispiel Krankenkasse», «Muster Versicherung AG» …), Person, Nummern und Beträge sind erfunden.
 >   Neue Sätze (Einleitung, Band, Hinweise) sind ein Vorschlag in `umbau_2026-10b_de.md`.
+> - **Formulare wie im Portal (15.10.2026)** (`PortalDemoFormulare.tsx`): Offertanfrage Frage für Frage mit einer
+>   Auswahl echter Fragen aus dem Offertkatalog, «Änderung melden» mit gezielten Fragen je Art (Fahrzeugwechsel mit
+>   Marken- und Modellsuche), Rückruf und Termin mit Knöpfen. Die Darstellungsregeln der Offertanfrage
+>   (`offerte-darstellung.ts`, `fahrzeuge.ts`, `lib/offerte.ts`) **führt die Website**; das Portal übernimmt sie per
+>   `scripts/offerte-darstellung-kopieren.js` im CRM. **Nach einer Änderung dort das Skript laufen lassen.**
+> - Die Suchliste (`Suchauswahl`) vergleicht ohne Akzente: «sko» findet «Škoda». Die Zusammenfassung der
+>   Offertanfrage zeigt die Fragen statt der internen Bezeichnungen des Katalogs.
 
 ## 10. Offene Punkte
 
