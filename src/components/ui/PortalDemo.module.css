@@ -497,3 +497,39 @@
     transition: none;
   }
 }
+
+/* Sehr schmal (kleine Telefone): nichts darf breiter werden als das Fenster */
+.inhalt > * {
+  min-width: 0;
+}
+
+.knopf,
+.leise {
+  max-width: 100%;
+  white-space: normal;
+  text-align: left;
+}
+
+@container (max-width: 20rem) {
+  .nav,
+  .flaeche {
+    font-size: 0.88em;
+  }
+
+  .nav button {
+    padding-inline: 0.4em;
+    hyphens: manual;
+  }
+}
+
+/* Schmale Karte: Bezeichnung über dem Wert statt daneben */
+@container (max-width: 24rem) {
+  .angaben {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.1em;
+  }
+
+  .angaben > div + div dt {
+    margin-top: 0.5em;
+  }
+}

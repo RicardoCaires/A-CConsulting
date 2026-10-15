@@ -607,7 +607,7 @@ export function PortalDemo() {
               </div>
             ) : null}
           </div>
-          <div className={a.inhalt}>{inhalt}</div>
+          <div className={`${a.inhalt} ${s.inhalt}`}>{inhalt}</div>
         </div>
       </div>
     </div>

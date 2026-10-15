@@ -40,7 +40,7 @@ export const portalFenster = {
     { zahl: '4', text: 'Gesellschaften' },
   ],
   termin: { titel: 'Nächster Termin', text: 'Noch keiner vereinbart', knopf: 'Termin vereinbaren' },
-  ringTitel: 'Ihre Versicherungskosten pro Jahr',
+  ringTitel: 'Ihre Versicherungs­kosten pro Jahr',
   proJahr: 'pro Jahr',
   segmente: [
     { text: 'Kranken­versicherung', betrag: 4200 },
@@ -118,7 +118,7 @@ export const portalUnterlagen = {
 export const portalDemo = {
   navigation: [
     { seite: 'start', text: 'Start' },
-    { seite: 'versicherungen', text: 'Versicherungen' },
+    { seite: 'versicherungen', text: 'Versiche­rungen' },
     { seite: 'anfragen', text: 'Anfragen' },
     { seite: 'angaben', text: 'Meine Angaben' },
   ],
@@ -138,7 +138,7 @@ export const portalDemo = {
     gesellschaften: 'Gesellschaften',
     ansehen: 'Ansehen',
     termin: { titel: 'Nächster Termin', text: 'Noch keiner vereinbart', knopf: 'Termin vereinbaren' },
-    ringTitel: 'Ihre Versicherungskosten pro Jahr',
+    ringTitel: 'Ihre Versicherungs­kosten pro Jahr',
     proJahr: 'pro Jahr',
     tun: 'Was möchten Sie tun?',
     kacheln: [

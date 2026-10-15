@@ -327,3 +327,5 @@ Ricardo: «wäre es möglich hier interaktiv das Kundenportal zu zeigen sodass m
 - Änderung zu diesem Vertrag melden
 - Änderung zu einem Vertrag
 - über Mittag
+- Versiche­rungen
+- Ihre Versicherungs­kosten pro Jahr

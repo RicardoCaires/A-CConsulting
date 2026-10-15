@@ -2676,7 +2676,7 @@ gibt es noch keine.
 >   gespeichert, neu Laden stellt den Anfang her. Nachgeprüft: kein Netzwerkaufruf beim Absenden.
 > - Feste Höhe, die Fläche scrollt in sich; ein Seitenwechsel in der Vorschau verschiebt die Website nicht. Auf dem
 >   Telefon stehen die Bereiche zwei mal zwei und die Anfragearten kompakt, nach der Wahl springt sie zum Formular.
->   Nachgemessen bei 390, 768 und 1440 px: nichts läuft über das Fenster hinaus.
+>   Nachgemessen bei 320, 390, 768 und 1440 px: nichts läuft über das Fenster hinaus.
 > - Gesellschaften («Beispiel Krankenkasse», «Muster Versicherung AG» …), Person, Nummern und Beträge sind erfunden.
 >   Neue Sätze (Einleitung, Band, Hinweise) sind ein Vorschlag in `umbau_2026-10b_de.md`.
 
