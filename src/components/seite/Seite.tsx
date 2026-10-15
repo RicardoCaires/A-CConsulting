@@ -386,7 +386,11 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
                       <span className={styles.punktLeiste} aria-hidden="true" />
                       {st.marke ? <span className={styles.stationMarke}>{st.marke}</span> : null}
                       <span className={styles.stationTitel}>{st.titel}</span>
-                      {st.wert ? <span className={styles.stationWert}>{st.wert}</span> : null}
+                      {st.wert ? (
+                        <span className={styles.stationWert} data-kostenlos={st.wert === 'kostenlos'}>
+                          {st.wert}
+                        </span>
+                      ) : null}
                     </li>
                   ))}
                 </ol>
