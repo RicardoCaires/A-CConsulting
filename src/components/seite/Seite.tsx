@@ -69,6 +69,13 @@ function knopfHref(k: Knopf, locale: Locale): { href: string; extern?: boolean }
   return { href: zielHref(k, locale) }
 }
 
+/** Name der Karte für Vorlesewerkzeuge, wie auf «Über uns». */
+const KARTENTITEL: Record<Locale, string> = {
+  de: 'Karte mit dem Standort von A&C Consulting in Aegerten',
+  fr: 'Carte avec l’emplacement d’A&C Consulting à Aegerten',
+  pt: 'Mapa com a localização da A&C Consulting em Aegerten',
+}
+
 /** Farbton der Listenkarten, abwechselnd (Corporate Design: Grün, Navy, Grau). */
 const TOENE = ['gruen', 'navy', 'grau'] as const
 
@@ -655,40 +662,34 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
       )
 
     case 'kontakt': {
+      // Seit 16.10.2026 ohne Textlinks (Ricardo: «hier sind wieder diese links die ich nicht will vielleicht hier
+      // auch nochmals die karte einbinden»): Telefon und E-Mail sind Knöpfe, die Adresse steht als Text, rechts die Karte.
       const ui = getUi(locale)
+      const knoepfe: Knopf[] = [
+        ...(block.ohneKnopf ? [] : [{ text: ui.cta, ziel: 'kontakt' } as Knopf]),
+        { text: company.phone, href: 'telefon', art: 'zweit' },
+        { text: company.email, href: 'email', art: 'zweit' },
+      ]
       return (
-        <div className={styles.kontakt}>
+        <div className={block.ohneKarte ? styles.kontaktOhneKarte : styles.kontakt}>
           <div>
             <Kopf block={block} h1={h1} nr={nr} />
             <p className={styles.absatz}>{block.satz}</p>
-            {block.ohneKnopf ? null : (
-              <Knoepfe knoepfe={[{ text: ui.cta, ziel: 'kontakt' }]} locale={locale} />
-            )}
+            <address className={styles.anschrift}>
+              <span className={styles.anschriftTitel}>{block.beschriftungen.buero}</span>
+              {addressLines.map((z) => (
+                <span key={z} className={styles.zeile}>
+                  {z}
+                </span>
+              ))}
+            </address>
+            <Knoepfe knoepfe={knoepfe} locale={locale} />
           </div>
-          <dl className={styles.angaben}>
-            <div>
-              <dt>{block.beschriftungen.telefon}</dt>
-              <dd>
-                <a href={`tel:${company.phoneE164}`}>{company.phone}</a>
-              </dd>
+          {block.ohneKarte ? null : (
+            <div className={`${styles.karte} ${styles.karteKontakt}`}>
+              <Standortkarte titel={KARTENTITEL[locale]} />
             </div>
-            <div>
-              <dt>{block.beschriftungen.email}</dt>
-              <dd>
-                <a href={`mailto:${company.email}`}>{company.email}</a>
-              </dd>
-            </div>
-            <div>
-              <dt>{block.beschriftungen.buero}</dt>
-              <dd>
-                {addressLines.map((z) => (
-                  <span key={z} className={styles.zeile}>
-                    {z}
-                  </span>
-                ))}
-              </dd>
-            </div>
-          </dl>
+          )}
         </div>
       )
     }

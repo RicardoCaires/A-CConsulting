@@ -195,6 +195,8 @@ export type Block =
       satz: string
       beschriftungen: { telefon: string; email: string; buero: string }
       ohneKnopf?: boolean
+      /** Ohne Google-Karte (Impressum). Sonst steht rechts die Karte mit dem Büro (16.10.2026). */
+      ohneKarte?: boolean
     })
   /** Das Schaubild «Unser Modell» der Versicherungsseite, unverändert übernommen. */
   | { art: 'modell'; id?: string }

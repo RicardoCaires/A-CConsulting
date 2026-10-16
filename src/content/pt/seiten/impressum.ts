@@ -31,6 +31,7 @@ export const impressum: SeitenInhalt = {
       satz: 'O telefone e o e-mail constam do rodapé de cada página e da página de contacto.',
       beschriftungen: { telefon: 'Telefone', email: 'E-mail', buero: 'Morada' },
       ohneKnopf: true,
+      ohneKarte: true,
     },
     {
       art: 'text',

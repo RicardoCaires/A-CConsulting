@@ -474,7 +474,7 @@
 
 .schritte {
   display: grid;
-  gap: 1.25rem;
+  gap: 1.5rem;
   margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
   padding: 0;
   list-style: none;
@@ -495,9 +495,9 @@
   .schritte li:not(:last-child)::after {
     content: '';
     position: absolute;
-    top: 1.25rem;
-    left: 3.25rem;
-    right: -0.75rem;
+    top: 2rem;
+    left: 4rem;
+    right: 0;
     height: 2px;
     background-color: var(--ac-line);
   }
@@ -528,6 +528,53 @@
   font-size: var(--ac-small-size);
   line-height: 1.6;
   color: var(--ac-color-text-primary);
+}
+
+/* Der Schritt unter dem Zeiger hebt sich ab (Ricardo, 16.10.2026: «hier soll auch der jeweillige punkt beim
+   drüberwischen hervorgehoben werden»). Polster und Gegenrand gleichen sich aus – nichts verschiebt sich. */
+.schritte li {
+  position: relative;
+  margin: -0.75rem;
+  padding: 0.75rem;
+  border-radius: 18px;
+  transition:
+    background-color var(--ac-motion-base) var(--ac-motion-easing),
+    transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.schritte .nummer,
+.schritte .schrittTitel {
+  transition:
+    color var(--ac-motion-base) var(--ac-motion-easing),
+    background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .schritte li:hover {
+    background-color: var(--ac-color-background-tint);
+    transform: translateY(-2px);
+  }
+
+  .schritte li:hover .nummer {
+    color: var(--ac-color-white);
+    background-color: var(--ac-color-accent-green);
+  }
+
+  .schritte li:hover .schrittTitel {
+    color: var(--ac-color-accent-green);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .schritte li,
+  .schritte .nummer,
+  .schritte .schrittTitel {
+    transition: none;
+  }
+
+  .schritte li:hover {
+    transform: none;
+  }
 }
 
 /* ---- Vergleich --------------------------------------------------------------------- */
@@ -1096,9 +1143,38 @@
 
 @media (min-width: 56rem) {
   .kontakt {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
   }
+}
+
+.kontaktOhneKarte {
+  max-width: 44rem;
+}
+
+/* Adresse als Text, keine Links (16.10.2026) */
+.anschrift {
+  display: grid;
+  gap: 0.15rem;
+  margin: 1.25rem 0 0;
+  font-style: normal;
+  color: var(--ac-color-text-primary);
+}
+
+.anschriftTitel {
+  margin-bottom: 0.2rem;
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
+}
+
+.karteKontakt {
+  display: flex;
+  min-height: 20rem;
+}
+
+.karteKontakt > * {
+  flex: 1;
 }
 
 .angaben {

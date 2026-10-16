@@ -31,6 +31,7 @@ export const impressum: SeitenInhalt = {
       satz: 'Le téléphone et l’e-mail figurent au bas de chaque page et sur la page de contact.',
       beschriftungen: { telefon: 'Téléphone', email: 'E-mail', buero: 'Adresse' },
       ohneKnopf: true,
+      ohneKarte: true,
     },
     {
       art: 'text',
