@@ -530,3 +530,80 @@ Ricardo: «das soll nicht so trocken sein bitte schöner gestalten vielleicht au
 - Betriebshaftpflicht und Sachwerte
 - Buchhaltung und Abschluss
 
+## Checkliste Steuererklärung (16.10.2026)
+
+Ricardo: «hier soll man einen kurzen Fragebogen ausfüllen können und es soll dann eine checkliste erstellen mit den unterlagen die benötigt werden diese soll dann heruntergeladen werden oder per Mail versendet werden können». Auf `/steuern` unter «Sie bringen die Unterlagen, wir den Rest»; ersetzt den Satz «Die PDF-Checkliste ist in Vorbereitung.». Fragen und Unterlagen sind ein Vorschlag nach den üblichen Unterlagen zur Steuererklärung natürlicher Personen; Ricardo bestätigt.
+
+- AHV- oder Pensionskassenrente
+- Abrechnung über den Kapitalbezug
+- Alleinstehend
+- Als PDF herunterladen
+- Amtlicher Wert und Eigenmietwert der Liegenschaft
+- Angaben zu den Kindern und ihrer Ausbildung
+- Arbeitslosen-, Kranken- oder Unfalltaggeld
+- Beitragsverfügung der AHV-Ausgleichskasse
+- Belege zu Berufskosten, zum Beispiel das Abonnement für den Arbeitsweg
+- Belege zu Konten und Liegenschaften im Ausland
+- Belege zu den Unterhaltszahlungen
+- Belege zu selbst bezahlten Arzt- und Zahnarztkosten
+- Berufliche Weiterbildung
+- Bescheinigung der Hypothekarzinsen
+- Bescheinigung über den Rückkaufswert der Lebensversicherung
+- Bescheinigung über die Einzahlung in die Säule 3a
+- Bescheinigungen über Taggelder
+- Bestand der Kryptowährungen per 31. Dezember
+- Bestätigung der Pensionskasse über den Einkauf
+- Checkliste zusammenstellen
+- Datum des Umzugs und die neue Adresse
+- Depotauszug und Steuerverzeichnis der Bank
+- Diese Unterlagen brauche ich für die Steuererklärung:
+- Erbschaft oder Schenkung
+- Gab es weitere Ausgaben oder Ereignisse?
+- Haben Sie Kinder?
+- Haken Sie ab, was Sie schon bereitgelegt haben.
+- Ihre Antworten bleiben in Ihrem Browser.
+- Ihre Checkliste
+- Ihre Unterlagen für die Steuererklärung
+- Im eigenen Haus oder in der eigenen Wohnung
+- In die Pensionskasse eingekauft
+- In die Säule 3a eingezahlt
+- Ja, mit Kita oder Tagesschule
+- Jahresrechnung mit Bilanz und Erfolgsrechnung
+- Kapital aus Pensionskasse oder Säule 3a bezogen
+- Konto oder Liegenschaft im Ausland
+- Kontoauszüge per 31. Dezember mit Zinsausweis
+- Kredite oder Darlehen
+- Kryptowährungen
+- Lebensversicherung mit Rückkaufswert
+- Legen Sie diese Unterlagen bereit. Was fehlt, klären wir gerne im Gespräch.
+- Letzte definitive Veranlagung
+- Lohnausweis, bei Paaren von beiden
+- Lohnausweise oder Abrechnungen aus dem Nebenerwerb
+- Mehrere Antworten möglich.
+- Neu beginnen
+- Nichts davon
+- Per E-Mail senden
+- Rechnungen für Kita, Tagesschule oder Tagesfamilie
+- Rechnungen für Unterhalt und Renovationen
+- Rechnungen für die Weiterbildung
+- Rentenbescheinigungen von AHV und Pensionskasse
+- Schuldenausweis mit den bezahlten Zinsen
+- Selbst bezahlte Arzt- und Zahnarztkosten
+- Selbständige Tätigkeit
+- Sieben kurze Fragen, danach sehen Sie, welche Unterlagen Sie brauchen.
+- Spendenbestätigungen
+- Steuererklärung mit Zugangscode
+- Umzug in eine andere Gemeinde
+- Unterhaltszahlungen
+- Unterlagen zur Erbschaft oder Schenkung
+- Verheiratet oder eingetragene Partnerschaft
+- Vermögen und Schulden
+- Vorsorge und Versicherungen
+- Was besitzen Sie?
+- Was trifft für das letzte Jahr zu?
+- Weitere Abzüge und Ereignisse
+- Wertschriften oder ein Depot
+- Wie ist Ihre Situation?
+- Woher kommt Ihr Einkommen?
+- Zur Miete
+- Zusammengestellt auf ac-co.ch

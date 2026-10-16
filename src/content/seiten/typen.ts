@@ -138,6 +138,8 @@ export type Block =
   | (Kopf & {
       art: 'fluss'
       stufen: readonly { titel: string; punkte: readonly string[] }[]
+      /** Darunter der Fragebogen, der die persönliche Checkliste der Unterlagen erstellt (Steuern). */
+      checkliste?: boolean
       nachsatz?: Rich
       knoepfe?: readonly Knopf[]
     })

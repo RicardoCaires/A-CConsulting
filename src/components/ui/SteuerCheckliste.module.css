@@ -1,0 +1,314 @@
+/* Fragebogen und Checkliste zur Steuererklärung (16.10.2026). Farben nur aus den Tokens. */
+
+.karte {
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background-color: var(--ac-color-background-light);
+  border: 1px solid var(--ac-color-border-tint);
+  border-top: 5px solid var(--ac-color-accent-green);
+  border-radius: 22px;
+}
+
+.start {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+
+.frage {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.3rem, 1.1rem + 0.8vw, 1.65rem);
+  font-weight: var(--ac-display-weight);
+  line-height: 1.2;
+  color: var(--ac-color-primary-navy);
+}
+
+.frage:focus {
+  outline: none;
+}
+
+.satz {
+  margin: 0.4rem 0 0;
+  color: var(--ac-color-text-secondary);
+}
+
+.kopf {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
+}
+
+.stand {
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  color: var(--ac-color-accent-green);
+}
+
+.fortschritt {
+  height: 0.5rem;
+  overflow: hidden;
+  background-color: var(--ac-color-background-tint);
+  border-radius: 999px;
+}
+
+.fortschritt span {
+  display: block;
+  height: 100%;
+  background-color: var(--ac-color-accent-green);
+  border-radius: 999px;
+  transition: width 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wahl {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1.1rem;
+}
+
+@media (min-width: 40rem) {
+  .wahl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.25rem;
+  padding: 0.7rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  color: var(--ac-color-primary-navy);
+  cursor: pointer;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-radius: 14px;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.option:hover {
+  border-color: var(--ac-color-primary-navy);
+  transform: translateY(-1px);
+}
+
+.option[aria-pressed='true'] {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-accent-green);
+  border-color: var(--ac-color-accent-green);
+}
+
+.haken {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border: 2px solid var(--ac-color-border-tint);
+  border-radius: 6px;
+}
+
+.option[aria-pressed='true'] .haken {
+  border-color: var(--ac-color-white);
+}
+
+.option[aria-pressed='true'] .haken::after {
+  content: '✓';
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  margin-top: 1.4rem;
+}
+
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 3rem;
+  padding: 0.6rem 1.4rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--ac-color-white);
+  text-decoration: none;
+  cursor: pointer;
+  background-color: var(--ac-color-accent-green);
+  border: 1px solid var(--ac-color-accent-green);
+  border-radius: var(--ac-radius-button);
+  transition: background-color 180ms ease;
+}
+
+.knopf:hover {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-navy-deep);
+  border-color: var(--ac-color-navy-deep);
+}
+
+.knopf:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.knopfZweit {
+  color: var(--ac-color-accent-green);
+  background-color: var(--ac-color-white);
+}
+
+.leise {
+  min-height: 2.75rem;
+  padding: 0.4rem 0.2rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+.leise:hover {
+  text-decoration: underline;
+}
+
+.option:focus-visible,
+.knopf:focus-visible,
+.leise:focus-visible,
+.punkt input:focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 3px;
+}
+
+/* ---- Ergebnis --------------------------------------------------------------------------- */
+
+.ergebnisKopf {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.zaehler {
+  font-family: var(--ac-font-display);
+  font-size: 1.6rem;
+  font-weight: var(--ac-display-weight);
+  font-variant-numeric: tabular-nums;
+  color: var(--ac-color-accent-green);
+}
+
+.gruppen {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 48rem) {
+  .gruppen {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
+.gruppe {
+  min-width: 0;
+  margin: 0;
+  padding: 0.9rem 1rem 0.6rem;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-radius: 16px;
+}
+
+.gruppe legend {
+  float: left;
+  width: 100%;
+  margin-bottom: 0.35rem;
+  padding: 0;
+  font-family: var(--ac-font-display);
+  font-size: 1.1rem;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.punkt {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  clear: both;
+  padding: 0.5rem 0.25rem;
+  font-size: var(--ac-small-size);
+  line-height: 1.4;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 180ms ease;
+}
+
+.punkt:hover {
+  background-color: var(--ac-color-background-light);
+}
+
+.punkt + .punkt {
+  border-top: 1px solid var(--ac-color-background-tint);
+}
+
+.punkt input {
+  flex: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 0.05rem 0 0;
+  accent-color: var(--ac-color-accent-green);
+}
+
+.punkt:has(input:checked) span {
+  color: var(--ac-color-text-secondary);
+  text-decoration: line-through;
+  text-decoration-color: var(--ac-color-accent-green);
+}
+
+.hinweis {
+  margin: 1rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--ac-color-text-secondary);
+}
+
+/* Fliessender Wechsel zwischen den Fragen */
+.einblenden {
+  animation: einblenden 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes einblenden {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .einblenden {
+    animation: none;
+  }
+
+  .fortschritt span,
+  .option,
+  .knopf,
+  .punkt {
+    transition: none;
+  }
+}

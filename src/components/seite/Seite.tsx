@@ -9,6 +9,7 @@ import { Rechner3a } from '@/components/ui/Rechner3a'
 import { ZeitleisteKantone } from '@/components/seite/ZeitleisteKantone'
 import { RichText } from '@/components/ui/RichText'
 import { Standortkarte } from '@/components/ui/Standortkarte'
+import { SteuerCheckliste } from '@/components/ui/SteuerCheckliste'
 import { getPageContent } from '@/content/pages'
 import type { Block, Knopf, SeitenInhalt, Titel, Ziel } from '@/content/seiten/typen'
 import type { Locale } from '@/i18n/config'
@@ -448,6 +449,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
               </li>
             ))}
           </ol>
+          {block.checkliste ? <SteuerCheckliste /> : null}
           {block.nachsatz ? (
             <p className={styles.nachsatz}>
               <RichText value={block.nachsatz} />

@@ -2730,6 +2730,23 @@ gibt es noch keine.
 > - **Umrechnung im Rechner zugeklappt** (`<details>`); oben steht das geschätzte steuerbare Einkommen des Kantons,
 >   aufgeklappt die ganze Rechnung. Weiches Auf- und Zuklappen über `::details-content`, wo der Browser es kann.
 > - **Fristen:** Die Höhe gleitet beim Kantonswechsel, die Stationen erscheinen nacheinander.
+>
+> **Checkliste zur Steuererklärung (16.10.2026)** – Ricardo: «hier soll man einen kurzen Fragebogen ausfüllen können
+> und es soll dann eine checkliste erstellen mit den unterlagen die benötigt werden diese soll dann heruntergeladen
+> werden oder per Mail versendet werden können». Auf `/steuern` im Block «Sie bringen die Unterlagen, wir den Rest»
+> (`fluss` mit `checkliste: true`); der Satz «Die PDF-Checkliste ist in Vorbereitung.» ist entfallen.
+>
+> - Sieben Fragen, nur Knöpfe, Frage für Frage mit Fortschritt (`components/ui/SteuerCheckliste.tsx`, Fragen und
+>   Unterlagen in `src/content/steuer-checkliste.ts`, Auswahl in `src/lib/steuer-checkliste.ts`). **Die Zuordnung
+>   Frage → Unterlage ist ein Vorschlag**, Ricardo prüft sie fachlich.
+> - **PDF im Browser** (`src/lib/pdf-checkliste.ts`, ohne Bibliothek): A4 nach Corporate Design Klasse A – Logo
+>   (`public/logo/ac-logo-druck.jpg`, aus `ac-logo.png` auf Weiss gesetzt), Kopf- und Fusszeile, Ankreuzfelder,
+>   «Seite X von Y», Gruppen werden nicht über Seiten gerissen. Helvetica statt Arial (Standardschrift im PDF). Fusszeile
+>   aus `company.ts`. Visuell geprüft.
+> - **Per E-Mail** über `mailto:` – das eigene Mailprogramm öffnet sich mit der Liste, die Adresse wählt man selbst. Über
+>   A&C läuft nichts, gespeichert wird nichts.
+> - Die Frage nach selbst bezahlten Arztkosten ist nur ein Knopf im Browser und wird nirgends übermittelt; Abschnitt 7
+>   (keine Gesundheitsangaben in öffentlichen Formularen) betrifft Formulare, die senden.
 
 ## 10. Offene Punkte
 

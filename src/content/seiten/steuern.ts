@@ -39,7 +39,7 @@ export const steuern: SeitenInhalt = {
           punkte: ['Veranlagung nachkontrolliert', 'Rückmeldung, ob alles stimmt'],
         },
       ],
-      nachsatz: 'Die PDF-Checkliste ist in Vorbereitung.',
+      checkliste: true,
       knoepfe: [{ text: 'Termin vereinbaren', ziel: 'kontakt' }],
     },
     {
