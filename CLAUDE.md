@@ -2754,9 +2754,8 @@ gibt es noch keine.
 > - Download-Knopf und E-Mail-Auswahl im Browser sind entfallen; `lib/pdf-checkliste.ts` bleibt als Quelle für das CRM.
 > - ⚠️ **Die Datenschutzerklärung nennt dieses Formular noch nicht** (Kontaktangaben, Zweck Checkliste und Anruf,
 >   Speicherung im CRM bei Infomaniak in der Schweiz, Versand über Microsoft 365). Nur Ricardo ändert sie.
-> - ⚠️ **Briefpapier offen:** Ricardo wünscht das PDF auf dem A&C-Briefpapier «mit dem blauen Design». Im Skill
->   `ac-corporate-design` ist keines hinterlegt (`offene-punkte.md`: «Briefpapier … nicht vorhanden»); die Datei
->   liefert Ricardo.
+> - **Briefpapier: bleibt wie es ist.** Ricardo wollte zuerst das Briefpapier des Mandats und hat es am 16.10.2026
+>   zurückgenommen («lass das sieht trozdem gut aus»). Das PDF folgt weiter dem Corporate Design (Klasse A).
 > - Die Frage nach selbst bezahlten Arztkosten ist nur ein Knopf im Browser und wird nirgends übermittelt; Abschnitt 7
 >   (keine Gesundheitsangaben in öffentlichen Formularen) betrifft Formulare, die senden.
 
