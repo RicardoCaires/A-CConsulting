@@ -2789,6 +2789,18 @@ gibt es noch keine.
 >   raízes no Seeland. Com visão mais longe.»), Fachbegriffe (PT «nota de liquidação», «casco parcial», «recheio da
 >   casa», FR «PFPDT», VBV als «AFA») und die Abschlüsse der Inhaber.
 
+> - **Kontaktformular eingeschaltet (16.10.2026)** – Ricardo: «bitte auch kontaktformular entlich einschalten soll bei
+>   info landen und eine aufgabe im CRM auslösen». Es sendet als gewöhnliches HTML-Formular (ohne JavaScript) an
+>   `company.crm` + `/oeffentlich/api/kontakt`, **nicht mehr an den Worker** – dort legt das CRM eine Website-Anfrage und
+>   eine Aufgabe «Rückmelden: Kontaktformular» in «Rückrufe» an und schickt eine Mail an info@ («Antworten» geht an die
+>   Person). Zurück kommt 303 auf `#gesendet`/`#nicht-gesendet` der Kontaktseite in derselben Sprache. Spamschutz:
+>   Honigtopf, Herkunftsprüfung, Bremse je Adresse und E-Mail; **Turnstile ist entfallen**, damit lädt die Seite keinen
+>   fremden Dienst. `form-action` in `public/_headers` erlaubt dafür `https://crm.ac-co.ch`. Anliegen werden deutsch
+>   gesendet. `worker/index.js` mit `/api/kontakt` bleibt liegen, wird aber nicht mehr angesprochen.
+> - **Kontaktblock** (`kontakt`): Telefon und E-Mail als Knöpfe, Adresse als Text, rechts die Google-Karte
+>   (`ohneKarte` im Impressum). **Schritte** heben sich beim Zeigen ab.
+> - ⚠️ **Datenschutzerklärung:** nennt weder das Kontaktformular noch die Karte ausserhalb von «Über uns». Nur Ricardo ändert sie.
+
 ## 10. Offene Punkte
 
 Technik und Infrastruktur:

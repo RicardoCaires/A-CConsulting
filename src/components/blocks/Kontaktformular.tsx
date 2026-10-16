@@ -1,11 +1,9 @@
 import Image from 'next/image'
-import Script from 'next/script'
 
 import { company } from '@/lib/company'
 import type { Locale } from '@/i18n/config'
 import { getUi } from '@/i18n/messages/ui'
 import { path } from '@/i18n/routes'
-import { turnstileSiteKey } from '@/lib/turnstile'
 
 import styles from './Kontaktformular.module.css'
 
@@ -23,28 +21,20 @@ import styles from './Kontaktformular.module.css'
  * und die Kontaktflaechen `surface_field`, die Eingabefelder wieder
  * `background_tint`. Keine Schatten, keine Verlaeufe.
  *
- * **Seit dem 24.09.2026 sendet das Formular.** Es geht als gewoehnliches
- * `<form method="post">` an `/api/kontakt` — den Worker-Endpunkt in
- * `worker/index.js`, der die Anfrage ueber Microsoft 365 zustellt und nichts
- * speichert. Kein JavaScript noetig: Der Endpunkt antwortet mit einer
- * Weiterleitung auf `#gesendet` beziehungsweise `#nicht-gesendet`, und die
- * beiden Meldungen darueber werden ueber `:target` sichtbar. Sie stehen in
- * jeder Seite und sind nur unsichtbar — keine Bedingung, kein Skript.
- *
- * **Ohne Turnstile-Schluessel bleibt alles beim Alten.** Steht in
- * `src/lib/turnstile.ts` nichts, rendert der Knopf weiter abgeschaltet mit
- * `ui.formPending`. Das ist Absicht: Ohne Spamschutz weist der Endpunkt jede
- * Anfrage ab, und ein Knopf ins Leere waere schlimmer als ein sichtbar
- * abgeschalteter. Traegt die Datei den Schluessel, schaltet sich das Formular
- * von selbst frei.
+ * **Seit dem 16.10.2026 sendet das Formular an die Brokerverwaltung** (`company.crm`,
+ * `/oeffentlich/api/kontakt`), nicht mehr an den Worker: Dort entstehen eine
+ * Website-Anfrage und eine Aufgabe in «Rückrufe», und eine Mail geht an info@
+ * (Antworten an die Person). Kein JavaScript noetig: Das CRM antwortet mit einer
+ * Weiterleitung (303) auf `#gesendet` beziehungsweise `#nicht-gesendet` der
+ * Kontaktseite in derselben Sprache, und die beiden Meldungen werden ueber
+ * `:target` sichtbar. Spamschutz: Honigtopf, Herkunftspruefung und Bremse je
+ * Adresse und E-Mail im CRM — ohne Turnstile, also ohne fremden Dienst.
  *
  * **Telefon und E-Mail kommen aus `company.ts`** und stehen nirgends sonst
  * ausgeschrieben. Die beiden Piktogramme sind Ricardos gelieferte Dateien.
  *
  * **Das Honigtopf-Feld** (`website`) ist fuer Menschen unsichtbar und liegt
- * ausserhalb der Tabulatorreihenfolge; Abschnitt 7 verlangt es. Dazu kommt
- * **Cloudflare Turnstile** — der einzige fremde Dienst, den eine Seite laedt.
- * Er gehoert damit in die Datenschutzerklaerung; die aendert nur Ricardo.
+ * ausserhalb der Tabulatorreihenfolge; Abschnitt 7 verlangt es.
  *
  * **Drei versteckte Felder nennen die Herkunft** (Seite, Sprache,
  * Formulartyp), wie Abschnitt 7 es von Anfang an verlangt — damit spaetere
@@ -86,11 +76,14 @@ export type KontaktformularInhalt = {
 type Props = KontaktformularInhalt & {
   id?: string
   locale: Locale
+  /** Deutsche Werte der Anliegen, gleiche Reihenfolge: gesendet wird deutsch, angezeigt die Sprache der Seite. */
+  anliegenWerte?: readonly string[]
 }
 
 export function Kontaktformular({
   id,
   locale,
+  anliegenWerte,
   eyebrow,
   heading,
   lead,
@@ -101,9 +94,11 @@ export function Kontaktformular({
   const ui = getUi(locale)
   const headingId = id ? `${id}-titel` : 'kontaktformular-titel'
   const formularTitelId = `${headingId}-formular`
-  const hinweisId = `${headingId}-hinweis`
-  // Ohne Spamschutz nimmt der Endpunkt nichts an — dann bleibt der Knopf aus.
-  const sendebereit = turnstileSiteKey !== ''
+  // Seit 16.10.2026 eingeschaltet (Ricardo: «bitte auch kontaktformular entlich einschalten soll bei info landen und
+  // eine aufgabe im CRM auslösen»). Das Formular sendet ohne JavaScript direkt an die Brokerverwaltung
+  // (`company.crm`, eigener Server in der Schweiz): Dort entstehen Website-Anfrage und Aufgabe, und eine Mail geht an
+  // info@. Zurück kommt eine Weiterleitung auf #gesendet oder #nicht-gesendet. Spamschutz: Honigtopf und Bremse je
+  // Adresse und E-Mail im CRM; Turnstile wird damit nicht gebraucht und nicht geladen.
 
   return (
     <div className={styles.flaeche}>
@@ -163,7 +158,7 @@ export function Kontaktformular({
             className={styles.formular}
             aria-labelledby={formularTitelId}
             method="post"
-            action="/api/kontakt"
+            action={`${company.crm}/oeffentlich/api/kontakt`}
           >
             {/* Die beiden Rueckmeldungen. Sie stehen immer da und werden ueber
                 `:target` sichtbar — der Endpunkt leitet auf die Sprungmarke
@@ -212,8 +207,10 @@ export function Kontaktformular({
                   <option value="" disabled>
                     {formular.anliegenPlatzhalter}
                   </option>
-                  {formular.anliegenWahl.map((wahl) => (
-                    <option key={wahl}>{wahl}</option>
+                  {formular.anliegenWahl.map((wahl, i) => (
+                    <option key={wahl} value={anliegenWerte?.[i] ?? wahl}>
+                      {wahl}
+                    </option>
                   ))}
                 </select>
               </p>
@@ -258,42 +255,13 @@ export function Kontaktformular({
               </span>
             </label>
 
-            {sendebereit && (
-              <>
-                {/* Cloudflare Turnstile. Der einzige fremde Dienst, den eine
-                    Seite laedt — und nur diese eine. */}
-                <div
-                  className={`cf-turnstile ${styles.turnstile}`}
-                  data-sitekey={turnstileSiteKey}
-                />
-                <Script
-                  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-                  strategy="afterInteractive"
-                />
-              </>
-            )}
-
             <div className={styles.absendeReihe}>
-              {sendebereit ? (
-                <button className={styles.knopf} type="submit">
-                  {formular.knopf}
-                </button>
-              ) : (
-                /* Ohne Turnstile-Schluessel weist der Endpunkt jede Anfrage
-                   ab. Dann steht der Knopf sichtbar abgeschaltet da. */
-                <button className={styles.knopf} type="submit" disabled aria-describedby={hinweisId}>
-                  {formular.knopf}
-                  <span className={styles.folgt}>{ui.pageComing.badge}</span>
-                </button>
-              )}
+              <button className={styles.knopf} type="submit">
+                {formular.knopf}
+              </button>
               <p className={styles.vertraulich}>{formular.vertraulich}</p>
             </div>
 
-            {!sendebereit && (
-              <p id={hinweisId} className={styles.wartet}>
-                {ui.formPending}
-              </p>
-            )}
           </form>
         </section>
       </div>

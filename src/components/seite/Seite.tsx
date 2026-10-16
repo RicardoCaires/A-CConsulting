@@ -768,6 +768,7 @@ function Formular({ id, locale }: { id?: string; locale: Locale }) {
     <Kontaktformular
       id={id ?? f.id}
       locale={locale}
+      anliegenWerte={deutsch.formular.anliegenWahl}
       eyebrow=""
       heading={f.heading}
       lead={f.lead}
