@@ -44,6 +44,8 @@ export const steuerCheckliste: Uebersetzt<typeof DE> = {
   dankeTitelOhneMail: 'Obrigado, recebemos os seus dados',
   dankeSatzOhneMail:
     'Neste momento não foi possível enviar o e-mail com a lista de verificação. Telefonamos-lhe e enviamo-la.',
+  dankeTitelBereits: 'Obrigado, recebemos os seus dados',
+  dankeSatzBereits: 'Já lhe enviámos hoje uma lista para este endereço de e-mail. Vamos telefonar-lhe para falar da sua declaração de impostos.',
 
   fragen: [
     {

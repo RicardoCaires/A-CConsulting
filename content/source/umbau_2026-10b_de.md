@@ -778,3 +778,9 @@ Für die Übersetzung unverändert aus `Rechner3a.tsx` nach `src/content/rechner
 - {gemeinde}, Kanton {kanton}
 - Ihre Gemeinde
 - Säule 3a besprechen
+
+
+## Checkliste: schon heute gesendet (16.10.2026)
+
+- Vielen Dank, Ihre Angaben sind bei uns
+- Wir haben Ihnen heute bereits eine Checkliste an diese E-Mail-Adresse gesendet. Wir rufen Sie an und besprechen Ihre Steuererklärung.

@@ -56,6 +56,8 @@ export const steuerCheckliste = {
   dankeListe: 'Das steht darauf:',
   dankeTitelOhneMail: 'Vielen Dank, Ihre Angaben sind bei uns',
   dankeSatzOhneMail: 'Die E-Mail mit der Checkliste konnte gerade nicht versendet werden. Wir rufen Sie an und senden sie Ihnen.',
+  dankeTitelBereits: 'Vielen Dank, Ihre Angaben sind bei uns',
+  dankeSatzBereits: 'Wir haben Ihnen heute bereits eine Checkliste an diese E-Mail-Adresse gesendet. Wir rufen Sie an und besprechen Ihre Steuererklärung.',
 
   fragen: [
     {

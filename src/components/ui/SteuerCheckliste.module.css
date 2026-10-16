@@ -209,22 +209,31 @@
   color: var(--ac-color-accent-green);
 }
 
+/* Zwei Spalten, in denen die Karten nachfliessen: keine Lücke unter einer kurzen Karte (Ricardo, 16.10.2026:
+   «es soll alles bündig sein»). Gelesen wird spaltenweise von oben nach unten. */
 .gruppen {
-  display: grid;
-  gap: 1rem;
   margin-top: 1.25rem;
+  column-gap: 1rem;
+}
+
+.gruppen > * {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+.gruppen > *:last-child {
+  margin-bottom: 0;
 }
 
 @media (min-width: 48rem) {
   .gruppen {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: start;
+    columns: 2;
   }
 }
 
 .gruppe {
+  display: block;
   min-width: 0;
-  margin: 0;
   padding: 0.9rem 1rem 0.6rem;
   background-color: var(--ac-color-white);
   border: 1px solid var(--ac-color-border-tint);

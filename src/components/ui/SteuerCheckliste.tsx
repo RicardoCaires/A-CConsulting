@@ -41,6 +41,7 @@ export function SteuerCheckliste({ datenschutzHref, locale = 'de' }: { datenschu
   const [fehler, setFehler] = useState<string | null>(null)
   const [sendet, setSendet] = useState(false)
   const [versendet, setVersendet] = useState(true)
+  const [bereits, setBereits] = useState(false)
   const beginn = useRef(0)
   const titel = useRef<HTMLHeadingElement>(null)
 
@@ -82,9 +83,10 @@ export function SteuerCheckliste({ datenschutzHref, locale = 'de' }: { datenschu
           sprache: locale,
         }),
       })
-      const j = (await r.json().catch(() => ({}))) as { fehler?: string; versendet?: boolean }
+      const j = (await r.json().catch(() => ({}))) as { fehler?: string; versendet?: boolean; bereits?: boolean }
       if (!r.ok) throw new Error(j.fehler || T.fehlerServer)
       setVersendet(j.versendet !== false)
+      setBereits(j.bereits === true)
       gehe('gesendet')
     } catch (err) {
       setFehler(err instanceof Error && err.message !== 'Failed to fetch' ? err.message : T.fehlerServer)
@@ -191,9 +193,9 @@ export function SteuerCheckliste({ datenschutzHref, locale = 'de' }: { datenschu
             </span>
             <div>
               <h3 ref={titel} tabIndex={-1} className={styles.frage}>
-                {versendet ? T.dankeTitel : T.dankeTitelOhneMail}
+                {versendet ? T.dankeTitel : bereits ? T.dankeTitelBereits : T.dankeTitelOhneMail}
               </h3>
-              <p className={styles.satz}>{versendet ? T.dankeSatz : T.dankeSatzOhneMail}</p>
+              <p className={styles.satz}>{versendet ? T.dankeSatz : bereits ? T.dankeSatzBereits : T.dankeSatzOhneMail}</p>
             </div>
           </div>
           <p className={styles.listeTitel}>{T.dankeListe}</p>
