@@ -277,8 +277,17 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
         </fieldset>
 
         {umrechnung && abz ? (
-          <div className={styles.umrechnung} aria-live="polite">
-            <p className={styles.umrechnungTitel}>So schätzen wir Ihr steuerbares Einkommen</p>
+          // Standardmässig zugeklappt (Ricardo, 16.10.2026); oben steht nur das Ergebnis
+          <details className={styles.umrechnung}>
+            <summary className={styles.umrechnungKopf}>
+              <span className={styles.umrechnungTitel}>Steuerbares Einkommen, geschätzt</span>
+              <span className={styles.umrechnungWert}>
+                <FliessendeZahl wert={umrechnung.kanton.steuerbar} format={chf} />
+                <span className={styles.umrechnungOrt}>{kantonName}</span>
+              </span>
+              <span className={styles.umrechnungZeichen} aria-hidden="true" />
+            </summary>
+            <div className={styles.umrechnungInhalt}>
             <dl className={styles.tabelle}>
               <div>
                 <dt>Bruttolohn</dt>
@@ -349,7 +358,8 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
               Unfallversicherung 1 % des Lohns, Fahrkosten CHF 800, keine weiteren Abzüge.
               {abz.jahr < STEUERJAHR ? ` Abzüge des Kantons ${kantonName} teilweise Stand ${abz.jahr}.` : ''}
             </p>
-          </div>
+            </div>
+          </details>
         ) : null}
 
         <div className={styles.gruppe}>

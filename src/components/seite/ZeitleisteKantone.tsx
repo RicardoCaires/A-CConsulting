@@ -1,6 +1,6 @@
 'use client'
 
-import { useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 
 import { fristenKantone, type Station } from '@/content/fristen-kantone'
 
@@ -40,6 +40,16 @@ function Leiste({ titel, stationen }: { titel: string; stationen: readonly Stati
 export function ZeitleisteKantone({ titelPrivat, titelUnternehmen, beschriftung }: { titelPrivat: string; titelUnternehmen: string; beschriftung: string }) {
   const [kuerzel, setKuerzel] = useState(VORGABE)
   const id = useId()
+  // Die Höhe gleitet zum neuen Inhalt, statt zu springen (Ricardo, 16.10.2026: «fliessenden übergang»)
+  const innen = useRef<HTMLDivElement>(null)
+  const [hoehe, setHoehe] = useState<number | null>(null)
+  useEffect(() => {
+    const el = innen.current
+    if (!el || typeof ResizeObserver === 'undefined') return
+    const ro = new ResizeObserver(() => setHoehe(el.offsetHeight))
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
   const k = fristenKantone.kantone.find((x) => x.kuerzel === kuerzel) ?? fristenKantone.kantone[0]
   if (!k) return null
 
@@ -55,12 +65,16 @@ export function ZeitleisteKantone({ titelPrivat, titelUnternehmen, beschriftung 
           ))}
         </select>
       </div>
-      {/* key: Beim Kantonswechsel neu einblenden statt springen */}
+      <div className={styles.gleiten} style={hoehe != null ? { height: hoehe } : undefined}>
+      <div ref={innen}>
+      {/* key: Beim Kantonswechsel neu einblenden statt springen; die Stationen erscheinen nacheinander */}
       <div key={k.kuerzel} className={`${styles.reihen} ${styles.einblenden}`} aria-live="polite">
         <Leiste titel={titelPrivat} stationen={k.privat.stationen} />
         {k.privat.nachsatz ? <p className={styles.nachsatz}>{k.privat.nachsatz}</p> : null}
         <Leiste titel={titelUnternehmen} stationen={k.unternehmen.stationen} />
         {k.unternehmen.nachsatz ? <p className={styles.nachsatz}>{k.unternehmen.nachsatz}</p> : null}
+      </div>
+      </div>
       </div>
     </>
   )

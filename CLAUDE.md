@@ -2715,6 +2715,21 @@ gibt es noch keine.
 > - **Fliessende Übergänge** (`components/ui/Fliessend.tsx`): Zahlen laufen zum neuen Wert, Balken gleiten, die
 >   Zeitleiste blendet beim Kantonswechsel über. Unter «Bewegung reduzieren» springt alles sofort.
 > - `src/lib/steuer-3a.ts` liefert nur noch Steuerjahr und Höchstbeträge 3a; seine Berner Tarife sind ersetzt.
+>
+> **Lebendiger und schlanker (16.10.2026)** – Ricardo: «das soll nicht so trocken sein bitte schöner gestalten
+> vielleicht auch weniger info nur das essenzielle hauptgeschäft», dasselbe für «Für Privatpersonen und Firmen»,
+> «die bruttolohn in nettolohn berechnung soll zugeklappt sein … aber soll aufklapbar sein», «bei fristen und
+> gebühren soll es auch einen fliessenden übergang geben».
+>
+> - **Listenkarten** (`listen`, überall): farbiger Kopf in Source Serif, abwechselnd Grün, Navy, Grau (`data-ton`),
+>   Einträge mit Haken im Kreis, verlinkte Einträge mit rundem Pfeil, die Karte hebt sich beim Zeigen; optional ein
+>   Knopf am Fuss (`knopf`).
+> - **Startseite «Was wir für Sie übernehmen»:** nur noch drei Karten mit je drei Punkten (Versicherungen Privat,
+>   Versicherungen Unternehmen, Treuhand und Steuern); «Ihre Situation» steht dort nicht mehr. Texte als Vorschlag
+>   in `umbau_2026-10b_de.md`.
+> - **Umrechnung im Rechner zugeklappt** (`<details>`); oben steht das geschätzte steuerbare Einkommen des Kantons,
+>   aufgeklappt die ganze Rechnung. Weiches Auf- und Zuklappen über `::details-content`, wo der Browser es kann.
+> - **Fristen:** Die Höhe gleitet beim Kantonswechsel, die Stationen erscheinen nacheinander.
 
 ## 10. Offene Punkte
 

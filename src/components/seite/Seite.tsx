@@ -65,6 +65,9 @@ function knopfHref(k: Knopf, locale: Locale): { href: string; extern?: boolean }
   return { href: zielHref(k, locale) }
 }
 
+/** Farbton der Listenkarten, abwechselnd (Corporate Design: Grün, Navy, Grau). */
+const TOENE = ['gruen', 'navy', 'grau'] as const
+
 function Knoepfe({ knoepfe, locale }: { knoepfe?: readonly Knopf[]; locale: Locale }) {
   if (!knoepfe?.length) return null
   return (
@@ -201,8 +204,8 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
         <>
           <Kopf block={block} h1={h1} nr={nr} />
           <div className={styles.listen} data-anzahl={block.listen.length}>
-            {block.listen.map((liste) => (
-              <nav key={liste.titel} id={liste.id} className={styles.liste} aria-label={liste.titel}>
+            {block.listen.map((liste, li) => (
+              <nav key={liste.titel} id={liste.id} className={styles.liste} aria-label={liste.titel} data-ton={TOENE[li % TOENE.length]}>
                 <h3 className={styles.listeTitel}>
                   {liste.ziel ? <a href={zielHref(liste.ziel, locale)}>{liste.titel}</a> : liste.titel}
                 </h3>
@@ -210,13 +213,16 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
                   {liste.eintraege.map((e) => {
                     const inhalt = (
                       <>
-                        <span>
+                        <span className={styles.listeHaken} aria-hidden="true">
+                          ✓
+                        </span>
+                        <span className={styles.listeText}>
                           {e.text}
                           {e.zusatz ? <span className={styles.zusatz}>{e.zusatz}</span> : null}
                         </span>
                         {e.ziel ? (
                           <span className={styles.chevron} aria-hidden="true">
-                            ›
+                            →
                           </span>
                         ) : null}
                       </>
@@ -232,6 +238,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
                     )
                   })}
                 </ul>
+                {liste.knopf ? <Knoepfe knoepfe={[liste.knopf]} locale={locale} /> : null}
               </nav>
             ))}
           </div>

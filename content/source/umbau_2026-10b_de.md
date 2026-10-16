@@ -515,3 +515,18 @@ Ricardo: «ich will das man hier noch sein Bruttoeinkommen ungefähr in steuerba
 - Jura
 - CHF 31
 - Auf Papier gilt die Frist ohne Gesuch bis 30. Juni.
+
+## Leistungen auf der Startseite gekürzt (16.10.2026)
+
+Ricardo: «das soll nicht so trocken sein bitte schöner gestalten vielleicht auch weniger info nur das essenzielle hauptgeschäft». Drei Karten mit je drei Punkten; «Ihre Situation» entfällt auf der Startseite. Vorschlag, Ricardo bestätigt.
+
+- Versicherungen für Privatpersonen
+- Krankenkasse und Zusatzversicherung
+- Hausrat, Haftpflicht und Auto
+- Vorsorge und Säule 3a
+- Mehr erfahren
+- Versicherungen für Unternehmen
+- BVG und UVG
+- Betriebshaftpflicht und Sachwerte
+- Buchhaltung und Abschluss
+
