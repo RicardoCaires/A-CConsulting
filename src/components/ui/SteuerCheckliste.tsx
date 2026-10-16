@@ -2,8 +2,12 @@
 
 import { useRef, useState, type FormEvent } from 'react'
 
-import { steuerCheckliste as T } from '@/content/steuer-checkliste'
+import { steuerCheckliste as fr } from '@/content/fr/steuer-checkliste'
+import { steuerCheckliste as pt } from '@/content/pt/steuer-checkliste'
+import { steuerCheckliste as de } from '@/content/steuer-checkliste'
+import type { Locale } from '@/i18n/config'
 import { company } from '@/lib/company'
+import { nachSprache } from '@/lib/sprache'
 import { checklisteFuer } from '@/lib/steuer-checkliste'
 
 import styles from './SteuerCheckliste.module.css'
@@ -27,7 +31,9 @@ type Kontakt = { vorname: string; nachname: string; telefon: string; email: stri
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
-export function SteuerCheckliste({ datenschutzHref }: { datenschutzHref: string }) {
+export function SteuerCheckliste({ datenschutzHref, locale = 'de' }: { datenschutzHref: string; locale?: Locale }) {
+  // Seit 16.10.2026 in DE, FR und PT; das CRM versendet Liste und E-Mail in derselben Sprache
+  const T = nachSprache(locale, { de, fr, pt })
   const [phase, setPhase] = useState<Phase>('start')
   const [antworten, setAntworten] = useState<Record<string, string[]>>({})
   const [kontakt, setKontakt] = useState<Kontakt>({ vorname: '', nachname: '', telefon: '', email: '' })
@@ -40,7 +46,7 @@ export function SteuerCheckliste({ datenschutzHref }: { datenschutzHref: string 
 
   const n = T.fragen.length
   const gewaehlt = Object.values(antworten).flat()
-  const liste = checklisteFuer(new Set(gewaehlt))
+  const liste = checklisteFuer(new Set(gewaehlt), T)
 
   const gehe = (p: Phase) => {
     setPhase(p)
@@ -73,6 +79,7 @@ export function SteuerCheckliste({ datenschutzHref }: { datenschutzHref: string 
           website: honig,
           dauer_ms: Date.now() - beginn.current,
           seite: window.location.pathname,
+          sprache: locale,
         }),
       })
       const j = (await r.json().catch(() => ({}))) as { fehler?: string; versendet?: boolean }

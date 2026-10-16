@@ -5,7 +5,9 @@ import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'rea
 
 import { Kostenring, Zeichen } from '@/components/ui/PortalAnsicht'
 import { OfferteDemo, VertragDemo, WahlFeld } from '@/components/ui/PortalDemoFormulare'
-import { portalDemo as D, portalRahmen } from '@/content/seiten/portal-beispiel'
+import { DemoKontext, demoText, useDemo } from '@/components/ui/PortalDemoText'
+import { portalDemo, portalRahmen } from '@/content/seiten/portal-beispiel'
+import type { Locale } from '@/i18n/config'
 
 import a from './PortalAnsicht.module.css'
 import s from './PortalDemo.module.css'
@@ -22,9 +24,9 @@ import s from './PortalDemo.module.css'
  * gespeichert; neu Laden stellt den Anfang wieder her. Alle Angaben sind erfunden.
  */
 
-type Seite = (typeof D.navigation)[number]['seite']
-type Formular = (typeof D.anfragen.formulare)[number]['formular']
-type Police = (typeof D.policen)[number]
+type Seite = (typeof portalDemo.navigation)[number]['seite']
+type Formular = (typeof portalDemo.anfragen.formulare)[number]['formular']
+type Police = (typeof portalDemo.policen)[number]
 type Anfrage = { betreff: string; datum: string; stand: string; art: 'offen' | 'navy' | 'gruen'; text: string }
 
 const MARKE = { offen: a.marke, navy: `${a.marke} ${a.markeNavy}`, gruen: `${a.marke} ${a.markeGruen}` }
@@ -38,6 +40,7 @@ const heute = () => {
 }
 
 function Feld({ id, titel, frei, hilfe, children }: { id: string; titel: string; frei?: boolean; hilfe?: string; children: ReactNode }) {
+  const D = useDemo()
   return (
     <div className={s.feld}>
       <label htmlFor={id}>
@@ -50,7 +53,8 @@ function Feld({ id, titel, frei, hilfe, children }: { id: string; titel: string;
   )
 }
 
-export function PortalDemo() {
+export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
+  const D = demoText(locale)
   const [seite, setSeite] = useState<Seite>('start')
   const [policeId, setPoliceId] = useState<string | null>(null)
   const [formular, setFormular] = useState<Formular | null>(null)
@@ -514,6 +518,7 @@ export function PortalDemo() {
           : angaben()
 
   return (
+    <DemoKontext.Provider value={D}>
     <div className={`${a.fenster} ${s.demo}`} role="region" aria-label={D.band}>
       <div className={a.leiste} aria-hidden="true">
         <span className={a.punkte}>
@@ -559,5 +564,6 @@ export function PortalDemo() {
         </div>
       </div>
     </div>
+    </DemoKontext.Provider>
   )
 }

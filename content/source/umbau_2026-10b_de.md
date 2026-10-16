@@ -637,3 +637,144 @@ Ricardo: «damit man die Checkliste erhält muss man Name Vorname Telefonnummer 
 - Wir verwenden Ihre Angaben, um Ihnen die Checkliste zu senden und Sie wegen Ihrer Steuererklärung anzurufen. Mehr dazu in der 
 - Wird gesendet …
 - Wohin dürfen wir Ihre Checkliste senden?
+
+## Offertanfrage: herausgelöste Texte (16.10.2026)
+
+Für die Übersetzung unverändert aus `OffertAssistent.tsx` nach `src/content/offerte-assistent-texte.ts` verschoben. `{…}` sind Platzhalter, die die Seite füllt.
+
+- Sie erreichen uns auch direkt: {telefon} oder {email}.
+- Fortschritt
+- Frage {n} von {gesamt}
+- Kontakt {n} von {gesamt}
+- Letzter Schritt
+- Zurück
+- (nötig)
+- Die Fragen lassen sich gerade nicht laden.
+- Bitte versuchen Sie es später noch einmal.
+- Die Fragen werden geladen …
+- Für wen wünschen Sie eine Offerte?
+- Für mich privat
+- Fahrzeug, Hausrat, Haftpflicht, Rechtsschutz, Reise, Gebäude
+- Für mein Unternehmen
+- UVG, Krankentaggeld, BVG, Haftpflicht, Sachwerte, Cyber, Fahrzeuge
+- Wofür wünschen Sie eine Offerte?
+- Wählen Sie eine Versicherung. Weitere besprechen wir gerne im Gespräch.
+- ja
+- nein
+- Marke
+- Modell
+- Ausführung, falls bekannt
+- zum Beispiel 2.0 TDI
+- Bitte wählen
+- Diese Angabe brauchen wir für die Offerte. Sie können sie aber auch im Gespräch nennen.
+- Weiter
+- Überspringen
+- Rest im Gespräch klären
+- Ihre Kontaktangaben
+- Für welche Firma, und wer ist Ansprechperson?
+- Wie heissen Sie?
+- Firma
+- Anrede
+- Frau
+- Herr
+- Vorname
+- Nachname
+- Wo ist Ihr Betrieb?
+- Wo wohnen Sie?
+- Die Prämie hängt oft vom Ort ab.
+- Strasse und Nummer
+- PLZ
+- Ort
+- Wie erreichen wir Sie?
+- E-Mail
+- Telefon
+- Bitte rufen Sie mich an.
+- Wann erreichen wir Sie am besten?
+- vormittags
+- über Mittag
+- nachmittags
+- gegen Abend
+- jederzeit
+- Fast fertig
+- Möchten Sie uns noch etwas mitteilen?
+- Bemerkung
+- Bitte keine Gesundheitsangaben und keine Angaben zu weiteren Personen.
+- In welcher Sprache möchten Sie beraten werden?
+- Deutsch
+- Französisch
+- Portugiesisch
+- Zusammenfassung
+- Ihre Offertanfrage {sparte}
+- Kontakt
+- Rückruf gewünscht
+- Angaben
+- Alles Weitere klären wir im Gespräch.
+- Ihre Angaben gehen verschlüsselt an unseren eigenen Server in der Schweiz und werden nur verwendet, um Ihre Anfrage zu beantworten. Mehr dazu in der {link}.
+- Datenschutzerklärung
+- Website
+- Wird gesendet …
+- Anfrage senden
+- Vielen Dank. Ihre Anfrage ist bei uns eingegangen.
+- Wir melden uns bei Ihnen, in der Regel innerhalb eines Werktags.
+- Bitte geben Sie den Namen der Firma an.
+- Bitte geben Sie Ihren Nachnamen an.
+- Bitte vier Ziffern, zum Beispiel 2558.
+- Bitte geben Sie den Ort an.
+- Bitte geben Sie eine gültige E-Mail-Adresse an.
+- Für einen Rückruf brauchen wir Ihre Telefonnummer.
+- Die Anfrage konnte nicht gesendet werden.
+- Die Verbindung zu unserem Server hat nicht geklappt.
+
+## Rechner Säule 3a: herausgelöste Texte (16.10.2026)
+
+Für die Übersetzung unverändert aus `Rechner3a.tsx` nach `src/content/rechner3a-texte.ts` verschoben. `{…}` sind Platzhalter, die die Seite füllt.
+
+- Alleinstehend
+- Alleinstehend mit Kindern
+- Verheiratet
+- Keine
+- Reformiert
+- Katholisch
+- Christkatholisch
+- Ihre Situation
+- Kinder
+- 4 und mehr
+- Wohnort
+- Kanton
+- Gemeinde
+- Berechnet für {gemeinde}. Wählen Sie Ihre Gemeinde aus der Liste.
+- Ihr Einkommen
+- Bruttolohn
+- Steuerbares Einkommen
+- Bruttolohn pro Jahr
+- Er steht auf Ihrem Lohnausweis, Ziffer 8.
+- Es steht in Ihrer letzten Veranlagung. Wir rechnen damit bei Bund und Kanton.
+- Sind Sie einer Pensionskasse angeschlossen?
+- Ja, als Angestellte
+- Nein
+- Steuerbares Einkommen, geschätzt
+- AHV, IV, EO, ALV und Unfall
+- Pensionskasse, geschätzt
+- Nettolohn
+- Abzug
+- Bund
+- Berufs- und Fahrkosten
+- Versicherungsprämien
+- Kinder und persönliche Abzüge
+- Ohne die Einzahlung in die Säule 3a. Angenommen:
+- ein Erwerbseinkommen,
+- Pensionskasse 6.5 % und Unfallversicherung 1 % des Lohns, Fahrkosten CHF 800, keine weiteren Abzüge.
+- Abzüge des Kantons {kanton} teilweise Stand {jahr}.
+- Einzahlung in die Säule 3a
+- Höchstens {betrag} im Jahr {jahr}.
+- Höchstens 20 % des Erwerbseinkommens, maximal {betrag} im Jahr {jahr}.
+- Kirchensteuer
+- So viel Steuern sparen Sie ungefähr
+- im Steuerjahr {jahr}
+- Bundessteuer
+- Kanton und Gemeinde {gemeinde}
+- Die Steuerdaten lassen sich gerade nicht laden. Bitte versuchen Sie es später noch einmal.
+- Schätzung für {ort}, Steuerjahr {jahr}, nach den Tarifen und Steuerfüssen der Eidgenössischen Steuerverwaltung. Massgebend ist Ihre Veranlagung.
+- {gemeinde}, Kanton {kanton}
+- Ihre Gemeinde
+- Säule 3a besprechen

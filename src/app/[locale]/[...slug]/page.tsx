@@ -73,19 +73,19 @@ export function generateStaticParams() {
       if (key === 'home') continue
       // Eine Seite wird erzeugt, wenn es Inhalt gibt — nach neuem Schema
       // (Vorlage B) oder nach dem bisherigen Blockmodell.
+      // Seiten im Baukasten (15.10.2026), auch FR und PT (16.10.2026)
+      if (getSeite(locale, key)) {
+        params.push({ locale, slug: pages[key].slug[locale].split('/') })
+        continue
+      }
+
       if (key === 'ueberUns') {
         if (!getUeberuns(locale)) continue
         params.push({ locale, slug: pages[key].slug[locale].split('/') })
         continue
       }
 
-      // Seiten im Baukasten (15.10.2026)
-      if (getSeite(locale, key)) {
-        params.push({ locale, slug: pages[key].slug[locale].split('/') })
-        continue
-      }
-
-      // Offertanfrage: eigene Seite ohne Inhaltsdatei, nur Deutsch
+      // Offertanfrage: eigene Seite ohne Inhaltsdatei; Texte in OFFERTE_SEITE
       if (key === 'offerte') {
         params.push({ locale, slug: pages[key].slug[locale].split('/') })
         continue
@@ -104,6 +104,34 @@ export function generateStaticParams() {
   }
 
   return params
+}
+
+/** Texte der Offertanfrage, die keine Inhaltsdatei hat (FR und PT seit 16.10.2026). */
+const OFFERTE_SEITE: Record<Locale, { titel: string; beschreibung: string; satz: string; ohneSkript: string; oder: string }> = {
+  de: {
+    titel: 'Offerte anfragen',
+    beschreibung:
+      'Offerte für Ihre Versicherung anfragen: Frage für Frage, jede freiwillig. A&C Consulting in Aegerten meldet sich in der Regel innerhalb eines Werktags.',
+    satz: 'Jede Frage ist freiwillig. Was offen bleibt, klären wir im Gespräch.',
+    ohneSkript: 'Für die Offertanfrage braucht es JavaScript. Sie erreichen uns auch direkt:',
+    oder: 'oder',
+  },
+  fr: {
+    titel: 'Demander une offre',
+    beschreibung:
+      'Demander une offre pour votre assurance : question par question, chacune facultative. A&C Consulting à Aegerten vous répond en règle générale dans un délai d’un jour ouvrable.',
+    satz: 'Chaque question est facultative. Ce qui reste ouvert, nous le clarifions lors de l’entretien.',
+    ohneSkript: 'La demande d’offre nécessite JavaScript. Vous pouvez aussi nous joindre directement :',
+    oder: 'ou',
+  },
+  pt: {
+    titel: 'Pedir proposta',
+    beschreibung:
+      'Peça uma proposta para o seu seguro: pergunta a pergunta, todas facultativas. A A&C Consulting, em Aegerten, responde em regra no prazo de um dia útil.',
+    satz: 'Todas as perguntas são facultativas. O que ficar em aberto, esclarecemos na conversa.',
+    ohneSkript: 'O pedido de proposta precisa de JavaScript. Também nos pode contactar diretamente:',
+    oder: 'ou',
+  },
 }
 
 type PageProps = {
@@ -174,9 +202,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   if (key === 'offerte') {
-    const titel = 'Offerte anfragen'
-    const beschreibung =
-      'Offerte für Ihre Versicherung anfragen: Frage für Frage, jede freiwillig. A&C Consulting in Aegerten meldet sich in der Regel innerhalb eines Werktags.'
+    const { titel, beschreibung } = OFFERTE_SEITE[locale]
     return {
       title: titel,
       description: beschreibung,
@@ -302,19 +328,17 @@ export default async function ContentPage({ params }: PageProps) {
           <div className="ac-container">
             <header className={assistentStyles.seitenkopf}>
               <h1 id="offerte-titel" className={assistentStyles.seitentitel}>
-                Offerte anfragen
+                {OFFERTE_SEITE[locale].titel}
               </h1>
-              <p className={assistentStyles.seitensatz}>
-                Jede Frage ist freiwillig. Was offen bleibt, klären wir im Gespräch.
-              </p>
+              <p className={assistentStyles.seitensatz}>{OFFERTE_SEITE[locale].satz}</p>
             </header>
             <noscript>
               <p>
-                Für die Offertanfrage braucht es JavaScript. Sie erreichen uns auch direkt: {company.phone} oder{' '}
-                {company.email}.
+                {OFFERTE_SEITE[locale].ohneSkript} {company.phone} {OFFERTE_SEITE[locale].oder} {company.email}.
               </p>
             </noscript>
             <OffertAssistent
+              locale={locale}
               crm={company.crm}
               telefon={company.phone}
               telefonHref={`tel:${company.phoneE164}`}

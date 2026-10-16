@@ -1,11 +1,16 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 
 import { Suchauswahl } from '@/components/ui/Suchauswahl'
 import { autos, motorraeder } from '@/content/fahrzeuge'
-import { listen, optionText } from '@/content/offerte-darstellung'
-import { darstellungVon, ohneKlammern } from '@/lib/offerte'
+import { listen } from '@/content/offerte-darstellung'
+import { offerteAssistentTexte as textDe } from '@/content/offerte-assistent-texte'
+import { offerteAssistentTexte as textFr } from '@/content/fr/offerte-assistent-texte'
+import { offerteAssistentTexte as textPt } from '@/content/pt/offerte-assistent-texte'
+import type { Locale } from '@/i18n/config'
+import { darstellungVon, ohneKlammern, optionTextVon } from '@/lib/offerte'
+import { nachSprache } from '@/lib/sprache'
 
 import styles from './OffertAssistent.module.css'
 
@@ -37,6 +42,11 @@ import styles from './OffertAssistent.module.css'
  * **Ohne JavaScript** gibt es keinen Assistenten; dann stehen Telefon und
  * E-Mail da (`<noscript>` in der Seite und hier als Rueckfall, wenn der
  * Server nicht antwortet).
+ *
+ * **Sprachen (16.10.2026).** Der Katalog kommt in der Sprache der Seite (`?sprache=`); bei FR/PT liefert der
+ * Server zu jeder Auswahl `optionenText` in gleicher Reihenfolge. Angezeigt wird die Übersetzung, **gesendet
+ * immer der deutsche Katalogwert** – ebenso bei Anrede und Erreichbarkeit. Die festen Texte stehen in
+ * `src/content/offerte-assistent-texte.ts` und den Übersetzungen unter `src/content/fr|pt/`.
  */
 
 type Bedingung = { feld: string; gleich?: string; in?: string[]; enthaelt?: string }
@@ -48,6 +58,8 @@ type Feld = {
   hilfe?: string | null
   typ?: string
   optionen?: string[] | null
+  /** Übersetzte Anzeige zu `optionen` (gleiche Länge und Reihenfolge), nur bei FR/PT. */
+  optionenText?: string[] | null
   wichtig?: boolean
   wenn?: Bedingung | null
 }
@@ -89,11 +101,24 @@ const KONTAKT_LEER: Kontakt = {
 }
 
 const KONTAKT_SCHRITTE = ['k:name', 'k:ort', 'k:erreichbar', 'k:bemerkung'] as const
-const SPRACHEN: [string, string][] = [
-  ['de', 'Deutsch'],
-  ['fr', 'Französisch'],
-  ['pt', 'Portugiesisch'],
-]
+const SPRACHEN = ['de', 'fr', 'pt'] as const
+/** Gesendet wird immer der deutsche Wortlaut; die Übersetzung steht an derselben Stelle der Liste. */
+const ANREDEN = textDe.anreden
+const ERREICHBAR = textDe.erreichbar
+
+/** Platzhalter `{name}` in einem Text füllen. */
+const fuelle = (text: string, werte: Record<string, string | number>) =>
+  text.replace(/\{(\w+)\}/g, (m, k: string) => (k in werte ? String(werte[k]) : m))
+
+/** Platzhalter `{name}` durch Elemente ersetzen (Links mitten im Satz). */
+const mitElementen = (text: string, teile: Record<string, ReactNode>) =>
+  text.split(/(\{\w+\})/).map((stueck, i) => {
+    const k = /^\{(\w+)\}$/.exec(stueck)?.[1]
+    return <Fragment key={i}>{k && k in teile ? teile[k] : stueck}</Fragment>
+  })
+
+/** Deutscher Wert → Anzeige in der Sprache der Seite (gleiche Stelle in der Liste). */
+const uebersetzeWert = (deutsch: readonly string[], anzeige: readonly string[], v: string) => anzeige[deutsch.indexOf(v)] ?? v
 
 const leer = (v: Wert | undefined) => v === undefined || v === '' || (Array.isArray(v) && v.length === 0)
 
@@ -107,12 +132,6 @@ function sichtbar(f: Feld, werte: Record<string, Wert>) {
 }
 
 const optionenVon = (f: Feld) => (f.optionen && f.optionen.length ? f.optionen : f.typ === 'janein' ? ['ja', 'nein'] : [])
-/** Anzeige eines Katalogwerts ohne Klammern; gesendet wird der Katalogwert. */
-const optionAnzeige = (o: string) => optionText[o] ?? ohneKlammern(o)
-/** Die Frage, wie sie erscheint – auch in der Zusammenfassung statt der internen Bezeichnung. */
-const frageText = (f: Feld) =>
-  darstellungVon(f.key ?? '').titel ?? ohneKlammern(f.frage && !f.frage.includes('{') ? f.frage : f.label || '')
-const zeige = (v: Wert) => (Array.isArray(v) ? v.map(optionAnzeige).join(', ') : optionAnzeige(v))
 
 /** ISO-Datum der Datumswahl als 31.12.2026 – so liest es das Offertentool. */
 const datumText = (iso: string) => {
@@ -120,9 +139,10 @@ const datumText = (iso: string) => {
   return t ? `${t}.${m}.${j}` : ''
 }
 const JAHRE = Array.from({ length: new Date().getFullYear() - 1899 }, (_, i) => String(new Date().getFullYear() - i))
-const ERREICHBAR = ['vormittags', 'über Mittag', 'nachmittags', 'gegen Abend', 'jederzeit']
 
 type Props = {
+  /** Sprache der Seite: Katalog, Texte und vorgewählte Beratungssprache. */
+  locale: Locale
   /** Adresse der Brokerverwaltung, ohne Schraegstrich am Ende. */
   crm: string
   telefon: string
@@ -131,13 +151,36 @@ type Props = {
   datenschutzHref: string
 }
 
-export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzHref }: Props) {
+export function OffertAssistent({ locale, crm, telefon, telefonHref, email, datenschutzHref }: Props) {
+  const t = nachSprache(locale, { de: textDe, fr: textFr, pt: textPt })
+
+  /** Anzeige einer Option: Übersetzung des Servers, sonst eigene Darstellung ohne Klammern; gesendet wird der Katalogwert. */
+  const optionAnzeige = (f: Feld, o: string) => {
+    const i = f.optionen?.indexOf(o) ?? -1
+    const uebersetzt = i >= 0 ? f.optionenText?.[i] : undefined
+    if (uebersetzt) return uebersetzt
+    if (!f.optionen?.length && (o === 'ja' || o === 'nein')) return t.janein[o]
+    return optionTextVon(o, locale) ?? ohneKlammern(o)
+  }
+  /** Die Frage, wie sie erscheint – auch in der Zusammenfassung statt der internen Bezeichnung. */
+  const frageText = (f: Feld) =>
+    darstellungVon(f.key ?? '', locale).titel ?? ohneKlammern(f.frage && !f.frage.includes('{') ? f.frage : f.label || '')
+  /** Antwort in der Zusammenfassung so, wie sie gewählt wurde (Knopftext statt gesendetem Wert). */
+  const zeige = (f: Feld, v: Wert) => {
+    const wahl = darstellungVon(f.key ?? '', locale).wahl
+    const eins = (o: string) => wahl?.find((w) => w.wert === o)?.text ?? optionAnzeige(f, o)
+    if (Array.isArray(v)) return v.map(eins).join(', ')
+    if (wahl && !wahl.some((w) => w.wert === v) && v.includes(', ')) return v.split(', ').map(eins).join(', ')
+    return eins(v)
+  }
+
   const [katalog, setKatalog] = useState<Katalog | null>(null)
   const [ladefehler, setLadefehler] = useState(false)
   const [typ, setTyp] = useState<Kundentyp | null>(null)
   const [sparteKey, setSparteKey] = useState<string | null>(null)
   const [werte, setWerte] = useState<Record<string, Wert>>({})
-  const [kontakt, setKontakt] = useState<Kontakt>(KONTAKT_LEER)
+  // Die Beratungssprache ist mit der Sprache der Seite vorgewählt
+  const [kontakt, setKontakt] = useState<Kontakt>(() => ({ ...KONTAKT_LEER, sprache: locale }))
   const [schritt, setSchritt] = useState<string>('typ')
   const [verlauf, setVerlauf] = useState<string[]>([])
   const [fehler, setFehler] = useState<Record<string, string>>({})
@@ -155,7 +198,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
 
   useEffect(() => {
     let ab = false
-    fetch(`${crm}/oeffentlich/api/offertkatalog`)
+    fetch(`${crm}/oeffentlich/api/offertkatalog?sprache=${locale}`)
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((k: Katalog) => {
         if (!ab) setKatalog(k)
@@ -166,7 +209,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
     return () => {
       ab = true
     }
-  }, [crm])
+  }, [crm, locale])
 
   // Nach jedem Schritt steht der Fokus im ersten Eingabefeld, sonst auf der Frage —
   // fuer Tastatur und Vorlesewerkzeuge. Das Feld traegt die Frage als Beschriftung.
@@ -258,16 +301,16 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
   const pruefeKontakt = (s: string): Record<string, string> => {
     const f: Record<string, string> = {}
     if (s === 'k:name') {
-      if (typ === 'unternehmen' && !kontakt.firma.trim()) f.firma = 'Bitte geben Sie den Namen der Firma an.'
-      if (!kontakt.nachname.trim()) f.nachname = 'Bitte geben Sie Ihren Nachnamen an.'
+      if (typ === 'unternehmen' && !kontakt.firma.trim()) f.firma = t.fehler.firma
+      if (!kontakt.nachname.trim()) f.nachname = t.fehler.nachname
     }
     if (s === 'k:ort') {
-      if (!/^\d{4}$/.test(kontakt.plz.trim())) f.plz = 'Bitte vier Ziffern, zum Beispiel 2558.'
-      if (!kontakt.ort.trim()) f.ort = 'Bitte geben Sie den Ort an.'
+      if (!/^\d{4}$/.test(kontakt.plz.trim())) f.plz = t.fehler.plz
+      if (!kontakt.ort.trim()) f.ort = t.fehler.ort
     }
     if (s === 'k:erreichbar') {
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(kontakt.email.trim())) f.email = 'Bitte geben Sie eine gültige E-Mail-Adresse an.'
-      if (kontakt.rueckruf && !kontakt.telefon.trim()) f.telefon = 'Für einen Rückruf brauchen wir Ihre Telefonnummer.'
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(kontakt.email.trim())) f.email = t.fehler.email
+      if (kontakt.rueckruf && !kontakt.telefon.trim()) f.telefon = t.fehler.telefon
     }
     return f
   }
@@ -313,11 +356,11 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
         }),
       })
       const j = await r.json().catch(() => ({}))
-      if (!r.ok) throw new Error(j?.fehler || 'Die Anfrage konnte nicht gesendet werden.')
+      if (!r.ok) throw new Error(j?.fehler || t.fehler.senden)
       setVerlauf([])
       setSchritt('gesendet')
     } catch (e) {
-      setSendefehler(e instanceof Error && e.message !== 'Failed to fetch' ? e.message : 'Die Verbindung zu unserem Server hat nicht geklappt.')
+      setSendefehler(e instanceof Error && e.message !== 'Failed to fetch' ? e.message : t.fehler.verbindung)
     } finally {
       setSendet(false)
     }
@@ -327,8 +370,10 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
 
   const rueckfall = (
     <p className={styles.rueckfall}>
-      Sie erreichen uns auch direkt: <a href={telefonHref}>{telefon}</a> oder{' '}
-      <a href={`mailto:${email}`}>{email}</a>.
+      {mitElementen(t.rueckfall, {
+        telefon: <a href={telefonHref}>{telefon}</a>,
+        email: <a href={`mailto:${email}`}>{email}</a>,
+      })}
     </p>
   )
 
@@ -337,7 +382,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
       <div
         className={styles.balken}
         role="progressbar"
-        aria-label="Fortschritt"
+        aria-label={t.fortschritt}
         aria-valuemin={0}
         aria-valuemax={ablauf.length - 1}
         aria-valuenow={position}
@@ -345,16 +390,24 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
         <span style={{ width: `${Math.round((position / (ablauf.length - 1)) * 100)}%` }} />
       </div>
       <span className={styles.schrittzahl}>
-        {schritt.startsWith('f:') ? `Frage ${fragen.findIndex((x) => `f:${x.feld.key}` === schritt) + 1} von ${fragen.length}` : null}
-        {schritt.startsWith('k:') ? `Kontakt ${KONTAKT_SCHRITTE.indexOf(schritt as (typeof KONTAKT_SCHRITTE)[number]) + 1} von ${KONTAKT_SCHRITTE.length}` : null}
-        {schritt === 'pruefen' ? 'Letzter Schritt' : null}
+        {schritt.startsWith('f:')
+          ? fuelle(t.frageVon, { n: fragen.findIndex((x) => `f:${x.feld.key}` === schritt) + 1, gesamt: fragen.length })
+          : null}
+        {schritt.startsWith('k:')
+          ? fuelle(t.kontaktVon, {
+              n: KONTAKT_SCHRITTE.indexOf(schritt as (typeof KONTAKT_SCHRITTE)[number]) + 1,
+              gesamt: KONTAKT_SCHRITTE.length,
+            })
+          : null}
+        {schritt === 'pruefen' ? t.letzterSchritt : null}
       </span>
     </div>
   )
 
   const zurueckKnopf = verlauf.length > 0 && (
     <button type="button" className={styles.zurueck} onClick={zurueck}>
-      <span aria-hidden="true">← </span>Zurück
+      <span aria-hidden="true">← </span>
+      {t.zurueck}
     </button>
   )
 
@@ -374,7 +427,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
     <div className={styles.feld}>
       <label htmlFor={id}>
         {label}
-        {opt.pflicht ? <span className={styles.pflicht}> (nötig)</span> : null}
+        {opt.pflicht ? <span className={styles.pflicht}> {t.noetig}</span> : null}
       </label>
       <input
         id={id}
@@ -403,29 +456,28 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
 
   /* ---- Inhalt je Schritt ----------------------------------------------- */
 
-  let inhalt: React.ReactNode = null
+  let inhalt: ReactNode = null
 
   if (ladefehler) {
     inhalt = (
       <>
-        {titel('Die Fragen lassen sich gerade nicht laden.')}
-        <p className={styles.hilfe}>Bitte versuchen Sie es später noch einmal.</p>
+        {titel(t.ladefehlerTitel)}
+        <p className={styles.hilfe}>{t.ladefehlerText}</p>
         {rueckfall}
       </>
     )
   } else if (!katalog) {
-    inhalt = <p className={styles.hilfe} role="status">Die Fragen werden geladen …</p>
+    inhalt = (
+      <p className={styles.hilfe} role="status">
+        {t.laden}
+      </p>
+    )
   } else if (schritt === 'typ') {
     inhalt = (
       <>
-        {titel('Für wen wünschen Sie eine Offerte?')}
+        {titel(t.typTitel)}
         <div className={styles.kacheln}>
-          {(
-            [
-              ['privat', 'Für mich privat', 'Fahrzeug, Hausrat, Haftpflicht, Rechtsschutz, Reise, Gebäude'],
-              ['unternehmen', 'Für mein Unternehmen', 'UVG, Krankentaggeld, BVG, Haftpflicht, Sachwerte, Cyber, Fahrzeuge'],
-            ] as const
-          ).map(([wert, t, text]) => (
+          {(['privat', 'unternehmen'] as const).map((wert) => (
             <button
               key={wert}
               type="button"
@@ -440,8 +492,8 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
                 gehe('sparte')
               }}
             >
-              <span className={styles.kachelTitel}>{t}</span>
-              <span className={styles.kachelText}>{text}</span>
+              <span className={styles.kachelTitel}>{t.typen[wert].titel}</span>
+              <span className={styles.kachelText}>{t.typen[wert].text}</span>
             </button>
           ))}
         </div>
@@ -450,8 +502,8 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
   } else if (schritt === 'sparte' && typ) {
     inhalt = (
       <>
-        {titel('Wofür wünschen Sie eine Offerte?')}
-        <p className={styles.hilfe}>Wählen Sie eine Versicherung. Weitere besprechen wir gerne im Gespräch.</p>
+        {titel(t.sparteTitel)}
+        <p className={styles.hilfe}>{t.sparteHilfe}</p>
         <div className={styles.kacheln}>
           {katalog[typ].map((s) => (
             <button
@@ -482,10 +534,10 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
       const key = f.key as string
       const wert = werte[key]
       const ops = optionenVon(f)
-      const d = darstellungVon(key)
+      const d = darstellungVon(key, locale)
       const id = `frage-${key.replace(/\W/g, '-')}`
       const text = typeof wert === 'string' ? wert : ''
-      const enter = (e: React.KeyboardEvent) => {
+      const enter = (e: { key: string; preventDefault: () => void }) => {
         if (e.key === 'Enter') {
           e.preventDefault()
           weiter()
@@ -506,7 +558,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
           />
         </div>
       )
-      let eingabe: React.ReactNode
+      let eingabe: ReactNode
       if (f.typ === 'auswahl' || f.typ === 'janein') {
         eingabe = (
           <div className={styles.wahl} role="group" aria-label={ohneKlammern(f.label ?? '')}>
@@ -518,7 +570,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
                 aria-pressed={wert === o}
                 onClick={() => weiter(setzeWert(key, o))}
               >
-                {optionAnzeige(o)}
+                {optionAnzeige(f, o)}
               </button>
             ))}
           </div>
@@ -535,7 +587,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
                   checked={liste.includes(o)}
                   onChange={(e) => setzeWert(key, e.target.checked ? [...liste, o] : liste.filter((x) => x !== o))}
                 />
-                <span>{optionAnzeige(o)}</span>
+                <span>{optionAnzeige(f, o)}</span>
               </label>
             ))}
           </fieldset>
@@ -553,19 +605,19 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
           <div className={styles.fahrzeug}>
             <div className={styles.feld}>
               <label htmlFor={`${id}-marke`} id={`${id}-marke-titel`}>
-                Marke
+                {t.marke}
               </label>
               <Suchauswahl id={`${id}-marke`} beschriftetVon={`${id}-marke-titel`} wert={fahrzeug.marke} optionen={Object.keys(marken)} onChange={(v) => setzeFz('marke', v)} onEnter={() => weiter()} />
             </div>
             <div className={styles.feld}>
               <label htmlFor={`${id}-modell`} id={`${id}-modell-titel`}>
-                Modell
+                {t.modell}
               </label>
               <Suchauswahl id={`${id}-modell`} beschriftetVon={`${id}-modell-titel`} wert={fahrzeug.modell} optionen={modelle} onChange={(v) => setzeFz('modell', v)} onEnter={() => weiter()} />
             </div>
             <div className={styles.feld}>
-              <label htmlFor={`${id}-ausfuehrung`}>Ausführung, falls bekannt</label>
-              <input id={`${id}-ausfuehrung`} type="text" autoComplete="off" maxLength={60} placeholder="zum Beispiel 2.0 TDI" value={fahrzeug.ausfuehrung} onChange={(e) => setzeFz('ausfuehrung', e.target.value)} onKeyDown={enter} />
+              <label htmlFor={`${id}-ausfuehrung`}>{t.ausfuehrung}</label>
+              <input id={`${id}-ausfuehrung`} type="text" autoComplete="off" maxLength={60} placeholder={t.ausfuehrungBeispiel} value={fahrzeug.ausfuehrung} onChange={(e) => setzeFz('ausfuehrung', e.target.value)} onKeyDown={enter} />
             </div>
           </div>
         )
@@ -644,7 +696,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
         eingabe = (
           <div className={styles.feld}>
             <select id={id} aria-labelledby="assistent-frage" value={text} onChange={(e) => setzeWert(key, e.target.value)}>
-              <option value="">Bitte wählen</option>
+              <option value="">{t.bitteWaehlen}</option>
               {JAHRE.map((j) => (
                 <option key={j} value={j}>
                   {j}
@@ -665,19 +717,19 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
           {d.hilfe || f.hilfe ? <p className={styles.hilfe}>{d.hilfe ?? ohneKlammern(f.hilfe ?? '')}</p> : null}
           {eingabe}
           {f.wichtig ? (
-            <p className={styles.wichtig}>Diese Angabe brauchen wir für die Offerte. Sie können sie aber auch im Gespräch nennen.</p>
+            <p className={styles.wichtig}>{t.wichtig}</p>
           ) : null}
           <div className={styles.aktionen}>
             {!auswahl ? (
               <button type="button" className={styles.knopf} onClick={() => weiter()}>
-                Weiter
+                {t.weiter}
               </button>
             ) : null}
             <button type="button" className={styles.leise} onClick={() => weiter(setzeWert(key, ''))}>
-              Überspringen
+              {t.ueberspringen}
             </button>
             <button type="button" className={styles.leise} onClick={() => gehe('k:name')}>
-              Rest im Gespräch klären
+              {t.restImGespraech}
             </button>
           </div>
         </>
@@ -686,13 +738,13 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
   } else if (schritt === 'k:name') {
     inhalt = (
       <>
-        <p className={styles.abschnitt}>Ihre Kontaktangaben</p>
-        {titel(typ === 'unternehmen' ? 'Für welche Firma, und wer ist Ansprechperson?' : 'Wie heissen Sie?')}
+        <p className={styles.abschnitt}>{t.kontaktAbschnitt}</p>
+        {titel(typ === 'unternehmen' ? t.nameTitelFirma : t.nameTitelPrivat)}
         {typ === 'unternehmen'
-          ? textfeld('firma', 'Firma', kontakt.firma, (v) => k('firma', v), { pflicht: true, auto: 'organization' })
+          ? textfeld('firma', t.firma, kontakt.firma, (v) => k('firma', v), { pflicht: true, auto: 'organization' })
           : null}
-        <div className={styles.wahl} role="group" aria-label="Anrede">
-          {['Frau', 'Herr'].map((a) => (
+        <div className={styles.wahl} role="group" aria-label={t.anrede}>
+          {ANREDEN.map((a, i) => (
             <button
               key={a}
               type="button"
@@ -700,49 +752,49 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
               aria-pressed={kontakt.anrede === a}
               onClick={() => k('anrede', kontakt.anrede === a ? '' : a)}
             >
-              {a}
+              {t.anreden[i] ?? a}
             </button>
           ))}
         </div>
         <div className={styles.zweispaltig}>
-          {textfeld('vorname', 'Vorname', kontakt.vorname, (v) => k('vorname', v), { auto: 'given-name' })}
-          {textfeld('nachname', 'Nachname', kontakt.nachname, (v) => k('nachname', v), { pflicht: true, auto: 'family-name' })}
+          {textfeld('vorname', t.vorname, kontakt.vorname, (v) => k('vorname', v), { auto: 'given-name' })}
+          {textfeld('nachname', t.nachname, kontakt.nachname, (v) => k('nachname', v), { pflicht: true, auto: 'family-name' })}
         </div>
       </>
     )
   } else if (schritt === 'k:ort') {
     inhalt = (
       <>
-        <p className={styles.abschnitt}>Ihre Kontaktangaben</p>
-        {titel(typ === 'unternehmen' ? 'Wo ist Ihr Betrieb?' : 'Wo wohnen Sie?')}
-        <p className={styles.hilfe}>Die Prämie hängt oft vom Ort ab.</p>
-        {textfeld('strasse', 'Strasse und Nummer', kontakt.strasse, (v) => k('strasse', v), { auto: 'street-address' })}
+        <p className={styles.abschnitt}>{t.kontaktAbschnitt}</p>
+        {titel(typ === 'unternehmen' ? t.ortTitelFirma : t.ortTitelPrivat)}
+        <p className={styles.hilfe}>{t.ortHilfe}</p>
+        {textfeld('strasse', t.strasse, kontakt.strasse, (v) => k('strasse', v), { auto: 'street-address' })}
         <div className={styles.plzOrt}>
-          {textfeld('plz', 'PLZ', kontakt.plz, (v) => k('plz', v), { pflicht: true, auto: 'postal-code', modus: 'numeric' })}
-          {textfeld('ort', 'Ort', kontakt.ort, (v) => k('ort', v), { pflicht: true, auto: 'address-level2' })}
+          {textfeld('plz', t.plz, kontakt.plz, (v) => k('plz', v), { pflicht: true, auto: 'postal-code', modus: 'numeric' })}
+          {textfeld('ort', t.ort, kontakt.ort, (v) => k('ort', v), { pflicht: true, auto: 'address-level2' })}
         </div>
       </>
     )
   } else if (schritt === 'k:erreichbar') {
     inhalt = (
       <>
-        <p className={styles.abschnitt}>Ihre Kontaktangaben</p>
-        {titel('Wie erreichen wir Sie?')}
-        {textfeld('email', 'E-Mail', kontakt.email, (v) => k('email', v), { pflicht: true, typ: 'email', auto: 'email', modus: 'email' })}
-        {textfeld('telefon', 'Telefon', kontakt.telefon, (v) => k('telefon', v), { typ: 'tel', auto: 'tel', modus: 'tel', pflicht: kontakt.rueckruf })}
+        <p className={styles.abschnitt}>{t.kontaktAbschnitt}</p>
+        {titel(t.erreichbarTitel)}
+        {textfeld('email', t.email, kontakt.email, (v) => k('email', v), { pflicht: true, typ: 'email', auto: 'email', modus: 'email' })}
+        {textfeld('telefon', t.telefon, kontakt.telefon, (v) => k('telefon', v), { typ: 'tel', auto: 'tel', modus: 'tel', pflicht: kontakt.rueckruf })}
         <label className={styles.haken}>
           <input type="checkbox" checked={kontakt.rueckruf} onChange={(e) => k('rueckruf', e.target.checked)} />
-          <span>Bitte rufen Sie mich an.</span>
+          <span>{t.rueckruf}</span>
         </label>
         {kontakt.rueckruf ? (
           <div className={styles.feld}>
             <span className={styles.feldTitel} id="erreichbar-titel">
-              Wann erreichen wir Sie am besten?
+              {t.erreichbarWann}
             </span>
             <div className={styles.wahl} role="group" aria-labelledby="erreichbar-titel">
-              {ERREICHBAR.map((z) => (
+              {ERREICHBAR.map((z, i) => (
                 <button key={z} type="button" className={styles.wahlKnopf} aria-pressed={kontakt.erreichbar === z} onClick={() => k('erreichbar', kontakt.erreichbar === z ? '' : z)}>
-                  {z}
+                  {t.erreichbar[i] ?? z}
                 </button>
               ))}
             </div>
@@ -753,21 +805,21 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
   } else if (schritt === 'k:bemerkung') {
     inhalt = (
       <>
-        <p className={styles.abschnitt}>Fast fertig</p>
-        {titel('Möchten Sie uns noch etwas mitteilen?')}
+        <p className={styles.abschnitt}>{t.fastFertig}</p>
+        {titel(t.bemerkungTitel)}
         <div className={styles.feld}>
-          <label htmlFor="bemerkung">Bemerkung</label>
+          <label htmlFor="bemerkung">{t.bemerkung}</label>
           <textarea id="bemerkung" rows={4} maxLength={1500} value={kontakt.bemerkung} onChange={(e) => k('bemerkung', e.target.value)} />
-          <p className={styles.hilfe}>Bitte keine Gesundheitsangaben und keine Angaben zu weiteren Personen.</p>
+          <p className={styles.hilfe}>{t.bemerkungHilfe}</p>
         </div>
         <div className={styles.feld}>
           <span className={styles.feldTitel} id="sprache-titel">
-            In welcher Sprache möchten Sie beraten werden?
+            {t.spracheTitel}
           </span>
           <div className={styles.wahl} role="group" aria-labelledby="sprache-titel">
-            {SPRACHEN.map(([code, name]) => (
+            {SPRACHEN.map((code) => (
               <button key={code} type="button" className={styles.wahlKnopf} aria-pressed={kontakt.sprache === code} onClick={() => k('sprache', code)}>
-                {name}
+                {t.sprachen[code]}
               </button>
             ))}
           </div>
@@ -778,12 +830,12 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
     const beantwortet = fragen.filter(({ feld }) => feld.key && !leer(werte[feld.key]))
     inhalt = (
       <>
-        <p className={styles.abschnitt}>Zusammenfassung</p>
-        {titel(`Ihre Offertanfrage ${ohneKlammern(sparte.label)}`)}
+        <p className={styles.abschnitt}>{t.zusammenfassung}</p>
+        {titel(fuelle(t.pruefenTitel, { sparte: ohneKlammern(sparte.label) }))}
         <dl className={styles.zusammenfassung}>
-          <dt>Kontakt</dt>
+          <dt>{t.kontakt}</dt>
           <dd>
-            {[typ === 'unternehmen' ? kontakt.firma : null, [kontakt.anrede, kontakt.vorname, kontakt.nachname].filter(Boolean).join(' ')]
+            {[typ === 'unternehmen' ? kontakt.firma : null, [uebersetzeWert(ANREDEN, t.anreden, kontakt.anrede), kontakt.vorname, kontakt.nachname].filter(Boolean).join(' ')]
               .filter(Boolean)
               .join(', ')}
             <br />
@@ -793,7 +845,8 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
             {kontakt.rueckruf ? (
               <>
                 <br />
-                Rückruf gewünscht{kontakt.erreichbar ? `, ${kontakt.erreichbar}` : ''}
+                {t.rueckrufGewuenscht}
+                {kontakt.erreichbar ? `, ${uebersetzeWert(ERREICHBAR, t.erreichbar, kontakt.erreichbar)}` : ''}
               </>
             ) : null}
           </dd>
@@ -801,23 +854,22 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
             beantwortet.map(({ feld }) => (
               <div key={feld.key} className={styles.zeile}>
                 <dt>{frageText(feld)}</dt>
-                <dd>{zeige(werte[feld.key as string] ?? '')}</dd>
+                <dd>{zeige(feld, werte[feld.key as string] ?? '')}</dd>
               </div>
             ))
           ) : (
             <>
-              <dt>Angaben</dt>
-              <dd>Alles Weitere klären wir im Gespräch.</dd>
+              <dt>{t.angaben}</dt>
+              <dd>{t.allesWeitere}</dd>
             </>
           )}
         </dl>
         <p className={styles.datenschutz}>
-          Ihre Angaben gehen verschlüsselt an unseren eigenen Server in der Schweiz und werden nur verwendet, um Ihre Anfrage
-          zu beantworten. Mehr dazu in der <a href={datenschutzHref}>Datenschutzerklärung</a>.
+          {mitElementen(t.datenschutz, { link: <a href={datenschutzHref}>{t.datenschutzLink}</a> })}
         </p>
         {/* Honigtopf: fuer Menschen unsichtbar, Programme fuellen ihn aus */}
         <div className={styles.honig} aria-hidden="true">
-          <label htmlFor="website">Website</label>
+          <label htmlFor="website">{t.honigtopf}</label>
           <input id="website" type="text" tabIndex={-1} autoComplete="off" value={honig} onChange={(e) => setHonig(e.target.value)} />
         </div>
         {sendefehler ? (
@@ -828,7 +880,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
         ) : null}
         <div className={styles.aktionen}>
           <button type="button" className={styles.knopf} onClick={absenden} disabled={sendet}>
-            {sendet ? 'Wird gesendet …' : 'Anfrage senden'}
+            {sendet ? t.wirdGesendet : t.senden}
           </button>
         </div>
       </>
@@ -836,10 +888,8 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
   } else if (schritt === 'gesendet') {
     inhalt = (
       <div className={styles.dank} role="status">
-        {titel('Vielen Dank. Ihre Anfrage ist bei uns eingegangen.')}
-        <p className={styles.hilfe}>
-          Wir melden uns bei Ihnen, in der Regel innerhalb eines Werktags.
-        </p>
+        {titel(t.dankTitel)}
+        <p className={styles.hilfe}>{t.dankText}</p>
         {rueckfall}
       </div>
     )
@@ -857,7 +907,7 @@ export function OffertAssistent({ crm, telefon, telefonHref, email, datenschutzH
       {kontaktSchritt ? (
         <div className={styles.aktionen}>
           <button type="button" className={styles.knopf} onClick={kontaktWeiter}>
-            Weiter
+            {t.weiter}
           </button>
         </div>
       ) : null}

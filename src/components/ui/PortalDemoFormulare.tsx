@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import { Suchauswahl } from '@/components/ui/Suchauswahl'
 import { autos, motorraeder } from '@/content/fahrzeuge'
-import { portalDemo as D } from '@/content/seiten/portal-beispiel'
+import { useDemo } from '@/components/ui/PortalDemoText'
 
 import a from './PortalAnsicht.module.css'
 import s from './PortalDemo.module.css'
@@ -60,7 +60,9 @@ export function WahlFeld({ id, titel, optionen, start = '', name, fest = false }
 }
 
 function Fahrzeug({ art, wert, setze }: { art: string; wert: { marke: string; modell: string }; setze: (v: { marke: string; modell: string }) => void }) {
-  const marken = art === 'Motorrad' ? motorraeder : autos
+  const D = useDemo()
+  // Motorrad · Moto · Mota/Motociclo – die Wahl kommt aus den übersetzten Optionen
+  const marken = /^mot/i.test(art) ? motorraeder : autos
   const o = D.anfragen.offerte
   return (
     <div className={s.felderZeile}>
@@ -83,6 +85,7 @@ function Fahrzeug({ art, wert, setze }: { art: string; wert: { marke: string; mo
 /* ---- Offertanfrage Frage für Frage ------------------------------------------------- */
 
 export function OfferteDemo({ ablegen }: { ablegen: Ablegen }) {
+  const D = useDemo()
   const o = D.anfragen.offerte
   const [sparte, setSparte] = useState<number | null>(null)
   const [schritt, setSchritt] = useState(-1) // -1 Versicherung, 0… Fragen, n Bemerkung, n+1 Zusammenfassung
@@ -288,9 +291,10 @@ export function OfferteDemo({ ablegen }: { ablegen: Ablegen }) {
 
 /* ---- Änderung melden: gezielte Fragen je Art ---------------------------------------- */
 
-const istFahrzeug = (name: string) => /fahrzeug/i.test(name)
+const istFahrzeug = (name: string) => /fahrzeug|v[ée]hicule|ve[íi]culo|auto/i.test(name)
 
 export function VertragDemo({ ablegen, vorgabe }: { ablegen: Ablegen; vorgabe: string | null }) {
+  const D = useDemo()
   const v = D.anfragen.vertrag
   const [policeId, setPoliceId] = useState(vorgabe ?? D.policen[0].id)
   const [art, setArt] = useState('')
@@ -304,6 +308,8 @@ export function VertragDemo({ ablegen, vorgabe }: { ablegen: Ablegen; vorgabe: s
   const fahrzeug = istFahrzeug(ohneTrennung(police.name))
   const arten = v.arten.filter((x) => !x.nurFahrzeug || fahrzeug)
   const gewaehlt = arten.find((x) => x.art === art)
+  // «Anderes» ist die letzte Art, in jeder Sprache
+  const istAnderes = art !== '' && art === v.arten[v.arten.length - 1]?.art
   const neu = (a2: string) => {
     setArt(a2)
     setWerte({})
@@ -415,10 +421,10 @@ export function VertragDemo({ ablegen, vorgabe }: { ablegen: Ablegen; vorgabe: s
           </div>
           <div className={s.feld}>
             <label htmlFor="d-ergaenzung">
-              {art === 'Anderes' ? v.anderes : v.ergaenzen}
-              {art === 'Anderes' ? null : <span className={s.frei}> · {D.anfragen.freiwillig}</span>}
+              {istAnderes ? v.anderes : v.ergaenzen}
+              {istAnderes ? null : <span className={s.frei}> · {D.anfragen.freiwillig}</span>}
             </label>
-            <textarea id="d-ergaenzung" required={art === 'Anderes'} value={ergaenzung} onChange={(e) => setErgaenzung(e.target.value)} />
+            <textarea id="d-ergaenzung" required={istAnderes} value={ergaenzung} onChange={(e) => setErgaenzung(e.target.value)} />
           </div>
           <p className={`${a.klein} ${s.absatz}`}>{v.hinweis}</p>
           {fehler ? (

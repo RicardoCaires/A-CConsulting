@@ -10,12 +10,15 @@ import { ZeitleisteKantone } from '@/components/seite/ZeitleisteKantone'
 import { RichText } from '@/components/ui/RichText'
 import { Standortkarte } from '@/components/ui/Standortkarte'
 import { SteuerCheckliste } from '@/components/ui/SteuerCheckliste'
+import { kontaktformular as kontaktformularFr } from '@/content/fr/kontaktformular'
 import { getPageContent } from '@/content/pages'
+import { kontaktformular as kontaktformularPt } from '@/content/pt/kontaktformular'
 import type { Block, Knopf, SeitenInhalt, Titel, Ziel } from '@/content/seiten/typen'
 import type { Locale } from '@/i18n/config'
 import { getUi } from '@/i18n/messages/ui'
 import { hrefOrDefault, isPublished, path } from '@/i18n/routes'
 import { addressLines, company, direktadressen, direktnummern, mapsRoute } from '@/lib/company'
+import { istKostenlos, nachSprache } from '@/lib/sprache'
 
 import styles from './Seite.module.css'
 
@@ -260,7 +263,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
             <Knoepfe knoepfe={block.knoepfe} locale={locale} />
           </div>
           <div className={styles.bildSpalte}>
-            <Bild bild={block.bild} />
+            <Bild bild={block.bild} locale={locale} />
           </div>
         </div>
       )
@@ -369,7 +372,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
       return (
         <>
           <Kopf block={block} h1={h1} nr={nr} />
-          <PortalDemo />
+          <PortalDemo locale={locale} />
           <Knoepfe knoepfe={block.knoepfe} locale={locale} />
         </>
       )
@@ -381,7 +384,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
           <ul className={styles.ansichten} data-anzahl={block.ansichten.length}>
             {block.ansichten.map((a) => (
               <li key={a.ansicht} className={styles.ansichtFeld}>
-                <PortalAnsicht ansicht={a.ansicht} />
+                <PortalAnsicht ansicht={a.ansicht} locale={locale} />
                 <h3 className={styles.ansichtTitel}>{a.titel}</h3>
                 <p className={styles.ansichtText}>{a.text}</p>
               </li>
@@ -400,6 +403,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
               beschriftung={block.kantone.beschriftung}
               titelPrivat={block.reihen[0]?.titel ?? ''}
               titelUnternehmen={block.reihen[1]?.titel ?? ''}
+              locale={locale}
             />
           ) : (
           <div className={styles.reihen}>
@@ -413,7 +417,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
                       {st.marke ? <span className={styles.stationMarke}>{st.marke}</span> : null}
                       <span className={styles.stationTitel}>{st.titel}</span>
                       {st.wert ? (
-                        <span className={styles.stationWert} data-kostenlos={st.wert === 'kostenlos'}>
+                        <span className={styles.stationWert} data-kostenlos={istKostenlos(st.wert)}>
                           {st.wert}
                         </span>
                       ) : null}
@@ -449,7 +453,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
               </li>
             ))}
           </ol>
-          {block.checkliste ? <SteuerCheckliste datenschutzHref={zielHref({ ziel: 'datenschutz' }, locale)} /> : null}
+          {block.checkliste ? <SteuerCheckliste datenschutzHref={zielHref({ ziel: 'datenschutz' }, locale)} locale={locale} /> : null}
           {block.nachsatz ? (
             <p className={styles.nachsatz}>
               <RichText value={block.nachsatz} />
@@ -569,7 +573,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
       return (
         <>
           <Kopf block={block} h1={h1} nr={nr} />
-          <Rechner3a kontaktHref={zielHref({ ziel: 'kontakt' }, locale)} />
+          <Rechner3a kontaktHref={zielHref({ ziel: 'kontakt' }, locale)} locale={locale} />
         </>
       )
 
@@ -695,14 +699,14 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
   }
 }
 
-function Bild({ bild }: { bild: Extract<Block, { art: 'textBild' }>['bild'] }) {
+function Bild({ bild, locale }: { bild: Extract<Block, { art: 'textBild' }>['bild']; locale: Locale }) {
   switch (bild.art) {
     case 'foto':
       return <Image src={bild.datei} alt={bild.alt} width={bild.breite} height={bild.hoehe} sizes="(min-width: 64rem) 34rem, 90vw" className={styles.bildFoto} />
     case 'portal':
       return (
         <div className={styles.bildFlaeche}>
-          <PortalAnsicht ansicht={bild.ansicht} />
+          <PortalAnsicht ansicht={bild.ansicht} locale={locale} />
         </div>
       )
     case 'karte':
@@ -755,9 +759,10 @@ function Modell({ id, locale }: { id?: string; locale: Locale }) {
 }
 
 function Formular({ id, locale }: { id?: string; locale: Locale }) {
-  const quelle = getPageContent(locale, 'kontakt') ?? getPageContent('de', 'kontakt')
-  const f = quelle?.blocks.find((b) => b.kind === 'kontaktformular')
-  if (!f || f.kind !== 'kontaktformular') return null
+  const quelle = getPageContent('de', 'kontakt')
+  const deutsch = quelle?.blocks.find((b) => b.kind === 'kontaktformular')
+  if (!deutsch || deutsch.kind !== 'kontaktformular') return null
+  const f = nachSprache(locale, { de: deutsch, fr: kontaktformularFr, pt: kontaktformularPt })
   return (
     <Kontaktformular
       id={id ?? f.id}

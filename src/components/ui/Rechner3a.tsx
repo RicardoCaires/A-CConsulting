@@ -3,9 +3,16 @@
 import { useEffect, useMemo, useState } from 'react'
 
 import { Suchauswahl } from '@/components/ui/Suchauswahl'
-import { fristenKantone } from '@/content/fristen-kantone'
+import { fristenKantone as kantoneDe } from '@/content/fristen-kantone'
+import { fristenKantone as kantoneFr } from '@/content/fr/fristen-kantone'
+import { rechner3aTexte as textFr } from '@/content/fr/rechner3a-texte'
+import { fristenKantone as kantonePt } from '@/content/pt/fristen-kantone'
+import { rechner3aTexte as textPt } from '@/content/pt/rechner3a-texte'
+import { rechner3aTexte as textDe } from '@/content/rechner3a-texte'
+import type { Locale } from '@/i18n/config'
 import { bruttoZuSteuerbar, type Abzuege } from '@/lib/brutto-steuerbar'
 import { MAX_3A_MIT_PK, MAX_3A_OHNE_PK, STEUERJAHR } from '@/lib/steuer-3a'
+import { nachSprache } from '@/lib/sprache'
 import { berechne, type Gemeinde, type Konfession, type Tarife } from '@/lib/steuer-kantone'
 
 import { FliessendeZahl } from './Fliessend'
@@ -20,23 +27,21 @@ import styles from './Rechner3a.module.css'
  * Voreingestellt ist Bern (Ricardo: «standardmässig soll alles auf bern eingestellt sein»). Die Daten
  * liegen unter `public/daten/steuern-2026/` und werden erst geladen, wenn die Seite den Rechner zeigt.
  * Zahlen und Balken wechseln fliessend (`Fliessend.tsx`).
+ *
+ * Sprachen (16.10.2026): Texte in `src/content/rechner3a-texte.ts` und den Übersetzungen unter
+ * `src/content/fr|pt/`, Kantonsnamen aus `fristen-kantone`. Beträge überall als CHF 1'000.
  */
 
 type Lage = 'allein' | 'alleinKinder' | 'verheiratet'
 type Modus = 'brutto' | 'steuerbar'
 type Daten = { tarife: Tarife; gemeinden: Gemeinde[]; abzuege: Abzuege }
 
-const LAGEN: [Lage, string][] = [
-  ['allein', 'Alleinstehend'],
-  ['alleinKinder', 'Alleinstehend mit Kindern'],
-  ['verheiratet', 'Verheiratet'],
-]
-const KIRCHEN: [Konfession, string][] = [
-  ['keine', 'Keine'],
-  ['ref', 'Reformiert'],
-  ['kath', 'Katholisch'],
-  ['chk', 'Christkatholisch'],
-]
+const LAGEN: readonly Lage[] = ['allein', 'alleinKinder', 'verheiratet']
+const KIRCHEN: readonly Konfession[] = ['keine', 'ref', 'kath', 'chk']
+
+/** Platzhalter `{name}` in einem Text füllen. */
+const fuelle = (text: string, werte: Record<string, string | number>) =>
+  text.replace(/\{(\w+)\}/g, (m, k: string) => (k in werte ? String(werte[k]) : m))
 
 /** Hauptort je Kanton (BFS-Nummer): Darauf springt die Gemeinde beim Kantonswechsel. */
 const HAUPTORT: Record<string, number> = {
@@ -54,7 +59,9 @@ const minus = (n: number) => `− ${chf(n)}`
 const zahl = (n: number) => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'")
 const abzug = (n: number) => `− ${zahl(n)}`
 
-export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
+export function Rechner3a({ kontaktHref, locale }: { kontaktHref: string; locale: Locale }) {
+  const t = nachSprache(locale, { de: textDe, fr: textFr, pt: textPt })
+  const fristenKantone = nachSprache(locale, { de: kantoneDe, fr: kantoneFr, pt: kantonePt })
   const [daten, setDaten] = useState<Daten | null>(null)
   const [ladefehler, setLadefehler] = useState(false)
   const [lage, setLage] = useState<Lage>('allein')
@@ -90,8 +97,8 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
   const betrag = Math.min(einzahlung, max)
 
   const imKanton = useMemo(
-    () => (daten ? daten.gemeinden.filter((g) => g.kt === kanton).sort((a, b) => a.name.localeCompare(b.name, 'de')) : []),
-    [daten, kanton],
+    () => (daten ? daten.gemeinden.filter((g) => g.kt === kanton).sort((a, b) => a.name.localeCompare(b.name, locale)) : []),
+    [daten, kanton, locale],
   )
   const gemeinde = daten?.gemeinden.find((g) => g.bfs === bfs)
 
@@ -130,18 +137,18 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
   const kantonName = fristenKantone.kantone.find((k) => k.kuerzel === kanton)?.name ?? kanton
   const abz = daten?.abzuege.ebenen[kanton]
   const teile = [
-    { name: 'Bundessteuer', wert: e?.bund ?? 0, klasse: styles.bund },
-    { name: `Kanton und Gemeinde ${gemeinde?.name ?? ''}`, wert: e?.kantonGemeinde ?? 0, klasse: styles.kanton },
-    { name: 'Kirchensteuer', wert: kirche !== 'keine' ? (e?.kirche ?? 0) : 0, klasse: styles.kirche },
+    { name: t.bundessteuer, wert: e?.bund ?? 0, klasse: styles.bund },
+    { name: fuelle(t.kantonUndGemeinde, { gemeinde: gemeinde?.name ?? '' }).trim(), wert: e?.kantonGemeinde ?? 0, klasse: styles.kanton },
+    { name: t.kirchensteuer, wert: kirche !== 'keine' ? (e?.kirche ?? 0) : 0, klasse: styles.kirche },
   ]
 
   return (
     <div className={styles.rechner}>
       <div className={styles.eingaben}>
         <fieldset className={styles.gruppe}>
-          <legend>Ihre Situation</legend>
+          <legend>{t.situation}</legend>
           <div className={styles.wahl}>
-            {LAGEN.map(([k, t]) => (
+            {LAGEN.map((k) => (
               <button
                 key={k}
                 type="button"
@@ -152,7 +159,7 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
                   if (k === 'alleinKinder' && kinder === 0) setKinder(1)
                 }}
               >
-                {t}
+                {t.lagen[k]}
               </button>
             ))}
           </div>
@@ -160,11 +167,11 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
 
         {lage !== 'allein' ? (
           <fieldset className={styles.gruppe}>
-            <legend>Kinder</legend>
+            <legend>{t.kinder}</legend>
             <div className={styles.wahl}>
               {(lage === 'verheiratet' ? [0, 1, 2, 3, 4] : [1, 2, 3, 4]).map((n) => (
                 <button key={n} type="button" aria-pressed={kinder === n} className={styles.wahlKnopf} onClick={() => setKinder(n)}>
-                  {n === 0 ? 'Keine' : n === 4 ? '4 und mehr' : n}
+                  {n === 0 ? t.keineKinder : n === 4 ? t.vierUndMehr : n}
                 </button>
               ))}
             </div>
@@ -172,10 +179,10 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
         ) : null}
 
         <fieldset className={styles.gruppe}>
-          <legend>Wohnort</legend>
+          <legend>{t.wohnort}</legend>
           <div className={styles.wohnort}>
             <div className={styles.feld}>
-              <label htmlFor="r3a-kanton">Kanton</label>
+              <label htmlFor="r3a-kanton">{t.kanton}</label>
               <select id="r3a-kanton" value={kanton} onChange={(ev) => waehleKanton(ev.target.value)} className={styles.auswahl}>
                 {fristenKantone.kantone.map((k) => (
                   <option key={k.kuerzel} value={k.kuerzel}>
@@ -186,7 +193,7 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
             </div>
             <div className={styles.feld}>
               <label htmlFor="r3a-gemeinde" id="r3a-gemeinde-titel">
-                Gemeinde
+                {t.gemeinde}
               </label>
               <Suchauswahl
                 id="r3a-gemeinde"
@@ -197,20 +204,20 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
               />
             </div>
           </div>
-          {gemeinde && gemeindeText !== gemeinde.name ? <p className={styles.hilfe}>Berechnet für {gemeinde.name}. Wählen Sie Ihre Gemeinde aus der Liste.</p> : null}
+          {gemeinde && gemeindeText !== gemeinde.name ? <p className={styles.hilfe}>{fuelle(t.berechnetFuer, { gemeinde: gemeinde.name })}</p> : null}
         </fieldset>
 
         <fieldset className={styles.gruppe}>
-          <legend>Ihr Einkommen</legend>
+          <legend>{t.einkommen}</legend>
           <div className={styles.wahl}>
             {(
               [
-                ['brutto', 'Bruttolohn'],
-                ['steuerbar', 'Steuerbares Einkommen'],
+                ['brutto', t.modusBrutto],
+                ['steuerbar', t.modusSteuerbar],
               ] as const
-            ).map(([m, t]) => (
+            ).map(([m, text]) => (
               <button key={m} type="button" aria-pressed={modus === m} className={styles.wahlKnopf} onClick={() => setModus(m)}>
-                {t}
+                {text}
               </button>
             ))}
           </div>
@@ -219,7 +226,7 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
         {modus === 'brutto' ? (
           <div className={styles.gruppe}>
             <label htmlFor="r3a-brutto" className={styles.regelTitel}>
-              Bruttolohn pro Jahr <strong>{chf(brutto)}</strong>
+              {t.bruttoProJahr} <strong>{chf(brutto)}</strong>
             </label>
             <input
               id="r3a-brutto"
@@ -232,12 +239,12 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
               onChange={(ev) => setBrutto(Number(ev.target.value))}
               className={styles.regler}
             />
-            <p className={styles.hilfe}>Er steht auf Ihrem Lohnausweis, Ziffer 8.</p>
+            <p className={styles.hilfe}>{t.bruttoHilfe}</p>
           </div>
         ) : (
           <div className={styles.gruppe}>
             <label htmlFor="r3a-einkommen" className={styles.regelTitel}>
-              Steuerbares Einkommen <strong>{chf(einkommen)}</strong>
+              {t.steuerbaresEinkommen} <strong>{chf(einkommen)}</strong>
             </label>
             <input
               id="r3a-einkommen"
@@ -250,19 +257,19 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
               onChange={(ev) => setEinkommen(Number(ev.target.value))}
               className={styles.regler}
             />
-            <p className={styles.hilfe}>Es steht in Ihrer letzten Veranlagung. Wir rechnen damit bei Bund und Kanton.</p>
+            <p className={styles.hilfe}>{t.steuerbarHilfe}</p>
           </div>
         )}
 
         <fieldset className={styles.gruppe}>
-          <legend>Sind Sie einer Pensionskasse angeschlossen?</legend>
+          <legend>{t.pkFrage}</legend>
           <div className={styles.wahl}>
             {(
               [
-                [true, 'Ja, als Angestellte'],
-                [false, 'Nein'],
+                [true, t.pkJa],
+                [false, t.pkNein],
               ] as const
-            ).map(([w, t]) => (
+            ).map(([w, text]) => (
               <button
                 key={String(w)}
                 type="button"
@@ -273,7 +280,7 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
                   setEinzahlung(w ? MAX_3A_MIT_PK : Math.min(einzahlung === MAX_3A_MIT_PK ? MAX_3A_OHNE_PK : einzahlung, MAX_3A_OHNE_PK))
                 }}
               >
-                {t}
+                {text}
               </button>
             ))}
           </div>
@@ -283,7 +290,7 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
           // Standardmässig zugeklappt (Ricardo, 16.10.2026); oben steht nur das Ergebnis
           <details className={styles.umrechnung}>
             <summary className={styles.umrechnungKopf}>
-              <span className={styles.umrechnungTitel}>Steuerbares Einkommen, geschätzt</span>
+              <span className={styles.umrechnungTitel}>{t.geschaetzt}</span>
               <span className={styles.umrechnungWert}>
                 <FliessendeZahl wert={umrechnung.kanton.steuerbar} format={chf} />
                 <span className={styles.umrechnungOrt}>{kantonName}</span>
@@ -293,25 +300,25 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
             <div className={styles.umrechnungInhalt}>
             <dl className={styles.tabelle}>
               <div>
-                <dt>Bruttolohn</dt>
+                <dt>{t.bruttolohn}</dt>
                 <dd>{chf(brutto)}</dd>
               </div>
               <div>
-                <dt>AHV, IV, EO, ALV und Unfall</dt>
+                <dt>{t.sozial}</dt>
                 <dd>
                   <FliessendeZahl wert={umrechnung.sozial} format={minus} />
                 </dd>
               </div>
               {pk ? (
                 <div>
-                  <dt>Pensionskasse, geschätzt</dt>
+                  <dt>{t.pensionskasse}</dt>
                   <dd>
                     <FliessendeZahl wert={umrechnung.pensionskasse} format={minus} />
                   </dd>
                 </div>
               ) : null}
               <div className={styles.summe}>
-                <dt>Nettolohn</dt>
+                <dt>{t.nettolohn}</dt>
                 <dd>
                   <FliessendeZahl wert={umrechnung.netto} format={chf} />
                 </dd>
@@ -321,10 +328,10 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
               <thead>
                 <tr>
                   <th scope="col">
-                    <span className="ac-visually-hidden">Abzug</span>
+                    <span className="ac-visually-hidden">{t.abzug}</span>
                   </th>
                   <th scope="col">
-                    Bund <span className={styles.einheit}>CHF</span>
+                    {t.bund} <span className={styles.einheit}>CHF</span>
                   </th>
                   <th scope="col">
                     {kantonName} <span className={styles.einheit}>CHF</span>
@@ -334,13 +341,13 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
               <tbody>
                 {(
                   [
-                    ['Berufs- und Fahrkosten', 'berufskosten'],
-                    ['Versicherungsprämien', 'versicherung'],
-                    ['Kinder und persönliche Abzüge', 'familie'],
+                    [t.berufskosten, 'berufskosten'],
+                    [t.versicherung, 'versicherung'],
+                    [t.familie, 'familie'],
                   ] as const
-                ).map(([t, f]) => (
+                ).map(([text, f]) => (
                   <tr key={f}>
-                    <th scope="row">{t}</th>
+                    <th scope="row">{text}</th>
                     <td>
                       <FliessendeZahl wert={umrechnung.bund[f]} format={abzug} />
                     </td>
@@ -350,7 +357,7 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
                   </tr>
                 ))}
                 <tr className={styles.summe}>
-                  <th scope="row">Steuerbares Einkommen</th>
+                  <th scope="row">{t.steuerbaresEinkommen}</th>
                   <td>
                     <FliessendeZahl wert={umrechnung.bund.steuerbar} format={zahl} />
                   </td>
@@ -361,9 +368,10 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
               </tbody>
             </table>
             <p className={styles.hilfe}>
-              Ohne die Einzahlung in die Säule 3a. Angenommen: {verheiratet ? 'ein Erwerbseinkommen, ' : ''}Pensionskasse 6.5 % und
-              Unfallversicherung 1 % des Lohns, Fahrkosten CHF 800, keine weiteren Abzüge.
-              {abz.jahr < STEUERJAHR ? ` Abzüge des Kantons ${kantonName} teilweise Stand ${abz.jahr}.` : ''}
+              {t.annahmenAnfang}
+              {verheiratet ? t.annahmenVerheiratet : ''}
+              {t.annahmenRest}
+              {abz.jahr < STEUERJAHR ? ` ${fuelle(t.abzuegeStand, { kanton: kantonName, jahr: abz.jahr })}` : ''}
             </p>
             </div>
           </details>
@@ -371,7 +379,7 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
 
         <div className={styles.gruppe}>
           <label htmlFor="r3a-einzahlung" className={styles.regelTitel}>
-            Einzahlung in die Säule 3a <strong>{chf(betrag)}</strong>
+            {t.einzahlung} <strong>{chf(betrag)}</strong>
           </label>
           <input
             id="r3a-einzahlung"
@@ -385,16 +393,18 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
             className={styles.regler}
           />
           <p className={styles.hilfe}>
-            {pk ? `Höchstens ${chf(MAX_3A_MIT_PK)} im Jahr ${STEUERJAHR}.` : `Höchstens 20 % des Erwerbseinkommens, maximal ${chf(MAX_3A_OHNE_PK)} im Jahr ${STEUERJAHR}.`}
+            {pk
+              ? fuelle(t.hoechstensMitPk, { betrag: chf(MAX_3A_MIT_PK), jahr: STEUERJAHR })
+              : fuelle(t.hoechstensOhnePk, { betrag: chf(MAX_3A_OHNE_PK), jahr: STEUERJAHR })}
           </p>
         </div>
 
         <fieldset className={styles.gruppe}>
-          <legend>Kirchensteuer</legend>
+          <legend>{t.kirchensteuer}</legend>
           <div className={styles.wahl}>
-            {KIRCHEN.map(([k, t]) => (
+            {KIRCHEN.map((k) => (
               <button key={k} type="button" aria-pressed={kirche === k} className={styles.wahlKnopf} onClick={() => setKirche(k)}>
-                {t}
+                {t.kirchen[k]}
               </button>
             ))}
           </div>
@@ -402,41 +412,43 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
       </div>
 
       <div className={styles.ergebnis} aria-live="polite">
-        <p className={styles.ergebnisTitel}>So viel Steuern sparen Sie ungefähr</p>
+        <p className={styles.ergebnisTitel}>{t.ergebnisTitel}</p>
         <p className={styles.betrag}>{e ? <FliessendeZahl wert={e.total} format={rund} /> : ladefehler ? '–' : '…'}</p>
-        <p className={styles.proJahr}>im Steuerjahr {STEUERJAHR}</p>
+        <p className={styles.proJahr}>{fuelle(t.imSteuerjahr, { jahr: STEUERJAHR })}</p>
 
         {/* Alle Teile bleiben stehen, damit ihre Breite fliessend wechselt */}
         <div className={styles.balken} aria-hidden="true">
-          {teile.map((t) => (
-            <span key={t.klasse} className={t.klasse} style={{ flexGrow: Math.max(t.wert, 0) }} />
+          {teile.map((teil) => (
+            <span key={teil.klasse} className={teil.klasse} style={{ flexGrow: Math.max(teil.wert, 0) }} />
           ))}
           <span className={styles.leer} style={{ flexGrow: e && e.total > 0 ? 0 : 1 }} />
         </div>
         <ul className={styles.legende}>
           {teile
-            .filter((t) => t.klasse !== styles.kirche || kirche !== 'keine')
-            .map((t) => (
-              <li key={t.klasse}>
-                <span className={`${styles.punkt} ${t.klasse}`} aria-hidden="true" />
-                <span>{t.name}</span>
+            .filter((teil) => teil.klasse !== styles.kirche || kirche !== 'keine')
+            .map((teil) => (
+              <li key={teil.klasse}>
+                <span className={`${styles.punkt} ${teil.klasse}`} aria-hidden="true" />
+                <span>{teil.name}</span>
                 <strong>
-                  <FliessendeZahl wert={t.wert} format={rund} />
+                  <FliessendeZahl wert={teil.wert} format={rund} />
                 </strong>
               </li>
             ))}
         </ul>
 
         {ladefehler ? (
-          <p className={styles.hinweis}>Die Steuerdaten lassen sich gerade nicht laden. Bitte versuchen Sie es später noch einmal.</p>
+          <p className={styles.hinweis}>{t.ladefehler}</p>
         ) : (
           <p className={styles.hinweis}>
-            Schätzung für {gemeinde ? `${gemeinde.name}, Kanton ${kantonName}` : 'Ihre Gemeinde'}, Steuerjahr {STEUERJAHR}, nach den Tarifen und
-            Steuerfüssen der Eidgenössischen Steuerverwaltung. Massgebend ist Ihre Veranlagung.
+            {fuelle(t.schaetzung, {
+              ort: gemeinde ? fuelle(t.ortMitKanton, { gemeinde: gemeinde.name, kanton: kantonName }) : t.ihreGemeinde,
+              jahr: STEUERJAHR,
+            })}
           </p>
         )}
         <a href={kontaktHref} className={styles.knopf}>
-          Säule 3a besprechen <span aria-hidden="true">→</span>
+          {t.besprechen} <span aria-hidden="true">→</span>
         </a>
       </div>
     </div>

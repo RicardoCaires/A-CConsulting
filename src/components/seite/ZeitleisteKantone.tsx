@@ -2,7 +2,11 @@
 
 import { useId, useLayoutEffect, useRef, useState } from 'react'
 
-import { fristenKantone, type Station } from '@/content/fristen-kantone'
+import { fristenKantone as fristenDe, type Station } from '@/content/fristen-kantone'
+import { fristenKantone as fristenFr } from '@/content/fr/fristen-kantone'
+import { fristenKantone as fristenPt } from '@/content/pt/fristen-kantone'
+import type { Locale } from '@/i18n/config'
+import { istKostenlos, nachSprache } from '@/lib/sprache'
 
 import styles from './Seite.module.css'
 
@@ -26,7 +30,7 @@ function Leiste({ titel, stationen }: { titel: string; stationen: readonly Stati
             {st.marke ? <span className={styles.stationMarke}>{st.marke}</span> : null}
             <span className={styles.stationTitel}>{st.titel}</span>
             {st.wert ? (
-              <span className={styles.stationWert} data-kostenlos={st.wert === 'kostenlos'}>
+              <span className={styles.stationWert} data-kostenlos={istKostenlos(st.wert)}>
                 {st.wert}
               </span>
             ) : null}
@@ -37,7 +41,8 @@ function Leiste({ titel, stationen }: { titel: string; stationen: readonly Stati
   )
 }
 
-export function ZeitleisteKantone({ titelPrivat, titelUnternehmen, beschriftung }: { titelPrivat: string; titelUnternehmen: string; beschriftung: string }) {
+export function ZeitleisteKantone({ titelPrivat, titelUnternehmen, beschriftung, locale = 'de' }: { titelPrivat: string; titelUnternehmen: string; beschriftung: string; locale?: Locale }) {
+  const fristenKantone = nachSprache(locale, { de: fristenDe, fr: fristenFr, pt: fristenPt })
   const [kuerzel, setKuerzel] = useState(VORGABE)
   const id = useId()
   // Die Höhe gleitet beim Wechsel von der alten zur neuen und steht danach wieder auf «auto» –

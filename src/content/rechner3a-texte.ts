@@ -1,0 +1,57 @@
+/**
+ * Feste Texte des Rechners Säule 3a (`src/components/ui/Rechner3a.tsx`), am 16.10.2026 unverändert aus der
+ * Komponente herausgelöst, damit sie übersetzt werden können. Übersetzungen unter `src/content/fr/` und
+ * `src/content/pt/`. `{…}` sind Platzhalter, die die Komponente füllt.
+ *
+ * QUELLE: `content/source/umbau_2026-10b_de.md`, Abschnitt «Rechner Säule 3a: herausgelöste Texte».
+ */
+export const rechner3aTexte = {
+  lagen: { allein: 'Alleinstehend', alleinKinder: 'Alleinstehend mit Kindern', verheiratet: 'Verheiratet' },
+  kirchen: { keine: 'Keine', ref: 'Reformiert', kath: 'Katholisch', chk: 'Christkatholisch' },
+  situation: 'Ihre Situation',
+  kinder: 'Kinder',
+  keineKinder: 'Keine',
+  vierUndMehr: '4 und mehr',
+  wohnort: 'Wohnort',
+  kanton: 'Kanton',
+  gemeinde: 'Gemeinde',
+  berechnetFuer: 'Berechnet für {gemeinde}. Wählen Sie Ihre Gemeinde aus der Liste.',
+  einkommen: 'Ihr Einkommen',
+  modusBrutto: 'Bruttolohn',
+  modusSteuerbar: 'Steuerbares Einkommen',
+  bruttoProJahr: 'Bruttolohn pro Jahr',
+  bruttoHilfe: 'Er steht auf Ihrem Lohnausweis, Ziffer 8.',
+  steuerbaresEinkommen: 'Steuerbares Einkommen',
+  steuerbarHilfe: 'Es steht in Ihrer letzten Veranlagung. Wir rechnen damit bei Bund und Kanton.',
+  pkFrage: 'Sind Sie einer Pensionskasse angeschlossen?',
+  pkJa: 'Ja, als Angestellte',
+  pkNein: 'Nein',
+  geschaetzt: 'Steuerbares Einkommen, geschätzt',
+  bruttolohn: 'Bruttolohn',
+  sozial: 'AHV, IV, EO, ALV und Unfall',
+  pensionskasse: 'Pensionskasse, geschätzt',
+  nettolohn: 'Nettolohn',
+  abzug: 'Abzug',
+  bund: 'Bund',
+  berufskosten: 'Berufs- und Fahrkosten',
+  versicherung: 'Versicherungsprämien',
+  familie: 'Kinder und persönliche Abzüge',
+  annahmenAnfang: 'Ohne die Einzahlung in die Säule 3a. Angenommen: ',
+  annahmenVerheiratet: 'ein Erwerbseinkommen, ',
+  annahmenRest: 'Pensionskasse 6.5 % und Unfallversicherung 1 % des Lohns, Fahrkosten CHF 800, keine weiteren Abzüge.',
+  abzuegeStand: 'Abzüge des Kantons {kanton} teilweise Stand {jahr}.',
+  einzahlung: 'Einzahlung in die Säule 3a',
+  hoechstensMitPk: 'Höchstens {betrag} im Jahr {jahr}.',
+  hoechstensOhnePk: 'Höchstens 20 % des Erwerbseinkommens, maximal {betrag} im Jahr {jahr}.',
+  kirchensteuer: 'Kirchensteuer',
+  ergebnisTitel: 'So viel Steuern sparen Sie ungefähr',
+  imSteuerjahr: 'im Steuerjahr {jahr}',
+  bundessteuer: 'Bundessteuer',
+  kantonUndGemeinde: 'Kanton und Gemeinde {gemeinde}',
+  ladefehler: 'Die Steuerdaten lassen sich gerade nicht laden. Bitte versuchen Sie es später noch einmal.',
+  schaetzung:
+    'Schätzung für {ort}, Steuerjahr {jahr}, nach den Tarifen und Steuerfüssen der Eidgenössischen Steuerverwaltung. Massgebend ist Ihre Veranlagung.',
+  ortMitKanton: '{gemeinde}, Kanton {kanton}',
+  ihreGemeinde: 'Ihre Gemeinde',
+  besprechen: 'Säule 3a besprechen',
+}

@@ -174,8 +174,11 @@ function pendingInSource(value) {
  */
 const KEIN_INHALT = ['types.ts', 'schema.ts', 'leistungsseiten.ts']
 
+// Übersetzungen (seit 16.10.2026 unter `src/content/fr/` und `src/content/pt/`) stammen nicht aus der deutschen
+// Quelle; ihren Aufbau prüft die Typprüfung (`Uebersetzt<typeof DE>` in `src/lib/sprache.ts`).
+const UEBERSETZUNG = /[\\/]src[\\/]content[\\/](fr|pt)[\\/]/
 const files = [...walk(join(root, 'src/content'))].filter(
-  (f) => !KEIN_INHALT.some((name) => f.endsWith(name)),
+  (f) => !KEIN_INHALT.some((name) => f.endsWith(name)) && !UEBERSETZUNG.test(f),
 )
 
 const missing = []

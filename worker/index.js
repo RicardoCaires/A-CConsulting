@@ -37,6 +37,9 @@ const GRAPH = 'https://graph.microsoft.com/v1.0'
 /** Die Sprachen der Website. Alles andere fuehrt auf die Leitsprache. */
 const SPRACHEN = new Set(['de', 'fr', 'pt'])
 
+/** Pfad der Kontaktseite je Sprache, wie in `src/i18n/routes.ts`. */
+const KONTAKTSEITE = { de: 'kontakt', fr: 'contact', pt: 'contacto' }
+
 const worker = {
   async fetch(request, env) {
     const url = new URL(request.url)
@@ -112,7 +115,7 @@ function zurueck(sprache, marke) {
     // 303: Der Browser holt die Seite mit GET. Ein Neuladen schickt das
     // Formular damit nicht ein zweites Mal ab.
     status: 303,
-    headers: { Location: `/${sprache}/kontakt/#${marke}` },
+    headers: { Location: `/${sprache}/${KONTAKTSEITE[sprache] ?? 'kontakt'}/#${marke}` },
   })
 }
 

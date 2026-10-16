@@ -67,21 +67,21 @@ type PageDefinition = {
 export const pages: Record<PageKey, PageDefinition> = {
   home: {
     slug: { de: '', fr: '', pt: '' },
-    published: { de: true, fr: false, pt: false },
+    published: { de: true, fr: true, pt: true },
     inMainNav: true,
     inLegalNav: false,
     sitemapPriority: 1.0,
   },
   versicherungen: {
     slug: { de: 'versicherungen', fr: 'assurances', pt: 'seguros' },
-    published: { de: true, fr: false, pt: false },
+    published: { de: true, fr: true, pt: true },
     inMainNav: true,
     inLegalNav: false,
     sitemapPriority: 0.9,
   },
   treuhand: {
     slug: { de: 'treuhand', fr: 'fiduciaire', pt: 'fiduciaria' },
-    published: { de: true, fr: false, pt: false },
+    published: { de: true, fr: true, pt: true },
     inMainNav: true,
     inLegalNav: false,
     sitemapPriority: 0.8,
@@ -151,7 +151,7 @@ export const pages: Record<PageKey, PageDefinition> = {
   },
   steuern: {
     slug: { de: 'steuern', fr: 'impots', pt: 'impostos' },
-    published: { de: true, fr: false, pt: false },
+    published: { de: true, fr: true, pt: true },
     inMainNav: false,
     inLegalNav: false,
     sitemapPriority: 0.8,
@@ -200,7 +200,7 @@ export const pages: Record<PageKey, PageDefinition> = {
   },
   ueberUns: {
     slug: { de: 'ueber-uns', fr: 'a-propos', pt: 'sobre-nos' },
-    published: { de: true, fr: false, pt: false },
+    published: { de: true, fr: true, pt: true },
     inMainNav: true,
     inLegalNav: false,
     sitemapPriority: 0.6,
@@ -221,7 +221,7 @@ export const pages: Record<PageKey, PageDefinition> = {
   },
   kontakt: {
     slug: { de: 'kontakt', fr: 'contact', pt: 'contacto' },
-    published: { de: true, fr: false, pt: false },
+    published: { de: true, fr: true, pt: true },
     inMainNav: true,
     inLegalNav: false,
     sitemapPriority: 0.7,
@@ -234,7 +234,7 @@ export const pages: Record<PageKey, PageDefinition> = {
   /** Digitalisierung und Kundenportal (15.10.2026, Ricardo: «in den Vordergrund stellen»). */
   digital: {
     slug: { de: 'digital', fr: 'numerique', pt: 'digital' },
-    published: { de: true, fr: false, pt: false },
+    published: { de: true, fr: true, pt: true },
     inMainNav: true,
     inLegalNav: false,
     sitemapPriority: 0.8,
@@ -252,21 +252,21 @@ export const pages: Record<PageKey, PageDefinition> = {
   },
   offerte: {
     slug: { de: 'offerte-anfragen', fr: 'demande-offre', pt: 'pedido-proposta' },
-    published: { de: true, fr: false, pt: false },
+    published: { de: true, fr: true, pt: true },
     inMainNav: false,
     inLegalNav: false,
     sitemapPriority: 0.8,
   },
   impressum: {
     slug: { de: 'impressum', fr: 'mentions-legales', pt: 'informacao-legal' },
-    published: { de: true, fr: false, pt: false },
+    published: { de: true, fr: true, pt: true },
     inMainNav: false,
     inLegalNav: true,
     sitemapPriority: 0.2,
   },
   datenschutz: {
     slug: { de: 'datenschutz', fr: 'protection-des-donnees', pt: 'protecao-de-dados' },
-    published: { de: true, fr: false, pt: false },
+    published: { de: true, fr: true, pt: true },
     inMainNav: false,
     inLegalNav: true,
     sitemapPriority: 0.2,

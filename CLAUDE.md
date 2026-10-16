@@ -2760,6 +2760,35 @@ gibt es noch keine.
 > - Die Frage nach selbst bezahlten Arztkosten ist nur ein Knopf im Browser und wird nirgends übermittelt; Abschnitt 7
 >   (keine Gesundheitsangaben in öffentlichen Formularen) betrifft Formulare, die senden.
 
+## 9b. Französisch und Portugiesisch (16.10.2026)
+
+> Ricardo: «bitte anschliessend website und Kundenportal auf Französisch und Portugiesisch übersetzen», auf
+> Rückfrage **direkt online**, Rechtstexte **übersetzt mit Vorbehalt**, im Portal **alles inklusive E-Mails**.
+> Damit ist die offene Frage aus Abschnitt 10, ob `/fr/` aufgeschaltet wird, entschieden.
+>
+> - **Alle deutschen Seiten stehen in `routes.ts` auch für FR und PT auf `published: true`** (Start, Versicherungen,
+>   Treuhand, Steuern, Digital, Über uns, Kontakt, Offerte anfragen, Impressum, Datenschutz). Sprachwahl im Kopf,
+>   Sitemap und `hreflang` folgen von selbst.
+> - **Übersetzungen liegen nur unter `src/content/fr/` und `src/content/pt/`**, gleiche Datei- und Exportnamen wie das
+>   deutsche Original, typisiert als `Uebersetzt<typeof …>` (`src/lib/sprache.ts`) bzw. `SeitenInhalt`. Fehlt ein Feld,
+>   bricht die Typprüfung. Gewählt wird mit `nachSprache(locale, { de, fr, pt })`. `check-source` prüft nur Deutsch.
+> - **Deutsch bleibt Quelle.** Ändert sich ein deutscher Text, gehören FR und PT im selben Vorgang nachgezogen
+>   (Abschnitt 4). Feste Texte der Bausteine stehen in `src/content/offerte-assistent-texte.ts`,
+>   `rechner3a-texte.ts`, `steuer-checkliste.ts`, `fristen-kantone.ts`, `seiten/portal-beispiel.ts`; die Texte der
+>   Offertanfrage-Seite in `OFFERTE_SEITE` (`app/[locale]/[...slug]/page.tsx`), das Kontaktformular in
+>   `src/content/fr|pt/kontaktformular.ts`.
+> - **Impressum und Datenschutz** sind sinngetreu übersetzt und beginnen mit «Seule la version allemande fait foi.»
+>   bzw. «Apenas a versão alemã faz fé.». Die Übersetzung gibt den deutschen Wortlaut wieder, auch wo er veraltet ist.
+> - **Gesendet wird immer Deutsch:** Offertanfrage (Katalog mit `?sprache=`, Anzeige `optionenText`, Wert deutsch),
+>   Portalvorschau, Kontaktformular (Anliegen in der Sprache der Seite, Feld `sprache`). Der Worker leitet nach dem
+>   Absenden auf die Kontaktseite der Sprache zurück (`KONTAKTSEITE` in `worker/index.js`).
+> - **Checkliste:** sendet `sprache`; das CRM versendet Liste, PDF und Mail in dieser Sprache.
+> - **Vergleiche auf Texte vermeiden:** «kostenlos» prüft `istKostenlos()`, die Portalvorschau erkennt Motorrad und
+>   «Anderes» sprachunabhängig.
+> - ⚠️ **Von Ricardo gegenzulesen:** der Startseiten-Spruch («Ancrés dans le Seeland. Le regard plus loin.» / «Com
+>   raízes no Seeland. Com visão mais longe.»), Fachbegriffe (PT «nota de liquidação», «casco parcial», «recheio da
+>   casa», FR «PFPDT», VBV als «AFA») und die Abschlüsse der Inhaber.
+
 ## 10. Offene Punkte
 
 Technik und Infrastruktur:
@@ -2920,6 +2949,8 @@ Davon hängt ab:
 - die **gesamte Sprachfassung unter `/fr/`** und damit ein Drittel der
   Übersetzungsarbeit
 - die Angabe in der Suchmaschinen-Beschreibung der Startseite
+
+> **Entschieden am 16.10.2026: FR und PT sind online** (Abschnitt 9b).
 
 Bis zur Klärung: `/fr/` bleibt auf `published: false`, es entstehen keine
 weiteren französischen Texte, und es wird keine Übersetzungsarbeit begonnen.

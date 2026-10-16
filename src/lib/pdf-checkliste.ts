@@ -84,6 +84,8 @@ export type PdfDaten = {
   logoMass: { b: number; h: number }
   /** Was auf der Website schon abgehakt ist, steht im PDF angekreuzt. */
   abgehakt?: ReadonlySet<string>
+  /** «Seite» und «von» der Fusszeile in der Sprache der Liste (FR «Page … sur …», PT «Página … de …»). */
+  seiteVon?: readonly [string, string]
 }
 
 export function checklistePdf(d: PdfDaten): Blob {
@@ -158,7 +160,8 @@ export function checklistePdf(d: PdfDaten): Blob {
     const fy = KOPF
     s.push(`${LINIE} RG 0.25 w ${RAND.toFixed(2)} ${(fy + 12).toFixed(2)} m ${(SEITE.b - RAND).toFixed(2)} ${(fy + 12).toFixed(2)} l S\n`)
     text((SEITE.b - breite(d.fuss, 8)) / 2, fy, d.fuss, 8, false, GRAU)
-    const seite = `Seite ${i + 1} von ${seiten.length}`
+    const [wSeite, wVon] = d.seiteVon ?? ['Seite', 'von']
+    const seite = `${wSeite} ${i + 1} ${wVon} ${seiten.length}`
     text(SEITE.b - RAND - breite(seite, 8), fy, seite, 8, false, GRAU)
   })
 

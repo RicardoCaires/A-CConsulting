@@ -1,7 +1,7 @@
 /**
  * Seiten im Baukasten (15.10.2026). Steht eine Seite hier, wird sie über
  * `components/seite/Seite.tsx` ausgegeben; alle übrigen laufen wie bisher.
- * FR und PT sind nicht veröffentlicht; sie bekommen `null`.
+ * FR und PT (seit 16.10.2026) liegen unter `src/content/fr|pt/seiten/`; fehlt eine Seite dort, gibt es `null`.
  */
 import type { Locale } from '@/i18n/config'
 import type { PageKey } from '@/i18n/routes'
@@ -16,6 +16,8 @@ import { treuhand } from './treuhand'
 import { ueberUns } from './ueber-uns'
 import { versicherungen } from './versicherungen'
 import type { SeitenInhalt } from './typen'
+import { FR } from '../fr/seiten'
+import { PT } from '../pt/seiten'
 
 const DE: Partial<Record<PageKey, SeitenInhalt>> = {
   home: start,
@@ -30,5 +32,6 @@ const DE: Partial<Record<PageKey, SeitenInhalt>> = {
 }
 
 export function getSeite(locale: Locale, key: PageKey): SeitenInhalt | null {
-  return locale === 'de' ? (DE[key] ?? null) : null
+  const fassung = locale === 'fr' ? FR : locale === 'pt' ? PT : DE
+  return fassung[key] ?? null
 }

@@ -2,16 +2,12 @@ import Image from 'next/image'
 import type { ReactNode } from 'react'
 
 import { PortalBeispiel } from '@/components/ui/PortalBeispiel'
-import {
-  portalAnfragen,
-  portalBeispiel,
-  portalFenster,
-  portalPolice,
-  portalRahmen,
-  portalUnterlagen,
-  portalVersicherungen,
-} from '@/content/seiten/portal-beispiel'
+import * as fr from '@/content/fr/portal-beispiel'
+import * as pt from '@/content/pt/portal-beispiel'
+import * as de from '@/content/seiten/portal-beispiel'
 import type { PortalAnsicht as Art } from '@/content/seiten/typen'
+import type { Locale } from '@/i18n/config'
+import { nachSprache } from '@/lib/sprache'
 
 import styles from './PortalAnsicht.module.css'
 
@@ -24,7 +20,22 @@ import styles from './PortalAnsicht.module.css'
  *
  * Vier Seiten: Start (Cockpit mit Kostenring), Meine Versicherungen, Anfragen und die
  * Unterlagen einer Police. Reines HTML und SVG, ohne Skript.
+ *
+ * Sprachen (16.10.2026): Die Beispieldaten kommen je Sprache aus `src/content/seiten/portal-beispiel.ts`
+ * beziehungsweise den Übersetzungen unter `src/content/fr|pt/`; Beträge überall als CHF 1’000.00.
  */
+
+/** Die Beispieldaten in der Sprache der Seite; Deutsch ist die Rückfallebene. */
+const datenVon = (locale: Locale) => ({
+  beispiel: nachSprache(locale, { de: de.portalBeispiel, fr: fr.portalBeispiel, pt: pt.portalBeispiel }),
+  rahmen: nachSprache(locale, { de: de.portalRahmen, fr: fr.portalRahmen, pt: pt.portalRahmen }),
+  fenster: nachSprache(locale, { de: de.portalFenster, fr: fr.portalFenster, pt: pt.portalFenster }),
+  versicherungen: nachSprache(locale, { de: de.portalVersicherungen, fr: fr.portalVersicherungen, pt: pt.portalVersicherungen }),
+  police: nachSprache(locale, { de: de.portalPolice, fr: fr.portalPolice, pt: pt.portalPolice }),
+  anfragen: nachSprache(locale, { de: de.portalAnfragen, fr: fr.portalAnfragen, pt: pt.portalAnfragen }),
+  unterlagen: nachSprache(locale, { de: de.portalUnterlagen, fr: fr.portalUnterlagen, pt: pt.portalUnterlagen }),
+})
+type Daten = ReturnType<typeof datenVon>
 
 export const chf = (n: number) => `CHF ${String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '’')}.00`
 
@@ -50,8 +61,7 @@ export function Zeichen({ name, klasse }: { name: keyof typeof ZEICHEN; klasse?:
 }
 
 /** Browserrahmen und Kopf des Portals; `aktiv` ist der markierte Bereich. */
-function Rahmen({ aktiv, titel, children }: { aktiv: number; titel: string; children: ReactNode }) {
-  const r = portalRahmen
+function Rahmen({ r, aktiv, titel, children }: { r: Daten['rahmen']; aktiv: number; titel: string; children: ReactNode }) {
   return (
     <figure className={styles.fenster} aria-label={`${titel}: ${r.hinweis}`}>
       <div className={styles.leiste} aria-hidden="true">
@@ -142,10 +152,10 @@ export function Kostenring({
   )
 }
 
-function Start() {
-  const f = portalFenster
+function Start({ d }: { d: Daten }) {
+  const f = d.fenster
   return (
-    <Rahmen aktiv={0} titel={f.vorzeile}>
+    <Rahmen r={d.rahmen} aktiv={0} titel={f.vorzeile}>
       <div className={styles.willkommen}>
         <span className={styles.vorzeile}>{f.vorzeile}</span>
         <strong className={styles.h1}>{f.gruss}</strong>
@@ -172,10 +182,10 @@ function Start() {
 
 /* ---- Meine Versicherungen ------------------------------------------------------ */
 
-function Versicherungen() {
-  const v = portalVersicherungen
+function Versicherungen({ d }: { d: Daten }) {
+  const v = d.versicherungen
   return (
-    <Rahmen aktiv={1} titel={v.titel}>
+    <Rahmen r={d.rahmen} aktiv={1} titel={v.titel}>
       <strong className={styles.h1}>{v.titel}</strong>
       <strong className={styles.h2}>{v.gruppe}</strong>
       <div className={styles.policen}>
@@ -198,10 +208,10 @@ function Versicherungen() {
 
 /* ---- Eine Police: Motorfahrzeug mit Leistungen und Download -------------------- */
 
-function Police() {
-  const p = portalPolice
+function Police({ d }: { d: Daten }) {
+  const p = d.police
   return (
-    <Rahmen aktiv={1} titel={p.name}>
+    <Rahmen r={d.rahmen} aktiv={1} titel={p.name}>
       <span className={styles.zurueck}>
         <Zeichen name="zurueck" />
         {p.zurueck}
@@ -242,12 +252,16 @@ function Police() {
 /* ---- Anfragen ------------------------------------------------------------------- */
 
 const WAHLZEICHEN = ['dokument', 'telefon', 'kalender', 'schild', 'nachricht'] as const
-const MARKE = { offen: styles.marke, navy: `${styles.marke} ${styles.markeNavy}`, gruen: `${styles.marke} ${styles.markeGruen}` }
+const MARKE: Record<string, string | undefined> = {
+  offen: styles.marke,
+  navy: `${styles.marke} ${styles.markeNavy}`,
+  gruen: `${styles.marke} ${styles.markeGruen}`,
+}
 
-function Anfragen() {
-  const a = portalAnfragen
+function Anfragen({ d }: { d: Daten }) {
+  const a = d.anfragen
   return (
-    <Rahmen aktiv={2} titel={a.titel}>
+    <Rahmen r={d.rahmen} aktiv={2} titel={a.titel}>
       <strong className={styles.h1}>{a.titel}</strong>
       <div className={styles.wahl}>
         {a.wahl.map((w, i) => (
@@ -267,7 +281,7 @@ function Anfragen() {
               <strong>{x.betreff}</strong>
               <span className={styles.klein}> · {x.datum}</span>
             </span>
-            <span className={MARKE[x.art]}>{x.stand}</span>
+            <span className={MARKE[x.art] ?? styles.marke}>{x.stand}</span>
           </span>
         ))}
       </div>
@@ -277,10 +291,10 @@ function Anfragen() {
 
 /* ---- Eine Police: Unterlagen --------------------------------------------------- */
 
-function Unterlagen() {
-  const u = portalUnterlagen
+function Unterlagen({ d }: { d: Daten }) {
+  const u = d.unterlagen
   return (
-    <Rahmen aktiv={1} titel={u.titel}>
+    <Rahmen r={d.rahmen} aktiv={1} titel={u.titel}>
       <span className={styles.zurueck}>
         <Zeichen name="zurueck" />
         {u.zurueck}
@@ -320,19 +334,20 @@ function Unterlagen() {
   )
 }
 
-export function PortalAnsicht({ ansicht = 'praemien' }: { ansicht?: Art }) {
+export function PortalAnsicht({ ansicht = 'praemien', locale = 'de' }: { ansicht?: Art; locale?: Locale }) {
+  const d = datenVon(locale)
   switch (ansicht) {
     case 'fenster':
-      return <Start />
+      return <Start d={d} />
     case 'versicherungen':
-      return <Versicherungen />
+      return <Versicherungen d={d} />
     case 'police':
-      return <Police />
+      return <Police d={d} />
     case 'anfragen':
-      return <Anfragen />
+      return <Anfragen d={d} />
     case 'unterlagen':
-      return <Unterlagen />
+      return <Unterlagen d={d} />
     default:
-      return <PortalBeispiel {...portalBeispiel} />
+      return <PortalBeispiel {...d.beispiel} />
   }
 }
