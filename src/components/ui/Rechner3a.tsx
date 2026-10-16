@@ -50,6 +50,9 @@ const chf = (n: number) => `CHF ${Math.round(n).toString().replace(/\B(?=(\d{3})
 /** Auf 10 Franken gerundet: Es ist eine Schätzung. */
 const rund = (n: number) => chf(Math.round(n / 10) * 10)
 const minus = (n: number) => `− ${chf(n)}`
+/** In der Tabelle ohne «CHF» – es steht einmal im Kopf; so passt sie aufs Telefon. */
+const zahl = (n: number) => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'")
+const abzug = (n: number) => `− ${zahl(n)}`
 
 export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
   const [daten, setDaten] = useState<Daten | null>(null)
@@ -320,8 +323,12 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
                   <th scope="col">
                     <span className="ac-visually-hidden">Abzug</span>
                   </th>
-                  <th scope="col">Bund</th>
-                  <th scope="col">{kantonName}</th>
+                  <th scope="col">
+                    Bund <span className={styles.einheit}>CHF</span>
+                  </th>
+                  <th scope="col">
+                    {kantonName} <span className={styles.einheit}>CHF</span>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -335,20 +342,20 @@ export function Rechner3a({ kontaktHref }: { kontaktHref: string }) {
                   <tr key={f}>
                     <th scope="row">{t}</th>
                     <td>
-                      <FliessendeZahl wert={umrechnung.bund[f]} format={minus} />
+                      <FliessendeZahl wert={umrechnung.bund[f]} format={abzug} />
                     </td>
                     <td>
-                      <FliessendeZahl wert={umrechnung.kanton[f]} format={minus} />
+                      <FliessendeZahl wert={umrechnung.kanton[f]} format={abzug} />
                     </td>
                   </tr>
                 ))}
                 <tr className={styles.summe}>
                   <th scope="row">Steuerbares Einkommen</th>
                   <td>
-                    <FliessendeZahl wert={umrechnung.bund.steuerbar} format={chf} />
+                    <FliessendeZahl wert={umrechnung.bund.steuerbar} format={zahl} />
                   </td>
                   <td>
-                    <FliessendeZahl wert={umrechnung.kanton.steuerbar} format={chf} />
+                    <FliessendeZahl wert={umrechnung.kanton.steuerbar} format={zahl} />
                   </td>
                 </tr>
               </tbody>

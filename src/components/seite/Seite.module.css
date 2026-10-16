@@ -1887,6 +1887,12 @@
   transition: height 450ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Ränder der Kinder zählen mit: sonst misst die Höhe zu knapp und schneidet unten ab */
+.gleitenInhalt {
+  display: flow-root;
+  padding-bottom: 0.5rem;
+}
+
 .einblenden {
   animation: einblenden 450ms cubic-bezier(0.22, 1, 0.36, 1);
 }

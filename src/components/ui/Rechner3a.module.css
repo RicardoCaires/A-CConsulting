@@ -3,6 +3,8 @@
 
 .rechner {
   display: grid;
+  /* Nie breiter als der Bildschirm, auch nicht durch zugeklappte Inhalte */
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(1.25rem, 3vw, 2rem);
   margin-top: clamp(1.5rem, 3vw, 2.25rem);
 }
@@ -450,4 +452,66 @@
 .vergleich .summe td,
 .tabelle > .summe {
   border-top: 2px solid var(--ac-color-primary-navy);
+}
+
+
+/* ---- Telefon (16.10.2026): nichts breiter als der Bildschirm ------------------------------------ */
+.eingaben > *,
+.umrechnungInhalt > * {
+  min-width: 0;
+}
+
+.tabelle dt {
+  min-width: 0;
+}
+
+.vergleich {
+  table-layout: fixed;
+}
+
+.vergleich th[scope='row'] {
+  width: 46%;
+  overflow-wrap: break-word;
+}
+
+.einheit {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--ac-color-text-secondary);
+}
+
+.regelTitel {
+  align-items: baseline;
+}
+
+@media (max-width: 30rem) {
+  .umrechnungKopf {
+    grid-template-columns: minmax(0, 1fr) 1.75rem;
+    grid-template-areas:
+      'titel zeichen'
+      'wert zeichen';
+  }
+
+  .umrechnungTitel {
+    grid-area: titel;
+  }
+
+  .umrechnungWert {
+    grid-area: wert;
+    justify-items: start;
+  }
+
+  .umrechnungZeichen {
+    grid-area: zeichen;
+  }
+
+  .vergleich,
+  .tabelle > div {
+    font-size: 0.8125rem;
+  }
+
+  .vergleich th[scope='row'] {
+    width: 40%;
+  }
 }

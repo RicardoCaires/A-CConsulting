@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useId, useRef, useState } from 'react'
+import { useId, useLayoutEffect, useRef, useState } from 'react'
 
 import { fristenKantone, type Station } from '@/content/fristen-kantone'
 
@@ -40,16 +40,31 @@ function Leiste({ titel, stationen }: { titel: string; stationen: readonly Stati
 export function ZeitleisteKantone({ titelPrivat, titelUnternehmen, beschriftung }: { titelPrivat: string; titelUnternehmen: string; beschriftung: string }) {
   const [kuerzel, setKuerzel] = useState(VORGABE)
   const id = useId()
-  // Die Höhe gleitet zum neuen Inhalt, statt zu springen (Ricardo, 16.10.2026: «fliessenden übergang»)
+  // Die Höhe gleitet beim Wechsel von der alten zur neuen und steht danach wieder auf «auto» –
+  // so bleibt nie etwas abgeschnitten (Ricardo, 16.10.2026: «fliessenden übergang»)
+  const aussen = useRef<HTMLDivElement>(null)
   const innen = useRef<HTMLDivElement>(null)
+  const vorher = useRef<number | null>(null)
   const [hoehe, setHoehe] = useState<number | null>(null)
-  useEffect(() => {
-    const el = innen.current
-    if (!el || typeof ResizeObserver === 'undefined') return
-    const ro = new ResizeObserver(() => setHoehe(el.offsetHeight))
-    ro.observe(el)
-    return () => ro.disconnect()
-  }, [])
+  useLayoutEffect(() => {
+    const alt = vorher.current
+    const neu = innen.current?.offsetHeight
+    vorher.current = null
+    if (alt == null || neu == null || alt === neu) return
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return
+    setHoehe(alt)
+    const bild = requestAnimationFrame(() => requestAnimationFrame(() => setHoehe(neu)))
+    // Rückfall, falls das Ende des Übergangs nicht gemeldet wird: Höhe sicher wieder freigeben
+    const frei = window.setTimeout(() => setHoehe(null), 700)
+    return () => {
+      cancelAnimationFrame(bild)
+      window.clearTimeout(frei)
+    }
+  }, [kuerzel])
+  const wechsle = (neu: string) => {
+    vorher.current = aussen.current?.offsetHeight ?? null
+    setKuerzel(neu)
+  }
   const k = fristenKantone.kantone.find((x) => x.kuerzel === kuerzel) ?? fristenKantone.kantone[0]
   if (!k) return null
 
@@ -57,7 +72,7 @@ export function ZeitleisteKantone({ titelPrivat, titelUnternehmen, beschriftung 
     <>
       <div className={styles.kantonWahl}>
         <label htmlFor={id}>{beschriftung}</label>
-        <select id={id} value={kuerzel} onChange={(e) => setKuerzel(e.target.value)}>
+        <select id={id} value={kuerzel} onChange={(e) => wechsle(e.target.value)}>
           {fristenKantone.kantone.map((x) => (
             <option key={x.kuerzel} value={x.kuerzel}>
               {x.name}
@@ -65,8 +80,15 @@ export function ZeitleisteKantone({ titelPrivat, titelUnternehmen, beschriftung 
           ))}
         </select>
       </div>
-      <div className={styles.gleiten} style={hoehe != null ? { height: hoehe } : undefined}>
-      <div ref={innen}>
+      <div
+        ref={aussen}
+        className={styles.gleiten}
+        style={hoehe != null ? { height: hoehe } : undefined}
+        onTransitionEnd={(e) => {
+          if (e.target === e.currentTarget) setHoehe(null)
+        }}
+      >
+      <div ref={innen} className={styles.gleitenInhalt}>
       {/* key: Beim Kantonswechsel neu einblenden statt springen; die Stationen erscheinen nacheinander */}
       <div key={k.kuerzel} className={`${styles.reihen} ${styles.einblenden}`} aria-live="polite">
         <Leiste titel={titelPrivat} stationen={k.privat.stationen} />
