@@ -10,20 +10,6 @@ export const start: SeitenInhalt = {
   banner: { themenzeile: 'ASSURANCES · FIDUCIAIRE', ueberschrift: 'Ancrés dans le Seeland. Le regard plus loin.' },
   bloecke: [
     {
-      art: 'text',
-      id: 'intro',
-      titel: { vor: 'Votre courtier en assurances ', akzent: 'indépendant', nach: ' dans le Seeland' },
-      punkte: [
-        'Indépendants\u00a0: nous travaillons sur votre mandat, pas pour une assurance.',
-        'Enregistrés\u00a0: auprès de la FINMA comme intermédiaire d’assurance.',
-        'Et la fiduciaire\u00a0: comptabilité, salaires et déclarations d’impôt.',
-      ],
-      knoepfe: [
-        { text: 'Demander une offre', href: 'offerte' },
-        { text: 'Vers le portail clients', href: 'kundenportal', art: 'zweit' },
-      ],
-    },
-    {
       art: 'listen',
       id: 'leistungen',
       titel: { vor: 'Ce que nous ', akzent: 'prenons en charge', nach: ' pour vous' },

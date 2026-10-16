@@ -16,20 +16,6 @@ export const start: SeitenInhalt = {
   banner: { themenzeile: 'VERSICHERUNGEN · TREUHAND', ueberschrift: 'Verwurzelt im Seeland. Blick auf mehr.' },
   bloecke: [
     {
-      art: 'text',
-      id: 'intro',
-      titel: { vor: 'Ihr ', akzent: 'unabhängiger', nach: ' Versicherungsbroker im Seeland' },
-      punkte: [
-        'Unabhängig: Wir arbeiten in Ihrem Auftrag, nicht für eine Versicherung.',
-        'Registriert: bei der FINMA als Versicherungsvermittler.',
-        'Treuhand dazu: Buchhaltung, Löhne und Steuererklärungen.',
-      ],
-      knoepfe: [
-        { text: 'Offerte anfragen', href: 'offerte' },
-        { text: 'Zum Kundenportal', href: 'kundenportal', art: 'zweit' },
-      ],
-    },
-    {
       art: 'listen',
       id: 'leistungen',
       titel: { vor: 'Was wir ', akzent: 'für Sie', nach: ' übernehmen' },

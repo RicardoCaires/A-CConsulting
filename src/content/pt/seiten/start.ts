@@ -10,20 +10,6 @@ export const start: SeitenInhalt = {
   banner: { themenzeile: 'SEGUROS · FIDUCIÁRIA', ueberschrift: 'Com raízes no Seeland. Com visão mais longe.' },
   bloecke: [
     {
-      art: 'text',
-      id: 'intro',
-      titel: { vor: 'O seu corretor de seguros ', akzent: 'independente', nach: ' no Seeland' },
-      punkte: [
-        'Independentes: trabalhamos por mandato seu, não para uma seguradora.',
-        'Registados: na FINMA como intermediários de seguros.',
-        'E a fiduciária: contabilidade, salários e declarações de impostos.',
-      ],
-      knoepfe: [
-        { text: 'Pedir uma proposta', href: 'offerte' },
-        { text: 'Ir para o portal do cliente', href: 'kundenportal', art: 'zweit' },
-      ],
-    },
-    {
       art: 'listen',
       id: 'leistungen',
       titel: { vor: 'O que tratamos ', akzent: 'por si' },
