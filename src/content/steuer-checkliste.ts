@@ -21,7 +21,7 @@ export type Gruppe = { titel: string; unterlagen: readonly Unterlage[] }
 
 export const steuerCheckliste = {
   start: 'Checkliste zusammenstellen',
-  einleitung: 'Sieben kurze Fragen, danach sehen Sie, welche Unterlagen Sie brauchen.',
+  einleitung: 'Sieben kurze Fragen, danach senden wir Ihnen Ihre persönliche Liste der Unterlagen.',
   frageVon: 'Frage',
   von: 'von',
   weiter: 'Weiter',
@@ -30,14 +30,6 @@ export const steuerCheckliste = {
   mehrere: 'Mehrere Antworten möglich.',
   ergebnisTitel: 'Ihre Checkliste',
   ergebnisSatz: 'Haken Sie ab, was Sie schon bereitgelegt haben.',
-  pdf: 'Als PDF herunterladen',
-  mail: 'Per E-Mail senden',
-  mailWahl: 'Womit möchten Sie die Liste senden? Es öffnet sich ein fertiger Entwurf, die Adresse wählen Sie selbst.',
-  mailOutlook: 'Outlook im Browser',
-  mailGmail: 'Gmail im Browser',
-  mailProgramm: 'Mailprogramm auf diesem Gerät',
-  kopieren: 'Liste kopieren',
-  kopiert: 'Kopiert',
   neu: 'Neu beginnen',
   mailBetreff: 'Checkliste Steuererklärung',
   mailEinleitung: 'Diese Unterlagen brauche ich für die Steuererklärung:',
@@ -45,7 +37,25 @@ export const steuerCheckliste = {
   pdfKopf: 'Checkliste Steuererklärung',
   pdfUntertitel: 'Zusammengestellt auf ac-co.ch',
   pdfSatz: 'Legen Sie diese Unterlagen bereit. Was fehlt, klären wir gerne im Gespräch.',
-  hinweis: 'Ihre Antworten bleiben in Ihrem Browser.',
+  // Seit dem 16.10.2026 gegen Kontaktangaben: Versand von info@ac-co.ch, im CRM eine Aufgabe «anrufen»
+  kontaktTitel: 'Wohin dürfen wir Ihre Checkliste senden?',
+  kontaktSatz: 'Sie erhalten die Checkliste als PDF per E-Mail. Wir rufen Sie an und besprechen Ihre Steuererklärung.',
+  vorname: 'Vorname',
+  nachname: 'Name',
+  telefon: 'Telefon',
+  email: 'E-Mail',
+  datenschutzVor: 'Wir verwenden Ihre Angaben, um Ihnen die Checkliste zu senden und Sie wegen Ihrer Steuererklärung anzurufen. Mehr dazu in der ',
+  datenschutz: 'Datenschutzerklärung',
+  senden: 'Checkliste senden',
+  sendet: 'Wird gesendet …',
+  fehlerPflicht: 'Bitte füllen Sie alle Felder aus.',
+  fehlerEmail: 'Bitte prüfen Sie die E-Mail-Adresse.',
+  fehlerServer: 'Die Checkliste konnte gerade nicht gesendet werden. Bitte rufen Sie uns an.',
+  dankeTitel: 'Ihre Checkliste ist unterwegs',
+  dankeSatz: 'Wir haben sie an Ihre E-Mail-Adresse gesendet und melden uns telefonisch bei Ihnen.',
+  dankeListe: 'Das steht darauf:',
+  dankeTitelOhneMail: 'Vielen Dank, Ihre Angaben sind bei uns',
+  dankeSatzOhneMail: 'Die E-Mail mit der Checkliste konnte gerade nicht versendet werden. Wir rufen Sie an und senden sie Ihnen.',
 
   fragen: [
     {
@@ -115,7 +125,6 @@ export const steuerCheckliste = {
       titel: 'Gab es weitere Ausgaben oder Ereignisse?',
       mehrfach: true,
       optionen: [
-        { id: 'arztkosten', text: 'Selbst bezahlte Arzt- und Zahnarztkosten' },
         { id: 'spenden', text: 'Spenden' },
         { id: 'weiterbildung', text: 'Berufliche Weiterbildung' },
         { id: 'unterhalt', text: 'Unterhaltszahlungen' },
@@ -178,7 +187,6 @@ export const steuerCheckliste = {
     {
       titel: 'Weitere Abzüge und Ereignisse',
       unterlagen: [
-        { text: 'Belege zu selbst bezahlten Arzt- und Zahnarztkosten', wenn: ['arztkosten'] },
         { text: 'Spendenbestätigungen', wenn: ['spenden'] },
         { text: 'Rechnungen für die Weiterbildung', wenn: ['weiterbildung'] },
         { text: 'Belege zu den Unterhaltszahlungen', wenn: ['unterhalt'] },

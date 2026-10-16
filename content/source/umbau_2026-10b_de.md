@@ -618,3 +618,22 @@ Ricardo: «die sachen die man bereits angekreuzt hat … sollen auch beim herunt
 - Mailprogramm auf diesem Gerät
 - Liste kopieren
 - Kopiert
+
+## Checkliste gegen Kontaktangaben (16.10.2026)
+
+Ricardo: «damit man die Checkliste erhält muss man Name Vorname Telefonnummer und e-mail angeben und dann wird sie automatisch vom infogesendet und bei uns im CRM wird ein Lead eröffnet als aufgabe um anzurufen für die erledigung der Steuererklärung». Die Frage nach selbst bezahlten Arztkosten ist entfallen (keine Gesundheitsangaben in einem Formular, das sendet). Vorschlag, Ricardo bestätigt.
+
+- Bitte füllen Sie alle Felder aus.
+- Bitte prüfen Sie die E-Mail-Adresse.
+- Checkliste senden
+- Das steht darauf:
+- Die Checkliste konnte gerade nicht gesendet werden. Bitte rufen Sie uns an.
+- Die E-Mail mit der Checkliste konnte gerade nicht versendet werden. Wir rufen Sie an und senden sie Ihnen.
+- Ihre Checkliste ist unterwegs
+- Sie erhalten die Checkliste als PDF per E-Mail. Wir rufen Sie an und besprechen Ihre Steuererklärung.
+- Sieben kurze Fragen, danach senden wir Ihnen Ihre persönliche Liste der Unterlagen.
+- Vielen Dank, Ihre Angaben sind bei uns
+- Wir haben sie an Ihre E-Mail-Adresse gesendet und melden uns telefonisch bei Ihnen.
+- Wir verwenden Ihre Angaben, um Ihnen die Checkliste zu senden und Sie wegen Ihrer Steuererklärung anzurufen. Mehr dazu in der 
+- Wird gesendet …
+- Wohin dürfen wir Ihre Checkliste senden?

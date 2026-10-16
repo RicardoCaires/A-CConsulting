@@ -449,7 +449,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
               </li>
             ))}
           </ol>
-          {block.checkliste ? <SteuerCheckliste /> : null}
+          {block.checkliste ? <SteuerCheckliste datenschutzHref={zielHref({ ziel: 'datenschutz' }, locale)} /> : null}
           {block.nachsatz ? (
             <p className={styles.nachsatz}>
               <RichText value={block.nachsatz} />

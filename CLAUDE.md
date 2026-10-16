@@ -2731,22 +2731,29 @@ gibt es noch keine.
 >   aufgeklappt die ganze Rechnung. Weiches Auf- und Zuklappen über `::details-content`, wo der Browser es kann.
 > - **Fristen:** Die Höhe gleitet beim Kantonswechsel, die Stationen erscheinen nacheinander.
 >
-> **Checkliste zur Steuererklärung (16.10.2026)** – Ricardo: «hier soll man einen kurzen Fragebogen ausfüllen können
-> und es soll dann eine checkliste erstellen mit den unterlagen die benötigt werden diese soll dann heruntergeladen
-> werden oder per Mail versendet werden können». Auf `/steuern` im Block «Sie bringen die Unterlagen, wir den Rest»
-> (`fluss` mit `checkliste: true`); der Satz «Die PDF-Checkliste ist in Vorbereitung.» ist entfallen.
+> **Checkliste zur Steuererklärung (16.10.2026)** – auf `/steuern` im Block «Sie bringen die Unterlagen, wir den Rest»
+> (`fluss` mit `checkliste: true`). Sieben Fragen, nur Knöpfe, Frage für Frage (`components/ui/SteuerCheckliste.tsx`,
+> Fragen und Unterlagen in `src/content/steuer-checkliste.ts`, Auswahl in `src/lib/steuer-checkliste.ts`).
+> **Die Zuordnung Frage → Unterlage ist ein Vorschlag**, Ricardo prüft sie fachlich.
 >
-> - Sieben Fragen, nur Knöpfe, Frage für Frage mit Fortschritt (`components/ui/SteuerCheckliste.tsx`, Fragen und
->   Unterlagen in `src/content/steuer-checkliste.ts`, Auswahl in `src/lib/steuer-checkliste.ts`). **Die Zuordnung
->   Frage → Unterlage ist ein Vorschlag**, Ricardo prüft sie fachlich.
-> - **PDF im Browser** (`src/lib/pdf-checkliste.ts`, ohne Bibliothek): A4 nach Corporate Design Klasse A – Logo
->   (`public/logo/ac-logo-druck.jpg`, aus `ac-logo.png` auf Weiss gesetzt), Kopf- und Fusszeile, Ankreuzfelder,
->   «Seite X von Y», Gruppen werden nicht über Seiten gerissen. Helvetica statt Arial (Standardschrift im PDF). Fusszeile
->   aus `company.ts`. Visuell geprüft.
-> - **Per E-Mail** (16.10.2026 nachgebessert, Ricardo: «der Mail versand funktioniert nicht» – ein `mailto:` tut nichts
->   ohne eingerichtetes Mailprogramm): Auswahl Outlook im Browser, Gmail im Browser, Mailprogramm auf diesem Gerät oder
->   «Liste kopieren»; es öffnet sich ein fertiger Entwurf, die Adresse wählt man selbst. Über A&C läuft nichts.
-> - **Abgehakte Unterlagen** stehen im PDF mit grünem Haken und in der E-Mail mit [x].
+> **Seit dem 16.10.2026 gegen Kontaktangaben** – Ricardo: «damit man die Checkliste erhält muss man Name Vorname
+> Telefonnummer und e-mail angeben und dann wird sie automatisch vom info gesendet und bei uns im CRM wird ein Lead
+> eröffnet als aufgabe um anzurufen für die erledigung der Steuererklärung».
+>
+> - Nach der letzten Frage: Vorname, Name, Telefon, E-Mail (alle nötig), Satz zur Verwendung mit Link zur
+>   Datenschutzerklärung, Honigtopf. Gesendet wird an `company.crm` (`/oeffentlich/api/checkliste`), nicht über
+>   Cloudflare – nur die Kontaktangaben und die **Kennungen** der Antworten.
+> - **Das CRM erzeugt Liste und PDF selbst** aus diesen Kennungen (Kopie von `steuer-checkliste.ts`,
+>   `lib/steuer-checkliste.ts`, `lib/pdf-checkliste.ts` und `tokens.generated.ts` per
+>   `scripts/steuer-checkliste-kopieren.js` im CRM) und versendet sie von info@ac-co.ch mit PDF im Anhang – kein Text
+>   der Person steht in der Nachricht. Es legt eine Website-Anfrage und eine Aufgabe «Anrufen: Steuererklärung» in
+>   «Rückrufe» an. **Ändern sich Fragen, Unterlagen oder PDF hier, das Kopierskript laufen lassen und das CRM
+>   hochladen.**
+> - **Keine Gesundheitsfrage mehr:** «Selbst bezahlte Arzt- und Zahnarztkosten» ist entfallen, weil die Antworten jetzt
+>   übermittelt werden (Abschnitt 7).
+> - Download-Knopf und E-Mail-Auswahl im Browser sind entfallen; `lib/pdf-checkliste.ts` bleibt als Quelle für das CRM.
+> - ⚠️ **Die Datenschutzerklärung nennt dieses Formular noch nicht** (Kontaktangaben, Zweck Checkliste und Anruf,
+>   Speicherung im CRM bei Infomaniak in der Schweiz, Versand über Microsoft 365). Nur Ricardo ändert sie.
 > - ⚠️ **Briefpapier offen:** Ricardo wünscht das PDF auf dem A&C-Briefpapier «mit dem blauen Design». Im Skill
 >   `ac-corporate-design` ist keines hinterlegt (`offene-punkte.md`: «Briefpapier … nicht vorhanden»); die Datei
 >   liefert Ricardo.
