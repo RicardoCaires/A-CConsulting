@@ -82,6 +82,8 @@ export type PdfDaten = {
   fuss: string
   logo: Uint8Array | null
   logoMass: { b: number; h: number }
+  /** Was auf der Website schon abgehakt ist, steht im PDF angekreuzt. */
+  abgehakt?: ReadonlySet<string>
 }
 
 export function checklistePdf(d: PdfDaten): Blob {
@@ -137,8 +139,14 @@ export function checklistePdf(d: PdfDaten): Blob {
     for (const u of g.unterlagen) {
       const zeilen = umbrechen(u, 10.5, breiteText - 20)
       platz(zeilen.length * 14 + 4)
-      // Ankreuzfeld
-      s.push(`${NAVY} RG 0.75 w ${RAND.toFixed(2)} ${(y - 1.5).toFixed(2)} 9 9 re S\n`)
+      // Ankreuzfeld; schon Bereitgelegtes mit grünem Haken (Ricardo, 16.10.2026)
+      const y0 = y - 1.5
+      s.push(`${NAVY} RG 0.75 w ${RAND.toFixed(2)} ${y0.toFixed(2)} 9 9 re S\n`)
+      if (d.abgehakt?.has(u)) {
+        s.push(
+          `${GRUEN} RG 1.6 w 1 J 1 j ${(RAND + 1.8).toFixed(2)} ${(y0 + 4.6).toFixed(2)} m ${(RAND + 3.9).toFixed(2)} ${(y0 + 2.2).toFixed(2)} l ${(RAND + 8).toFixed(2)} ${(y0 + 8).toFixed(2)} l S 0 J 0 j\n`,
+        )
+      }
       zeilen.forEach((z, i) => text(RAND + 20, y - i * 14, z, 10.5, false, TEXT))
       y -= zeilen.length * 14 + 6
     }

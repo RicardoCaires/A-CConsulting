@@ -28,6 +28,8 @@ export function SteuerCheckliste() {
   const [antworten, setAntworten] = useState<Record<string, string[]>>({})
   const [abgehakt, setAbgehakt] = useState<Set<string>>(new Set())
   const [laedt, setLaedt] = useState(false)
+  const [mailOffen, setMailOffen] = useState(false)
+  const [kopiert, setKopiert] = useState(false)
   const titel = useRef<HTMLHeadingElement>(null)
 
   const n = T.fragen.length
@@ -61,6 +63,7 @@ export function SteuerCheckliste() {
         fuss,
         logo,
         logoMass: { b: 1064, h: 234 },
+        abgehakt,
       })
       const url = URL.createObjectURL(blob)
       const a = document.createElement('a')
@@ -75,15 +78,38 @@ export function SteuerCheckliste() {
     }
   }
 
-  const mailHref = () => {
-    const zeilen = [T.mailEinleitung, '']
+  /** Die Liste als Text, Bereitgelegtes mit [x]. */
+  const mailText = () => {
+    const zeilen: string[] = [T.mailEinleitung, '']
     for (const g of liste) {
       zeilen.push(g.titel.toUpperCase())
-      for (const u of g.unterlagen) zeilen.push(`[ ] ${u}`)
+      for (const u of g.unterlagen) zeilen.push(`${abgehakt.has(u) ? '[x]' : '[ ]'} ${u}`)
       zeilen.push('')
     }
     zeilen.push(fuss)
-    return `mailto:?subject=${encodeURIComponent(T.mailBetreff)}&body=${encodeURIComponent(zeilen.join('\n'))}`
+    return zeilen.join('\n')
+  }
+
+  // Ricardo, 16.10.2026: «der Mail versand funktioniert nicht». Ein mailto-Link tut nichts, wenn auf dem Gerät
+  // kein Mailprogramm eingerichtet ist. Darum zur Wahl: Outlook oder Gmail im Browser (fertiger Entwurf), das eigene
+  // Mailprogramm oder die Liste kopieren. Über A&C läuft weiterhin nichts.
+  const mailWege = () => {
+    const betreff = encodeURIComponent(T.mailBetreff)
+    const text = encodeURIComponent(mailText())
+    return [
+      { name: T.mailOutlook, href: `https://outlook.office.com/mail/deeplink/compose?subject=${betreff}&body=${text}` },
+      { name: T.mailGmail, href: `https://mail.google.com/mail/?view=cm&fs=1&su=${betreff}&body=${text}` },
+      { name: T.mailProgramm, href: `mailto:?subject=${betreff}&body=${text}` },
+    ]
+  }
+  const kopieren = async () => {
+    try {
+      await navigator.clipboard.writeText(`${T.mailBetreff}\n\n${mailText()}`)
+      setKopiert(true)
+      setTimeout(() => setKopiert(false), 2500)
+    } catch {
+      setKopiert(false)
+    }
   }
 
   /* ---- Start ---------------------------------------------------------------- */
@@ -151,9 +177,15 @@ export function SteuerCheckliste() {
             <button type="button" className={styles.knopf} onClick={pdf} disabled={laedt}>
               {T.pdf} <span aria-hidden="true">↓</span>
             </button>
-            <a className={`${styles.knopf} ${styles.knopfZweit}`} href={mailHref()}>
-              {T.mail} <span aria-hidden="true">→</span>
-            </a>
+            <button
+              type="button"
+              className={`${styles.knopf} ${styles.knopfZweit}`}
+              aria-expanded={mailOffen}
+              aria-controls="ck-mailwege"
+              onClick={() => setMailOffen((o) => !o)}
+            >
+              {T.mail} <span aria-hidden="true">{mailOffen ? '↑' : '↓'}</span>
+            </button>
             <button
               type="button"
               className={styles.leise}
@@ -166,6 +198,21 @@ export function SteuerCheckliste() {
               {T.neu}
             </button>
           </div>
+          {mailOffen ? (
+            <div id="ck-mailwege" className={`${styles.mailwege} ${styles.einblenden}`}>
+              <p className={styles.satz}>{T.mailWahl}</p>
+              <div className={styles.mailKnoepfe}>
+                {mailWege().map((m) => (
+                  <a key={m.name} className={styles.mailWeg} href={m.href} target={m.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer">
+                    {m.name}
+                  </a>
+                ))}
+                <button type="button" className={styles.mailWeg} onClick={kopieren}>
+                  {kopiert ? T.kopiert : T.kopieren}
+                </button>
+              </div>
+            </div>
+          ) : null}
           <p className={styles.hinweis}>{T.hinweis}</p>
         </div>
       </div>

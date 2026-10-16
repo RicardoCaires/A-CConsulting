@@ -2743,8 +2743,13 @@ gibt es noch keine.
 >   (`public/logo/ac-logo-druck.jpg`, aus `ac-logo.png` auf Weiss gesetzt), Kopf- und Fusszeile, Ankreuzfelder,
 >   «Seite X von Y», Gruppen werden nicht über Seiten gerissen. Helvetica statt Arial (Standardschrift im PDF). Fusszeile
 >   aus `company.ts`. Visuell geprüft.
-> - **Per E-Mail** über `mailto:` – das eigene Mailprogramm öffnet sich mit der Liste, die Adresse wählt man selbst. Über
->   A&C läuft nichts, gespeichert wird nichts.
+> - **Per E-Mail** (16.10.2026 nachgebessert, Ricardo: «der Mail versand funktioniert nicht» – ein `mailto:` tut nichts
+>   ohne eingerichtetes Mailprogramm): Auswahl Outlook im Browser, Gmail im Browser, Mailprogramm auf diesem Gerät oder
+>   «Liste kopieren»; es öffnet sich ein fertiger Entwurf, die Adresse wählt man selbst. Über A&C läuft nichts.
+> - **Abgehakte Unterlagen** stehen im PDF mit grünem Haken und in der E-Mail mit [x].
+> - ⚠️ **Briefpapier offen:** Ricardo wünscht das PDF auf dem A&C-Briefpapier «mit dem blauen Design». Im Skill
+>   `ac-corporate-design` ist keines hinterlegt (`offene-punkte.md`: «Briefpapier … nicht vorhanden»); die Datei
+>   liefert Ricardo.
 > - Die Frage nach selbst bezahlten Arztkosten ist nur ein Knopf im Browser und wird nirgends übermittelt; Abschnitt 7
 >   (keine Gesundheitsangaben in öffentlichen Formularen) betrifft Formulare, die senden.
 

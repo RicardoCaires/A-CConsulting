@@ -607,3 +607,14 @@ Ricardo: «hier soll man einen kurzen Fragebogen ausfüllen können und es soll 
 - Woher kommt Ihr Einkommen?
 - Zur Miete
 - Zusammengestellt auf ac-co.ch
+
+## Checkliste: Haken im PDF und E-Mail-Wege (16.10.2026)
+
+Ricardo: «die sachen die man bereits angekreuzt hat … sollen auch beim herunterladen angekreuzt bleiben», «der Mail versand funktioniert nicht». Vorschlag, Ricardo bestätigt.
+
+- Womit möchten Sie die Liste senden? Es öffnet sich ein fertiger Entwurf, die Adresse wählen Sie selbst.
+- Outlook im Browser
+- Gmail im Browser
+- Mailprogramm auf diesem Gerät
+- Liste kopieren
+- Kopiert
