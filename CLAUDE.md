@@ -2799,7 +2799,11 @@ gibt es noch keine.
 >   gesendet. `worker/index.js` mit `/api/kontakt` bleibt liegen, wird aber nicht mehr angesprochen.
 > - **Kontaktblock** (`kontakt`): Telefon und E-Mail als Knöpfe, Adresse als Text, rechts die Google-Karte
 >   (`ohneKarte` im Impressum). **Schritte** heben sich beim Zeigen ab.
-> - ⚠️ **Datenschutzerklärung:** nennt weder das Kontaktformular noch die Karte ausserhalb von «Über uns». Nur Ricardo ändert sie.
+> - **Datenschutzerklärung ergänzt (16.10.2026, Ricardo: «Ergänzen und online»)** in DE, FR und PT: neuer Abschnitt
+>   «Formulare auf dieser Website» (Kontaktformular, Offertanfrage, Checkliste; eigener Server bei Infomaniak in der
+>   Schweiz, Versand über Microsoft, IP-Adresse kurzzeitig gegen Missbrauch, kein fremder Spamschutz), Karte auf Start,
+>   Digital, Über uns und Kontakt, Kundenportal als eigenes Angebot, Stand 16.10.2026. Wortlaut in
+>   `content/source/datenschutz_2026-10-16_de.md`. ⚠️ Von Ricardo gegenzulesen, juristisch nicht geprüft.
 
 ## 10. Offene Punkte
 

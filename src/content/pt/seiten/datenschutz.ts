@@ -30,8 +30,8 @@ export const datenschutz: SeitenInhalt = {
       punkte: [
         'Este site não utiliza cookies.',
         'Não utiliza ferramentas de análise, pixéis de rastreio nem ferramentas de medição de comportamento.',
-        'Não integra tipos de letra, vídeos nem botões de servidores de terceiros. A única exceção é o mapa do Google Maps na página «Sobre nós».',
-        'Não há registo, área de cliente nem newsletter.',
+        'Não integra tipos de letra, vídeos nem botões de servidores de terceiros. A única exceção é o mapa do Google Maps na página inicial e nas páginas «Digital», «Sobre nós» e «Contacto».',
+        'Este site não tem registo nem newsletter. O portal do cliente é uma oferta à parte, com a sua própria declaração de proteção de dados.',
       ],
     },
     {
@@ -60,7 +60,7 @@ export const datenschutz: SeitenInhalt = {
       id: 'google-maps',
       titel: { vor: 'Mapa do ', akzent: 'Google Maps' },
       absaetze: [
-        'Na página «Sobre nós» integramos um mapa do Google Maps (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irlanda).',
+        'Na página inicial e nas páginas «Digital», «Sobre nós» e «Contacto» integramos um mapa do Google Maps (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irlanda).',
         'Ao abrir a página, o seu navegador estabelece uma ligação aos servidores da Google; são transmitidos à Google, em particular, o seu endereço IP e informações sobre o navegador, também para os EUA.',
         'Utilizamos o mapa para que encontre facilmente o nosso escritório. Mais informações na declaração de privacidade da Google em policies.google.com/privacy.',
       ],
@@ -74,8 +74,22 @@ export const datenschutz: SeitenInhalt = {
         'Em regra, trata-se do seu nome, do seu número de telefone ou endereço de e-mail e do que nos comunicar.',
         'Gerimos nós próprios a nossa caixa de correio eletrónico. Está alojada na Microsoft. A Microsoft atua como subcontratante e está vinculada às nossas instruções.',
         'Os pedidos que não resultem num mandato são apagados logo que deixem de ser necessários.',
-        'De momento não existe formulário de contacto. Assim que um for disponibilizado, completaremos previamente esta declaração.',
-        'Por favor, não nos envie por e-mail dados particularmente sensíveis — por exemplo, dados de saúde, número AVS (AHV) ou dados bancários. Para a troca de documentos, criamos um canal protegido após o primeiro contacto.',
+        'Para os pedidos enviados através dos formulários deste site, aplica-se a secção seguinte.',
+        'Por favor, não nos envie por e-mail ou através de um formulário dados particularmente sensíveis — por exemplo, dados de saúde, número AVS (AHV) ou dados bancários. Para a troca de documentos, criamos um canal protegido após o primeiro contacto.',
+      ],
+    },
+    {
+      art: 'text',
+      id: 'formulare',
+      titel: { vor: 'Formulários neste ', akzent: 'site' },
+      absaetze: [
+        'Este site tem três formulários: o formulário de contacto, o pedido de proposta e a lista para a declaração de impostos.',
+        'Formulário de contacto: nome, endereço de e-mail, se desejar número de telefone, assunto e a sua mensagem – para podermos responder ao seu pedido.',
+        'Pedido de proposta: os seus dados de contacto e as informações sobre o seguro pretendido – para podermos obter propostas adequadas e analisá-las consigo. Só transmitimos estes dados às seguradoras na medida necessária para a proposta.',
+        'Lista para a declaração de impostos: nome próprio, apelido, número de telefone, endereço de e-mail e as suas respostas ao questionário – para lhe enviarmos a lista e lhe telefonarmos sobre a sua declaração de impostos.',
+        'Os dados são enviados de forma cifrada diretamente para o nosso próprio servidor na Infomaniak, na Suíça, e não através do nosso fornecedor de alojamento. Guardamo-los na nossa gestão de clientes. As confirmações e a lista são enviadas a partir da nossa caixa de correio na Microsoft.',
+        'Para evitar abusos, utilizamos brevemente o seu endereço IP para limitar o número de pedidos. Não utilizamos nenhum serviço externo de proteção contra spam.',
+        'Os pedidos que não resultem num mandato são apagados logo que deixem de ser necessários.',
       ],
     },
     {
@@ -115,7 +129,7 @@ export const datenschutz: SeitenInhalt = {
       absaetze: [
         'Adaptamos esta declaração quando o site ou a situação jurídica mudam.',
         'Conta a versão publicada nesta página em cada momento.',
-        'Versão de: 09.09.2026',
+        'Versão de: 16.10.2026',
       ],
     },
   ],

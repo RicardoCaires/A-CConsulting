@@ -40,8 +40,8 @@ export const datenschutz: SeitenInhalt = {
       punkte: [
         'Diese Website setzt keine Cookies.',
         'Sie verwendet kein Analysewerkzeug, keine Zählpixel und keine Werkzeuge zur Verhaltensmessung.',
-        'Sie bindet keine Schriften, Videos oder Schaltflächen von fremden Servern ein. Einzige Ausnahme ist die Karte von Google Maps auf der Seite «Über uns».',
-        'Es gibt keine Anmeldung, keinen Kundenbereich und keinen Newsletter.',
+        'Sie bindet keine Schriften, Videos oder Schaltflächen von fremden Servern ein. Einzige Ausnahme ist die Karte von Google Maps auf der Startseite und den Seiten «Digital», «Über uns» und «Kontakt».',
+        'Diese Website hat keine Anmeldung und keinen Newsletter. Das Kundenportal ist ein eigenes Angebot mit eigener Datenschutzerklärung.',
       ],
     },
     {
@@ -70,7 +70,7 @@ export const datenschutz: SeitenInhalt = {
       id: 'google-maps',
       titel: { vor: 'Karte von ', akzent: 'Google Maps' },
       absaetze: [
-        'Auf der Seite «Über uns» binden wir eine Karte von Google Maps ein (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland).',
+        'Auf der Startseite und den Seiten «Digital», «Über uns» und «Kontakt» binden wir eine Karte von Google Maps ein (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland).',
         'Beim Aufruf der Seite stellt Ihr Browser eine Verbindung zu Servern von Google her; dabei werden insbesondere Ihre IP-Adresse und Angaben zum Browser an Google übermittelt, auch in die USA.',
         'Wir setzen die Karte ein, damit Sie unser Büro leicht finden. Weitere Informationen finden Sie in der Datenschutzerklärung von Google unter policies.google.com/privacy.',
       ],
@@ -84,8 +84,22 @@ export const datenschutz: SeitenInhalt = {
         'Dazu gehören in der Regel Ihr Name, Ihre Telefonnummer oder E-Mail-Adresse und das, was Sie uns mitteilen.',
         'Unser E-Mail-Postfach betreiben wir selbst. Gehostet wird es von Microsoft. Microsoft ist dabei Auftragsbearbeiterin und an unsere Weisungen gebunden.',
         'Anfragen, die zu keinem Mandat führen, löschen wir, sobald sie nicht mehr benötigt werden.',
-        'Ein Kontaktformular gibt es zurzeit nicht. Sobald eines aufgeschaltet wird, ergänzen wir diese Erklärung vorher.',
-        'Bitte senden Sie uns keine besonders schützenswerten Angaben per E-Mail — etwa Gesundheitsdaten, AHV-Nummer oder Bankangaben. Für den Austausch von Unterlagen richten wir nach dem Erstkontakt einen geschützten Weg ein.',
+        'Für Anfragen über die Formulare dieser Website gilt der folgende Abschnitt.',
+        'Bitte senden Sie uns keine besonders schützenswerten Angaben per E-Mail oder über ein Formular — etwa Gesundheitsdaten, AHV-Nummer oder Bankangaben. Für den Austausch von Unterlagen richten wir nach dem Erstkontakt einen geschützten Weg ein.',
+      ],
+    },
+    {
+      art: 'text',
+      id: 'formulare',
+      titel: { vor: 'Formulare auf dieser ', akzent: 'Website' },
+      absaetze: [
+        'Auf dieser Website gibt es drei Formulare: das Kontaktformular, die Offertanfrage und die Checkliste zur Steuererklärung.',
+        'Kontaktformular: Name, E-Mail-Adresse, auf Wunsch Telefonnummer, Anliegen und Ihre Nachricht – damit wir Ihre Anfrage beantworten können.',
+        'Offertanfrage: Ihre Kontaktangaben und die Angaben zur gewünschten Versicherung – damit wir passende Offerten einholen und mit Ihnen besprechen können. An Versicherungsgesellschaften geben wir die Angaben nur weiter, soweit das für die Offerte nötig ist.',
+        'Checkliste zur Steuererklärung: Vorname, Name, Telefonnummer, E-Mail-Adresse und Ihre Antworten im Fragebogen – damit wir Ihnen die Checkliste senden und Sie wegen Ihrer Steuererklärung anrufen können.',
+        'Die Angaben gehen verschlüsselt direkt an unseren eigenen Server bei Infomaniak in der Schweiz, nicht über unseren Hostinganbieter. Dort legen wir sie in unserer Kundenverwaltung ab. Bestätigungen und die Checkliste versenden wir über unser E-Mail-Postfach bei Microsoft.',
+        'Zum Schutz vor Missbrauch verwenden wir Ihre IP-Adresse kurzzeitig, um die Zahl der Anfragen zu begrenzen. Einen fremden Dienst zur Spam-Abwehr setzen wir nicht ein.',
+        'Anfragen, die zu keinem Mandat führen, löschen wir, sobald sie nicht mehr benötigt werden.',
       ],
     },
     {
@@ -125,7 +139,7 @@ export const datenschutz: SeitenInhalt = {
       absaetze: [
         'Wir passen diese Erklärung an, wenn sich die Website oder die Rechtslage ändert.',
         'Massgebend ist die jeweils auf dieser Seite veröffentlichte Fassung.',
-        'Stand: 09.09.2026',
+        'Stand: 16.10.2026',
       ],
     },
   ],
