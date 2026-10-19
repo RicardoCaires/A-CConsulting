@@ -1,6 +1,6 @@
 import { RichText } from '@/components/ui/RichText'
 import { VorsorgeKarte, VorsorgeTabelle } from '@/components/ui/VorsorgeKarte'
-import { datumLang } from '@/lib/news'
+import { NEWS_TEXTE, datumLang } from '@/lib/news'
 import type { Beitrag } from '@/content/seiten/typen'
 import type { Locale } from '@/i18n/config'
 import { path } from '@/i18n/routes'
@@ -17,34 +17,37 @@ import styles from './News.module.css'
 
 const href = (locale: Locale, slug: string) => `${path('news', locale)}${slug}/`
 
-function Marke({ b }: { b: Beitrag }) {
+function Marke({ b, locale }: { b: Beitrag; locale: Locale }) {
+  const T = NEWS_TEXTE[locale]
   return (
     <span className={styles.marke}>
-      {b.art}
-      {b.freigegeben ? null : <span className={styles.entwurf}>Entwurf</span>}
+      {T.art[b.art]}
+      {b.freigegeben ? null : <span className={styles.entwurf}>{T.entwurf}</span>}
     </span>
   )
 }
 
 export function NewsUebersicht({ beitraege, locale }: { beitraege: readonly Beitrag[]; locale: Locale }) {
+  const T = NEWS_TEXTE[locale]
   const [erster, ...weitere] = beitraege
   return (
     <div className={`${seite.seite} ${seite.seiteOhneBanner}`}>
       <div className={`ac-container ${seite.bloecke}`}>
         <section className={seite.block} aria-labelledby="news-titel">
           <h1 id="news-titel" className={`${seite.titel} ${seite.titelGross}`}>
-            News und <span className={seite.akzent}>Blog</span>
+            {T.vor}
+            <span className={seite.akzent}>{T.akzent}</span>
           </h1>
-          <p className={seite.einleitung}>Was sich bei A&C tut, und was Sie zu Versicherungen, Steuern und Treuhand wissen sollten.</p>
+          <p className={seite.einleitung}>{T.einleitung}</p>
 
           {erster ? (
             <div className={styles.raster}>
               <a className={styles.gross} href={href(locale, erster.slug)}>
-                <Marke b={erster} />
+                <Marke b={erster} locale={locale} />
                 <span className={styles.grossTitel}>{erster.titel}</span>
                 <span className={styles.kurz}>{erster.kurz}</span>
                 <span className={styles.meta}>
-                  {datumLang(erster.datum)} · {erster.minuten} Min. Lesezeit
+                  {datumLang(erster.datum, locale)} · {erster.minuten} {T.lesezeit}
                 </span>
               </a>
               {weitere.length ? (
@@ -52,9 +55,9 @@ export function NewsUebersicht({ beitraege, locale }: { beitraege: readonly Beit
                   {weitere.map((b) => (
                     <li key={b.slug}>
                       <a href={href(locale, b.slug)}>
-                        <Marke b={b} />
+                        <Marke b={b} locale={locale} />
                         <span className={styles.listeTitel}>{b.titel}</span>
-                        <span className={styles.meta}>{datumLang(b.datum)}</span>
+                        <span className={styles.meta}>{datumLang(b.datum, locale)}</span>
                       </a>
                     </li>
                   ))}
@@ -62,7 +65,7 @@ export function NewsUebersicht({ beitraege, locale }: { beitraege: readonly Beit
               ) : null}
             </div>
           ) : (
-            <p className={seite.absatz}>Die ersten Beiträge folgen in Kürze.</p>
+            <p className={seite.absatz}>{T.leer}</p>
           )}
         </section>
       </div>
@@ -71,19 +74,20 @@ export function NewsUebersicht({ beitraege, locale }: { beitraege: readonly Beit
 }
 
 export function NewsBeitrag({ b, locale }: { b: Beitrag; locale: Locale }) {
+  const T = NEWS_TEXTE[locale]
   return (
     <div className={`${seite.seite} ${seite.seiteOhneBanner}`}>
       <div className={`ac-container ${seite.bloecke}`}>
         <article className={`${seite.block} ${styles.artikel}`} aria-labelledby="beitrag-titel">
           <a className={styles.zurueck} href={path('news', locale)}>
-            ← News und Blog
+            {T.zurueck}
           </a>
-          <Marke b={b} />
+          <Marke b={b} locale={locale} />
           <h1 id="beitrag-titel" className={`${seite.titel} ${seite.titelGross} ${styles.artikelTitel}`}>
             {b.titel}
           </h1>
           <p className={styles.meta}>
-            {datumLang(b.datum)} · {b.minuten} Min. Lesezeit
+            {datumLang(b.datum, locale)} · {b.minuten} {T.lesezeit}
           </p>
           <p className={styles.lead}>{b.kurz}</p>
 
@@ -102,8 +106,8 @@ export function NewsBeitrag({ b, locale }: { b: Beitrag; locale: Locale }) {
                   ))}
                 </ul>
               ) : null}
-              {a.baustein === 'vorsorgeKarte' ? <VorsorgeKarte /> : null}
-              {a.baustein === 'vorsorgeTabelle' ? <VorsorgeTabelle /> : null}
+              {a.baustein === 'vorsorgeKarte' ? <VorsorgeKarte locale={locale} /> : null}
+              {a.baustein === 'vorsorgeTabelle' ? <VorsorgeTabelle locale={locale} /> : null}
             </section>
           ))}
 

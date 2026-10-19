@@ -245,8 +245,8 @@ export const pages: Record<PageKey, PageDefinition> = {
    */
   news: {
     slug: { de: 'news', fr: 'actualites', pt: 'noticias' },
-    // Seit 19.10.2026 auf Deutsch online, mit dem ersten freigegebenen Beitrag (Vorsorge-Kennzahlen 2027)
-    published: { de: true, fr: false, pt: false },
+    // Seit 19.10.2026 online in DE, FR und PT, mit dem ersten freigegebenen Beitrag (Vorsorge-Kennzahlen 2027)
+    published: { de: true, fr: true, pt: true },
     inMainNav: false,
     inLegalNav: false,
     sitemapPriority: 0.6,

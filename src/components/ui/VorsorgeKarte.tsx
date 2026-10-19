@@ -3,7 +3,10 @@
 import { useId, useState } from 'react'
 
 import { FliessendeZahl } from '@/components/ui/Fliessend'
-import { vorsorgeKennzahlen as V, type Gruppe, type KennzahlId } from '@/content/vorsorge-kennzahlen'
+import { vorsorgeKennzahlen as fr } from '@/content/fr/vorsorge-kennzahlen'
+import { vorsorgeKennzahlen as pt } from '@/content/pt/vorsorge-kennzahlen'
+import { vorsorgeKennzahlen as de, type Gruppe, type KennzahlId } from '@/content/vorsorge-kennzahlen'
+import type { Locale } from '@/i18n/config'
 import { chfGanz, verbunden, werteFuer, type Jahr } from '@/lib/vorsorge-kennzahlen'
 
 import styles from './VorsorgeKarte.module.css'
@@ -17,9 +20,13 @@ import styles from './VorsorgeKarte.module.css'
  * zum neuen Wert laufen. Rechnet im Browser, sendet nichts. Ohne JavaScript bleibt die Tabelle darunter lesbar.
  */
 
+/** Texte der Sprache; Kennungen und Zahlen sind in allen Fassungen gleich. */
+const texte = (locale: Locale) => (locale === 'fr' ? fr : locale === 'pt' ? pt : de) as unknown as typeof de
+
 const TON: Record<Gruppe, string | undefined> = { ahv: styles.tonNavy, bvg: styles.tonGruen, s3a: styles.tonGrau, uvg: styles.tonTief }
 
-export function VorsorgeKarte() {
+export function VorsorgeKarte({ locale = 'de' }: { locale?: Locale }) {
+  const V = texte(locale)
   const [jahr, setJahr] = useState<Jahr>(2027)
   const [wahl, setWahl] = useState<KennzahlId>('ahvMax')
   const id = useId()
@@ -139,7 +146,8 @@ export function VorsorgeKarte() {
 }
 
 /** Vergleichstabelle 2026 / 2027 – für Suchmaschinen und ohne JavaScript lesbar. */
-export function VorsorgeTabelle() {
+export function VorsorgeTabelle({ locale = 'de' }: { locale?: Locale }) {
+  const V = texte(locale)
   const [a, b] = V.jahre
   const wa = werteFuer(a)
   const wb = werteFuer(b)

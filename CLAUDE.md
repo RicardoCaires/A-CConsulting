@@ -2809,9 +2809,12 @@ gibt es noch keine.
 > Ricardo: «Ich will den ersten Blogpost online stellen bitte so wie finanzfabio einen Interaktive karte mit unserem
 > Design» (Vorbild: finanzfabio.ch, «Vorsorge Kennzahlen 2027»). Eigener Wortlaut, eigene Gestaltung.
 >
-> - **«News und Blog» ist auf Deutsch online** (`routes.ts`: `news.published.de = true`), verlinkt im Fussbereich unter
->   der Offertanfrage. Online steht nur, was `freigegeben: true` trägt – heute allein dieser Beitrag; die drei übrigen
->   bleiben Entwürfe. FR und PT haben noch keine Beiträge.
+> - **«News und Blog» ist in DE, FR und PT online** (`/de/news/`, `/fr/actualites/`, `/pt/noticias/`), verlinkt im
+>   Fussbereich unter der Offertanfrage. Online steht nur, was `freigegeben: true` trägt – heute allein dieser Beitrag;
+>   die drei übrigen bleiben Entwürfe (nur DE). **Ricardo, 19.10.2026: «bitte immer direkt auch französisch und
+>   portugiesisch machen»** – neue Beiträge kommen im selben Auftrag in `src/content/fr|pt/news.ts`, mit demselben
+>   `slug` wie das Original, damit die Sprachwahl zum selben Beitrag führt (`LanguageSwitcher`). Feste Texte der
+>   News-Ansicht und Monatsnamen in `NEWS_TEXTE` (`src/lib/news.ts`), die Karte in `src/content/fr|pt/vorsorge-kennzahlen.ts`.
 > - **Interaktive Karte** (`components/ui/VorsorgeKarte.tsx`, Daten `src/content/vorsorge-kennzahlen.ts`, Rechnung
 >   `src/lib/vorsorge-kennzahlen.ts`): elf Kennzahlen in vier Gruppen (AHV, BVG, 3a, UVG), Jahreswahl 2026/2027 mit
 >   fliessenden Zahlen, eine Zahl antippen zeigt die verbundenen Zahlen grün und darunter die Rechnung mit Beträgen

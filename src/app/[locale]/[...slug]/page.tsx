@@ -6,7 +6,7 @@ import { Hero } from '@/components/blocks/Hero'
 import { OffertAssistent } from '@/components/blocks/OffertAssistent'
 import { NewsBeitrag, NewsUebersicht } from '@/components/seite/News'
 import { Seite } from '@/components/seite/Seite'
-import { beitrag, newsVorschau, sichtbareBeitraege } from '@/lib/news'
+import { beitrag, newsVorschau, sichtbareBeitraege, NEWS_TEXTE } from '@/lib/news'
 import { getSeite } from '@/content/seiten'
 import assistentStyles from '@/components/blocks/OffertAssistent.module.css'
 import { PageBlocks } from '@/components/blocks/PageBlocks'
@@ -58,7 +58,7 @@ import { ogBild } from '@/lib/social'
 export const dynamicParams = false
 
 /** News und Blog: online erst mit freigegebenen Beiträgen; lokal mit Vorschau auch die Entwürfe. */
-const newsSichtbar = (locale: Locale) => isPublished('news', locale) || (newsVorschau && locale === 'de')
+const newsSichtbar = (locale: Locale) => isPublished('news', locale) || newsVorschau
 const istNews = (locale: Locale, slug: string[]) => newsSichtbar(locale) && slug[0] === pages.news.slug[locale] && slug.length <= 2
 
 export function generateStaticParams() {
@@ -144,8 +144,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (istNews(locale, slug)) {
     const b = slug[1] ? beitrag(locale, slug[1]) : null
-    const titel = b ? b.titel : 'News und Blog'
-    const beschreibung = b ? b.kurz : 'Neuigkeiten von A&C und Wissenswertes zu Versicherungen, Steuern und Treuhand.'
+    const titel = b ? b.titel : `${NEWS_TEXTE[locale].vor}${NEWS_TEXTE[locale].akzent}`
+    const beschreibung = b ? b.kurz : NEWS_TEXTE[locale].beschreibung
     const url = b ? `${path('news', locale)}${b.slug}/` : path('news', locale)
     return {
       title: titel,

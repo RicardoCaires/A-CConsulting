@@ -7,6 +7,7 @@ import {
   isPublished,
   localesWithPages,
   pageKeyFromSlug,
+  pages,
   switchLocalePath,
 } from '@/i18n/routes'
 import { getUi } from '@/i18n/messages/ui'
@@ -42,7 +43,9 @@ export function LanguageSwitcher({ locale }: Props) {
   const segments = pathname.split('/').filter(Boolean)
   const [first, ...rest] = segments
   const currentLocale = first && isLocale(first) ? first : locale
-  const activePage = pageKeyFromSlug(currentLocale, rest) ?? 'home'
+  const activePage = pageKeyFromSlug(currentLocale, rest) ?? (rest[0] === pages.news.slug[currentLocale] ? 'news' : 'home')
+  // Ein Beitrag in News und Blog hat in jeder Sprache denselben Adressteil (19.10.2026)
+  const beitragSlug = activePage === 'news' && rest[1] ? `${rest[1]}/` : ''
 
   // Eine Sprachwahl mit einem Eintrag waere ein Bedienelement ohne Aufgabe.
   const sprachen = localesWithPages()
@@ -75,7 +78,7 @@ export function LanguageSwitcher({ locale }: Props) {
             <li key={candidate}>
               <a
                 className={styles.item}
-                href={switchLocalePath(activePage, candidate)}
+                href={`${switchLocalePath(activePage, candidate)}${beitragSlug}`}
                 lang={candidate}
                 hrefLang={candidate}
                 aria-current={current ? 'true' : undefined}
