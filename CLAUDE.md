@@ -2898,6 +2898,17 @@ gibt es noch keine.
 > Die Animation ist auf eine ruhige Einblendung reduziert: Bild steht still, die Karte blendet in 450 ms ein, der
 > Sticker folgt.
 
+## 9e. Kundenportal: Erklärung und Vorschau in einem Block (19.10.2026)
+
+> Ricardo: «kann man diese zwei teile zusammen nehmen sodass man die erklärung hat und dann testen kann sonst sieht
+> das doppelt aus». Auf der Startseite und auf `/digital` (DE, FR, PT) sind der Textblock mit dem starren
+> Portalfenster und die Vorschau zum Durchklicken zu **einem** `portalDemo`-Block zusammengelegt: oben links
+> Überschrift, Satz und Knöpfe, rechts die Stichpunkte (`punkte`), darunter mit grünem Strich der Satz «Probieren Sie
+> es aus: …» (`probieren`) und direkt die Vorschau. Das starre Fenster (`bild: portal fenster`) steht dort nicht mehr.
+> Überschriften: Startseite «Ihre Versicherungen jederzeit im Blick», `/digital` «Das Kundenportal»; «So sieht das
+> Kundenportal aus» und «Ein Blick hinein» sind entfallen. Anker bleiben `#portal` und `#ansichten`. Nachgemessen in
+> DE, FR, PT bei 320 bis 1440 px ohne Befund.
+
 ## 10. Offene Punkte
 
 Technik und Infrastruktur:

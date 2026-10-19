@@ -19,8 +19,8 @@ export const digital: SeitenInhalt = {
       ],
     },
     {
-      art: 'textBild',
-      id: 'kundenportal',
+      art: 'portalDemo',
+      id: 'ansichten',
       titel: { vor: 'Le ', akzent: 'portail clients' },
       punkte: [
         'Polices et documents\u00a0: au même endroit, sur l’ordinateur ou sur le téléphone',
@@ -29,15 +29,10 @@ export const digital: SeitenInhalt = {
         'Demandes\u00a0: offre, rappel, rendez-vous ou modification de contrat',
         'État\u00a0: demandé, en traitement, réglé – avec un e-mail à chaque changement',
       ],
-      knoepfe: [{ text: 'Vers le portail clients', href: 'kundenportal' }],
-      bild: { art: 'portal', ansicht: 'fenster' },
-    },
-    {
-      art: 'portalDemo',
-      id: 'ansichten',
-      titel: { vor: 'Un coup d’œil ', akzent: 'à l’intérieur' },
-      einleitung:
-        'Essayez\u00a0: ouvrir des contrats, consulter les prestations, remplir une demande. Toutes les données sont fictives.',
+      probieren: 'Essayez\u00a0: ouvrir des contrats, consulter les prestations, remplir une demande. Toutes les données sont fictives.',
+      knoepfe: [
+        { text: 'Vers le portail clients', href: 'kundenportal' },
+      ],
     },
     {
       art: 'schritte',

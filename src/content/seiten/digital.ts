@@ -33,8 +33,8 @@ export const digital: SeitenInhalt = {
       ],
     },
     {
-      art: 'textBild',
-      id: 'kundenportal',
+      art: 'portalDemo',
+      id: 'ansichten',
       titel: { vor: 'Das ', akzent: 'Kundenportal' },
       punkte: [
         'Policen und Dokumente: an einem Ort, am Computer oder auf dem Handy',
@@ -43,14 +43,10 @@ export const digital: SeitenInhalt = {
         'Anfragen: Offerte, Rückruf, Termin oder Vertragsänderung',
         'Stand: angefragt, in Bearbeitung, erledigt – mit E-Mail bei jedem Wechsel',
       ],
-      knoepfe: [{ text: 'Zum Kundenportal', href: 'kundenportal' }],
-      bild: { art: 'portal', ansicht: 'fenster' },
-    },
-    {
-      art: 'portalDemo',
-      id: 'ansichten',
-      titel: { vor: 'Ein Blick ', akzent: 'hinein' },
-      einleitung: 'Probieren Sie es aus: Verträge öffnen, Leistungen ansehen, eine Anfrage ausfüllen. Alle Angaben sind erfunden.',
+      probieren: 'Probieren Sie es aus: Verträge öffnen, Leistungen ansehen, eine Anfrage ausfüllen. Alle Angaben sind erfunden.',
+      knoepfe: [
+        { text: 'Zum Kundenportal', href: 'kundenportal' },
+      ],
     },
     {
       art: 'schritte',

@@ -111,6 +111,10 @@ export type Block =
   /** Das Kundenportal zum Durchklicken, mit erfundenen Angaben. Gesendet wird nichts. */
   | (Kopf & {
       art: 'portalDemo'
+      /** Stichpunkte neben der Überschrift – Erklärung und Vorschau in einem Block (19.10.2026). */
+      punkte?: readonly string[]
+      /** Satz direkt über der Vorschau: was man darin ausprobieren kann. */
+      probieren?: string
       knoepfe?: readonly Knopf[]
     })
   /** Mehrere Beispielansichten des Kundenportals nebeneinander, je mit kurzer Unterschrift. */

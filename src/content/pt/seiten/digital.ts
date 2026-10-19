@@ -19,8 +19,8 @@ export const digital: SeitenInhalt = {
       ],
     },
     {
-      art: 'textBild',
-      id: 'kundenportal',
+      art: 'portalDemo',
+      id: 'ansichten',
       titel: { vor: 'O ', akzent: 'portal do cliente' },
       punkte: [
         'Apólices e documentos: num só lugar, no computador ou no telemóvel',
@@ -29,15 +29,10 @@ export const digital: SeitenInhalt = {
         'Pedidos: proposta, chamada de volta, reunião ou alteração de contrato',
         'Situação: pedido, em tratamento, concluído – com um e-mail a cada alteração',
       ],
-      knoepfe: [{ text: 'Ir para o portal do cliente', href: 'kundenportal' }],
-      bild: { art: 'portal', ansicht: 'fenster' },
-    },
-    {
-      art: 'portalDemo',
-      id: 'ansichten',
-      titel: { vor: 'Um olhar ', akzent: 'por dentro' },
-      einleitung:
-        'Experimente: abrir contratos, ver as coberturas, preencher um pedido. Todos os dados são fictícios.',
+      probieren: 'Experimente: abrir contratos, ver as coberturas, preencher um pedido. Todos os dados são fictícios.',
+      knoepfe: [
+        { text: 'Ir para o portal do cliente', href: 'kundenportal' },
+      ],
     },
     {
       art: 'schritte',

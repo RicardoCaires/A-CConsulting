@@ -384,11 +384,19 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
       )
 
     case 'portalDemo':
+      // Erklärung und Vorschau in einem Block (Ricardo, 19.10.2026: «sonst sieht das doppelt aus»):
+      // oben Überschrift, Satz, Knöpfe und Stichpunkte, darunter die Vorschau zum Ausprobieren.
       return (
         <>
-          <Kopf block={block} h1={h1} nr={nr} />
+          <div className={block.punkte?.length ? styles.demoKopf : undefined}>
+            <div>
+              <Kopf block={block} h1={h1} nr={nr} />
+              <Knoepfe knoepfe={block.knoepfe} locale={locale} />
+            </div>
+            <Haken punkte={block.punkte} />
+          </div>
+          {block.probieren ? <p className={styles.probieren}>{block.probieren}</p> : null}
           <PortalDemo locale={locale} />
-          <Knoepfe knoepfe={block.knoepfe} locale={locale} />
         </>
       )
 

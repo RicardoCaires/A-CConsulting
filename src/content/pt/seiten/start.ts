@@ -47,28 +47,21 @@ export const start: SeitenInhalt = {
       ],
     },
     {
-      art: 'textBild',
-      id: 'digital',
+      art: 'portalDemo',
+      id: 'portal',
       titel: { vor: 'Os seus seguros ', akzent: 'sempre', nach: ' à vista' },
-      absaetze: ['Menos papel, caminhos mais curtos. No portal do cliente tem tudo à mão.'],
+      einleitung: 'Menos papel, caminhos mais curtos. No portal do cliente tem tudo à mão.',
       punkte: [
         'Apólices: todos os contratos e documentos num só lugar, também no telemóvel',
         'Custos: o que paga por ano pelos seus seguros, num relance',
         'Pedidos: alterações e pedidos de proposta diretamente para nós, com o ponto de situação',
       ],
+      probieren: 'Experimente: abrir contratos, ver as coberturas, preencher um pedido. Todos os dados são fictícios.',
       knoepfe: [
         { text: 'Ir para o portal do cliente', href: 'kundenportal' },
         { text: 'Pedir uma proposta online', href: 'offerte', art: 'zweit' },
+        { text: 'Mais sobre o portal do cliente', ziel: 'digital', art: 'zweit' },
       ],
-      bild: { art: 'portal', ansicht: 'fenster' },
-    },
-    {
-      art: 'portalDemo',
-      id: 'portal',
-      titel: { vor: 'Assim é o ', akzent: 'portal do cliente' },
-      einleitung:
-        'Experimente: abrir contratos, ver as coberturas, preencher um pedido. Todos os dados são fictícios.',
-      knoepfe: [{ text: 'Mais sobre o portal do cliente', ziel: 'digital', art: 'zweit' }],
     },
     {
       art: 'personen',

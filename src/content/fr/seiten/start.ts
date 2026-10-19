@@ -47,28 +47,21 @@ export const start: SeitenInhalt = {
       ],
     },
     {
-      art: 'textBild',
-      id: 'digital',
+      art: 'portalDemo',
+      id: 'portal',
       titel: { vor: 'Vos assurances ', akzent: 'à tout moment', nach: ' sous les yeux' },
-      absaetze: ['Moins de papier, des chemins plus courts. Dans le portail clients, vous avez tout sous la main.'],
+      einleitung: 'Moins de papier, des chemins plus courts. Dans le portail clients, vous avez tout sous la main.',
       punkte: [
         'Polices\u00a0: tous les contrats et documents au même endroit, aussi sur le téléphone',
         'Coûts\u00a0: ce que vous payez par an pour vos assurances, en un coup d’œil',
         'Demandes\u00a0: modifications et demandes d’offre directement à nous, avec leur état',
       ],
+      probieren: 'Essayez\u00a0: ouvrir des contrats, consulter les prestations, remplir une demande. Toutes les données sont fictives.',
       knoepfe: [
         { text: 'Vers le portail clients', href: 'kundenportal' },
         { text: 'Demander une offre en ligne', href: 'offerte', art: 'zweit' },
+        { text: 'En savoir plus sur le portail clients', ziel: 'digital', art: 'zweit' },
       ],
-      bild: { art: 'portal', ansicht: 'fenster' },
-    },
-    {
-      art: 'portalDemo',
-      id: 'portal',
-      titel: { vor: 'Voici à quoi ressemble le ', akzent: 'portail clients' },
-      einleitung:
-        'Essayez\u00a0: ouvrir des contrats, consulter les prestations, remplir une demande. Toutes les données sont fictives.',
-      knoepfe: [{ text: 'En savoir plus sur le portail clients', ziel: 'digital', art: 'zweit' }],
     },
     {
       art: 'personen',

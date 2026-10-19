@@ -54,27 +54,21 @@ export const start: SeitenInhalt = {
       ],
     },
     {
-      art: 'textBild',
-      id: 'digital',
+      art: 'portalDemo',
+      id: 'portal',
       titel: { vor: 'Ihre Versicherungen ', akzent: 'jederzeit', nach: ' im Blick' },
-      absaetze: ['Weniger Papier, kürzere Wege. Im Kundenportal haben Sie alles zur Hand.'],
+      einleitung: 'Weniger Papier, kürzere Wege. Im Kundenportal haben Sie alles zur Hand.',
       punkte: [
         'Policen: alle Verträge und Unterlagen an einem Ort, auch auf dem Handy',
         'Kosten: was Sie pro Jahr für Ihre Versicherungen bezahlen, auf einen Blick',
         'Anfragen: Änderungen und Offertwünsche direkt an uns, mit Stand',
       ],
+      probieren: 'Probieren Sie es aus: Verträge öffnen, Leistungen ansehen, eine Anfrage ausfüllen. Alle Angaben sind erfunden.',
       knoepfe: [
         { text: 'Zum Kundenportal', href: 'kundenportal' },
         { text: 'Offerte online anfragen', href: 'offerte', art: 'zweit' },
+        { text: 'Mehr zum Kundenportal', ziel: 'digital', art: 'zweit' },
       ],
-      bild: { art: 'portal', ansicht: 'fenster' },
-    },
-    {
-      art: 'portalDemo',
-      id: 'portal',
-      titel: { vor: 'So sieht das ', akzent: 'Kundenportal', nach: ' aus' },
-      einleitung: 'Probieren Sie es aus: Verträge öffnen, Leistungen ansehen, eine Anfrage ausfüllen. Alle Angaben sind erfunden.',
-      knoepfe: [{ text: 'Mehr zum Kundenportal', ziel: 'digital', art: 'zweit' }],
     },
     {
       art: 'personen',
