@@ -1,9 +1,10 @@
-/* Interaktive Karte der Vorsorge-Kennzahlen (19.10.2026). Nur Tokenfarben; Navy nur als Zustand (gewählt),
-   nie als ruhende Fläche (Hausordnung 9a). Jede Säule trägt ihren Ton als Oberkante. */
+/* Vorsorge-Kennzahlen auf einen Blick (19.10.2026, zweiter Wurf). Nur Tokenfarben; Navy nur als Zustand
+   (Zeigen, Fenster), nie als ruhende Fläche (Hausordnung 9a). Jede Säule trägt ihren Ton als Oberkante.
+   Texte brechen um, nichts hat eine feste Breite – FR und PT sind länger als DE. */
 
 .karte {
-  margin: clamp(1.5rem, 3vw, 2.25rem) 0;
-  padding: clamp(1rem, 2.5vw, 1.75rem);
+  margin: clamp(1.25rem, 3vw, 2rem) 0;
+  padding: clamp(0.9rem, 2.5vw, 1.5rem);
   background-color: var(--ac-color-background-light);
   border: 1px solid var(--ac-color-border-tint);
   border-radius: 24px;
@@ -14,26 +15,28 @@
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1rem;
 }
 
 .kopfTitel {
   margin: 0;
   font-family: var(--ac-font-display);
-  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
   font-weight: 700;
   line-height: 1.15;
   color: var(--ac-color-primary-navy);
 }
 
 .kopfSatz {
-  margin: 0.35rem 0 0;
+  margin: 0.3rem 0 0;
+  font-size: var(--ac-small-size);
   color: var(--ac-color-text-primary);
 }
 
 .jahre {
   display: inline-flex;
+  flex-shrink: 0;
   padding: 4px;
   background-color: var(--ac-color-white);
   border: 1px solid var(--ac-color-border-tint);
@@ -41,9 +44,9 @@
 }
 
 .jahre button {
-  min-width: 4.5rem;
+  min-width: 4.25rem;
   min-height: 44px;
-  padding: 0 1rem;
+  padding: 0 0.9rem;
   font: inherit;
   font-weight: 700;
   color: var(--ac-color-primary-navy);
@@ -59,24 +62,39 @@
   background-color: var(--ac-color-accent-green);
 }
 
-.gruppen {
+.jahre button:focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Zwei gleich hohe Spalten: links AHV, 3a und UVG (6 Zeilen), rechts die Pensionskasse (5 Zeilen) */
+.spalten {
   display: grid;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
-@media (min-width: 60rem) {
-  .gruppen {
+@media (min-width: 40rem) {
+  .spalten {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      'ahv bvg'
+      's3a bvg'
+      'uvg bvg';
+    align-items: start;
   }
+
+  .spalte[data-gruppe='ahv'] { grid-area: ahv; }
+  .spalte[data-gruppe='bvg'] { grid-area: bvg; }
+  .spalte[data-gruppe='s3a'] { grid-area: s3a; }
+  .spalte[data-gruppe='uvg'] { grid-area: uvg; }
 }
 
-.gruppe {
-  min-width: 0;
-  padding: 1rem;
+.spalte {
+  padding: 0.6rem 0.75rem 0.4rem;
   background-color: var(--ac-color-white);
   border: 1px solid var(--ac-color-border-tint);
   border-top: 5px solid var(--ton);
-  border-radius: 18px;
+  border-radius: 16px;
 }
 
 .tonNavy { --ton: var(--ac-color-primary-navy); }
@@ -84,77 +102,179 @@
 .tonGrau { --ton: var(--ac-color-brand-grey); }
 .tonTief { --ton: var(--ac-color-navy-deep); }
 
-.gruppeTitel {
-  margin: 0 0 0.75rem;
+.spalteTitel {
+  margin: 0.1rem 0 0.35rem;
   font-family: var(--ac-font-display);
-  font-size: 1.1rem;
+  font-size: 1rem;
+  line-height: 1.3;
   color: var(--ac-color-primary-navy);
 }
 
-.kacheln {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(11.5rem, 100%), 1fr));
-  gap: 0.6rem;
+.zeilen {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.kachel {
+.zeilen li + li {
+  border-top: 1px solid var(--ac-color-border-light);
+}
+
+.zeile {
   display: grid;
-  gap: 0.15rem;
-  align-content: start;
-  min-height: 7rem;
-  padding: 0.75rem 0.85rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: center;
+  width: calc(100% + 1rem);
+  min-height: 44px;
+  margin-inline: -0.5rem;
+  padding: 0.45rem 0.5rem;
   font: inherit;
   text-align: left;
   color: var(--ac-color-text-primary);
   cursor: pointer;
+  background: none;
+  border: 0;
+  border-radius: 10px;
+  transition: background-color var(--ac-motion-fast) var(--ac-motion-easing), color var(--ac-motion-fast) var(--ac-motion-easing);
+}
+
+.zeile:hover,
+.zeile:focus-visible {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-primary-navy);
+}
+
+.zeile:focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 1px;
+}
+
+.zeileTitel {
+  font-size: var(--ac-small-size);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.zeileWert {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--ac-color-primary-navy);
+}
+
+.zeile:hover .zeileWert,
+.zeile:focus-visible .zeileWert {
+  color: var(--ac-color-white);
+}
+
+.stand {
+  margin: 0.25rem 0 0;
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+/* ---- Fenster mit der Beschreibung ---------------------------------------------- */
+
+.fenster {
+  width: min(34rem, calc(100vw - 2rem));
+  max-height: min(85vh, 46rem);
+  padding: 0;
+  overflow: auto;
+  color: var(--ac-color-text-primary);
+  background-color: var(--ac-color-white);
+  border: 0;
+  border-radius: 20px;
+}
+
+.fenster::backdrop {
+  background-color: color-mix(in srgb, var(--ac-color-navy-deep) 55%, transparent);
+}
+
+/* Telefon: als Blatt von unten */
+@media (max-width: 40rem) {
+  .fenster {
+    width: 100vw;
+    max-width: 100vw;
+    margin: auto 0 0;
+    border-radius: 20px 20px 0 0;
+  }
+}
+
+.fensterInhalt {
+  padding: 1.1rem 1.25rem 1.4rem;
+  border-top: 6px solid var(--ton);
+}
+
+.fensterKopf {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.fensterGruppe {
+  margin: 0.4rem 0 0;
+  font-size: var(--ac-small-size);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ac-color-accent-green);
+}
+
+.zu {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--ac-color-primary-navy);
+  cursor: pointer;
   background-color: var(--ac-color-background-light);
-  border: 2px solid transparent;
-  border-radius: 14px;
-  transition:
-    background-color var(--ac-motion-fast) var(--ac-motion-easing),
-    border-color var(--ac-motion-fast) var(--ac-motion-easing),
-    color var(--ac-motion-fast) var(--ac-motion-easing),
-    transform var(--ac-motion-fast) var(--ac-motion-easing);
+  border: 0;
+  border-radius: 50%;
 }
 
-.kachel:hover {
-  border-color: var(--ac-color-primary-navy);
-  transform: translateY(-2px);
+.zu:hover,
+.zu:focus-visible {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-primary-navy);
 }
 
-.kachel:focus-visible {
+.zu:focus-visible {
   outline: 3px solid var(--ac-focus-ring);
   outline-offset: 2px;
 }
 
-.kachel[data-verbunden] {
-  background-color: var(--ac-color-signal-positive-bg);
-  border-color: var(--ac-color-accent-green);
+.zu svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
 }
 
-.kachel[aria-pressed='true'] {
-  color: var(--ac-color-white);
-  background-color: var(--ac-color-primary-navy);
-  border-color: var(--ac-color-primary-navy);
+.fensterTitel {
+  margin: 0.35rem 0 0;
+  font-family: var(--ac-font-display);
+  font-size: 1.35rem;
+  line-height: 1.25;
+  color: var(--ac-color-primary-navy);
 }
 
-.kachelTitel {
-  font-size: var(--ac-small-size);
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.wert {
-  font-size: clamp(1.15rem, 2vw, 1.35rem);
+.fensterWert {
+  margin: 0.4rem 0 0;
+  font-size: 1.6rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   color: var(--ac-color-primary-navy);
 }
 
-.einheit,
-.diff {
+.fensterEinheit {
+  margin: 0.1rem 0 0;
   font-size: var(--ac-small-size);
-  line-height: 1.35;
   color: var(--ac-color-text-secondary);
 }
 
@@ -163,47 +283,13 @@
   color: var(--ac-color-accent-green);
 }
 
-.kachel[aria-pressed='true'] .wert,
-.kachel[aria-pressed='true'] .einheit,
-.kachel[aria-pressed='true'] .diff {
-  color: var(--ac-color-white);
+.kurz {
+  margin: 0.75rem 0 0;
+  line-height: 1.55;
 }
 
-.detail {
-  margin-top: 1rem;
-  padding: 1.1rem 1.25rem;
-  background-color: var(--ac-color-white);
-  border: 1px solid var(--ac-color-border-tint);
-  border-left: 5px solid var(--ac-color-accent-green);
-  border-radius: 18px;
-}
-
-.detailTitel {
-  margin: 0;
-  font-family: var(--ac-font-display);
-  font-size: 1.2rem;
-  color: var(--ac-color-primary-navy);
-}
-
-.detailKurz {
-  margin: 0.35rem 0 0;
-  color: var(--ac-color-text-primary);
-}
-
-.detailSpalten {
-  display: grid;
-  gap: 1rem;
-  margin-top: 0.85rem;
-}
-
-@media (min-width: 48rem) {
-  .detailSpalten {
-    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-  }
-}
-
-.detailUnter {
-  margin: 0 0 0.4rem;
+.unter {
+  margin: 1rem 0 0.4rem;
   font-size: var(--ac-small-size);
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -220,8 +306,9 @@
   list-style: none;
 }
 
-.rechnungKnopf {
+.rechnung {
   display: grid;
+  gap: 0.1rem;
   width: 100%;
   padding: 0.5rem 0.7rem;
   font: inherit;
@@ -234,16 +321,20 @@
   transition: border-color var(--ac-motion-fast) var(--ac-motion-easing);
 }
 
-.rechnungKnopf:hover {
+.rechnung:hover:not(:disabled) {
   border-color: var(--ac-color-accent-green);
 }
 
-.rechnungKnopf:focus-visible {
+.rechnung:disabled {
+  cursor: default;
+}
+
+.rechnung:focus-visible {
   outline: 3px solid var(--ac-focus-ring);
   outline-offset: 2px;
 }
 
-.rechnungErgebnis {
+.rechnungName {
   font-weight: 700;
   color: var(--ac-color-primary-navy);
 }
@@ -251,6 +342,7 @@
 .rechnungText {
   font-size: var(--ac-small-size);
   font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
 }
 
 .tipps li {
@@ -267,100 +359,10 @@
   color: var(--ac-color-accent-green);
 }
 
-.stand {
-  margin: 0.85rem 0 0;
-  font-size: var(--ac-small-size);
-  color: var(--ac-color-text-secondary);
-}
-
-.tabelleRahmen {
-  overflow-x: auto;
-  margin: 1rem 0;
-}
-
-.tabelle {
-  width: 100%;
-  border-collapse: collapse;
-  font-variant-numeric: tabular-nums;
-}
-
-.tabelle caption {
-  margin-bottom: 0.5rem;
-  font-weight: 700;
-  text-align: left;
-  color: var(--ac-color-primary-navy);
-}
-
-.tabelle th,
-.tabelle td {
-  padding: 0.55rem 0.7rem;
-  text-align: left;
-  border-bottom: 1px solid var(--ac-color-border-light);
-}
-
-.tabelle thead th {
-  font-size: var(--ac-small-size);
-  color: var(--ac-color-white);
-  background-color: var(--ac-color-primary-navy);
-}
-
-.tabelle td {
-  text-align: right;
-  white-space: nowrap;
-}
-
-.tabelle tbody tr:nth-child(even) {
-  background-color: var(--ac-color-background-light);
-}
-
-.tabelle tbody th {
-  font-weight: 600;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .kachel,
+  .zeile,
   .jahre button,
-  .rechnungKnopf {
+  .rechnung {
     transition: none;
   }
-
-  .kachel:hover {
-    transform: none;
-  }
-}
-
-/* Schmal: Bezeichnungen brechen um, die Beträge bleiben einzeilig – die Tabelle passt ohne seitliches Scrollen
-   (19.10.2026, längere Bezeichnungen in FR und PT). */
-.tabelle {
-  table-layout: auto;
-}
-
-.tabelle tbody th {
-  overflow-wrap: anywhere;
-  hyphens: auto;
-}
-
-@media (max-width: 30rem) {
-  .tabelle th,
-  .tabelle td {
-    padding: 0.5rem 0.4rem;
-    font-size: var(--ac-small-size);
-  }
-}
-
-@media (max-width: 22rem) {
-  .tabelle th,
-  .tabelle td {
-    padding: 0.45rem 0.25rem;
-  }
-
-  .tabelle thead th:first-child,
-  .tabelle tbody th {
-    padding-left: 0;
-  }
-}
-
-.tabelle caption,
-.tabelle thead th {
-  overflow-wrap: anywhere;
 }

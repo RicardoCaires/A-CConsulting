@@ -247,7 +247,7 @@ export const pages: Record<PageKey, PageDefinition> = {
     slug: { de: 'news', fr: 'actualites', pt: 'noticias' },
     // Seit 19.10.2026 online in DE, FR und PT, mit dem ersten freigegebenen Beitrag (Vorsorge-Kennzahlen 2027)
     published: { de: true, fr: true, pt: true },
-    inMainNav: false,
+    inMainNav: true,
     inLegalNav: false,
     sitemapPriority: 0.6,
   },
@@ -296,6 +296,9 @@ export const mainNavOrder: readonly PageKey[] = [
   'versicherungen',
   'treuhand',
   'digital',
+  // Seit 19.10.2026 eigene Kategorie (Ricardo: «Blog und News ist nur im Footer ich will dass das offensichtlicher
+  // ist sogar oben als eigene Kategorie»)
+  'news',
   'ueberUns',
 ]
 

@@ -2816,10 +2816,19 @@ gibt es noch keine.
 >   `slug` wie das Original, damit die Sprachwahl zum selben Beitrag führt (`LanguageSwitcher`). Feste Texte der
 >   News-Ansicht und Monatsnamen in `NEWS_TEXTE` (`src/lib/news.ts`), die Karte in `src/content/fr|pt/vorsorge-kennzahlen.ts`.
 > - **Interaktive Karte** (`components/ui/VorsorgeKarte.tsx`, Daten `src/content/vorsorge-kennzahlen.ts`, Rechnung
->   `src/lib/vorsorge-kennzahlen.ts`): elf Kennzahlen in vier Gruppen (AHV, BVG, 3a, UVG), Jahreswahl 2026/2027 mit
->   fliessenden Zahlen, eine Zahl antippen zeigt die verbundenen Zahlen grün und darunter die Rechnung mit Beträgen
->   sowie «Gut zu wissen». Darunter eine Vergleichstabelle (auch ohne JavaScript und für Suchmaschinen lesbar).
->   Einbindung über `baustein` in einem Abschnitt eines Beitrags.
+>   `src/lib/vorsorge-kennzahlen.ts`), seit dem zweiten Wurf vom 19.10.2026 **auf einen Blick** (Ricardo: «sehr
+>   unübersichtlich … wie bei finanzfabio beim drücken der Kennzahl soll die Beschreibung aufgerufen werden man soll
+>   nicht ewigsscrollen»): elf Zeilen «Bezeichnung – Betrag» in zwei gleich hohen Spalten (links AHV, 3a, UVG; rechts
+>   BVG), Jahreswahl 2026/2027 mit fliessenden Zahlen. Ein Druck auf eine Zeile öffnet ein Fenster (`<dialog>`, auf dem
+>   Telefon als Blatt von unten) mit Betrag, Zuwachs, Erklärung, Rechnung und «Gut zu wissen». Die Vergleichstabelle
+>   ist entfallen. Einbindung über `baustein: 'vorsorgeKarte'` in einem Abschnitt eines Beitrags.
+> - **«News und Blog» steht seit 19.10.2026 in der Hauptnavigation** als fünfter Punkt (Ricardo: «sogar oben als eigene
+>   Kategorie»). Damit reicht die einzeilige Kopfzeile ab 75rem nicht mehr: Auf Französisch überlappten Logo, Menü und
+>   Knopf bis 1920 px. **Zweizeilig (Logo mittig, Menü darunter) gilt jetzt von 64rem bis 118rem**, einzeilig erst ab
+>   118rem mit 1800 px Container. Nachgemessen in DE, FR, PT bei 1024 bis 1920 px ohne Überlappung.
+> - **Regel, Ricardo 19.10.2026: «keine texte die abgeschnitten sind», durchgängig.** Neue oder geänderte Teile in DE,
+>   FR und PT bei 320, 375, 768, 1024 und 1440 px nachmessen; Texte dürfen umbrechen, keine festen Textbreiten,
+>   Nachbarn immer mit Abstand («← News und Blog» steht darum auf eigener Zeile über der Marke).
 > - **Nur die maximale AHV-Rente je Jahr ist erfasst**; alle übrigen Grenzbeträge rechnet die Karte nach den
 >   gesetzlichen Verhältnissen. Nachgerechnet und amtlich geprüft gegen das BSV-Dokument «Beträge gültig ab dem
 >   1. Januar 2027» (2.10.2026) und die BSV-Masszahlen 2025/2026: alle Werte stimmen. **UVG 148’200 für 2027 ist nicht

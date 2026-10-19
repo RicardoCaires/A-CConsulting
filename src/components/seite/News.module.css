@@ -114,7 +114,10 @@
 
 /* Zurück als Knopf, nicht als Textlink (Ricardo, 15.10.2026). */
 .zurueck {
-  display: inline-flex;
+  /* eigene Zeile: die Marke darunter klebt sonst am Knopf (19.10.2026) */
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
   align-items: center;
   min-height: 2.75rem;
   margin-bottom: 1rem;

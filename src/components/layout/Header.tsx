@@ -14,9 +14,9 @@ import styles from './Header.module.css'
  * Drei Anordnungen aus **einem** Markup, gesetzt ueber ein Raster:
  *
  *   schmal            Logo · Menue · Sprachwahl     — eine Zeile
- *   64rem bis 75rem   Logo mittig, Knopf rechts;    — zwei Zeilen
+ *   64rem bis 118rem  Logo mittig, Knopf rechts;    — zwei Zeilen
  *                     darunter die Kategorien
- *   ab 75rem          Logo · Kategorien · Knopf     — eine Zeile
+ *   ab 118rem         Logo · Kategorien · Knopf     — eine Zeile
  *
  * Die einzeilige Fassung ab 75rem stammt vom 11.09.2026 und folgt Ricardos
  * Referenz: gruene Linie oben, Kategorien mittig, der Knopf mit Pfeil rechts.

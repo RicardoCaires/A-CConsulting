@@ -232,7 +232,7 @@ export type Beitrag = {
     absaetze: readonly Rich[]
     punkte?: readonly string[]
     /** Interaktiver Baustein nach dem Text des Abschnitts (19.10.2026). */
-    baustein?: 'vorsorgeKarte' | 'vorsorgeTabelle'
+    baustein?: 'vorsorgeKarte'
   }[]
   /** Hinweis am Schluss, z. B. dass der Beitrag keine individuelle Beratung ersetzt. */
   hinweis?: string

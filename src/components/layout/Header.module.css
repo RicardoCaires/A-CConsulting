@@ -7,9 +7,12 @@
    Drei Anordnungen aus einem Markup, gesetzt ueber ein Raster:
 
      schmal            Logo · Menue · Sprachwahl             — eine Zeile
-     64rem bis 75rem   Logo mittig, Knopf rechts;            — zwei Zeilen
+     64rem bis 118rem  Logo mittig, Knopf rechts;            — zwei Zeilen
                        darunter die Kategorien
-     ab 75rem          Logo · Kategorien · Knopf             — eine Zeile
+     ab 118rem         Logo · Kategorien · Knopf             — eine Zeile
+     (seit 19.10.2026: mit «News und Blog» als fünftem Punkt und den längeren
+     Wörtern in FR und PT reichte 75rem nicht mehr – auf Französisch
+     überlappten Logo, Menü und Knopf bis 1920 px um bis zu 33 px)
 
    Die mittlere Stufe bleibt, weil eine Zeile dort nicht passt: Logo,
    vier Kategorien mit Untermenue-Winkel und der Knopf brauchen zusammen mehr
@@ -88,7 +91,7 @@
   transform: translateX(3px);
 }
 
-/* ---- 64rem bis 75rem: zwei Zeilen, beide mittig ------------------------- */
+/* ---- 64rem bis 118rem: zwei Zeilen, beide mittig ------------------------- */
 
 @media (min-width: 64rem) {
   .inner {
@@ -136,15 +139,15 @@
   }
 }
 
-/* ---- Ab 75rem: eine Zeile wie in der Referenz --------------------------- */
+/* ---- Ab 118rem: eine Zeile wie in der Referenz --------------------------- */
 
-@media (min-width: 75rem) {
+@media (min-width: 118rem) {
   /* Eigener, breiterer Container: Im Standardmass von 1160 px blieben
      zwischen Logo und Navigation nur 23 px Luft — gemessen am 11.09.2026 bei
      1440 px. Die Referenz laeuft fast ueber die ganze Fensterbreite. Doppelte
      Klasse, damit die Regel sicher ueber `.ac-container` steht. */
   .header .inner {
-    max-width: 1440px;
+    max-width: 1800px;
     padding-inline: clamp(1.5rem, 4vw, 3.5rem);
   }
 

@@ -37,11 +37,6 @@ export const beitraege: readonly Beitrag[] = [
         ],
       },
       {
-        zwischentitel: 'Alle Werte im Vergleich',
-        absaetze: [],
-        baustein: 'vorsorgeTabelle',
-      },
-      {
         zwischentitel: 'Drei Dinge, die sich jetzt lohnen',
         absaetze: [],
         punkte: [
