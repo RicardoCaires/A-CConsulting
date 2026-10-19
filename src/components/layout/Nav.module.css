@@ -1,6 +1,6 @@
 /* Hauptnavigation.
 
-   Zwei Fassungen: eine offene Reihe ab 64rem, darunter ein Menue. Beide
+   Zwei Fassungen: eine offene Reihe ab 90rem, darunter ein Menue. Beide
    benutzen dieselbe Beschriftung und dieselben Trefferflaechen — die schmale
    Fassung ist keine verkleinerte, sondern eine eigene.
 
@@ -16,7 +16,7 @@
   display: contents;
 }
 
-/* ---- Offene Reihe (ab 64rem) -------------------------------------------- */
+/* ---- Offene Reihe (ab 90rem) -------------------------------------------- */
 
 .wide {
   display: none;
@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   /* Seit dem 11.09.2026 nach Ricardos Referenz deutlich luftiger. */
-  gap: clamp(1rem, 2.2vw, 2.25rem);
+  gap: clamp(0.75rem, 1.6vw, 2.25rem);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -226,7 +226,7 @@
   padding: 0.1rem 0.3rem;
 }
 
-/* ---- Menue (bis 64rem) --------------------------------------------------- */
+/* ---- Menue (bis 90rem) --------------------------------------------------- */
 
 .narrow {
   display: block;
@@ -358,8 +358,10 @@
 }
 
 /* ---- Umschaltpunkt ------------------------------------------------------- */
+/* 90rem statt 64rem (19.10.2026): Erst dort passen die fuenf Kategorien in FR
+   und PT neben Logo, Sprachwahl und Knopf in eine Zeile. */
 
-@media (min-width: 64rem) {
+@media (min-width: 90rem) {
   .wide {
     display: block;
   }

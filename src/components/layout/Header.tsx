@@ -13,10 +13,11 @@ import styles from './Header.module.css'
  *
  * Drei Anordnungen aus **einem** Markup, gesetzt ueber ein Raster:
  *
- *   schmal            Logo · Menue · Sprachwahl     — eine Zeile
- *   64rem bis 118rem  Logo mittig, Knopf rechts;    — zwei Zeilen
- *                     darunter die Kategorien
- *   ab 118rem         Logo · Kategorien · Knopf     — eine Zeile
+ *   schmal            Logo · Menue · Sprachwahl                — eine Zeile
+ *   64rem bis 90rem   Logo · Sprachwahl · Knopf · Menue        — eine Zeile
+ *   ab 90rem          Logo · Kategorien · Sprachwahl · Knopf   — eine Zeile
+ *
+ * Seit dem 19.10.2026 gibt es keine zweizeilige Fassung mehr.
  *
  * Die einzeilige Fassung ab 75rem stammt vom 11.09.2026 und folgt Ricardos
  * Referenz: gruene Linie oben, Kategorien mittig, der Knopf mit Pfeil rechts.

@@ -2843,6 +2843,11 @@ gibt es noch keine.
 >   Kategorie»). Damit reicht die einzeilige Kopfzeile ab 75rem nicht mehr: Auf Französisch überlappten Logo, Menü und
 >   Knopf bis 1920 px. **Zweizeilig (Logo mittig, Menü darunter) gilt jetzt von 64rem bis 118rem**, einzeilig erst ab
 >   118rem mit 1800 px Container. Nachgemessen in DE, FR, PT bei 1024 bis 1920 px ohne Überlappung.
+> - **Noch am 19.10.2026 ersetzt: der Kopf ist immer einzeilig** (Ricardo: «diese anordnung gefällt mir nicht» zur
+>   zweizeiligen Fassung). Ab 90rem Logo · fünf Kategorien · Sprachwahl · Knopf; von 64rem bis 90rem Logo ·
+>   Sprachwahl · Knopf · Menüzeichen (die Kategorien im Menü), darunter wie bisher. Die zweizeilige Fassung mit dem
+>   Logo in der Mitte gibt es nicht mehr. Nachgemessen in DE, FR, PT bei 375 bis 1920 px: eine Zeile, keine
+>   Überlappung, kein Überlauf; auf Französisch bei 1440 px noch 15 px Luft zwischen Logo und Menü.
 > - **Regel, Ricardo 19.10.2026: «keine texte die abgeschnitten sind», durchgängig.** Neue oder geänderte Teile in DE,
 >   FR und PT bei 320, 375, 768, 1024 und 1440 px nachmessen; Texte dürfen umbrechen, keine festen Textbreiten,
 >   Nachbarn immer mit Abstand («← News und Blog» steht darum auf eigener Zeile über der Marke).
