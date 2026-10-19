@@ -7,8 +7,9 @@
    Drei Anordnungen aus einem Markup, gesetzt ueber ein Raster:
 
      schmal           Logo · Menuezeichen · Sprachwahl               — eine Zeile
-     64rem bis 90rem  Logo · Sprachwahl · Knopf · Menuezeichen       — eine Zeile
-     ab 90rem         Logo · Kategorien · Sprachwahl · Knopf         — eine Zeile
+     64rem bis 75rem  Logo · Sprachwahl · Knopf · Menuezeichen       — eine Zeile
+     ab 75rem         Logo · Kategorien · Sprachwahl · Knopf         — eine Zeile
+                      (bis 90rem enger gesetzt, Knopf in Kurzform)
 
    Immer eine Zeile (19.10.2026). Die zweizeilige Fassung mit dem Logo in der
    Mitte ist entfallen. */
@@ -85,7 +86,7 @@
   transform: translateX(3px);
 }
 
-/* ---- 64rem bis 90rem: eine Zeile, Menue als Zeichen ----------------------
+/* ---- 64rem bis 75rem: eine Zeile, Menue als Zeichen ----------------------
    Seit dem 19.10.2026 (Ricardo: «diese anordnung gefällt mir nicht») gibt es
    keine zweizeilige Fassung mehr. Wo die fuenf Kategorien neben Logo, Sprachwahl
    und Knopf nicht Platz haben – auf Franzoesisch braucht die Reihe rund 1300 px –,
@@ -123,9 +124,33 @@
   }
 }
 
-/* ---- Ab 90rem: Logo · Kategorien · Sprachwahl und Knopf ------------------ */
+/* Kurzform des Knopfs: nur dort, wo die Kategorien schon in der Zeile stehen
+   und es knapp wird (Ricardo, 19.10.2026: «bei 100% ist es jetzt einfach leer»). */
+.ctaKurz {
+  display: none;
+}
 
-@media (min-width: 90rem) {
+/* ---- Ab 75rem: Logo · Kategorien · Sprachwahl und Knopf ------------------ */
+
+@media (min-width: 75rem) and (max-width: 89.99rem) {
+  .ctaLang {
+    display: none;
+  }
+
+  .ctaKurz {
+    display: inline;
+  }
+
+  .logo img {
+    width: 9.5rem;
+  }
+
+  .actions {
+    gap: var(--ac-space-2xs);
+  }
+}
+
+@media (min-width: 75rem) {
   /* Eigener, breiterer Container: Im Standardmass blieb zwischen Logo und
      Navigation zu wenig Luft. Doppelte Klasse, damit die Regel sicher ueber
      `.ac-container` steht. */

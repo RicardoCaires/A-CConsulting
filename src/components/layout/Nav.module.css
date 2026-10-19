@@ -1,6 +1,6 @@
 /* Hauptnavigation.
 
-   Zwei Fassungen: eine offene Reihe ab 90rem, darunter ein Menue. Beide
+   Zwei Fassungen: eine offene Reihe ab 75rem, darunter ein Menue. Beide
    benutzen dieselbe Beschriftung und dieselben Trefferflaechen — die schmale
    Fassung ist keine verkleinerte, sondern eine eigene.
 
@@ -16,7 +16,7 @@
   display: contents;
 }
 
-/* ---- Offene Reihe (ab 90rem) -------------------------------------------- */
+/* ---- Offene Reihe (ab 75rem) -------------------------------------------- */
 
 .wide {
   display: none;
@@ -226,7 +226,7 @@
   padding: 0.1rem 0.3rem;
 }
 
-/* ---- Menue (bis 90rem) --------------------------------------------------- */
+/* ---- Menue (bis 75rem) --------------------------------------------------- */
 
 .narrow {
   display: block;
@@ -358,10 +358,22 @@
 }
 
 /* ---- Umschaltpunkt ------------------------------------------------------- */
-/* 90rem statt 64rem (19.10.2026): Erst dort passen die fuenf Kategorien in FR
-   und PT neben Logo, Sprachwahl und Knopf in eine Zeile. */
+/* 75rem statt 64rem (19.10.2026): Erst dort passen die fuenf Kategorien in FR
+   und PT neben Logo, Sprachwahl und Knopf in eine Zeile – bis 90rem in etwas
+   kleinerer Schrift und mit engeren Abstaenden. */
 
-@media (min-width: 90rem) {
+@media (min-width: 75rem) and (max-width: 89.99rem) {
+  .wideList {
+    gap: 0.5rem;
+  }
+
+  .wideList > li > .item,
+  .wideList > li > details > summary {
+    font-size: var(--ac-small-size);
+  }
+}
+
+@media (min-width: 75rem) {
   .wide {
     display: block;
   }

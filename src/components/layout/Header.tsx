@@ -14,8 +14,9 @@ import styles from './Header.module.css'
  * Drei Anordnungen aus **einem** Markup, gesetzt ueber ein Raster:
  *
  *   schmal            Logo · Menue · Sprachwahl                — eine Zeile
- *   64rem bis 90rem   Logo · Sprachwahl · Knopf · Menue        — eine Zeile
- *   ab 90rem          Logo · Kategorien · Sprachwahl · Knopf   — eine Zeile
+ *   64rem bis 75rem   Logo · Sprachwahl · Knopf · Menue        — eine Zeile
+ *   ab 75rem          Logo · Kategorien · Sprachwahl · Knopf   — eine Zeile
+ *                     (bis 90rem enger gesetzt, Knopf in Kurzform)
  *
  * Seit dem 19.10.2026 gibt es keine zweizeilige Fassung mehr.
  *
@@ -52,7 +53,8 @@ export function Header({ locale }: Props) {
         <div className={styles.actions}>
           <LanguageSwitcher locale={locale} />
           <Button href={hrefOrDefault('kontakt', locale)} className={styles.cta}>
-            {ui.cta}
+            <span className={styles.ctaLang}>{ui.cta}</span>
+            <span className={styles.ctaKurz}>{ui.ctaKurz}</span>
             <span className={styles.pfeil} aria-hidden="true">
               →
             </span>

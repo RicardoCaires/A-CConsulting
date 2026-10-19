@@ -2848,6 +2848,11 @@ gibt es noch keine.
 >   Sprachwahl · Knopf · Menüzeichen (die Kategorien im Menü), darunter wie bisher. Die zweizeilige Fassung mit dem
 >   Logo in der Mitte gibt es nicht mehr. Nachgemessen in DE, FR, PT bei 375 bis 1920 px: eine Zeile, keine
 >   Überlappung, kein Überlauf; auf Französisch bei 1440 px noch 15 px Luft zwischen Logo und Menü.
+>   **Nachgeschärft am selben Tag** (Ricardo, bei 100 % Zoom: «jetzt einfach leer»): Die Kategorien stehen schon
+>   **ab 75rem (1200 px)** in der Zeile; bis 90rem in 15 px Schrift, mit engeren Abständen, kleinerem Logo und dem
+>   Knopf in Kurzform («Erstgespräch», «Premier entretien», «Primeira conversa», `ui.ctaKurz`). Das Menüzeichen
+>   bleibt nur zwischen 64 und 75rem. Gemessen auf Französisch bei 1200 px: 22 px Luft zwischen Logo und Menü,
+>   26 px zwischen Menü und Sprachwahl.
 > - **Regel, Ricardo 19.10.2026: «keine texte die abgeschnitten sind», durchgängig.** Neue oder geänderte Teile in DE,
 >   FR und PT bei 320, 375, 768, 1024 und 1440 px nachmessen; Texte dürfen umbrechen, keine festen Textbreiten,
 >   Nachbarn immer mit Abstand («← News und Blog» steht darum auf eigener Zeile über der Marke).
