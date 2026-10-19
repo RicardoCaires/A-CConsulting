@@ -328,3 +328,39 @@
     transform: none;
   }
 }
+
+/* Schmal: Bezeichnungen brechen um, die Beträge bleiben einzeilig – die Tabelle passt ohne seitliches Scrollen
+   (19.10.2026, längere Bezeichnungen in FR und PT). */
+.tabelle {
+  table-layout: auto;
+}
+
+.tabelle tbody th {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+@media (max-width: 30rem) {
+  .tabelle th,
+  .tabelle td {
+    padding: 0.5rem 0.4rem;
+    font-size: var(--ac-small-size);
+  }
+}
+
+@media (max-width: 22rem) {
+  .tabelle th,
+  .tabelle td {
+    padding: 0.45rem 0.25rem;
+  }
+
+  .tabelle thead th:first-child,
+  .tabelle tbody th {
+    padding-left: 0;
+  }
+}
+
+.tabelle caption,
+.tabelle thead th {
+  overflow-wrap: anywhere;
+}

@@ -69,6 +69,13 @@ function knopfHref(k: Knopf, locale: Locale): { href: string; extern?: boolean }
   return { href: zielHref(k, locale) }
 }
 
+/** Unsichtbare Beschriftungen der Matrix für Vorlesewerkzeuge (19.10.2026 übersetzt). */
+const MATRIX_VORLESEN: Record<Locale, { ereignis: string; betroffen: string }> = {
+  de: { ereignis: 'Ereignis', betroffen: 'betroffen' },
+  fr: { ereignis: 'Événement', betroffen: 'concerné' },
+  pt: { ereignis: 'Acontecimento', betroffen: 'abrangido' },
+}
+
 /** Name der Karte für Vorlesewerkzeuge, wie auf «Über uns». */
 const KARTENTITEL: Record<Locale, string> = {
   de: 'Karte mit dem Standort von A&C Consulting in Aegerten',
@@ -525,7 +532,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
                   <thead>
                     <tr>
                       <th scope="col">
-                        <span className={styles.unsichtbar}>Ereignis</span>
+                        <span className={styles.unsichtbar}>{MATRIX_VORLESEN[locale].ereignis}</span>
                       </th>
                       {g.spalten.map((s) => (
                         <th key={s} scope="col">
@@ -542,7 +549,7 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
                           <td key={s}>
                             {z.treffer.includes(j) ? (
                               <span className={styles.treffer}>
-                                <span className={styles.unsichtbar}>betroffen</span>
+                                <span className={styles.unsichtbar}>{MATRIX_VORLESEN[locale].betroffen}</span>
                               </span>
                             ) : (
                               <span className={styles.keinTreffer} aria-hidden="true" />
