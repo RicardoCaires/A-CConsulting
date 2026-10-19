@@ -2881,6 +2881,14 @@ gibt es noch keine.
 > statt unter dem 712 px hohen Banner. Unter 60rem steht das Bild unter dem Text. Die übrigen Seiten behalten ihren
 > Banner. Nachgemessen in DE, FR, PT bei 320 bis 1440 px: nichts abgeschnitten, kein Überlauf, genau eine `h1`.
 
+> **Zweite Fassung, noch am 19.10.2026** (Ricardo: «gefällt mir nämlich garnicht ist sehr langweillig»): kein
+> weisser Kasten mehr, sondern das Seeland-Bild gross rechts (Spalten 5 bis 12, weiterhin unbeschnitten), eine weisse
+> Karte mit grüner Oberkante und kräftigem Kartenschatten greift von links darüber, darin Themenzeile, Spruch und
+> Knopf. Darunter rechts drei Merkmale als Pillen mit grünem Haken: «FINMA-registriert», «Persönlich in Aegerten»,
+> «Deutsch · Français · Português» (`banner.merkmale`, Quelle `startseite_einstieg_de.md`, Vorschlag). Bild und Karte
+> gleiten beim Laden herein, aus unter «Bewegung reduzieren». Auf dem Telefon greift die Karte von unten ins Bild.
+> Nachgemessen in DE, FR, PT bei 320 bis 1440 px ohne Befund.
+
 ## 10. Offene Punkte
 
 Technik und Infrastruktur:

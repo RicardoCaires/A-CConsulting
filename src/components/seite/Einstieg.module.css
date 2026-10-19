@@ -1,20 +1,38 @@
-/* Einstieg der Startseite (19.10.2026): hell und kompakt. Ein weisser Block,
-   Text links, die Aufnahme rechts, unbeschnitten im Seitenverhältnis der Datei. */
+/* Einstieg der Startseite, zweite Fassung (19.10.2026): grosses Bild, darüber
+   greifend eine weisse Karte, darunter drei Merkmale. Farben nur aus Tokens. */
 
 .einstieg {
+  position: relative;
   display: grid;
-  gap: clamp(1.5rem, 3vw, 3rem);
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
 }
 
-@media (min-width: 60rem) {
-  .einstieg {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-  }
-}
-
-.text {
+/* Das Bild: immer im Seitenverhältnis der Datei, darum nie beschnitten. */
+.bild {
   min-width: 0;
+  animation: bildEin 700ms var(--ac-motion-easing) both;
+}
+
+.bild img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1774 / 887;
+  border-radius: 28px;
+}
+
+/* Die Karte greift auf dem Telefon von unten ins Bild. */
+.karte {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  margin: -2.5rem 0.75rem 0;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  background-color: var(--ac-color-white);
+  border-top: 5px solid var(--ac-color-accent-green);
+  border-radius: 24px;
+  box-shadow: var(--ac-shadow-card-strong);
+  animation: karteEin 650ms 120ms var(--ac-motion-easing) both;
 }
 
 .themenzeile {
@@ -39,10 +57,10 @@
 .titel {
   margin: 0;
   font-family: var(--ac-font-display);
-  font-size: clamp(2.1rem, 1.4rem + 2.6vw, 3.6rem);
-  line-height: 1.08;
+  font-size: clamp(2.1rem, 1.3rem + 2.8vw, 3.9rem);
+  line-height: 1.06;
   font-weight: var(--ac-display-weight);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: var(--ac-color-primary-navy);
   text-wrap: balance;
 }
@@ -54,14 +72,96 @@
   margin-top: clamp(1.25rem, 2.5vw, 2rem);
 }
 
-.bild {
-  min-width: 0;
+.merkmale {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  animation: karteEin 650ms 260ms var(--ac-motion-easing) both;
 }
 
-.bild img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1774 / 887;
-  border-radius: 20px;
+.merkmale li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  max-width: 100%;
+  padding: 0.4rem 1rem 0.4rem 0.6rem;
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  color: var(--ac-color-primary-navy);
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-radius: 999px;
+}
+
+/* Haken im grünen Kreis, aus CSS – keine Bilddatei. */
+.haken {
+  position: relative;
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--ac-color-accent-green);
+  border-radius: 50%;
+}
+
+.haken::after {
+  content: '';
+  position: absolute;
+  left: 0.52rem;
+  top: 0.32rem;
+  width: 0.4rem;
+  height: 0.7rem;
+  border: solid var(--ac-color-white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Desktop: Bild rechts gross, Karte links darüber, Merkmale darunter rechts. */
+@media (min-width: 60rem) {
+  .einstieg {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: center;
+  }
+
+  .bild {
+    grid-column: 5 / -1;
+    grid-row: 1;
+  }
+
+  .karte {
+    grid-column: 1 / 7;
+    grid-row: 1;
+    margin: 0;
+  }
+
+  .merkmale {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-end;
+  }
+}
+
+@keyframes bildEin {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+@keyframes karteEin {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bild,
+  .karte,
+  .merkmale {
+    animation: none;
+  }
 }

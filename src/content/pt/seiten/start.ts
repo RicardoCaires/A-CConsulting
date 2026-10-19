@@ -7,7 +7,7 @@ export const start: SeitenInhalt = {
     description:
       'Seguros e fiduciária para particulares, independentes e PME. Interlocutores fixos em Aegerten, cantão de Berna.',
   },
-  banner: { themenzeile: 'SEGUROS · FIDUCIÁRIA', ueberschrift: 'Com raízes no Seeland. Com visão mais longe.', form: 'hell' },
+  banner: { themenzeile: 'SEGUROS · FIDUCIÁRIA', ueberschrift: 'Com raízes no Seeland. Com visão mais longe.', form: 'hell', merkmale: ['Registados na FINMA', 'Presencialmente em Aegerten', 'Deutsch · Français · Português'] },
   bloecke: [
     {
       art: 'listen',
