@@ -38,3 +38,24 @@ export function verbunden(id: KennzahlId): Set<KennzahlId> {
 }
 
 export const chfGanz = (n: number) => `CHF ${Math.round(n).toLocaleString('de-CH').replace(/[’']/g, '’')}`
+
+/**
+ * Anteil an der maximalen AHV-Rente in Prozent, wie ihn das Gesetz festlegt (Karte «um die AHV-Rente», 19.10.2026).
+ * `null`: unabhängig festgelegt (UVG). Die Säule 3a mit Pensionskasse ist gerundet (24 %).
+ */
+export const ANTEIL: Record<KennzahlId, number | null> = {
+  ahvMax: 100,
+  ahvMin: 50,
+  ehepaar: 150,
+  grenzbetrag: 300,
+  eintritt: 75,
+  koord: 87.5,
+  koordMax: 212.5,
+  koordMin: 12.5,
+  s3aMit: 24,
+  s3aOhne: 120,
+  uvg: null,
+}
+
+/** «87.5 %» auf Deutsch, «87,5 %» auf Französisch und Portugiesisch. */
+export const prozent = (n: number, komma = false) => `${komma ? String(n).replace('.', ',') : String(n)} %`

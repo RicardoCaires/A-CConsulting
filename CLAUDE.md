@@ -2822,6 +2822,17 @@ gibt es noch keine.
 >   BVG), Jahreswahl 2026/2027 mit fliessenden Zahlen. Ein Druck auf eine Zeile öffnet ein Fenster (`<dialog>`, auf dem
 >   Telefon als Blatt von unten) mit Betrag, Zuwachs, Erklärung, Rechnung und «Gut zu wissen». Die Vergleichstabelle
 >   ist entfallen. Einbindung über `baustein: 'vorsorgeKarte'` in einem Abschnitt eines Beitrags.
+> - **Dritter Wurf, noch am 19.10.2026: die Karte dreht sich um die AHV-Rente** (Ricardo: «es soll wie bei finanzfabio
+>   sich um die AHV rente drehen wie die Versicherungskarte bitte darstellung so übernehmen»). Querformat, in der Mitte
+>   die maximale AHV-Rente in Navy, rundherum die abgeleiteten Beträge, verbunden durch Pfeile mit ihrem Anteil
+>   (`ANTEIL` in `lib/vorsorge-kennzahlen.ts`: 300 %, 87.5 %, 50 % …). Links das Band «1. Säule», rechts «2. Säule»,
+>   unten «3. Säule»; UVG steht ohne Pfeil («unabhängig von der AHV-Rente»). **Eigene Zeichnung**, nicht das Bild von
+>   finanzfabio. Ein Druck auf einen Betrag öffnet die Erklärung als **Feld an der Seite** gegenüber dem Betrag;
+>   verbundene Beträge bleiben hervorgehoben, die übrigen werden blass. Die Karte ragt dafür bis 64rem über die
+>   Textspalte hinaus. **Unter 940 px Kartenbreite** öffnet die Erklärung als Fenster (`<dialog>`), weil das Feld dort
+>   die Mitte verdeckte; **unter 720 px** stehen die Beträge untereinander, nach Säulen gruppiert, mit dem Anteil als
+>   Marke, und die Erklärung kommt als Blatt von unten. Nachgemessen in DE, FR, PT bei 320 bis 1440 px, jede der elf
+>   Erklärungen offen: nichts abgeschnitten, nichts überlappt, kein waagrechter Überlauf.
 > - **«News und Blog» steht seit 19.10.2026 in der Hauptnavigation** als fünfter Punkt (Ricardo: «sogar oben als eigene
 >   Kategorie»). Damit reicht die einzeilige Kopfzeile ab 75rem nicht mehr: Auf Französisch überlappten Logo, Menü und
 >   Knopf bis 1920 px. **Zweizeilig (Logo mittig, Menü darunter) gilt jetzt von 64rem bis 118rem**, einzeilig erst ab

@@ -1,11 +1,14 @@
-/* Vorsorge-Kennzahlen auf einen Blick (19.10.2026, zweiter Wurf). Nur Tokenfarben; Navy nur als Zustand
-   (Zeigen, Fenster), nie als ruhende Fläche (Hausordnung 9a). Jede Säule trägt ihren Ton als Oberkante.
-   Texte brechen um, nichts hat eine feste Breite – FR und PT sind länger als DE. */
+/* Vorsorge-Kennzahlen als Karte um die AHV-Rente (19.10.2026, dritter Wurf).
+   Nur Tokenfarben. Schriften im Schaubild wachsen mit der Kartenbreite (cqw), Texte dürfen umbrechen –
+   FR und PT sind länger als DE, und nichts darf abgeschnitten werden. */
 
 .karte {
-  margin: clamp(1.25rem, 3vw, 2rem) 0;
-  padding: clamp(0.9rem, 2.5vw, 1.5rem);
-  background-color: var(--ac-color-background-light);
+  /* Breiter als die Textspalte des Beitrags, damit das Schaubild lesbar bleibt */
+  --breite: min(64rem, 100vw - 2.5rem);
+  width: var(--breite);
+  margin: clamp(1.25rem, 3vw, 2rem) calc((100% - var(--breite)) / 2);
+  padding: clamp(0.9rem, 2.2vw, 1.5rem);
+  background-color: var(--ac-color-white);
   border: 1px solid var(--ac-color-border-tint);
   border-radius: 24px;
 }
@@ -16,13 +19,14 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 0.75rem 1rem;
-  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--ac-color-primary-navy);
 }
 
 .kopfTitel {
   margin: 0;
   font-family: var(--ac-font-display);
-  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
   font-weight: 700;
   line-height: 1.15;
   color: var(--ac-color-primary-navy);
@@ -31,14 +35,21 @@
 .kopfSatz {
   margin: 0.3rem 0 0;
   font-size: var(--ac-small-size);
-  color: var(--ac-color-text-primary);
+  color: var(--ac-color-text-secondary);
+}
+
+.hinweis {
+  margin: 0.6rem 0 0.4rem;
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  color: var(--ac-color-accent-green);
 }
 
 .jahre {
   display: inline-flex;
   flex-shrink: 0;
   padding: 4px;
-  background-color: var(--ac-color-white);
+  background-color: var(--ac-color-background-light);
   border: 1px solid var(--ac-color-border-tint);
   border-radius: 999px;
 }
@@ -67,63 +78,258 @@
   outline-offset: 2px;
 }
 
-/* Zwei gleich hohe Spalten: links AHV, 3a und UVG (6 Zeilen), rechts die Pensionskasse (5 Zeilen) */
-.spalten {
+/* ---- Schaubild (breit) ------------------------------------------------------ */
+
+.flaeche {
+  position: relative;
+  aspect-ratio: 1000 / 560;
+  container-type: inline-size;
+  margin-top: 0.5rem;
+}
+
+.zeichnung {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.band1 { fill: var(--ac-color-background-tint); }
+.band2 { fill: var(--ac-color-signal-positive-bg); }
+.band3 { fill: var(--ac-color-background-light); }
+
+.bandText {
+  font-family: var(--ac-font-display);
+  font-size: 19px;
+  font-weight: 700;
+  fill: var(--ac-color-primary-navy);
+}
+
+.pfeil line {
+  stroke: var(--ac-color-brand-grey);
+  stroke-width: 2;
+  transition: stroke var(--ac-motion-fast) var(--ac-motion-easing), opacity var(--ac-motion-fast) var(--ac-motion-easing);
+}
+
+.spitze {
+  fill: var(--ac-color-brand-grey);
+}
+
+.pfeilText {
+  font-size: 17px;
+  font-weight: 700;
+  fill: var(--ac-color-primary-navy);
+  paint-order: stroke;
+  stroke: var(--ac-color-white);
+  stroke-width: 7px;
+  stroke-linejoin: round;
+}
+
+.pfeil[data-zustand='blass'] {
+  opacity: 0.2;
+}
+
+.pfeil[data-zustand='gewaehlt'] line,
+.pfeil[data-zustand='verbunden'] line {
+  stroke: var(--ac-color-accent-green);
+  stroke-width: 3;
+}
+
+.pfeil[data-zustand='gewaehlt'] .pfeilText,
+.pfeil[data-zustand='verbunden'] .pfeilText {
+  fill: var(--ac-color-accent-green);
+}
+
+.betrag,
+.mitte,
+.s3aMitte {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.betrag,
+.mitte {
   display: grid;
-  gap: 0.75rem;
-}
-
-@media (min-width: 40rem) {
-  .spalten {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-areas:
-      'ahv bvg'
-      's3a bvg'
-      'uvg bvg';
-    align-items: start;
-  }
-
-  .spalte[data-gruppe='ahv'] { grid-area: ahv; }
-  .spalte[data-gruppe='bvg'] { grid-area: bvg; }
-  .spalte[data-gruppe='s3a'] { grid-area: s3a; }
-  .spalte[data-gruppe='uvg'] { grid-area: uvg; }
-}
-
-.spalte {
-  padding: 0.6rem 0.75rem 0.4rem;
+  gap: 0.1em;
+  justify-items: center;
+  max-width: 20cqw;
+  padding: 0.35em 0.6em;
+  font: inherit;
+  color: var(--ac-color-text-primary);
+  cursor: pointer;
   background-color: var(--ac-color-white);
   border: 1px solid var(--ac-color-border-tint);
-  border-top: 5px solid var(--ton);
-  border-radius: 16px;
+  border-radius: 10px;
+  transition:
+    background-color var(--ac-motion-fast) var(--ac-motion-easing),
+    border-color var(--ac-motion-fast) var(--ac-motion-easing),
+    color var(--ac-motion-fast) var(--ac-motion-easing),
+    opacity var(--ac-motion-fast) var(--ac-motion-easing);
 }
 
-.tonNavy { --ton: var(--ac-color-primary-navy); }
-.tonGruen { --ton: var(--ac-color-accent-green); }
-.tonGrau { --ton: var(--ac-color-brand-grey); }
-.tonTief { --ton: var(--ac-color-navy-deep); }
+.mitte {
+  width: 28cqw;
+  max-width: none;
+  padding: 0.6em 0.8em;
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-primary-navy);
+  border-color: var(--ac-color-primary-navy);
+  border-radius: 14px;
+}
 
-.spalteTitel {
-  margin: 0.1rem 0 0.35rem;
-  font-family: var(--ac-font-display);
-  font-size: 1rem;
+.betragWert {
+  font-size: clamp(13px, 2.2cqw, 23px);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+  white-space: nowrap;
+  color: var(--ac-color-primary-navy);
+}
+
+.mitte .betragWert {
+  font-size: clamp(16px, 3cqw, 30px);
+  color: var(--ac-color-white);
+}
+
+.betragName {
+  font-size: clamp(11px, 1.35cqw, 14px);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.betrag:hover,
+.betrag:focus-visible,
+.betrag[data-zustand='gewaehlt'] {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-primary-navy);
+  border-color: var(--ac-color-primary-navy);
+}
+
+.betrag:hover .betragWert,
+.betrag:focus-visible .betragWert,
+.betrag[data-zustand='gewaehlt'] .betragWert {
+  color: var(--ac-color-white);
+}
+
+.betrag[data-zustand='verbunden'] {
+  background-color: var(--ac-color-signal-positive-bg);
+  border: 2px solid var(--ac-color-accent-green);
+}
+
+.betrag[data-zustand='blass'],
+.mitte[data-zustand='blass'] {
+  opacity: 0.3;
+}
+
+.mitte:hover,
+.mitte:focus-visible,
+.mitte[data-zustand='gewaehlt'] {
+  background-color: var(--ac-color-navy-deep);
+  border-color: var(--ac-color-accent-green);
+  outline: 3px solid var(--ac-color-accent-green);
+  outline-offset: 2px;
+}
+
+.betrag:focus-visible,
+.mitte:focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 2px;
+}
+
+.s3aMitte {
+  max-width: 30cqw;
+  margin: 0;
+  font-size: clamp(11px, 1.45cqw, 15px);
+  font-weight: 600;
   line-height: 1.3;
   color: var(--ac-color-primary-navy);
 }
 
-.zeilen {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+/* Erklärung seitlich in der Karte, auf der Seite gegenüber dem gewählten Betrag */
+.feld {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: min(24rem, 44%);
+  padding: 1rem 1.1rem 1.2rem;
+  overflow-y: auto;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-top: 5px solid var(--ac-color-accent-green);
+  border-radius: 16px;
+  animation: einblenden var(--ac-motion-base, 200ms) var(--ac-motion-easing);
 }
 
-.zeilen li + li {
-  border-top: 1px solid var(--ac-color-border-light);
+.feld[data-seite='links'] { left: 0; }
+.feld[data-seite='rechts'] { right: 0; }
+
+@keyframes einblenden {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
 }
 
-.zeile {
+/* ---- Untereinander (schmal) ------------------------------------------------- */
+
+.stapel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
   gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.stapelMitte {
+  display: grid;
+  gap: 0.15rem;
+  justify-items: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.8rem 1rem;
+  font: inherit;
+  text-align: center;
+  color: var(--ac-color-white);
+  cursor: pointer;
+  background-color: var(--ac-color-primary-navy);
+  border: 0;
+  border-radius: 14px;
+}
+
+.stapelMitte .betragWert {
+  font-size: 1.6rem;
+  color: var(--ac-color-white);
+}
+
+.stapelMitte .betragName {
+  font-size: var(--ac-small-size);
+}
+
+.stapelGruppe {
+  padding: 0.5rem 0.75rem 0.4rem;
+  background-color: var(--ac-color-background-light);
+  border-top: 5px solid var(--ac-color-primary-navy);
+  border-radius: 14px;
+}
+
+.stapelGruppe[data-saeule='s2'] { border-top-color: var(--ac-color-accent-green); }
+.stapelGruppe[data-saeule='s3'] { border-top-color: var(--ac-color-brand-grey); }
+.stapelGruppe[data-saeule='uvg'] { border-top-color: var(--ac-color-navy-deep); }
+
+.stapelTitel {
+  margin: 0.15rem 0 0.25rem;
+  font-family: var(--ac-font-display);
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.stapelZeile {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: 'chip name wert';
+  gap: 0.6rem;
   align-items: center;
   width: calc(100% + 1rem);
   min-height: 44px;
@@ -136,88 +342,110 @@
   background: none;
   border: 0;
   border-radius: 10px;
-  transition: background-color var(--ac-motion-fast) var(--ac-motion-easing), color var(--ac-motion-fast) var(--ac-motion-easing);
 }
 
-.zeile:hover,
-.zeile:focus-visible {
+.stapelZeile + .stapelZeile {
+  border-top: 1px solid var(--ac-color-border-light);
+}
+
+.stapelZeile .anteilChip { grid-area: chip; }
+.stapelZeile .betragName { grid-area: name; font-size: var(--ac-small-size); }
+.stapelZeile .betragWert { grid-area: wert; font-size: 1rem; }
+
+.stapelZeile:not(:has(.anteilChip)) {
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: 'name wert';
+}
+
+.stapelZeile:hover,
+.stapelZeile:focus-visible {
   color: var(--ac-color-white);
   background-color: var(--ac-color-primary-navy);
 }
 
-.zeile:focus-visible {
-  outline: 3px solid var(--ac-focus-ring);
-  outline-offset: 1px;
-}
-
-.zeileTitel {
-  font-size: var(--ac-small-size);
-  line-height: 1.35;
-  overflow-wrap: anywhere;
-}
-
-.zeileWert {
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-  color: var(--ac-color-primary-navy);
-}
-
-.zeile:hover .zeileWert,
-.zeile:focus-visible .zeileWert {
+.stapelZeile:hover .betragWert,
+.stapelZeile:focus-visible .betragWert {
   color: var(--ac-color-white);
 }
 
-.stand {
-  margin: 0.25rem 0 0;
+.stapelZeile:focus-visible,
+.stapelMitte:focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 2px;
+}
+
+.anteilChip {
+  padding: 0.15rem 0.45rem;
+  font-size: var(--ac-small-size);
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--ac-color-accent-green);
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-accent-green);
+  border-radius: 999px;
+}
+
+.stapelZusatz {
+  margin: 0 0 0.3rem;
   font-size: var(--ac-small-size);
   color: var(--ac-color-text-secondary);
 }
 
-/* ---- Fenster mit der Beschreibung ---------------------------------------------- */
+.stand {
+  margin: 0.75rem 0 0;
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
 
-.fenster {
-  width: min(34rem, calc(100vw - 2rem));
-  max-height: min(85vh, 46rem);
+/* ---- Blatt von unten (schmal) ------------------------------------------------- */
+
+.blatt {
+  width: 100vw;
+  max-width: 100vw;
+  max-height: 85vh;
+  margin: auto 0 0;
   padding: 0;
   overflow: auto;
   color: var(--ac-color-text-primary);
   background-color: var(--ac-color-white);
   border: 0;
-  border-radius: 20px;
+  border-radius: 20px 20px 0 0;
 }
 
-.fenster::backdrop {
-  background-color: color-mix(in srgb, var(--ac-color-navy-deep) 55%, transparent);
-}
-
-/* Telefon: als Blatt von unten */
-@media (max-width: 40rem) {
-  .fenster {
-    width: 100vw;
-    max-width: 100vw;
-    margin: auto 0 0;
-    border-radius: 20px 20px 0 0;
+/* Tablet: als Fenster in der Mitte statt als Blatt über die ganze Breite */
+@media (min-width: 40rem) {
+  .blatt {
+    width: min(34rem, 100vw - 2.5rem);
+    max-height: 80vh;
+    margin: auto;
+    border-radius: 20px;
   }
 }
 
-.fensterInhalt {
-  padding: 1.1rem 1.25rem 1.4rem;
-  border-top: 6px solid var(--ton);
+.blatt::backdrop {
+  background-color: color-mix(in srgb, var(--ac-color-navy-deep) 55%, transparent);
 }
 
-.fensterKopf {
+.blattInhalt {
+  padding: 1.1rem 1.25rem 1.5rem;
+  border-top: 6px solid var(--ac-color-accent-green);
+}
+
+/* ---- Inhalt der Erklärung (Feld und Blatt) ----------------------------------- */
+
+.feldKopf {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
-.fensterGruppe {
-  margin: 0.4rem 0 0;
+.feldGruppe {
+  margin: 0.35rem 0 0;
   font-size: var(--ac-small-size);
   font-weight: 700;
-  letter-spacing: 0.04em;
+  line-height: 1.35;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ac-color-accent-green);
 }
@@ -256,24 +484,28 @@
   stroke-linecap: round;
 }
 
-.fensterTitel {
-  margin: 0.35rem 0 0;
-  font-family: var(--ac-font-display);
-  font-size: 1.35rem;
-  line-height: 1.25;
-  color: var(--ac-color-primary-navy);
-}
-
-.fensterWert {
-  margin: 0.4rem 0 0;
-  font-size: 1.6rem;
+.feldWert {
+  margin: 0.3rem 0 0;
+  font-size: 1.7rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   color: var(--ac-color-primary-navy);
 }
 
-.fensterEinheit {
+.feldTitel {
   margin: 0.1rem 0 0;
+  font-family: var(--ac-font-display);
+  font-size: 1.15rem;
+  line-height: 1.25;
+  color: var(--ac-color-primary-navy);
+}
+
+.feldTitel:focus {
+  outline: none;
+}
+
+.feldEinheit {
+  margin: 0.2rem 0 0;
   font-size: var(--ac-small-size);
   color: var(--ac-color-text-secondary);
 }
@@ -284,12 +516,12 @@
 }
 
 .kurz {
-  margin: 0.75rem 0 0;
-  line-height: 1.55;
+  margin: 0.7rem 0 0;
+  line-height: 1.5;
 }
 
 .unter {
-  margin: 1rem 0 0.4rem;
+  margin: 0.9rem 0 0.4rem;
   font-size: var(--ac-small-size);
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -317,8 +549,8 @@
   cursor: pointer;
   background-color: var(--ac-color-background-light);
   border: 1px solid transparent;
+  border-left: 3px solid var(--ac-color-primary-navy);
   border-radius: 10px;
-  transition: border-color var(--ac-motion-fast) var(--ac-motion-easing);
 }
 
 .rechnung:hover:not(:disabled) {
@@ -360,9 +592,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .zeile,
-  .jahre button,
-  .rechnung {
+  .betrag,
+  .mitte,
+  .pfeil line,
+  .jahre button {
     transition: none;
+  }
+
+  .feld {
+    animation: none;
   }
 }

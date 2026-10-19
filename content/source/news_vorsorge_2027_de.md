@@ -83,3 +83,17 @@ Ricardo, 19.10.2026: «Ich will den ersten Blogpost online stellen bitte so wie 
 - Oberer Grenzbetrag × 40 %
 - Wird unabhängig von der AHV-Rente festgelegt.
 - Bundesamt für Sozialversicherungen BSV, «Beträge gültig ab dem 1. Januar 2027» (2.10.2026); Masszahlen berufliche Vorsorge 2025/2026
+
+## Karte um die AHV-Rente (19.10.2026, dritter Wurf)
+
+Ricardo: «es soll wie bei finanzfabio sich um die AHV rente drehen wie die Versicherungskarte».
+
+- Alle Beträge in CHF. Prozent: Anteil an der maximalen AHV-Rente.
+- 1. Säule
+- 2. Säule
+- 3. Säule
+- maximale AHV-Altersrente
+- der maximalen AHV-Rente
+- Säule 3a: jährlich höchstens abziehbar
+- unabhängig von der AHV-Rente
+- Schliessen
