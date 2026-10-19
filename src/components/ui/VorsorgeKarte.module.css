@@ -1,0 +1,330 @@
+/* Interaktive Karte der Vorsorge-Kennzahlen (19.10.2026). Nur Tokenfarben; Navy nur als Zustand (gewählt),
+   nie als ruhende Fläche (Hausordnung 9a). Jede Säule trägt ihren Ton als Oberkante. */
+
+.karte {
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0;
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  background-color: var(--ac-color-background-light);
+  border: 1px solid var(--ac-color-border-tint);
+  border-radius: 24px;
+}
+
+.kopf {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.kopfTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ac-color-primary-navy);
+}
+
+.kopfSatz {
+  margin: 0.35rem 0 0;
+  color: var(--ac-color-text-primary);
+}
+
+.jahre {
+  display: inline-flex;
+  padding: 4px;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-radius: 999px;
+}
+
+.jahre button {
+  min-width: 4.5rem;
+  min-height: 44px;
+  padding: 0 1rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  transition: background-color var(--ac-motion-fast) var(--ac-motion-easing), color var(--ac-motion-fast) var(--ac-motion-easing);
+}
+
+.jahre button[aria-pressed='true'] {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-accent-green);
+}
+
+.gruppen {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 60rem) {
+  .gruppen {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.gruppe {
+  min-width: 0;
+  padding: 1rem;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-top: 5px solid var(--ton);
+  border-radius: 18px;
+}
+
+.tonNavy { --ton: var(--ac-color-primary-navy); }
+.tonGruen { --ton: var(--ac-color-accent-green); }
+.tonGrau { --ton: var(--ac-color-brand-grey); }
+.tonTief { --ton: var(--ac-color-navy-deep); }
+
+.gruppeTitel {
+  margin: 0 0 0.75rem;
+  font-family: var(--ac-font-display);
+  font-size: 1.1rem;
+  color: var(--ac-color-primary-navy);
+}
+
+.kacheln {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(11.5rem, 100%), 1fr));
+  gap: 0.6rem;
+}
+
+.kachel {
+  display: grid;
+  gap: 0.15rem;
+  align-content: start;
+  min-height: 7rem;
+  padding: 0.75rem 0.85rem;
+  font: inherit;
+  text-align: left;
+  color: var(--ac-color-text-primary);
+  cursor: pointer;
+  background-color: var(--ac-color-background-light);
+  border: 2px solid transparent;
+  border-radius: 14px;
+  transition:
+    background-color var(--ac-motion-fast) var(--ac-motion-easing),
+    border-color var(--ac-motion-fast) var(--ac-motion-easing),
+    color var(--ac-motion-fast) var(--ac-motion-easing),
+    transform var(--ac-motion-fast) var(--ac-motion-easing);
+}
+
+.kachel:hover {
+  border-color: var(--ac-color-primary-navy);
+  transform: translateY(-2px);
+}
+
+.kachel:focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 2px;
+}
+
+.kachel[data-verbunden] {
+  background-color: var(--ac-color-signal-positive-bg);
+  border-color: var(--ac-color-accent-green);
+}
+
+.kachel[aria-pressed='true'] {
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-primary-navy);
+  border-color: var(--ac-color-primary-navy);
+}
+
+.kachelTitel {
+  font-size: var(--ac-small-size);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.wert {
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ac-color-primary-navy);
+}
+
+.einheit,
+.diff {
+  font-size: var(--ac-small-size);
+  line-height: 1.35;
+  color: var(--ac-color-text-secondary);
+}
+
+.diff {
+  font-weight: 600;
+  color: var(--ac-color-accent-green);
+}
+
+.kachel[aria-pressed='true'] .wert,
+.kachel[aria-pressed='true'] .einheit,
+.kachel[aria-pressed='true'] .diff {
+  color: var(--ac-color-white);
+}
+
+.detail {
+  margin-top: 1rem;
+  padding: 1.1rem 1.25rem;
+  background-color: var(--ac-color-white);
+  border: 1px solid var(--ac-color-border-tint);
+  border-left: 5px solid var(--ac-color-accent-green);
+  border-radius: 18px;
+}
+
+.detailTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: 1.2rem;
+  color: var(--ac-color-primary-navy);
+}
+
+.detailKurz {
+  margin: 0.35rem 0 0;
+  color: var(--ac-color-text-primary);
+}
+
+.detailSpalten {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.85rem;
+}
+
+@media (min-width: 48rem) {
+  .detailSpalten {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  }
+}
+
+.detailUnter {
+  margin: 0 0 0.4rem;
+  font-size: var(--ac-small-size);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ac-color-accent-green);
+}
+
+.rechnungen,
+.tipps {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rechnungKnopf {
+  display: grid;
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  font: inherit;
+  text-align: left;
+  color: var(--ac-color-text-primary);
+  cursor: pointer;
+  background-color: var(--ac-color-background-light);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition: border-color var(--ac-motion-fast) var(--ac-motion-easing);
+}
+
+.rechnungKnopf:hover {
+  border-color: var(--ac-color-accent-green);
+}
+
+.rechnungKnopf:focus-visible {
+  outline: 3px solid var(--ac-focus-ring);
+  outline-offset: 2px;
+}
+
+.rechnungErgebnis {
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.rechnungText {
+  font-size: var(--ac-small-size);
+  font-variant-numeric: tabular-nums;
+}
+
+.tipps li {
+  position: relative;
+  padding-left: 1.4rem;
+  line-height: 1.5;
+}
+
+.tipps li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--ac-color-accent-green);
+}
+
+.stand {
+  margin: 0.85rem 0 0;
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-secondary);
+}
+
+.tabelleRahmen {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabelle caption {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-align: left;
+  color: var(--ac-color-primary-navy);
+}
+
+.tabelle th,
+.tabelle td {
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid var(--ac-color-border-light);
+}
+
+.tabelle thead th {
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-primary-navy);
+}
+
+.tabelle td {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tabelle tbody tr:nth-child(even) {
+  background-color: var(--ac-color-background-light);
+}
+
+.tabelle tbody th {
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kachel,
+  .jahre button,
+  .rechnungKnopf {
+    transition: none;
+  }
+
+  .kachel:hover {
+    transform: none;
+  }
+}

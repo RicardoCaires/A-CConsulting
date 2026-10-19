@@ -1,4 +1,5 @@
 import { RichText } from '@/components/ui/RichText'
+import { VorsorgeKarte, VorsorgeTabelle } from '@/components/ui/VorsorgeKarte'
 import { datumLang } from '@/lib/news'
 import type { Beitrag } from '@/content/seiten/typen'
 import type { Locale } from '@/i18n/config'
@@ -101,6 +102,8 @@ export function NewsBeitrag({ b, locale }: { b: Beitrag; locale: Locale }) {
                   ))}
                 </ul>
               ) : null}
+              {a.baustein === 'vorsorgeKarte' ? <VorsorgeKarte /> : null}
+              {a.baustein === 'vorsorgeTabelle' ? <VorsorgeTabelle /> : null}
             </section>
           ))}
 

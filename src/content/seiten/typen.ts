@@ -227,7 +227,13 @@ export type Beitrag = {
   freigegeben: boolean
   /** Lesezeit in Minuten, grob. */
   minuten: number
-  abschnitte: readonly { zwischentitel?: string; absaetze: readonly Rich[]; punkte?: readonly string[] }[]
+  abschnitte: readonly {
+    zwischentitel?: string
+    absaetze: readonly Rich[]
+    punkte?: readonly string[]
+    /** Interaktiver Baustein nach dem Text des Abschnitts (19.10.2026). */
+    baustein?: 'vorsorgeKarte' | 'vorsorgeTabelle'
+  }[]
   /** Hinweis am Schluss, z. B. dass der Beitrag keine individuelle Beratung ersetzt. */
   hinweis?: string
 }

@@ -1,6 +1,6 @@
 /**
  * News und Blog (15.10.2026). Ricardo: «Du entwirfst, ich gebe frei».
- * Alle Beiträge sind Entwürfe (`freigegeben: false`); `datum` ist das geplante Datum.
+ * Veröffentlicht ist nur, was `freigegeben: true` trägt; bei Entwürfen ist `datum` das geplante Datum.
  *
  * QUELLE: `content/source/umbau_news_de.md`. Fristen und Gebühren im
  * Steuerbeitrag wörtlich aus `steuern_checkliste_de.md` (Stand 16.09.2026).
@@ -8,6 +8,57 @@
 import type { Beitrag } from './typen'
 
 export const beitraege: readonly Beitrag[] = [
+  {
+    // Erster veröffentlichter Beitrag (19.10.2026). Ricardo: «Ich will den ersten Blogpost online stellen bitte so
+    // wie finanzfabio einen Interaktive karte mit unserem Design». Werte: `src/content/vorsorge-kennzahlen.ts`.
+    slug: 'vorsorge-kennzahlen-2027',
+    art: 'Ratgeber',
+    titel: 'Vorsorge-Kennzahlen 2027: alle Grenzbeträge auf einen Blick',
+    kurz: 'Ab 1. Januar 2027 steigen AHV-Renten und Grenzbeträge um rund 1.6 %. Tippen Sie in der Karte auf eine Zahl und sehen Sie, wie alles zusammenhängt.',
+    datum: '2026-10-19',
+    freigegeben: true,
+    minuten: 4,
+    abschnitte: [
+      {
+        absaetze: [
+          'Der Bundesrat hat am 2. Oktober 2026 die AHV- und IV-Renten an die Lohn- und Preisentwicklung angepasst. Ab 1. Januar 2027 sind sie rund 1.6 % höher.',
+          'Mit der Rente verschieben sich fast alle Grenzbeträge der Vorsorge: in der Pensionskasse, in der Säule 3a und bei der AHV selbst. Der Grund: Das Gesetz legt sie als Bruchteil oder Vielfaches der maximalen AHV-Rente fest.',
+        ],
+        baustein: 'vorsorgeKarte',
+      },
+      {
+        zwischentitel: 'Was sich für Sie ändert',
+        absaetze: ['Die Monatsbeträge der AHV gelten ohne die 13. Altersrente, die seit Dezember 2026 einmal im Jahr dazukommt.'],
+        punkte: [
+          'Säule 3a: Angestellte mit Pensionskasse zahlen 2027 bis CHF 7’373 ein, Selbständige ohne Pensionskasse bis CHF 36’864.',
+          'Pensionskasse: Versichert ist, wer bei einem Arbeitgeber mehr als CHF 23’040 im Jahr verdient.',
+          'AHV: Die Maximalrente steigt auf CHF 2’560 im Monat, die Minimalrente auf CHF 1’280.',
+          'Unfallversicherung: Der höchste versicherte Verdienst liegt bei CHF 148’200.',
+        ],
+      },
+      {
+        zwischentitel: 'Alle Werte im Vergleich',
+        absaetze: [],
+        baustein: 'vorsorgeTabelle',
+      },
+      {
+        zwischentitel: 'Drei Dinge, die sich jetzt lohnen',
+        absaetze: [],
+        punkte: [
+          'Den Dauerauftrag für die Säule 3a auf den neuen Betrag anpassen.',
+          'Den Vorsorgeausweis 2027 prüfen, besonders bei Teilzeit oder mehreren Arbeitgebern.',
+          'Bei Löhnen über CHF 148’200 klären, ob eine UVG-Zusatzversicherung besteht.',
+        ],
+      },
+      {
+        zwischentitel: 'Wie wir Sie unterstützen',
+        absaetze: [
+          'Wir schauen mit Ihnen Vorsorgeausweis, Säule 3a und Versicherungen an und zeigen, wo Lücken bestehen. Für Unternehmen prüfen wir, ob Pensionskasse und UVG-Zusatz zu den Löhnen passen.',
+        ],
+      },
+    ],
+    hinweis: 'Dieser Beitrag gibt einen allgemeinen Überblick und ersetzt keine individuelle Beratung. Quelle: Bundesamt für Sozialversicherungen BSV, Stand 2. Oktober 2026.',
+  },
   {
     slug: 'neu-kundenportal',
     art: 'News',

@@ -139,6 +139,14 @@ export function Footer({ locale }: Props) {
                 <span aria-hidden="true">{' →'}</span>
               </a>
             ) : null}
+
+            {/* News und Blog, sobald in dieser Sprache veröffentlicht (19.10.2026) */}
+            {isPublished('news', locale) ? (
+              <a href={path('news', locale)} className={styles.portalLink}>
+                {ui.page.news}
+                <span aria-hidden="true">{' →'}</span>
+              </a>
+            ) : null}
           </div>
 
           {/* ---- 2 Leistungen -------------------------------------------- */}

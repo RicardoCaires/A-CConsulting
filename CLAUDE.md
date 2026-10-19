@@ -2804,6 +2804,26 @@ gibt es noch keine.
 >   Digital, Über uns und Kontakt, Kundenportal als eigenes Angebot, Stand 16.10.2026. Wortlaut in
 >   `content/source/datenschutz_2026-10-16_de.md`. ⚠️ Von Ricardo gegenzulesen, juristisch nicht geprüft.
 
+## 9c. Erster Blogbeitrag: Vorsorge-Kennzahlen 2027 (19.10.2026)
+
+> Ricardo: «Ich will den ersten Blogpost online stellen bitte so wie finanzfabio einen Interaktive karte mit unserem
+> Design» (Vorbild: finanzfabio.ch, «Vorsorge Kennzahlen 2027»). Eigener Wortlaut, eigene Gestaltung.
+>
+> - **«News und Blog» ist auf Deutsch online** (`routes.ts`: `news.published.de = true`), verlinkt im Fussbereich unter
+>   der Offertanfrage. Online steht nur, was `freigegeben: true` trägt – heute allein dieser Beitrag; die drei übrigen
+>   bleiben Entwürfe. FR und PT haben noch keine Beiträge.
+> - **Interaktive Karte** (`components/ui/VorsorgeKarte.tsx`, Daten `src/content/vorsorge-kennzahlen.ts`, Rechnung
+>   `src/lib/vorsorge-kennzahlen.ts`): elf Kennzahlen in vier Gruppen (AHV, BVG, 3a, UVG), Jahreswahl 2026/2027 mit
+>   fliessenden Zahlen, eine Zahl antippen zeigt die verbundenen Zahlen grün und darunter die Rechnung mit Beträgen
+>   sowie «Gut zu wissen». Darunter eine Vergleichstabelle (auch ohne JavaScript und für Suchmaschinen lesbar).
+>   Einbindung über `baustein` in einem Abschnitt eines Beitrags.
+> - **Nur die maximale AHV-Rente je Jahr ist erfasst**; alle übrigen Grenzbeträge rechnet die Karte nach den
+>   gesetzlichen Verhältnissen. Nachgerechnet und amtlich geprüft gegen das BSV-Dokument «Beträge gültig ab dem
+>   1. Januar 2027» (2.10.2026) und die BSV-Masszahlen 2025/2026: alle Werte stimmen. **UVG 148’200 für 2027 ist nicht
+>   amtlich bestätigt** (seit 2016 unverändert, keine Änderung bekannt) und so beschriftet. Jahresrenten ohne 13. Rente.
+> - **Jedes Jahr nachführen**, sobald der Bundesrat die Renten anpasst: neues Jahr in `jahre`, `ahvMaxJahr`, `uvg`.
+> - Texte als Vorschlag in `content/source/news_vorsorge_2027_de.md`; Ricardo bestätigt.
+
 ## 10. Offene Punkte
 
 Technik und Infrastruktur:
