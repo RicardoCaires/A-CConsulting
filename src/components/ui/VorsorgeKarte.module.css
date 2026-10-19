@@ -3,10 +3,8 @@
    FR und PT sind länger als DE, und nichts darf abgeschnitten werden. */
 
 .karte {
-  /* Breiter als die Textspalte des Beitrags, damit das Schaubild lesbar bleibt */
-  --breite: min(64rem, 100vw - 2.5rem);
-  width: var(--breite);
-  margin: clamp(1.25rem, 3vw, 2rem) calc((100% - var(--breite)) / 2);
+  /* so breit wie der Beitrag (seit 19.10.2026 ist er 64rem breit) */
+  margin: clamp(1.25rem, 3vw, 2rem) 0;
   padding: clamp(0.9rem, 2.2vw, 1.5rem);
   background-color: var(--ac-color-white);
   border: 1px solid var(--ac-color-border-tint);
@@ -256,7 +254,8 @@
   top: 0;
   bottom: 0;
   z-index: 2;
-  width: min(24rem, 44%);
+  /* schmaler als der Abstand zur Mitte (36 %), damit die AHV-Rente sichtbar bleibt */
+  width: min(24rem, 34%);
   padding: 1rem 1.1rem 1.2rem;
   overflow-y: auto;
   background-color: var(--ac-color-white);

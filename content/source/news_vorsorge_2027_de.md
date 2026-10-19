@@ -97,3 +97,12 @@ Ricardo: «es soll wie bei finanzfabio sich um die AHV rente drehen wie die Vers
 - Säule 3a: jährlich höchstens abziehbar
 - unabhängig von der AHV-Rente
 - Schliessen
+
+## Abschluss jedes Beitrags (19.10.2026)
+
+Ricardo: «es braucht noch einen call to action z.B. termin abmachen».
+
+- Was bedeutet das für Sie?
+- Wir schauen Ihre Vorsorge und Ihre Versicherungen gemeinsam an – persönlich bei uns im Büro oder am Telefon.
+- Termin vereinbaren
+- Anrufen

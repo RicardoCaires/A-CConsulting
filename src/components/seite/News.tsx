@@ -4,6 +4,7 @@ import { NEWS_TEXTE, datumLang } from '@/lib/news'
 import type { Beitrag } from '@/content/seiten/typen'
 import type { Locale } from '@/i18n/config'
 import { path } from '@/i18n/routes'
+import { company } from '@/lib/company'
 
 import seite from './Seite.module.css'
 import styles from './News.module.css'
@@ -109,6 +110,22 @@ export function NewsBeitrag({ b, locale }: { b: Beitrag; locale: Locale }) {
               {a.baustein === 'vorsorgeKarte' ? <VorsorgeKarte locale={locale} /> : null}
             </section>
           ))}
+
+          {/* Abschluss jedes Beitrags: ein Weg zum Gespräch (Ricardo, 19.10.2026) */}
+          <aside className={styles.cta} aria-labelledby="beitrag-cta">
+            <h2 id="beitrag-cta" className={styles.ctaTitel}>
+              {T.ctaTitel}
+            </h2>
+            <p className={styles.ctaText}>{T.ctaText}</p>
+            <div className={seite.knoepfe}>
+              <a className={seite.knopf} href={path('kontakt', locale)}>
+                {T.ctaKnopf}
+              </a>
+              <a className={`${seite.knopf} ${seite.knopfZweit}`} href={`tel:${company.phoneE164}`}>
+                {T.ctaAnrufen} {company.phone}
+              </a>
+            </div>
+          </aside>
 
           {b.hinweis ? <p className={styles.hinweis}>{b.hinweis}</p> : null}
         </article>

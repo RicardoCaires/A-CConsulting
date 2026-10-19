@@ -107,7 +107,8 @@
 /* ---- Der Beitrag ---------------------------------------------------------- */
 
 .artikel {
-  max-width: 52rem;
+  /* so breit wie die Vorsorge-Karte darin (Ricardo, 19.10.2026: «die gleiche breite») */
+  max-width: 64rem;
   margin-inline: auto;
   width: 100%;
 }
@@ -174,6 +175,34 @@
   color: var(--ac-color-accent-green);
 }
 
+.cta {
+  margin-top: 2.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background-color: var(--ac-color-background-light);
+  border-left: 4px solid var(--ac-color-accent-green);
+  border-radius: 20px;
+}
+
+.ctaTitel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.ctaText {
+  margin: 0.6rem 0 0;
+  font-size: var(--ac-body-size);
+  line-height: 1.6;
+  color: var(--ac-color-text-primary);
+}
+
+.cta :global(a) {
+  margin: 0;
+}
+
 .hinweis {
   margin: 2.5rem 0 0;
   padding: 1rem 1.25rem;
@@ -188,4 +217,9 @@
   .gross {
     transition: none;
   }
+}
+
+/* Haken-Liste im Beitrag über die ganze Breite, wie Text und Karte */
+.abschnitt ul {
+  max-width: none;
 }

@@ -2833,6 +2833,12 @@ gibt es noch keine.
 >   die Mitte verdeckte; **unter 720 px** stehen die Beträge untereinander, nach Säulen gruppiert, mit dem Anteil als
 >   Marke, und die Erklärung kommt als Blatt von unten. Nachgemessen in DE, FR, PT bei 320 bis 1440 px, jede der elf
 >   Erklärungen offen: nichts abgeschnitten, nichts überlappt, kein waagrechter Überlauf.
+> - **Beitrag und Karte gleich breit, Abschluss mit Termin (19.10.2026)** – Ricardo: «hier soll es die gleiche
+>   breite haben … es braucht noch einen call to action z.B. termin abmachen». Der Beitrag ist 64rem breit, Karte,
+>   Text und Haken-Liste füllen dieselbe Spalte; die Karte ragt nicht mehr hinaus. Das Erklärfeld ist dafür
+>   höchstens 34 % breit (die Mitte beginnt bei 36 %), das Fenster gilt erst unter 860 px Kartenbreite. **Jeder
+>   Beitrag endet mit «Was bedeutet das für Sie?»**, einem Satz und den Knöpfen «Termin vereinbaren» (Kontaktseite)
+>   und «Anrufen 032 …» (`company.phone`); Texte in `NEWS_TEXTE`, DE-Quelle in `news_vorsorge_2027_de.md`.
 > - **«News und Blog» steht seit 19.10.2026 in der Hauptnavigation** als fünfter Punkt (Ricardo: «sogar oben als eigene
 >   Kategorie»). Damit reicht die einzeilige Kopfzeile ab 75rem nicht mehr: Auf Französisch überlappten Logo, Menü und
 >   Knopf bis 1920 px. **Zweizeilig (Logo mittig, Menü darunter) gilt jetzt von 64rem bis 118rem**, einzeilig erst ab

@@ -84,7 +84,7 @@ export function VorsorgeKarte({ locale = 'de' }: { locale?: Locale }) {
   const [jahr, setJahr] = useState<Jahr>(2027)
   const [offen, setOffen] = useState<KennzahlId | null>(null)
   const [kompakt, setKompakt] = useState(false)
-  // Unter 940 px Kartenbreite deckte das Feld die Mitte zu: dort öffnet die Erklärung als Blatt
+  // Unter 860 px Kartenbreite deckte das Feld die Mitte zu: dort öffnet die Erklärung als Blatt
   const [mitBlatt, setMitBlatt] = useState(false)
   const karte = useRef<HTMLDivElement>(null)
   const blatt = useRef<HTMLDialogElement>(null)
@@ -100,7 +100,7 @@ export function VorsorgeKarte({ locale = 'de' }: { locale?: Locale }) {
     if (!el) return
     const pruefe = () => {
       setKompakt(el.clientWidth < 720)
-      setMitBlatt(el.clientWidth < 940)
+      setMitBlatt(el.clientWidth < 860)
     }
     pruefe()
     const ro = new ResizeObserver(pruefe)
