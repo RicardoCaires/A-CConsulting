@@ -65,8 +65,6 @@ type UiMessages = {
    * zweite Aufforderung, und die schwaecht beide.
    */
   cta: string
-  /** Kurzform des Knopfs im Kopfbereich, wo die Zeile knapp wird (19.10.2026). */
-  ctaKurz: string
   /** Kundenportal: Leiste ueber dem Kopfbereich und Eintrag im Fussbereich. */
   portal: {
     label: string
@@ -210,7 +208,6 @@ export const ui: Record<Locale, UiMessages> = {
       hint: 'Diese Seite ist noch nicht verfügbar.',
     },
     cta: 'Erstgespräch anfragen',
-    ctaKurz: 'Erstgespräch',
     portal: { label: 'Kundenportal', hint: 'Ihre Versicherungen und Unterlagen jederzeit online' },
     notFound: {
       title: 'Seite nicht gefunden',
@@ -307,7 +304,6 @@ export const ui: Record<Locale, UiMessages> = {
       hint: 'Cette page n’est pas encore disponible.',
     },
     cta: 'Demander un premier entretien',
-    ctaKurz: 'Premier entretien',
     portal: { label: 'Portail clients', hint: 'Vos assurances et documents en ligne, à tout moment' },
     notFound: {
       title: 'Page introuvable',
@@ -404,7 +400,6 @@ export const ui: Record<Locale, UiMessages> = {
       hint: 'Esta página ainda não está disponível.',
     },
     cta: 'Pedir uma primeira conversa',
-    ctaKurz: 'Primeira conversa',
     portal: { label: 'Portal do cliente', hint: 'Os seus seguros e documentos online, a qualquer momento' },
     notFound: {
       title: 'Página não encontrada',

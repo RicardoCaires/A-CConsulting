@@ -7,12 +7,11 @@
    Drei Anordnungen aus einem Markup, gesetzt ueber ein Raster:
 
      schmal           Logo · Menuezeichen · Sprachwahl               — eine Zeile
-     64rem bis 75rem  Logo · Sprachwahl · Knopf · Menuezeichen       — eine Zeile
-     ab 75rem         Logo · Kategorien · Sprachwahl · Knopf         — eine Zeile
-                      (bis 90rem enger gesetzt, Knopf in Kurzform)
+     ab 64rem         Logo · Sprachwahl · Knopf, darunter Kategorien — zwei Zeilen
+     sobald es passt  Logo · Kategorien · Sprachwahl · Knopf         — eine Zeile
+                      (DE ab 78rem, PT ab 80rem, FR ab 85rem)
 
-   Immer eine Zeile (19.10.2026). Die zweizeilige Fassung mit dem Logo in der
-   Mitte ist entfallen. */
+   Die Kategorien werden auf dem Desktop nie ausgeblendet (19.10.2026). */
 
 .header {
   background-color: var(--ac-surface-header);
@@ -86,21 +85,37 @@
   transform: translateX(3px);
 }
 
-/* ---- 64rem bis 75rem: eine Zeile, Menue als Zeichen ----------------------
-   Seit dem 19.10.2026 (Ricardo: «diese anordnung gefällt mir nicht») gibt es
-   keine zweizeilige Fassung mehr. Wo die fuenf Kategorien neben Logo, Sprachwahl
-   und Knopf nicht Platz haben – auf Franzoesisch braucht die Reihe rund 1300 px –,
-   steht rechts das Menuezeichen, der Knopf bleibt sichtbar. */
+/* ---- Ab 64rem: die Kategorien stehen immer sichtbar da -------------------
+   Ricardo, 19.10.2026: «es soll nie ausgeblendet werden». Auf dem Desktop gibt
+   es darum kein Menuezeichen. Wo eine Zeile nicht reicht, stehen die Kategorien
+   in einer zweiten Zeile unter Logo und Knopf; sobald sie passen, rueckt alles
+   in eine Zeile. Wann das ist, haengt an der Sprache – Franzoesisch braucht
+   rund 150 px mehr als Deutsch –, darum gilt die Schwelle je Sprache. */
 
 @media (min-width: 64rem) {
+  /* Eigener, breiterer Container. Doppelte Klasse, damit die Regel sicher
+     ueber `.ac-container` steht. */
+  .header .inner {
+    max-width: 1800px;
+    padding-inline: clamp(1.5rem, 3vw, 3.5rem);
+  }
+
   .inner {
-    grid-template-columns: auto 1fr auto auto;
-    grid-template-areas: 'logo leer aktionen nav';
-    column-gap: var(--ac-space-sm);
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      'logo leer aktionen'
+      'nav  nav  nav';
+    column-gap: clamp(1.25rem, 2vw, 3rem);
+    row-gap: 0.25rem;
+    padding-block: 0.75rem 0.25rem;
   }
 
   .logo {
     grid-area: logo;
+  }
+
+  .logo img {
+    width: clamp(9.5rem, 1rem + 9vw, 14rem);
   }
 
   .actions {
@@ -110,6 +125,7 @@
 
   .nav {
     grid-area: nav;
+    justify-content: center;
   }
 
   /* Doppelt wie oben — sonst verliert die Medienabfrage gegen `.cta.cta`. */
@@ -117,66 +133,40 @@
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    min-height: 2.75rem;
-    padding-inline: 1.25rem;
+    min-height: 3rem;
+    padding-inline: clamp(1.1rem, 1.5vw, 1.5rem);
     font-size: var(--ac-body-size);
     border-radius: var(--ac-radius-md);
   }
 }
 
-/* Kurzform des Knopfs: nur dort, wo die Kategorien schon in der Zeile stehen
-   und es knapp wird (Ricardo, 19.10.2026: «bei 100% ist es jetzt einfach leer»). */
-.ctaKurz {
-  display: none;
-}
-
-/* ---- Ab 75rem: Logo · Kategorien · Sprachwahl und Knopf ------------------ */
-
-@media (min-width: 75rem) and (max-width: 89.99rem) {
-  .ctaLang {
-    display: none;
-  }
-
-  .ctaKurz {
-    display: inline;
-  }
-
-  .logo img {
-    width: 9.5rem;
-  }
-
-  .actions {
-    gap: var(--ac-space-2xs);
-  }
-}
-
-@media (min-width: 75rem) {
-  /* Eigener, breiterer Container: Im Standardmass blieb zwischen Logo und
-     Navigation zu wenig Luft. Doppelte Klasse, damit die Regel sicher ueber
-     `.ac-container` steht. */
-  .header .inner {
-    max-width: 1800px;
-    padding-inline: clamp(1.5rem, 3vw, 3.5rem);
-  }
-
-  .inner {
-    grid-template-columns: auto minmax(0, 1fr) auto;
+/* Eine Zeile: Logo · Kategorien · Sprachwahl und Knopf, je Sprache ab der Breite, ab der es passt */
+/* Gemessen am 19.10.2026: ab diesen Breiten bleibt zwischen Logo, Kategorien
+   und Sprachwahl mindestens 20 px Luft. */
+@media (min-width: 78rem) {
+  :global(html[lang^='de']) .inner {
     grid-template-areas: 'logo nav aktionen';
-    column-gap: clamp(1.25rem, 2vw, 3rem);
+    row-gap: 0;
     min-height: 5.5rem;
+    padding-block: 0;
   }
+}
 
-  .logo img {
-    width: clamp(10.5rem, 4rem + 6vw, 14rem);
+@media (min-width: 80rem) {
+  :global(html[lang^='pt']) .inner {
+    grid-template-areas: 'logo nav aktionen';
+    row-gap: 0;
+    min-height: 5.5rem;
+    padding-block: 0;
   }
+}
 
-  .nav {
-    justify-content: center;
-  }
-
-  .cta.cta {
-    min-height: 3rem;
-    padding-inline: 1.5rem;
+@media (min-width: 85rem) {
+  :global(html[lang^='fr']) .inner {
+    grid-template-areas: 'logo nav aktionen';
+    row-gap: 0;
+    min-height: 5.5rem;
+    padding-block: 0;
   }
 }
 

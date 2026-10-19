@@ -1,6 +1,6 @@
 /* Hauptnavigation.
 
-   Zwei Fassungen: eine offene Reihe ab 75rem, darunter ein Menue. Beide
+   Zwei Fassungen: eine offene Reihe ab 64rem, darunter ein Menue. Beide
    benutzen dieselbe Beschriftung und dieselben Trefferflaechen — die schmale
    Fassung ist keine verkleinerte, sondern eine eigene.
 
@@ -16,7 +16,7 @@
   display: contents;
 }
 
-/* ---- Offene Reihe (ab 75rem) -------------------------------------------- */
+/* ---- Offene Reihe (ab 64rem) -------------------------------------------- */
 
 .wide {
   display: none;
@@ -226,7 +226,7 @@
   padding: 0.1rem 0.3rem;
 }
 
-/* ---- Menue (bis 75rem) --------------------------------------------------- */
+/* ---- Menue (bis 64rem) --------------------------------------------------- */
 
 .narrow {
   display: block;
@@ -358,28 +358,25 @@
 }
 
 /* ---- Umschaltpunkt ------------------------------------------------------- */
-/* 75rem statt 64rem (19.10.2026): Erst dort passen die fuenf Kategorien in FR
-   und PT neben Logo, Sprachwahl und Knopf in eine Zeile – bis 90rem in etwas
-   kleinerer Schrift und mit engeren Abstaenden. */
+/* Ab 64rem stehen die Kategorien immer offen da (Ricardo, 19.10.2026: «es soll
+   nie ausgeblendet werden»). Schrift und Abstaende wachsen mit der Breite. */
 
-@media (min-width: 75rem) and (max-width: 89.99rem) {
-  .wideList {
-    gap: 0.5rem;
-  }
-
-  .wideList > li > .item,
-  .wideList > li > details > summary {
-    font-size: var(--ac-small-size);
-  }
-}
-
-@media (min-width: 75rem) {
+@media (min-width: 64rem) {
   .wide {
     display: block;
   }
 
   .narrow {
     display: none;
+  }
+
+  .wideList {
+    gap: clamp(1.1rem, 1.5vw, 2.25rem);
+  }
+
+  .wideList > li > .item,
+  .wideList > li > details > summary {
+    font-size: clamp(0.9375rem, 0.45rem + 0.6vw, 1.0625rem);
   }
 }
 

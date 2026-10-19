@@ -14,11 +14,11 @@ import styles from './Header.module.css'
  * Drei Anordnungen aus **einem** Markup, gesetzt ueber ein Raster:
  *
  *   schmal            Logo · Menue · Sprachwahl                — eine Zeile
- *   64rem bis 75rem   Logo · Sprachwahl · Knopf · Menue        — eine Zeile
- *   ab 75rem          Logo · Kategorien · Sprachwahl · Knopf   — eine Zeile
- *                     (bis 90rem enger gesetzt, Knopf in Kurzform)
+ *   ab 64rem          Logo · Sprachwahl · Knopf, darunter die Kategorien
+ *   sobald es passt   Logo · Kategorien · Sprachwahl · Knopf   — eine Zeile
+ *                     (DE ab 78rem, PT ab 80rem, FR ab 85rem)
  *
- * Seit dem 19.10.2026 gibt es keine zweizeilige Fassung mehr.
+ * Auf dem Desktop werden die Kategorien nie ausgeblendet (19.10.2026).
  *
  * Die einzeilige Fassung ab 75rem stammt vom 11.09.2026 und folgt Ricardos
  * Referenz: gruene Linie oben, Kategorien mittig, der Knopf mit Pfeil rechts.
@@ -53,8 +53,7 @@ export function Header({ locale }: Props) {
         <div className={styles.actions}>
           <LanguageSwitcher locale={locale} />
           <Button href={hrefOrDefault('kontakt', locale)} className={styles.cta}>
-            <span className={styles.ctaLang}>{ui.cta}</span>
-            <span className={styles.ctaKurz}>{ui.ctaKurz}</span>
+            {ui.cta}
             <span className={styles.pfeil} aria-hidden="true">
               →
             </span>

@@ -2853,6 +2853,12 @@ gibt es noch keine.
 >   Knopf in Kurzform («Erstgespräch», «Premier entretien», «Primeira conversa», `ui.ctaKurz`). Das Menüzeichen
 >   bleibt nur zwischen 64 und 75rem. Gemessen auf Französisch bei 1200 px: 22 px Luft zwischen Logo und Menü,
 >   26 px zwischen Menü und Sprachwahl.
+>   **Ersetzt, ebenfalls am 19.10.2026** (Ricardo: «es soll nie ausgeblendet werden», die Kurzform sah schlecht aus):
+>   **Auf dem Desktop (ab 64rem) stehen die Kategorien immer da, kein Menüzeichen, der Knopf immer ausgeschrieben.**
+>   Passt alles in eine Zeile, steht Logo · Kategorien · Sprachwahl · Knopf; sonst Logo links, Sprachwahl und Knopf
+>   rechts und die Kategorien zentriert in einer zweiten Zeile. Die Schwelle gilt je Sprache (`html[lang]`): DE ab
+>   78rem, PT ab 80rem, FR ab 85rem – gemessen mit mindestens 18 px Luft zwischen Logo, Kategorien und Sprachwahl.
+>   Schrift und Abstände der Kategorien wachsen mit der Breite. `ui.ctaKurz` ist wieder entfallen.
 > - **Regel, Ricardo 19.10.2026: «keine texte die abgeschnitten sind», durchgängig.** Neue oder geänderte Teile in DE,
 >   FR und PT bei 320, 375, 768, 1024 und 1440 px nachmessen; Texte dürfen umbrechen, keine festen Textbreiten,
 >   Nachbarn immer mit Abstand («← News und Blog» steht darum auf eigener Zeile über der Marke).
