@@ -206,7 +206,13 @@ export type Block =
 export type SeitenInhalt = {
   meta: { title: string; description: string }
   /** Banner mit schlichter Überschrift; fehlt er, beginnt die Seite mit dem ersten Block. */
-  banner?: { themenzeile: string; ueberschrift: string; unterzeile?: string }
+  banner?: {
+    themenzeile: string
+    ueberschrift: string
+    unterzeile?: string
+    /** «hell»: heller, kompakter Einstieg mit der Aufnahme daneben statt dahinter (Startseite, 19.10.2026). */
+    form?: 'hell'
+  }
   /** Ohne Banner trägt der erste Block die Hauptüberschrift (h1). */
   bloecke: readonly Block[]
 }

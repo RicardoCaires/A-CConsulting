@@ -7,7 +7,7 @@ export const start: SeitenInhalt = {
     description:
       'Assurances et fiduciaire pour particuliers, indépendants et PME. Des interlocuteurs fixes à Aegerten, canton de Berne.',
   },
-  banner: { themenzeile: 'ASSURANCES · FIDUCIAIRE', ueberschrift: 'Ancrés dans le Seeland. Le regard plus loin.' },
+  banner: { themenzeile: 'ASSURANCES · FIDUCIAIRE', ueberschrift: 'Ancrés dans le Seeland. Le regard plus loin.', form: 'hell' },
   bloecke: [
     {
       art: 'listen',

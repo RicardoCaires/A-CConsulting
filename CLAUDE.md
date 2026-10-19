@@ -2869,6 +2869,18 @@ gibt es noch keine.
 > - **Jedes Jahr nachführen**, sobald der Bundesrat die Renten anpasst: neues Jahr in `jahre`, `ahvMaxJahr`, `uvg`.
 > - Texte als Vorschlag in `content/source/news_vorsorge_2027_de.md`; Ricardo bestätigt.
 
+## 9d. Neuer Einstieg der Startseite (19.10.2026)
+
+> Ricardo: «ich will diesen bereich hier komplett neugestalten», auf Rückfrage **«Hell und kompakt»**, und vom
+> Inhalt nur **«Spruch behalten»**. Der Vollbild-Banner der Startseite ist ersetzt durch einen weissen Block wie alle
+> übrigen (`components/seite/Einstieg.tsx`, gewählt über `banner.form: 'hell'` in `start.ts` je Sprache): links
+> Themenzeile mit grünem Strich, die Überschrift (erster Satz navy, der Rest grün) und «Erstgespräch anfragen»,
+> rechts die Seeland-Aufnahme mit abgerundeten Ecken. **Sie bleibt unbeschnitten** – das Bild steht im
+> Seitenverhältnis der Datei (1774 : 887, nachgemessen 2.000), die Festlegung vom 15.09.2026 gilt. Kein zweiter
+> Knopf, kein Kundenportal, kein Zusatzsatz – nicht gewählt. Der nächste Abschnitt beginnt bei 1440 px auf 584 px
+> statt unter dem 712 px hohen Banner. Unter 60rem steht das Bild unter dem Text. Die übrigen Seiten behalten ihren
+> Banner. Nachgemessen in DE, FR, PT bei 320 bis 1440 px: nichts abgeschnitten, kein Überlauf, genau eine `h1`.
+
 ## 10. Offene Punkte
 
 Technik und Infrastruktur:

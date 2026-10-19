@@ -1,0 +1,67 @@
+/* Einstieg der Startseite (19.10.2026): hell und kompakt. Ein weisser Block,
+   Text links, die Aufnahme rechts, unbeschnitten im Seitenverhältnis der Datei. */
+
+.einstieg {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+}
+
+@media (min-width: 60rem) {
+  .einstieg {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  }
+}
+
+.text {
+  min-width: 0;
+}
+
+.themenzeile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  font-size: var(--ac-small-size);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--ac-color-accent-green);
+}
+
+.themenzeile::before {
+  content: '';
+  flex: none;
+  width: 38px;
+  height: 2px;
+  background-color: var(--ac-color-accent-green);
+}
+
+.titel {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(2.1rem, 1.4rem + 2.6vw, 3.6rem);
+  line-height: 1.08;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.01em;
+  color: var(--ac-color-primary-navy);
+  text-wrap: balance;
+}
+
+.knoepfe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.bild {
+  min-width: 0;
+}
+
+.bild img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1774 / 887;
+  border-radius: 20px;
+}

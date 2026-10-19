@@ -13,7 +13,7 @@ export const start: SeitenInhalt = {
     description:
       'Versicherungen und Treuhand für Privatpersonen, Selbständige und KMU. Feste Ansprechpartner in Aegerten, Kanton Bern.',
   },
-  banner: { themenzeile: 'VERSICHERUNGEN · TREUHAND', ueberschrift: 'Verwurzelt im Seeland. Blick auf mehr.' },
+  banner: { themenzeile: 'VERSICHERUNGEN · TREUHAND', ueberschrift: 'Verwurzelt im Seeland. Blick auf mehr.', form: 'hell' },
   bloecke: [
     {
       art: 'listen',

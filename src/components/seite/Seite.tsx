@@ -6,6 +6,7 @@ import { UnserModell } from '@/components/blocks/UnserModell'
 import { PortalAnsicht } from '@/components/ui/PortalAnsicht'
 import { PortalDemo } from '@/components/ui/PortalDemo'
 import { Rechner3a } from '@/components/ui/Rechner3a'
+import { Einstieg } from '@/components/seite/Einstieg'
 import { ZeitleisteKantone } from '@/components/seite/ZeitleisteKantone'
 import { RichText } from '@/components/ui/RichText'
 import { Standortkarte } from '@/components/ui/Standortkarte'
@@ -790,10 +791,11 @@ function Formular({ id, locale }: { id?: string; locale: Locale }) {
 
 export function Seite({ inhalt, locale, vorrang = false }: { inhalt: SeitenInhalt; locale: Locale; vorrang?: boolean }) {
   const ui = getUi(locale)
-  const ohneBanner = !inhalt.banner
+  const hell = inhalt.banner?.form === 'hell'
+  const ohneBanner = !inhalt.banner || hell
   return (
     <>
-      {inhalt.banner ? (
+      {inhalt.banner && !hell ? (
         <Banner
           themenzeile={inhalt.banner.themenzeile}
           ueberschrift={inhalt.banner.ueberschrift}
@@ -807,6 +809,15 @@ export function Seite({ inhalt, locale, vorrang = false }: { inhalt: SeitenInhal
 
       <div className={`${styles.seite} ${ohneBanner ? styles.seiteOhneBanner : ''}`}>
         <div className={`ac-container ${styles.bloecke}`}>
+          {inhalt.banner && hell ? (
+            <Einstieg
+              themenzeile={inhalt.banner.themenzeile}
+              ueberschrift={inhalt.banner.ueberschrift}
+              knopf={ui.cta}
+              locale={locale}
+              vorrang={vorrang}
+            />
+          ) : null}
           {inhalt.bloecke.map((block, i) => {
             if (block.art === 'modell') {
               return (
@@ -824,7 +835,7 @@ export function Seite({ inhalt, locale, vorrang = false }: { inhalt: SeitenInhal
             }
             return (
               <section key={i} id={block.id} className={styles.block} aria-labelledby={`block-${i}`}>
-                <BlockInhalt block={block} locale={locale} h1={ohneBanner && i === 0} nr={i} />
+                <BlockInhalt block={block} locale={locale} h1={!inhalt.banner && i === 0} nr={i} />
               </section>
             )
           })}
