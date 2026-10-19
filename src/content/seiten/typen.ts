@@ -212,8 +212,8 @@ export type SeitenInhalt = {
     unterzeile?: string
     /** «hell»: heller, kompakter Einstieg mit der Aufnahme daneben statt dahinter (Startseite, 19.10.2026). */
     form?: 'hell'
-    /** Kurze Merkmale im Einstieg der Startseite (19.10.2026). */
-    merkmale?: readonly string[]
+    /** Spruch als Sticker auf dem Bild im Einstieg der Startseite (19.10.2026). */
+    spruch?: string
   }
   /** Ohne Banner trägt der erste Block die Hauptüberschrift (h1). */
   bloecke: readonly Block[]

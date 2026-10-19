@@ -1,5 +1,6 @@
-/* Einstieg der Startseite, zweite Fassung (19.10.2026): grosses Bild, darüber
-   greifend eine weisse Karte, darunter drei Merkmale. Farben nur aus Tokens. */
+/* Einstieg der Startseite, dritte Fassung (19.10.2026): grosses Bild, darüber
+   greifend eine weisse Karte, auf der Bildecke ein schräger Sticker.
+   Farben nur aus Tokens. */
 
 .einstieg {
   position: relative;
@@ -7,10 +8,10 @@
   grid-template-columns: minmax(0, 1fr);
 }
 
-/* Das Bild: immer im Seitenverhältnis der Datei, darum nie beschnitten. */
+/* Das Bild steht still und immer im Seitenverhältnis der Datei – nie beschnitten. */
 .bild {
+  position: relative;
   min-width: 0;
-  animation: bildEin 700ms var(--ac-motion-easing) both;
 }
 
 .bild img {
@@ -19,6 +20,38 @@
   height: auto;
   aspect-ratio: 1774 / 887;
   border-radius: 28px;
+}
+
+/* Der Sticker: grün, weisse Serifenschrift, leicht schräg. Auf dem Telefon oben
+   rechts im Bild, weil die Karte von unten ins Bild greift. */
+.sticker {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  display: grid;
+  max-width: min(17rem, 70%);
+  margin: 0;
+  padding: 0.7rem 1rem 0.8rem;
+  font-family: var(--ac-font-display);
+  font-size: clamp(1rem, 0.85rem + 0.6vw, 1.45rem);
+  line-height: 1.15;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-accent-green);
+  border-radius: 16px;
+  box-shadow: var(--ac-shadow-card-strong);
+  transform: rotate(-3deg);
+  animation: stickerEin 420ms 380ms cubic-bezier(0.2, 0.8, 0.3, 1.2) both;
+}
+
+/* Der zweite Satz trägt den Stich – grösser und unterstrichen. */
+.stickerB {
+  margin-top: 0.15rem;
+  font-size: 1.12em;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
 }
 
 /* Die Karte greift auf dem Telefon von unten ins Bild. */
@@ -32,7 +65,7 @@
   border-top: 5px solid var(--ac-color-accent-green);
   border-radius: 24px;
   box-shadow: var(--ac-shadow-card-strong);
-  animation: karteEin 650ms 120ms var(--ac-motion-easing) both;
+  animation: karteEin 450ms ease-out both;
 }
 
 .themenzeile {
@@ -72,58 +105,28 @@
   margin-top: clamp(1.25rem, 2.5vw, 2rem);
 }
 
-.merkmale {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin: 1.25rem 0 0;
-  padding: 0;
-  list-style: none;
-  animation: karteEin 650ms 260ms var(--ac-motion-easing) both;
+/* Sehr schmale Telefone: Das Bild ist dort nur rund 140 px hoch – Sticker
+   kleiner, Karte greift weniger tief ins Bild. */
+@media (max-width: 26rem) {
+  .sticker {
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.45rem 0.7rem 0.55rem;
+    font-size: 0.85rem;
+  }
+
+  .karte {
+    margin-top: -1.25rem;
+  }
 }
 
-.merkmale li {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-height: 2.5rem;
-  max-width: 100%;
-  padding: 0.4rem 1rem 0.4rem 0.6rem;
-  font-size: var(--ac-small-size);
-  font-weight: 600;
-  color: var(--ac-color-primary-navy);
-  background-color: var(--ac-color-white);
-  border: 1px solid var(--ac-color-border-tint);
-  border-radius: 999px;
-}
-
-/* Haken im grünen Kreis, aus CSS – keine Bilddatei. */
-.haken {
-  position: relative;
-  flex: none;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: var(--ac-color-accent-green);
-  border-radius: 50%;
-}
-
-.haken::after {
-  content: '';
-  position: absolute;
-  left: 0.52rem;
-  top: 0.32rem;
-  width: 0.4rem;
-  height: 0.7rem;
-  border: solid var(--ac-color-white);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-/* Desktop: Bild rechts gross, Karte links darüber, Merkmale darunter rechts. */
+/* Desktop: Bild rechts gross, Karte links darüber, Sticker auf der unteren
+   rechten Bildecke, halb über den Rand. */
 @media (min-width: 60rem) {
   .einstieg {
     grid-template-columns: repeat(12, minmax(0, 1fr));
     align-items: center;
+    padding-bottom: 1.5rem;
   }
 
   .bild {
@@ -137,31 +140,33 @@
     margin: 0;
   }
 
-  .merkmale {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-content: flex-end;
-  }
-}
-
-@keyframes bildEin {
-  from {
-    opacity: 0;
-    transform: scale(0.98);
+  .sticker {
+    top: auto;
+    right: 1.75rem;
+    bottom: -1.5rem;
+    /* jeder Satz auf einer Zeile; die Bildbreite begrenzt trotzdem */
+    width: max-content;
+    max-width: calc(100% - 3.5rem);
   }
 }
 
 @keyframes karteEin {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(10px);
+  }
+}
+
+@keyframes stickerEin {
+  from {
+    opacity: 0;
+    transform: rotate(-3deg) scale(0.85);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bild,
   .karte,
-  .merkmale {
+  .sticker {
     animation: none;
   }
 }

@@ -1,9 +1,8 @@
 # Einstieg der Startseite (19.10.2026)
 
-Ricardo: «kannst du die sartseite nochmals neu designen also den Banner … der gefällt mir nämlich garnicht ist sehr
-langweillig». Der Spruch bleibt; neu drei kurze Merkmale, alle belegt (FINMA-Register, Büro in Aegerten,
-Beratungssprachen laut Fussbereich). Vorschlag, Ricardo bestätigt.
+Ricardo zur zweiten Fassung: «diese drei punkte sind bare Minimum dort muss etwas freches stehen etwas gegen die
+Konkurrenz gestichelt». Ohne Namen eines Mitbewerbers (UWG Art. 3). Gewählt aus vier Vorschlägen:
 
-- FINMA-registriert
-- Persönlich in Aegerten
-- Deutsch · Français · Português
+- Wir vertreten Sie. Nicht die Versicherung.
+
+Frühere Merkmale, nicht mehr auf der Seite: FINMA-registriert · Persönlich in Aegerten · Deutsch · Français · Português

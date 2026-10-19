@@ -2889,6 +2889,15 @@ gibt es noch keine.
 > gleiten beim Laden herein, aus unter «Bewegung reduzieren». Auf dem Telefon greift die Karte von unten ins Bild.
 > Nachgemessen in DE, FR, PT bei 320 bis 1440 px ohne Befund.
 
+> **Dritte Fassung, noch am 19.10.2026** (Ricardo: «die Animation ist chaotisch und nicht flüssig und diese drei
+> punkte sind bare Minimum dort muss etwas freches stehen etwas gegen die Konkurrenz gestichelt vorallem gegen HEG»).
+> Die drei Merkmale sind weg; statt dessen klebt **«Wir vertreten Sie. Nicht die Versicherung.»** als grüner, leicht
+> schräger Sticker auf der Ecke des Bildes (`banner.spruch`; FR «Nous vous représentons. Pas l’assureur.», PT
+> «Representamos o cliente. Não a seguradora.»). Ricardo hat ihn aus vier Vorschlägen gewählt. **Kein Mitbewerber
+> wird genannt** – herabsetzende vergleichende Werbung ist nach UWG Art. 3 unlauter; Ricardo ist darauf hingewiesen.
+> Die Animation ist auf eine ruhige Einblendung reduziert: Bild steht still, die Karte blendet in 450 ms ein, der
+> Sticker folgt.
+
 ## 10. Offene Punkte
 
 Technik und Infrastruktur:

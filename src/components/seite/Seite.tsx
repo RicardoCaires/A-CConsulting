@@ -813,7 +813,7 @@ export function Seite({ inhalt, locale, vorrang = false }: { inhalt: SeitenInhal
             <Einstieg
               themenzeile={inhalt.banner.themenzeile}
               ueberschrift={inhalt.banner.ueberschrift}
-              merkmale={inhalt.banner.merkmale}
+              spruch={inhalt.banner.spruch}
               knopf={ui.cta}
               locale={locale}
               vorrang={vorrang}
