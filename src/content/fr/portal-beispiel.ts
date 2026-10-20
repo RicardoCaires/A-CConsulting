@@ -343,9 +343,9 @@ export const portalDemo: Uebersetzt<typeof DeDemo> = {
       { formular: 'termin', zeichen: 'kalender', titel: 'Prendre rendez-vous', text: 'Au bureau ou par téléphone' },
       { formular: 'vertrag', zeichen: 'schild', titel: 'Annoncer une modification', text: 'Concernant un contrat existant' },
       { formular: 'nachricht', zeichen: 'nachricht', titel: 'Envoyer un message', text: 'Question ou demande' },
-      { formular: "schaden", zeichen: "schild", titel: "Déclarer un sinistre", text: '' },
-      { formular: "frage", zeichen: "nachricht", titel: "Question sur ce contrat", text: '' },
-      { formular: "treuhand", zeichen: "dokument", titel: "Fiduciaire ou impôts", text: '' },
+      { formular: "schaden", zeichen: "schild", titel: "Déclarer un sinistre", text: "Avec les informations principales, nous vous recontactons" },
+      { formular: "frage", zeichen: "nachricht", titel: "Question sur ce contrat", text: "Nous clarifions avec vous" },
+      { formular: "treuhand", zeichen: "dokument", titel: "Fiduciaire ou impôts", text: "Déclaration d’impôt ou création d’entreprise" },
     ],
     liste: [
       {
@@ -599,7 +599,7 @@ export const portalDemo: Uebersetzt<typeof DeDemo> = {
       hergang: "Comment est-ce arrivé ?",
       hergangHilfe: "Qu’est-ce qui a été endommagé ou a disparu, et qui était impliqué ?",
       hoehe: "Montant estimé du dommage",
-      hoehen: ["moins de CHF 1'000", "CHF 1'000 à 5'000", "plus de CHF 5'000", "je ne sais pas"],
+      hoehen: ["moins de CHF 1’000", "CHF 1’000 à 5’000", "plus de CHF 5’000", "je ne sais pas"],
       dritte: "D’autres personnes ou véhicules sont-ils impliqués ?",
       polizei: "La police a-t-elle été appelée ?",
       janein: ["oui", "non", "je ne sais pas"],

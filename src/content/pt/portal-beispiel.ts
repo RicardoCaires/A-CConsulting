@@ -343,9 +343,9 @@ export const portalDemo: Uebersetzt<typeof DeDemo> = {
       { formular: 'termin', zeichen: 'kalender', titel: 'Marcar reunião', text: 'No escritório ou por telefone' },
       { formular: 'vertrag', zeichen: 'schild', titel: 'Comunicar alteração', text: 'A um contrato existente' },
       { formular: 'nachricht', zeichen: 'nachricht', titel: 'Enviar mensagem', text: 'Pergunta ou assunto' },
-      { formular: "schaden", zeichen: "schild", titel: "Participar um sinistro", text: '' },
-      { formular: "frage", zeichen: "nachricht", titel: "Pergunta sobre este contrato", text: '' },
-      { formular: "treuhand", zeichen: "dokument", titel: "Contabilidade ou impostos", text: '' },
+      { formular: "schaden", zeichen: "schild", titel: "Participar um sinistro", text: "Com os dados principais, entramos em contacto" },
+      { formular: "frage", zeichen: "nachricht", titel: "Pergunta sobre este contrato", text: "Esclarecemos consigo" },
+      { formular: "treuhand", zeichen: "dokument", titel: "Contabilidade ou impostos", text: "Declaração de impostos ou constituição de empresa" },
     ],
     liste: [
       {
@@ -599,7 +599,7 @@ export const portalDemo: Uebersetzt<typeof DeDemo> = {
       hergang: "Como aconteceu?",
       hergangHilfe: "O que ficou danificado ou desapareceu, e quem esteve envolvido?",
       hoehe: "Valor estimado do dano",
-      hoehen: ["menos de CHF 1'000", "CHF 1'000 a 5'000", "mais de CHF 5'000", "não sei"],
+      hoehen: ["menos de CHF 1’000", "CHF 1’000 a 5’000", "mais de CHF 5’000", "não sei"],
       dritte: "Há outras pessoas ou veículos envolvidos?",
       polizei: "A polícia foi chamada?",
       janein: ["sim", "não", "não sei"],

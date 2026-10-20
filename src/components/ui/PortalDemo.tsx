@@ -272,9 +272,10 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
               <span>{p.gesellschaft}</span>
               <span className={a.klein}>
                 Police {p.nummer} ·{' '}
-                {(p.dokumente as readonly Dokument[]).length
-                  ? `${p.dokumente.length} ${p.dokumente.length === 1 ? D.versicherungen.unterlage : D.versicherungen.unterlagen}`
-                  : D.anfragen.keineUnterlage}
+                {(() => {
+                  const n = (p.dokumente as readonly Dokument[]).length
+                  return n ? `${n} ${n === 1 ? D.versicherungen.unterlage : D.versicherungen.unterlagen}` : D.anfragen.keineUnterlage
+                })()}
               </span>
             </span>
             <Zeichen name="pfeil" klasse={`${a.zeichen} ${a.pfeil}`} />
@@ -736,6 +737,8 @@ function SchadenDemo({ ablegen, nachricht }: { ablegen: (betreff: string, text: 
   const noetig = art === null ? null : SCHADEN_DECKUNG[art]
   const deckend = noetig ? D.policen.filter((p) => p.bereiche.some((b) => noetig.includes(b))) : null
   const nichtVersichert = !!deckend && deckend.length === 0
+  // Genau ein passender Vertrag: gleich vorwählen, wie im Portal
+  const vorwahl = deckend?.length === 1 ? (deckend[0]?.id ?? '') : ''
   return (
     <form
       onSubmit={(e) => {
@@ -776,7 +779,7 @@ function SchadenDemo({ ablegen, nachricht }: { ablegen: (betreff: string, text: 
       ) : (
         <>
           <Feld id="d-spolice" titel={q.vertrag}>
-            <select id="d-spolice" name="police" key={deckend?.length === 1 ? deckend[0].id : 'leer'} defaultValue={deckend?.length === 1 ? deckend[0].id : ''}>
+            <select id="d-spolice" name="police" key={vorwahl || 'leer'} defaultValue={vorwahl}>
               <option value="">{q.weissNicht}</option>
               {D.policen.map((p) => (
                 <option key={p.id} value={p.id}>

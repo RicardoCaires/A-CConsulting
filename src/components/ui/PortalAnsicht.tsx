@@ -39,7 +39,7 @@ type Daten = ReturnType<typeof datenVon>
 
 /** CHF mit Rappen (20.10.2026: die Beträge des Demokunden haben Rappen), gerundet wie im Portal. */
 export const chf = (n: number) => {
-  const [franken, rappen] = (Math.round(n * 100) / 100).toFixed(2).split('.')
+  const [franken = '0', rappen = '00'] = (Math.round(n * 100) / 100).toFixed(2).split('.')
   return `CHF ${franken.replace(/\B(?=(\d{3})+(?!\d))/g, '’')}.${rappen}`
 }
 

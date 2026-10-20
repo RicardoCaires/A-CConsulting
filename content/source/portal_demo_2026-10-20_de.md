@@ -1,0 +1,158 @@
+# Portalvorschau mit dem Demokunden (20.10.2026)
+
+Ricardo: «diese version des Portals muss dann auch auf der Website erscheinen genau mit dem Demokunden es dürfen natürlich keine echten daten gezeigt werden».
+Die Texte entsprechen dem Kundenportal im CRM (`public-portal/sprachen.js`) und dem Demo-Dossier K-000597. Nummern, Beträge, Adresse und Fahrzeug sind erfunden. Vorschlag, Ricardo bestätigt.
+
+- 01.01.2022 bis 31.12.2051
+- 01.01.2024 bis 31.12.2028
+- 01.01.2025 bis 31.12.2028
+- 01.04.2025 bis 28.03.2028
+- 01.06.2025 bis 28.05.2028
+- 01.07.2023 bis 28.06.2028
+- 079 000 00 00
+- 1. Juni
+- Allianz Suisse Versicherungen
+- Anfrage starten
+- Annullierungskosten
+- Anrufen 032 373 22 44
+- Arzt und Spital, allgemeine Abteilung
+- BE 000000
+- Baujahr
+- Bewahren Sie Fotos, Belege und beschädigte Gegenstände auf. Bei Diebstahl und Einbruch melden Sie den Fall auch der Polizei.
+- Bitte wählen Sie, was passiert ist, und beschreiben Sie kurz, wie es dazu kam.
+- Bitte wählen Sie, worum es geht.
+- CHF 0
+- CHF 100’000.00
+- CHF 100’000’000.00
+- CHF 159.00
+- CHF 159.00 jährlich
+- CHF 170.00
+- CHF 180.00
+- CHF 1’000 bis 5’000
+- CHF 1’240.80 jährlich
+- CHF 214.90
+- CHF 271.50
+- CHF 298.50
+- CHF 300’000.00
+- CHF 358.00
+- CHF 358.00 jährlich
+- CHF 3’420.00
+- CHF 3’600.00 jährlich
+- CHF 422.00
+- CHF 486.40 jährlich
+- CHF 512.40 monatlich
+- CHF 520.30
+- CHF 5’265.60
+- CHF 742.00
+- CHF 850’000.00
+- CHF 883.20
+- CHF 90’000.00
+- CHF 912.00 jährlich
+- Dafür ist keine Versicherung erfasst.
+- Diebstahl des Fahrzeugs
+- Diebstahl oder Einbruch
+- Diebstahl zu Hause
+- Ein Schadenfall
+- Ein bestehender Vertrag
+- Eine Frage stellen
+- Elementarschäden
+- Elementarschäden (Hagel, Sturm, Überschwemmung)
+- Etwas anderes
+- Etwas ändern
+- Fahrzeug, Adresse, Deckung, Kündigung …
+- Fahrzeug: Glas, Hagel oder Parkschaden
+- Fahrzeug: Unfall oder Kollision
+- Fahrzeug: VW Golf
+- Feuer oder Naturereignis
+- Frage senden
+- Franchise CHF 300
+- Freie Arztwahl im Spital
+- Für welches Steuerjahr?
+- Für wen?
+- GVB Gebäudeversicherung Bern
+- Ganze Schweiz
+- Gebundene Vorsorge 3a
+- Gebäude: Einfamilienhaus Musterweg 1
+- Gebäudewasser
+- Gebäudehaftpflicht
+- Gemäss Ihren Verträgen bei uns ist dieser Schaden nicht versichert. Bitte melden Sie sich per Telefon oder Nachricht, wir schauen es gemeinsam an.
+- Geschätzte Schadenhöhe
+- Glasbruch
+- Glasbruch Mobiliar
+- Groupe Mutuel
+- Guten Tag, Herr Demo Testkunde
+- Hausrat: Musterweg 1
+- Heilungskosten im Ausland
+- Ihre bisherige Wahl
+- Jedes andere Anliegen
+- Kapital an die Begünstigten im Todesfall
+- Kollision mit Tieren
+- Kollision, auch selbst verschuldet
+- Kollisionskasko
+- Kranken und Unfall
+- Leben und Vorsorge
+- Lenken fremder Motorfahrzeuge
+- Marderbiss
+- Medikamente laut Spezialitätenliste
+- Mieterschäden
+- Mietrecht
+- Mit den wichtigsten Angaben, wir melden uns
+- Motorfahrzeughaftpflicht
+- Musterweg 1, 2558 Aegerten
+- Neue Versicherung oder Offerte
+- Offerte, Änderung, Rückruf oder Termin
+- Personen im Haushalt
+- Personenschäden Dritter
+- Personenschäden Dritter aus Gebäudebesitz
+- Prämienbefreiung bei Erwerbsunfähigkeit
+- Rechtsstreit
+- Reise und Annullierung
+- Rücktransport und Assistance
+- Sachschäden Dritter
+- Sachschäden Dritter aus Gebäudebesitz
+- Schaden an Dritten
+- Schadenersatz
+- Schweizerische Mobiliar Versicherungsgesellschaft AG
+- Schäden durch Anhänger
+- Sie schreiben uns, wir antworten
+- Sind andere Personen oder Fahrzeuge beteiligt?
+- Sparteil
+- Spitalzusatz halbprivat
+- Steuererklärung oder Firmengründung
+- Strafverfahren
+- Tippen Sie die ersten Buchstaben. Fehlt Ihr Fahrzeug, schreiben Sie es einfach hinein.
+- V3A-552.180
+- VW
+- Vandalismus
+- Vaudoise Versicherungen LEBEN
+- Versicherungsrecht
+- Vertragsrecht
+- Wann ist es passiert?
+- Was ist beschädigt oder abhandengekommen, und wer war beteiligt?
+- Was möchten Sie zum Vertrag?
+- Wasserschaden
+- Wasserschäden
+- Welcher Vertrag ist betroffen?
+- Wie kam es dazu?
+- Wie möchten Sie weitermachen?
+- Wie sollen wir uns bei Ihnen melden?
+- Wir antworten an max.demo@beispiel.ch.
+- Wir holen Angebote bei den Gesellschaften ein
+- Wir klären es mit Ihnen
+- Wo ist es passiert?
+- Wurde die Polizei beigezogen?
+- Zurich Versicherungs-Gesellschaft AG
+- Zweibettzimmer
+- etwa 10’000 km
+- etwa 15’000 km
+- etwa 20’000 km
+- etwa 5’000 km
+- keine Unterlage hinterlegt
+- max.demo@beispiel.ch
+- mehr als 30’000 km
+- unter CHF 1’000
+- weiss nicht
+- Änderung oder Frage zu einer Police
+- älter
+- über CHF 5’000
+- ← Zurück
