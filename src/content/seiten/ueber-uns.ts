@@ -80,20 +80,10 @@ export const ueberUns: SeitenInhalt = {
       ],
     },
     {
-      art: 'textBild',
+      art: 'kontakt',
       id: 'region',
       titel: { vor: 'Unser Büro in ', akzent: 'Aegerten' },
-      absaetze: ['Besprechungen sind bei uns vor Ort oder nach Vereinbarung bei Ihnen möglich.'],
-      knoepfe: [{ text: 'Route mit Google Maps planen', href: 'route' }],
-      bild: {
-        art: 'karte',
-        titel: 'Karte mit dem Standort von A&C Consulting in Aegerten',
-      },
-    },
-    {
-      art: 'kontakt',
-      titel: { vor: 'Lernen Sie uns ', akzent: 'kennen' },
-      satz: 'Schildern Sie uns kurz Ihre Situation. Wir melden uns persönlich.',
+      satz: 'Besprechungen sind bei uns vor Ort oder nach Vereinbarung bei Ihnen möglich. Schildern Sie uns kurz Ihre Situation – wir melden uns persönlich.',
       beschriftungen: { telefon: 'Telefon', email: 'E-Mail', buero: 'Büro' },
     },
   ],

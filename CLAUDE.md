@@ -2909,6 +2909,21 @@ gibt es noch keine.
 > Kundenportal aus» und «Ein Blick hinein» sind entfallen. Anker bleiben `#portal` und `#ansichten`. Nachgemessen in
 > DE, FR, PT bei 320 bis 1440 px ohne Befund.
 
+## 9f. Nichts doppelt am Seitenende (20.10.2026)
+
+> Ricardo: «wieso ist auf der Website die karte doppelt bitte prüfe so sachen auf logik bevor du so etwas machst»,
+> dann «es ist überall doppelt».
+>
+> - **`/ueber-uns` hatte zwei Google-Karten** (Standort «Unser Büro in Aegerten» und «Lernen Sie uns kennen»). Jetzt
+>   ein Kontaktblock `region` mit kombiniertem Satz (`content/source/ueberuns_standort_de.md`), DE/FR/PT.
+> - **Auf jeder Seite standen Adresse, Telefon und E-Mail zweimal**: im Kontaktblock und direkt darunter im
+>   Fussbereich. Der Fussbereich trägt die Pflichtangaben und bleibt. Der Kontaktblock mit Karte zeigt seither nur
+>   Titel, Satz, «Erstgespräch anfragen» und «Route planen» (`ROUTE` in `Seite.tsx`) neben der Karte.
+>   Telefon und E-Mail als Knöpfe nur, wo es keinen Erstgesprächsknopf gibt (`ohneKnopf`, Kontaktseite); die
+>   Adresse nur ohne Karte (`ohneKarte`, Impressum).
+> - **Regel:** Vor dem Einbau eines Blocks prüfen, ob dieselbe Angabe auf der Seite schon steht – auch im
+>   Fussbereich.
+
 ## 10. Offene Punkte
 
 Technik und Infrastruktur:

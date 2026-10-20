@@ -78,6 +78,12 @@ const MATRIX_VORLESEN: Record<Locale, { ereignis: string; betroffen: string }> =
 }
 
 /** Name der Karte für Vorlesewerkzeuge, wie auf «Über uns». */
+const ROUTE: Record<Locale, string> = {
+  de: 'Route planen',
+  fr: 'Planifier l’itinéraire',
+  pt: 'Planear o percurso',
+}
+
 const KARTENTITEL: Record<Locale, string> = {
   de: 'Karte mit dem Standort von A&C Consulting in Aegerten',
   fr: 'Carte avec l’emplacement d’A&C Consulting à Aegerten',
@@ -680,25 +686,36 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
     case 'kontakt': {
       // Seit 16.10.2026 ohne Textlinks (Ricardo: «hier sind wieder diese links die ich nicht will vielleicht hier
       // auch nochmals die karte einbinden»): Telefon und E-Mail sind Knöpfe, die Adresse steht als Text, rechts die Karte.
+      // Seit 20.10.2026 nichts mehr doppelt (Ricardo: «es ist überall doppelt»): Adresse, Telefon und E-Mail stehen
+      // im Fussbereich direkt darunter. Der Block mit Karte trägt nur noch Erstgespräch und Route; Telefon und E-Mail
+      // als Knöpfe nur dort, wo es keinen Erstgesprächsknopf gibt (Kontaktseite), die Adresse nur ohne Karte (Impressum).
       const ui = getUi(locale)
+      const mitAnschrift = !!block.ohneKarte
       const knoepfe: Knopf[] = [
         ...(block.ohneKnopf ? [] : [{ text: ui.cta, ziel: 'kontakt' } as Knopf]),
-        { text: company.phone, href: 'telefon', art: 'zweit' },
-        { text: company.email, href: 'email', art: 'zweit' },
+        ...(block.ohneKnopf || mitAnschrift
+          ? [
+              { text: company.phone, href: 'telefon', art: 'zweit' } as Knopf,
+              { text: company.email, href: 'email', art: 'zweit' } as Knopf,
+            ]
+          : []),
+        ...(block.ohneKarte ? [] : [{ text: ROUTE[locale], href: 'route', art: 'zweit' } as Knopf]),
       ]
       return (
         <div className={block.ohneKarte ? styles.kontaktOhneKarte : styles.kontakt}>
           <div>
             <Kopf block={block} h1={h1} nr={nr} />
             <p className={styles.absatz}>{block.satz}</p>
-            <address className={styles.anschrift}>
-              <span className={styles.anschriftTitel}>{block.beschriftungen.buero}</span>
-              {addressLines.map((z) => (
-                <span key={z} className={styles.zeile}>
-                  {z}
-                </span>
-              ))}
-            </address>
+            {mitAnschrift ? (
+              <address className={styles.anschrift}>
+                <span className={styles.anschriftTitel}>{block.beschriftungen.buero}</span>
+                {addressLines.map((z) => (
+                  <span key={z} className={styles.zeile}>
+                    {z}
+                  </span>
+                ))}
+              </address>
+            ) : null}
             <Knoepfe knoepfe={knoepfe} locale={locale} />
           </div>
           {block.ohneKarte ? null : (

@@ -72,20 +72,10 @@ export const ueberUns: SeitenInhalt = {
       ],
     },
     {
-      art: 'textBild',
+      art: 'kontakt',
       id: 'region',
       titel: { vor: 'O nosso escritório em ', akzent: 'Aegerten' },
-      absaetze: ['As reuniões podem ser no nosso escritório ou, por marcação, em sua casa ou empresa.'],
-      knoepfe: [{ text: 'Planear o percurso com o Google Maps', href: 'route' }],
-      bild: {
-        art: 'karte',
-        titel: 'Mapa com a localização da A&C Consulting em Aegerten',
-      },
-    },
-    {
-      art: 'kontakt',
-      titel: { vor: 'Venha ', akzent: 'conhecer-nos' },
-      satz: 'Descreva-nos brevemente a sua situação. Entraremos em contacto pessoalmente.',
+      satz: 'As reuniões podem ser no nosso escritório ou, por marcação, em sua casa ou empresa. Descreva-nos brevemente a sua situação – entraremos em contacto pessoalmente.',
       beschriftungen: { telefon: 'Telefone', email: 'E-mail', buero: 'Escritório' },
     },
   ],

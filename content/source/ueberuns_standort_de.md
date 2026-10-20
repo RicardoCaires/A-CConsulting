@@ -124,3 +124,10 @@ Ricardo.
 **Die Randzeile unter der Karte ist gelöscht.** Sie nannte «Seeland ·
 Kanton Bern · Deutsch · Französisch · Portugiesisch»; Ricardo hat sie am
 15.09.2026 per Screenshot streichen lassen.
+
+
+## Ein Block statt zwei (20.10.2026)
+
+Ricardo: «wieso ist auf der Website die karte doppelt … bitte erstelle eine karte mit einer kombo aus den texten». «Unser Büro in Aegerten» und «Lernen Sie uns kennen» sind ein Block mit einer Karte.
+
+- Besprechungen sind bei uns vor Ort oder nach Vereinbarung bei Ihnen möglich. Schildern Sie uns kurz Ihre Situation – wir melden uns persönlich.
