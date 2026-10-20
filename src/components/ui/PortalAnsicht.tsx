@@ -37,7 +37,11 @@ const datenVon = (locale: Locale) => ({
 })
 type Daten = ReturnType<typeof datenVon>
 
-export const chf = (n: number) => `CHF ${String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '’')}.00`
+/** CHF mit Rappen (20.10.2026: die Beträge des Demokunden haben Rappen), gerundet wie im Portal. */
+export const chf = (n: number) => {
+  const [franken, rappen] = (Math.round(n * 100) / 100).toFixed(2).split('.')
+  return `CHF ${franken.replace(/\B(?=(\d{3})+(?!\d))/g, '’')}.${rappen}`
+}
 
 /** Die Linienzeichen des Portals (`ZEICHEN` in portal.js), unverändert übernommen. */
 export const ZEICHEN = {
@@ -92,7 +96,8 @@ function Rahmen({ r, aktiv, titel, children }: { r: Daten['rahmen']; aktiv: numb
 
 /* ---- Start: Cockpit mit Kostenring --------------------------------------------- */
 
-const RINGFARBEN = [styles.r0, styles.r1, styles.r2, styles.r3]
+// Fünf Farben wie im Portal (`RINGFARBEN = 5` in portal.js); die fünfte ist navy-deep
+const RINGFARBEN = [styles.r0, styles.r1, styles.r2, styles.r3, styles.r4]
 
 /** Der Kostenring des Portals: Prämien pro Jahr nach Versicherung. */
 export function Kostenring({

@@ -54,9 +54,38 @@ export function Wahl({
 }
 
 /** Wahl mit eigenem Zustand, als Formularwert `name`; `fest` verhindert das Abwählen. */
-export function WahlFeld({ id, titel, optionen, start = '', name, fest = false }: { id: string; titel: string; optionen: readonly string[]; start?: string; name: string; fest?: boolean }) {
+export function WahlFeld({
+  id,
+  titel,
+  optionen,
+  start = '',
+  name,
+  fest = false,
+  onChange,
+}: {
+  id: string
+  titel: string
+  optionen: readonly string[]
+  start?: string
+  name: string
+  fest?: boolean
+  onChange?: (v: string) => void
+}) {
   const [wert, setWert] = useState(start)
-  return <Wahl id={id} titel={titel} optionen={optionen} wert={wert} name={name} setze={(v) => setWert(v || (fest ? wert : ''))} />
+  return (
+    <Wahl
+      id={id}
+      titel={titel}
+      optionen={optionen}
+      wert={wert}
+      name={name}
+      setze={(v) => {
+        const neu = v || (fest ? wert : '')
+        setWert(neu)
+        onChange?.(neu)
+      }}
+    />
+  )
 }
 
 function Fahrzeug({ art, wert, setze }: { art: string; wert: { marke: string; modell: string }; setze: (v: { marke: string; modell: string }) => void }) {

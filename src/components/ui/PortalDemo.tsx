@@ -19,6 +19,12 @@ import s from './PortalDemo.module.css'
  *
  * Seiten, Kacheln und Formulare wie in `public-portal/portal.js` im CRM: Start, Meine
  * Versicherungen mit jeder Police, Anfragen mit den fünf Formularen und Meine Angaben.
+ *
+ * Seit dem 20.10.2026 genau wie das Portal mit dem Demokunden (Ricardo: «diese version des
+ * Portals muss dann auch auf der Website erscheinen genau mit dem Demokunden»): Logos der
+ * Gesellschaften, Leistungen im Detail mit Prämie je Deckung, die geführte Anfrage mit
+ * Schadenmeldung, Frage zum Vertrag und Treuhand, und der schwebende Knopf «Termin
+ * vereinbaren». Verträge, Nummern und Beträge des Demokunden sind erfunden.
  * **Es geht keine Anfrage hinaus**: Die Formulare haben kein Ziel, das Absenden wird
  * abgefangen und durch einen Hinweis ersetzt, Herunterladen ebenso. Es wird nichts
  * gespeichert; neu Laden stellt den Anfang wieder her. Alle Angaben sind erfunden.
@@ -30,6 +36,55 @@ type Police = (typeof portalDemo.policen)[number]
 type Anfrage = { betreff: string; datum: string; stand: string; art: 'offen' | 'navy' | 'gruen'; text: string }
 
 const MARKE = { offen: a.marke, navy: `${a.marke} ${a.markeNavy}`, gruen: `${a.marke} ${a.markeGruen}` }
+type Dokument = { name: string; zeile: string; police: boolean }
+type Stufe = keyof typeof portalDemo.anfragen.assistent.fragen
+type Antwort = keyof typeof portalDemo.anfragen.assistent.antworten
+
+/** Der Weg durch die Fragen, wie im Portal (`WEG` in portal.js). */
+const WEG: Record<Stufe, readonly [Antwort, { formular?: Formular; weiter?: Stufe; thema?: number }][]> = {
+  start: [['neu', { formular: 'offerte' }], ['vertrag', { weiter: 'vertrag' }], ['schaden', { formular: 'schaden' }], ['treuhand', { formular: 'treuhand' }], ['anderes', { weiter: 'weg', thema: 4 }]],
+  vertrag: [['aendern', { formular: 'vertrag' }], ['frage', { formular: 'frage' }]],
+  weg: [['rueckruf', { formular: 'rueckruf' }], ['termin', { formular: 'termin' }], ['nachricht', { formular: 'nachricht' }]],
+}
+
+/** Welche Deckungen einen Schaden tragen, in der Reihenfolge der Schadenarten (wie `SCHADEN_DECKUNG` im Portal). */
+const SCHADEN_DECKUNG: readonly (readonly string[] | null)[] = [
+  ['motorfahrzeug_haftpflicht', 'motorfahrzeug_kasko'],
+  ['motorfahrzeug_kasko'],
+  ['hausrat', 'inventar'],
+  ['hausrat', 'gebaeude', 'inventar'],
+  ['hausrat', 'gebaeude', 'inventar'],
+  ['privathaftpflicht', 'gebaeude_haftpflicht', 'betriebshaftpflicht', 'berufshaftpflicht', 'motorfahrzeug_haftpflicht'],
+  ['rechtsschutz_privat', 'rechtsschutz_verkehr', 'rechtsschutz_betrieb'],
+  null,
+]
+
+function Logo({ p, gross = false }: { p: Police; gross?: boolean }) {
+  return (
+    <span className={gross ? `${s.logo} ${s.logoGross}` : s.logo}>
+      <Image src={`/bilder/gesellschaften/${p.logo}`} alt="" width={352} height={192} unoptimized />
+    </span>
+  )
+}
+
+/** «Wie sollen wir uns bei Ihnen melden?» – Telefon mit vorbelegter Nummer oder E-Mail. */
+function Rueckmeldung({ id }: { id: string }) {
+  const D = useDemo()
+  const r = D.anfragen.rueckmeldung
+  const [weg, setWeg] = useState<string>(r.optionen[0])
+  return (
+    <>
+      <WahlFeld id={`${id}-weg`} titel={r.wie} optionen={r.optionen} start={r.optionen[0]} name="rueckmeldung" fest onChange={setWeg} />
+      {weg === r.optionen[0] ? (
+        <Feld id={`${id}-tel`} titel={r.nummer}>
+          <input id={`${id}-tel`} name="telefon" type="tel" required defaultValue={D.anfragen.rueckruf.nummer} autoComplete="off" />
+        </Feld>
+      ) : (
+        <p className={`${a.klein} ${s.absatz}`}>{r.mail}</p>
+      )}
+    </>
+  )
+}
 
 /** 07:30 bis 18:30 im Halbstundentakt, wie im Portal. */
 const UHRZEITEN = Array.from({ length: 23 }, (_, i) => `${String(7 + Math.floor((i + 1) / 2)).padStart(2, '0')}:${(i + 1) % 2 ? '30' : '00'}`)
@@ -59,6 +114,8 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
   const [policeId, setPoliceId] = useState<string | null>(null)
   const [formular, setFormular] = useState<Formular | null>(null)
   const [vorgabe, setVorgabe] = useState<string | null>(null)
+  const [pfad, setPfad] = useState<[Stufe, Antwort][]>([])
+  const [thema, setThema] = useState<number | null>(null)
   const [meldung, setMeldung] = useState<string | null>(null)
   const [anfragen, setAnfragen] = useState<Anfrage[]>(() => D.anfragen.liste.map((x) => ({ ...x })))
   const flaeche = useRef<HTMLDivElement>(null)
@@ -82,13 +139,15 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
     }
     f?.scrollTo({ top: 0 })
     titel.current?.focus({ preventScroll: true })
-  }, [seite, policeId, formular])
+  }, [seite, policeId, formular, pfad])
 
   const geh = (ziel: Seite, mehr: { police?: string | null; formular?: Formular | null; vorgabe?: string | null } = {}) => {
     setSeite(ziel)
     setPoliceId(mehr.police ?? null)
     setFormular(mehr.formular ?? null)
     setVorgabe(mehr.vorgabe ?? null)
+    setPfad([])
+    setThema(null)
     setMeldung(null)
   }
 
@@ -110,6 +169,8 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
   const ablegen = (betreff: string, text: string) => {
     setAnfragen((x) => [{ betreff, datum: heute(), stand: D.anfragen.neu, art: 'offen', text }, ...x])
     setFormular(null)
+    setPfad([])
+    setThema(null)
     melde(D.meldungSenden)
   }
 
@@ -120,7 +181,10 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
     </h3>
   )
 
-  const segmente = D.policen.map((p) => ({ text: p.name, betrag: p.jahr }))
+  // Kostenring nach Sparte, die grösste zuerst – wie im Portal
+  const jeSparte = new Map<string, number>()
+  for (const p of D.policen) jeSparte.set(p.sparte, (jeSparte.get(p.sparte) ?? 0) + p.jahr)
+  const segmente = [...jeSparte].map(([text, betrag]) => ({ text, betrag })).sort((x, y) => y.betrag - x.betrag)
   const gesellschaften = new Set(D.policen.map((p) => p.gesellschaft)).size
   const offen = anfragen.filter((x) => x.art !== 'gruen')
 
@@ -201,16 +265,16 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
       <h4 className={a.h2}>{D.versicherungen.gruppe}</h4>
       <div className={a.policen}>
         {D.policen.map((p) => (
-          <button key={p.id} type="button" className={`${a.police} ${s.knopfPolice}`} onClick={() => geh('versicherungen', { police: p.id })}>
-            <span className={a.rund}>
-              <Zeichen name="schild" />
-            </span>
+          <button key={p.id} type="button" className={`${a.police} ${s.knopfPolice} ${s.mitLogo}`} onClick={() => geh('versicherungen', { police: p.id })}>
+            <Logo p={p} />
             <span className={a.policeText}>
               <strong>{p.name}</strong>
               <span>{p.gesellschaft}</span>
               <span className={a.klein}>
-                Police {p.nummer} · {p.dokumente.length}{' '}
-                {p.dokumente.length === 1 ? D.versicherungen.unterlage : D.versicherungen.unterlagen}
+                Police {p.nummer} ·{' '}
+                {(p.dokumente as readonly Dokument[]).length
+                  ? `${p.dokumente.length} ${p.dokumente.length === 1 ? D.versicherungen.unterlage : D.versicherungen.unterlagen}`
+                  : D.anfragen.keineUnterlage}
               </span>
             </span>
             <Zeichen name="pfeil" klasse={`${a.zeichen} ${a.pfeil}`} />
@@ -225,6 +289,7 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
 
   const police = (p: Police) => {
     const w = D.police
+    const doks = p.dokumente as readonly Dokument[]
     const angaben: [string, string][] = [
       [w.angaben.gesellschaft, p.gesellschaft],
       [w.angaben.versicherung, p.sparte],
@@ -240,19 +305,19 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
           {w.zurueck}
         </button>
         <div className={a.policeKopf}>
-          <span className={`${a.rund} ${a.rundGross}`}>
-            <Zeichen name="schild" />
-          </span>
+          <Logo p={p} gross />
           <span className={a.policeKopfText}>
             {ueberschrift(p.name)}
             <span className={a.leise}>
               {p.gesellschaft} <span className={`${a.marke} ${a.markeGruen}`}>{w.status}</span>
             </span>
           </span>
-          <button type="button" className={`${a.knopf} ${s.knopf}`} onClick={() => melde(D.meldungLaden)}>
-            <Zeichen name="laden" />
-            {w.herunterladen}
-          </button>
+          {doks.some((d) => d.police) ? (
+            <button type="button" className={`${a.knopf} ${s.knopf}`} onClick={() => melde(D.meldungLaden)}>
+              <Zeichen name="laden" />
+              {w.herunterladen}
+            </button>
+          ) : null}
         </div>
         <div className={s.zwei}>
           <section className={a.karte}>
@@ -268,11 +333,23 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
           </section>
           <section className={a.karte}>
             <h4 className={`${a.h2} ${s.kartenTitel}`}>{w.versichert}</h4>
-            <ul className={a.leistungen}>
+            <ul className={`${a.leistungen} ${s.leistungen}`}>
               {p.leistungen.map((l) => (
                 <li key={l.name}>
                   <span className={a.policeText}>
-                    <strong>{l.name}</strong>
+                    <strong className={s.deckung}>{l.name}</strong>
+                    {l.praemie ? (
+                      <span className={s.deckungPraemie}>
+                        {w.angaben.praemie} {l.praemie} {D.start.proJahr}
+                      </span>
+                    ) : null}
+                    {l.details.length ? (
+                      <ul className={s.details}>
+                        {l.details.map((z) => (
+                          <li key={z}>{z}</li>
+                        ))}
+                      </ul>
+                    ) : null}
                     {l.zusatz ? <span className={a.klein}>{l.zusatz}</span> : null}
                   </span>
                   {l.wert ? <span className={a.wert}>{l.wert}</span> : null}
@@ -297,8 +374,9 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
         ) : null}
         <section className={a.karte}>
           <h4 className={`${a.h2} ${s.kartenTitel}`}>{w.unterlagen}</h4>
+          {doks.length ? null : <p className={`${a.klein} ${s.absatz}`}>{D.anfragen.keineUnterlage}</p>}
           <div className={a.dokumente}>
-            {p.dokumente.map((d) => (
+            {doks.map((d) => (
               <span key={d.name} className={a.dokument}>
                 <span className={a.dokumentBild}>
                   <Zeichen name="dokument" />
@@ -323,7 +401,7 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
           <button type="button" className={`${a.knopf} ${s.knopf}`} onClick={() => geh('anfragen', { formular: 'vertrag', vorgabe: p.id })}>
             {w.aendern}
           </button>
-          <button type="button" className={s.leise} onClick={() => geh('anfragen', { formular: 'nachricht', vorgabe: p.id })}>
+          <button type="button" className={s.leise} onClick={() => geh('anfragen', { formular: 'frage', vorgabe: p.id })}>
             {w.frage}
           </button>
           <button type="button" className={s.leise} onClick={() => geh('anfragen', { formular: 'rueckruf' })}>
@@ -359,7 +437,7 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
               </Feld>
             </div>
             <WahlFeld id="d-zeit" titel={q.rueckruf.zeit} optionen={q.rueckruf.zeiten} start={q.rueckruf.zeiten[0]} name="zeit" fest />
-            <WahlFeld id="d-thema" titel={q.rueckruf.thema} optionen={q.rueckruf.themen} name="thema" />
+            <WahlFeld id="d-thema" titel={q.rueckruf.thema} optionen={q.rueckruf.themen} start={thema === null ? '' : q.rueckruf.themen[thema]} name="thema" />
             <Feld id="d-tag" titel={q.rueckruf.tag} frei>
               <input id="d-tag" type="date" />
             </Feld>
@@ -399,6 +477,36 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
         )
       case 'vertrag':
         return <VertragDemo ablegen={ablegen} vorgabe={vorgabe} />
+      case 'schaden':
+        return <SchadenDemo ablegen={ablegen} nachricht={() => { setFormular('nachricht'); setVorgabe(null) }} />
+      case 'treuhand':
+        return <TreuhandDemo ablegen={ablegen} />
+      case 'frage':
+        return (
+          <form
+            onSubmit={(e) => {
+              e.preventDefault()
+              const d = new FormData(e.currentTarget)
+              const p = D.policen.find((x) => x.id === d.get('police'))
+              ablegen(`${q.frage.betreff} ${(p?.name ?? '').replace(/\u00ad/g, '')}`, String(d.get('text') ?? '').trim())
+            }}
+          >
+            <Feld id="d-qpolice" titel={q.frage.police}>
+              <select id="d-qpolice" name="police" defaultValue={vorgabe ?? D.policen[0].id}>
+                {D.policen.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.name.replace(/\u00ad/g, '')} · {p.gesellschaft} · {p.nummer}
+                  </option>
+                ))}
+              </select>
+            </Feld>
+            <Feld id="d-qtext" titel={q.frage.frage}>
+              <textarea id="d-qtext" name="text" required />
+            </Feld>
+            <Rueckmeldung id="d-q" />
+            {knopfSenden(q.frage.knopf)}
+          </form>
+        )
       case 'nachricht': {
         const p = D.policen.find((x) => x.id === vorgabe)
         return (
@@ -423,40 +531,85 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
   }
 
   const anfragenSeite = () => {
+    const A = D.anfragen.assistent
     const eintrag = D.anfragen.formulare.find((x) => x.formular === formular)
+    let stufe: Stufe = 'start'
+    for (const [st, an] of pfad) {
+      const ziel = WEG[st].find(([k]) => k === an)?.[1]
+      if (ziel?.weiter) stufe = ziel.weiter
+    }
+    const waehle = (st: Stufe, an: Antwort, ziel: { formular?: Formular; weiter?: Stufe; thema?: number }) => {
+      setPfad([...pfad, [st, an]])
+      if (ziel.thema !== undefined) setThema(ziel.thema)
+      setFormular(ziel.formular ?? null)
+      setVorgabe(null)
+      setMeldung(null)
+    }
+    const zurueck = () => {
+      setPfad(pfad.slice(0, -1))
+      setFormular(null)
+      setMeldung(null)
+    }
+    const neu = () => {
+      setPfad([])
+      setThema(null)
+      setFormular(null)
+      setMeldung(null)
+    }
+    const wegAnzeige = pfad.length ? (
+      <ol className={s.pfad} aria-label={A.ihreWahl}>
+        {pfad.map(([st, an]) => (
+          <li key={`${st}-${an}`}>{A.antworten[an][0]}</li>
+        ))}
+      </ol>
+    ) : null
+    const fuss =
+      pfad.length || formular ? (
+        <div className={s.knoepfe}>
+          <button type="button" className={s.leise} onClick={zurueck}>
+            {A.zurueck}
+          </button>
+          {pfad.length > 1 || (formular && pfad.length) ? (
+            <button type="button" className={s.leise} onClick={neu}>
+              {A.neuBeginnen}
+            </button>
+          ) : null}
+        </div>
+      ) : null
     return (
       <>
         {ueberschrift(D.anfragen.titel)}
-        <div className={`${a.wahl} ${s.wahl}`}>
-          {D.anfragen.formulare.map((w) => (
-            <button
-              key={w.formular}
-              type="button"
-              aria-pressed={formular === w.formular}
-              className={`${a.wahlKnopf} ${s.knopfWahl}`}
-              onClick={() => {
-                setFormular(formular === w.formular ? null : w.formular)
-                setVorgabe(null)
-                setMeldung(null)
-              }}
-            >
-              <span className={a.rund}>
-                <Zeichen name={w.zeichen} />
-              </span>
-              <strong>{w.titel}</strong>
-              <span className={a.klein}>{w.text}</span>
-            </button>
-          ))}
-        </div>
         {formular && eintrag ? (
           <section className={`${a.karte} ${s.formular}`}>
+            {wegAnzeige}
             <h4 ref={formTitel} tabIndex={-1} className={`${a.h2} ${s.kartenTitel} ${s.titel}`}>
               {eintrag.titel}
             </h4>
             {formularInhalt(formular)}
+            {fuss}
           </section>
         ) : (
-          <p className={`${a.leise} ${s.absatz}`}>{D.anfragen.waehlen}</p>
+          <section className={`${a.karte} ${s.formular}`}>
+            <p className={s.schritt}>
+              {A.schritt} {pfad.length + 1}
+            </p>
+            {wegAnzeige}
+            <h4 ref={formTitel} tabIndex={-1} className={`${a.h2} ${s.kartenTitel} ${s.titel}`}>
+              {A.fragen[stufe]}
+            </h4>
+            <div className={s.antworten}>
+              {WEG[stufe].map(([an, ziel]) => (
+                <button key={an} type="button" className={s.antwort} onClick={() => waehle(stufe, an, ziel)}>
+                  <span>
+                    <strong>{A.antworten[an][0]}</strong>
+                    <span className={a.klein}>{A.antworten[an][1]}</span>
+                  </span>
+                  <Zeichen name="pfeil" klasse={`${a.zeichen} ${a.pfeil}`} />
+                </button>
+              ))}
+            </div>
+            {fuss}
+          </section>
         )}
         <h4 className={a.h2}>{D.anfragen.bisher}</h4>
         <div className={a.anfragen}>
@@ -529,7 +682,7 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
         <span className={a.adresse}>{portalRahmen.adresse}</span>
       </div>
       <p className={s.band}>{D.band}</p>
-      <div className={a.portal}>
+      <div className={`${a.portal} ${s.portal}`}>
         <div className={a.kopf}>
           <button type="button" className={s.logoKnopf} aria-label={D.zurStart} onClick={() => geh('start')}>
             <Image src="/logo/ac-logo.png" alt="" width={216} height={47} className={a.logo} />
@@ -562,8 +715,163 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
           </div>
           <div className={`${a.inhalt} ${s.inhalt}`}>{inhalt}</div>
         </div>
+        <button type="button" className={s.terminKnopf} aria-label={D.start.termin.knopf} onClick={() => geh('anfragen', { formular: 'termin' })}>
+          <Zeichen name="kalender" />
+          <span className={s.terminText}>{D.start.termin.knopf}</span>
+        </button>
       </div>
     </div>
     </DemoKontext.Provider>
+  )
+}
+
+/* ---- Schadenmeldung und Treuhand (20.10.2026), wie im Portal ------------------------------------ */
+
+function SchadenDemo({ ablegen, nachricht }: { ablegen: (betreff: string, text: string) => void; nachricht: () => void }) {
+  const D = useDemo()
+  const q = D.anfragen.schaden
+  const [art, setArt] = useState<number | null>(null)
+  const [fehler, setFehler] = useState(false)
+  // Versichert? Geprüft gegen die Deckungen der Verträge; «Anderes» wird nicht geprüft
+  const noetig = art === null ? null : SCHADEN_DECKUNG[art]
+  const deckend = noetig ? D.policen.filter((p) => p.bereiche.some((b) => noetig.includes(b))) : null
+  const nichtVersichert = !!deckend && deckend.length === 0
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        const d = new FormData(e.currentTarget)
+        const hergang = String(d.get('text') ?? '').trim()
+        if (art === null || !hergang) {
+          setFehler(true)
+          return
+        }
+        ablegen(`${q.betreff}: ${q.arten[art]}`, hergang)
+      }}
+    >
+      <WahlFeld
+        id="d-sart"
+        titel={q.was}
+        optionen={q.arten}
+        name="art"
+        onChange={(v) => {
+          const i = q.arten.indexOf(v as never)
+          setArt(i < 0 ? null : i)
+          setFehler(false)
+        }}
+      />
+      {nichtVersichert ? (
+        <div className={s.warnung}>
+          <strong>{q.nichtTitel}</strong>
+          <p>{q.nichtText}</p>
+          <div className={s.knoepfe}>
+            <a className={`${a.knopf} ${s.knopf}`} href="tel:0323732244">
+              {q.anrufen}
+            </a>
+            <button type="button" className={s.leise} onClick={nachricht}>
+              {q.nachricht}
+            </button>
+          </div>
+        </div>
+      ) : (
+        <>
+          <Feld id="d-spolice" titel={q.vertrag}>
+            <select id="d-spolice" name="police" key={deckend?.length === 1 ? deckend[0].id : 'leer'} defaultValue={deckend?.length === 1 ? deckend[0].id : ''}>
+              <option value="">{q.weissNicht}</option>
+              {D.policen.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.name.replace(/\u00ad/g, '')} · {p.gesellschaft} · {p.nummer}
+                </option>
+              ))}
+            </select>
+          </Feld>
+          <div className={s.felderZeile}>
+            <Feld id="d-swann" titel={q.wann} frei>
+              <input id="d-swann" type="date" />
+            </Feld>
+            <Feld id="d-swo" titel={q.wo} frei>
+              <input id="d-swo" type="text" autoComplete="off" />
+            </Feld>
+          </div>
+          <Feld id="d-stext" titel={q.hergang} hilfe={q.hergangHilfe}>
+            <textarea id="d-stext" name="text" required />
+          </Feld>
+          <WahlFeld id="d-shoehe" titel={q.hoehe} optionen={q.hoehen} name="hoehe" />
+          <WahlFeld id="d-sdritte" titel={q.dritte} optionen={q.janein} name="dritte" />
+          <WahlFeld id="d-spolizei" titel={q.polizei} optionen={q.janein} name="polizei" />
+          <p className={s.hinweis}>{q.tipp}</p>
+          <Rueckmeldung id="d-s" />
+          {fehler ? (
+            <p className={s.fehler} role="alert">
+              {q.fehler}
+            </p>
+          ) : null}
+          <div className={s.knoepfe}>
+            <button type="submit" className={`${a.knopf} ${s.knopf}`}>
+              {q.knopf}
+            </button>
+          </div>
+        </>
+      )}
+    </form>
+  )
+}
+
+function TreuhandDemo({ ablegen }: { ablegen: (betreff: string, text: string) => void }) {
+  const D = useDemo()
+  const q = D.anfragen.treuhand
+  const [bereich, setBereich] = useState<number | null>(null)
+  const [fehler, setFehler] = useState(false)
+  const jahr = new Date().getFullYear()
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        if (bereich === null) {
+          setFehler(true)
+          return
+        }
+        const d = new FormData(e.currentTarget)
+        const text = ['fuer', 'jahr', 'rechtsform', 'ab', 'text'].map((k) => String(d.get(k) ?? '').trim()).filter(Boolean).join(' · ')
+        ablegen(`${q.betreff}: ${q.bereiche[bereich]}`, text)
+      }}
+    >
+      <WahlFeld
+        id="d-tbereich"
+        titel={q.was}
+        optionen={q.bereiche}
+        name="bereich"
+        onChange={(v) => {
+          const i = q.bereiche.indexOf(v as never)
+          setBereich(i < 0 ? null : i)
+          setFehler(false)
+        }}
+      />
+      {bereich === 0 ? (
+        <>
+          <WahlFeld id="d-tfuer" titel={q.fuer} optionen={q.fuerOptionen} name="fuer" />
+          <WahlFeld id="d-tjahr" titel={q.jahr} optionen={[String(jahr - 1), String(jahr - 2), q.aelter]} name="jahr" />
+        </>
+      ) : bereich === 1 ? (
+        <>
+          <WahlFeld id="d-tform" titel={q.rechtsform} optionen={q.rechtsformen} name="rechtsform" />
+          <WahlFeld id="d-tab" titel={q.ab} optionen={q.abOptionen} name="ab" />
+        </>
+      ) : null}
+      <Feld id="d-ttext2" titel={q.text} frei>
+        <textarea id="d-ttext2" name="text" />
+      </Feld>
+      <Rueckmeldung id="d-t" />
+      {fehler ? (
+        <p className={s.fehler} role="alert">
+          {q.fehler}
+        </p>
+      ) : null}
+      <div className={s.knoepfe}>
+        <button type="submit" className={`${a.knopf} ${s.knopf}`}>
+          {q.knopf}
+        </button>
+      </div>
+    </form>
   )
 }

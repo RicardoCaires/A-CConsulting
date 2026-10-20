@@ -2929,6 +2929,26 @@ gibt es noch keine.
 > - **Regel:** Vor dem Einbau eines Blocks prüfen, ob dieselbe Angabe auf der Seite schon steht – auch im
 >   Fussbereich.
 
+## 9g. Portalvorschau mit dem Demokunden (20.10.2026)
+
+> Ricardo: «diese version des Portals muss dann auch auf der Website erscheinen genau mit dem Demokunden es dürfen
+> natürlich keine echten daten gezeigt werden». Die Vorschau (`PortalDemo.tsx`, Daten `portalDemo` in
+> `portal-beispiel.ts` je Sprache) zeigt jetzt den Stand des Kundenportals vom 20.10.2026 mit dem Demo-Dossier
+> K-000597 aus dem CRM (Herr Demo Testkunde):
+>
+> - **Sieben Verträge** mit üblichen Spartennamen (Motorfahrzeug, Hausrat und Privathaftpflicht, Gebäude,
+>   Rechtsschutz, Krankenkasse, Säule 3a, Reiseversicherung), echten Gesellschaften und deren **Logos**
+>   (`public/bilder/gesellschaften/`, dieselben Dateien wie im Portal). Nummern, Beträge, Adresse und Fahrzeug sind
+>   erfunden. Die Logos der Versicherer verantwortet Ricardo (Abschnitt 3, Entscheid vom 09.09.2026).
+> - **«Was versichert ist»**: jede Deckung fett, mit eigener Prämie pro Jahr und den Leistungen im Detail.
+> - **Geführte Anfrage** statt Knopfraster: Worum geht es? → Offerte, Vertrag (ändern oder Frage), Schadenmeldung,
+>   Treuhand (nur Themen für Privatpersonen) oder «Etwas anderes» → Rückruf, Termin, Nachricht. Schadenmeldung
+>   prüft die Deckungen und zeigt bei fehlender Deckung «Dafür ist keine Versicherung erfasst».
+> - **«Termin vereinbaren»** schwebt unten rechts im Portalfenster.
+> - Kostenring nach Sparte mit fünf Farben und Rappen (`chf()` in `PortalAnsicht.tsx`).
+> - **Ändert sich das Portal oder das Demo-Dossier, gehört die Vorschau nachgezogen.** Gesendet wird weiterhin nichts.
+> - Nachgemessen in DE, FR, PT bei 320, 390, 768 und 1440 px: kein Überlauf.
+
 ## 10. Offene Punkte
 
 Technik und Infrastruktur:

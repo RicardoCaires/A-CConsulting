@@ -339,6 +339,10 @@
   stroke: var(--ac-color-border-tint);
 }
 
+.r4 {
+  stroke: var(--ac-color-navy-deep);
+}
+
 .ringMitte {
   position: absolute;
   inset: 0;
@@ -404,6 +408,10 @@
 
 .legendePunkt.r3 {
   background-color: var(--ac-color-border-tint);
+}
+
+.legendePunkt.r4 {
+  background-color: var(--ac-color-navy-deep);
 }
 
 .legendeText {
