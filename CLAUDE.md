@@ -2898,6 +2898,11 @@ gibt es noch keine.
 > Die Animation ist auf eine ruhige Einblendung reduziert: Bild steht still, die Karte blendet in 450 ms ein, der
 > Sticker folgt.
 
+> **Zurückgenommen am 20.10.2026** (Ricardo: «gefällt mir nicht bitte zurück zum alten design»): Die Startseite trägt
+> wieder den grossen Banner wie alle übrigen Seiten, in DE, FR und PT. `banner.form` und `banner.spruch` stehen in
+> `start.ts` nicht mehr; damit ist auch der Sticker «Wir vertreten Sie. Nicht die Versicherung.» weg. `Einstieg.tsx`
+> bleibt liegen, der Wortlaut steht in `startseite_einstieg_de.md`.
+
 ## 9e. Kundenportal: Erklärung und Vorschau in einem Block (19.10.2026)
 
 > Ricardo: «kann man diese zwei teile zusammen nehmen sodass man die erklärung hat und dann testen kann sonst sieht
