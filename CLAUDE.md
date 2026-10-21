@@ -2880,6 +2880,45 @@ gibt es noch keine.
 >   brachen mitten im Wort; unter 17rem Kartenbreite steht der Name jetzt unter Prozent und Betrag.
 > - Texte als Vorschlag in `content/source/news_vorsorge_2027_de.md`; Ricardo bestätigt.
 
+## 9c-bis. News-Übersicht als Karten (21.10.2026)
+
+> Ricardo zum Bild der Übersicht: «das sieht alles noch etwas langweillig aus».
+>
+> Der Grund war zuerst ein Layoutfehler: `.raster` stand auf
+> `minmax(0, 1.25fr) minmax(0, 1fr)` — der neueste Beitrag links, die weiteren
+> rechts als Liste. Solange es **einen** freigegebenen Beitrag gibt, entstand
+> die zweite Spalte gar nicht, und rechts blieb die halbe Blockbreite leer.
+>
+> Die Übersicht läuft seither als **Karten in der Bildsprache der Listenkarten**
+> (16.10.2026): weisse Karte, 22 px Ecken, Haarlinie, **farbige Oberkante**
+> (5 px), getönter Kopf mit Art und Datum, Hub von drei Pixeln beim Zeigen —
+> nur bei echtem Zeiger (`hover: hover` und `pointer: fine`), sonst bliebe eine
+> getippte Karte auf dem Telefon im Hover-Zustand hängen.
+>
+> - **Der neueste Beitrag steht über die volle Breite.** Ab 56 rem teilt er sich
+>   innen in zwei Spalten: links Titel, Satz und «Beitrag lesen →», rechts
+>   **«Im Beitrag»** mit den Zwischentiteln des Beitrags, höchstens vier.
+>   Das ist echter Inhalt aus `abschnitte[].zwischentitel` — **nichts
+>   Erfundenes und kein Bild**; lizenzierte Aufnahmen gibt es dafür nicht.
+> - **Die weiteren Beiträge** stehen ab 48 rem in einem Raster
+>   `repeat(auto-fill, minmax(min(100%, 20rem), 1fr))` statt in einer schmalen
+>   Spalte. Ihre Farbtöne wechseln wie bei den Listenkarten: Grün, Navy, Grau.
+> - **«Beitrag lesen» sieht aus wie ein Knopf, ist aber keiner.** Die ganze
+>   Karte ist der Link; ein zweiter Link darin wäre ein Link im Link. Damit
+>   bleibt Ricardos Festlegung vom 15.10.2026 («keine Textlinks») gewahrt.
+> - Der Pfeil rückt beim Zeigen drei Pixel, der Knopf wird navy — wie überall.
+>   Unter `prefers-reduced-motion: reduce` bewegt sich nichts.
+> - **Neue feste Texte in DE, FR und PT** (`NEWS_TEXTE`): `lesen`
+>   («Beitrag lesen» / «Lire l'article» / «Ler o artigo») und `imBeitrag`
+>   («Im Beitrag» / «Dans l'article» / «No artigo»).
+>
+> **Nachgemessen** in DE, FR und PT bei 320, 375, 768, 1024 und 1440 px:
+> kein waagrechter Überlauf, kein abgeschnittener Text, Karten innerhalb einer
+> Reihe gleich hoch (1440: grosse Karte 1072 px, die drei weiteren je
+> 344 x 380 px). `npm run check` fehlerfrei.
+>
+> Die Gestaltung des Beitrags selbst ist unverändert.
+
 ## 9d. Neuer Einstieg der Startseite (19.10.2026)
 
 > Ricardo: «ich will diesen bereich hier komplett neugestalten», auf Rückfrage **«Hell und kompakt»**, und vom

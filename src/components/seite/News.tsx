@@ -10,13 +10,22 @@ import seite from './Seite.module.css'
 import styles from './News.module.css'
 
 /**
- * «News und Blog» (15.10.2026), nach dem Vorbild simply.ch: oben der neueste
- * Beitrag gross, daneben die weiteren als Liste. Keine Bilder – es gibt keine
- * lizenzierten Aufnahmen dafür, und erfundene Stockbilder schliesst die
- * Hausordnung aus. Der Beitrag selbst ist ruhiger Fliesstext mit Zwischentiteln.
+ * «News und Blog» (15.10.2026). Übersicht seit dem 21.10.2026 als Karten in der
+ * Bildsprache der Listenkarten (16.10.2026): weisse Karte, farbige Oberkante,
+ * getönter Kopf, Hub beim Zeigen. Der neueste Beitrag steht gross über die ganze
+ * Breite — vorher lag er in einer 1.25fr-Spalte, und solange es nur einen
+ * Beitrag gibt, blieb die zweite Spalte leer (Ricardo, 21.10.2026: «das sieht
+ * alles noch etwas langweillig aus»).
+ *
+ * Keine Bilder — es gibt keine lizenzierten Aufnahmen dafür, und erfundene
+ * Stockbilder schliesst die Hausordnung aus. Was die grosse Karte füllt, sind
+ * die Zwischentitel des Beitrags: echter Inhalt, nichts Erfundenes.
  */
 
 const href = (locale: Locale, slug: string) => `${path('news', locale)}${slug}/`
+
+/** Farbton je Karte, wie bei den Listenkarten: Grün, Navy, Grau im Wechsel. */
+const TOENE = [undefined, 'navy', 'grau'] as const
 
 function Marke({ b, locale }: { b: Beitrag; locale: Locale }) {
   const T = NEWS_TEXTE[locale]
@@ -28,9 +37,34 @@ function Marke({ b, locale }: { b: Beitrag; locale: Locale }) {
   )
 }
 
+function Kopf({ b, locale, mitLesezeit = false }: { b: Beitrag; locale: Locale; mitLesezeit?: boolean }) {
+  const T = NEWS_TEXTE[locale]
+  return (
+    <span className={styles.kopf}>
+      <Marke b={b} locale={locale} />
+      <span className={styles.meta}>
+        {datumLang(b.datum, locale)}
+        {mitLesezeit ? ` · ${b.minuten} ${T.lesezeit}` : null}
+      </span>
+    </span>
+  )
+}
+
+function Lesen({ locale }: { locale: Locale }) {
+  return (
+    <span className={styles.lesen}>
+      {NEWS_TEXTE[locale].lesen}
+      <span aria-hidden="true">→</span>
+    </span>
+  )
+}
+
 export function NewsUebersicht({ beitraege, locale }: { beitraege: readonly Beitrag[]; locale: Locale }) {
   const T = NEWS_TEXTE[locale]
   const [erster, ...weitere] = beitraege
+  // Die Zwischentitel des Beitrags als Inhaltsverzeichnis der grossen Karte
+  const themen = (erster?.abschnitte ?? []).map((a) => a.zwischentitel).filter((t): t is string => !!t).slice(0, 4)
+
   return (
     <div className={`${seite.seite} ${seite.seiteOhneBanner}`}>
       <div className={`ac-container ${seite.bloecke}`}>
@@ -42,28 +76,38 @@ export function NewsUebersicht({ beitraege, locale }: { beitraege: readonly Beit
           <p className={seite.einleitung}>{T.einleitung}</p>
 
           {erster ? (
-            <div className={styles.raster}>
-              <a className={styles.gross} href={href(locale, erster.slug)}>
-                <Marke b={erster} locale={locale} />
-                <span className={styles.grossTitel}>{erster.titel}</span>
-                <span className={styles.kurz}>{erster.kurz}</span>
-                <span className={styles.meta}>
-                  {datumLang(erster.datum, locale)} · {erster.minuten} {T.lesezeit}
+            <div className={styles.karten}>
+              <a className={`${styles.karte} ${styles.gross}`} href={href(locale, erster.slug)}>
+                <Kopf b={erster} locale={locale} mitLesezeit />
+                <span className={styles.koerper}>
+                  <span className={styles.haupt}>
+                    <span className={styles.grossTitel}>{erster.titel}</span>
+                    <span className={styles.kurz}>{erster.kurz}</span>
+                    <Lesen locale={locale} />
+                  </span>
+                  {themen.length ? (
+                    <span className={styles.themen}>
+                      <span className={styles.themenTitel}>{T.imBeitrag}</span>
+                      {themen.map((t) => (
+                        <span key={t} className={styles.thema}>
+                          {t}
+                        </span>
+                      ))}
+                    </span>
+                  ) : null}
                 </span>
               </a>
-              {weitere.length ? (
-                <ul className={styles.liste}>
-                  {weitere.map((b) => (
-                    <li key={b.slug}>
-                      <a href={href(locale, b.slug)}>
-                        <Marke b={b} locale={locale} />
-                        <span className={styles.listeTitel}>{b.titel}</span>
-                        <span className={styles.meta}>{datumLang(b.datum, locale)}</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
+
+              {weitere.map((b, i) => (
+                <a key={b.slug} className={styles.karte} data-ton={TOENE[(i + 1) % TOENE.length]} href={href(locale, b.slug)}>
+                  <Kopf b={b} locale={locale} />
+                  <span className={styles.koerper}>
+                    <span className={styles.kleinTitel}>{b.titel}</span>
+                    <span className={styles.kurz}>{b.kurz}</span>
+                    <Lesen locale={locale} />
+                  </span>
+                </a>
+              ))}
             </div>
           ) : (
             <p className={seite.absatz}>{T.leer}</p>

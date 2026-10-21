@@ -47,12 +47,12 @@ export function datumLang(iso: string, locale: Locale = 'de'): string {
 }
 
 /** Feste Texte der News-Ansicht. */
-export const NEWS_TEXTE: Record<Locale, { vor: string; akzent: string; einleitung: string; leer: string; lesezeit: string; zurueck: string; entwurf: string; ctaTitel: string; ctaText: string; ctaKnopf: string; ctaAnrufen: string; art: Record<Beitrag['art'], string>; beschreibung: string }> = {
+export const NEWS_TEXTE: Record<Locale, { vor: string; akzent: string; einleitung: string; leer: string; lesezeit: string; lesen: string; imBeitrag: string; zurueck: string; entwurf: string; ctaTitel: string; ctaText: string; ctaKnopf: string; ctaAnrufen: string; art: Record<Beitrag['art'], string>; beschreibung: string }> = {
   de: {
     ctaTitel: 'Was bedeutet das für Sie?', ctaText: 'Wir schauen Ihre Vorsorge und Ihre Versicherungen gemeinsam an – persönlich bei uns im Büro oder am Telefon.', ctaKnopf: 'Termin vereinbaren', ctaAnrufen: 'Anrufen',
     vor: 'News und ', akzent: 'Blog',
     einleitung: 'Was sich bei A&C tut, und was Sie zu Versicherungen, Steuern und Treuhand wissen sollten.',
-    leer: 'Die ersten Beiträge folgen in Kürze.', lesezeit: 'Min. Lesezeit', zurueck: '← News und Blog', entwurf: 'Entwurf',
+    leer: 'Die ersten Beiträge folgen in Kürze.', lesezeit: 'Min. Lesezeit', lesen: 'Beitrag lesen', imBeitrag: 'Im Beitrag', zurueck: '← News und Blog', entwurf: 'Entwurf',
     art: { News: 'News', Ratgeber: 'Ratgeber' },
     beschreibung: 'Neuigkeiten von A&C und Wissenswertes zu Versicherungen, Steuern und Treuhand.',
   },
@@ -60,7 +60,7 @@ export const NEWS_TEXTE: Record<Locale, { vor: string; akzent: string; einleitun
     ctaTitel: 'Qu’est-ce que cela signifie pour vous ?', ctaText: 'Nous examinons ensemble votre prévoyance et vos assurances – en personne à notre bureau ou par téléphone.', ctaKnopf: 'Prendre rendez-vous', ctaAnrufen: 'Appeler',
     vor: 'Actualités et ', akzent: 'blog',
     einleitung: 'Ce qui se passe chez A&C, et ce qu’il faut savoir sur les assurances, les impôts et la fiduciaire.',
-    leer: 'Les premiers articles suivront prochainement.', lesezeit: 'min de lecture', zurueck: '← Actualités et blog', entwurf: 'Brouillon',
+    leer: 'Les premiers articles suivront prochainement.', lesezeit: 'min de lecture', lesen: 'Lire l’article', imBeitrag: 'Dans l’article', zurueck: '← Actualités et blog', entwurf: 'Brouillon',
     art: { News: 'Actualité', Ratgeber: 'Guide' },
     beschreibung: 'Actualités d’A&C et informations utiles sur les assurances, les impôts et la fiduciaire.',
   },
@@ -68,7 +68,7 @@ export const NEWS_TEXTE: Record<Locale, { vor: string; akzent: string; einleitun
     ctaTitel: 'O que significa isto para si?', ctaText: 'Analisamos consigo a sua previdência e os seus seguros – pessoalmente no nosso escritório ou por telefone.', ctaKnopf: 'Marcar reunião', ctaAnrufen: 'Ligar',
     vor: 'Notícias e ', akzent: 'blogue',
     einleitung: 'O que acontece na A&C e o que convém saber sobre seguros, impostos e contabilidade.',
-    leer: 'Os primeiros artigos seguem em breve.', lesezeit: 'min de leitura', zurueck: '← Notícias e blogue', entwurf: 'Rascunho',
+    leer: 'Os primeiros artigos seguem em breve.', lesezeit: 'min de leitura', lesen: 'Ler o artigo', imBeitrag: 'No artigo', zurueck: '← Notícias e blogue', entwurf: 'Rascunho',
     art: { News: 'Notícia', Ratgeber: 'Guia' },
     beschreibung: 'Notícias da A&C e informação útil sobre seguros, impostos e contabilidade.',
   },

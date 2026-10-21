@@ -1,32 +1,95 @@
-/* News und Blog (15.10.2026). Übersicht: grosser neuester Beitrag, daneben eine
-   Liste. Beitrag: ruhiger Fliesstext in Lesebreite. Farben nur aus den Tokens. */
+/* News und Blog (15.10.2026). Übersicht seit dem 21.10.2026 als Karten in der
+   Bildsprache der Listenkarten: weisse Karte, farbige Oberkante, getönter Kopf,
+   Hub beim Zeigen. Beitrag: ruhiger Fliesstext in Lesebreite.
+   Farben nur aus den Tokens. */
 
-.raster {
+.karten {
   display: grid;
-  gap: 1rem;
+  gap: 1.25rem;
   margin-top: clamp(1.5rem, 3vw, 2.25rem);
 }
 
-@media (min-width: 64rem) {
-  .raster {
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-    align-items: stretch;
+/* Ab zwei Beiträgen stehen die weiteren nebeneinander; die grosse Karte oben
+   nimmt immer die volle Breite. minmax mit min() verhindert, dass eine Spalte
+   auf schmalen Geräten breiter wird als der Platz. */
+@media (min-width: 48rem) {
+  .karten {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  }
+
+  .gross {
+    grid-column: 1 / -1;
   }
 }
 
-.gross {
+.karte {
+  --ton: var(--ac-color-accent-green);
+  --ton-flaeche: var(--ac-color-signal-positive-bg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-decoration: none;
+  background-color: var(--ac-color-white);
+  border: var(--ac-border-hairline) solid var(--ac-line);
+  border-radius: 22px;
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.karte[data-ton='navy'] {
+  --ton: var(--ac-color-primary-navy);
+  --ton-flaeche: var(--ac-color-background-tint);
+}
+
+.karte[data-ton='grau'] {
+  --ton: var(--ac-color-brand-grey);
+  --ton-flaeche: var(--ac-color-background-light);
+}
+
+/* Nur bei echtem Zeiger: auf dem Telefon bliebe eine getippte Karte sonst
+   im Hover-Zustand hängen (wie bei den Profilkarten, 22.09.2026). */
+@media (hover: hover) and (pointer: fine) {
+  .karte:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--ac-shadow-card-strong);
+  }
+}
+
+.kopf {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.85rem 1.35rem;
+  background-color: var(--ton-flaeche);
+  border-top: 5px solid var(--ton);
+}
+
+.koerper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.25rem 1.35rem 1.4rem;
+}
+
+/* Die grosse Karte: links der Beitrag, rechts seine Zwischentitel. */
+@media (min-width: 56rem) {
+  .gross .koerper {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: start;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+  }
+}
+
+.haupt {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding: clamp(1.5rem, 3vw, 2.25rem);
-  text-decoration: none;
-  background-color: var(--ac-color-background-light);
-  border-radius: 24px;
-  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
-}
-
-.gross:hover {
-  background-color: var(--ac-color-background-tint);
 }
 
 .grossTitel {
@@ -35,48 +98,99 @@
   line-height: 1.15;
   font-weight: var(--ac-display-weight);
   color: var(--ac-color-primary-navy);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.kleinTitel {
+  font-family: var(--ac-font-display);
+  font-size: 1.3rem;
+  line-height: 1.2;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+  transition: color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.karte:hover .grossTitel,
+.karte:hover .kleinTitel {
+  color: var(--ton);
 }
 
 .kurz {
   font-size: var(--ac-body-size);
   line-height: 1.6;
+  color: var(--ac-color-text-primary);
+  /* Lesbare Zeilenlänge, auch wenn die Karte breit ist */
+  max-width: 56ch;
+}
+
+/* «Beitrag lesen →» sieht aus wie ein Knopf, ist aber keiner: Die ganze Karte
+   ist der Link (Ricardo, 15.10.2026: keine Textlinks). Ein zweiter Link darin
+   wäre ein Link im Link. */
+.lesen {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  margin-top: 0.25rem;
+  min-height: 2.75rem;
+  padding: 0.45rem 1.1rem;
+  font-size: var(--ac-small-size);
+  font-weight: 600;
+  color: var(--ac-color-white);
+  background-color: var(--ac-color-accent-green);
+  border-radius: var(--ac-radius-button);
+  transition: background-color var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.lesen span {
+  transition: transform var(--ac-motion-base) var(--ac-motion-easing);
+}
+
+.karte:hover .lesen {
+  background-color: var(--ac-color-navy-deep);
+}
+
+.karte:hover .lesen span {
+  transform: translateX(3px);
+}
+
+/* Inhaltsverzeichnis der grossen Karte: die Zwischentitel des Beitrags. */
+.themen {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.1rem 1.25rem;
+  background-color: var(--ac-color-background-light);
+  border-radius: 16px;
+}
+
+.themenTitel {
+  font-size: var(--ac-small-size);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--ac-color-text-secondary);
 }
 
-.liste {
-  display: grid;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border: var(--ac-border-hairline) solid var(--ac-line);
-  border-radius: 24px;
-}
-
-.liste li + li {
-  border-top: var(--ac-border-hairline) solid var(--ac-line-soft);
-}
-
-.liste a {
+.thema {
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  padding: 1.1rem 1.4rem;
-  text-decoration: none;
+  gap: 0.6rem;
+  font-size: var(--ac-small-size);
+  line-height: 1.5;
+  color: var(--ac-color-text-primary);
 }
 
-.listeTitel {
-  font-weight: 700;
-  line-height: 1.35;
-  color: var(--ac-color-primary-navy);
+.thema::before {
+  content: '';
+  flex: none;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-top: 0.45rem;
+  background-color: var(--ac-color-accent-green);
+  border-radius: 50%;
 }
 
-.liste a:hover .listeTitel,
-.gross:hover .grossTitel {
-  color: var(--ac-color-accent-green);
-}
-
-.gross:focus-visible,
-.liste a:focus-visible,
+.karte:focus-visible,
 .zurueck:focus-visible {
   outline: 3px solid var(--ac-focus-ring);
   outline-offset: 3px;
@@ -88,7 +202,7 @@
   gap: 0.5rem;
   font-size: var(--ac-small-size);
   font-weight: 700;
-  color: var(--ac-color-accent-green);
+  color: var(--ton, var(--ac-color-accent-green));
 }
 
 .entwurf {
@@ -102,6 +216,24 @@
 .meta {
   font-size: var(--ac-small-size);
   color: var(--ac-color-text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .karte,
+  .karte .lesen,
+  .karte .lesen span,
+  .grossTitel,
+  .kleinTitel {
+    transition: none;
+  }
+
+  .karte:hover {
+    transform: none;
+  }
+
+  .karte:hover .lesen span {
+    transform: none;
+  }
 }
 
 /* ---- Der Beitrag ---------------------------------------------------------- */
