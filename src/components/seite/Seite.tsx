@@ -639,14 +639,22 @@ function BlockInhalt({ block, locale, h1, nr }: { block: Block; locale: Locale; 
           <ul className={block.ausfuehrlich ? `${styles.leute} ${styles.leuteGross}` : styles.leute}>
             {block.leute.map((p) => (
               <li key={p.name} className={styles.person}>
-                <Image
-                  src={p.bild.datei}
-                  alt={p.bild.alt}
-                  width={560}
-                  height={420}
-                  sizes="(min-width: 64rem) 30rem, (min-width: 40rem) 45vw, 90vw"
-                  className={styles.foto}
-                />
+                {/* Echte Porträts folgen (Ricardo, 21.10.2026: «bei den Platzhaltern zu den Partnern ein Coming soon
+                    statt dieser KI bilder»); bis dahin eine ruhige Fläche in derselben Grösse. */}
+                {p.bild ? (
+                  <Image
+                    src={p.bild.datei}
+                    alt={p.bild.alt}
+                    width={560}
+                    height={420}
+                    sizes="(min-width: 64rem) 30rem, (min-width: 40rem) 45vw, 90vw"
+                    className={styles.foto}
+                  />
+                ) : (
+                  <span className={`${styles.foto} ${styles.fotoFolgt}`}>
+                    <span>Coming soon</span>
+                  </span>
+                )}
                 <span className={styles.name}>{p.name}</span>
                 <span className={styles.rolle}>{p.rolle}</span>
                 {p.angaben?.length ? (

@@ -2963,6 +2963,15 @@ gibt es noch keine.
 > Inhalt neu ein (Schlüssel je Seite, `@starting-style` in `PortalDemo.module.css`), neue Fragen und Hinweise
 > ebenso. Alles aus unter «Bewegung reduzieren».
 
+## 9h. Porträts: Coming soon statt KI-Bilder (21.10.2026)
+
+> Ricardo: «bitte setzte bei den Platzhaltern zu den Partnern ein Coming soon ein statt dieser KI bilder».
+> `portrait_ricardo.webp` und `portrait_octavio.webp` waren generierte Bilder, keine Aufnahmen der Inhaber. Sie stehen
+> auf keiner Seite mehr (Startseite «Zwei Ansprechpartner» und «Über uns», DE/FR/PT); die Dateien bleiben liegen.
+> Ohne `bild` zeigt der Block `personen` eine hellblaue Fläche im Format 4 : 3 mit «Coming soon» (`.fotoFolgt` in
+> `Seite.module.css`), in allen drei Sprachen gleich. **Sobald echte Porträts vorliegen:** Datei unter
+> `public/bilder/` und `bild: { datei, alt }` bei der Person eintragen, die Fläche weicht von selbst.
+
 ## 10. Offene Punkte
 
 Technik und Infrastruktur:

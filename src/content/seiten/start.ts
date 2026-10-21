@@ -78,16 +78,11 @@ export const start: SeitenInhalt = {
         {
           name: 'Ricardo Caires',
           rolle: 'Treuhand · Versicherungen',
-          bild: { datei: '/bilder/portrait_ricardo.webp', alt: 'Ricardo Caires, Porträt vor hellem Bürohintergrund.' },
           linkedin: 'https://www.linkedin.com/in/ricardo-caires-84a222214/',
         },
         {
           name: 'Octavio Nuno Gouveia Andrade',
           rolle: 'Treuhand · Versicherungen',
-          bild: {
-            datei: '/bilder/portrait_octavio.webp',
-            alt: 'Octavio Nuno Gouveia Andrade, Porträt vor hellem Bürohintergrund.',
-          },
           linkedin: 'https://www.linkedin.com/in/octavio-andrade-211083130/',
         },
       ],

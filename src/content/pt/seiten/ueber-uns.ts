@@ -22,7 +22,6 @@ export const ueberUns: SeitenInhalt = {
         {
           name: 'Ricardo Caires',
           rolle: 'Sócio',
-          bild: { datei: '/bilder/portrait_ricardo.webp', alt: 'Ricardo Caires, retrato com fundo de escritório claro.' },
           angaben: [
             {
               merkmal: 'Percurso profissional',
@@ -41,10 +40,6 @@ export const ueberUns: SeitenInhalt = {
         {
           name: 'Octavio Nuno Gouveia Andrade',
           rolle: 'Gerente e sócio',
-          bild: {
-            datei: '/bilder/portrait_octavio.webp',
-            alt: 'Octavio Nuno Gouveia Andrade, retrato com fundo de escritório claro.',
-          },
           angaben: [
             {
               merkmal: 'Percurso profissional',

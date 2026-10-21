@@ -30,7 +30,6 @@ export const ueberUns: SeitenInhalt = {
         {
           name: 'Ricardo Caires',
           rolle: 'Mitinhaber',
-          bild: { datei: '/bilder/portrait_ricardo.webp', alt: 'Ricardo Caires, Porträt vor hellem Bürohintergrund.' },
           angaben: [
             {
               merkmal: 'Beruflicher Hintergrund',
@@ -49,10 +48,6 @@ export const ueberUns: SeitenInhalt = {
         {
           name: 'Octavio Nuno Gouveia Andrade',
           rolle: 'Geschäftsführer und Mitinhaber',
-          bild: {
-            datei: '/bilder/portrait_octavio.webp',
-            alt: 'Octavio Nuno Gouveia Andrade, Porträt vor hellem Bürohintergrund.',
-          },
           angaben: [
             {
               merkmal: 'Beruflicher Hintergrund',

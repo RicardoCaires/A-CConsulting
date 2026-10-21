@@ -184,7 +184,8 @@ export type Block =
       leute: readonly {
         name: string
         rolle: string
-        bild: { datei: string; alt: string }
+        /** Ohne Bild steht «Coming soon» (21.10.2026: die bisherigen Porträts waren KI-Bilder). */
+        bild?: { datei: string; alt: string }
         angaben?: readonly { merkmal: string; wert: string }[]
         sprachen?: string
         telefon?: 'ricardo' | 'octavio'

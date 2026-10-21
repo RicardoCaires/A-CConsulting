@@ -71,16 +71,11 @@ export const start: SeitenInhalt = {
         {
           name: 'Ricardo Caires',
           rolle: 'Fiduciaire · Assurances',
-          bild: { datei: '/bilder/portrait_ricardo.webp', alt: 'Ricardo Caires, portrait sur fond de bureau clair.' },
           linkedin: 'https://www.linkedin.com/in/ricardo-caires-84a222214/',
         },
         {
           name: 'Octavio Nuno Gouveia Andrade',
           rolle: 'Fiduciaire · Assurances',
-          bild: {
-            datei: '/bilder/portrait_octavio.webp',
-            alt: 'Octavio Nuno Gouveia Andrade, portrait sur fond de bureau clair.',
-          },
           linkedin: 'https://www.linkedin.com/in/octavio-andrade-211083130/',
         },
       ],
