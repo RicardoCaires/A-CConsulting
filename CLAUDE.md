@@ -2837,8 +2837,11 @@ gibt es noch keine.
 >   breite haben … es braucht noch einen call to action z.B. termin abmachen». Der Beitrag ist 64rem breit, Karte,
 >   Text und Haken-Liste füllen dieselbe Spalte; die Karte ragt nicht mehr hinaus. Das Erklärfeld ist dafür
 >   höchstens 34 % breit (die Mitte beginnt bei 36 %), das Fenster gilt erst unter 860 px Kartenbreite. **Jeder
->   Beitrag endet mit «Was bedeutet das für Sie?»**, einem Satz und den Knöpfen «Termin vereinbaren» (Kontaktseite)
->   und «Anrufen 032 …» (`company.phone`); Texte in `NEWS_TEXTE`, DE-Quelle in `news_vorsorge_2027_de.md`.
+>   Beitrag endet mit «Was bedeutet das für Sie?»**, einem Satz und dem Knopf «Termin vereinbaren»
+>   (Kontaktseite); Texte in `NEWS_TEXTE`, DE-Quelle in `news_vorsorge_2027_de.md`.
+>   **Der zweite Knopf «Anrufen 032 …» ist am 21.10.2026 auf Ricardos Anweisung entfallen**
+>   («hier bitte nicht die Telefonnummer sondern einfach termin abmachen») — die Nummer
+>   steht im Fussbereich jeder Seite. `ctaAnrufen` ist damit aus `NEWS_TEXTE` weg.
 > - **«News und Blog» steht seit 19.10.2026 in der Hauptnavigation** als fünfter Punkt (Ricardo: «sogar oben als eigene
 >   Kategorie»). Damit reicht die einzeilige Kopfzeile ab 75rem nicht mehr: Auf Französisch überlappten Logo, Menü und
 >   Knopf bis 1920 px. **Zweizeilig (Logo mittig, Menü darunter) gilt jetzt von 64rem bis 118rem**, einzeilig erst ab
