@@ -100,3 +100,10 @@ zusammen?», «Bin ich an etwas gebunden, wenn ich Sie beauftrage?».
 Ein erstes Gespräch verpflichtet Sie zu nichts. Bringen Sie mit, was Sie haben, und wir sagen Ihnen, was uns auffällt.
 
 Beschriftungen: Telefon · E-Mail · Büro
+
+## Orion statt Zurich (21.10.2026)
+
+Ricardo: «bitte das zurich logo überall auf der homepage und vorschau des Kundensystems ersetzen durch das orion logo damit die zurich nicht plötzlich reklammiert».
+
+- Orion
+- Orion Rechtsschutz-Versicherungsgesellschaft AG
