@@ -719,7 +719,10 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
               </div>
             ) : null}
           </div>
-          <div className={`${a.inhalt} ${s.inhalt}`}>{inhalt}</div>
+          {/* Neuer Schlüssel je Seite: der Inhalt blendet beim Wechsel neu ein */}
+          <div key={`${seite}|${policeId ?? ''}`} className={`${a.inhalt} ${s.inhalt}`}>
+            {inhalt}
+          </div>
         </div>
         <button type="button" className={s.terminKnopf} aria-label={D.start.termin.knopf} onClick={() => geh('anfragen', { formular: 'termin' })}>
           <Zeichen name="kalender" />

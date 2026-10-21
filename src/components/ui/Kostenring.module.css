@@ -251,8 +251,43 @@
   height: 4px;
 }
 
-.balken rect {
-  transition: width 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+.balken rect:not(.balkenGrund) {
+  transform-box: fill-box;
+  transform-origin: 0 50%;
+  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Name in der Mitte blendet über */
+.name2 {
+  animation: ueberblenden 0.28s ease-out;
+}
+
+@keyframes ueberblenden {
+  from {
+    opacity: 0.2;
+  }
+}
+
+.schalter button {
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+/* Verträge eines Bereichs: Rasterzeile von 0fr auf 1fr */
+.klappe {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.offen .klappe {
+  grid-template-rows: 1fr;
+}
+
+.klappeInnen {
+  min-height: 0;
+  overflow: hidden;
 }
 
 .balkenGrund {
@@ -267,6 +302,13 @@
   margin: 0;
   padding: 0 0.75em 0.75em 2.25em;
   list-style: none;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.offen .vertraege {
+  opacity: 1;
+  transition-delay: 0.08s;
 }
 
 .vertrag {
@@ -430,7 +472,14 @@
   .teil,
   .eintrag,
   .auf,
-  .balken rect {
+  .balken rect,
+  .klappe,
+  .vertraege,
+  .schalter button {
     transition: none;
+  }
+
+  .name2 {
+    animation: none;
   }
 }

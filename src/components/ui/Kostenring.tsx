@@ -12,6 +12,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
+import { FliessendeZahl } from '@/components/ui/Fliessend'
 import { chf, Zeichen } from '@/components/ui/PortalAnsicht'
 
 import a from './PortalAnsicht.module.css'
@@ -77,7 +78,8 @@ export function Kostenring({
   const summe = teile.reduce((t, x) => t + x.betrag, 0)
   if (!summe) return null
 
-  const betrag = (n: number) => chf(monat ? n / 12 : n)
+  // Beträge laufen fliessend zum neuen Wert (Jahr/Monat, Bereich in der Mitte)
+  const betrag = (n: number) => <FliessendeZahl wert={monat ? n / 12 : n} format={chf} />
   const pct = (n: number) => Math.round((n / summe) * 100)
   const zeitraum = monat ? texte.proMonat : texte.proJahr
   const aktiv = vorschau >= 0 ? vorschau : gewaehlt
@@ -128,7 +130,9 @@ export function Kostenring({
             })}
           </svg>
           <span className={s.mitte} aria-live="polite">
-            <span>{mitte ? mitte.text : texte.total}</span>
+            <span key={mitte ? mitte.text : ''} className={s.name2}>
+              {mitte ? mitte.text : texte.total}
+            </span>
             <strong>{betrag(mitte ? mitte.betrag : summe)}</strong>
             <span>{mitte ? `${pct(mitte.betrag)} % · ${zeitraum}` : zeitraum}</span>
           </span>
@@ -166,13 +170,16 @@ export function Kostenring({
                       className={FARBEN[i % FARBEN.length]}
                       x="0"
                       y="0"
-                      width={gezeichnet ? Math.max(pct(x.betrag), 2) : 0}
+                      width={Math.max(pct(x.betrag), 2)}
+                      style={{ transform: `scaleX(${gezeichnet ? 1 : 0})` }}
                       height="4"
                       rx="2"
                     />
                   </svg>
                 </button>
-                {offen ? (
+                {/* Weich auf- und zuklappen; zu ist die Liste für Tastatur und Vorleser gesperrt */}
+                <div className={s.klappe} inert={!offen}>
+                  <div className={s.klappeInnen}>
                   <ul className={s.vertraege}>
                     {x.liste.map((v) => (
                       <li key={v.id}>
@@ -190,7 +197,8 @@ export function Kostenring({
                       </li>
                     ))}
                   </ul>
-                ) : null}
+                  </div>
+                </div>
               </li>
             )
           })}

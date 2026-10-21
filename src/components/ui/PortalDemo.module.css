@@ -959,3 +959,49 @@
     flex-wrap: wrap;
   }
 }
+
+/* ---- Fliessende Übergänge (21.10.2026) ----------------------------------------
+   Ricardo: «eigentlich überall angenehm fliessende animationen und übergänge wo es passt» – wie im Portal.
+   Neue Seite: der Inhalt blendet von unten ein. Neu erscheinende Fragen, Hinweise und Formulare blenden ein.
+   Knöpfe wechseln ihre Farbe weich. Unter «Bewegung reduzieren» bewegt sich nichts. */
+@media (prefers-reduced-motion: no-preference) {
+  .inhalt > * {
+    transition:
+      opacity 0.4s ease-out,
+      translate 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .inhalt > :nth-child(2) {
+    transition-delay: 0.05s;
+  }
+
+  .inhalt > :nth-child(3) {
+    transition-delay: 0.1s;
+  }
+
+  .inhalt > :nth-child(n + 4) {
+    transition-delay: 0.15s;
+  }
+
+  .inhalt :is(section, form, fieldset) > * {
+    transition: opacity 0.3s ease-out;
+  }
+
+  @starting-style {
+    .inhalt > * {
+      opacity: 0;
+      translate: 0 10px;
+    }
+
+    .inhalt :is(section, form, fieldset) > * {
+      opacity: 0;
+    }
+  }
+
+  .flaeche button {
+    transition:
+      background-color 0.18s,
+      color 0.18s,
+      border-color 0.18s;
+  }
+}

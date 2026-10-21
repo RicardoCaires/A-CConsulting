@@ -2956,6 +2956,12 @@ gibt es noch keine.
 > Mitte, ein Klick klappt die Verträge mit Logo auf, ein Vertrag führt zu seiner Seite. Anteilsbalken je Bereich;
 > unter 26rem Kartenbreite steht der Betrag unter dem Namen. Der statische `Kostenring` in `PortalAnsicht.tsx`
 > bleibt für das starre Fenster. Nachgemessen in DE, FR, PT bei 320, 768 und 1440 px: nichts abgeschnitten.
+>
+> **Fliessende Übergänge (21.10.2026)** – Ricardo: «eigentlich überall angenehm fliessende animationen und übergänge
+> wo es passt». In der Vorschau wie im Portal: Beträge im Kostenring laufen zum neuen Wert (`FliessendeZahl`), die
+> Verträge klappen weich auf (Rasterzeile 0fr → 1fr, zu `inert`), die Balken wachsen. Beim Seitenwechsel blendet der
+> Inhalt neu ein (Schlüssel je Seite, `@starting-style` in `PortalDemo.module.css`), neue Fragen und Hinweise
+> ebenso. Alles aus unter «Bewegung reduzieren».
 
 ## 10. Offene Punkte
 
