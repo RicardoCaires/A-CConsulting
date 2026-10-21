@@ -132,6 +132,18 @@ export const portalDemo: Uebersetzt<typeof DeDemo> = {
     termin: { titel: 'Próxima reunião', text: 'Ainda nenhuma marcada', knopf: 'Marcar reunião' },
     ringTitel: 'Os seus custos com seguros por ano',
     proJahr: 'por ano',
+    ring: {
+      titelMonat: 'Os seus custos com seguros por mês',
+      proMonat: 'por mês',
+      jahr: 'Ano',
+      monat: 'Mês',
+      zeitraum: 'Período',
+      total: 'Total',
+      tipp: 'Toque numa área para ver os contratos correspondentes.',
+      vertrag: 'contrato em vigor',
+      vertraege: 'contratos em vigor',
+      uebrige: 'Outros',
+    },
     tun: 'O que pretende fazer?',
     kacheln: [
       { zeichen: "schild", titel: "Os meus seguros", text: "Contratos, coberturas e apólices para descarregar", seite: "versicherungen", formular: null },

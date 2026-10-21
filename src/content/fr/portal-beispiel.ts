@@ -132,6 +132,18 @@ export const portalDemo: Uebersetzt<typeof DeDemo> = {
     termin: { titel: 'Prochain rendez-vous', text: 'Aucun pour l’instant', knopf: 'Prendre rendez-vous' },
     ringTitel: 'Vos coûts d’assurance par an',
     proJahr: 'par an',
+    ring: {
+      titelMonat: 'Vos coûts d’assurance par mois',
+      proMonat: 'par mois',
+      jahr: 'Année',
+      monat: 'Mois',
+      zeitraum: 'Période',
+      total: 'Total',
+      tipp: 'Touchez un domaine pour voir les contrats correspondants.',
+      vertrag: 'contrat en cours',
+      vertraege: 'contrats en cours',
+      uebrige: 'Autres',
+    },
     tun: 'Que souhaitez-vous faire\u00a0?',
     kacheln: [
       { zeichen: "schild", titel: "Mes assurances", text: "Contrats, couvertures et polices à télécharger", seite: "versicherungen", formular: null },

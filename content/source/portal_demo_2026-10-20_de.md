@@ -156,3 +156,13 @@ Die Texte entsprechen dem Kundenportal im CRM (`public-portal/sprachen.js`) und 
 - älter
 - über CHF 5’000
 - ← Zurück
+
+## Kostenring zum Anklicken (21.10.2026)
+
+Ricardo: «können wir das im kundenportal etwas schöner gestalten und weniger eingepfercht … es soll ausserdem interaktiver werden». Vorschlag, Ricardo bestätigt.
+
+- Ihre Versicherungs­kosten pro Monat
+- Tippen Sie auf einen Bereich, um die Verträge darin zu sehen.
+- Total
+- Zeitraum
+- laufender Vertrag

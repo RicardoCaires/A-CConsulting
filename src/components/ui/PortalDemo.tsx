@@ -3,7 +3,8 @@
 import Image from 'next/image'
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
 
-import { Kostenring, Zeichen } from '@/components/ui/PortalAnsicht'
+import { Kostenring } from '@/components/ui/Kostenring'
+import { Zeichen } from '@/components/ui/PortalAnsicht'
 import { OfferteDemo, VertragDemo, WahlFeld } from '@/components/ui/PortalDemoFormulare'
 import { DemoKontext, demoText, useDemo } from '@/components/ui/PortalDemoText'
 import { portalDemo, portalRahmen } from '@/content/seiten/portal-beispiel'
@@ -181,10 +182,14 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
     </h3>
   )
 
-  // Kostenring nach Sparte, die grösste zuerst – wie im Portal
-  const jeSparte = new Map<string, number>()
-  for (const p of D.policen) jeSparte.set(p.sparte, (jeSparte.get(p.sparte) ?? 0) + p.jahr)
-  const segmente = [...jeSparte].map(([text, betrag]) => ({ text, betrag })).sort((x, y) => y.betrag - x.betrag)
+  // Kostenring nach Sparte, die grösste zuerst – wie im Portal; ein Vertrag darin führt zu seiner Seite
+  const ring = (
+    <Kostenring
+      texte={{ titel: D.start.ringTitel, proJahr: D.start.proJahr, ...D.start.ring }}
+      vertraege={D.policen.map((p) => ({ id: p.id, name: p.name, gesellschaft: p.gesellschaft, logo: p.logo, sparte: p.sparte, betrag: p.jahr }))}
+      onVertrag={(id) => geh('versicherungen', { police: id })}
+    />
+  )
   const gesellschaften = new Set(D.policen.map((p) => p.gesellschaft)).size
   const offen = anfragen.filter((x) => x.art !== 'gruen')
 
@@ -215,7 +220,7 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
           </button>
         </span>
       </div>
-      <Kostenring titel={D.start.ringTitel} proJahr={D.start.proJahr} segmente={segmente} />
+      {ring}
       <h4 className={a.h2}>{D.start.tun}</h4>
       <div className={s.kacheln}>
         {D.start.kacheln.map((k) => (
@@ -261,7 +266,7 @@ export function PortalDemo({ locale = 'de' }: { locale?: Locale }) {
     <>
       {ueberschrift(D.versicherungen.titel)}
       <p className={`${a.leise} ${s.absatz}`}>{D.versicherungen.einleitung}</p>
-      <Kostenring titel={D.start.ringTitel} proJahr={D.start.proJahr} segmente={segmente} />
+      {ring}
       <h4 className={a.h2}>{D.versicherungen.gruppe}</h4>
       <div className={a.policen}>
         {D.policen.map((p) => (

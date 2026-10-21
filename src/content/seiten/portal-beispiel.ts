@@ -140,6 +140,18 @@ export const portalDemo = {
     termin: { titel: 'Nächster Termin', text: 'Noch keiner vereinbart', knopf: 'Termin vereinbaren' },
     ringTitel: 'Ihre Versicherungs­kosten pro Jahr',
     proJahr: 'pro Jahr',
+    ring: {
+      titelMonat: 'Ihre Versicherungs­kosten pro Monat',
+      proMonat: 'pro Monat',
+      jahr: 'Jahr',
+      monat: 'Monat',
+      zeitraum: 'Zeitraum',
+      total: 'Total',
+      tipp: 'Tippen Sie auf einen Bereich, um die Verträge darin zu sehen.',
+      vertrag: 'laufender Vertrag',
+      vertraege: 'laufende Verträge',
+      uebrige: 'Übrige',
+    },
     tun: 'Was möchten Sie tun?',
     kacheln: [
       { zeichen: "schild", titel: "Meine Versicherungen", text: "Verträge, Deckungen und Policen zum Herunterladen", seite: "versicherungen", formular: null },

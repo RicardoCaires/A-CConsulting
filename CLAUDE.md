@@ -2948,6 +2948,14 @@ gibt es noch keine.
 > - Kostenring nach Sparte mit fünf Farben und Rappen (`chf()` in `PortalAnsicht.tsx`).
 > - **Ändert sich das Portal oder das Demo-Dossier, gehört die Vorschau nachgezogen.** Gesendet wird weiterhin nichts.
 > - Nachgemessen in DE, FR, PT bei 320, 390, 768 und 1440 px: kein Überlauf.
+>
+> **Kostenring zum Anklicken (21.10.2026)** – Ricardo: «etwas schöner gestalten und weniger eingepfercht … es soll
+> ausserdem interaktiver werden». Eigene Client-Komponente `components/ui/Kostenring.tsx` (Texte `start.ring` in
+> `portal-beispiel.ts` je Sprache), gleich gebaut wie `kostenring()` im CRM-Portal: grösserer Ring mit mehr Luft,
+> Umschalter Jahr / Monat, Zeigen auf einen Bereich hebt ihn im Ring hervor und zeigt Betrag und Anteil in der
+> Mitte, ein Klick klappt die Verträge mit Logo auf, ein Vertrag führt zu seiner Seite. Anteilsbalken je Bereich;
+> unter 26rem Kartenbreite steht der Betrag unter dem Namen. Der statische `Kostenring` in `PortalAnsicht.tsx`
+> bleibt für das starre Fenster. Nachgemessen in DE, FR, PT bei 320, 768 und 1440 px: nichts abgeschnitten.
 
 ## 10. Offene Punkte
 
