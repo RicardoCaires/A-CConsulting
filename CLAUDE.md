@@ -2978,8 +2978,9 @@ gibt es noch keine.
 > logo damit die zurich nicht plötzlich reklammiert». Auf `/versicherungen` (Geschäftsmodell und Schadenmeldung,
 > DE/FR/PT) steht Orion statt Zurich, nach Helvetia; die Schadenmeldung führt auf
 > `https://www.orion.ch/de/rechtsfall-melden` (von der Startseite von orion.ch verlinkt). Kachel
-> `partner_orion_mitte.webp`: nur die Wortmarke ORION, ohne den Zusatz «50 Jahre», damit sie gleich gross wirkt wie
-> die übrigen. In der Portalvorschau führt jede Gesellschaft nur, was sie anbietet (Ricardo: «die Versicherung muss es
+> `partner_orion_mitte.webp` und `gesellschaften/orion.webp`: das normale Orion-Logo, nicht die Fassung «50 Jahre»
+> (Ricardo, 21.10.2026). Quelle: `claims.orion.ch/assets/images/logo.png` (173 px; orion.ch war an dem Tag nicht
+> erreichbar) – für die Kacheln genügt das, für Grösseres eine schärfere Fassung beschaffen. In der Portalvorschau führt jede Gesellschaft nur, was sie anbietet (Ricardo: «die Versicherung muss es
 > auch anbieten»): Motorfahrzeug bei AXA, Rechtsschutz bei Orion, Reise bei Allianz Suisse. `partner_zurich*` liegen
 > weiter herum, stehen aber auf keiner Seite. Der Werdegang von Octavio nennt Zurich weiterhin als Text – kein Logo.
 
