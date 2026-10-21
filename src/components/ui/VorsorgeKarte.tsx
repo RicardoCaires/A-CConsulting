@@ -137,6 +137,7 @@ export function VorsorgeKarte({ locale = 'de' }: { locale?: Locale }) {
 
   const nah = offen ? verbunden(offen) : new Set<KennzahlId>()
   const zustand = (k: KennzahlId) => (!offen ? undefined : k === offen ? 'gewaehlt' : nah.has(k) || offen === 'ahvMax' || k === 'ahvMax' ? 'verbunden' : 'blass')
+  const gruppe = (k: KennzahlId) => V.kennzahlen.find((x) => x.id === k)?.gruppe
   const titel = (k: KennzahlId) => V.kennzahlen.find((x) => x.id === k)?.titel ?? k
   const anteilText = (k: KennzahlId) => (ANTEIL[k] === null ? V.unabhaengig : `${prozent(ANTEIL[k]!, komma)} ${V.anteil}`)
 
@@ -219,6 +220,8 @@ export function VorsorgeKarte({ locale = 'de' }: { locale?: Locale }) {
         <FliessendeZahl wert={w[k]} format={ohneChf} />
       </span>
       <span className={styles.betragName}>{k === 'ahvMax' ? V.mitte : titel(k)}</span>
+      {/* AHV: Jahresbetrag ohne 13. Altersrente, direkt sichtbar (Ricardo, 21.10.2026) */}
+      {gruppe(k) === 'ahv' ? <span className={styles.betragZusatz}>{V.ahvJahr}</span> : null}
     </button>
   )
 
@@ -310,6 +313,7 @@ export function VorsorgeKarte({ locale = 'de' }: { locale?: Locale }) {
         </div>
       )}
 
+      <p className={styles.hinweis13}>{V.hinweis13}</p>
       <p className={styles.stand}>{V.stand}</p>
 
       {mitBlatt ? (

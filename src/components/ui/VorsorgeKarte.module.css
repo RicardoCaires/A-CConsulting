@@ -279,6 +279,7 @@
   display: grid;
   gap: 0.75rem;
   margin-top: 0.5rem;
+  container-type: inline-size;
 }
 
 .stapelMitte {
@@ -348,7 +349,8 @@
 }
 
 .stapelZeile .anteilChip { grid-area: chip; }
-.stapelZeile .betragName { grid-area: name; font-size: var(--ac-small-size); }
+/* nur ganze Wörter umbrechen: «coordenaçã-o» brach sonst mitten im Wort (21.10.2026) */
+.stapelZeile .betragName { grid-area: name; font-size: var(--ac-small-size); overflow-wrap: break-word; }
 .stapelZeile .betragWert { grid-area: wert; font-size: 1rem; }
 
 .stapelZeile:not(:has(.anteilChip)) {
@@ -601,4 +603,41 @@
   .feld {
     animation: none;
   }
+}
+
+/* AHV-Jahresbeträge: «pro Jahr, ohne 13. Altersrente» direkt am Betrag (21.10.2026) */
+.betragZusatz {
+  display: block;
+  font-size: clamp(10px, 1.15cqw, 12px);
+  line-height: 1.2;
+  /* erbt Navy-Schrift auf Weiss und Weiss auf Navy (Zeigen, gewählt, Mitte) */
+  color: inherit;
+  opacity: 0.85;
+}
+
+/* unter dem Namen, nicht unter dem Prozentchip */
+/* width 0 / min-width 100 %: der Zusatz zählt nicht zur Spaltenbreite, sonst wächst die Wertspalte */
+.stapelZeile .betragZusatz { grid-column: 2 / -1; width: 0; min-width: 100%; margin-top: -0.4rem; }
+
+.hinweis13 {
+  margin: 0.75rem 0 0;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--ac-color-accent-green);
+  font-size: var(--ac-small-size);
+  color: var(--ac-color-text-primary);
+}
+
+/* Sehr schmale Karte (320 px, FR/PT): Name unter Prozent und Betrag, sonst blieben ihm unter 50 px
+   und Wörter wie «minimale» brachen mitten durch (21.10.2026). */
+@container (max-width: 17rem) {
+  .stapelZeile {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      'chip wert'
+      'name name';
+    row-gap: 0.2rem;
+  }
+
+  .stapelZeile .betragWert { justify-self: end; }
+  .stapelZeile .betragZusatz { grid-column: 1 / -1; margin-top: 0; }
 }

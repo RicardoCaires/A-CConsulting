@@ -243,10 +243,13 @@ export type Beitrag = {
   abschnitte: readonly {
     zwischentitel?: string
     absaetze: readonly Rich[]
-    punkte?: readonly string[]
+    /** Rich seit dem 21.10.2026: Aussagen tragen ihre amtliche Quelle als Link. */
+    punkte?: readonly Rich[]
     /** Interaktiver Baustein nach dem Text des Abschnitts (19.10.2026). */
     baustein?: 'vorsorgeKarte'
   }[]
   /** Hinweis am Schluss, z. B. dass der Beitrag keine individuelle Beratung ersetzt. */
   hinweis?: string
+  /** Satz im Abschluss «Was bedeutet das für Sie?» statt des allgemeinen aus `NEWS_TEXTE` (21.10.2026). */
+  abschluss?: string
 }

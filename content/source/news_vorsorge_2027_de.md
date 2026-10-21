@@ -106,3 +106,30 @@ Ricardo: «es braucht noch einen call to action z.B. termin abmachen».
 - Wir schauen Ihre Vorsorge und Ihre Versicherungen gemeinsam an – persönlich bei uns im Büro oder am Telefon.
 - Termin vereinbaren
 - Anrufen
+
+## Überarbeitung vom 21.10.2026
+
+Auftrag Ricardo vom 21.10.2026 (zehn Punkte: Titel, Säule 3a, AHV ohne 13. Altersrente, «erstmals im Dezember 2026», BVG-Eintrittsschwelle, Dauerauftrag, amtliche Quellen, Abschluss gestrafft). Die Sätze zu Säule 3a, zur 13. Altersrente, zum BVG und zum Dauerauftrag stehen wörtlich in seinem Auftrag; die übrigen sind ein Vorschlag. «Wie wir Sie unterstützen» ist in den Abschluss gewandert. Quellen: EAK «Höhere AHV/IV-Renten per 1. Januar 2027» (6.10.2026), BSV «Höchstabzüge Säule 3a im Steuerjahr 2027» (5.10.2026), BSV «Die 13. Altersrente wird erstmals im Dezember 2026 ausbezahlt» (12.11.2025).
+
+- Vorsorge-Kennzahlen 2027: die wichtigsten Grenzbeträge auf einen Blick
+- Mitteilung der Eidgenössischen Ausgleichskasse
+- Die AHV-Beträge gelten ohne die 13. Altersrente. Diese wird erstmals im Dezember 2026 ausbezahlt.
+- Mitteilung des BSV zur 13. Altersrente
+- Säule 3a: Erwerbstätige mit Pensionskasse können 2027 bis CHF 7’373 in die Säule 3a einzahlen. Ohne Pensionskasse sind es bis zu 20 % des Erwerbseinkommens, höchstens CHF 36’864 pro Jahr.
+- Mitteilung des BSV
+- Pensionskasse: Die obligatorische BVG-Versicherung setzt grundsätzlich bei einem Jahreslohn über CHF 23’040 pro Arbeitgeber ein.
+- Mitteilung der EAK
+- Den Dauerauftrag für die Säule 3a ab Januar 2027 auf den neuen Betrag anpassen.
+- Im Gespräch prüfen wir Ihren Vorsorgeausweis, Ihre Beiträge an die Säule 3a und mögliche Lücken bei Ihren Versicherungen. Für Unternehmen auch, ob Pensionskasse und UVG-Zusatz zu den Löhnen passen.
+- Dieser Beitrag gibt einen allgemeinen Überblick und ersetzt keine individuelle Beratung. Quellen: Bundesamt für Sozialversicherungen BSV und Eidgenössische Ausgleichskasse EAK, Stand Oktober 2026.
+- pro Jahr, ohne 13. Altersrente
+- Die AHV-Jahresbeträge in dieser Übersicht entsprechen zwölf Monatsrenten und verstehen sich ohne die zusätzliche 13. Altersrente. Diese wird erstmals im Dezember 2026 ausbezahlt.
+- Die 13. Altersrente wird erstmals im Dezember 2026 ausbezahlt, danach jedes Jahr im Dezember: ein Zwölftel der im Jahr bezogenen Altersrenten.
+- Die beiden Altersrenten eines Ehepaars zusammen, höchstens 150 % der maximalen AHV-Rente.
+- Die obligatorische BVG-Versicherung setzt grundsätzlich bei einem Jahreslohn über diesem Betrag pro Arbeitgeber ein.
+- Die Schwelle gilt je Arbeitgeber. Mehrere kleine Pensen können darum ohne obligatorische Versicherung bleiben.
+- Ausnahmen gibt es, etwa bei befristeten Anstellungen bis drei Monate.
+- Ihre Pensionskasse kann tiefer ansetzen. Massgebend ist ihr Reglement.
+- Für Erwerbstätige mit Pensionskasse.
+- Für Erwerbstätige ohne Pensionskasse: bis zu 20 % des Erwerbseinkommens, höchstens dieser Betrag.
+- Das gilt für Selbständige und ebenso für Angestellte, die keiner Pensionskasse angehören.

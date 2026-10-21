@@ -102,8 +102,10 @@ export function NewsBeitrag({ b, locale }: { b: Beitrag; locale: Locale }) {
               ))}
               {a.punkte?.length ? (
                 <ul className={seite.haken}>
-                  {a.punkte.map((p) => (
-                    <li key={p}>{p}</li>
+                  {a.punkte.map((p, j) => (
+                    <li key={j}>
+                      <RichText value={p} />
+                    </li>
                   ))}
                 </ul>
               ) : null}
@@ -116,7 +118,7 @@ export function NewsBeitrag({ b, locale }: { b: Beitrag; locale: Locale }) {
             <h2 id="beitrag-cta" className={styles.ctaTitel}>
               {T.ctaTitel}
             </h2>
-            <p className={styles.ctaText}>{T.ctaText}</p>
+            <p className={styles.ctaText}>{b.abschluss ?? T.ctaText}</p>
             <div className={seite.knoepfe}>
               <a className={seite.knopf} href={path('kontakt', locale)}>
                 {T.ctaKnopf}

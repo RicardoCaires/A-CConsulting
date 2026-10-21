@@ -7,13 +7,20 @@
  */
 import type { Beitrag } from './typen'
 
+/** Amtliche Quellen des Beitrags «Vorsorge-Kennzahlen 2027», auch für FR und PT (Ricardo, 21.10.2026). */
+export const QUELLEN = {
+  ahv: 'https://www.eak.admin.ch/de/hoehere-ahviv-renten-per-1-januar-2027',
+  s3a: 'https://www.bsv.admin.ch/de/newnsb/6ck3kzVxBNQ4',
+  dreizehnte: 'https://www.bsv.admin.ch/de/newnsb/GfSUvYXM1WibRS3P9FOJr',
+} as const
+
 export const beitraege: readonly Beitrag[] = [
   {
     // Erster veröffentlichter Beitrag (19.10.2026). Ricardo: «Ich will den ersten Blogpost online stellen bitte so
     // wie finanzfabio einen Interaktive karte mit unserem Design». Werte: `src/content/vorsorge-kennzahlen.ts`.
     slug: 'vorsorge-kennzahlen-2027',
     art: 'Ratgeber',
-    titel: 'Vorsorge-Kennzahlen 2027: alle Grenzbeträge auf einen Blick',
+    titel: 'Vorsorge-Kennzahlen 2027: die wichtigsten Grenzbeträge auf einen Blick',
     kurz: 'Ab 1. Januar 2027 steigen AHV-Renten und Grenzbeträge um rund 1.6 %. Tippen Sie in der Karte auf eine Zahl und sehen Sie, wie alles zusammenhängt.',
     datum: '2026-10-19',
     freigegeben: true,
@@ -21,18 +28,32 @@ export const beitraege: readonly Beitrag[] = [
     abschnitte: [
       {
         absaetze: [
-          'Der Bundesrat hat am 2. Oktober 2026 die AHV- und IV-Renten an die Lohn- und Preisentwicklung angepasst. Ab 1. Januar 2027 sind sie rund 1.6 % höher.',
+          [
+            'Der Bundesrat hat am 2. Oktober 2026 die AHV- und IV-Renten an die Lohn- und Preisentwicklung angepasst. Ab 1. Januar 2027 sind sie rund 1.6 % höher. ',
+            { url: QUELLEN.ahv, label: 'Mitteilung der Eidgenössischen Ausgleichskasse' },
+          ],
           'Mit der Rente verschieben sich fast alle Grenzbeträge der Vorsorge: in der Pensionskasse, in der Säule 3a und bei der AHV selbst. Der Grund: Das Gesetz legt sie als Bruchteil oder Vielfaches der maximalen AHV-Rente fest.',
         ],
         baustein: 'vorsorgeKarte',
       },
       {
         zwischentitel: 'Was sich für Sie ändert',
-        absaetze: ['Die Monatsbeträge der AHV gelten ohne die 13. Altersrente, die seit Dezember 2026 einmal im Jahr dazukommt.'],
+        absaetze: [
+          [
+            'Die AHV-Beträge gelten ohne die 13. Altersrente. Diese wird erstmals im Dezember 2026 ausbezahlt. ',
+            { url: QUELLEN.dreizehnte, label: 'Mitteilung des BSV zur 13. Altersrente' },
+          ],
+        ],
         punkte: [
-          'Säule 3a: Angestellte mit Pensionskasse zahlen 2027 bis CHF 7’373 ein, Selbständige ohne Pensionskasse bis CHF 36’864.',
-          'Pensionskasse: Versichert ist, wer bei einem Arbeitgeber mehr als CHF 23’040 im Jahr verdient.',
-          'AHV: Die Maximalrente steigt auf CHF 2’560 im Monat, die Minimalrente auf CHF 1’280.',
+          [
+            'Säule 3a: Erwerbstätige mit Pensionskasse können 2027 bis CHF 7’373 in die Säule 3a einzahlen. Ohne Pensionskasse sind es bis zu 20 % des Erwerbseinkommens, höchstens CHF 36’864 pro Jahr. ',
+            { url: QUELLEN.s3a, label: 'Mitteilung des BSV' },
+          ],
+          'Pensionskasse: Die obligatorische BVG-Versicherung setzt grundsätzlich bei einem Jahreslohn über CHF 23’040 pro Arbeitgeber ein.',
+          [
+            'AHV: Die Maximalrente steigt auf CHF 2’560 im Monat, die Minimalrente auf CHF 1’280. ',
+            { url: QUELLEN.ahv, label: 'Mitteilung der EAK' },
+          ],
           'Unfallversicherung: Der höchste versicherte Verdienst liegt bei CHF 148’200.',
         ],
       },
@@ -40,19 +61,17 @@ export const beitraege: readonly Beitrag[] = [
         zwischentitel: 'Drei Dinge, die sich jetzt lohnen',
         absaetze: [],
         punkte: [
-          'Den Dauerauftrag für die Säule 3a auf den neuen Betrag anpassen.',
+          'Den Dauerauftrag für die Säule 3a ab Januar 2027 auf den neuen Betrag anpassen.',
           'Den Vorsorgeausweis 2027 prüfen, besonders bei Teilzeit oder mehreren Arbeitgebern.',
           'Bei Löhnen über CHF 148’200 klären, ob eine UVG-Zusatzversicherung besteht.',
         ],
       },
-      {
-        zwischentitel: 'Wie wir Sie unterstützen',
-        absaetze: [
-          'Wir schauen mit Ihnen Vorsorgeausweis, Säule 3a und Versicherungen an und zeigen, wo Lücken bestehen. Für Unternehmen prüfen wir, ob Pensionskasse und UVG-Zusatz zu den Löhnen passen.',
-        ],
-      },
     ],
-    hinweis: 'Dieser Beitrag gibt einen allgemeinen Überblick und ersetzt keine individuelle Beratung. Quelle: Bundesamt für Sozialversicherungen BSV, Stand 2. Oktober 2026.',
+    // «Wie wir Sie unterstützen» ist am 21.10.2026 in den Abschluss gewandert (Ricardo: Wiederholung straffen).
+    abschluss:
+      'Im Gespräch prüfen wir Ihren Vorsorgeausweis, Ihre Beiträge an die Säule 3a und mögliche Lücken bei Ihren Versicherungen. Für Unternehmen auch, ob Pensionskasse und UVG-Zusatz zu den Löhnen passen.',
+    hinweis:
+      'Dieser Beitrag gibt einen allgemeinen Überblick und ersetzt keine individuelle Beratung. Quellen: Bundesamt für Sozialversicherungen BSV und Eidgenössische Ausgleichskasse EAK, Stand Oktober 2026.',
   },
   {
     slug: 'neu-kundenportal',

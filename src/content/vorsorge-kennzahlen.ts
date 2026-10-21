@@ -47,6 +47,10 @@ export const vorsorgeKennzahlen = {
   soHaengtZusammen: 'So hängt die Zahl zusammen',
   gutZuWissen: 'Gut zu wissen',
   proMonat: 'pro Monat',
+  /** Direkt an den AHV-Beträgen der Karte (21.10.2026). */
+  ahvJahr: 'pro Jahr, ohne 13. Altersrente',
+  hinweis13:
+    'Die AHV-Jahresbeträge in dieser Übersicht entsprechen zwölf Monatsrenten und verstehen sich ohne die zusätzliche 13. Altersrente. Diese wird erstmals im Dezember 2026 ausbezahlt.',
   stand: 'Stand: Beschluss des Bundesrates vom 2. Oktober 2026, gültig ab 1. Januar 2027. UVG: Stand 2026, eine Änderung für 2027 ist nicht bekannt.',
   tabelleTitel: 'Alle Werte im Vergleich',
   tabelleKennzahl: 'Kennzahl',
@@ -62,12 +66,12 @@ export const vorsorgeKennzahlen = {
       id: 'ahvMax',
       gruppe: 'ahv',
       titel: 'Maximale AHV-Rente',
-      einheit: 'pro Jahr, ohne 13. Rente',
+      einheit: 'pro Jahr, ohne 13. Altersrente',
       monat: true,
       kurz: 'Die Basis: Fast alle anderen Grenzbeträge leiten sich von ihr ab.',
       tipps: [
         'Volle Rente nur mit 44 Beitragsjahren ohne Lücke.',
-        'Seit Dezember 2026 kommt jedes Jahr eine 13. Altersrente dazu: ein Zwölftel der im Jahr bezogenen Renten.',
+        'Die 13. Altersrente wird erstmals im Dezember 2026 ausbezahlt, danach jedes Jahr im Dezember: ein Zwölftel der im Jahr bezogenen Altersrenten.',
         'Jedes fehlende Beitragsjahr kürzt die Rente lebenslang um rund 1/44.',
         'Den Auszug aus dem individuellen Konto (IK) erhalten Sie kostenlos bei Ihrer Ausgleichskasse.',
       ],
@@ -76,7 +80,7 @@ export const vorsorgeKennzahlen = {
       id: 'ahvMin',
       gruppe: 'ahv',
       titel: 'Minimale AHV-Rente',
-      einheit: 'pro Jahr, ohne 13. Rente',
+      einheit: 'pro Jahr, ohne 13. Altersrente',
       monat: true,
       kurz: 'Gilt bei voller Beitragsdauer und kleinem Einkommen.',
       tipps: ['Beitragslücken lassen sich nur fünf Jahre rückwirkend schliessen.', 'Mindestbeitrag AHV/IV/EO für Selbständige und Nichterwerbstätige 2027: CHF 541 pro Jahr.'],
@@ -85,8 +89,9 @@ export const vorsorgeKennzahlen = {
       id: 'ehepaar',
       gruppe: 'ahv',
       titel: 'Maximale Ehepaarrente',
-      einheit: 'pro Jahr',
-      kurz: 'Zwei Renten eines Ehepaars zusammen, höchstens 150 % einer Maximalrente.',
+      einheit: 'pro Jahr, ohne 13. Altersrente',
+      monat: true,
+      kurz: 'Die beiden Altersrenten eines Ehepaars zusammen, höchstens 150 % der maximalen AHV-Rente.',
       tipps: ['Für Paare im Konkubinat gilt diese Obergrenze nicht.'],
     },
     {
@@ -102,8 +107,12 @@ export const vorsorgeKennzahlen = {
       gruppe: 'bvg',
       titel: 'Eintrittsschwelle BVG',
       einheit: 'Jahreslohn',
-      kurz: 'Ab diesem Jahreslohn bei einem Arbeitgeber sind Sie in der Pensionskasse versichert.',
-      tipps: ['Die Schwelle gilt je Arbeitgeber. Mehrere kleine Pensen können darum ohne Pensionskasse bleiben.'],
+      kurz: 'Die obligatorische BVG-Versicherung setzt grundsätzlich bei einem Jahreslohn über diesem Betrag pro Arbeitgeber ein.',
+      tipps: [
+        'Die Schwelle gilt je Arbeitgeber. Mehrere kleine Pensen können darum ohne obligatorische Versicherung bleiben.',
+        'Ausnahmen gibt es, etwa bei befristeten Anstellungen bis drei Monate.',
+        'Ihre Pensionskasse kann tiefer ansetzen. Massgebend ist ihr Reglement.',
+      ],
     },
     {
       id: 'koord',
@@ -134,7 +143,7 @@ export const vorsorgeKennzahlen = {
       gruppe: 's3a',
       titel: 'Säule 3a mit Pensionskasse',
       einheit: 'höchstens pro Jahr',
-      kurz: 'Für Angestellte mit Pensionskasse.',
+      kurz: 'Für Erwerbstätige mit Pensionskasse.',
       tipps: ['Der Betrag muss bis 31. Dezember auf dem 3a-Konto sein.', 'Wer bei der eigenen GmbH oder AG angestellt ist, hat diesen Betrag, nicht den grossen.'],
     },
     {
@@ -142,8 +151,9 @@ export const vorsorgeKennzahlen = {
       gruppe: 's3a',
       titel: 'Säule 3a ohne Pensionskasse',
       einheit: 'höchstens pro Jahr',
-      kurz: 'Für Selbständige ohne Pensionskasse: 20 % des Erwerbseinkommens, höchstens dieser Betrag.',
-      tipps: ['Ohne Pensionskasse fehlt auch deren Schutz bei Invalidität und Tod. Das lässt sich versichern.'],
+      kurz: 'Für Erwerbstätige ohne Pensionskasse: bis zu 20 % des Erwerbseinkommens, höchstens dieser Betrag.',
+      tipps: [
+        'Das gilt für Selbständige und ebenso für Angestellte, die keiner Pensionskasse angehören.','Ohne Pensionskasse fehlt auch deren Schutz bei Invalidität und Tod. Das lässt sich versichern.'],
     },
     {
       id: 'uvg',

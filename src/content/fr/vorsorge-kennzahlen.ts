@@ -21,6 +21,9 @@ export const vorsorgeKennzahlen: Uebersetzt<typeof DE> = {
   soHaengtZusammen: 'Comment ce chiffre se calcule',
   gutZuWissen: 'Bon à savoir',
   proMonat: 'par mois',
+  ahvJahr: 'par an, sans 13e rente de vieillesse',
+  hinweis13:
+    'Les montants annuels AVS de cet aperçu correspondent à douze rentes mensuelles et s’entendent sans la 13e rente de vieillesse supplémentaire. Celle-ci sera versée pour la première fois en décembre 2026.',
   stand: 'État : décision du Conseil fédéral du 2 octobre 2026, valable dès le 1er janvier 2027. LAA : état 2026, aucune modification connue pour 2027.',
   tabelleTitel: 'Toutes les valeurs en comparaison',
   tabelleKennzahl: 'Indicateur',
@@ -36,12 +39,12 @@ export const vorsorgeKennzahlen: Uebersetzt<typeof DE> = {
       id: 'ahvMax',
       gruppe: 'ahv',
       titel: 'Rente AVS maximale',
-      einheit: 'par an, sans 13e rente',
+      einheit: 'par an, sans 13e rente de vieillesse',
       monat: true,
       kurz: 'La base : presque tous les autres montants limites en découlent.',
       tipps: [
         'Rente complète seulement avec 44 années de cotisation sans lacune.',
-        'Depuis décembre 2026, une 13e rente de vieillesse s’ajoute chaque année : un douzième des rentes perçues dans l’année.',
+        'La 13e rente de vieillesse sera versée pour la première fois en décembre 2026, puis chaque année en décembre : un douzième des rentes de vieillesse perçues dans l’année.',
         'Chaque année de cotisation manquante réduit la rente à vie d’environ 1/44.',
         'L’extrait du compte individuel (CI) est gratuit auprès de votre caisse de compensation.',
       ],
@@ -50,7 +53,7 @@ export const vorsorgeKennzahlen: Uebersetzt<typeof DE> = {
       id: 'ahvMin',
       gruppe: 'ahv',
       titel: 'Rente AVS minimale',
-      einheit: 'par an, sans 13e rente',
+      einheit: 'par an, sans 13e rente de vieillesse',
       monat: true,
       kurz: 'Valable avec une durée de cotisation complète et un petit revenu.',
       tipps: [
@@ -62,8 +65,9 @@ export const vorsorgeKennzahlen: Uebersetzt<typeof DE> = {
       id: 'ehepaar',
       gruppe: 'ahv',
       titel: 'Rente maximale pour un couple marié',
-      einheit: 'par an',
-      kurz: 'Les deux rentes d’un couple marié ensemble, au maximum 150 % d’une rente maximale.',
+      einheit: 'par an, sans 13e rente de vieillesse',
+      monat: true,
+      kurz: 'Les deux rentes de vieillesse d’un couple marié ensemble, au maximum 150 % de la rente AVS maximale.',
       tipps: ['Ce plafond ne s’applique pas aux couples en concubinage.'],
     },
     {
@@ -79,8 +83,12 @@ export const vorsorgeKennzahlen: Uebersetzt<typeof DE> = {
       gruppe: 'bvg',
       titel: 'Seuil d’entrée LPP',
       einheit: 'salaire annuel',
-      kurz: 'À partir de ce salaire annuel chez un employeur, vous êtes assuré à la caisse de pension.',
-      tipps: ['Le seuil s’applique par employeur. Plusieurs petits taux d’occupation peuvent donc rester sans caisse de pension.'],
+      kurz: 'L’assurance LPP obligatoire s’applique en principe dès un salaire annuel supérieur à ce montant par employeur.',
+      tipps: [
+        'Le seuil s’applique par employeur. Plusieurs petits taux d’occupation peuvent donc rester sans assurance obligatoire.',
+        'Il existe des exceptions, par exemple pour les engagements de durée limitée jusqu’à trois mois.',
+        'Votre caisse de pension peut prévoir un seuil plus bas. Son règlement fait foi.',
+      ],
     },
     {
       id: 'koord',
@@ -111,7 +119,7 @@ export const vorsorgeKennzahlen: Uebersetzt<typeof DE> = {
       gruppe: 's3a',
       titel: 'Pilier 3a avec caisse de pension',
       einheit: 'au maximum par an',
-      kurz: 'Pour les salariés affiliés à une caisse de pension.',
+      kurz: 'Pour les personnes actives affiliées à une caisse de pension.',
       tipps: [
         'Le montant doit être sur le compte 3a au plus tard le 31 décembre.',
         'Qui est salarié de sa propre Sàrl ou SA a droit à ce montant, pas au grand.',
@@ -122,8 +130,9 @@ export const vorsorgeKennzahlen: Uebersetzt<typeof DE> = {
       gruppe: 's3a',
       titel: 'Pilier 3a sans caisse de pension',
       einheit: 'au maximum par an',
-      kurz: 'Pour les indépendants sans caisse de pension : 20 % du revenu de l’activité lucrative, au maximum ce montant.',
-      tipps: ['Sans caisse de pension, sa protection en cas d’invalidité et de décès manque aussi. Cela peut s’assurer.'],
+      kurz: 'Pour les personnes actives sans caisse de pension : jusqu’à 20 % du revenu de l’activité lucrative, au maximum ce montant.',
+      tipps: [
+        'Cela vaut pour les indépendants comme pour les salariés qui ne sont affiliés à aucune caisse de pension.','Sans caisse de pension, sa protection en cas d’invalidité et de décès manque aussi. Cela peut s’assurer.'],
     },
     {
       id: 'uvg',

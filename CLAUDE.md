@@ -2867,6 +2867,17 @@ gibt es noch keine.
 >   1. Januar 2027» (2.10.2026) und die BSV-Masszahlen 2025/2026: alle Werte stimmen. **UVG 148’200 für 2027 ist nicht
 >   amtlich bestätigt** (seit 2016 unverändert, keine Änderung bekannt) und so beschriftet. Jahresrenten ohne 13. Rente.
 > - **Jedes Jahr nachführen**, sobald der Bundesrat die Renten anpasst: neues Jahr in `jahre`, `ahvMaxJahr`, `uvg`.
+> - **Überarbeitet am 21.10.2026** (Auftrag Ricardo, zehn Punkte), DE/FR/PT: Titel «… die wichtigsten Grenzbeträge
+>   auf einen Blick» (Seitentitel und Vorschau folgen aus `titel`, Adresse unverändert); Säule 3a mit der Regel ohne
+>   Pensionskasse auch für Angestellte; AHV-Beträge auf der Karte sichtbar mit «pro Jahr, ohne 13. Altersrente», darunter
+>   der Hinweis zu zwölf Monatsrenten; Ehepaarrente ebenso beschriftet; «erstmals im Dezember 2026»; BVG-Schwelle «über
+>   CHF 23’040 pro Arbeitgeber»; Dauerauftrag «ab Januar 2027». **Amtliche Quellen als Links** (`QUELLEN` in
+>   `seiten/news.ts`, `QUELLEN_FR` in `fr/news.ts`; PT verweist auf die französischen Seiten, es gibt keine
+>   portugiesischen). Dafür sind `punkte` eines Beitrags `Rich`. «Wie wir Sie unterstützen» ist entfallen und steht als
+>   `abschluss` im Kasten «Was bedeutet das für Sie?». Zahlen gegen EAK (6.10.2026) und BSV (5.10.2026, 12.11.2025)
+>   geprüft. Die grünen Knöpfe bleiben – Festlegung vom 15.09.2026 («alle buttons müssen so sein»).
+>   Nebenbei behoben: Bei 320 px liefen die Namen in der gestapelten Karte auf FR/PT in 30–50 px breiten Spalten und
+>   brachen mitten im Wort; unter 17rem Kartenbreite steht der Name jetzt unter Prozent und Betrag.
 > - Texte als Vorschlag in `content/source/news_vorsorge_2027_de.md`; Ricardo bestätigt.
 
 ## 9d. Neuer Einstieg der Startseite (19.10.2026)
