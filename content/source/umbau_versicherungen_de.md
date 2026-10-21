@@ -107,3 +107,4 @@ Ricardo: «bitte das zurich logo überall auf der homepage und vorschau des Kund
 
 - Orion
 - Orion Rechtsschutz-Versicherungsgesellschaft AG
+- AXA Versicherungen AG

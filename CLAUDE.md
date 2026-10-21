@@ -2979,7 +2979,8 @@ gibt es noch keine.
 > DE/FR/PT) steht Orion statt Zurich, nach Helvetia; die Schadenmeldung führt auf
 > `https://www.orion.ch/de/rechtsfall-melden` (von der Startseite von orion.ch verlinkt). Kachel
 > `partner_orion_mitte.webp`: nur die Wortmarke ORION, ohne den Zusatz «50 Jahre», damit sie gleich gross wirkt wie
-> die übrigen. In der Portalvorschau tragen Motorfahrzeug und Reise Orion statt Zurich. `partner_zurich*` liegen
+> die übrigen. In der Portalvorschau führt jede Gesellschaft nur, was sie anbietet (Ricardo: «die Versicherung muss es
+> auch anbieten»): Motorfahrzeug bei AXA, Rechtsschutz bei Orion, Reise bei Allianz Suisse. `partner_zurich*` liegen
 > weiter herum, stehen aber auf keiner Seite. Der Werdegang von Octavio nennt Zurich weiterhin als Text – kein Logo.
 
 ## 10. Offene Punkte
