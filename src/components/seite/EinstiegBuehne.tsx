@@ -69,7 +69,7 @@ export function EinstiegBuehne({ locale }: { locale: Locale }) {
   const titelVon = (id: string) => kennzahlen.kennzahlen.find((k) => k.id === id)?.titel ?? id
   const [vorher, nachher] = [werteFuer(2026), werteFuer(2027)]
   const zahlen = mitKarte
-    ? (['ahvMax', 's3aMit', 'eintritt'] as const).map((id) => ({ titel: titelVon(id), von: vorher[id], bis: nachher[id] }))
+    ? (['ahvMax', 's3aMit', 'eintritt', 'koord'] as const).map((id) => ({ titel: titelVon(id), von: vorher[id], bis: nachher[id] }))
     : []
 
   const daten: BuehneDaten = {
@@ -113,6 +113,9 @@ export function EinstiegBuehne({ locale }: { locale: Locale }) {
           titel: neuester.titel,
           kurz: neuester.kurz,
           zahlen,
+          vorjahr: '2026',
+          imBeitrag: NEWS_TEXTE[locale].imBeitrag,
+          inhalte: neuester.abschnitte.map((a) => a.zwischentitel).filter((z): z is string => !!z).slice(0, 4),
           knopf: NEWS_TEXTE[locale].lesen,
         }
       : null,

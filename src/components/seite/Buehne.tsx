@@ -64,6 +64,9 @@ export type BuehneDaten = {
     titel: string
     kurz: string
     zahlen: { titel: string; von: number; bis: number }[]
+    vorjahr: string
+    imBeitrag: string
+    inhalte: string[]
     knopf: string
   } | null
 }
@@ -381,8 +384,13 @@ export function Buehne({ daten: d }: { daten: BuehneDaten }) {
                   {d.blog.zahlen.length ? (
                     <ul className={styles.zahlen}>
                       {d.blog.zahlen.map((z, i) => (
-                        <li key={z.titel} className={styles.ani} style={verzoegert(0.5 + i * 0.2)}>
-                          <small>{z.titel}</small>
+                        <li key={z.titel} className={styles.ani} style={verzoegert(0.45 + i * 0.15)}>
+                          <span className={styles.zahlName}>
+                            {z.titel}
+                            <small>
+                              {d.blog?.vorjahr}: {chfGanz(z.von)} <em>+{chfGanz(z.bis - z.von).replace('CHF ', '')}</em>
+                            </small>
+                          </span>
                           <b>
                             <Zahl von={z.von} bis={z.bis} an={an('blog')} />
                           </b>
@@ -390,9 +398,21 @@ export function Buehne({ daten: d }: { daten: BuehneDaten }) {
                       ))}
                     </ul>
                   ) : (
-                    <p className={`${styles.satz} ${styles.ani}`} style={verzoegert(0.4)}>
-                      {d.blog.kurz}
-                    </p>
+                    <>
+                      <p className={`${styles.satz} ${styles.ani}`} style={verzoegert(0.4)}>
+                        {d.blog.kurz}
+                      </p>
+                      {d.blog.inhalte.length ? (
+                        <div className={`${styles.inhalte} ${styles.ani}`} style={verzoegert(0.7)}>
+                          <p>{d.blog.imBeitrag}</p>
+                          <ul>
+                            {d.blog.inhalte.map((z) => (
+                              <li key={z}>{z}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : null}
+                    </>
                   )}
                   <span className={styles.ani} style={verzoegert(2.0)}>
                     <Knopf text={d.blog.knopf} />

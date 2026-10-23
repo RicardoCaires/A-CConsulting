@@ -786,40 +786,98 @@
 
 .blogTitel {
   margin-top: 10px;
-  font-size: 1.5rem;
+  font-size: 1.375rem;
 }
 
 .zahlen {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin: 18px 0 0;
+  gap: 8px;
+  margin: 16px 0 16px;
   padding: 0;
   list-style: none;
 }
 
+/* wie im Kurzvideo zum Beitrag: Bezeichnung und Vorjahr links, der neue Betrag gross rechts */
 .zahlen li {
-  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
   border: 2px solid var(--ac-color-border-tint);
   border-radius: 14px;
-  background: var(--feld);
+  background: var(--ac-color-white);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--ac-color-navy-deep) 8%, transparent);
 }
 
-.zahlen small {
-  display: block;
-  font-size: 0.78rem;
+.zahlName {
+  min-width: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
   line-height: 1.25;
+  color: var(--ac-color-text-primary);
+}
+
+.zahlName small {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.78rem;
+  font-weight: 500;
   color: var(--ac-color-text-secondary);
 }
 
+.zahlName em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ac-color-accent-green);
+}
+
 .zahlen b {
-  display: block;
-  margin-top: 6px;
+  flex: none;
   font-family: var(--ac-font-display);
-  font-size: 1.375rem;
-  line-height: 1.1;
+  font-size: 1.5rem;
+  line-height: 1;
   color: var(--ac-color-primary-navy);
   white-space: nowrap;
+}
+
+/* Beitrag ohne Beträge: die Zwischentitel als Inhaltsverzeichnis, damit die Szene nicht leer wirkt */
+.inhalte {
+  margin: 14px 0 16px;
+  padding: 12px 14px;
+  border: 2px solid var(--ac-color-border-tint);
+  border-radius: 14px;
+}
+
+.inhalte p {
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ac-color-accent-green);
+}
+
+.inhalte ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.inhalte li {
+  display: flex;
+  gap: 8px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ac-color-primary-navy);
+}
+
+.inhalte li::before {
+  content: '→';
+  color: var(--ac-color-accent-green);
 }
 
 /* ---------- Bewegung ---------- */
@@ -1071,20 +1129,8 @@
     gap: 12px;
   }
 
-  .zahlen {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .zahlen li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-  }
-
   .zahlen b {
-    margin-top: 0;
+    font-size: 1.25rem;
   }
 
   @keyframes strecke {
