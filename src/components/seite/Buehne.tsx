@@ -117,8 +117,9 @@ export function Buehne({ daten: d }: { daten: BuehneDaten }) {
   const [lauf, setLauf] = useState(0) // zählt jeden Wechsel, damit die Füllung des Reiters neu beginnt
   const [halt, setHalt] = useState(false)
   const [still, setStill] = useState(false)
-  const rest = useRef(DAUER)
-  const seit = useRef(0)
+  const rest = useRef(DAUER) // verbleibende Zeit der aktuellen Szene
+  const seit = useRef(0) // wann die Uhr zuletzt losgelaufen ist
+  const gehalten = useRef(false)
 
   useEffect(() => {
     const m = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -134,16 +135,26 @@ export function Buehne({ daten: d }: { daten: BuehneDaten }) {
     setLauf((x) => x + 1)
   }, [])
 
-  // Weiterschalten: läuft, solange niemand auf der Bühne zeigt oder sie fokussiert hat
+  // Weiterschalten: läuft, solange niemand auf der Bühne zeigt oder sie fokussiert hat. Jede Szene bekommt die volle
+  // Dauer; nur ein Anhalten zieht die schon gelaufene Zeit ab, damit Uhr und Füllung des Reiters gleich bleiben.
   useEffect(() => {
     if (halt || still) return
     seit.current = performance.now()
     const uhr = window.setTimeout(() => zeige((jetzt + 1) % szenen.length), rest.current)
-    return () => {
-      window.clearTimeout(uhr)
-      rest.current = Math.max(400, rest.current - (performance.now() - seit.current))
-    }
+    return () => window.clearTimeout(uhr)
   }, [jetzt, lauf, halt, still, szenen.length, zeige])
+
+  const anhalten = () => {
+    if (gehalten.current) return
+    gehalten.current = true
+    rest.current = Math.max(300, rest.current - (performance.now() - seit.current))
+    setHalt(true)
+  }
+  const weiterlaufen = () => {
+    if (!gehalten.current) return
+    gehalten.current = false
+    setHalt(false)
+  }
 
   const an = (k: (typeof szenen)[number]) => szenen[jetzt] === k
   const szene = (k: (typeof szenen)[number]) => ({
@@ -180,11 +191,11 @@ export function Buehne({ daten: d }: { daten: BuehneDaten }) {
           className={styles.buehne}
           aria-label={d.buehne}
           role="region"
-          onMouseEnter={() => setHalt(true)}
-          onMouseLeave={() => setHalt(false)}
-          onFocus={() => setHalt(true)}
+          onMouseEnter={anhalten}
+          onMouseLeave={weiterlaufen}
+          onFocus={anhalten}
           onBlur={(e) => {
-            if (!e.currentTarget.contains(e.relatedTarget as Node)) setHalt(false)
+            if (!e.currentTarget.contains(e.relatedTarget as Node)) weiterlaufen()
           }}
         >
           <div className={styles.flaeche}>
