@@ -14,6 +14,12 @@
   padding-top: clamp(2rem, 5vw, 3.5rem);
 }
 
+/* Überschrift der Seite ohne Banner (23.10.2026): steht schlicht auf dem hellblauen Grund über dem ersten Block. */
+.seitenkopf {
+  padding: 0.25rem 0.25rem 0.5rem;
+  min-width: 0;
+}
+
 /* minmax(0, 1fr): Ein langes Wort (Adresse, Link) darf den Block nie über den
    Rand drücken – es bricht um. */
 .bloecke {

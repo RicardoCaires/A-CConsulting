@@ -215,8 +215,13 @@ export type SeitenInhalt = {
     themenzeile: string
     ueberschrift: string
     unterzeile?: string
-    /** «hell»: heller, kompakter Einstieg mit der Aufnahme daneben statt dahinter (Startseite, 19.10.2026). */
-    form?: 'hell'
+    /**
+     * «buehne»: Einstieg der Startseite mit der animierten Bühne (23.10.2026), die Texte in `src/content/einstieg.ts`.
+     * «hell»: heller Einstieg mit der Aufnahme daneben (19.10.2026, zurückgenommen, bleibt für den Fall der Rückkehr).
+     * Ohne `form` steht die Überschrift schlicht über dem ersten Block – seit dem 23.10.2026 trägt keine Seite mehr
+     * den Banner mit der Seeland-Aufnahme.
+     */
+    form?: 'hell' | 'buehne'
     /** Spruch als Sticker auf dem Bild im Einstieg der Startseite (19.10.2026). */
     spruch?: string
   }

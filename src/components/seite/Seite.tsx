@@ -1,12 +1,12 @@
 import Image from 'next/image'
 
-import { Banner } from '@/components/blocks/Banner'
 import { Kontaktformular } from '@/components/blocks/Kontaktformular'
 import { UnserModell } from '@/components/blocks/UnserModell'
 import { PortalAnsicht } from '@/components/ui/PortalAnsicht'
 import { PortalDemo } from '@/components/ui/PortalDemo'
 import { Rechner3a } from '@/components/ui/Rechner3a'
 import { Einstieg } from '@/components/seite/Einstieg'
+import { EinstiegBuehne } from '@/components/seite/EinstiegBuehne'
 import { ZeitleisteKantone } from '@/components/seite/ZeitleisteKantone'
 import { RichText } from '@/components/ui/RichText'
 import { Standortkarte } from '@/components/ui/Standortkarte'
@@ -824,33 +824,33 @@ function Formular({ id, locale }: { id?: string; locale: Locale }) {
 
 export function Seite({ inhalt, locale, vorrang = false }: { inhalt: SeitenInhalt; locale: Locale; vorrang?: boolean }) {
   const ui = getUi(locale)
-  const hell = inhalt.banner?.form === 'hell'
-  const ohneBanner = !inhalt.banner || hell
+  const banner = inhalt.banner
+  // Seit dem 23.10.2026 trägt nur die Startseite einen Einstieg (die Bühne); alle übrigen Seiten zeigen ihre
+  // Überschrift schlicht über dem ersten Block (Ricardo: «bitte alle anderen Banner auf den einzelnen seiten löschen»).
+  const buehne = banner?.form === 'buehne'
+  const hell = banner?.form === 'hell'
+  const schlicht = !!banner && !banner.form
   return (
     <>
-      {inhalt.banner && !hell ? (
-        <Banner
-          themenzeile={inhalt.banner.themenzeile}
-          ueberschrift={inhalt.banner.ueberschrift}
-          unterzeile={inhalt.banner.unterzeile}
-          id="seitenkopf"
-          knopf={ui.cta}
-          locale={locale}
-          vorrang={vorrang}
-        />
-      ) : null}
+      {buehne ? <EinstiegBuehne locale={locale} /> : null}
 
-      <div className={`${styles.seite} ${ohneBanner ? styles.seiteOhneBanner : ''}`}>
+      <div className={`${styles.seite} ${buehne ? '' : styles.seiteOhneBanner}`}>
         <div className={`ac-container ${styles.bloecke}`}>
-          {inhalt.banner && hell ? (
+          {banner && hell ? (
             <Einstieg
-              themenzeile={inhalt.banner.themenzeile}
-              ueberschrift={inhalt.banner.ueberschrift}
-              spruch={inhalt.banner.spruch}
+              themenzeile={banner.themenzeile}
+              ueberschrift={banner.ueberschrift}
+              spruch={banner.spruch}
               knopf={ui.cta}
               locale={locale}
               vorrang={vorrang}
             />
+          ) : null}
+          {banner && schlicht ? (
+            <header className={styles.seitenkopf} id="seitenkopf">
+              <h1 className={`${styles.titel} ${styles.titelGross}`}>{banner.ueberschrift}</h1>
+              {banner.unterzeile ? <p className={styles.einleitung}>{banner.unterzeile}</p> : null}
+            </header>
           ) : null}
           {inhalt.bloecke.map((block, i) => {
             if (block.art === 'modell') {

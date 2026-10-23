@@ -1,0 +1,1127 @@
+/* Einstieg der Startseite mit Bühne (23.10.2026). Farben nur aus Tokens.
+   Der Grund ist ein Verlauf von navy_deep zu primary_navy mit zwei weichen Lichtflächen – auf Ricardos
+   ausdrücklichen Wunsch («den dunklen blauen hintergrund noch einen farbenübergang geben»), entgegen der
+   Grundregel «keine Verläufe». Er gilt nur hier. */
+
+.einstieg {
+  --linie: color-mix(in srgb, var(--ac-color-primary-navy) 12%, transparent);
+  --feld: var(--ac-color-background-light);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 6px solid var(--ac-color-accent-green);
+  background:
+    radial-gradient(60% 80% at 85% 20%, color-mix(in srgb, var(--ac-color-primary-navy) 95%, transparent) 0%, transparent 70%),
+    radial-gradient(45% 60% at 70% 105%, color-mix(in srgb, var(--ac-color-accent-green) 30%, transparent) 0%, transparent 70%),
+    linear-gradient(120deg, var(--ac-color-navy-deep) 0%, color-mix(in srgb, var(--ac-color-navy-deep) 60%, var(--ac-color-primary-navy)) 55%, var(--ac-color-primary-navy) 100%);
+}
+
+.einstieg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background: radial-gradient(35% 50% at 15% 0%, color-mix(in srgb, var(--ac-color-accent-green-light) 18%, transparent) 0%, transparent 70%);
+}
+
+.raster {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.75rem;
+  padding-block: 3.5rem;
+}
+
+@media (min-width: 64rem) {
+  .raster {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+    align-items: center;
+    gap: 3rem;
+    padding-block: 4.75rem;
+  }
+}
+
+/* ---------- links: Aussage ---------- */
+
+.links {
+  min-width: 0;
+}
+
+.themenzeile {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ac-color-white);
+}
+
+.themenzeile::before {
+  content: '';
+  flex: none;
+  width: 38px;
+  height: 2px;
+  background: var(--ac-color-accent-green-light);
+}
+
+.titel {
+  margin: 1.375rem 0 0;
+  font-family: var(--ac-font-display);
+  font-size: clamp(2.4rem, 1.5rem + 3.4vw, 4.4rem);
+  line-height: 1.02;
+  font-weight: var(--ac-display-weight);
+  letter-spacing: -0.012em;
+  color: var(--ac-color-white);
+  text-wrap: balance;
+}
+
+.titel em {
+  font-style: normal;
+  color: var(--ac-color-accent-green-light);
+}
+
+.vorteile {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vorteile li,
+.punkte li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.vorteile li {
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  font-weight: 500;
+  color: var(--ac-color-white);
+}
+
+.vorteile li::before,
+.punkte li::before {
+  content: '';
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--ac-color-accent-green)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 12.5l3.2 3.2L17 9' fill='none' stroke='white' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 16px no-repeat;
+}
+
+.knopfHaupt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  margin-top: 2rem;
+  padding: 0 1.5rem;
+  border-radius: var(--ac-radius-button, 12px);
+  background: var(--ac-color-accent-green);
+  color: var(--ac-color-white);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.knopfHaupt:hover,
+.knopfHaupt:focus-visible {
+  background: var(--ac-color-white);
+  color: var(--ac-color-navy-deep);
+}
+
+.knopfHaupt:focus-visible,
+.szene:focus-visible,
+.reiter button:focus-visible {
+  outline: 3px solid var(--ac-color-accent-green-light);
+  outline-offset: 4px;
+}
+
+/* ---------- Bühne ---------- */
+
+.buehne {
+  min-width: 0;
+}
+
+.flaeche {
+  /* Alle Szenen liegen in derselben Rasterzelle: Die Bühne ist so hoch wie die höchste Szene in der jeweiligen
+     Sprache und Breite – nichts wird abgeschnitten, und beim Wechsel springt die Höhe nicht. */
+  display: grid;
+  min-height: 25rem;
+}
+
+.szene {
+  grid-area: 1 / 1;
+  display: block;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    visibility 0s 0.5s;
+}
+
+.szene.an {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity 0.5s ease 0.15s,
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s,
+    visibility 0s;
+}
+
+.blatt {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.625rem 1.75rem 1.5rem;
+  border-radius: 24px;
+  background: var(--ac-color-white);
+  box-shadow: 0 24px 60px color-mix(in srgb, var(--ac-color-navy-deep) 60%, transparent);
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ac-color-text-primary);
+  transition: box-shadow 0.2s;
+}
+
+.szene:hover .blatt {
+  box-shadow: 0 28px 70px color-mix(in srgb, var(--ac-color-navy-deep) 75%, transparent);
+}
+
+.kartentitel {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.h3 {
+  margin: 0;
+  font-family: var(--ac-font-display);
+  font-size: 1.625rem;
+  line-height: 1.15;
+  font-weight: var(--ac-display-weight);
+  color: var(--ac-color-primary-navy);
+}
+
+.h3 em {
+  font-style: normal;
+  color: var(--ac-color-accent-green);
+}
+
+.satz {
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--ac-color-text-primary);
+}
+
+/* der grüne Knopf am Fuss jeder Szene: dorthin führt der Klick */
+.mehr {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 46px;
+  padding: 0 1.375rem;
+  border-radius: var(--ac-radius-button, 12px);
+  background: var(--ac-color-accent-green);
+  color: var(--ac-color-white);
+  font-family: var(--ac-font-sans, Inter, Arial, sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--ac-color-accent-green) 35%, transparent);
+  transition: background-color 0.2s;
+}
+
+.blatt > .ani:last-child {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.mehr span:last-child {
+  transition: transform 0.2s;
+}
+
+.szene:hover .mehr {
+  background: var(--ac-color-navy-deep);
+}
+
+.szene:hover .mehr span:last-child {
+  transform: translateX(4px);
+}
+
+/* ---------- Reiter: weiss, der aktive füllt sich von links nach rechts grün ---------- */
+
+.reiter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.375rem;
+}
+
+.reiter button {
+  position: relative;
+  overflow: hidden;
+  padding: 0.625rem 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ac-color-white);
+  color: var(--ac-color-navy-deep);
+  font: 600 0.875rem/1.2 var(--ac-font-sans, Inter, Arial, sans-serif);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.reiter button:hover {
+  background: var(--ac-color-background-tint);
+}
+
+/* Die Füllung trägt dieselbe Beschriftung in Weiss, damit die Schrift über Grün lesbar bleibt. */
+.reiter button i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  overflow: hidden;
+  font-style: normal;
+  color: var(--ac-color-white);
+  background: var(--ac-color-accent-green);
+}
+
+.reiter button i span {
+  display: block;
+  padding: 0.625rem 1rem;
+}
+
+.reiterAn i {
+  animation: fuellen linear forwards;
+}
+
+@keyframes fuellen {
+  to {
+    width: 100%;
+  }
+}
+
+/* ---------- 1 Kundenportal ---------- */
+
+.portalzeile {
+  display: flex;
+  align-items: center;
+  gap: 1.375rem;
+  margin-top: 0.75rem;
+}
+
+.ring {
+  flex: none;
+  width: 104px;
+  height: 104px;
+}
+
+.ring circle {
+  fill: none;
+  stroke-width: 22;
+}
+
+.zeilen {
+  display: grid;
+  flex: 1;
+  gap: 0.75rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.zeilen li {
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  align-items: center;
+  gap: 5px 9px;
+  font-size: 0.9375rem;
+}
+
+.zeilen i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.zeilen b {
+  grid-column: 2;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--ac-color-background-tint);
+}
+
+.zeilen b span {
+  display: block;
+  height: 100%;
+  transform-origin: left;
+}
+
+.funktionen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.875rem 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.funktionen li {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 6px 12px 6px 6px;
+  border: 2px solid var(--ac-color-border-tint);
+  border-radius: 14px;
+  background: var(--ac-color-white);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ac-color-primary-navy);
+  white-space: nowrap;
+}
+
+.zeichen {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--ac-color-background-tint);
+}
+
+.zeichen svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.funktionen li.gruen {
+  border-color: var(--ac-color-accent-green);
+  background: var(--ac-color-accent-green);
+  color: var(--ac-color-white);
+}
+
+.funktionen li.gruen .zeichen {
+  background: color-mix(in srgb, var(--ac-color-white) 18%, transparent);
+}
+
+/* ---------- 2 Versicherungen: alles auf einer Achse ---------- */
+
+.achse {
+  display: flex;
+  align-items: center;
+  margin: 2.5rem 0 2.125rem;
+}
+
+.knotenSie,
+.knotenAc {
+  display: grid;
+  flex: none;
+  justify-items: center;
+  gap: 8px;
+  font-size: 0.9375rem;
+  color: var(--ac-color-primary-navy);
+}
+
+.knotenSie b,
+.knotenAc b {
+  line-height: 1;
+}
+
+.kopfKreis {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border: 3px solid var(--ac-color-accent-green);
+  border-radius: 50%;
+  background: var(--ac-color-white);
+  color: var(--ac-color-primary-navy);
+}
+
+.kopfKreis svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hubKreis {
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--ac-color-navy-deep);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--ac-color-navy-deep) 10%, transparent);
+}
+
+.hubKreis img {
+  width: 46px;
+  height: 46px;
+  padding: 8px;
+  border-radius: 50%;
+  background: var(--ac-color-white);
+}
+
+/* Die Strecken sitzen auf der Mitte der Kreise; die Beschriftung darunter gleicht margin-bottom aus. */
+.strecke {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 64px;
+  height: 3px;
+  margin-bottom: 23px;
+  background: var(--ac-color-border-tint);
+  transform-origin: left;
+}
+
+.streckeGruen {
+  height: 4px;
+  background: var(--ac-color-accent-green);
+}
+
+.strecke em {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  padding: 4px 9px;
+  border-radius: 20px;
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ac-color-white);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.anfr {
+  background: var(--ac-color-navy-deep);
+}
+
+.empf {
+  background: var(--ac-color-accent-green);
+}
+
+.logos {
+  display: grid;
+  flex: 0 1 216px;
+  min-width: 150px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  margin: 0 0 23px;
+  padding: 0;
+  list-style: none;
+}
+
+.logos li {
+  overflow: hidden;
+  border: 2px solid var(--linie);
+  border-radius: 10px;
+  background: var(--ac-color-white);
+  aspect-ratio: 40 / 22;
+}
+
+.logos img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.punkte {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 0 0 0.875rem;
+  padding: 0;
+  list-style: none;
+}
+
+.punkte li {
+  gap: 9px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.punkte li::before {
+  width: 20px;
+  height: 20px;
+  background-size: 14px;
+}
+
+/* ---------- 3 Steuern: Checkliste ---------- */
+
+.steuer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.125rem;
+  margin-top: 1.125rem;
+}
+
+.liste {
+  padding: 14px 16px;
+  border: 2px solid var(--ac-color-accent-green);
+  border-radius: 16px;
+  background: var(--ac-color-white);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--ac-color-accent-green) 15%, transparent);
+}
+
+.listenkopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0 0 10px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.listenkopf span {
+  padding: 5px 11px;
+  border-radius: 20px;
+  background: var(--ac-color-accent-green);
+  color: var(--ac-color-white);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.liste ul {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.liste li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 0.875rem;
+  line-height: 1.3;
+}
+
+.liste li i {
+  position: relative;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  border: 2px solid var(--ac-color-border-tint);
+  border-radius: 5px;
+  background: var(--ac-color-white);
+}
+
+.liste li i::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 5px;
+  background: var(--ac-color-accent-green)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4L18 8' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 14px no-repeat;
+}
+
+.ablauf {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: schritt;
+}
+
+.ablauf li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.875rem;
+  line-height: 1.3;
+}
+
+.ablauf li::before {
+  content: counter(schritt);
+  counter-increment: schritt;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--ac-color-navy-deep);
+  color: var(--ac-color-white);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+}
+
+.ablauf li:first-child::before {
+  background: var(--ac-color-accent-green);
+}
+
+.ablauf strong {
+  color: var(--ac-color-primary-navy);
+}
+
+/* ---------- 4 Offerte online ---------- */
+
+.balken {
+  height: 6px;
+  margin: 14px 0 18px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--ac-color-background-tint);
+}
+
+.balken span {
+  display: block;
+  width: 40%;
+  height: 100%;
+  background: var(--ac-color-accent-green);
+  transform-origin: left;
+}
+
+.frage {
+  margin: 0;
+  font-size: 1.3125rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.optionen {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.optionen li {
+  min-width: 0;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  padding: 13px 14px;
+  border: 2px solid var(--ac-color-border-tint);
+  border-radius: 14px;
+  background: var(--feld);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ac-color-primary-navy);
+}
+
+.optionen li.gewaehlt {
+  border-color: var(--ac-color-navy-deep);
+  background: var(--ac-color-navy-deep);
+  color: var(--ac-color-white);
+}
+
+/* ---------- 5 Blog ---------- */
+
+.marke {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ac-color-accent-green);
+}
+
+.marke time {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ac-color-text-secondary);
+}
+
+.blogTitel {
+  margin-top: 10px;
+  font-size: 1.5rem;
+}
+
+.zahlen {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.zahlen li {
+  padding: 12px;
+  border: 2px solid var(--ac-color-border-tint);
+  border-radius: 14px;
+  background: var(--feld);
+}
+
+.zahlen small {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.25;
+  color: var(--ac-color-text-secondary);
+}
+
+.zahlen b {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--ac-font-display);
+  font-size: 1.375rem;
+  line-height: 1.1;
+  color: var(--ac-color-primary-navy);
+  white-space: nowrap;
+}
+
+/* ---------- Bewegung ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .einstieg::before {
+    animation: licht 14s ease-in-out infinite alternate;
+  }
+
+  .links > * {
+    animation: hoch 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .links > :nth-child(2) {
+    animation-delay: 0.08s;
+  }
+
+  .links > :nth-child(3) {
+    animation-delay: 0.2s;
+  }
+
+  .links > :nth-child(4) {
+    animation-delay: 0.35s;
+  }
+
+  .an .ani {
+    animation: hoch 0.55s ease-out both;
+    animation-delay: calc(var(--v, 0) * 1s);
+  }
+
+  .an .ring circle {
+    animation: zeichnen 1s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  .an .zeilen b span {
+    animation: wachsen 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .an .strecke {
+    animation: strecke 0.5s ease-out 0.45s both;
+  }
+
+  .an .streckeZwei {
+    animation-delay: 0.75s;
+  }
+
+  .an .anfr {
+    animation: pendeln 1.1s ease-in-out 1.7s both;
+  }
+
+  .an .empf {
+    animation: pendelnLinks 1.1s ease-in-out 2.2s both;
+  }
+
+  .an .kopfKreis {
+    animation: puls 0.6s ease-out 3s both;
+  }
+
+  .an .liste li i::after {
+    animation: abhaken 0.25s ease-out both;
+    animation-delay: calc(var(--a, 1) * 1s);
+  }
+
+  .an .balken span {
+    animation: fuellenBalken 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.5s both;
+  }
+
+  .an .optionen li.gewaehlt {
+    animation:
+      hoch 0.55s ease-out both,
+      waehlen 0.01s linear 1.6s both;
+    animation-delay: calc(var(--v, 0) * 1s), 1.6s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .szene,
+  .szene.an {
+    transition: none;
+  }
+
+  .strecke em.empf {
+    opacity: 1;
+  }
+
+  .reiterAn i {
+    animation: none;
+    width: 100%;
+  }
+}
+
+@keyframes licht {
+  to {
+    transform: translateX(40%);
+  }
+}
+
+@keyframes hoch {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes zeichnen {
+  from {
+    stroke-dasharray: 0 100;
+  }
+}
+
+@keyframes wachsen {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes strecke {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes pendeln {
+  0% {
+    left: 90%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    left: 30%;
+    opacity: 1;
+  }
+  100% {
+    left: 10%;
+    opacity: 0;
+  }
+}
+
+@keyframes pendelnLinks {
+  0% {
+    left: 95%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes puls {
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes abhaken {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+
+@keyframes fuellenBalken {
+  from {
+    transform: scaleX(0.3);
+  }
+}
+
+@keyframes waehlen {
+  from {
+    border-color: var(--ac-color-border-tint);
+    background: var(--feld);
+    color: var(--ac-color-primary-navy);
+  }
+}
+
+/* ---------- Telefon ---------- */
+
+@media (max-width: 39.99rem) {
+  .h3 {
+    font-size: 1.375rem;
+  }
+
+  .ring {
+    width: 92px;
+    height: 92px;
+  }
+
+  .zeilen li {
+    font-size: 0.875rem;
+  }
+
+  .mehr {
+    padding: 0 1.125rem;
+    font-size: 0.9375rem;
+  }
+
+  .achse {
+    flex-direction: column;
+    margin: 1.375rem 0;
+  }
+
+  .strecke,
+  .streckeGruen {
+    flex: none;
+    width: 4px;
+    height: 34px;
+    min-width: 0;
+    margin: 6px 0;
+    transform-origin: top;
+  }
+
+  .strecke em {
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+  }
+
+  .hubKreis {
+    width: 64px;
+    height: 64px;
+  }
+
+  .hubKreis img {
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+  }
+
+  .kopfKreis {
+    width: 48px;
+    height: 48px;
+  }
+
+  .logos {
+    flex: none;
+    width: 228px;
+    min-width: 0;
+    margin-bottom: 0;
+  }
+
+  .steuer {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .zahlen {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .zahlen li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .zahlen b {
+    margin-top: 0;
+  }
+
+  @keyframes strecke {
+    from {
+      transform: scaleY(0);
+    }
+  }
+
+  @keyframes pendeln {
+    0% {
+      top: 100%;
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      top: 20%;
+      opacity: 1;
+    }
+    100% {
+      top: 0;
+      opacity: 0;
+    }
+  }
+
+  @keyframes pendelnLinks {
+    0% {
+      top: 100%;
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      top: 50%;
+      opacity: 1;
+    }
+  }
+}
+
+/* ganz schmale Telefone: Knopf darf umbrechen, Auswahl steht untereinander */
+@media (max-width: 22.5rem) {
+  .mehr {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .optionen {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

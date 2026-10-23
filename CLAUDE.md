@@ -3037,6 +3037,37 @@ gibt es noch keine.
 > auch anbieten»): Motorfahrzeug bei AXA, Rechtsschutz bei Orion, Reise bei Allianz Suisse. `partner_zurich*` liegen
 > weiter herum, stehen aber auf keiner Seite. Der Werdegang von Octavio nennt Zurich weiterhin als Text – kein Logo.
 
+## 9j. Einstieg mit Bühne, keine Banner mehr (23.10.2026)
+
+> **Gilt vor den älteren Notizen zu Banner und Seitenkopf in Abschnitt 9 und 9d.** Ricardo: «ich will eine Animation
+> zu unseren dienstleistungen und unseren vorteilen vorallem digital kundenportal etc», «verwurzelt im seeland blick
+> auf mehr muss geändert werden bitte nehme dort wir vertreten sie nicht die versicherung», «bitte alle anderen Banner
+> auf den einzelnen seiten löschen nur noch die Startseite hat einen Banner und das wird diese Animation sein».
+> Fünf Entwürfe als Video gezeigt, der fünfte freigegeben. Wortlaut in `content/source/startseite_buehne_de.md`.
+>
+> - **Startseite** (`banner.form: 'buehne'` in `start.ts` je Sprache): links Themenzeile, die Aussage «Wir vertreten
+>   **Sie**, nicht die Versicherung.», drei Vorteile mit Haken und «Erstgespräch anfragen»; rechts eine **Bühne mit fünf
+>   Szenen**, die alle 7 Sekunden wechseln – Kundenportal, Versicherungen («Ein Ansprechpartner für alles», Sie → A&C →
+>   sechs Gesellschaften mit Logo), Steuern (kostenlose Checkliste, vier Schritte), Offerte online, Blog. **Jede Szene
+>   ist ein Link** an ihre Stelle: `/digital`, `/versicherungen#modell`, `/steuern#checkliste`, `/offerte-anfragen`,
+>   der Beitrag. Der aktive Reiter füllt sich von links nach rechts grün; Zeigen oder Fokus hält an, ein Reiter springt.
+> - **Die Blog-Szene zeigt immer den neuesten freigegebenen Beitrag** (`sichtbareBeitraege`). Hat er die Vorsorge-Karte,
+>   zählen drei Beträge von 2026 auf 2027; sonst steht der Kurztext.
+> - Bausteine: `components/seite/EinstiegBuehne.tsx` (sammelt auf dem Server, die Beschriftungen kommen aus
+>   Portalvorschau, Steuer-Checkliste und News) und `Buehne.tsx` (Client, Wechsel der Szenen). Texte in
+>   `src/content/einstieg.ts` und `fr|pt/einstieg.ts`.
+> - **Gesellschaften: Allianz, AXA, Mobiliar, Helvetia, Vaudoise, Orion – nie Zurich.** Die «Empfehlung» hängt an keiner
+>   Gesellschaft, sie geht von A&C zu «Sie».
+> - **Farbverlauf im Grund** (navy_deep zu primary_navy, zwei weiche Lichtflächen) auf Ricardos ausdrückliche Anweisung
+>   («den dunklen blauen hintergrund noch einen farbenübergang geben») – entgegen «keine Verläufe», nur hier.
+> - Unter «Bewegung reduzieren» wechselt nichts von selbst, alles steht sofort da; die Reiter bleiben bedienbar.
+> - Alle Szenen liegen in derselben Rasterzelle: Die Bühne ist so hoch wie die höchste Szene, nichts wird abgeschnitten.
+> - **Alle übrigen Seiten haben keinen Banner mehr.** Ihre Überschrift (`banner.ueberschrift`) steht schlicht als `h1`
+>   auf dem hellblauen Grund über dem ersten Block, ohne Vorzeile. Die Seeland-Aufnahme steht auf keiner Seite mehr;
+>   `Banner.tsx` und die Datei bleiben liegen.
+> - Nachgemessen in DE, FR, PT bei 320, 390, 768, 1024, 1280 und 1440 px, jede Szene: kein waagrechter Überlauf, nichts
+>   ragt aus der Karte.
+
 ## 10. Offene Punkte
 
 Technik und Infrastruktur:
